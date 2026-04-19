@@ -1,0 +1,44 @@
+name: Sync Revision Progress
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Runs every hour
+    - cron: '0 * * * *'
+
+jobs:
+  sync-progress:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Create/Update progress.json
+        run: |
+          # Create progress.json if it doesn't exist
+          if [ ! -f progress.json ]; then
+            cat > progress.json << EOF
+          {
+            "lastUpdated": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')",
+            "progress": {},
+            "totalItems": 0,
+            "completedItems": 0,
+            "message": "Revision schedule in progress. Update this file from your browser after syncing!"
+          }
+          EOF
+          else
+            # Update timestamp in existing file
+            jq '.lastUpdated = "'$(date -u +'%Y-%m-%dT%H:%M:%SZ')'"' progress.json > progress.json.tmp && mv progress.json.tmp progress.json
+          fi
+          cat progress.json
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add progress.json
+          git commit -m "Update progress: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
+          git push origin main || echo "Nothing to push"
