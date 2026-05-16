@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 10 – Human Health | Elements of Science</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --teal: #00796B;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR NAV ── */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--text);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--green);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+
+    .sidebar-section {
+      padding: 14px 0 4px;
+    }
+
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 9px 18px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-left-color: var(--green);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700;
+      font-size: 15px;
+      color: #7CFC8C;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover {
+      color: #fff;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      margin-left: 240px;
+      min-height: 100vh;
+    }
+
+    /* ── CHAPTER HEADER ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 60%, #40916C 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '🧬';
+      position: absolute;
+      top: 20px;
+      right: 48px;
+      font-size: 120px;
+      opacity: 0.12;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .chapter-hero h1 span {
+      color: #7CFC8C;
+    }
+
+    .chapter-meta {
+      margin-top: 18px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .learning-goals {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .goal-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ── CONTENT AREA ── */
+    .content {
+      padding: 40px 48px;
+      max-width: 1000px;
+    }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-heading .icon {
+      font-size: 26px;
+    }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin: 28px 0 12px;
+    }
+
+    .sub-heading2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--teal);
+      margin: 20px 0 8px;
+    }
+
+    /* KEY TERM BOX */
+    .key-term {
+      background: #F0FFF4;
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+
+    .key-term .term {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .key-term .definition {
+      font-size: 14px;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .key-term .simpler {
+      font-size: 13px;
+      color: var(--purple);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* FORMULA / EQUATION BOX */
+    .formula-box {
+      background: var(--text);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--green);
+    }
+
+    .formula-box .label {
+      font-size: 11px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    /* TEST TUBE BOX */
+    .test-tube {
+      background: #EFF6FF;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+
+    .test-tube .tt-header {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .test-tube ol,
+    .test-tube ul {
+      margin-left: 20px;
+    }
+
+    .test-tube li {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .test-tube .sub-q {
+      margin-left: 20px;
+      list-style: lower-alpha;
+    }
+
+    /* EXPERIMENT BOX */
+    .experiment {
+      background: #FFFDE7;
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+
+    .experiment .exp-header {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .experiment .exp-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .experiment .exp-section {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--orange);
+      margin: 12px 0 6px;
+    }
+
+    .experiment ol,
+    .experiment ul {
+      margin-left: 20px;
+    }
+
+    .experiment li {
+      font-size: 14px;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .safety-box {
+      background: #FFF3CD;
+      border: 1.5px solid #F5C800;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #7B5E00;
+      margin: 10px 0;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* DATA TABLE */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .data-table th {
+      background: var(--text);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .data-table td {
+      padding: 11px 16px;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: #f9fafb;
+    }
+
+    .data-table .cell-head {
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    /* INFO CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .info-card .card-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .info-card .card-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .info-card .card-def {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .info-card .card-simpler {
+      font-size: 12px;
+      color: var(--purple);
+      font-style: italic;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .info-card.green {
+      border-color: var(--green);
+    }
+
+    .info-card.blue {
+      border-color: var(--blue);
+    }
+
+    .info-card.red {
+      border-color: var(--red);
+    }
+
+    .info-card.orange {
+      border-color: var(--orange);
+    }
+
+    .info-card.purple {
+      border-color: var(--purple);
+    }
+
+    /* CONCENTRATE / NOTICE BOX */
+    .concentrate {
+      background: #FFF3CD;
+      border: 2px dashed var(--yellow);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .concentrate .icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .concentrate .text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .concentrate strong {
+      color: var(--text);
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    /* EUREKA BOX */
+    .eureka {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .eureka .eur-icon {
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .eureka .eur-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .eureka .eur-text {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* PROBLEM CARDS */
+    .problem-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 14px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .problem-card .prob-body {
+      padding: 16px 18px;
+    }
+
+    .problem-card .prob-q {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .toggle-btn {
+      background: var(--yellow);
+      color: var(--text);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 14px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .toggle-btn:hover {
+      opacity: 0.8;
+    }
+
+    .prob-solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .prob-solution.open {
+      display: block;
+    }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 12px;
+      line-height: 2;
+      white-space: pre-wrap;
+    }
+
+    .prob-solution .answer {
+      color: var(--green-dark);
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .prob-solution .tip {
+      background: var(--yellow-light);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* GLOSSARY */
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .glossary-item {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .glossary-item .g-term {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green-dark);
+    }
+
+    .glossary-item .g-def {
+      font-size: 12px;
+      color: #555;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .badge-blue {
+      background: #DBEAFE;
+      color: var(--blue);
+    }
+
+    .badge-green {
+      background: #DCFCE7;
+      color: var(--green-dark);
+    }
+
+    .badge-orange {
+      background: #FFEDD5;
+      color: var(--orange);
+    }
+
+    .badge-purple {
+      background: #EDE9FE;
+      color: var(--purple);
+    }
+
+    .badge-red {
+      background: #FEE2E2;
+      color: var(--red);
+    }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      background: var(--text);
+      color: #fff;
+      padding: 24px 48px;
+      margin-left: 240px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .chapter-nav-bar span {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+    }
+
+    .chapter-nav-bar a {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s;
+    }
+
+    .chapter-nav-bar a:hover {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    .chapter-nav-bar a.active {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .content {
+        padding: 20px 20px;
+      }
+
+      .chapter-hero {
+        padding: 32px 20px 28px;
+      }
+
+      .chapter-hero h1 {
+        font-size: 36px;
+      }
+
+      .chapter-nav-bar {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+
+    .anchor-offset {
+      scroll-margin-top: 24px;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 10px 22px;
+    }
+
+    li {
+      font-size: 14px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    /* PEDIGREE LEGEND */
+    .pedigree-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+
+    .ped-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .ped-shape {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #333;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .ped-shape.square {}
+
+    .ped-shape.circle {
+      border-radius: 50%;
+    }
+
+    .ped-shape.fill-red {
+      background: #D32F2F;
+      border-color: #D32F2F;
+    }
+
+    .ped-shape.fill-pink {
+      background: #F06292;
+      border-color: #F06292;
+    }
+
+    /* LIFESTYLE TABLE */
+    .lifestyle-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .lifestyle-table th {
+      background: var(--green-dark);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .lifestyle-table td {
+      padding: 11px 16px;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .lifestyle-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .lifestyle-table tr:nth-child(even) td {
+      background: #f9fafb;
+    }
+
+    .lifestyle-table .lc-name {
+      font-weight: 700;
+      color: var(--green-dark);
+      white-space: nowrap;
+    }
+
+    .lifestyle-table ul {
+      margin-left: 16px;
+    }
+
+    .lifestyle-table li {
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    /* FOOD PYRAMID VIZ */
+    .pyramid-container {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+      border: 1.5px solid var(--border);
+    }
+
+    .pyramid-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .pyramid-bar {
+      height: 36px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      min-width: 60px;
+    }
+
+    .pyramid-label {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .pyramid-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Science Revision</div>
+      <div class="book-title">Elements of Science – Unit 2</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Biological World</div>
+      <a href="ch10.html" class="chapter-link active">Ch 10 · Human Health</a>
+      <a href="#health">What is Health?</a>
+      <a href="#inherited">Inherited Factors</a>
+      <a href="#environmental">Environmental Factors</a>
+      <a href="#nutrition">Nutrition</a>
+      <a href="#food-pyramid">Food Pyramid</a>
+      <a href="#lifestyle">Lifestyle Choices</a>
+      <a href="#micro-organisms">Micro-organisms</a>
+      <a href="#prevention">Prevention &amp; Treatment</a>
+      <a href="#vaccines">Vaccines &amp; Antibiotics</a>
+      <a href="#summary">Summary Questions</a>
+      <a href="#past-paper">Past Paper Questions</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Other Chapters</div>
+      <a href="ch35.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 35 · The Origin of
+        the Universe</a>
+      <a href="ch39.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 39 · Energy
+        Sources and Future Needs</a>
+      <a href="index.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 29 · Energy</a>
+      <a href="#" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 10 · Human Health</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 10 · Unit 2 – Biological World</div>
+      <h1>🧬 <span>Human Health</span></h1>
+      <p class="chapter-meta">Elements of Science · Annual Exam Revision · Pages 92–107</p>
+      <div class="learning-goals">
+        <span class="goal-tag">✔ Inherited &amp; environmental factors</span>
+        <span class="goal-tag">✔ Nutrition &amp; balanced diet</span>
+        <span class="goal-tag">✔ Biomolecule tests</span>
+        <span class="goal-tag">✔ Lifestyle choices</span>
+        <span class="goal-tag">✔ Micro-organisms</span>
+        <span class="goal-tag">✔ Vaccines &amp; antibiotics</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- KEY TERMS GLOSSARY -->
+      <div class="section-heading anchor-offset" id="key-terms">
+        <span class="icon">📖</span> Key Terms
+      </div>
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Health</div>
+          <div class="g-def">A person's physical and mental wellbeing.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Nutrition</div>
+          <div class="g-def">One of the characteristics of all living things; obtaining biomolecules from food.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Biomolecules</div>
+          <div class="g-def">Chemical molecules that make up the cells of the body (carbohydrates, proteins, fats,
+            etc.).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Balanced Diet</div>
+          <div class="g-def">A diet that provides all biomolecules, minerals and water in the correct quantities.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Micro-organism</div>
+          <div class="g-def">A very small living thing — bacteria, virus, or fungi.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Pathogen</div>
+          <div class="g-def">A micro-organism that causes disease; also called a germ.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Bacteria</div>
+          <div class="g-def">Single-celled micro-organisms; the most common organisms on Earth.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Virus</div>
+          <div class="g-def">A small amount of genetic material (e.g. DNA) surrounded by protein.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Fungi</div>
+          <div class="g-def">Micro-organisms that cannot produce their own food; they feed on dead material.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Vaccine</div>
+          <div class="g-def">A medical treatment made from a pathogen that protects the body from a disease.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Antibiotic</div>
+          <div class="g-def">A chemical produced by bacteria and fungi that attacks other bacteria and fungi.</div>
+        </div>
+      </div>
+
+      <!-- ═══ HEALTH ═══ -->
+      <div class="section-heading anchor-offset" id="health">
+        <span class="icon">❤️</span> Health
+      </div>
+
+      <div class="key-term">
+        <div class="term">Health</div>
+        <div class="definition"><strong>Health is a person's physical and mental wellbeing.</strong></div>
+        <div class="simpler">💡 Health is affected by: inherited factors, environmental factors, and disease caused by
+          harmful organisms.</div>
+      </div>
+
+      <!-- ═══ INHERITED FACTORS ═══ -->
+      <div class="section-heading anchor-offset" id="inherited">
+        <span class="icon">🧬</span> Inherited Factors
+      </div>
+
+      <p>Human characteristics are controlled by genes found on chromosomes in the nucleus of the body's cells.
+        Mutations (changes) in a gene or chromosome, inherited from one or both parents, can affect a person's health.
+      </p>
+
+      <div class="sub-heading">Health Conditions Caused by Mutations</div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Condition</th>
+            <th>Cause</th>
+            <th>Effects</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-head">Haemophilia</td>
+            <td>Mutation in the gene for a protein that controls blood clotting</td>
+            <td>Blood does not clot correctly, causing excess bleeding.</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Cancer</td>
+            <td>Mutation of a gene that causes cells to divide uncontrollably</td>
+            <td>A mass of cells called a tumour forms.</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Down syndrome</td>
+            <td>An extra copy of chromosome number 21</td>
+            <td>Physical and mental development are affected.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-heading">Haemophilia — Pedigree Chart</div>
+      <p>Haemophilia is an inherited human condition caused by a mutation in a single gene. Haemophiliacs are unable to
+        clot blood effectively.</p>
+
+      <div class="pedigree-legend">
+        <div class="ped-item">
+          <div class="ped-shape square"></div> Male, not haemophiliac
+        </div>
+        <div class="ped-item">
+          <div class="ped-shape square fill-red"></div> Male, haemophiliac
+        </div>
+        <div class="ped-item">
+          <div class="ped-shape circle"></div> Female, not haemophiliac
+        </div>
+        <div class="ped-item">
+          <div class="ped-shape circle fill-pink"></div> Female, haemophiliac
+        </div>
+      </div>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Pedigree Chart Questions</div>
+        <ol>
+          <li>Square 1 and circle 2 represent a male and a female. How many offspring did these parents produce?</li>
+          <li>Person 4 is a male haemophiliac. Are any of his offspring haemophiliacs? Explain your answer.</li>
+          <li>Some non-haemophiliacs may be carriers of the disease. What evidence is there to suggest that person 7 is
+            a carrier?</li>
+          <li>Research one other inherited condition:
+            <ul class="sub-q">
+              <li>What is it called?</li>
+              <li>What change to a gene or chromosome causes it?</li>
+              <li>Is it caused by a dominant gene or recessive gene?</li>
+              <li>What effect does this mutation have on a person's health?</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <!-- ═══ ENVIRONMENTAL FACTORS ═══ -->
+      <div class="section-heading anchor-offset" id="environmental">
+        <span class="icon">🌍</span> Environmental Factors
+      </div>
+
+      <p>Cancer is not an inherited disease, but gene mutations that increase the risk of developing some cancers (e.g.
+        breast cancer) can be passed from parents to offspring. Cancer-causing mutations can also happen due to
+        environmental factors.</p>
+
+      <div class="cards-grid">
+        <div class="info-card red">
+          <div class="card-icon">🚬</div>
+          <div class="card-title">Smoking</div>
+          <div class="card-def">Smokers are at greater risk than non-smokers of developing lung cancer.</div>
+        </div>
+        <div class="info-card orange">
+          <div class="card-icon">☀️</div>
+          <div class="card-title">UV Radiation</div>
+          <div class="card-def">Exposure to the Sun (or sunbeds) increases the risk of skin cancer, as UV rays in
+            sunlight damage the DNA of skin cells.</div>
+        </div>
+        <div class="info-card blue">
+          <div class="card-icon">🍬</div>
+          <div class="card-title">Type 2 Diabetes</div>
+          <div class="card-def">Eating too much sugar and fat leads to increased thirst, urination, tiredness and weight
+            loss.</div>
+        </div>
+        <div class="info-card purple">
+          <div class="card-icon">💔</div>
+          <div class="card-title">Heart Disease</div>
+          <div class="card-def">High blood pressure and high cholesterol caused by eating food with too much salt and
+            saturated fat; also linked to smoking.</div>
+        </div>
+        <div class="info-card orange">
+          <div class="card-icon">🍺</div>
+          <div class="card-title">Liver Disease</div>
+          <div class="card-def">Obesity caused by eating food with too much sugar and fat; consuming too much alcohol.
+            Effects include yellow skin/eyes and abdominal pain.</div>
+        </div>
+      </div>
+
+      <div class="eureka">
+        <div class="eur-icon">💡</div>
+        <div>
+          <div class="eur-title">Eureka – Marie Curie (1867–1934)</div>
+          <div class="eur-text">Marie Curie pioneered the first ever trials of radiation therapy to treat cancer. She
+            won the Nobel Prize in Chemistry in 1903 and again in 1911 for her research in radioactivity. Curie died
+            from a disease of the bone marrow brought on by overexposure to radiation.</div>
+        </div>
+      </div>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Cancer Research</div>
+        <ol start="3">
+          <li><strong>a.</strong> Research one of the following treatments for cancer: radiotherapy or chemotherapy.<br>
+            <strong>b.</strong> How does this treatment work to slow cell division?
+          </li>
+          <li>Suggest two lifestyle behaviours that could reduce a person's risk of developing cancers caused by
+            environmental factors.</li>
+        </ol>
+      </div>
+
+      <!-- ═══ NUTRITION ═══ -->
+      <div class="section-heading anchor-offset" id="nutrition">
+        <span class="icon">🥗</span> Nutrition &amp; Balanced Diet
+      </div>
+
+      <div class="key-term">
+        <div class="term">Nutrition</div>
+        <div class="definition"><strong>Nutrition is one of the characteristics of all living things. The cells that
+            make up the body are made from biomolecules.</strong> Humans must get biomolecules from their diet, i.e. the
+          food they eat.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Balanced Diet</div>
+        <div class="definition"><strong>A balanced diet is a diet that provides a person with biomolecules, minerals and
+            water in the correct quantities.</strong></div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role in the Diet</th>
+            <th>Sources</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-head">Carbohydrates — Starch</td>
+            <td>Slow supply of energy</td>
+            <td>Potatoes, bread, pasta, rice</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Carbohydrates — Sugar</td>
+            <td>Fast supply of energy</td>
+            <td>Fruit, sweets</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Carbohydrates — Fibre</td>
+            <td>Prevent constipation</td>
+            <td>Brown bread, fruit, vegetables, cereals</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Proteins</td>
+            <td>Growth and repair of cells; make muscle, hair and enzymes</td>
+            <td>Lean meat, fish, pulses, dairy products</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Fats</td>
+            <td>Provide a store of energy; insulate and protect internal organs</td>
+            <td>Meat, dairy products, chocolate</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Vitamins — Vitamin C</td>
+            <td>Keeps teeth, gums, joints and immune system healthy</td>
+            <td>Fresh fruit and vegetables</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Vitamins — Vitamin D</td>
+            <td>Helps build strong bones</td>
+            <td>Dairy products</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Minerals — Iron</td>
+            <td>Builds biomolecules, e.g. haemoglobin in red blood cells</td>
+            <td>Lean meat, fresh fruit, vegetables</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Minerals — Calcium</td>
+            <td>Assists chemical reactions in cells, e.g. transmitting nerve impulses</td>
+            <td>Dairy products</td>
+          </tr>
+          <tr>
+            <td class="cell-head">Water</td>
+            <td>Acts as a solvent; transports materials in blood; removes waste; regulates temperature</td>
+            <td>Water, other liquids, fruit, vegetables</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Nutrient Deficiency Research</div>
+        <ol start="5">
+          <li>Lack of a nutrient can lead to a deficiency disease (e.g. anaemia is caused by a lack of iron). Research a
+            deficiency disease caused by one of the nutrients above:
+            <ul>
+              <li>Name the disease.</li>
+              <li>Name the nutrient deficiency that causes this disease.</li>
+              <li>Describe the symptoms of this disease.</li>
+              <li>Describe the treatment for this disease.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <!-- EXPERIMENT 10.1 -->
+      <div class="experiment">
+        <div class="exp-header">🔬 Experimental Investigation 10.1</div>
+        <div class="exp-title">How can we investigate if starch is present in food?</div>
+        <div class="safety-box">⚠️ Safety: Do not eat any of the food being tested.</div>
+        <div class="exp-section">Equipment</div>
+        <p>4 test tubes · Dropper · Test tube rack · Iodine solution</p>
+        <div class="exp-section">Suggested Substances to Test</div>
+        <p>Water (control) · Bread · Milk · Vegetable oil</p>
+        <div class="exp-section">Method</div>
+        <ol>
+          <li>Label four test tubes: 'Water (control)', 'Bread', 'Milk', 'Vegetable oil'.</li>
+          <li>Add 2 cm³ of water to the test tube labelled 'Water (control)' and then add 2 cm³ of the correct food to
+            the appropriately labelled test tube.</li>
+          <li>Add 2–3 drops of iodine to each test tube. Swirl carefully for 5–10 seconds.</li>
+          <li>Stand all four test tubes in a test tube rack and observe any colour changes. A positive test for starch
+            will show a colour change to <strong>blue-black</strong>.</li>
+          <li>Record your results.</li>
+        </ol>
+      </div>
+
+      <!-- EXPERIMENT 10.2 -->
+      <div class="experiment">
+        <div class="exp-header">🔬 Experimental Investigation 10.2</div>
+        <div class="exp-title">How can we investigate if protein is present in food?</div>
+        <div class="safety-box">⚠️ Safety: Do not eat any of the food being tested.</div>
+        <div class="exp-section">Equipment</div>
+        <p>4 test tubes · Dropper · Test tube rack · Biuret reagent solution</p>
+        <div class="exp-section">Suggested Substances to Test</div>
+        <p>Water (control) · Bread · Milk · Vegetable oil</p>
+        <div class="exp-section">Method</div>
+        <ol>
+          <li>Label four test tubes: 'Water (control)', 'Bread', 'Milk', 'Vegetable oil'.</li>
+          <li>Add 2 cm³ of water to the test tube labelled 'Water (control)' and then add 2 cm³ of the correct food to
+            the appropriately labelled test tube.</li>
+          <li>Add 2 cm³ of Biuret reagent solution to each test tube. Swirl carefully for 5–10 seconds.</li>
+          <li>Stand all four test tubes in a test tube rack for approximately 5 minutes. Observe any colour changes. A
+            positive test for protein will show a colour change to <strong>purple</strong>.</li>
+          <li>Record your results.</li>
+        </ol>
+      </div>
+
+      <!-- EXPERIMENT 10.3 -->
+      <div class="experiment">
+        <div class="exp-header">🔬 Experimental Investigation 10.3</div>
+        <div class="exp-title">How can we investigate if fat is present in food?</div>
+        <div class="safety-box">⚠️ Safety: Do not eat any of the food being tested.</div>
+        <div class="exp-section">Equipment</div>
+        <p>Brown paper · Dropper</p>
+        <div class="exp-section">Suggested Substances to Test</div>
+        <p>Water (control) · Bread · Milk · Vegetable oil</p>
+        <div class="exp-section">Method</div>
+        <ol>
+          <li>Label four pieces of brown paper: 'Water (control)', 'Bread', 'Milk', 'Vegetable oil'.</li>
+          <li>Add a small drop of water to the piece of paper labelled 'Water (control)' and then rub or add small
+            amounts of the food to the appropriately labelled piece of brown paper.</li>
+          <li>Stand all four pieces of paper on the lab bench for approximately 15 minutes.</li>
+          <li>Hold up all four pieces of paper to the light. A positive test for fat will allow light to pass through
+            the paper (<strong>translucent</strong>).</li>
+          <li>Record your results in a table.</li>
+        </ol>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🧪</div>
+        <div class="text">
+          <strong>Biomolecule Test Summary</strong>
+          Starch → Iodine → <strong>blue-black</strong> positive | Protein → Biuret reagent → <strong>purple</strong>
+          positive | Fat → Brown paper → <strong>translucent</strong> positive
+        </div>
+      </div>
+
+      <!-- ═══ FOOD PYRAMID ═══ -->
+      <div class="section-heading anchor-offset" id="food-pyramid">
+        <span class="icon">🥦</span> The Food Pyramid &amp; Energy from Food
+      </div>
+
+      <p>The <strong>food pyramid</strong> can be used to help people plan a balanced diet. To get the correct quantity
+        of biomolecules, vitamins and minerals, a person should eat the most servings from the bottom of the pyramid and
+        only small amounts from the top.</p>
+
+      <div class="pyramid-container">
+        <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;margin-bottom:18px;">🇮🇪 Ireland's
+          Healthy Food for Life – Food Pyramid</h3>
+        <div class="pyramid-row">
+          <div class="pyramid-bar" style="width:80px;background:#D32F2F;">TOP</div>
+          <div>
+            <span class="pyramid-label" style="font-weight:700;">Foods &amp; drinks high in fat, sugar and salt</span>
+            <span class="pyramid-note">– Maximum once or twice a week</span>
+          </div>
+        </div>
+        <div class="pyramid-row">
+          <div class="pyramid-bar" style="width:110px;background:#E65100;">Fats</div>
+          <div>
+            <span class="pyramid-label">Fats, spreads and oils</span>
+            <span class="pyramid-note">– Very small amounts</span>
+          </div>
+        </div>
+        <div class="pyramid-row">
+          <div class="pyramid-bar" style="width:160px;background:#F5C800;color:#333;">Protein</div>
+          <div>
+            <span class="pyramid-label">Meat, poultry, fish, eggs, beans and nuts</span>
+            <span class="pyramid-note">– 2 servings daily</span>
+          </div>
+        </div>
+        <div class="pyramid-row">
+          <div class="pyramid-bar" style="width:200px;background:#66BB6A;">Dairy</div>
+          <div>
+            <span class="pyramid-label">Milk, yogurt and cheese</span>
+            <span class="pyramid-note">– 3 servings daily</span>
+          </div>
+        </div>
+        <div class="pyramid-row">
+          <div class="pyramid-bar" style="width:250px;background:#8D6E63;">Cereals</div>
+          <div>
+            <span class="pyramid-label">Wholemeal cereals, breads, potatoes, pasta and rice</span>
+            <span class="pyramid-note">– 3–5 servings daily (wholegrain best)</span>
+          </div>
+        </div>
+        <div class="pyramid-row">
+          <div class="pyramid-bar" style="width:300px;background:#2E7D32;">Veg &amp; Fruit</div>
+          <div>
+            <span class="pyramid-label">Vegetables, salad and fruit</span>
+            <span class="pyramid-note">– 5–7 servings daily</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Factors Affecting Diet</div>
+      <ul>
+        <li><strong>Age:</strong> young people still growing need more food than adults</li>
+        <li><strong>Sex:</strong> males generally need more food than females</li>
+        <li><strong>Genetics:</strong> people who are physically larger need more food</li>
+        <li><strong>Health:</strong> people who are ill may lose their appetite</li>
+        <li><strong>Physical activity:</strong> people with active lifestyles need more food</li>
+      </ul>
+
+      <div class="sub-heading">Energy from Food</div>
+      <p>The unit of energy is the <strong>joule (J)</strong>. The energy in food is measured in thousands of joules,
+        called <strong>kilojoules (kJ)</strong>. Energy values are given on food packaging. If a person consumes more
+        energy than their body needs, it will be stored as fat, potentially leading to obesity and increased risk of
+        stroke and heart disease.</p>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Food Pyramid &amp; Energy</div>
+        <ol start="6">
+          <li>Look at the food pyramid.
+            <ul class="sub-q">
+              <li>Name two types of food that should be eaten in small amounts only.</li>
+              <li>Explain why these foods should be eaten in small amounts.</li>
+            </ul>
+          </li>
+          <li>One of the criticisms of the food pyramid is that it does not consider portion size. Explain why this is
+            an issue.</li>
+          <li>Look at a breakfast cereal food label and answer: (a) How many grams is a single serving? (b) What are the
+            two units used to describe energy content? (c) What is the energy content of a typical 30 g serving with
+            semi-skimmed milk? (d) Name two ways that milk can contribute to a balanced diet. (e) Why do people need
+            fibre in their diet?</li>
+          <li>State whether the following are true or false — explain your answers: (a) A rugby player will need more
+            energy and protein than an office worker. (b) A marathon runner does not need more iron than a teacher. (c)
+            A teenager needs more energy than an adult. (d) A pregnant person needs less energy than a non-pregnant
+            person.</li>
+        </ol>
+      </div>
+
+      <!-- ═══ LIFESTYLE CHOICES ═══ -->
+      <div class="section-heading anchor-offset" id="lifestyle">
+        <span class="icon">🏃</span> Lifestyle Choices for Good Health
+      </div>
+
+      <table class="lifestyle-table">
+        <thead>
+          <tr>
+            <th>Lifestyle Choice</th>
+            <th>Health Benefits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lc-name">Exercising</td>
+            <td>
+              <ul>
+                <li>Improves fitness and lowers resting heart and breathing rates</li>
+                <li>Promotes restful sleep</li>
+                <li>Helps maintain a healthy weight</li>
+                <li>Strengthens bones</li>
+                <li>Improves mood</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="lc-name">Sleeping</td>
+            <td>
+              <ul>
+                <li>Allows the body to recover</li>
+                <li>Increases energy</li>
+                <li>Improves concentration</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="lc-name">Managing stress</td>
+            <td>
+              <ul>
+                <li>Reduces the risk of anxiety and depression</li>
+                <li>Improves quality of sleep</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="lc-name">Not smoking</td>
+            <td>
+              <ul>
+                <li>Reduces the risk of cancer</li>
+                <li>Reduces the risk of respiratory conditions, e.g. bronchitis</li>
+                <li>Reduces the risk of heart attacks and strokes</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="lc-name">Avoiding alcohol and drugs</td>
+            <td>
+              <ul>
+                <li>Reduces the risk of liver disease</li>
+                <li>Reduces the risk of mental health conditions</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Lifestyle Choices</div>
+        <ol start="10">
+          <li>Research: (a) how many minutes per day of exercise are recommended for a teenager; (b) how many hours per
+            day of sleep are recommended for a teenager.</li>
+          <li>Vaping has become increasingly popular in recent years. However, the long-term studies needed to fully
+            understand its health effects are not yet available. Why is it important to have scientific data about a
+            lifestyle choice that could affect your health?</li>
+        </ol>
+      </div>
+
+      <!-- ═══ MICRO-ORGANISMS ═══ -->
+      <div class="section-heading anchor-offset" id="micro-organisms">
+        <span class="icon">🦠</span> Micro-organisms
+      </div>
+
+      <div class="key-term">
+        <div class="term">Micro-organisms</div>
+        <div class="definition"><strong>Micro-organisms are very small living things.</strong> The three types are:
+          bacteria, viruses, and fungi.</div>
+        <div class="simpler">💡 Any micro-organism that causes disease is called a <strong>pathogen</strong> — or more
+          commonly, a <strong>germ</strong>.</div>
+      </div>
+
+      <div class="sub-heading">Bacteria</div>
+      <p><strong>Bacteria are the most common organisms on Earth.</strong> All bacteria are made of only one cell and
+        can reproduce asexually very quickly. Bacteria need food, water and a suitable temperature and pH to survive and
+        reproduce. The perfect conditions for some bacteria are provided by the human body.</p>
+
+      <div class="cards-grid">
+        <div class="info-card red">
+          <div class="card-icon">🦠</div>
+          <div class="card-title">Diseases Caused by Bacteria</div>
+          <div class="card-def">Food poisoning · Cholera · Tuberculosis · Tetanus · Pneumonia · Tooth and gum decay
+          </div>
+        </div>
+        <div class="info-card green">
+          <div class="card-icon">✅</div>
+          <div class="card-title">Beneficial Bacteria</div>
+          <div class="card-def">Bacteria in our large intestine make vitamins B and K and stop other, more harmful
+            bacteria from growing there.</div>
+          <div class="card-simpler">Also used in dairy products, baking, water treatment and more!</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Viruses</div>
+      <div class="key-term">
+        <div class="term">Virus</div>
+        <div class="definition"><strong>A virus is a small amount of genetic material, e.g. DNA, surrounded by
+            protein.</strong> A virus can only reproduce by entering the cells of another organism. Any organism that
+          relies on another organism to live and does harm to that organism is called a <strong>parasite</strong>.</div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card red">
+          <div class="card-icon">🧫</div>
+          <div class="card-title">Diseases Caused by Viruses</div>
+          <div class="card-def">Ebola · COVID-19 · AIDS · The common cold · Influenza · Cold sores · Measles · Mumps ·
+            Chickenpox</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Fungi</div>
+      <div class="key-term">
+        <div class="term">Fungi</div>
+        <div class="definition"><strong>Fungi cannot produce their own food, as they do not contain
+            chlorophyll.</strong> Instead, they must feed on dead plant and animal material or on parts of other
+          organisms, e.g. dead human skin cells.</div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card orange">
+          <div class="card-icon">🍄</div>
+          <div class="card-title">Diseases Caused by Fungi</div>
+          <div class="card-def">Athlete's foot · Ringworm</div>
+        </div>
+      </div>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Micro-organisms</div>
+        <ol start="12">
+          <li>Some bacteria are beneficial to human health. Research an example of 'good bacteria':
+            <ul>
+              <li>What is it called?</li>
+              <li>Where is it found?</li>
+              <li>What role does it play in human health?</li>
+              <li>How can we promote its growth?</li>
+            </ul>
+          </li>
+          <li>Why might some scientists not consider viruses to be living things? (Hint: consider the characteristics of
+            life.)</li>
+          <li>Are disease-causing fungi parasites? Explain your answer.</li>
+        </ol>
+      </div>
+
+      <!-- ═══ PREVENTION & TREATMENT ═══ -->
+      <div class="section-heading anchor-offset" id="prevention">
+        <span class="icon">🛡️</span> Prevention &amp; Treatment of Disease
+      </div>
+
+      <p>Most disease-causing micro-organisms are present in the air we breathe or on surfaces we touch. Some pathogens
+        enter the body in undercooked food or contaminated water.</p>
+
+      <div class="sub-heading">Reducing Chances of Becoming Ill</div>
+      <ul>
+        <li>Practise good hygiene — wash your hands with warm water and soap for at least 20 seconds or use hand
+          sanitiser.</li>
+        <li>Practise good coughing etiquette — use a tissue and dispose of it safely.</li>
+        <li>Social distance when necessary — do not go to school, college or work if you are displaying symptoms.</li>
+        <li>Cook food properly.</li>
+        <li>Make sure drinking water is clean.</li>
+        <li>Get adequate sleep and exercise and reduce stress and anxiety.</li>
+      </ul>
+
+      <!-- EXPERIMENT 10.4 -->
+      <div class="experiment">
+        <div class="exp-header">🔬 Experimental Investigation 10.4</div>
+        <div class="exp-title">How can we investigate if micro-organisms are present on the laboratory bench?</div>
+        <div class="safety-box">⚠️ Safety: Keep the bags containing micro-organisms sealed. Your teacher will sterilise
+          the bags before disposing of them.</div>
+        <div class="exp-section">Equipment</div>
+        <p>Disinfectant · Chopping board · Sterile gloves · Fresh wholegrain bread · Plastic droppers · Sterilised water
+          · Sandwich bag · Incubator · Magnifying glass</p>
+        <div class="exp-section">Method</div>
+        <ol>
+          <li>Disinfect a chopping board using alcohol or disinfectant.</li>
+          <li>Wearing sterile gloves, place a slice of bread on the chopping board.</li>
+          <li>Drop 5–10 cm³ of sterilised water onto the upper surface of the slice of bread.</li>
+          <li>Carefully pick up the slice of bread and place the moist upper surface in contact with the non-sterilised
+            laboratory bench for 5–10 seconds.</li>
+          <li>Place the slice of bread in a sterile sandwich bag. Seal the bag and label with name, date, and source.
+          </li>
+          <li>Observe and record the initial status of the slice of bread (consider taking a photograph).</li>
+          <li>Place the bag in an incubator (25–30 °C) for 48–78 hours.</li>
+          <li>Following the incubation period, collect the sealed sandwich bag from the incubator. <strong>The sealed
+              bag should not be opened under any circumstances.</strong></li>
+          <li>Observe and record the final status of the slice of bread (consider taking a photograph).</li>
+          <li>Use a magnifying glass to observe the detail of the micro-organisms growing on the surface of the bread.
+          </li>
+        </ol>
+      </div>
+
+      <!-- ═══ VACCINES & ANTIBIOTICS ═══ -->
+      <div class="section-heading anchor-offset" id="vaccines">
+        <span class="icon">💉</span> Vaccines &amp; Antibiotics
+      </div>
+
+      <div class="sub-heading">Vaccines</div>
+      <div class="key-term">
+        <div class="term">Vaccine</div>
+        <div class="definition"><strong>A vaccine is a medical treatment that protects the body from a particular
+            disease.</strong> It is made from the pathogen that causes the disease (e.g. the COVID-19 vaccine is
+          manufactured using a small amount of the dead pathogen). This stimulates the immune system to create a
+          response. The body memorises this response in case it comes into contact with the pathogen again in the
+          future.</div>
+      </div>
+
+      <div class="eureka">
+        <div class="eur-icon">💡</div>
+        <div>
+          <div class="eur-title">Eureka – COVID-19 Pandemic</div>
+          <div class="eur-text">COVID-19 is a respiratory disease caused by SARS-CoV-2, first detected in China in late
+            2019. As it spread globally, most people had no natural immunity, putting the entire global population at
+            risk. Within the first two years, over 450 million cases were reported worldwide. Thanks to remarkable
+            cooperation between medical professionals, scientists and the pharmaceutical industry, vaccines were
+            developed in record time and began rollout from late 2020.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Antibiotics</div>
+      <div class="key-term">
+        <div class="term">Antibiotic</div>
+        <div class="definition"><strong>An antibiotic is a chemical produced by bacteria and fungi.</strong> Antibiotics
+          attack other bacteria and fungi in their environment, which makes them useful in fighting infections caused by
+          these micro-organisms. For example, amoxicillin is used to treat bacterial infections such as chest infections
+          and dental abscesses.</div>
+        <div class="simpler">⚠️ Antibiotics have <em>no effect</em> on diseases caused by a virus. Incorrect use of
+          antibiotics can lead to <strong>antibiotic resistance</strong>, making it more difficult to treat diseases.
+        </div>
+      </div>
+
+      <div class="test-tube">
+        <div class="tt-header">🧪 Test Tube — Vaccines &amp; Antibiotics</div>
+        <ol start="15">
+          <li>Identify two ways that a virus can be transmitted to a person.</li>
+          <li>List three ways that we can reduce our risk of infection by a virus.</li>
+          <li>Describe three major changes in society, either positive or negative, that resulted from the COVID-19
+            pandemic.</li>
+          <li>Copy and complete the following table:
+            <table class="data-table" style="margin-top:10px;">
+              <thead>
+                <tr>
+                  <th>Name of disease</th>
+                  <th>Caused by</th>
+                  <th>Can it be treated with an antibiotic?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pneumonia</td>
+                  <td>Bacteria</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Common cold</td>
+                  <td>Virus</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Food poisoning</td>
+                  <td>Bacteria</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Influenza</td>
+                  <td>Virus</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Athlete's foot</td>
+                  <td>Fungi</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Strep throat</td>
+                  <td>Bacteria</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>COVID-19</td>
+                  <td>Virus</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>Research an example of how micro-organisms are used in one of the following industries: Dairy products ·
+            Alcoholic beverages · Cosmetics · Farming · Water treatment.</li>
+          </tbody>
+      </div>
+
+      <!-- ═══ SUMMARY QUESTIONS ═══ -->
+      <div class="section-heading anchor-offset" id="summary">
+        <span class="icon">✏️</span> Summary Questions
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Q1 — Health &amp; Factors <button class="toggle-btn" onclick="toggleSol(this)">Show
+            Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">a. What is health? &nbsp; b. Name two factors that can affect health.</div>
+          <div class="prob-solution">
+            <div class="steps">a. Health is a person's physical and mental wellbeing.
+              b. Any two of: inherited factors, environmental factors, disease caused by harmful organisms.</div>
+            <div class="answer">✅ Health = physical + mental wellbeing</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Q2 — Mutations &amp; Environment <button class="toggle-btn"
+            onclick="toggleSol(this)">Show Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">a. Name two health conditions caused by mutations in genes or chromosomes. &nbsp; b.
+            Identify two environmental factors that may increase the likelihood of a mutation.</div>
+          <div class="prob-solution">
+            <div class="steps">a. Any two of: haemophilia, cancer, Down syndrome.
+              b. Any two of: smoking, UV radiation / sunbeds, certain chemicals.</div>
+            <div class="answer">✅ Mutations → haemophilia, cancer, Down syndrome | Environment → smoking, UV rays</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Q3 — Cancer <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">a. What is cancer? &nbsp; b. List two possible treatments for cancer.</div>
+          <div class="prob-solution">
+            <div class="steps">a. Cancer is caused by a mutation of a gene that causes cells to divide uncontrollably,
+              forming a mass of cells called a tumour.
+              b. Radiotherapy and chemotherapy.</div>
+            <div class="answer">✅ Cancer = uncontrolled cell division | Treatments = radiotherapy, chemotherapy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Q4 — Fill in the Blanks <button class="toggle-btn" onclick="toggleSol(this)">Show
+            Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">Complete the sentences: "All the food eaten by an organism is called its ___. The unit
+            used to measure the energy content of food is the ___. A ___ ___ contains the correct quantities of all key
+            biomolecules and nutrients for good health. If a person's diet lacks enough of a particular nutrient, they
+            may develop a ___ ___."</div>
+          <div class="prob-solution">
+            <div class="steps">diet | kilojoule (kJ) | balanced diet | deficiency disease</div>
+            <div class="answer">✅ diet · kilojoule · balanced diet · deficiency disease</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Q5–6 — Biomolecules <button class="toggle-btn" onclick="toggleSol(this)">Show
+            Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">Q5. Name the four biomolecules needed by all organisms. &nbsp; Q6. Match each biomolecule
+            to its function: Minerals, Proteins, Water, Vitamins, Carbohydrates, Fats.</div>
+          <div class="prob-solution">
+            <div class="steps">Q5: Carbohydrates, Proteins, Fats, Vitamins (+ minerals and water for humans)
+
+              Q6:
+              1. Minerals → d. Assists with chemical reactions
+              2. Proteins → f. Makes muscle, hair and enzymes
+              3. Water → b. Regulates temperature
+              4. Vitamins → a. Keeps gums and teeth healthy
+              5. Carbohydrates → c. Provides a supply of energy
+              6. Fats → e. Protects internal organs</div>
+            <div class="answer">✅ Carbohydrates · Proteins · Fats · Vitamins (main four biomolecules)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Q8 — Starch Iodine Test <button class="toggle-btn" onclick="toggleSol(this)">Show
+            Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">Complete the sentences: "If a drop of iodine is placed on a potato, the iodine will turn
+            ___. This colour change is a ___ result for ___ in potatoes. If a drop of iodine is placed in milk, the ___
+            will not change colour. This is a ___ result for starch in ___."</div>
+          <div class="prob-solution">
+            <div class="steps">blue-black | positive | starch | iodine | negative | milk</div>
+            <div class="answer">✅ blue-black · positive · starch · iodine · negative · milk</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PAST PAPER QUESTIONS ═══ -->
+      <div class="section-heading anchor-offset" id="past-paper">
+        <span class="icon">📝</span> Past Paper Questions
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Final Examination 2022 – Q14 <button class="toggle-btn" onclick="toggleSol(this)">Show
+            Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">
+            Human health is affected by environmental factors such as nutrition. The table compares two similar foods,
+            <strong>Food A</strong> and <strong>Food B</strong> (per 80 g serving):<br><br>
+            Sugar: A = 18 g, B = 7 g | Saturated fat: A = 7 g, B = 3 g | Cholesterol: A = 55 mg, B = 33 mg | Sodium: A =
+            330 mg, B = 200 mg | Protein: A = 12 g, B = 20 g<br><br>
+            a. Identify one piece of evidence from the table that shows the two foods were compared fairly.<br>
+            b. Which food, A or B, would be a better choice as part of a healthy diet? Use two pieces of evidence from
+            the table to support your answer.<br>
+            c. Calculate the percentage protein in Food A.
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a. Both foods are compared using the same serving size (80 g per serving).
+
+              b. Food B is a better choice:
+              - Food B has less sugar (7 g vs 18 g) — reducing risk of type 2 diabetes
+              - Food B has less saturated fat (3 g vs 7 g) — lower risk of heart disease
+              - Food B also has less sodium and cholesterol, and more protein.
+
+              c. % protein in Food A = (12 g ÷ 80 g) × 100 = 15%</div>
+            <div class="answer">✅ Fair test → same serving size | Better choice → Food B | % protein Food A = 15%</div>
+            <div class="tip">💡 For percentage: always divide the part by the total, then × 100. Protein 12 g ÷ 80 g ×
+              100 = 15%.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">Final Examination 2019 – Q14 <button class="toggle-btn" onclick="toggleSol(this)">Show
+            Answer</button></div>
+        <div class="prob-body">
+          <div class="prob-q">
+            a. Name a type of food that is high in fibre.<br>
+            b. Human health is affected by environmental factors such as stress. Name another environmental factor which
+            has an effect on human health.<br>
+            c. Micro-organisms sometimes play a beneficial role in human health. State another example of how bacteria
+            could have an effect on human health.
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a. Brown bread / fruit / vegetables / cereals (any one).
+
+              b. Any one of: UV radiation / smoking / pollution / diet / alcohol.
+
+              c. Bacteria can have a harmful effect — e.g. causing food poisoning, cholera, tuberculosis, pneumonia.
+              OR bacteria can be used in making yoghurt/cheese (dairy industry),
+              or they produce antibiotics used in medicine.</div>
+            <div class="answer">✅ High fibre = brown bread/veg | Environmental factor = UV/smoking/alcohol | Bacteria =
+              cause disease OR beneficial in industry</div>
+            <div class="tip">💡 For part c, the question asks for "another" example beyond the beneficial gut bacteria
+              just mentioned — so harmful effects or industrial uses both work.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Other chapters:</span>
+    <a href="ch10.html">Ch 10 – Human Health</a>
+    <a href="index.html" class="active">Ch 29 – Energy</a>
+    <a href="ch35.html">Ch 35 – The Origin of the Universe</a>
+    <a href="ch39.html">Ch 39 – Energy Sources and Future Needs</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Answer' : 'Show Answer';
+    }
+  </script>
+</body>
+
+</html>
