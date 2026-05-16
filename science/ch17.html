@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 17 – Compounds, Mixtures and Separation of Mixtures</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1565C0;
+      --blue-light: #E3F2FD;
+      --red: #C62828;
+      --orange: #E65100;
+      --indigo: #283593;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--indigo); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar-section { padding: 14px 0 4px; }
+    .sidebar-section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 0 18px 6px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--yellow); }
+    .sidebar a.chapter-link { font-weight: 700; font-size: 15px; color: var(--yellow); padding-top: 12px; padding-bottom: 12px; }
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #0d1b4b 0%, #1a2f7a 50%, #283593 100%);
+      color: #fff; padding: 56px 48px 48px; position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,0,0.2) 0%, transparent 70%); border-radius: 50%;
+    }
+    .chapter-hero::after { content: '🧪'; position: absolute; top: 20px; right: 48px; font-size: 110px; opacity: 0.1; }
+    .chapter-badge { display: inline-block; background: var(--yellow); color: var(--text); font-family: 'Sora', sans-serif; font-weight: 800; font-size: 13px; padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .chapter-hero h1 { font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .chapter-hero h1 span { color: var(--yellow); }
+    .chapter-meta { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.6); }
+    .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .goal-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); font-size: 12px; padding: 6px 12px; border-radius: 100px; font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1000px; }
+    .section-heading { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--text); margin: 48px 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--indigo); display: flex; align-items: center; gap: 12px; }
+    .section-heading .icon { font-size: 26px; }
+    .anchor-offset { scroll-margin-top: 20px; }
+    .sub-heading { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; color: var(--indigo); margin: 28px 0 12px; }
+    p { margin-bottom: 10px; font-size: 14.5px; }
+
+    /* KEY TERM */
+    .key-term { background: var(--yellow-light); border-left: 4px solid var(--yellow); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* CARDS GRID */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+    .info-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 18px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-simpler { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* TABLE */
+    .energy-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .energy-table th { background: var(--text); color: #fff; font-family: 'Sora', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+    .energy-table td { padding: 12px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .energy-table tr:last-child td { border-bottom: none; }
+    .energy-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* CONCENTRATE */
+    .concentrate { background: #FFF3CD; border: 2px dashed var(--yellow); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+    /* EXAMPLE BOX */
+    .example-box { background: #fff; border: 2px solid var(--green); border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .example-box .example-header { background: var(--green); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; }
+    .example-box .example-body { padding: 16px 18px; }
+    .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+    .example-box .steps { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #f9fafb; border-radius: 8px; padding: 12px 14px; margin: 8px 0; line-height: 2; white-space: pre-line; }
+    .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+    .example-box .simpler-note { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555; }
+
+    /* SEPARATION METHOD CARD */
+    .method-card { background: #fff; border-radius: var(--radius); border: 2px solid var(--border); overflow: hidden; box-shadow: var(--shadow); margin: 14px 0; transition: transform 0.2s; }
+    .method-card:hover { transform: translateY(-2px); }
+    .method-card .method-header { padding: 14px 20px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: #fff; display: flex; align-items: center; gap: 12px; }
+    .method-card .method-body { padding: 16px 20px; }
+    .method-card .method-def { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .method-card .method-how { font-size: 13.5px; color: #444; margin-bottom: 8px; }
+    .method-card .method-example { font-size: 13px; background: #f9fafb; border-radius: 8px; padding: 10px 12px; color: var(--indigo); font-weight: 600; }
+    .method-filtration .method-header { background: var(--blue); }
+    .method-chromatography .method-header { background: #7b1fa2; }
+    .method-evaporation .method-header { background: var(--orange); }
+    .method-distillation .method-header { background: var(--indigo); }
+
+    /* SEPARATION SVG */
+    .diagram-box { background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 16px 0; box-shadow: var(--shadow); text-align: center; }
+    .diagram-box .diag-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+
+    /* COMPOUND vs MIXTURE comparison */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .compare-col { background: #fff; border-radius: var(--radius); border: 2px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+    .compare-col .compare-head { padding: 12px 18px; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 15px; color: #fff; }
+    .compare-col .compare-head.compound { background: var(--blue); }
+    .compare-col .compare-head.mixture { background: #7b1fa2; }
+    .compare-col ul { padding: 14px 18px 14px 34px; }
+    .compare-col ul li { font-size: 13.5px; color: #444; margin-bottom: 6px; line-height: 1.5; }
+
+    /* INVESTIGATION BOX */
+    .investigation-box { background: #fff; border: 2px solid var(--blue); border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .investigation-box .inv-header { background: var(--blue); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; display: flex; align-items: center; gap: 8px; }
+    .investigation-box .inv-body { padding: 16px 18px; font-size: 14px; }
+    .investigation-box .inv-body ol { padding-left: 20px; line-height: 2; }
+    .safety-box { background: #fff3f3; border: 1.5px solid var(--red); border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 13px; color: #b71c1c; }
+    .safety-box strong { display: block; margin-bottom: 4px; }
+
+    /* GLOSSARY */
+    .glossary { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 16px 0; }
+    .glossary-item { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+    .glossary-item .g-term { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--indigo); }
+    .glossary-item .g-def { font-size: 12.5px; color: #555; margin-top: 4px; line-height: 1.45; }
+
+    /* PROBLEM CARD */
+    .problem-card { background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 14px 0; box-shadow: var(--shadow); }
+    .problem-card .prob-header { background: var(--indigo); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; padding: 9px 18px; display: flex; justify-content: space-between; align-items: center; }
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+    .toggle-btn { background: var(--yellow); color: var(--text); border: none; border-radius: 100px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12px; padding: 4px 14px; cursor: pointer; transition: opacity 0.2s; }
+    .toggle-btn:hover { opacity: 0.8; }
+    .prob-solution { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .prob-solution.open { display: block; }
+    .prob-solution .steps { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #f9fafb; border-radius: 8px; padding: 12px; line-height: 2; white-space: pre-line; }
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+    .prob-solution .tip { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: 13px; color: #555; }
+
+    /* PAST PAPER */
+    .past-paper-box { background: #fff; border: 2px solid var(--purple); border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .past-paper-box .pp-header { background: var(--purple); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; }
+    .past-paper-box .pp-body { padding: 16px 18px; font-size: 14px; line-height: 1.7; }
+    .past-paper-box ol { padding-left: 20px; }
+    .past-paper-box li { margin-bottom: 8px; }
+
+    /* MOLECULE MODELS */
+    .molecule-row { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 16px 0; box-shadow: var(--shadow); }
+    .molecule-model { text-align: center; }
+    .molecule-model svg { display: block; margin: 0 auto 8px; }
+    .molecule-model .mol-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--indigo); }
+    .molecule-model .mol-formula { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* COMPOUNDS TABLE */
+    .compounds-table th { background: var(--blue); }
+
+    /* NAV BAR */
+    .chapter-nav-bar { margin-left: 240px; background: var(--text); color: #fff; padding: 14px 48px; display: flex; align-items: center; gap: 20px; font-size: 14px; }
+    .chapter-nav-bar a { color: var(--yellow); text-decoration: none; font-weight: 600; }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main, .chapter-nav-bar { margin-left: 0; }
+      .content { padding: 20px 20px; }
+      .chapter-hero { padding: 36px 20px 32px; }
+      .chapter-hero h1 { font-size: 28px; }
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Unit 3 – Chemical World</div>
+      <div class="book-title">Elements of Science</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Chapter 17</div>
+      <a href="#overview" class="chapter-link">🧪 Ch 17 Overview</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Sections</div>
+      <a href="#compounds">Compounds</a>
+      <a href="#molecules">Molecules</a>
+      <a href="#mixtures">Mixtures</a>
+      <a href="#separating">Separating Mixtures</a>
+      <a href="#filtration">Filtration</a>
+      <a href="#chromatography">Chromatography</a>
+      <a href="#evaporation">Evaporation</a>
+      <a href="#distillation">Distillation</a>
+      <a href="#key-terms">Key Terms</a>
+      <a href="#problems">Practice Problems</a>
+      <a href="#past-papers">Past Paper Questions</a>
+      <a href="#summary">Summary</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigate</div>
+      <a href="index.html">← Science Home</a>
+    </div>
+  </nav>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero" id="overview">
+      <div class="chapter-badge">Chapter 17 · Unit 3 – Chemical World</div>
+      <h1>Compounds, <span>Mixtures</span> &amp;<br>Separation of Mixtures</h1>
+      <div class="chapter-meta">Elements of Science · Pages 164–173</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✅ Explain compounds vs mixtures</span>
+        <span class="goal-tag">✅ Describe molecules</span>
+        <span class="goal-tag">✅ Classify elements, compounds &amp; mixtures</span>
+        <span class="goal-tag">✅ Separate mixtures using appropriate techniques</span>
+        <span class="goal-tag">✅ Filtration, chromatography, evaporation &amp; distillation</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ COMPOUNDS ═══ -->
+      <div class="section-heading anchor-offset" id="compounds">
+        <span class="icon">🔗</span> Compounds
+      </div>
+
+      <p>We know that elements are substances that have only one type of atom. <strong>When two or more elements are chemically combined, the substance they make is called a compound.</strong> The elements in a compound are chemically joined together by strong forces called <strong>bonds</strong>.</p>
+
+      <div class="key-term">
+        <div class="term">Compound</div>
+        <div class="definition"><strong>A compound is formed when two or more elements are chemically combined.</strong> The elements are joined together by bonds. Compounds are all around us.</div>
+        <div class="simpler">💡 A compound is NOT just a mix — the elements are chemically bonded together into a completely new substance with new properties.</div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">💧</div>
+          <div class="card-title">Water (H₂O)</div>
+          <div class="card-def">A compound made up of two elements bonded together: <strong>hydrogen</strong> and <strong>oxygen</strong>. Water is a liquid at room temperature.</div>
+          <div class="card-simpler">💡 H₂O — 2 hydrogen atoms bonded to 1 oxygen atom.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🍬</div>
+          <div class="card-title">Sugar (C₆H₁₂O₆)</div>
+          <div class="card-def">A compound made up of three elements bonded together: <strong>carbon</strong>, <strong>hydrogen</strong> and <strong>oxygen</strong>.</div>
+          <div class="card-simpler">💡 Glucose — a solid at room temperature with a sweet taste.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🧂</div>
+          <div class="card-title">Sodium Chloride (NaCl)</div>
+          <div class="card-def">Table salt — a compound of <strong>sodium</strong> and <strong>chlorine</strong>. A white crystal used to flavour food. Very different properties from its elements.</div>
+          <div class="card-simpler">💡 Sodium is explosive; chlorine is poisonous — but together they make harmless table salt!</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Compounds Have Different Properties from Their Elements</div>
+      <table class="energy-table compounds-table">
+        <thead>
+          <tr><th>Element</th><th>Element</th><th>Compound</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sodium: very reactive with water. Stored in oil.</td>
+            <td>Chlorine: a poisonous green gas</td>
+            <td><strong>Sodium chloride:</strong> a white crystal used to flavour food</td>
+          </tr>
+          <tr>
+            <td>Hydrogen: an explosive gas. Burns with a pop.</td>
+            <td>Oxygen: a gas needed to support combustion (burning)</td>
+            <td><strong>Water:</strong> a very important liquid needed to support life</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-heading">Common Compounds and Their Elements</div>
+      <table class="energy-table">
+        <thead>
+          <tr><th>Compound</th><th>Formula</th><th>Elements in Compound</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Water</td><td><strong>H₂O</strong></td><td>Hydrogen (H), Oxygen (O)</td></tr>
+          <tr><td>Carbon dioxide</td><td><strong>CO₂</strong></td><td>Carbon (C), Oxygen (O)</td></tr>
+          <tr><td>Sodium chloride (table salt)</td><td><strong>NaCl</strong></td><td>Sodium (Na), Chlorine (Cl)</td></tr>
+          <tr><td>Sodium bicarbonate (baking soda)</td><td><strong>NaHCO₃</strong></td><td>Sodium (Na), Hydrogen (H), Carbon (C), Oxygen (O)</td></tr>
+          <tr><td>Glucose (sugar)</td><td><strong>C₆H₁₂O₆</strong></td><td>Carbon (C), Hydrogen (H), Oxygen (O)</td></tr>
+          <tr><td>Hydrochloric acid</td><td><strong>HCl</strong></td><td>Hydrogen (H), Chlorine (Cl)</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ═══ MOLECULES ═══ -->
+      <div class="section-heading anchor-offset" id="molecules">
+        <span class="icon">⚛️</span> Molecules
+      </div>
+
+      <div class="key-term">
+        <div class="term">Molecule</div>
+        <div class="definition"><strong>A molecule is a group of two or more atoms bonded together.</strong> A molecule is the smallest part of an element or compound that has the chemical properties of that element or compound.</div>
+        <div class="simpler">💡 Molecules can be elements (like O₂) or compounds (like H₂O and CO₂).</div>
+      </div>
+
+      <!-- Molecule diagrams SVG -->
+      <div class="molecule-row">
+        <!-- Oxygen molecule O2 -->
+        <div class="molecule-model">
+          <svg viewBox="0 0 90 50" width="90" height="50">
+            <circle cx="25" cy="25" r="18" fill="#ef5350" opacity="0.9"/>
+            <circle cx="65" cy="25" r="18" fill="#ef5350" opacity="0.9"/>
+            <text x="25" y="30" text-anchor="middle" fill="white" font-size="13" font-weight="700">O</text>
+            <text x="65" y="30" text-anchor="middle" fill="white" font-size="13" font-weight="700">O</text>
+          </svg>
+          <div class="mol-name">Oxygen molecule</div>
+          <div class="mol-formula">O₂ (element)</div>
+        </div>
+        <!-- Water molecule H2O -->
+        <div class="molecule-model">
+          <svg viewBox="0 0 100 70" width="100" height="70">
+            <circle cx="50" cy="20" r="18" fill="#ef5350" opacity="0.9"/>
+            <circle cx="20" cy="52" r="13" fill="#90caf9"/>
+            <circle cx="80" cy="52" r="13" fill="#90caf9"/>
+            <text x="50" y="25" text-anchor="middle" fill="white" font-size="13" font-weight="700">O</text>
+            <text x="20" y="57" text-anchor="middle" fill="white" font-size="11" font-weight="700">H</text>
+            <text x="80" y="57" text-anchor="middle" fill="white" font-size="11" font-weight="700">H</text>
+          </svg>
+          <div class="mol-name">Water molecule</div>
+          <div class="mol-formula">H₂O (compound)</div>
+        </div>
+        <!-- Carbon dioxide CO2 -->
+        <div class="molecule-model">
+          <svg viewBox="0 0 120 50" width="120" height="50">
+            <circle cx="20" cy="25" r="16" fill="#ef5350" opacity="0.9"/>
+            <circle cx="60" cy="25" r="18" fill="#4a4a4a"/>
+            <circle cx="100" cy="25" r="16" fill="#ef5350" opacity="0.9"/>
+            <text x="20" y="30" text-anchor="middle" fill="white" font-size="12" font-weight="700">O</text>
+            <text x="60" y="30" text-anchor="middle" fill="white" font-size="12" font-weight="700">C</text>
+            <text x="100" y="30" text-anchor="middle" fill="white" font-size="12" font-weight="700">O</text>
+          </svg>
+          <div class="mol-name">Carbon dioxide molecule</div>
+          <div class="mol-formula">CO₂ (compound)</div>
+        </div>
+      </div>
+
+      <p>Oxygen is an example of an element made up of molecules — it is made up of two oxygen atoms bonded together. Water and carbon dioxide are examples of compounds made up of molecules, as they contain two different types of atoms.</p>
+
+      <!-- ═══ MIXTURES ═══ -->
+      <div class="section-heading anchor-offset" id="mixtures">
+        <span class="icon">🌊</span> Mixtures
+      </div>
+
+      <div class="key-term">
+        <div class="term">Mixture</div>
+        <div class="definition"><strong>A mixture is made up of two or more elements or compounds that are physically combined.</strong> For example, seawater is a mixture of water and salt. The substances in a mixture can be separated easily from each other without a chemical reaction taking place.</div>
+        <div class="simpler">💡 In a mixture, substances are NOT chemically joined — they are just mixed together and can be separated again.</div>
+      </div>
+
+      <div class="sub-heading">Compound vs Mixture — Key Differences</div>
+      <div class="compare-grid">
+        <div class="compare-col">
+          <div class="compare-head compound">🔗 Compound</div>
+          <ul>
+            <li>Two or more elements <strong>chemically combined</strong></li>
+            <li>Joined by bonds — <strong>not easy to separate</strong></li>
+            <li>Has <strong>new and different properties</strong> from its elements</li>
+            <li>Has a <strong>fixed composition</strong> (always the same ratio)</li>
+            <li>Can only be separated by a <strong>chemical reaction</strong></li>
+            <li><em>Example: Water (H₂O), Salt (NaCl)</em></li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-head mixture">🌀 Mixture</div>
+          <ul>
+            <li>Two or more elements/compounds <strong>physically combined</strong></li>
+            <li>NOT chemically joined — <strong>easy to separate</strong></li>
+            <li>Substances <strong>keep their own properties</strong></li>
+            <li><strong>Variable composition</strong> (any ratio)</li>
+            <li>Separated by <strong>physical methods</strong> (filtration, etc.)</li>
+            <li><em>Example: Seawater, air, sand &amp; water</em></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>Exam Tip – Compound vs Mixture</strong>
+          The key difference: in a compound, a NEW substance with NEW properties is formed (chemical bonds). In a mixture, each substance keeps its own properties and no new substance is formed. Salt (NaCl) is a compound; seawater (salt dissolved in water) is a mixture.
+        </div>
+      </div>
+
+      <!-- ═══ SEPARATING MIXTURES ═══ -->
+      <div class="section-heading anchor-offset" id="separating">
+        <span class="icon">🔬</span> Separating Mixtures
+      </div>
+
+      <p>One of the characteristics of mixtures is that they can often be easily separated. Separation can be done in the laboratory in a number of ways. The choice of technique depends on the nature of the mixture.</p>
+
+      <div class="cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+        <div class="info-card">
+          <div class="card-icon">🫙</div>
+          <div class="card-title">Filtration</div>
+          <div class="card-def">Separates a <strong>solid that does NOT dissolve</strong> in liquid from a liquid.</div>
+          <div class="card-simpler">💡 Example: Sand and water</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🎨</div>
+          <div class="card-title">Chromatography</div>
+          <div class="card-def">Separates <strong>dissolved substances</strong> carried at different rates by a liquid.</div>
+          <div class="card-simpler">💡 Example: Ink in a marker</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">♨️</div>
+          <div class="card-title">Evaporation</div>
+          <div class="card-def">Separates a <strong>solid that DOES dissolve</strong> in liquid — the liquid evaporates, leaving the solid.</div>
+          <div class="card-simpler">💡 Example: Salt and water</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🌡️</div>
+          <div class="card-title">Distillation</div>
+          <div class="card-def">Separates a dissolved solid AND <strong>keeps the liquid</strong>, or separates two miscible liquids.</div>
+          <div class="card-simpler">💡 Example: Salt water; water and alcohol</div>
+        </div>
+      </div>
+
+      <!-- ═══ FILTRATION ═══ -->
+      <div class="section-heading anchor-offset" id="filtration">
+        <span class="icon">🫙</span> Filtration
+      </div>
+
+      <div class="method-card method-filtration">
+        <div class="method-header">🫙 Filtration</div>
+        <div class="method-body">
+          <div class="method-def">Filtration is used to separate a solid that does NOT dissolve in liquid from a liquid.</div>
+          <div class="method-how">Filtration involves using a material (e.g. filter paper) that allows the liquid but not the solid to pass through. The liquid that passes through is called the <strong>filtrate</strong>. The solid left behind on the filter paper is called the <strong>residue</strong>.</div>
+          <div class="method-example">📌 Example: Separating sand (solid) from water (liquid) using filter paper.</div>
+        </div>
+      </div>
+
+      <!-- Filtration SVG diagram -->
+      <div class="diagram-box">
+        <div class="diag-title">Filtration Apparatus</div>
+        <svg viewBox="0 0 300 260" width="300" height="260" xmlns="http://www.w3.org/2000/svg">
+          <!-- Retort stand -->
+          <rect x="14" y="20" width="6" height="220" fill="#888" rx="2"/>
+          <rect x="5" y="230" width="24" height="8" fill="#666" rx="2"/>
+          <rect x="14" y="100" width="60" height="5" fill="#888" rx="2"/>
+          <!-- Ring clamp -->
+          <ellipse cx="90" cy="100" rx="22" ry="6" fill="none" stroke="#888" stroke-width="3"/>
+          <!-- Filter funnel -->
+          <polygon points="68,108 112,108 100,170 80,170" fill="#b3d9f7" stroke="#1976D2" stroke-width="2"/>
+          <!-- Filter paper inside funnel -->
+          <polygon points="72,112 108,112 97,162 83,162" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/>
+          <text x="90" y="148" text-anchor="middle" fill="#e65100" font-size="9">Filter paper</text>
+          <!-- Liquid in funnel -->
+          <polygon points="73,115 107,115 97,155 83,155" fill="#90caf9" opacity="0.5"/>
+          <!-- Stem -->
+          <rect x="87" y="170" width="6" height="30" fill="#1976D2" rx="1"/>
+          <!-- Beaker receiving filtrate -->
+          <rect x="68" y="200" width="44" height="40" fill="#e3f2fd" stroke="#1976D2" stroke-width="2" rx="3"/>
+          <text x="90" y="225" text-anchor="middle" fill="#1565C0" font-size="9" font-weight="700">Filtrate</text>
+          <!-- Labels -->
+          <text x="118" y="115" fill="#333" font-size="10">Liquid &amp; solid</text>
+          <text x="118" y="130" fill="#e65100" font-size="10">Filtered solid</text>
+          <text x="118" y="142" fill="#e65100" font-size="10">residue</text>
+          <text x="118" y="165" fill="#1565C0" font-size="10">Filter funnel</text>
+          <text x="118" y="220" fill="#1565C0" font-size="10">Filtered liquid</text>
+          <text x="118" y="232" fill="#1565C0" font-size="10">(filtrate)</text>
+          <!-- arrows -->
+          <line x1="116" y1="113" x2="108" y2="113" stroke="#333" stroke-width="1"/>
+          <line x1="116" y1="138" x2="108" y2="143" stroke="#e65100" stroke-width="1"/>
+          <line x1="116" y1="163" x2="108" y2="168" stroke="#1565C0" stroke-width="1"/>
+          <line x1="116" y1="218" x2="112" y2="218" stroke="#1565C0" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="investigation-box">
+        <div class="inv-header">🔬 Experimental Investigation 17.1 — Which filter is best?</div>
+        <div class="inv-body">
+          <p><strong>Equipment:</strong> Mass balance, sand, graduated cylinder, water, 2 beakers, filters to be tested (coffee filters, filter paper, cloth), retort stand and clamp, filter funnel.</p>
+          <div class="safety-box"><strong>⚠️ Safety:</strong> Clear up any spills immediately.</div>
+          <strong>Method:</strong>
+          <ol>
+            <li>Use the mass balance to measure out 10 g of sand.</li>
+            <li>Use a graduated cylinder to measure out 30 cm³ of water.</li>
+            <li>Mix the sand with the water in a beaker.</li>
+            <li>Use the mass balance to get the mass of the filter being tested.</li>
+            <li>Set up the apparatus for filtration.</li>
+            <li>Pour the sand and water mix through the filter.</li>
+            <li>Once the filtrate has passed through, remove the filter and allow it to dry.</li>
+            <li>Get the mass of the dry filter paper and the sand.</li>
+            <li>Observe and record your results.</li>
+            <li>Follow steps 1–9 with different filters.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ CHROMATOGRAPHY ═══ -->
+      <div class="section-heading anchor-offset" id="chromatography">
+        <span class="icon">🎨</span> Chromatography
+      </div>
+
+      <div class="method-card method-chromatography">
+        <div class="method-header">🎨 Chromatography</div>
+        <div class="method-body">
+          <div class="method-def">Chromatography is used to separate mixtures of dissolved substances.</div>
+          <div class="method-how">The different substances are carried up a piece of chromatography paper by liquid at different rates. Substances that are more soluble travel further up the paper. Substances that are less soluble travel a shorter distance.</div>
+          <div class="method-example">📌 Example: Separating the different coloured dyes in ink from a marker pen.</div>
+        </div>
+      </div>
+
+      <!-- Chromatography SVG -->
+      <div class="diagram-box">
+        <div class="diag-title">Paper Chromatography</div>
+        <svg viewBox="0 0 320 220" width="320" height="220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Beaker Start -->
+          <rect x="20" y="80" width="80" height="100" fill="#e3f2fd" stroke="#1976D2" stroke-width="2" rx="4"/>
+          <rect x="20" y="150" width="80" height="30" fill="#90caf9" stroke="#1976D2" stroke-width="2" rx="0 0 4 4"/>
+          <text x="60" y="170" text-anchor="middle" fill="#1565C0" font-size="10" font-weight="700">Liquid</text>
+          <!-- Chromatography paper in beaker Start -->
+          <rect x="55" y="82" width="12" height="90" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5" rx="2"/>
+          <!-- Ink spot at origin -->
+          <circle cx="61" cy="160" r="5" fill="#333"/>
+          <!-- Labels start beaker -->
+          <text x="60" y="76" text-anchor="middle" fill="#555" font-size="9">Start</text>
+          <text x="60" y="190" text-anchor="middle" fill="#555" font-size="9">Ink spot</text>
+
+          <!-- Arrow for time -->
+          <line x1="115" y1="130" x2="145" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+          <defs><marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#333"/></marker></defs>
+          <text x="129" y="125" text-anchor="middle" fill="#555" font-size="9">Time</text>
+
+          <!-- Beaker Ink -->
+          <rect x="150" y="80" width="80" height="100" fill="#e3f2fd" stroke="#1976D2" stroke-width="2" rx="4"/>
+          <rect x="150" y="150" width="80" height="30" fill="#90caf9" stroke="#1976D2" stroke-width="2"/>
+          <text x="190" y="170" text-anchor="middle" fill="#1565C0" font-size="10" font-weight="700">Liquid</text>
+          <!-- Chromatography paper with separated bands -->
+          <rect x="184" y="82" width="12" height="90" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5" rx="2"/>
+          <!-- Colour bands -->
+          <rect x="185" y="100" width="10" height="7" fill="#ef5350" rx="1"/>
+          <rect x="185" y="115" width="10" height="7" fill="#ffb300" rx="1"/>
+          <rect x="185" y="130" width="10" height="7" fill="#66bb6a" rx="1"/>
+          <rect x="185" y="152" width="10" height="6" fill="#333" rx="1"/>
+          <text x="190" y="76" text-anchor="middle" fill="#555" font-size="9">Ink</text>
+          <!-- Label separated -->
+          <text x="200" y="104" fill="#333" font-size="9">Separated</text>
+          <text x="200" y="114" fill="#333" font-size="9">components</text>
+          <text x="200" y="156" fill="#333" font-size="9">Origin</text>
+
+          <!-- Beaker End -->
+          <rect x="240" y="80" width="70" height="100" fill="#e3f2fd" stroke="#1976D2" stroke-width="2" rx="4"/>
+          <rect x="240" y="150" width="70" height="30" fill="#90caf9" stroke="#1976D2" stroke-width="2"/>
+          <text x="275" y="170" text-anchor="middle" fill="#1565C0" font-size="10" font-weight="700">Liquid</text>
+          <!-- Paper with final separation -->
+          <rect x="269" y="82" width="12" height="90" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5" rx="2"/>
+          <rect x="270" y="92" width="10" height="8" fill="#ef5350" rx="1"/>
+          <rect x="270" y="108" width="10" height="8" fill="#ffb300" rx="1"/>
+          <rect x="270" y="125" width="10" height="8" fill="#66bb6a" rx="1"/>
+          <rect x="270" y="148" width="10" height="7" fill="#1a237e" rx="1"/>
+          <text x="275" y="76" text-anchor="middle" fill="#555" font-size="9">End</text>
+        </svg>
+      </div>
+
+      <div class="investigation-box">
+        <div class="inv-header">🎨 Experimental Investigation 17.2 — What colours make up black ink?</div>
+        <div class="inv-body">
+          <p><strong>Equipment:</strong> Scissors, chromatography paper, different brands of black markers, pencil, crocodile clip, beaker, water.</p>
+          <div class="safety-box"><strong>⚠️ Safety:</strong> Clear up any spills immediately.</div>
+          <strong>Method:</strong>
+          <ol>
+            <li>Cut the chromatography paper into strips.</li>
+            <li>Draw a circle on the chromatography paper with the marker being tested.</li>
+            <li>Place the chromatography paper in the beaker with a small amount of water.</li>
+            <li>Allow the water to make its way up the chromatography paper.</li>
+            <li>Record the colours (in order) that the ink separated into.</li>
+            <li>Repeat steps 1–5 with different brands of black markers.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ EVAPORATION ═══ -->
+      <div class="section-heading anchor-offset" id="evaporation">
+        <span class="icon">♨️</span> Evaporation
+      </div>
+
+      <div class="method-card method-evaporation">
+        <div class="method-header">♨️ Evaporation</div>
+        <div class="method-body">
+          <div class="method-def">Evaporation is used to separate a solid that DOES dissolve in liquid from a liquid.</div>
+          <div class="method-how">The liquid is evaporated (heated until it turns to gas and escapes), and the solid is left behind in the evaporation dish. Use with a Bunsen burner, tripod stand, wire gauze, and evaporation dish.</div>
+          <div class="method-example">📌 Example: Separating salt from salt water — the water evaporates, leaving dry salt crystals behind.</div>
+        </div>
+      </div>
+
+      <!-- ═══ DISTILLATION ═══ -->
+      <div class="section-heading anchor-offset" id="distillation">
+        <span class="icon">🌡️</span> Distillation
+      </div>
+
+      <div class="method-card method-distillation">
+        <div class="method-header">🌡️ Distillation</div>
+        <div class="method-body">
+          <div class="method-def">Distillation is used to separate a solid that does dissolve in liquid from a liquid when you want to KEEP the liquid, or to separate two miscible liquids (liquids that mix).</div>
+          <div class="method-how">Distillation separates miscible liquids based on their boiling points. The liquid with the lower boiling point will evaporate first. The vapour passes through a <strong>Liebig condenser</strong> where it cools and condenses back into a liquid (the distillate) in the receiving flask.</div>
+          <div class="method-example">📌 Examples: Salt and water (keep the pure water); water and alcohol (separate based on boiling points).</div>
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>Evaporation vs Distillation</strong>
+          Both separate a dissolved solid from a liquid — but the key difference is what you want to KEEP. Use <strong>evaporation</strong> when you want the solid (e.g. getting salt from seawater). Use <strong>distillation</strong> when you want the liquid (e.g. getting pure drinking water from seawater).
+        </div>
+      </div>
+
+      <div class="sub-heading">Which Separation Technique to Use?</div>
+      <table class="energy-table">
+        <thead>
+          <tr><th>Mixture</th><th>Technique</th><th>Why?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sand and water</td><td><strong>Filtration</strong></td><td>Sand does not dissolve; filter paper stops it</td></tr>
+          <tr><td>Salt and water (want the salt)</td><td><strong>Evaporation</strong></td><td>Water evaporates; salt crystals left behind</td></tr>
+          <tr><td>Salt and water (want the water)</td><td><strong>Distillation</strong></td><td>Water vapour collected and condensed</td></tr>
+          <tr><td>Ink / dyes in a marker</td><td><strong>Chromatography</strong></td><td>Different dyes travel at different rates</td></tr>
+          <tr><td>Water and alcohol</td><td><strong>Distillation</strong></td><td>Different boiling points; alcohol evaporates first</td></tr>
+          <tr><td>Salt and sand</td><td><strong>Dissolve in water, then filtration + evaporation</strong></td><td>Salt dissolves; sand does not</td></tr>
+          <tr><td>Coloured ink in a sweet coating</td><td><strong>Chromatography</strong></td><td>Separate dissolved dye components</td></tr>
+        </tbody>
+      </table>
+
+      <div class="investigation-box">
+        <div class="inv-header">⚗️ Experimental Investigation 17.3 — How can rock salt be separated into its parts?</div>
+        <div class="inv-body">
+          <p><strong>Rock salt is a mixture of salt and rock.</strong></p>
+          <p><strong>Equipment:</strong> Mortar and pestle, rock salt, beaker, water, glass stirring rod, filter funnel, filter paper, hotplate, evaporation dish.</p>
+          <div class="safety-box"><strong>⚠️ Safety:</strong> The hotplate can reach high temperatures — be careful when handling to avoid burns. Allow equipment to cool before touching it.</div>
+          <strong>Method:</strong>
+          <ol>
+            <li>Crush the rock salt using the mortar and pestle.</li>
+            <li>Place the crushed rock salt in a beaker containing 60 cm³ of water. Stir the mixture. The salt will dissolve in the water.</li>
+            <li>Set up the apparatus for filtration.</li>
+            <li>Slowly pour the contents of the beaker through the filter funnel.</li>
+            <li>The sand remains on the filter paper. This is the residue. Allow the paper and sand to dry at room temperature.</li>
+            <li>Set up the apparatus for evaporation and evaporate the filtrate (salt and water).</li>
+            <li>A white solid remains in the evaporation dish. This is the salt.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ KEY TERMS ═══ -->
+      <div class="section-heading anchor-offset" id="key-terms">
+        <span class="icon">📖</span> Key Terms
+      </div>
+
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Compound</div>
+          <div class="g-def">A substance formed when two or more elements are chemically combined by bonds.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Molecule</div>
+          <div class="g-def">A group of two or more atoms bonded together. The smallest part of an element or compound with its chemical properties.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Mixture</div>
+          <div class="g-def">Two or more elements or compounds physically combined. Can be separated without a chemical reaction.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Filtration</div>
+          <div class="g-def">Separation technique for a solid that does NOT dissolve in a liquid. Uses filter paper.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Chromatography</div>
+          <div class="g-def">Separation technique for dissolved substances. Different substances travel at different rates up paper.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Evaporation</div>
+          <div class="g-def">Separation technique where a liquid is heated away, leaving the dissolved solid behind.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Distillation</div>
+          <div class="g-def">Separation technique that uses boiling points to separate liquids; the vapour is collected and condensed.</div>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the answer and explanation.</p>
+
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Classify: Element, Compound or Mixture?
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Classify each of the following substances as an element, a compound or a mixture:<br><br>
+            magnesium · water · chlorine · air · saltwater · sulfur · hydrogen · iron oxide · diet cola
+          </div>
+          <div class="prob-solution">
+            <div class="steps">Elements (one type of atom only):
+  → Magnesium, Chlorine, Sulfur, Hydrogen
+
+Compounds (chemically bonded elements, new substance):
+  → Water (H₂O), Iron oxide (Fe₂O₃)
+
+Mixtures (physically combined, can be separated):
+  → Air (N₂, O₂, CO₂, Ar...), Saltwater, Diet cola</div>
+            <div class="answer">✅ Elements: Mg, Cl, S, H &nbsp;|&nbsp; Compounds: Water, Iron oxide &nbsp;|&nbsp; Mixtures: Air, Saltwater, Diet cola</div>
+            <div class="tip">💡 Elements = one type of atom. Compounds = chemically bonded (new substance formed). Mixtures = physically combined (no new substance, can be separated).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Outline the Difference Between a Compound and a Mixture
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Outline the difference between a compound and a mixture. Use table salt (NaCl) as an example in your answer.</div>
+          <div class="prob-solution">
+            <div class="steps">A compound is formed when two or more elements are
+CHEMICALLY combined (joined by bonds). A new substance
+with new properties is formed. It cannot be separated
+by physical means.
+
+A mixture is formed when two or more substances are
+PHYSICALLY combined. No new substance is formed.
+Each substance keeps its own properties. It CAN be
+separated by physical methods.
+
+Example:
+  • NaCl (table salt) is a COMPOUND — sodium and
+    chlorine are chemically bonded together. Sodium
+    is reactive and dangerous; chlorine is poisonous —
+    but together they make harmless table salt with
+    completely different properties.
+
+  • Seawater (NaCl dissolved in H₂O) is a MIXTURE —
+    the salt and water are physically combined. They
+    can be separated by evaporation.</div>
+            <div class="answer">✅ Compound = chemically bonded, new substance, new properties. Mixture = physically combined, no new substance, separable.</div>
+            <div class="tip">💡 The "sodium chloride" story is the perfect exam example: two dangerous elements become a harmless compound. That's the power of chemical bonding.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Choosing Separation Techniques
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Suggest a separation technique suitable for the following tasks, and name the equipment needed:<br><br>
+            a) To obtain salt from seawater.<br>
+            b) To get pure drinking water from seawater.<br>
+            c) To separate sand and seawater.<br>
+            d) To determine the dyes used in the coating of sweets.
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a) Obtain salt from seawater:
+   → EVAPORATION
+   Equipment: Evaporation dish, Bunsen burner, tripod,
+   wire gauze. Heat until water evaporates, salt remains.
+
+b) Get pure drinking water from seawater:
+   → DISTILLATION
+   Equipment: Distilling flask, Liebig condenser,
+   thermometer, receiving flask. Water vapour collected
+   and condensed back to pure liquid water.
+
+c) Separate sand and seawater:
+   → FILTRATION
+   Equipment: Filter funnel, filter paper, beaker,
+   retort stand and clamp. Sand stays on filter paper.
+
+d) Determine dyes in sweet coating:
+   → CHROMATOGRAPHY
+   Equipment: Chromatography paper, beaker,
+   water (or solvent). Different dyes travel different
+   distances up the paper.</div>
+            <div class="answer">✅ a) Evaporation &nbsp;|&nbsp; b) Distillation &nbsp;|&nbsp; c) Filtration &nbsp;|&nbsp; d) Chromatography</div>
+            <div class="tip">💡 Key rule: Does the solid dissolve? Yes → evaporation or distillation. No → filtration. Need to separate dissolved colours? → chromatography. Want to keep the liquid? → distillation not evaporation.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Identifying Models (Element, Compound or Mixture)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">For each model description below, state whether it represents an element, compound, or mixture, and explain your answer:<br><br>
+            Model 1: Contains only identical atoms of one type (all same colour).<br>
+            Model 2: Contains two different types of atoms always paired together in a fixed ratio.<br>
+            Model 3: Contains three different types of atoms scattered randomly in varying amounts.<br>
+            Model 4: Contains two types of atoms mixed but NOT bonded together.
+          </div>
+          <div class="prob-solution">
+            <div class="steps">Model 1: All identical atoms, one type
+   → ELEMENT
+   (e.g. a box of all red atoms = pure element like oxygen O₂)
+
+Model 2: Two atom types in fixed ratio, always bonded
+   → COMPOUND
+   (e.g. H₂O — always 2H to 1O, chemically bonded)
+
+Model 3: Three atom types scattered randomly
+   → MIXTURE
+   (e.g. air — N₂, O₂, CO₂ in varying proportions,
+   physically combined, not bonded)
+
+Model 4: Two atom types mixed but not bonded
+   → MIXTURE
+   (e.g. saltwater — Na⁺, Cl⁻ and H₂O mixed together)</div>
+            <div class="answer">✅ 1 = Element &nbsp;|&nbsp; 2 = Compound &nbsp;|&nbsp; 3 = Mixture &nbsp;|&nbsp; 4 = Mixture</div>
+            <div class="tip">💡 In particle diagrams: same atoms = element. Different atoms always bonded in fixed ratios = compound. Different atoms mixed randomly = mixture.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Rock Salt Separation Method
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Rock salt is salt found in the ground. It contains particles of salt mixed with sand and other rocks. Develop a method for how you might obtain a pure sample of dry salt from the rock salt.</div>
+          <div class="prob-solution">
+            <div class="steps">Step 1: CRUSH the rock salt using a mortar and pestle.
+
+Step 2: DISSOLVE in water — add to beaker of water
+   and stir. Salt dissolves; sand/rock does NOT.
+
+Step 3: FILTER the mixture:
+   → Pour through filter funnel with filter paper.
+   → Sand/rock (residue) stays on filter paper.
+   → Salt water (filtrate) passes through.
+
+Step 4: EVAPORATE the filtrate:
+   → Pour filtrate into evaporation dish.
+   → Heat gently with Bunsen burner.
+   → Water evaporates; pure dry salt remains.</div>
+            <div class="answer">✅ Crush → Dissolve in water → Filter (remove sand) → Evaporate (remove water) → Pure dry salt</div>
+            <div class="tip">💡 This is a classic two-step separation: filtration first (to remove insoluble sand), then evaporation (to remove the soluble water). The order matters!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PAST PAPERS ═══ -->
+      <div class="section-heading anchor-offset" id="past-papers">
+        <span class="icon">📝</span> Past Paper Questions
+      </div>
+
+      <div class="past-paper-box">
+        <div class="pp-header">📄 Sample Paper 2018 – Question 6</div>
+        <div class="pp-body">
+          <p><strong>In the diagrams, circles of different colours are used to represent atoms of different elements. Complete the table to state whether each diagram represents an element, a compound, or a mixture.</strong></p>
+          <table class="energy-table" style="margin-top:12px;">
+            <thead><tr><th>Diagram</th><th>Element, Compound or Mixture?</th><th>Reason</th></tr></thead>
+            <tbody>
+              <tr><td><strong>A</strong></td><td>Mixture</td><td>Two different types of atoms mixed together (given in question)</td></tr>
+              <tr><td><strong>B</strong></td><td>Mixture</td><td>Two different types of atoms scattered randomly — not bonded in fixed ratio</td></tr>
+              <tr><td><strong>C</strong></td><td>Element</td><td>All atoms are identical — only one type of atom (same colour throughout)</td></tr>
+              <tr><td><strong>D</strong></td><td>Element</td><td>All atoms are identical — only one type of atom (same colour, densely packed)</td></tr>
+              <tr><td><strong>E</strong></td><td>Mixture</td><td>Multiple different types of atoms mixed randomly in different proportions</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:10px; font-size:13px; color:var(--muted);">Key: Element = only one type of atom. Compound = atoms bonded in fixed ratio. Mixture = different types mixed but not bonded.</p>
+        </div>
+      </div>
+
+      <!-- ═══ SUMMARY ═══ -->
+      <div class="section-heading anchor-offset" id="summary">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="energy-table">
+        <thead>
+          <tr><th>Topic</th><th>Key Definition</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Compound</strong></td><td>Two or more elements chemically bonded together; new substance formed</td><td>H₂O (water), NaCl (salt)</td></tr>
+          <tr><td><strong>Molecule</strong></td><td>Group of two or more atoms bonded together</td><td>O₂, H₂O, CO₂</td></tr>
+          <tr><td><strong>Mixture</strong></td><td>Two or more substances physically combined; can be separated</td><td>Seawater, air, ink</td></tr>
+          <tr><td><strong>Filtration</strong></td><td>Separates an INSOLUBLE solid from a liquid</td><td>Sand and water</td></tr>
+          <tr><td><strong>Chromatography</strong></td><td>Separates dissolved substances by different travel rates</td><td>Ink/dye separation</td></tr>
+          <tr><td><strong>Evaporation</strong></td><td>Liquid heated away; solid (soluble) left behind</td><td>Salt from seawater</td></tr>
+          <tr><td><strong>Distillation</strong></td><td>Liquid evaporated &amp; condensed back; keeps the liquid; separates miscible liquids</td><td>Pure water from seawater</td></tr>
+          <tr><td><strong>Filtrate</strong></td><td>The liquid that passes through the filter paper</td><td>Water from sand-water mix</td></tr>
+          <tr><td><strong>Residue</strong></td><td>The solid left behind on the filter paper</td><td>Sand left on filter paper</td></tr>
+          <tr><td><strong>Bonds</strong></td><td>Strong forces that chemically join elements together in a compound</td><td>H—O bonds in water</td></tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+
+</body>
+</html>
