@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 18 – Solutions &amp; Solubility | Science Revision</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column;
+      padding: 0; z-index: 100; overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--orange);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px; font-weight: 600;
+      opacity: 0.8; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px;
+    }
+
+    .sidebar-section { padding: 14px 0 4px; }
+
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4); padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--orange);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700; font-size: 15px;
+      color: var(--orange); padding-top: 12px; padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #3E1F00 0%, #7B3A10 60%, var(--orange) 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,0,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '🧪';
+      position: absolute; top: 20px; right: 48px;
+      font-size: 120px; opacity: 0.1;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--yellow); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 13px; padding: 4px 14px;
+      border-radius: 100px; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -1px; line-height: 1;
+    }
+
+    .chapter-hero h1 span { color: var(--yellow); }
+
+    .chapter-meta {
+      margin-top: 18px; font-size: 15px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .learning-goals {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+    }
+
+    .goal-tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+      font-size: 12px; padding: 6px 12px;
+      border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1000px; }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px; font-weight: 800; color: var(--text);
+      margin: 48px 0 20px; padding-bottom: 10px;
+      border-bottom: 3px solid var(--orange);
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .section-heading .icon { font-size: 26px; }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--orange); margin: 28px 0 12px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--yellow-light);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 14px 0;
+    }
+
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* FORMULA BOX */
+    .formula-box {
+      background: var(--text); color: #fff;
+      border-radius: var(--radius); padding: 20px 24px;
+      margin: 16px 0; text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px; font-weight: 600; letter-spacing: 1px;
+      position: relative; overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--orange);
+    }
+
+    .formula-box .label {
+      font-size: 11px; font-family: 'DM Sans', sans-serif;
+      font-weight: 600; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--orange);
+      border-radius: var(--radius); margin: 16px 0;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+
+    .example-box .example-header {
+      background: var(--orange); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+    }
+
+    .example-box .example-body { padding: 16px 18px; }
+    .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+
+    .example-box .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px;
+      margin: 8px 0; line-height: 2; white-space: pre-line;
+    }
+
+    .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+
+    .example-box .simpler-note {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555;
+    }
+
+    .example-box .simpler-note strong { color: var(--orange); }
+
+    /* CONCENTRATE / TIP BOX */
+    .concentrate {
+      background: #FFF3CD; border: 2px dashed var(--yellow);
+      border-radius: var(--radius); padding: 14px 18px;
+      margin: 16px 0; display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-simpler { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* DATA TABLE */
+    .data-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .data-table th {
+      background: var(--text); color: #fff;
+      font-family: 'Sora', sans-serif; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+
+    .data-table td {
+      padding: 12px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* SOLUTION TYPE CARDS */
+    .solution-types {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 16px 0;
+    }
+
+    .sol-card {
+      border-radius: var(--radius); padding: 18px;
+      box-shadow: var(--shadow); border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .sol-card.dilute { background: #E3F2FD; border-color: var(--blue); }
+    .sol-card.concentrated { background: #E8EAF6; border-color: var(--purple); }
+    .sol-card.saturated { background: #E8F5E9; border-color: var(--green); }
+
+    .sol-card .sol-icon { font-size: 36px; margin-bottom: 8px; }
+    .sol-card .sol-name { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; margin-bottom: 6px; }
+    .sol-card.dilute .sol-name { color: var(--blue); }
+    .sol-card.concentrated .sol-name { color: var(--purple); }
+    .sol-card.saturated .sol-name { color: var(--green-dark); }
+    .sol-card .sol-def { font-size: 13px; color: #444; line-height: 1.5; }
+
+    /* PROBLEM CARDS */
+    .problem-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      margin: 14px 0; box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; padding: 9px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+
+    .toggle-btn {
+      background: var(--yellow); color: var(--text);
+      border: none; border-radius: 100px;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 12px; padding: 4px 14px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+
+    .toggle-btn:hover { opacity: 0.8; }
+
+    .prob-solution { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .prob-solution.open { display: block; }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px;
+      margin: 8px 0; line-height: 2; white-space: pre-line;
+    }
+
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+    .prob-solution .tip {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 8px; font-size: 13px; color: #555;
+    }
+
+    /* INVESTIGATION BOX */
+    .investigation {
+      background: #FFF8E1; border: 2px solid var(--yellow);
+      border-radius: var(--radius); margin: 20px 0; overflow: hidden;
+    }
+
+    .investigation .inv-header {
+      background: var(--yellow); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 14px; padding: 10px 18px; letter-spacing: 0.5px;
+    }
+
+    .investigation .inv-body { padding: 16px 18px; }
+    .investigation .inv-body p { font-size: 14px; color: #444; margin-bottom: 6px; }
+    .investigation .inv-body ol { padding-left: 20px; font-size: 14px; color: #444; }
+    .investigation .inv-body ol li { margin-bottom: 4px; }
+
+    /* ANCHOR OFFSET */
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: fixed; bottom: 0; left: 240px; right: 0;
+      background: var(--text); color: rgba(255,255,255,0.7);
+      padding: 10px 48px; font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; gap: 24px;
+      z-index: 50; border-top: 2px solid var(--orange);
+    }
+
+    .chapter-nav-bar a {
+      color: var(--yellow); text-decoration: none;
+      font-weight: 700; font-size: 13px; transition: color 0.2s;
+    }
+
+    .chapter-nav-bar a:hover { color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .chapter-hero { padding: 40px 20px 32px; }
+      .chapter-hero h1 { font-size: 36px; }
+      .content { padding: 24px 16px 80px; }
+      .solution-types { grid-template-columns: 1fr; }
+      .chapter-nav-bar { left: 0; padding: 10px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Science Revision</div>
+      <div class="book-title">Ch 18 – Solutions &amp; Solubility</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Sections</div>
+      <a href="#solutions">Solutions</a>
+      <a href="#solubility">Solubility</a>
+      <a href="#curves">Solubility Curves</a>
+      <a href="#types">Types of Solutions</a>
+      <a href="#crystallisation">Crystallisation</a>
+      <a href="#calculations">Calculations</a>
+      <a href="#problems">Practice Problems</a>
+      <a href="#summary">Exam Summary</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigate</div>
+      <a href="index.html" class="chapter-link">← Science Home</a>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 18 · Unit 3 – Chemical World</div>
+      <h1>Solutions &amp; <span>Solubility</span></h1>
+      <div class="chapter-meta">Elements of Science · Chemistry</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✅ Explain solute, solvent &amp; solution</span>
+        <span class="goal-tag">✅ Measure solubility at different temperatures</span>
+        <span class="goal-tag">✅ Interpret solubility curves</span>
+        <span class="goal-tag">✅ Compare dilute, concentrated &amp; saturated solutions</span>
+        <span class="goal-tag">✅ Convert concentration units</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ KEY TERMS ═══ -->
+      <div class="section-heading anchor-offset" id="solutions">
+        <span class="icon">🔑</span> Key Terms
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🧂</div>
+          <div class="card-title">Solute</div>
+          <div class="card-def">The substance that dissolves in a liquid.</div>
+          <div class="card-simpler">💡 In salt water, salt is the solute — it's the one that disappears into the liquid.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">💧</div>
+          <div class="card-title">Solvent</div>
+          <div class="card-def">The liquid that the solute dissolves into.</div>
+          <div class="card-simpler">💡 Water is the most common solvent — it dissolves more substances than any other liquid.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🥤</div>
+          <div class="card-title">Solution</div>
+          <div class="card-def">The mixture formed when a solute dissolves in a solvent.</div>
+          <div class="card-simpler">💡 Salt water, seawater, and fizzy drinks are all solutions.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">✅</div>
+          <div class="card-title">Soluble</div>
+          <div class="card-def">A substance that can dissolve in a liquid.</div>
+          <div class="card-simpler">💡 Sugar is soluble in water — it completely mixes in.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">❌</div>
+          <div class="card-title">Insoluble</div>
+          <div class="card-def">A solid that cannot dissolve in a liquid.</div>
+          <div class="card-simpler">💡 Sand is insoluble in water — it sinks to the bottom instead of dissolving.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">📈</div>
+          <div class="card-title">Solubility Curve</div>
+          <div class="card-def">A graph showing how much solute dissolves in a fixed volume of solvent at different temperatures.</div>
+          <div class="card-simpler">💡 Use the curve to read off solubility at any temperature.</div>
+        </div>
+      </div>
+
+      <!-- ═══ WHAT IS A SOLUTION? ═══ -->
+      <div class="section-heading anchor-offset" id="what-is">
+        <span class="icon">🧪</span> What is a Solution?
+      </div>
+
+      <p style="font-size:15px;color:#444;margin-bottom:16px;">
+        When a substance dissolves in a liquid, its particles break up and move to fill the spaces between the particles of the liquid. The two different types of particles become completely mixed up — this is a <strong>solution</strong>.
+      </p>
+
+      <div class="key-term">
+        <div class="term">Solute → Solvent → Solution</div>
+        <div class="definition">The substance that dissolves is the <strong>solute</strong>. The substance the solute dissolves into is the <strong>solvent</strong>. A <strong>solution</strong> is formed when a solute dissolves in a solvent.</div>
+        <div class="simpler">💡 Example: Sugar (solute) + Water (solvent) → Sugar solution</div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">💡</div>
+        <div class="text">
+          <strong>Soluble vs Insoluble</strong>
+          Substances that <em>can</em> dissolve in a liquid are <strong>soluble</strong>. Solids that <em>cannot</em> dissolve are <strong>insoluble</strong>. Examples of soluble substances: salt, sugar, instant coffee. Examples of insoluble substances: sand, chalk, candle wax.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Test Tube — Identify the Solute and Solvent</div>
+        <div class="example-body">
+          <div class="q">Identify the solute and the solvent in each of the following:</div>
+          <div class="steps">a) Seawater → Solute: salt | Solvent: water
+b) Sparkling water → Solute: carbon dioxide gas | Solvent: water
+c) A cup of instant coffee → Solute: instant coffee powder | Solvent: water (hot)</div>
+          <div class="simpler-note"><strong>Simple:</strong> The solvent is always the liquid. The solute is whatever dissolved into it.</div>
+        </div>
+      </div>
+
+      <!-- ═══ SOLUBILITY ═══ -->
+      <div class="section-heading anchor-offset" id="solubility">
+        <span class="icon">🌡️</span> Solubility
+      </div>
+
+      <div class="key-term">
+        <div class="term">Solubility</div>
+        <div class="definition"><strong>Solubility is a measure of the amount of a solute that dissolves in a fixed volume of solvent.</strong> It is measured in <strong>g/l</strong> (grams per litre) or <strong>g/100 cm³</strong>.</div>
+        <div class="simpler">💡 Think of it as: how much stuff can the liquid "hold" before it's full?</div>
+      </div>
+
+      <div class="sub-heading">Three Factors Affecting Solubility</div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🧬</div>
+          <div class="card-title">1. Nature of the Substance</div>
+          <div class="card-def">Is the substance soluble, partially soluble, or insoluble? Different substances have different maximum solubilities.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🧫</div>
+          <div class="card-title">2. Volume of the Solvent</div>
+          <div class="card-def">More solvent can dissolve more solute. Doubling the volume of water allows twice as much solute to dissolve.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🌡️</div>
+          <div class="card-title">3. Temperature of the Solvent</div>
+          <div class="card-def">For most solids, solubility increases as temperature increases. For gases, solubility decreases as temperature increases.</div>
+        </div>
+      </div>
+
+      <!-- ═══ SOLUBILITY CURVES ═══ -->
+      <div class="section-heading anchor-offset" id="curves">
+        <span class="icon">📉</span> Solubility Curves
+      </div>
+
+      <div class="key-term">
+        <div class="term">Solubility Curve</div>
+        <div class="definition"><strong>A graph that shows the amount of a solute that dissolves in a fixed volume of solvent at different temperatures.</strong></div>
+        <div class="simpler">💡 The x-axis is temperature (°C); the y-axis is solubility (g/100 g of water).</div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">⬆️</div>
+        <div class="text">
+          <strong>Solids dissolve MORE as temperature increases</strong>
+          For example, sodium chloride (table salt) solubility rises from about 35 g/100 g water at 20°C to about 39 g/100 g water at 100°C — a gradual increase.
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">⬇️</div>
+        <div class="text">
+          <strong>Gases dissolve LESS as temperature increases</strong>
+          Oxygen gas in water becomes less soluble as water warms up. This is why fish struggle in warm water — there is less dissolved oxygen for them to breathe.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Reading a Solubility Curve</div>
+        <div class="example-body">
+          <div class="q">A student collected data for the solubility of table salt at different temperatures:</div>
+          <table class="data-table" style="margin:12px 0;">
+            <thead>
+              <tr><th>Temperature (°C)</th><th>Solubility (g/100 g water)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>20</td><td>34</td></tr>
+              <tr><td>40</td><td>45</td></tr>
+              <tr><td>60</td><td>58</td></tr>
+              <tr><td>80</td><td>67</td></tr>
+              <tr><td>100</td><td>79</td></tr>
+            </tbody>
+          </table>
+          <div class="simpler-note"><strong>Conclusion:</strong> As temperature increases, the solubility of salt increases — it is a solid solute, so this follows the expected pattern.</div>
+        </div>
+      </div>
+
+      <!-- ═══ TYPES OF SOLUTIONS ═══ -->
+      <div class="section-heading anchor-offset" id="types">
+        <span class="icon">🎨</span> Types of Solutions
+      </div>
+
+      <p style="font-size:15px;color:#444;margin-bottom:16px;">
+        The term <strong>concentration</strong> describes how much solute is dissolved in the solvent. It is measured in <strong>g/l</strong> (grams per litre).
+      </p>
+
+      <div class="solution-types">
+        <div class="sol-card dilute">
+          <div class="sol-icon">🪣</div>
+          <div class="sol-name">Dilute Solution</div>
+          <div class="sol-def">Contains a <strong>small amount</strong> of solute dissolved in a <strong>large amount</strong> of solvent.</div>
+        </div>
+        <div class="sol-card concentrated">
+          <div class="sol-icon">🧴</div>
+          <div class="sol-name">Concentrated Solution</div>
+          <div class="sol-def">Contains a <strong>large amount</strong> of solute in a <strong>small amount</strong> of solvent.</div>
+        </div>
+        <div class="sol-card saturated">
+          <div class="sol-icon">⚗️</div>
+          <div class="sol-name">Saturated Solution</div>
+          <div class="sol-def">Contains <strong>as much solute as can dissolve</strong> at a given temperature — no more will dissolve.</div>
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🔑</div>
+        <div class="text">
+          <strong>Exam tip — Saturated vs Concentrated</strong>
+          A saturated solution is NOT necessarily concentrated. You can have a dilute <em>and</em> saturated solution if the substance has low solubility. Saturated just means no more solute will dissolve at that temperature.
+        </div>
+      </div>
+
+      <!-- ═══ CRYSTALLISATION ═══ -->
+      <div class="section-heading anchor-offset" id="crystallisation">
+        <span class="icon">💎</span> Crystallisation
+      </div>
+
+      <div class="key-term">
+        <div class="term">Crystallisation</div>
+        <div class="definition"><strong>Crystallisation is the process by which crystals form when a saturated solution is cooled.</strong> As the solution cools, it can hold less solute, so the excess solute comes out of solution as solid crystals.</div>
+        <div class="simpler">💡 Salt, snowflakes, and diamonds are all crystals. They form when particles arrange themselves into a regular pattern.</div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🔬</div>
+        <div class="text">
+          <strong>Eureka! – Dame Kathleen Lonsdale (1903–1971)</strong>
+          Born in Newbridge, County Kildare, Ireland. Working as part of a crystallography research team in London, she investigated how diamonds are created and was one of the first scientists to use X-rays to study crystals.
+        </div>
+      </div>
+
+      <!-- ═══ CONCENTRATION CALCULATIONS ═══ -->
+      <div class="section-heading anchor-offset" id="calculations">
+        <span class="icon">🧮</span> Concentration Calculations
+      </div>
+
+      <div class="sub-heading">Converting Concentration to g per 100 cm³</div>
+
+      <div class="formula-box">
+        <div class="label">Scaling Concentration</div>
+        concentration (g/100 cm³) = (mass of solute ÷ volume of solvent) × 100
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Worked Example</div>
+        <div class="example-body">
+          <div class="q">1 g of citric acid in 10 cm³ of water — convert to g per 100 cm³.</div>
+          <div class="steps">= (1 ÷ 10) × 100
+= 10 g per 100 cm³</div>
+          <div class="answer">✅ Answer: 10 g/100 cm³</div>
+          <div class="simpler-note"><strong>Simple:</strong> If you scaled up 10 cm³ to 100 cm³ (×10), you'd also have 10× as much solute → 10 g.</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Figure It Out — Practice Conversions</div>
+        <div class="example-body">
+          <div class="q">Convert each of the following to g per 100 cm³:</div>
+          <div class="steps">a) 15 g of salt in 50 cm³ of water
+   = (15 ÷ 50) × 100 = 30 g/100 cm³
+
+b) 10 g of copper sulfate in 25 cm³ of water
+   = (10 ÷ 25) × 100 = 40 g/100 cm³
+
+c) 20 g of sugar in 75 cm³ of water
+   = (20 ÷ 75) × 100 ≈ 26.7 g/100 cm³</div>
+          <div class="simpler-note"><strong>Simple method:</strong> Divide mass by volume, then multiply by 100. Always check your units!</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Calculating Solubility from Experimental Data</div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Past Paper Style — Finding Solubility (g/cm³)</div>
+        <div class="example-body">
+          <div class="q">A student added a compound to 50 cm³ of water at 20°C, stirring until no more dissolved. The greatest mass dissolved was 15 g. Calculate the solubility of the compound in g/cm³.</div>
+          <div class="steps">solubility = mass of solute ÷ volume of solvent
+solubility = 15 g ÷ 50 cm³
+solubility = 0.3 g/cm³</div>
+          <div class="answer">✅ Answer: 0.3 g/cm³</div>
+          <div class="simpler-note"><strong>Simple:</strong> Divide the mass dissolved by the volume of water used. The answer is the solubility at that temperature.</div>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p style="font-size:14px;color:#444;margin-bottom:16px;">Click <strong>Show Solution</strong> to reveal the answer and explanation.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Identifying Solute &amp; Solvent
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A student dissolves 5 g of sugar in 200 cm³ of water. Identify: (a) the solute, (b) the solvent, (c) the solution.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Solute = sugar (the substance that dissolved)
+b) Solvent = water (the liquid it dissolved into)
+c) Solution = sugar solution (the resulting mixture)</div>
+            <div class="answer">✅ Solute: sugar | Solvent: water | Solution: sugar water</div>
+            <div class="tip">💡 The solute disappears into the solvent. Together they make the solution.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Concentration Conversion
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Convert the following concentrations to g per 100 cm³:<br>
+            a) 20 g of salt in 50 cm³ of water<br>
+            b) 1 g of copper sulfate in 15 cm³ of water<br>
+            c) 20 g of sugar in 40 cm³ of water</div>
+          <div class="prob-solution">
+            <div class="steps">a) (20 ÷ 50) × 100 = 40 g/100 cm³
+b) (1 ÷ 15) × 100 ≈ 6.7 g/100 cm³
+c) (20 ÷ 40) × 100 = 50 g/100 cm³</div>
+            <div class="answer">✅ a) 40 | b) 6.7 | c) 50 — all in g/100 cm³</div>
+            <div class="tip">💡 Formula: (mass ÷ volume) × 100. That's all there is to it!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Solubility from Graph (Sample Paper 2018)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A graph shows solubility curves for three solid compounds (1, 2, 3) from 0°C to 100°C. Compound 3 rises steeply; compound 2 rises gradually; compound 1 rises very slowly.<br>
+            a) Which compound shows the greatest increase in solubility from 0°C to 100°C?<br>
+            b) Hot water was needed in this investigation. Name a piece of equipment used to heat water.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Compound 3 — it has the steepest curve, meaning
+   its solubility increases most with temperature.
+
+b) A Bunsen burner, electric hotplate, or kettle
+   could all be used to heat water.</div>
+            <div class="answer">✅ a) Compound 3 | b) Hotplate / Bunsen burner</div>
+            <div class="tip">💡 "Greatest increase" = steepest slope on the graph. Always look for the line that rises fastest.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Saturated Solution (Final Exam 2022)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A student investigated the solubility of a compound in water. She added the compound to 50 cm³ of water at 20°C until no more dissolved. The greatest mass she dissolved was 15 g.<br>
+            a) Calculate the solubility of the compound in g/cm³.<br>
+            b) Describe two things the student could have done to allow a greater mass to dissolve.</div>
+          <div class="prob-solution">
+            <div class="steps">a) solubility = mass ÷ volume
+   solubility = 15 ÷ 50 = 0.3 g/cm³
+
+b) Two ways to dissolve more:
+   1. Increase the temperature of the water (warm water
+      dissolves more solid solute)
+   2. Use a greater volume of water (more solvent
+      means more solute can dissolve)</div>
+            <div class="answer">✅ a) 0.3 g/cm³ | b) Increase temperature OR increase volume of water</div>
+            <div class="tip">💡 Remember: the solution is saturated at 20°C. To dissolve more, you must change temperature or amount of solvent.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Types of Solutions
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Match each solution description to the correct term (dilute, concentrated, or saturated):<br>
+            a) Orange squash mixed with a large amount of water<br>
+            b) A solution where adding more sugar just sinks to the bottom<br>
+            c) A very dark, strong cup of coffee made with very little water</div>
+          <div class="prob-solution">
+            <div class="steps">a) Dilute solution — small amount of solute in lots of solvent
+b) Saturated solution — no more solute will dissolve
+c) Concentrated solution — large amount of solute in little solvent</div>
+            <div class="answer">✅ a) Dilute | b) Saturated | c) Concentrated</div>
+            <div class="tip">💡 Key word for saturated: "no more will dissolve." Key word for dilute: "small amount of solute."</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Making a Solution (Sample Paper 2018, Q11)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Citric acid is a white crystalline solid found in lemons. Describe how to make a solution of 5 g of citric acid dissolved in 100 ml of water. Name each piece of equipment you would use.</div>
+          <div class="prob-solution">
+            <div class="steps">Equipment: Mass balance (weighing scales), weigh boat,
+            beaker (100 ml), glass stirring rod, graduated cylinder
+
+Method:
+1. Use the mass balance to measure out 5 g of citric
+   acid into a weigh boat.
+2. Using a graduated cylinder, measure out 100 ml of water
+   into a beaker.
+3. Add the citric acid to the beaker of water.
+4. Stir with the glass stirring rod until all the
+   citric acid has dissolved.
+5. The result is a 5 g/100 ml citric acid solution.</div>
+            <div class="answer">✅ Balance → graduated cylinder → beaker → stir until dissolved</div>
+            <div class="tip">💡 Always measure mass first, then volume of solvent. Add solute to solvent, not the other way around.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ EXAM SUMMARY ═══ -->
+      <div class="section-heading anchor-offset" id="summary" style="margin-top:48px;">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Term / Topic</th>
+            <th>Definition / Key Fact</th>
+            <th>Units / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Solute</strong></td>
+            <td>The substance that dissolves</td>
+            <td>e.g. salt, sugar</td>
+          </tr>
+          <tr>
+            <td><strong>Solvent</strong></td>
+            <td>The liquid that dissolves the solute</td>
+            <td>e.g. water</td>
+          </tr>
+          <tr>
+            <td><strong>Solution</strong></td>
+            <td>Mixture formed when solute dissolves in solvent</td>
+            <td>Homogeneous mixture</td>
+          </tr>
+          <tr>
+            <td><strong>Solubility</strong></td>
+            <td>Amount of solute that dissolves in fixed volume of solvent</td>
+            <td>g/l or g/100 cm³</td>
+          </tr>
+          <tr>
+            <td><strong>Concentration formula</strong></td>
+            <td>(mass of solute ÷ volume of solvent) × 100</td>
+            <td>g/100 cm³</td>
+          </tr>
+          <tr>
+            <td><strong>Dilute solution</strong></td>
+            <td>Small amount of solute, large amount of solvent</td>
+            <td>Low concentration</td>
+          </tr>
+          <tr>
+            <td><strong>Concentrated solution</strong></td>
+            <td>Large amount of solute, small amount of solvent</td>
+            <td>High concentration</td>
+          </tr>
+          <tr>
+            <td><strong>Saturated solution</strong></td>
+            <td>Contains as much solute as can dissolve at a given temperature</td>
+            <td>No more will dissolve</td>
+          </tr>
+          <tr>
+            <td><strong>Solids + temperature</strong></td>
+            <td>Solubility increases as temperature increases</td>
+            <td>Upward curve on graph</td>
+          </tr>
+          <tr>
+            <td><strong>Gases + temperature</strong></td>
+            <td>Solubility decreases as temperature increases</td>
+            <td>Downward curve on graph</td>
+          </tr>
+          <tr>
+            <td><strong>Crystallisation</strong></td>
+            <td>Crystals form when a saturated solution is cooled</td>
+            <td>Used to purify substances</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+
+</body>
+</html>
