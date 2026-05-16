@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 39 – Energy Sources and Future Needs · Elements of Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5C800;
+    --yellow-light: #FFF3A3;
+    --green: #4CAF50;
+    --green-dark: #2E7D32;
+    --purple: #6C3FC5;
+    --blue: #1976D2;
+    --red: #D32F2F;
+    --orange: #E65100;
+    --teal: #00796B;
+    --bg: #F8F9FA;
+    --card: #FFFFFF;
+    --text: #1A1A2E;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 240px; height: 100vh;
+    background: var(--text);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow-y: auto;
+  }
+  .sidebar-header {
+    background: var(--yellow);
+    color: var(--text);
+    padding: 20px 18px 16px;
+    font-family: 'Sora', sans-serif;
+  }
+  .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+  .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+
+  .sidebar-section { padding: 14px 0 4px; }
+  .sidebar-section-label {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    padding: 0 18px 6px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 9px 18px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--yellow);
+  }
+  .sidebar a.chapter-link {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--yellow);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .sidebar a.chapter-link:hover { color: #fff; }
+
+  /* ── MAIN CONTENT ── */
+  .main { margin-left: 240px; min-height: 100vh; }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter-hero {
+    background: linear-gradient(135deg, #0d2b0d 0%, #1b4332 55%, #0a1f0a 100%);
+    color: #fff;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(245,200,0,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .chapter-hero::after {
+    content: '⚡';
+    position: absolute;
+    top: 20px; right: 48px;
+    font-size: 120px;
+    opacity: 0.09;
+  }
+  .chapter-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .chapter-hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+  .chapter-hero h1 span { color: var(--yellow); }
+  .chapter-meta { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .goal-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  /* ── CONTENT AREA ── */
+  .content { padding: 40px 48px; max-width: 1000px; }
+
+  /* SECTION HEADINGS */
+  .section-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--yellow);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-heading .icon { font-size: 26px; }
+  .sub-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin: 28px 0 12px;
+  }
+  .sub-heading.red { color: var(--red); }
+  .sub-heading.teal { color: var(--teal); }
+  .sub-heading.purple { color: var(--purple); }
+
+  /* KEY TERM BOX */
+  .key-term {
+    background: var(--yellow-light);
+    border-left: 4px solid var(--yellow);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+  .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+  .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+  /* CONCENTRATE BOX */
+  .concentrate {
+    background: #FFF3CD;
+    border: 2px dashed #F5C800;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 16px 0;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+  .concentrate .text { font-size: 14px; color: #555; }
+  .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+  /* GLOSSARY */
+  .glossary { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 16px 0; }
+  .glossary-item { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .glossary-item .g-term { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--purple); }
+  .glossary-item .g-def { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.4; }
+
+  /* ENERGY SOURCE CARDS */
+  .source-card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    margin: 16px 0;
+    box-shadow: var(--shadow);
+  }
+  .source-card .sc-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .sc-header.renewable { background: linear-gradient(90deg, #1b4332, #2d6a4f); color: #fff; }
+  .sc-header.nonrenewable { background: linear-gradient(90deg, #5c1010, #922b21); color: #fff; }
+  .sc-header.nuclear { background: linear-gradient(90deg, #1a237e, #283593); color: #fff; }
+  .sc-header .sc-emoji { font-size: 26px; }
+  .source-card .sc-body { padding: 0; }
+
+  /* ADV/DISADV TABLE inside source card */
+  .adv-table { width: 100%; border-collapse: collapse; }
+  .adv-table th {
+    background: #f3f4f6;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 10px 16px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .adv-table th.adv { color: var(--green-dark); }
+  .adv-table th.disadv { color: var(--red); }
+  .adv-table th.desc { color: var(--blue); }
+  .adv-table td { padding: 10px 16px; font-size: 13px; vertical-align: top; border-bottom: 1px solid var(--border); }
+  .adv-table tr:last-child td { border-bottom: none; }
+  .adv-table ul { margin: 0; padding-left: 16px; }
+  .adv-table li { margin-bottom: 3px; }
+
+  /* TURBINE STEPS */
+  .steps-flow {
+    display: flex; gap: 0; align-items: stretch; flex-wrap: wrap;
+    background: #fff; border-radius: var(--radius);
+    box-shadow: var(--shadow); margin: 16px 0; overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .step-box {
+    flex: 1; min-width: 160px;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 18px 14px; text-align: center;
+    border-right: 1.5px solid var(--border);
+    position: relative;
+  }
+  .step-box:last-child { border-right: none; }
+  .step-box .sn {
+    background: var(--yellow); color: var(--text);
+    font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px; flex-shrink: 0;
+  }
+  .step-box .se { font-size: 26px; margin-bottom: 6px; }
+  .step-box .st { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .step-box .sd { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .step-arrow {
+    display: flex; align-items: center; color: var(--yellow);
+    font-size: 22px; font-weight: 900; padding: 0 2px; align-self: center;
+  }
+
+  /* EUREKA BOX */
+  .eureka {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+    border: 2px solid var(--yellow);
+    border-radius: var(--radius); padding: 16px 18px; margin: 16px 0;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .eureka .eur-icon { font-size: 30px; flex-shrink: 0; }
+  .eureka .eur-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: var(--orange); margin-bottom: 4px; }
+  .eureka .eur-text { font-size: 13px; color: #444; line-height: 1.5; }
+
+  /* TEST TUBE */
+  .test-tube {
+    background: #EFF6FF;
+    border: 1.5px solid #BFDBFE;
+    border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+  }
+  .test-tube .tt-header { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .test-tube ol { margin: 0 0 0 18px; }
+  .test-tube li { font-size: 14px; margin-bottom: 4px; }
+
+  /* PROBLEMS SECTION */
+  .problem-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 14px 0;
+    box-shadow: var(--shadow);
+  }
+  .problem-card .prob-header {
+    background: var(--purple);
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 13px;
+    padding: 9px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .problem-card .prob-body { padding: 16px 18px; }
+  .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+  .toggle-btn {
+    background: var(--yellow); color: var(--text);
+    border: none; border-radius: 100px;
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12px;
+    padding: 4px 14px; cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .toggle-btn:hover { opacity: 0.8; }
+  .prob-solution { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .prob-solution.open { display: block; }
+  .prob-solution .steps { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #f9fafb; border-radius: 8px; padding: 12px; line-height: 2; white-space: pre-wrap; }
+  .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+  .prob-solution .tip { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: 13px; color: #555; }
+
+  /* SUMMARY TABLE */
+  .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .data-table th { background: var(--text); color: #fff; font-family: 'Sora', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+  .data-table td { padding: 12px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: #f9fafb; }
+
+  /* COMPARE TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .compare-table th { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; padding: 11px 14px; text-align: left; }
+  .compare-table th:first-child { background: var(--text); color: #fff; }
+  .compare-table th.adv-head { background: #DCFCE7; color: var(--green-dark); }
+  .compare-table th.dis-head { background: #FEE2E2; color: var(--red); }
+  .compare-table td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: #fafafa; }
+  .compare-table td:first-child { font-weight: 700; }
+
+  /* BADGE */
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 100px; margin-left: 6px; vertical-align: middle; }
+  .badge-green { background: #DCFCE7; color: var(--green-dark); }
+  .badge-red   { background: #FEE2E2; color: var(--red); }
+  .badge-blue  { background: #DBEAFE; color: var(--blue); }
+
+  /* CHAPTER NAV at bottom */
+  .chapter-nav-bar {
+    background: var(--text); color: #fff;
+    padding: 24px 48px;
+    margin-left: 240px;
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  }
+  .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 13px; }
+  .chapter-nav-bar a {
+    background: rgba(255,255,255,0.1); color: #fff;
+    text-decoration: none; border-radius: 100px;
+    padding: 8px 20px; font-weight: 600; font-size: 14px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    transition: all 0.2s;
+  }
+  .chapter-nav-bar a:hover { background: var(--yellow); color: var(--text); border-color: var(--yellow); }
+  .chapter-nav-bar a.active { background: var(--yellow); color: var(--text); border-color: var(--yellow); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .content { padding: 20px 20px; }
+    .chapter-hero { padding: 32px 20px 28px; }
+    .chapter-hero h1 { font-size: 30px; }
+    .chapter-nav-bar { margin-left: 0; padding: 20px; }
+    .steps-flow { flex-direction: column; }
+    .step-box { border-right: none; border-bottom: 1.5px solid var(--border); }
+    .step-box:last-child { border-bottom: none; }
+  }
+
+  p { margin: 10px 0; font-size: 15px; }
+  ul, ol { margin: 10px 0 10px 22px; }
+  li { font-size: 14px; margin-bottom: 4px; line-height: 1.5; }
+  strong { color: var(--text); }
+  .anchor-offset { scroll-margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Science Revision</div>
+    <div class="book-title">Elements of Science – Unit 5</div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Earth &amp; Space</div>
+    <a href="ch39.html" class="chapter-link active">Ch 39 · Energy Sources</a>
+    <a href="#how-generated">How Electricity is Generated</a>
+    <a href="#energy-needs">Energy Needs</a>
+    <a href="#sources">Sources of Energy</a>
+    <a href="#nonrenewable">Non-Renewable Sources</a>
+    <a href="#renewable">Renewable Sources</a>
+    <a href="#nuclear">Nuclear Energy</a>
+    <a href="#fission-fusion">Fission vs Fusion</a>
+    <a href="#summary-qs">Summary Questions</a>
+    <a href="#past-paper">Past Paper Questions</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Other Chapters</div>
+    <a href="index.html" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 29 · Energy</a>
+    <a href="ch35.html" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 35 · Origin of the Universe</a>
+    <a href="#" style="color:rgba(255,255,255,0.3);font-size:13px;font-style:italic;">Ch 39 · Energy Sources</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 39 · Unit 5 – Earth &amp; Space</div>
+    <h1>⚡ <span>Energy Sources</span> &amp; Future Needs</h1>
+    <p class="chapter-meta">Elements of Science · Annual Exam Revision</p>
+    <div class="learning-goals">
+      <span class="goal-tag">✔ Explain how a turbine generates electricity</span>
+      <span class="goal-tag">✔ Describe non-renewable &amp; renewable energy sources</span>
+      <span class="goal-tag">✔ Evaluate advantages &amp; disadvantages of each source</span>
+      <span class="goal-tag">✔ Understand nuclear fission &amp; fusion</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ KEY TERMS ═══ -->
+    <div class="section-heading anchor-offset" id="key-terms">
+      <span class="icon">📖</span> Key Terms at a Glance
+    </div>
+    <div class="glossary">
+      <div class="glossary-item"><div class="g-term">Sustainable resource</div><div class="g-def">One that meets current energy needs and will remain available for future generations.</div></div>
+      <div class="glossary-item"><div class="g-term">Non-renewable</div><div class="g-def">Energy sources that will eventually run out (e.g. coal, oil, natural gas).</div></div>
+      <div class="glossary-item"><div class="g-term">Renewable</div><div class="g-def">Energy sources that will not run out in our lifetime (e.g. solar, wind, hydro).</div></div>
+      <div class="glossary-item"><div class="g-term">Solar</div><div class="g-def">Energy from sunlight — captured by photovoltaic panels or thermal collectors.</div></div>
+      <div class="glossary-item"><div class="g-term">Wind</div><div class="g-def">Energy from moving air — turns turbine blades to generate electricity.</div></div>
+      <div class="glossary-item"><div class="g-term">Biomass</div><div class="g-def">Organic material (plants, crop waste) burned to run turbines or engines.</div></div>
+      <div class="glossary-item"><div class="g-term">Geothermal</div><div class="g-def">Heat energy from the Earth's core used to heat buildings or power turbines.</div></div>
+      <div class="glossary-item"><div class="g-term">Hydroelectricity</div><div class="g-def">Electricity generated by water flowing over a dam to power turbines.</div></div>
+      <div class="glossary-item"><div class="g-term">Nuclear fission</div><div class="g-def">Splitting nuclei of radioactive atoms (e.g. uranium) with neutrons to release huge amounts of heat energy.</div></div>
+      <div class="glossary-item"><div class="g-term">Nuclear fusion</div><div class="g-def">Joining nuclei of atoms together to release energy — the same process stars use.</div></div>
+    </div>
+
+    <!-- ═══ HOW ELECTRICITY IS GENERATED ═══ -->
+    <div class="section-heading anchor-offset" id="how-generated">
+      <span class="icon">🏭</span> How Electrical Energy is Generated
+    </div>
+
+    <p>Many of the devices and machines we use every day need electricity to work. Electrical energy is generated in power stations as follows:</p>
+
+    <div class="steps-flow">
+      <div class="step-box">
+        <div class="sn">1</div>
+        <div class="se">🔥</div>
+        <div class="st">Fuel Burned</div>
+        <div class="sd">Fuel is burned to release heat energy.</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-box">
+        <div class="sn">2</div>
+        <div class="se">💧</div>
+        <div class="st">Water → Steam</div>
+        <div class="sd">The high temperature boils water into steam.</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-box">
+        <div class="sn">3</div>
+        <div class="se">🌀</div>
+        <div class="st">Turbine Turns</div>
+        <div class="sd">The steam's kinetic energy causes the blades of a turbine to turn.</div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-box">
+        <div class="sn">4</div>
+        <div class="se">🧲</div>
+        <div class="st">Electricity Generated</div>
+        <div class="sd">Turbine blades rotate coiled wire near magnets (a magnetic field), which generates electrical energy.</div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">How a Turbine Generates Electricity</div>
+      <div class="definition">When a <strong>magnet moves near a coil of wire</strong>, an electrical current flows. Turbine blades spin coiled copper wire inside a magnetic field, generating electrical energy. This is the principle behind almost all electrical generation today.</div>
+      <div class="simpler">💡 Discovered by Michael Faraday (1791–1867) in 1831 — his simple principle still powers most of the world's electricity.</div>
+    </div>
+
+    <div class="test-tube">
+      <div class="tt-header">🧪 Test Tube</div>
+      <ol>
+        <li>Outline the energy conversions that take place in a turbine generator.</li>
+      </ol>
+    </div>
+
+    <div class="eureka">
+      <div class="eur-icon">💡</div>
+      <div>
+        <div class="eur-title">Eureka! – Michael Faraday (1791–1867)</div>
+        <div class="eur-text">Michael Faraday developed the world's first electricity generator in 1831. He discovered that when a magnet moves near a coil of wire, electrical current flows. This simple method has been the foundation of most of our electrical generation ever since.</div>
+      </div>
+    </div>
+
+    <!-- ═══ ENERGY NEEDS ═══ -->
+    <div class="section-heading anchor-offset" id="energy-needs">
+      <span class="icon">🌍</span> Energy Needs
+    </div>
+
+    <p>Our energy needs have grown as society has developed. The world's population is rising fast — it has increased from 2.5 billion people in 1950 to over 8 billion people today. In fact, the world has used as much energy in the past 70 years as the 11,700 years before added together. As countries continue to modernise and as technology and transport use increases, the huge demand for energy will grow.</p>
+
+    <div class="key-term">
+      <div class="term">Sustainable Resource</div>
+      <div class="definition"><strong>A sustainable resource is one that can be used to meet our current energy needs and will remain available to meet the energy needs of future generations.</strong></div>
+      <div class="simpler">💡 Our reliance on energy means it is very important that the sources it comes from are sustainable. Fossil fuels are NOT sustainable — they will eventually run out.</div>
+    </div>
+
+    <!-- ═══ SOURCES OF ENERGY ═══ -->
+    <div class="section-heading anchor-offset" id="sources">
+      <span class="icon">⚡</span> Sources of Energy
+    </div>
+
+    <p>The sources of energy used to produce electricity are either <strong>non-renewable</strong> or <strong>renewable</strong>.</p>
+
+    <!-- ═══ NON-RENEWABLE ═══ -->
+    <div class="sub-heading red anchor-offset" id="nonrenewable">🪨 Non-Renewable Energy Sources <span class="badge badge-red">Will Run Out</span></div>
+
+    <p><strong>Coal, oil and natural gas are non-renewable energy sources, meaning they will eventually run out.</strong></p>
+    <p>These sources of electricity are called <strong>fossil fuels</strong> because they form from the decayed remains of animals and plants over millions of years. When fossil fuels are burned, the heat released is used to generate electricity.</p>
+    <p>The majority of power plants that generate our electrical energy continue to rely on coal and natural gas. This is a big issue facing society, as it is predicted that all fossil fuels will be used up in the next 50 to 150 years, based on current use. Another major disadvantage of fossil fuels is that they release <strong>carbon dioxide (CO₂)</strong> into the atmosphere when burned, which contributes to <strong>global warming</strong>.</p>
+
+    <div class="source-card">
+      <div class="sc-header nonrenewable">
+        <span class="sc-emoji">🪨</span> Fossil Fuels (Coal, Oil, Natural Gas)
+      </div>
+      <div class="sc-body">
+        <table class="adv-table">
+          <tr>
+            <th class="desc" style="width:33%">Description</th>
+            <th class="adv" style="width:33%">Advantages</th>
+            <th class="disadv" style="width:34%">Disadvantages</th>
+          </tr>
+          <tr>
+            <td>Formed from the decayed remains of animals and plants over millions of years. When burned, heat generates electricity via turbines.</td>
+            <td><ul><li>Cheap and widely available</li><li>Large amounts of energy released</li><li>Reliable — not weather-dependent</li></ul></td>
+            <td><ul><li>Will run out in 50–150 years</li><li>Release CO₂ → global warming</li><li>Cause air pollution</li><li>Not sustainable</li></ul></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ RENEWABLE ═══ -->
+    <div class="sub-heading teal anchor-offset" id="renewable">🌱 Renewable Energy Sources <span class="badge badge-green">Will Not Run Out</span></div>
+
+    <p><strong>These sources of energy are called renewable because they can keep being produced and will not run out in our lifetime.</strong> The advantages and disadvantages of each renewable source are shown below.</p>
+
+    <!-- SOLAR -->
+    <div class="source-card">
+      <div class="sc-header renewable">
+        <span class="sc-emoji">☀️</span> Solar Energy
+      </div>
+      <div class="sc-body">
+        <table class="adv-table">
+          <tr>
+            <th class="desc" style="width:33%">Description</th>
+            <th class="adv" style="width:33%">Advantages</th>
+            <th class="disadv" style="width:34%">Disadvantages</th>
+          </tr>
+          <tr>
+            <td><ul>
+              <li><strong>Photovoltaic solar panels</strong> generate electricity when sunlight strikes them.</li>
+              <li><strong>Thermal solar energy</strong> uses sunlight to heat water, which can heat a building or make steam in a turbine generator.</li>
+            </ul></td>
+            <td><ul>
+              <li>Produces energy every day</li>
+              <li>Emits no CO₂</li>
+              <li>Low running costs once installed</li>
+            </ul></td>
+            <td><ul>
+              <li>High installation costs</li>
+              <li>Efficiency depends on the amount of sunshine</li>
+              <li>Cannot generate at night</li>
+            </ul></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- WIND -->
+    <div class="source-card">
+      <div class="sc-header renewable">
+        <span class="sc-emoji">🌬️</span> Wind Energy
+      </div>
+      <div class="sc-body">
+        <table class="adv-table">
+          <tr>
+            <th class="desc" style="width:33%">Description</th>
+            <th class="adv" style="width:33%">Advantages</th>
+            <th class="disadv" style="width:34%">Disadvantages</th>
+          </tr>
+          <tr>
+            <td>Wind turbines, inland or offshore, use high winds to turn rotor blades and convert kinetic energy to electrical energy.</td>
+            <td><ul>
+              <li>Wind is plentiful and cost-free</li>
+              <li>Emits no CO₂</li>
+              <li>Can be offshore or onshore</li>
+            </ul></td>
+            <td><ul>
+              <li>Efficiency depends on the amount of wind</li>
+              <li>Turbines are considered an eyesore by some</li>
+              <li>Noise pollution</li>
+            </ul></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- BIOMASS -->
+    <div class="source-card">
+      <div class="sc-header renewable">
+        <span class="sc-emoji">🌿</span> Biomass
+      </div>
+      <div class="sc-body">
+        <table class="adv-table">
+          <tr>
+            <th class="desc" style="width:33%">Description</th>
+            <th class="adv" style="width:33%">Advantages</th>
+            <th class="disadv" style="width:34%">Disadvantages</th>
+          </tr>
+          <tr>
+            <td>Organic matter (material that is or was living), such as plants and crop waste, is burned to run turbines or purified into a fuel used in engines.</td>
+            <td><ul>
+              <li>Organic matter is plentiful and cheap</li>
+              <li>More efficient than fossil fuels</li>
+              <li>Can use waste material</li>
+            </ul></td>
+            <td><ul>
+              <li>Emits CO₂</li>
+              <li>Can lead to the destruction of habitats when land is cleared</li>
+            </ul></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- GEOTHERMAL -->
+    <div class="source-card">
+      <div class="sc-header renewable">
+        <span class="sc-emoji">🌋</span> Geothermal Energy
+      </div>
+      <div class="sc-body">
+        <table class="adv-table">
+          <tr>
+            <th class="desc" style="width:33%">Description</th>
+            <th class="adv" style="width:33%">Advantages</th>
+            <th class="disadv" style="width:34%">Disadvantages</th>
+          </tr>
+          <tr>
+            <td>Heat from the Earth's core heats water in underground pipes, which can heat a building or power a turbine generator.</td>
+            <td><ul>
+              <li>Very low greenhouse gas emissions</li>
+              <li>Available all year round</li>
+              <li>Reliable — not weather-dependent</li>
+            </ul></td>
+            <td><ul>
+              <li>Harmful gases may be released during installation</li>
+              <li>High installation costs</li>
+              <li>Only available in certain locations</li>
+            </ul></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- HYDROELECTRIC -->
+    <div class="source-card">
+      <div class="sc-header renewable">
+        <span class="sc-emoji">💧</span> Hydroelectric Energy
+      </div>
+      <div class="sc-body">
+        <table class="adv-table">
+          <tr>
+            <th class="desc" style="width:33%">Description</th>
+            <th class="adv" style="width:33%">Advantages</th>
+            <th class="disadv" style="width:34%">Disadvantages</th>
+          </tr>
+          <tr>
+            <td>Large volumes of water are stored in a reservoir, then released to flow over a dam and power a turbine generator.</td>
+            <td><ul>
+              <li>Water is plentiful and cheap</li>
+              <li>Emits no CO₂</li>
+              <li>Reliable output</li>
+            </ul></td>
+            <td><ul>
+              <li>Risk of flooding</li>
+              <li>High installation costs</li>
+              <li>Disrupts local ecosystems</li>
+            </ul></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="test-tube">
+      <div class="tt-header">🧪 Test Tube</div>
+      <ol start="2">
+        <li>Research one of the renewable energy sources listed above. Are there any other advantages or disadvantages? Is this energy source used in Ireland? If so, how much of our energy is produced by this source? Visit <strong>www.seai.ie/data-and-insights</strong> to find out.</li>
+      </ol>
+    </div>
+
+    <!-- ═══ NUCLEAR ENERGY ═══ -->
+    <div class="section-heading anchor-offset" id="nuclear">
+      <span class="icon">☢️</span> Nuclear Energy
+    </div>
+
+    <p>Nuclear energy is an energy source that falls between non-renewable and renewable. This is because the radioactive material used for nuclear power comes from millions of years of decay in the Earth's crust. However, we need such a small quantity to produce massive amounts of energy that we will never use it up. There are two methods of producing nuclear energy:</p>
+    <ul>
+      <li>Nuclear fission</li>
+      <li>Nuclear fusion</li>
+    </ul>
+
+    <!-- ═══ FISSION vs FUSION ═══ -->
+    <div class="sub-heading purple anchor-offset" id="fission-fusion">Nuclear Fission</div>
+
+    <div class="key-term">
+      <div class="term">Nuclear Fission</div>
+      <div class="definition"><strong>Nuclear fission is the most commonly used type of nuclear power.</strong> In nuclear fission, the nuclei of atoms of radioactive material, e.g. uranium, are <strong>split by neutrons</strong>. A huge amount of heat energy is released, which can be used to power turbine generators.</div>
+      <div class="simpler">💡 "Fission" = splitting apart. A uranium atom is hit by a neutron → it splits → releases huge heat energy → boils water → steam → turbine → electricity.</div>
+    </div>
+
+    <p>Under normal circumstances, nuclear fission does not release harmful gases into the atmosphere. However, there is a low risk that an accident at a nuclear power plant can result in radioactive leaks. This can have devastating effects on the population and agriculture around the power plant and can spread into drinking water or rain for many decades. Even with the few accidents that have unfortunately occurred, nuclear energy is still a safer method of power generation than fossil fuels.</p>
+
+    <div class="sub-heading purple">Nuclear Fusion</div>
+
+    <div class="key-term">
+      <div class="term">Nuclear Fusion</div>
+      <div class="definition"><strong>In nuclear fusion, the nuclei of atoms are joined together to release energy</strong> — the same process stars use to generate energy. It is clean and safe, as it produces no greenhouse gas emissions or radioactive by-products. This method of generating electricity is in the early stages of research, but it has the potential to be the most efficient and sustainable way of meeting our future energy needs.</div>
+      <div class="simpler">💡 "Fusion" = joining together. The Sun fuses hydrogen atoms → releases massive energy. 1 kg of hydrogen isotopes could produce as much energy as burning 10 million kg of fossil fuel!</div>
+    </div>
+
+    <div class="concentrate">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <strong>CONCENTRATE! Fission vs Fusion</strong>
+        Fission = <em>splitting</em> atoms apart (used in power stations today). Fusion = <em>joining</em> atoms together (used by stars; still in research stage on Earth). Both release huge amounts of energy, but fusion is cleaner and produces no radioactive waste.
+      </div>
+    </div>
+
+    <!-- FISSION vs FUSION compare table -->
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:20%">Feature</th>
+          <th class="adv-head" style="width:40%">Nuclear Fission</th>
+          <th class="dis-head" style="width:40%">Nuclear Fusion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>What happens?</td><td>Nuclei are <strong>split</strong> by neutrons</td><td>Nuclei are <strong>joined together</strong></td></tr>
+        <tr><td>Fuel used</td><td>Uranium (radioactive)</td><td>Hydrogen isotopes</td></tr>
+        <tr><td>Greenhouse gases?</td><td>No (normally)</td><td>No</td></tr>
+        <tr><td>Radioactive waste?</td><td>Yes — low risk of leak</td><td>No</td></tr>
+        <tr><td>Currently used?</td><td>Yes — in power stations</td><td>No — in early research stage</td></tr>
+        <tr><td>Energy output</td><td>Very large</td><td>Enormously large (potential)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="eureka">
+      <div class="eur-icon">⚛️</div>
+      <div>
+        <div class="eur-title">Eureka! – National Ignition Facility (December 2022)</div>
+        <div class="eur-text">In December 2022, scientists at the National Ignition Facility in California successfully produced a nuclear fusion reaction when they released more energy than was used in an experiment. Although only a small amount of energy was generated, this breakthrough finally proved that it is possible for scientists to control fusion. If used efficiently, the method has the potential to produce as much energy from 1 kg of hydrogen isotopes as would be produced from burning 10 million kg of fossil fuel.</div>
+      </div>
+    </div>
+
+    <div class="test-tube">
+      <div class="tt-header">🧪 Test Tube</div>
+      <ol start="3">
+        <li>Many countries produce a great deal of their electricity using nuclear power, but Ireland does not. Have a class debate about whether nuclear energy should be introduced to Ireland.</li>
+      </ol>
+    </div>
+
+    <!-- ═══ SUMMARY QUESTIONS ═══ -->
+    <div class="section-heading anchor-offset" id="summary-qs">
+      <span class="icon">✏️</span> Summary Questions
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q1 — Complete the sentences (turbine generator)
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Copy and complete the sentences: "__________ is burned to release heat. Water becomes __________, which generates __________ energy and causes the blades of a turbine to turn. The turbine blades rotate coiled wire near __________, which generates __________ energy."</div>
+        <div class="prob-solution">
+          <div class="steps">Fuel is burned to release heat. Water becomes steam, which generates kinetic energy and causes the blades of a turbine to turn. The turbine blades rotate coiled wire near magnets, which generates electrical energy.</div>
+          <div class="tip">💡 The energy chain: chemical (fuel) → heat → kinetic (steam/turbine) → electrical</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q2 — Non-renewable vs Renewable
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Explain the difference between non-renewable and renewable energy sources.</div>
+        <div class="prob-solution">
+          <div class="steps">Non-renewable energy sources (e.g. coal, oil, natural gas) will eventually run out. They formed over millions of years and cannot be replaced quickly.
+
+Renewable energy sources (e.g. solar, wind, hydroelectric) can keep being produced and will not run out in our lifetime. They come from naturally replenishing sources.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q3 — Two non-renewable sources
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Name two non-renewable energy sources.</div>
+        <div class="prob-solution">
+          <div class="answer">Any two of: Coal / Oil / Natural gas (fossil fuels)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q4 — Two renewable sources
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Name two renewable energy sources.</div>
+        <div class="prob-solution">
+          <div class="answer">Any two of: Solar / Wind / Biomass / Geothermal / Hydroelectric</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q5 — What is a sustainable resource?
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">What is a sustainable resource?</div>
+        <div class="prob-solution">
+          <div class="answer">A sustainable resource is one that can be used to meet our current energy needs and will remain available to meet the energy needs of future generations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q6 — Five sources of energy used in Ireland today
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Name five sources of energy used to generate electricity in Ireland today.</div>
+        <div class="prob-solution">
+          <div class="answer">Any five of: Natural gas / Coal / Wind / Solar / Biomass / Hydroelectric / Geothermal (peat historically also used)</div>
+          <div class="tip">💡 Ireland has been investing heavily in wind energy in recent years and is expanding offshore wind farms. Visit seai.ie for current statistics.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q7 — Coal advantages &amp; environmental issues
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Coal is still a major source of global energy production.<br>a) What are the advantages of using coal to generate electricity?<br>b) Describe two environmental issues caused by using coal to generate electricity.</div>
+        <div class="prob-solution">
+          <div class="steps">a) Advantages of coal:
+   — Cheap and widely available
+   — Produces large amounts of energy
+   — Reliable — not dependent on weather
+
+b) Environmental issues:
+   1. Burning coal releases CO₂ into the atmosphere, contributing to global warming/climate change.
+   2. Burning coal also releases other pollutants (e.g. sulfur dioxide) causing air pollution and acid rain.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q8 — Hydroelectric environmental problems
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">What environmental problems may be caused by constructing a hydroelectric power station?</div>
+        <div class="prob-solution">
+          <div class="steps">1. Risk of flooding — large areas of land are flooded to create the reservoir, destroying habitats and displacing communities.
+2. Disruption of local ecosystems — dams block the natural flow of rivers, affecting fish migration and aquatic life.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q9 — Identify the energy source
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Identify the energy being described in each of the following sentences:<br>a) This energy comes from sunlight.<br>b) This energy production method burns organic matter.<br>c) This energy is stored in the form of heat beneath the surface of the Earth.<br>d) This energy comes from the decayed remains of animals and plants that died millions of years ago.<br>e) This energy is released when the nuclei of atoms are split by neutrons.</div>
+        <div class="prob-solution">
+          <div class="steps">a) Solar energy
+b) Biomass energy
+c) Geothermal energy
+d) Fossil fuels (coal / oil / natural gas) — non-renewable
+e) Nuclear fission</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Q10 — Nuclear energy: one advantage &amp; one disadvantage
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Give one advantage and one disadvantage of nuclear energy.</div>
+        <div class="prob-solution">
+          <div class="steps">Advantage: Nuclear energy does not release CO₂ or greenhouse gases during normal operation, making it a low-carbon source of electricity. It also produces enormous amounts of energy from a small amount of fuel.
+
+Disadvantage: There is a low risk of radioactive leaks from accidents at nuclear power plants, which can have devastating and long-lasting effects on the environment, population, agriculture and water supply.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PAST PAPER QUESTIONS ═══ -->
+    <div class="section-heading anchor-offset" id="past-paper">
+      <span class="icon">📝</span> Past Paper Questions
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Final Examination 2019, Question 13
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Sustainability issues arise from the generation and consumption of electricity. Electricity can be produced using renewable and non-renewable sources. Identify <strong>two</strong> renewable sources of energy from the list below by placing a tick (✓) in each of the correct boxes.<br><br>
+        Oil &nbsp;☐ &nbsp;&nbsp; Solar &nbsp;☐ &nbsp;&nbsp; Natural gas &nbsp;☐ &nbsp;&nbsp; Wind &nbsp;☐</div>
+        <div class="prob-solution">
+          <div class="answer">✅ Solar ✓ &nbsp;&nbsp; Wind ✓</div>
+          <div class="tip">💡 Oil and Natural gas are fossil fuels — non-renewable. Solar and Wind are renewable sources that will not run out.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="prob-header">
+        Sample Paper 2018, Question 13
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Answer</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">The Sun can provide power for modern spacecraft. The Juno mission to Jupiter uses solar energy to produce electricity. Previous long-distance space missions used nuclear power to produce electricity.<br><br>State one advantage of using solar energy rather than nuclear energy during space exploration.</div>
+        <div class="prob-solution">
+          <div class="steps">Any one of the following:
+— Solar energy is renewable/sustainable — it comes from the Sun and will not run out.
+— Solar energy produces no radioactive waste or by-products, making it safer for astronauts and the spacecraft.
+— Solar energy emits no CO₂ or harmful gases.
+— Solar energy requires no fuel to be carried on the spacecraft, saving weight.</div>
+          <div class="tip">💡 The question asks for one advantage of solar OVER nuclear — so link it directly to a disadvantage of nuclear (e.g. radioactive waste) or an advantage unique to solar (e.g. freely available from the Sun).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ QUICK REFERENCE TABLE ═══ -->
+    <div class="section-heading" style="margin-top:48px;">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Energy Source</th><th>Type</th><th>Key Advantage</th><th>Key Disadvantage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Coal / Oil / Natural Gas</strong></td><td><span class="badge badge-red">Non-renewable</span></td><td>Cheap; reliable; large energy output</td><td>Will run out; releases CO₂; global warming</td></tr>
+        <tr><td><strong>Solar</strong></td><td><span class="badge badge-green">Renewable</span></td><td>No CO₂; produces energy daily</td><td>High install cost; depends on sunshine</td></tr>
+        <tr><td><strong>Wind</strong></td><td><span class="badge badge-green">Renewable</span></td><td>No CO₂; wind is free &amp; plentiful</td><td>Depends on wind; eyesore for some</td></tr>
+        <tr><td><strong>Biomass</strong></td><td><span class="badge badge-green">Renewable</span></td><td>Plentiful &amp; cheap; efficient</td><td>Emits CO₂; habitat destruction</td></tr>
+        <tr><td><strong>Geothermal</strong></td><td><span class="badge badge-green">Renewable</span></td><td>Low emissions; all year round</td><td>High install cost; location-specific</td></tr>
+        <tr><td><strong>Hydroelectric</strong></td><td><span class="badge badge-green">Renewable</span></td><td>No CO₂; water is free</td><td>Risk of flooding; disrupts ecosystems</td></tr>
+        <tr><td><strong>Nuclear Fission</strong></td><td><span class="badge badge-blue">Between</span></td><td>No CO₂; huge energy from tiny fuel</td><td>Risk of radioactive leaks</td></tr>
+        <tr><td><strong>Nuclear Fusion</strong></td><td><span class="badge badge-blue">Future</span></td><td>No CO₂; no radioactive waste; enormous energy</td><td>Still in research stage; not yet operational</td></tr>
+      </tbody>
+    </table>
+
+    <table class="data-table" style="margin-top:16px;">
+      <thead>
+        <tr><th>Topic</th><th>Key Fact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Turbine generator steps</strong></td><td>Fuel burned → steam → turbine spins → wire rotates near magnet → electricity</td></tr>
+        <tr><td><strong>Faraday's discovery</strong></td><td>Moving magnet near coil of wire → current flows (1831). Foundation of electricity generation.</td></tr>
+        <tr><td><strong>Fossil fuels</strong></td><td>Formed from decayed animals/plants over millions of years. Will run out in 50–150 years.</td></tr>
+        <tr><td><strong>Sustainable resource</strong></td><td>Meets current AND future generations' energy needs.</td></tr>
+        <tr><td><strong>Nuclear fission</strong></td><td>Splitting uranium atoms with neutrons → huge heat energy → turbines → electricity.</td></tr>
+        <tr><td><strong>Nuclear fusion</strong></td><td>Joining atoms together (like the Sun). No radioactive waste. Still in research stage (2022 breakthrough).</td></tr>
+        <tr><td><strong>Fission vs Fusion memory trick</strong></td><td><strong>Fission</strong> = <em>split</em> (think: splitting up). <strong>Fusion</strong> = <em>fuse together</em> (think: fusing).</td></tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+</main>
+
+<!-- CHAPTER NAV BAR -->
+<div class="chapter-nav-bar">
+  <span>Other chapters:</span>
+  <a href="index.html">Ch 29 – Energy</a>
+  <a href="ch35.html">Ch 35 – Origin of the Universe</a>
+  <a href="ch39.html" class="active">Ch 39 – Energy Sources</a>
+</div>
+
+<script>
+function toggleSol(btn) {
+  const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+  sol.classList.toggle('open');
+  btn.textContent = sol.classList.contains('open') ? 'Hide Answer' : 'Show Answer';
+}
+</script>
+</body>
+</html>
