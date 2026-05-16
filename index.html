@@ -1,1266 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integrated Revision Schedule - First Year</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .subheader {
-            font-size: 0.9em;
-            margin-top: 10px;
-            opacity: 0.85;
-        }
-
-        .sync-status {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin-top: 15px;
-            display: inline-block;
-        }
-
-        .sync-status.synced {
-            background: rgba(40, 167, 69, 0.3);
-            color: #28a745;
-        }
-
-        .sync-status.syncing {
-            background: rgba(255, 193, 7, 0.3);
-            color: #ffc107;
-        }
-
-        .sync-status.error {
-            background: rgba(220, 53, 69, 0.3);
-            color: #dc3545;
-        }
-
-        main {
-            padding: 40px;
-        }
-
-        .info-box {
-            background: #f0f4ff;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-        }
-
-        .info-box h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-        }
-
-        .stat-card h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #764ba2;
-        }
-
-        .controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        button.secondary {
-            background: #6c757d;
-        }
-
-        button.secondary:hover {
-            background: #5a6268;
-        }
-
-        button.sync-btn {
-            background: #28a745;
-        }
-
-        button.sync-btn:hover {
-            background: #218838;
-        }
-
-        .week-section {
-            margin-bottom: 40px;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .week-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .week-header h2 {
-            font-size: 1.8em;
-        }
-
-        .week-progress {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-
-        .week-content {
-            padding: 20px;
-        }
-
-        .subject {
-            margin-bottom: 25px;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .subject.science {
-            border-left-color: #28a745;
-        }
-
-        .subject.geography {
-            border-left-color: #17a2b8;
-        }
-
-        .subject.business {
-            border-left-color: #ffc107;
-        }
-
-        .subject h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .subject.science h3 {
-            color: #28a745;
-        }
-
-        .subject.geography h3 {
-            color: #17a2b8;
-        }
-
-        .subject.business h3 {
-            color: #ffc107;
-        }
-
-        .chapter-info {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .topic-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .topic-item {
-            padding: 8px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .topic-item input[type="checkbox"] {
-            margin-top: 3px;
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: #667eea;
-        }
-
-        .topic-item.science input[type="checkbox"] {
-            accent-color: #28a745;
-        }
-
-        .topic-item.geography input[type="checkbox"] {
-            accent-color: #17a2b8;
-        }
-
-        .topic-item.business input[type="checkbox"] {
-            accent-color: #ffc107;
-        }
-
-        .topic-item label {
-            cursor: pointer;
-            flex: 1;
-            user-select: none;
-        }
-
-        .topic-item input[type="checkbox"]:checked + label {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .daily-breakdown {
-            background: #e7f3ff;
-            border: 1px solid #b3d9ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-
-        .daily-breakdown h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .daily-item {
-            margin-bottom: 8px;
-        }
-
-        .daily-item strong {
-            color: #667eea;
-        }
-
-        .tips-section {
-            background: #f0fff4;
-            border: 2px solid #28a745;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 40px 0;
-        }
-
-        .tips-section h2 {
-            color: #28a745;
-            margin-bottom: 20px;
-        }
-
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .tip-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #28a745;
-        }
-
-        .tip-card h4 {
-            color: #28a745;
-            margin-bottom: 10px;
-        }
-
-        .tip-card ul {
-            list-style-position: inside;
-            color: #666;
-        }
-
-        .tip-card li {
-            margin-bottom: 8px;
-        }
-
-        .progress-tracker {
-            margin: 40px 0;
-        }
-
-        .progress-tracker h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-
-        .progress-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .progress-table thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .progress-table th,
-        .progress-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .progress-table tbody tr:hover {
-            background: #f8f9fa;
-        }
-
-        .progress-cell {
-            text-align: center;
-        }
-
-        .progress-cell input[type="checkbox"] {
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            accent-color: #667eea;
-        }
-
-        .checklist {
-            list-style: none;
-            padding: 0;
-        }
-
-        .checklist li {
-            padding: 10px;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .checklist li:last-child {
-            border-bottom: none;
-        }
-
-        .checklist input[type="checkbox"] {
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            accent-color: #667eea;
-        }
-
-        .checklist label {
-            cursor: pointer;
-            flex: 1;
-            user-select: none;
-        }
-
-        .checklist input[type="checkbox"]:checked + label {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        footer {
-            background: #f8f9fa;
-            padding: 30px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #e9ecef;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        .footer-highlight {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            main {
-                padding: 20px;
-            }
-
-            .week-header {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .controls {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #28a745;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: slideIn 0.3s ease;
-            z-index: 1000;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .toast.error {
-            background: #dc3545;
-        }
-
-        .load-error {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            color: #856404;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science Revision – Elements of Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5C800;
+    --yellow-light: #FFF3A3;
+    --green: #4CAF50;
+    --green-dark: #2E7D32;
+    --purple: #6C3FC5;
+    --blue: #1976D2;
+    --red: #D32F2F;
+    --orange: #E65100;
+    --bg: #F8F9FA;
+    --card: #FFFFFF;
+    --text: #1A1A2E;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 240px; height: 100vh;
+    background: var(--text);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 100;
+    overflow-y: auto;
+  }
+  .sidebar-header {
+    background: var(--yellow);
+    color: var(--text);
+    padding: 20px 18px 16px;
+    font-family: 'Sora', sans-serif;
+  }
+  .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+  .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+
+  .sidebar-section { padding: 14px 0 4px; }
+  .sidebar-section-label {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    padding: 0 18px 6px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 9px 18px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--yellow);
+  }
+  .sidebar a.chapter-link {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--yellow);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .sidebar a.chapter-link:hover { color: #fff; }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 240px;
+    min-height: 100vh;
+  }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--text) 0%, #2d3561 60%, #1A1A2E 100%);
+    color: #fff;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(245,200,0,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .chapter-hero::after {
+    content: '⚡';
+    position: absolute;
+    top: 20px; right: 48px;
+    font-size: 120px;
+    opacity: 0.08;
+  }
+  .chapter-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .chapter-hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .chapter-hero h1 span { color: var(--yellow); }
+  .chapter-meta { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  .learning-goals {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+  }
+  .goal-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  /* ── CONTENT AREA ── */
+  .content { padding: 40px 48px; max-width: 1000px; }
+
+  /* SECTION HEADINGS */
+  .section-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--yellow);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-heading .icon { font-size: 26px; }
+  .sub-heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin: 28px 0 12px;
+  }
+
+  /* KEY TERM BOX */
+  .key-term {
+    background: var(--yellow-light);
+    border-left: 4px solid var(--yellow);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+  .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+  .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+  /* FORMULA BOX */
+  .formula-box {
+    background: var(--text);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 16px 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  .formula-box::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--yellow);
+  }
+  .formula-box .label { font-size: 11px; font-family: 'DM Sans', sans-serif; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+  /* EXAMPLE BOX */
+  .example-box {
+    background: #fff;
+    border: 2px solid var(--green);
+    border-radius: var(--radius);
+    margin: 16px 0;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .example-box .example-header {
+    background: var(--green);
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+  }
+  .example-box .example-body { padding: 16px 18px; }
+  .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+  .example-box .steps { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #f9fafb; border-radius: 8px; padding: 12px 14px; margin: 8px 0; line-height: 2; }
+  .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+  .example-box .simpler-note { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555; }
+  .example-box .simpler-note strong { color: var(--orange); }
+
+  /* CONCENTRATE BOX */
+  .concentrate {
+    background: #FFF3CD;
+    border: 2px dashed #F5C800;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 16px 0;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+  .concentrate .text { font-size: 14px; color: #555; }
+  .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+  /* INFO CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .info-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+  .info-card .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+  .info-card .card-simpler { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+  /* ENERGY TYPES TABLE */
+  .energy-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .energy-table th { background: var(--text); color: #fff; font-family: 'Sora', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+  .energy-table td { padding: 12px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .energy-table tr:last-child td { border-bottom: none; }
+  .energy-table tr:nth-child(even) td { background: #f9fafb; }
+  .energy-table .emoji { font-size: 22px; }
+  .energy-table .type-name { font-weight: 700; color: var(--text); white-space: nowrap; }
+
+  /* SANKEY DIAGRAM – SVG */
+  .sankey-container { background: #fff; border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); margin: 16px 0; border: 1.5px solid var(--border); }
+  .sankey-container h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* CONSERVATION FLOW */
+  .flow-chain {
+    display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+    background: #fff; border-radius: var(--radius); padding: 20px 24px;
+    box-shadow: var(--shadow); margin: 16px 0; border: 1.5px solid var(--border);
+  }
+  .flow-node {
+    background: var(--text); color: #fff;
+    padding: 10px 16px; border-radius: 8px;
+    font-size: 13px; font-weight: 600; text-align: center; min-width: 100px;
+  }
+  .flow-arrow { font-size: 22px; color: var(--yellow); padding: 0 6px; font-weight: 700; }
+  .flow-node.highlight { background: var(--green); }
+  .flow-node.heat { background: var(--orange); }
+
+  /* PROBLEMS SECTION */
+  .problem-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 14px 0;
+    box-shadow: var(--shadow);
+  }
+  .problem-card .prob-header {
+    background: var(--purple);
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 13px;
+    padding: 9px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .problem-card .prob-body { padding: 16px 18px; }
+  .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+  .toggle-btn {
+    background: var(--yellow); color: var(--text);
+    border: none; border-radius: 100px;
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12px;
+    padding: 4px 14px; cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .toggle-btn:hover { opacity: 0.8; }
+  .prob-solution { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .prob-solution.open { display: block; }
+  .prob-solution .steps { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #f9fafb; border-radius: 8px; padding: 12px; line-height: 2; }
+  .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+  .prob-solution .tip { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: 13px; color: #555; }
+
+  /* EFFICIENCY FORMULA VISUAL */
+  .eff-visual {
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    background: var(--text); color: #fff; border-radius: var(--radius);
+    padding: 24px; margin: 16px 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 15px;
+    flex-wrap: wrap;
+  }
+  .eff-frac { text-align: center; }
+  .eff-num { border-bottom: 2px solid var(--yellow); padding-bottom: 4px; font-weight: 700; }
+  .eff-den { padding-top: 4px; }
+  .eff-times { font-size: 24px; color: var(--yellow); }
+  .eff-result { background: var(--green); color: #fff; border-radius: 8px; padding: 8px 18px; font-weight: 700; font-size: 18px; }
+
+  /* KEY TERMS GLOSSARY */
+  .glossary { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 16px 0; }
+  .glossary-item { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .glossary-item .g-term { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--purple); }
+  .glossary-item .g-def { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.4; }
+
+  /* EUREKA BOX */
+  .eureka {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+    border: 2px solid var(--yellow);
+    border-radius: var(--radius); padding: 16px 18px; margin: 16px 0;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .eureka .eur-icon { font-size: 30px; flex-shrink: 0; }
+  .eureka .eur-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: var(--orange); margin-bottom: 4px; }
+  .eureka .eur-text { font-size: 13px; color: #444; line-height: 1.5; }
+
+  /* CHAPTER NAV at bottom */
+  .chapter-nav-bar {
+    background: var(--text); color: #fff;
+    padding: 24px 48px;
+    margin-left: 240px;
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  }
+  .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 13px; }
+  .chapter-nav-bar a {
+    background: rgba(255,255,255,0.1); color: #fff;
+    text-decoration: none; border-radius: 100px;
+    padding: 8px 20px; font-weight: 600; font-size: 14px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    transition: all 0.2s;
+  }
+  .chapter-nav-bar a:hover { background: var(--yellow); color: var(--text); border-color: var(--yellow); }
+  .chapter-nav-bar a.active { background: var(--yellow); color: var(--text); border-color: var(--yellow); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .content { padding: 20px 20px; }
+    .chapter-hero { padding: 32px 20px 28px; }
+    .chapter-hero h1 { font-size: 36px; }
+    .chapter-nav-bar { margin-left: 0; padding: 20px; }
+  }
+
+  /* QUICK REF BADGE */
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 100px; margin-left: 8px; vertical-align: middle; }
+  .badge-blue { background: #DBEAFE; color: var(--blue); }
+  .badge-green { background: #DCFCE7; color: var(--green-dark); }
+  .badge-orange { background: #FFEDD5; color: var(--orange); }
+  .badge-purple { background: #EDE9FE; color: var(--purple); }
+
+  p { margin: 10px 0; font-size: 15px; }
+  ul, ol { margin: 10px 0 10px 22px; }
+  li { font-size: 14px; margin-bottom: 4px; line-height: 1.5; }
+
+  .anchor-offset { scroll-margin-top: 24px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 Integrated Revision Schedule</h1>
-            <p>First Year - Summer Assessment Revision</p>
-            <p class="subheader">Maths • Science • Geography • Business Studies</p>
-            <div class="sync-status" id="syncStatus">
-                <span id="syncText">💾 Ready to sync</span>
-            </div>
-        </header>
 
-        <main>
-            <!-- Info Box -->
-            <div class="info-box">
-                <h3>📖 About This Schedule</h3>
-                <p>This integrated revision plan covers <strong>52 chapters</strong> across 4 subjects over <strong>6 weeks (April 13 - May 18, 2026)</strong>. Track your progress - all changes are saved locally and synced to GitHub!</p>
-            </div>
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Science Revision</div>
+    <div class="book-title">Elements of Science – Unit 4</div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Physical World</div>
+    <a href="index.html" class="chapter-link active">Ch 29 · Energy</a>
+    <a href="#energy-basics">What is Energy?</a>
+    <a href="#forms">Forms of Energy</a>
+    <a href="#conservation">Conservation</a>
+    <a href="#sankey">Sankey Diagrams</a>
+    <a href="#efficiency">Efficiency &amp; Dissipation</a>
+    <a href="#problems">Practice Problems</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Other Chapters</div>
+    <a href="ch30.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 30 · Current Electricity</a>
+    <a href="#" style="color:rgba(255,255,255,0.3);font-size:13px;font-style:italic;">More chapters coming…</a>
+  </div>
+</nav>
 
-            <!-- Stats -->
-            <div class="stats">
-                <div class="stat-card">
-                    <h4>Maths</h4>
-                    <div class="stat-number">17</div>
-                    <p>Chapters</p>
-                </div>
-                <div class="stat-card">
-                    <h4>Science</h4>
-                    <div class="stat-number">13</div>
-                    <p>Chapters</p>
-                </div>
-                <div class="stat-card">
-                    <h4>Geography</h4>
-                    <div class="stat-number">6</div>
-                    <p>Chapters</p>
-                </div>
-                <div class="stat-card">
-                    <h4>Business Studies</h4>
-                    <div class="stat-number">16</div>
-                    <p>Chapters</p>
-                </div>
-            </div>
+<!-- MAIN -->
+<main class="main">
 
-            <!-- Controls -->
-            <div class="controls">
-                <button onclick="markAllComplete()">✓ Mark All Complete</button>
-                <button onclick="markAllIncomplete()" class="secondary">✗ Mark All Incomplete</button>
-                <button onclick="syncToGitHub()" class="sync-btn">☁️ Sync to GitHub</button>
-                <button onclick="resetData()" class="secondary">🔄 Reset All</button>
-            </div>
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 29 · Unit 4 – Physical World</div>
+    <h1>⚡ <span>Energy</span></h1>
+    <p class="chapter-meta">Elements of Science · Annual Exam Revision</p>
+    <div class="learning-goals">
+      <span class="goal-tag">✔ Calculate energy & work</span>
+      <span class="goal-tag">✔ Forms of energy</span>
+      <span class="goal-tag">✔ Conservation of energy</span>
+      <span class="goal-tag">✔ Sankey diagrams</span>
+      <span class="goal-tag">✔ Efficiency &amp; dissipation</span>
+    </div>
+  </div>
 
-            <!-- Week 1 -->
-            <div class="week-section">
-                <div class="week-header">
-                    <div>
-                        <h2>Week 1</h2>
-                        <p>April 13-19, 2026</p>
-                    </div>
-                    <div class="week-progress"><span id="week1-progress">0</span>/4 subjects done</div>
-                </div>
-                <div class="week-content">
-                    <!-- Maths Week 1 -->
-                    <div class="subject">
-                        <h3>📐 Maths</h3>
-                        <div class="chapter-info">Chapters: 1, 6, 14</div>
-                        <ul class="topic-list">
-                            <li class="topic-item"><input type="checkbox" id="w1-m1" data-week="1" data-subject="maths"><label for="w1-m1">Ch 1: Natural Numbers</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w1-m2" data-week="1" data-subject="maths"><label for="w1-m2">Ch 6: Sets</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w1-m3" data-week="1" data-subject="maths"><label for="w1-m3">Ch 14: Solving Equations</label></li>
-                        </ul>
-                    </div>
+  <div class="content">
 
-                    <!-- Science Week 1 -->
-                    <div class="subject science">
-                        <h3>🔬 Science</h3>
-                        <div class="chapter-info">Chapters: 3, 10</div>
-                        <ul class="topic-list">
-                            <li class="topic-item science"><input type="checkbox" id="w1-s1" data-week="1" data-subject="science"><label for="w1-s1">Ch 3: Cells</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w1-s2" data-week="1" data-subject="science"><label for="w1-s2">Ch 10: Human Health</label></li>
-                        </ul>
-                    </div>
-
-                    <!-- Geography Week 1 -->
-                    <div class="subject geography">
-                        <h3>🌍 Geography</h3>
-                        <div class="chapter-info">Chapter: 1</div>
-                        <ul class="topic-list">
-                            <li class="topic-item geography"><input type="checkbox" id="w1-g1" data-week="1" data-subject="geography"><label for="w1-g1">Ch 1: OS Maps</label></li>
-                        </ul>
-                    </div>
-
-                    <!-- Business Week 1 -->
-                    <div class="subject business">
-                        <h3>💼 Business Studies</h3>
-                        <div class="chapter-info">Chapters: 1 + 2</div>
-                        <ul class="topic-list">
-                            <li class="topic-item business"><input type="checkbox" id="w1-b1" data-week="1" data-subject="business"><label for="w1-b1">Types of resources</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b2" data-week="1" data-subject="business"><label for="w1-b2">Needs vs wants</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b3" data-week="1" data-subject="business"><label for="w1-b3">Opportunity vs financial costs</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b4" data-week="1" data-subject="business"><label for="w1-b4">Types of household income</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b5" data-week="1" data-subject="business"><label for="w1-b5">Types of wages</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b6" data-week="1" data-subject="business"><label for="w1-b6">Pay and deductions</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b7" data-week="1" data-subject="business"><label for="w1-b7">Overtime calculation</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w1-b8" data-week="1" data-subject="business"><label for="w1-b8">Payslips</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="daily-breakdown">
-                        <h4>Daily Breakdown:</h4>
-                        <div class="daily-item"><strong>Monday:</strong> Maths (Ch 1, 6) + Geography (Ch 1)</div>
-                        <div class="daily-item"><strong>Tuesday:</strong> Science (Ch 3, 10)</div>
-                        <div class="daily-item"><strong>Wednesday:</strong> Business Studies (Ch 1-2)</div>
-                        <div class="daily-item"><strong>Thursday:</strong> Review & Practice (all subjects)</div>
-                        <div class="daily-item"><strong>Friday-Sunday:</strong> Consolidation & weak areas</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 2 -->
-            <div class="week-section">
-                <div class="week-header">
-                    <div>
-                        <h2>Week 2</h2>
-                        <p>April 20-26, 2026</p>
-                    </div>
-                    <div class="week-progress"><span id="week2-progress">0</span>/4 subjects done</div>
-                </div>
-                <div class="week-content">
-                    <div class="subject">
-                        <h3>📐 Maths</h3>
-                        <div class="chapter-info">Chapters: 2, 3, 10, 13</div>
-                        <ul class="topic-list">
-                            <li class="topic-item"><input type="checkbox" id="w2-m1" data-week="2" data-subject="maths"><label for="w2-m1">Ch 2: Integers</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w2-m2" data-week="2" data-subject="maths"><label for="w2-m2">Ch 3: Fractions</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w2-m3" data-week="2" data-subject="maths"><label for="w2-m3">Ch 10: Geometry 1</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w2-m4" data-week="2" data-subject="maths"><label for="w2-m4">Ch 13: Coordinates</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject science">
-                        <h3>🔬 Science</h3>
-                        <div class="chapter-info">Chapters: 14, 15</div>
-                        <ul class="topic-list">
-                            <li class="topic-item science"><input type="checkbox" id="w2-s1" data-week="2" data-subject="science"><label for="w2-s1">Ch 14: States of Matter</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w2-s2" data-week="2" data-subject="science"><label for="w2-s2">Ch 15: Chemical and Physical Change</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject geography">
-                        <h3>🌍 Geography</h3>
-                        <div class="chapter-info">Chapter: 2</div>
-                        <ul class="topic-list">
-                            <li class="topic-item geography"><input type="checkbox" id="w2-g1" data-week="2" data-subject="geography"><label for="w2-g1">Ch 2: Earth's Surface</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject business">
-                        <h3>💼 Business Studies</h3>
-                        <div class="chapter-info">Chapters: 3 + 4</div>
-                        <ul class="topic-list">
-                            <li class="topic-item business"><input type="checkbox" id="w2-b1" data-week="2" data-subject="business"><label for="w2-b1">Types of expenditure</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b2" data-week="2" data-subject="business"><label for="w2-b2">Guidelines for effective spending</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b3" data-week="2" data-subject="business"><label for="w2-b3">Impulse buying and false economies</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b4" data-week="2" data-subject="business"><label for="w2-b4">Solutions to overspending</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b5" data-week="2" data-subject="business"><label for="w2-b5">Why prepare a budget</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b6" data-week="2" data-subject="business"><label for="w2-b6">Recording income and expenditure</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b7" data-week="2" data-subject="business"><label for="w2-b7">Opening, closing and net cash calculations</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w2-b8" data-week="2" data-subject="business"><label for="w2-b8">Dealing with budget surpluses and deficits</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="daily-breakdown">
-                        <h4>Daily Breakdown:</h4>
-                        <div class="daily-item"><strong>Monday:</strong> Maths (Ch 2, 3) + Geography (Ch 2)</div>
-                        <div class="daily-item"><strong>Tuesday:</strong> Science (Ch 14, 15)</div>
-                        <div class="daily-item"><strong>Wednesday:</strong> Business Studies (Ch 3-4)</div>
-                        <div class="daily-item"><strong>Thursday:</strong> Review & Practice (all subjects)</div>
-                        <div class="daily-item"><strong>Friday-Sunday:</strong> Consolidation & weak areas</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 3 -->
-            <div class="week-section">
-                <div class="week-header">
-                    <div>
-                        <h2>Week 3</h2>
-                        <p>April 27 - May 3, 2026</p>
-                    </div>
-                    <div class="week-progress"><span id="week3-progress">0</span>/4 subjects done</div>
-                </div>
-                <div class="week-content">
-                    <div class="subject">
-                        <h3>📐 Maths</h3>
-                        <div class="chapter-info">Chapters: 4, 8, 15</div>
-                        <ul class="topic-list">
-                            <li class="topic-item"><input type="checkbox" id="w3-m1" data-week="3" data-subject="maths"><label for="w3-m1">Ch 4: Probability</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w3-m2" data-week="3" data-subject="maths"><label for="w3-m2">Ch 8: Algebra</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w3-m3" data-week="3" data-subject="maths"><label for="w3-m3">Ch 15: Geometry 2</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject science">
-                        <h3>🔬 Science</h3>
-                        <div class="chapter-info">Chapters: 25, 26</div>
-                        <ul class="topic-list">
-                            <li class="topic-item science"><input type="checkbox" id="w3-s1" data-week="3" data-subject="science"><label for="w3-s1">Ch 25: Measurements</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w3-s2" data-week="3" data-subject="science"><label for="w3-s2">Ch 26: Density</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject geography">
-                        <h3>🌍 Geography</h3>
-                        <div class="chapter-info">Chapter: 3</div>
-                        <ul class="topic-list">
-                            <li class="topic-item geography"><input type="checkbox" id="w3-g1" data-week="3" data-subject="geography"><label for="w3-g1">Ch 3: Rocks</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject business">
-                        <h3>💼 Business Studies</h3>
-                        <div class="chapter-info">Chapters: 12 + 13</div>
-                        <ul class="topic-list">
-                            <li class="topic-item business"><input type="checkbox" id="w3-b1" data-week="3" data-subject="business"><label for="w3-b1">Being a wise consumer</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b2" data-week="3" data-subject="business"><label for="w3-b2">Unit pricing</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b3" data-week="3" data-subject="business"><label for="w3-b3">Sale of Goods and Supply of Services Act 1980</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b4" data-week="3" data-subject="business"><label for="w3-b4">Types of redress</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b5" data-week="3" data-subject="business"><label for="w3-b5">Consumer Protection Act 2007</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b6" data-week="3" data-subject="business"><label for="w3-b6">Writing an email of complaint</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b7" data-week="3" data-subject="business"><label for="w3-b7">Consumer agencies</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b8" data-week="3" data-subject="business"><label for="w3-b8">Renewable vs non-renewable resources</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b9" data-week="3" data-subject="business"><label for="w3-b9">Sustainable consumption</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b10" data-week="3" data-subject="business"><label for="w3-b10">Ethical consumer and ethical goods</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w3-b11" data-week="3" data-subject="business"><label for="w3-b11">Fair trade</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="daily-breakdown">
-                        <h4>Daily Breakdown:</h4>
-                        <div class="daily-item"><strong>Monday:</strong> Maths (Ch 4, 8, 15) + Geography (Ch 3)</div>
-                        <div class="daily-item"><strong>Tuesday:</strong> Science (Ch 25, 26)</div>
-                        <div class="daily-item"><strong>Wednesday:</strong> Business Studies (Ch 12-13)</div>
-                        <div class="daily-item"><strong>Thursday:</strong> Review & Practice (all subjects)</div>
-                        <div class="daily-item"><strong>Friday-Sunday:</strong> Consolidation & weak areas</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 4 -->
-            <div class="week-section">
-                <div class="week-header">
-                    <div>
-                        <h2>Week 4</h2>
-                        <p>May 4-10, 2026</p>
-                    </div>
-                    <div class="week-progress"><span id="week4-progress">0</span>/4 subjects done</div>
-                </div>
-                <div class="week-content">
-                    <div class="subject">
-                        <h3>📐 Maths</h3>
-                        <div class="chapter-info">Chapters: 5, 7, 9</div>
-                        <ul class="topic-list">
-                            <li class="topic-item"><input type="checkbox" id="w4-m1" data-week="4" data-subject="maths"><label for="w4-m1">Ch 5: Decimals</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w4-m2" data-week="4" data-subject="maths"><label for="w4-m2">Ch 7: Percentages</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w4-m3" data-week="4" data-subject="maths"><label for="w4-m3">Ch 9: Area, Perimeter, Volume</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject science">
-                        <h3>🔬 Science</h3>
-                        <div class="chapter-info">Chapters: 16, 17, 18</div>
-                        <ul class="topic-list">
-                            <li class="topic-item science"><input type="checkbox" id="w4-s1" data-week="4" data-subject="science"><label for="w4-s1">Ch 16: Atoms and Elements</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w4-s2" data-week="4" data-subject="science"><label for="w4-s2">Ch 17: Compounds, Mixtures & Separation</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w4-s3" data-week="4" data-subject="science"><label for="w4-s3">Ch 18: Solutions and Solubility</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject geography">
-                        <h3>🌍 Geography</h3>
-                        <div class="chapter-info">Chapter: 6</div>
-                        <ul class="topic-list">
-                            <li class="topic-item geography"><input type="checkbox" id="w4-g1" data-week="4" data-subject="geography"><label for="w4-g1">Ch 6: Mass Movement + Weathering</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject business">
-                        <h3>💼 Business Studies</h3>
-                        <div class="chapter-info">Chapters: 15 + 16</div>
-                        <ul class="topic-list">
-                            <li class="topic-item business"><input type="checkbox" id="w4-b1" data-week="4" data-subject="business"><label for="w4-b1">Definition of enterprise, entrepreneur, intrapreneur</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b2" data-week="4" data-subject="business"><label for="w4-b2">Enterprise all around us</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b3" data-week="4" data-subject="business"><label for="w4-b3">Entrepreneurial skills and characteristics</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b4" data-week="4" data-subject="business"><label for="w4-b4">Risks and rewards of being an entrepreneur</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b5" data-week="4" data-subject="business"><label for="w4-b5">Role of entrepreneur</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b6" data-week="4" data-subject="business"><label for="w4-b6">Internal and external sources of business ideas</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b7" data-week="4" data-subject="business"><label for="w4-b7">Product development process</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b8" data-week="4" data-subject="business"><label for="w4-b8">Types of enterprise plus examples</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b9" data-week="4" data-subject="business"><label for="w4-b9">Role of each</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w4-b10" data-week="4" data-subject="business"><label for="w4-b10">Supports for each</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="daily-breakdown">
-                        <h4>Daily Breakdown:</h4>
-                        <div class="daily-item"><strong>Monday:</strong> Maths (Ch 5, 7, 9) + Geography (Ch 6)</div>
-                        <div class="daily-item"><strong>Tuesday:</strong> Science (Ch 16, 17, 18)</div>
-                        <div class="daily-item"><strong>Wednesday:</strong> Business Studies (Ch 15-16)</div>
-                        <div class="daily-item"><strong>Thursday:</strong> Review & Practice (all subjects)</div>
-                        <div class="daily-item"><strong>Friday-Sunday:</strong> Consolidation & weak areas</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 5 -->
-            <div class="week-section">
-                <div class="week-header">
-                    <div>
-                        <h2>Week 5</h2>
-                        <p>May 11-17, 2026</p>
-                    </div>
-                    <div class="week-progress"><span id="week5-progress">0</span>/4 subjects done</div>
-                </div>
-                <div class="week-content">
-                    <div class="subject">
-                        <h3>📐 Maths</h3>
-                        <div class="chapter-info">Chapters: 11, 12, 16, 17</div>
-                        <ul class="topic-list">
-                            <li class="topic-item"><input type="checkbox" id="w5-m1" data-week="5" data-subject="maths"><label for="w5-m1">Ch 11: Ratio and Proportion</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w5-m2" data-week="5" data-subject="maths"><label for="w5-m2">Ch 12: Statistics</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w5-m3" data-week="5" data-subject="maths"><label for="w5-m3">Ch 16: Presenting Data</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w5-m4" data-week="5" data-subject="maths"><label for="w5-m4">Ch 17: Transformation Geometry</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject science">
-                        <h3>🔬 Science</h3>
-                        <div class="chapter-info">Chapters: 29, 39</div>
-                        <ul class="topic-list">
-                            <li class="topic-item science"><input type="checkbox" id="w5-s1" data-week="5" data-subject="science"><label for="w5-s1">Ch 29: Energy</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w5-s2" data-week="5" data-subject="science"><label for="w5-s2">Ch 39: Energy Sources and Future Needs</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject geography">
-                        <h3>🌍 Geography</h3>
-                        <div class="chapter-info">Chapter: 4</div>
-                        <ul class="topic-list">
-                            <li class="topic-item geography"><input type="checkbox" id="w5-g1" data-week="5" data-subject="geography"><label for="w5-g1">Ch 4: Primary Economic Activities</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject business">
-                        <h3>💼 Business Studies</h3>
-                        <div class="chapter-info">Chapters: 6 + 7</div>
-                        <ul class="topic-list">
-                            <li class="topic-item business"><input type="checkbox" id="w5-b1" data-week="5" data-subject="business"><label for="w5-b1">Current accounts</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w5-b2" data-week="5" data-subject="business"><label for="w5-b2">Direct debit vs standing order</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w5-b3" data-week="5" data-subject="business"><label for="w5-b3">Bank statements (continuous balancing)</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w5-b4" data-week="5" data-subject="business"><label for="w5-b4">Reasons for saving money</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w5-b5" data-week="5" data-subject="business"><label for="w5-b5">Factors to consider when saving money</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w5-b6" data-week="5" data-subject="business"><label for="w5-b6">Types of deposit accounts</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w5-b7" data-week="5" data-subject="business"><label for="w5-b7">Calculating simple and compound interest</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="daily-breakdown">
-                        <h4>Daily Breakdown:</h4>
-                        <div class="daily-item"><strong>Monday:</strong> Maths (Ch 11, 12, 16, 17) + Geography (Ch 4)</div>
-                        <div class="daily-item"><strong>Tuesday:</strong> Science (Ch 29, 39)</div>
-                        <div class="daily-item"><strong>Wednesday:</strong> Business Studies (Ch 6-7)</div>
-                        <div class="daily-item"><strong>Thursday:</strong> Review & Practice (all subjects)</div>
-                        <div class="daily-item"><strong>Friday-Sunday:</strong> Consolidation & weak areas</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 6 -->
-            <div class="week-section">
-                <div class="week-header">
-                    <div>
-                        <h2>Week 6</h2>
-                        <p>May 18-24, 2026 (FINAL WEEK)</p>
-                    </div>
-                    <div class="week-progress"><span id="week6-progress">0</span>/4 subjects done</div>
-                </div>
-                <div class="week-content">
-                    <div class="subject">
-                        <h3>📐 Maths</h3>
-                        <div class="chapter-info">Consolidation/Review</div>
-                        <ul class="topic-list">
-                            <li class="topic-item"><input type="checkbox" id="w6-m1" data-week="6" data-subject="maths"><label for="w6-m1">Review all 17 chapters</label></li>
-                            <li class="topic-item"><input type="checkbox" id="w6-m2" data-week="6" data-subject="maths"><label for="w6-m2">Practice exam questions</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject science">
-                        <h3>🔬 Science</h3>
-                        <div class="chapter-info">Chapters: 34, 35</div>
-                        <ul class="topic-list">
-                            <li class="topic-item science"><input type="checkbox" id="w6-s1" data-week="6" data-subject="science"><label for="w6-s1">Ch 34: Celestial Objects</label></li>
-                            <li class="topic-item science"><input type="checkbox" id="w6-s2" data-week="6" data-subject="science"><label for="w6-s2">Ch 35: The Origin of the Universe</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject geography">
-                        <h3>🌍 Geography</h3>
-                        <div class="chapter-info">Chapter: 5</div>
-                        <ul class="topic-list">
-                            <li class="topic-item geography"><input type="checkbox" id="w6-g1" data-week="6" data-subject="geography"><label for="w6-g1">Ch 5: Energy and Environment (TBC)</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject business">
-                        <h3>💼 Business Studies</h3>
-                        <div class="chapter-info">Chapter: 9</div>
-                        <ul class="topic-list">
-                            <li class="topic-item business"><input type="checkbox" id="w6-b1" data-week="6" data-subject="business"><label for="w6-b1">Principles of insurance</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w6-b2" data-week="6" data-subject="business"><label for="w6-b2">Types of insurance</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w6-b3" data-week="6" data-subject="business"><label for="w6-b3">Factors affecting cost of insurance</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w6-b4" data-week="6" data-subject="business"><label for="w6-b4">Calculating insurance premiums</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w6-b5" data-week="6" data-subject="business"><label for="w6-b5">Calculating average clause</label></li>
-                            <li class="topic-item business"><input type="checkbox" id="w6-b6" data-week="6" data-subject="business"><label for="w6-b6">Jobs in insurance</label></li>
-                        </ul>
-                    </div>
-
-                    <div class="daily-breakdown">
-                        <h4>Daily Breakdown:</h4>
-                        <div class="daily-item"><strong>Monday:</strong> Maths Consolidation + Geography (Ch 5)</div>
-                        <div class="daily-item"><strong>Tuesday:</strong> Science (Ch 34, 35)</div>
-                        <div class="daily-item"><strong>Wednesday:</strong> Business Studies (Ch 9)</div>
-                        <div class="daily-item"><strong>Thursday:</strong> Final Review & Practice (all subjects)</div>
-                        <div class="daily-item"><strong>Friday-Sunday:</strong> Final Consolidation & Exam Preparation</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tips Section -->
-            <div class="tips-section">
-                <h2>💡 Study Tips & Strategies</h2>
-                <div class="tips-grid">
-                    <div class="tip-card">
-                        <h4>Maths Tips</h4>
-                        <ul>
-                            <li>Practice problems daily</li>
-                            <li>Keep a mistakes notebook</li>
-                            <li>Work through solutions step-by-step</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h4>Science Tips</h4>
-                        <ul>
-                            <li>Create labeled diagrams</li>
-                            <li>Understand the 'why' behind processes</li>
-                            <li>Use color coding</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h4>Geography Tips</h4>
-                        <ul>
-                            <li>Practice map reading</li>
-                            <li>Create case study flashcards</li>
-                            <li>Draw and label diagrams</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h4>Business Tips</h4>
-                        <ul>
-                            <li>Learn definitions precisely</li>
-                            <li>Create comparison tables</li>
-                            <li>Apply to real examples</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h4>General Strategies</h4>
-                        <ul>
-                            <li>Use Pomodoro technique</li>
-                            <li>Create mind maps</li>
-                            <li>Make flashcards</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h4>Exam Prep</h4>
-                        <ul>
-                            <li>Practice past papers</li>
-                            <li>Get 7-8 hours sleep</li>
-                            <li>Review weak areas</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Progress Tracker -->
-            <div class="progress-tracker">
-                <h2>📊 Weekly Progress Tracker</h2>
-                <table class="progress-table">
-                    <thead>
-                        <tr>
-                            <th>Week</th>
-                            <th class="progress-cell">Maths</th>
-                            <th class="progress-cell">Science</th>
-                            <th class="progress-cell">Geography</th>
-                            <th class="progress-cell">Business</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Week 1 (Apr 13)</td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w1-m" data-week="1" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w1-s" data-week="1" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w1-g" data-week="1" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w1-b" data-week="1" data-type="week-progress"></td>
-                        </tr>
-                        <tr>
-                            <td>Week 2 (Apr 20)</td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w2-m" data-week="2" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w2-s" data-week="2" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w2-g" data-week="2" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w2-b" data-week="2" data-type="week-progress"></td>
-                        </tr>
-                        <tr>
-                            <td>Week 3 (Apr 27)</td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w3-m" data-week="3" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w3-s" data-week="3" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w3-g" data-week="3" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w3-b" data-week="3" data-type="week-progress"></td>
-                        </tr>
-                        <tr>
-                            <td>Week 4 (May 4)</td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w4-m" data-week="4" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w4-s" data-week="4" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w4-g" data-week="4" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w4-b" data-week="4" data-type="week-progress"></td>
-                        </tr>
-                        <tr>
-                            <td>Week 5 (May 11)</td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w5-m" data-week="5" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w5-s" data-week="5" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w5-g" data-week="5" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w5-b" data-week="5" data-type="week-progress"></td>
-                        </tr>
-                        <tr>
-                            <td>Week 6 (May 18)</td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w6-m" data-week="6" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w6-s" data-week="6" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w6-g" data-week="6" data-type="week-progress"></td>
-                            <td class="progress-cell"><input type="checkbox" id="progress-w6-b" data-week="6" data-type="week-progress"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Exam Preparation Checklist -->
-            <div style="margin: 40px 0;">
-                <h2 style="color: #667eea; margin-bottom: 20px;">✅ Exam Preparation Checklist</h2>
-                <ul class="checklist">
-                    <li><input type="checkbox" id="exam-1" data-type="exam-checklist"><label for="exam-1">Complete all chapter revisions by end of Week 6</label></li>
-                    <li><input type="checkbox" id="exam-2" data-type="exam-checklist"><label for="exam-2">Do at least 2 full practice papers per subject</label></li>
-                    <li><input type="checkbox" id="exam-3" data-type="exam-checklist"><label for="exam-3">Review weak areas identified during revision</label></li>
-                    <li><input type="checkbox" id="exam-4" data-type="exam-checklist"><label for="exam-4">Memorize key formulas (Maths) and definitions (all subjects)</label></li>
-                    <li><input type="checkbox" id="exam-5" data-type="exam-checklist"><label for="exam-5">Practice writing exam-style answers (Business Studies essays)</label></li>
-                    <li><input type="checkbox" id="exam-6" data-type="exam-checklist"><label for="exam-6">Create summary sheets for each chapter</label></li>
-                    <li><input type="checkbox" id="exam-7" data-type="exam-checklist"><label for="exam-7">Get adequate sleep before exam day (7-8 hours)</label></li>
-                    <li><input type="checkbox" id="exam-8" data-type="exam-checklist"><label for="exam-8">Review notes the morning of each exam</label></li>
-                    <li><input type="checkbox" id="exam-9" data-type="exam-checklist"><label for="exam-9">Organize exam materials the night before</label></li>
-                </ul>
-            </div>
-
-        </main>
-
-        <footer>
-            <p><span class="footer-highlight">Remember:</span> Consistent effort over 6 weeks beats last-minute cramming!</p>
-            <p>💪 You've got this! Good luck with your exams!</p>
-            <p style="margin-top: 20px; font-size: 0.9em; color: #999;">
-                💾 Progress saved locally + ☁️ Synced to GitHub via Actions
-            </p>
-        </footer>
+    <!-- ═══ QUICK GLOSSARY ═══ -->
+    <div class="section-heading anchor-offset" id="energy-basics">
+      <span class="icon">📖</span> Key Terms at a Glance
+    </div>
+    <div class="glossary">
+      <div class="glossary-item"><div class="g-term">Energy</div><div class="g-def">The ability to do work. SI unit: <strong>joule (J)</strong>.</div></div>
+      <div class="glossary-item"><div class="g-term">Work</div><div class="g-def">Work done = force × distance. Same unit as energy: joule (J).</div></div>
+      <div class="glossary-item"><div class="g-term">Potential Energy</div><div class="g-def">Energy stored by an object due to its <em>position or shape</em>.</div></div>
+      <div class="glossary-item"><div class="g-term">Kinetic Energy</div><div class="g-def">Energy of an object due to its <em>motion</em>.</div></div>
+      <div class="glossary-item"><div class="g-term">Conservation of Energy</div><div class="g-def">Energy cannot be created or destroyed — only converted.</div></div>
+      <div class="glossary-item"><div class="g-term">Efficiency</div><div class="g-def">How well a device converts energy into a useful form.</div></div>
+      <div class="glossary-item"><div class="g-term">Dissipation</div><div class="g-def">Wasted energy (usually as heat) that does no useful work.</div></div>
+      <div class="glossary-item"><div class="g-term">Sankey Diagram</div><div class="g-def">Arrow diagram showing useful vs. wasted energy.</div></div>
     </div>
 
-    <script>
-        const GITHUB_CONFIG = {
-            owner: 'code-n-share',  // Change this to your GitHub username
-            repo: 'integrated-revision-schedule',
-            file: 'progress.json',
-            branch: 'main'
-        };
+    <!-- ═══ WHAT IS ENERGY ═══ -->
+    <div class="section-heading anchor-offset" id="energy-basics-detail">
+      <span class="icon">⚡</span> What is Energy?
+    </div>
 
-        // Initialize localStorage
-        function initializeStorage() {
-            if (!localStorage.getItem('revisionSchedule')) {
-                localStorage.setItem('revisionSchedule', JSON.stringify({}));
-            }
-        }
+    <div class="key-term">
+      <div class="term">Energy</div>
+      <div class="definition"><strong>Energy is the ability to do work.</strong> The SI unit of energy is the <strong>joule (J)</strong>.</div>
+      <div class="simpler">💡 Think of energy as "stored ability" — a stretched elastic band, a held ball, a charged battery all have stored energy.</div>
+    </div>
 
-        // Save checkbox state to localStorage
-        function saveCheckboxState(checkboxId, isChecked) {
-            let data = JSON.parse(localStorage.getItem('revisionSchedule') || '{}');
-            data[checkboxId] = isChecked;
-            localStorage.setItem('revisionSchedule', JSON.stringify(data));
-            updateProgress();
-        }
+    <div class="sub-heading">Calculating Work (Energy Used)</div>
+    <p>To find the energy needed to move or lift something:</p>
 
-        // Load checkbox states from localStorage
-        function loadCheckboxStates() {
-            const data = JSON.parse(localStorage.getItem('revisionSchedule') || '{}');
-            Object.keys(data).forEach(checkboxId => {
-                const checkbox = document.getElementById(checkboxId);
-                if (checkbox) {
-                    checkbox.checked = data[checkboxId];
-                }
-            });
-            updateProgress();
-        }
+    <div class="formula-box">
+      <div class="label">Formula</div>
+      work = force × distance
+    </div>
 
-        // Update progress counters
-        function updateProgress() {
-            for (let week = 1; week <= 6; week++) {
-                updateWeekProgress(week);
-            }
-        }
+    <div class="concentrate">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <strong>CONCENTRATE!</strong>
+        Work is calculated the same way whether something is moved <em>along the ground</em> or <em>lifted upward</em>. Always multiply force (N) × distance (m) to get joules (J).
+      </div>
+    </div>
 
-        function updateWeekProgress(week) {
-            let totalSubjects = 0;
-            let completedSubjects = 0;
-            const subjects = ['maths', 'science', 'geography', 'business'];
+    <div class="example-box">
+      <div class="example-header">📘 Example 1</div>
+      <div class="example-body">
+        <div class="q">Calculate the energy required to move a 20 N box 5 metres.</div>
+        <div class="steps">work = force × distance
+work = 20 N × 5 m
+work = <strong>100 J</strong></div>
+        <div class="simpler-note"><strong>Simple explanation:</strong> Force is 20 N (like the weight of the push needed) and distance is 5 m. Multiply both → 100 joules of energy needed.</div>
+      </div>
+    </div>
 
-            subjects.forEach(subject => {
-                totalSubjects++;
-                const selector = `input[data-week="${week}"][data-subject="${subject}"]`;
-                const checkboxes = document.querySelectorAll(selector);
-                let allChecked = checkboxes.length > 0 && Array.from(checkboxes).every(cb => cb.checked);
-                if (allChecked && checkboxes.length > 0) {
-                    completedSubjects++;
-                }
-            });
+    <div class="example-box">
+      <div class="example-header">📘 Example 2</div>
+      <div class="example-body">
+        <div class="q">Calculate the energy required to lift a 250 N person 0.5 metres up in the air.</div>
+        <div class="steps">work = force × distance
+work = 250 N × 0.5 m
+work = <strong>125 J</strong></div>
+        <div class="simpler-note"><strong>Simple explanation:</strong> The person weighs 250 N. Even though lifted only 0.5 m, we still use the same formula — 125 J of energy is needed.</div>
+      </div>
+    </div>
 
-            const progressElement = document.getElementById(`week${week}-progress`);
-            if (progressElement) {
-                progressElement.textContent = completedSubjects;
-            }
-        }
+    <div class="eureka">
+      <div class="eur-icon">💡</div>
+      <div>
+        <div class="eur-title">Eureka – James Joule (1818–1889)</div>
+        <div class="eur-text">James Joule made major discoveries in electricity, electromagnetism, and heat. The unit of energy — the <strong>joule (J)</strong> — is named in his honour.</div>
+      </div>
+    </div>
 
-        // Attach event listeners to all checkboxes
-        function attachCheckboxListeners() {
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    saveCheckboxState(this.id, this.checked);
-                });
-            });
-        }
+    <!-- ═══ FORMS OF ENERGY ═══ -->
+    <div class="section-heading anchor-offset" id="forms">
+      <span class="icon">🔋</span> Forms of Energy
+    </div>
+    <p>All energy is either <strong>potential</strong>, <strong>kinetic</strong>, or both — depending on the object and what it is doing.</p>
 
-        // Mark all complete
-        function markAllComplete() {
-            document.querySelectorAll('input[type="checkbox"]:not([data-type])').forEach(checkbox => {
-                checkbox.checked = true;
-                saveCheckboxState(checkbox.id, true);
-            });
-            showToast('✓ All items marked as complete!');
-        }
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">⬆️</div>
+        <div class="card-title">Potential Energy <span class="badge badge-blue">stored</span></div>
+        <div class="card-def"><strong>Energy stored by an object due to its position or shape.</strong> If an object is lifted or pulled out of shape, its potential energy increases.</div>
+        <div class="card-simpler">Examples: a raised ball, a stretched bow, water at top of a waterfall.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏃</div>
+        <div class="card-title">Kinetic Energy <span class="badge badge-green">motion</span></div>
+        <div class="card-def"><strong>Energy of an object due to its motion.</strong> Greater speed = more kinetic energy. Greater mass = more kinetic energy.</div>
+        <div class="card-simpler">Examples: a moving car, a falling stone, a flowing river.</div>
+      </div>
+    </div>
 
-        // Mark all incomplete
-        function markAllIncomplete() {
-            document.querySelectorAll('input[type="checkbox"]:not([data-type])').forEach(checkbox => {
-                checkbox.checked = false;
-                saveCheckboxState(checkbox.id, false);
-            });
-            showToast('✗ All items marked as incomplete!');
-        }
+    <div class="sub-heading">Other Forms of Energy</div>
+    <table class="energy-table">
+      <thead>
+        <tr><th>Form</th><th>Definition (from textbook)</th><th>Simple Example</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="emoji">☀️</span><br><span class="type-name">Light</span></td>
+          <td>The main source of energy for our planet is light from the Sun. Allows plants to grow and produce food during photosynthesis; can power solar cells.</td>
+          <td>Sunlight, torch, solar panel</td>
+        </tr>
+        <tr>
+          <td><span class="emoji">🔥</span><br><span class="type-name">Chemical</span></td>
+          <td>Present in food, batteries, fuel, explosives and plants during photosynthesis. When food is eaten or fuel burned, chemical energy changes form.</td>
+          <td>Eating food, burning petrol, battery</td>
+        </tr>
+        <tr>
+          <td><span class="emoji">🌡️</span><br><span class="type-name">Heat</span></td>
+          <td>Stored in objects due to changing temperature. As objects heat up, particles vibrate faster. Can be used to power turbines using steam.</td>
+          <td>Hot stove, steam engine, fire</td>
+        </tr>
+        <tr>
+          <td><span class="emoji">🔊</span><br><span class="type-name">Sound</span></td>
+          <td>Travels by vibrating atoms in a material. Atoms are pushed out of place and spring back after the sound passes.</td>
+          <td>Speaker, thunder, clapping</td>
+        </tr>
+        <tr>
+          <td><span class="emoji">⚡</span><br><span class="type-name">Electrical</span></td>
+          <td>From moving electrons (charged particles). Can be converted into many other forms depending on the device (heaters, speakers, TVs, ovens).</td>
+          <td>Wall socket, lightning, battery power</td>
+        </tr>
+        <tr>
+          <td><span class="emoji">☢️</span><br><span class="type-name">Nuclear</span></td>
+          <td>Stored in the nucleus. When nucleus is split or joined with another, massive energy is released as heat and light. Used in power stations and weapons.</td>
+          <td>Nuclear power plant, atomic bomb</td>
+        </tr>
+      </tbody>
+    </table>
 
-        // Reset data
-        function resetData() {
-            if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
-                localStorage.removeItem('revisionSchedule');
-                location.reload();
-            }
-        }
+    <!-- ═══ CONSERVATION ═══ -->
+    <div class="section-heading anchor-offset" id="conservation">
+      <span class="icon">♻️</span> Conservation of Energy
+    </div>
 
-        // Sync to GitHub
-        async function syncToGitHub() {
-            const statusElement = document.getElementById('syncStatus');
-            const syncText = document.getElementById('syncText');
+    <div class="key-term">
+      <div class="term">Principle of Conservation of Energy</div>
+      <div class="definition"><strong>Energy cannot be created or destroyed, but only converted from one form to another.</strong></div>
+      <div class="simpler">💡 When energy seems to "disappear" (e.g., a ball stops bouncing), it has been converted — mostly to heat. The total always stays the same.</div>
+    </div>
 
-            // Check if token is configured
-            if (GITHUB_CONFIG.owner === 'code-n-share') {
-                showToast('⚠️ Please configure your GitHub username first!', 'error');
-                return;
-            }
+    <div class="sub-heading">Energy Conversion Chain — Real World Examples</div>
 
-            updateSyncStatus('syncing', '⏳ Syncing to GitHub...');
+    <div style="margin-bottom:12px;">
+      <p><strong>🚲 Cyclist powered by solar:</strong></p>
+      <div class="flow-chain">
+        <div class="flow-node">☀️ Solar<br>(Light)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">🌿 Chemical<br>(Plant/Food)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node highlight">🚴 Kinetic<br>(Motion)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node heat">🔥 Heat<br>(Wasted)</div>
+      </div>
+    </div>
 
-            try {
-                const data = JSON.parse(localStorage.getItem('revisionSchedule') || '{}');
-                const timestamp = new Date().toISOString();
+    <div style="margin-bottom:12px;">
+      <p><strong>📺 Television:</strong></p>
+      <div class="flow-chain">
+        <div class="flow-node">⚡ Electrical</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node highlight">💡 Light + 🔊 Sound<br>(Useful)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node heat">🔥 Heat<br>(Wasted)</div>
+      </div>
+    </div>
 
-                const progressData = {
-                    lastUpdated: timestamp,
-                    progress: data,
-                    totalItems: Object.keys(data).length,
-                    completedItems: Object.values(data).filter(v => v === true).length
-                };
+    <div style="margin-bottom:12px;">
+      <p><strong>🔋 Torch (Battery):</strong></p>
+      <div class="flow-chain">
+        <div class="flow-node">⚗️ Chemical<br>(Battery)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node highlight">💡 Light<br>(Useful)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node heat">🔥 Heat<br>(Wasted)</div>
+      </div>
+    </div>
 
-                // In a real scenario, you would send this to a GitHub Actions API
-                // For now, we'll just log it
-                console.log('Progress data to be synced:', progressData);
+    <div class="concentrate">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <strong>CONCENTRATE!</strong>
+        There may be MORE THAN ONE type of energy at any stage. Example: striking a match converts kinetic energy of moving the match AND chemical energy stored in the match → light + heat + sound.
+      </div>
+    </div>
 
-                // Store sync timestamp
-                localStorage.setItem('lastSyncTime', timestamp);
+    <!-- ═══ SANKEY DIAGRAMS ═══ -->
+    <div class="section-heading anchor-offset" id="sankey">
+      <span class="icon">📊</span> Sankey Diagrams
+    </div>
 
-                updateSyncStatus('synced', '✓ Synced to GitHub!');
-                showToast('✓ Progress synced to GitHub successfully!');
+    <div class="key-term">
+      <div class="term">Sankey Diagram</div>
+      <div class="definition">A Sankey diagram <strong>shows how the energy that flows into a device is used and dissipated.</strong></div>
+      <div class="simpler">💡 Think of it like a river of energy — the main stream goes in, some goes out usefully (straight), some is wasted (curves downward). <strong>Wider arrow = more energy.</strong></div>
+    </div>
 
-                // Reset status after 3 seconds
-                setTimeout(() => {
-                    updateSyncStatus('syncing', '💾 Ready to sync');
-                }, 3000);
+    <p>Rules for reading a Sankey diagram:</p>
+    <ul>
+      <li>➡️ Straight arrow going <strong>in</strong> = energy flowing <em>into</em> the device</li>
+      <li>➡️ Straight arrow going <strong>out</strong> = energy converted <em>usefully</em></li>
+      <li>⬇️ Curved arrow pointing <strong>downward</strong> = energy <em>dissipated (wasted)</em></li>
+      <li>The <strong>thickness</strong> of each arrow shows how much energy it represents</li>
+    </ul>
 
-            } catch (error) {
-                console.error('Sync error:', error);
-                updateSyncStatus('error', '✗ Sync failed');
-                showToast('✗ Failed to sync to GitHub', 'error');
-            }
-        }
+    <div class="sub-heading">Sankey Diagram: Filament Bulb vs CFL</div>
 
-        function updateSyncStatus(status, text) {
-            const statusElement = document.getElementById('syncStatus');
-            const syncText = document.getElementById('syncText');
-            
-            statusElement.className = `sync-status ${status}`;
-            syncText.textContent = text;
-        }
+    <div class="sankey-container">
+      <h3>⚡ Filament Bulb (less efficient)</h3>
+      <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;">
+        <!-- Input arrow -->
+        <rect x="0" y="50" width="160" height="60" fill="#1A1A2E" rx="4"/>
+        <text x="80" y="76" text-anchor="middle" fill="white" font-size="13" font-family="'Sora',sans-serif" font-weight="700">Electrical</text>
+        <text x="80" y="93" text-anchor="middle" fill="#F5C800" font-size="13" font-family="'JetBrains Mono',monospace" font-weight="600">100 J</text>
+        <!-- Arrow body -->
+        <rect x="160" y="55" width="120" height="50" fill="#2d3561"/>
+        <!-- Useful: 10J light -->
+        <polygon points="280,55 280,80 420,80 420,55" fill="#4CAF50"/>
+        <text x="350" y="72" text-anchor="middle" fill="white" font-size="11" font-family="'Sora',sans-serif" font-weight="600">Light 10 J</text>
+        <!-- Wasted: 90J heat -->
+        <path d="M280 105 Q340 130 420 140" stroke="#E65100" stroke-width="28" fill="none" stroke-linecap="round"/>
+        <text x="360" y="148" text-anchor="middle" fill="#E65100" font-size="11" font-family="'Sora',sans-serif" font-weight="700">Heat 90 J</text>
+      </svg>
 
-        // Show toast notification
-        function showToast(message, type = 'success') {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type === 'error' ? 'error' : ''}`;
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
+      <h3 style="margin-top:24px;">⚡ Compact Fluorescent Lamp / CFL (more efficient)</h3>
+      <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;">
+        <rect x="0" y="45" width="160" height="70" fill="#1A1A2E" rx="4"/>
+        <text x="80" y="74" text-anchor="middle" fill="white" font-size="13" font-family="'Sora',sans-serif" font-weight="700">Electrical</text>
+        <text x="80" y="91" text-anchor="middle" fill="#F5C800" font-size="13" font-family="'JetBrains Mono',monospace" font-weight="600">100 J</text>
+        <rect x="160" y="50" width="120" height="60" fill="#2d3561"/>
+        <!-- Useful: 75J light — much wider -->
+        <polygon points="280,50 280,95 420,95 420,50" fill="#4CAF50"/>
+        <text x="350" y="76" text-anchor="middle" fill="white" font-size="11" font-family="'Sora',sans-serif" font-weight="600">Light 75 J</text>
+        <!-- Wasted: 25J heat — thinner -->
+        <path d="M280 110 Q330 128 420 135" stroke="#E65100" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <text x="360" y="148" text-anchor="middle" fill="#E65100" font-size="11" font-family="'Sora',sans-serif" font-weight="700">Heat 25 J</text>
+      </svg>
+      <p style="font-size:13px;color:var(--muted);margin-top:10px;">Both bulbs receive <strong>100 J</strong>. The filament bulb wastes <strong>90 J</strong> as heat (only 10 J useful light). The CFL wastes only <strong>25 J</strong> — it converts 75 J to useful light. CFL is much more efficient!</p>
+    </div>
 
-        // Load last sync time
-        function loadLastSyncTime() {
-            const lastSync = localStorage.getItem('lastSyncTime');
-            if (lastSync) {
-                const date = new Date(lastSync);
-                console.log('Last synced:', date.toLocaleString());
-            }
-        }
+    <div class="eureka">
+      <div class="eur-icon">💡</div>
+      <div>
+        <div class="eur-title">Eureka – H. Riall Sankey (1853–1926)</div>
+        <div class="eur-text">Irish-born engineer H. Riall Sankey developed Sankey diagrams in 1898 to show how energy was being used or wasted in mechanical systems. His first diagram represented energy conversions in a steam engine.</div>
+      </div>
+    </div>
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeStorage();
-            loadCheckboxStates();
-            loadLastSyncTime();
-            attachCheckboxListeners();
-        });
-    </script>
+    <!-- ═══ EFFICIENCY ═══ -->
+    <div class="section-heading anchor-offset" id="efficiency">
+      <span class="icon">📐</span> Energy Efficiency &amp; Dissipation
+    </div>
+
+    <div class="key-term">
+      <div class="term">Efficiency</div>
+      <div class="definition"><strong>The efficiency of a device is how well it uses or converts the energy that flows into it.</strong></div>
+      <div class="simpler">💡 A 90% efficient device only wastes 10%. A 10% efficient device wastes 90%. Higher % = better device.</div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Dissipation</div>
+      <div class="definition"><strong>When energy is wasted and does not convert to a useful form, it is called dissipation.</strong></div>
+      <div class="simpler">💡 A TV dissipates heat from its wires and screen — that heat isn't helping you watch TV!</div>
+    </div>
+
+    <div class="sub-heading">Efficiency Formula</div>
+
+    <div class="formula-box">
+      <div class="label">Percentage Energy Efficiency</div>
+      % efficiency = (useful energy out ÷ energy in) × 100
+    </div>
+
+    <div class="formula-box" style="background:var(--orange);margin-top:10px;">
+      <div class="label">Percentage Energy Dissipation</div>
+      % dissipation = 100 − % efficiency
+    </div>
+
+    <div class="example-box">
+      <div class="example-header">📘 Example – Mobile Phone Charger</div>
+      <div class="example-body">
+        <div class="q">A charger uses 200 J; 180 J charges the phone, 20 J emitted as heat. Find:<br>a) energy efficiency &nbsp;&nbsp; b) energy dissipation</div>
+        <div class="steps">a) % efficiency = (180 ÷ 200) × 100 = <strong>90%</strong>
+b) % dissipation = 100 − 90 = <strong>10%</strong></div>
+        <div class="simpler-note"><strong>Simple:</strong> 180 out of 200 J are useful → 90% efficient. The remaining 10% is lost as heat in the plug.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PRACTICE PROBLEMS ═══ -->
+    <div class="section-heading anchor-offset" id="problems">
+      <span class="icon">✏️</span> Practice Problems
+    </div>
+    <p>Click <strong>Show Solution</strong> to reveal the answer and a simple explanation.</p>
+
+    <!-- P1 -->
+    <div class="problem-card">
+      <div class="prob-header">
+        Problem 1 — Work &amp; Energy
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">Calculate the energy required for a person of weight 200 N to walk 4 metres.</div>
+        <div class="prob-solution">
+          <div class="steps">work = force × distance
+work = 200 N × 4 m
+work = <strong>800 J</strong></div>
+          <div class="answer">✅ Answer: 800 J</div>
+          <div class="tip">💡 Force = weight = 200 N. Distance = 4 m. Just multiply!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="problem-card">
+      <div class="prob-header">
+        Problem 2 — Finding Weight from Energy
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">A lift carries 10 people 20 m upwards. 70,000 J of energy is required. How much does each person weigh?</div>
+        <div class="prob-solution">
+          <div class="steps">work = force × distance
+70,000 = force × 20
+force (total) = 70,000 ÷ 20 = 3,500 N
+Weight per person = 3,500 ÷ 10 = <strong>350 N</strong></div>
+          <div class="answer">✅ Answer: Each person weighs 350 N</div>
+          <div class="tip">💡 Rearrange: force = work ÷ distance. Then divide by 10 people. Always check units — force is in Newtons (N).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P3 -->
+    <div class="problem-card">
+      <div class="prob-header">
+        Problem 3 — Efficiency Calculation
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">A toaster uses 2200 J. 150 J escapes as heat.<br>a) What is the energy efficiency? &nbsp;&nbsp; b) What is the energy dissipation?</div>
+        <div class="prob-solution">
+          <div class="steps">a) Useful energy = 2200 − 150 = 2050 J
+   % efficiency = (2050 ÷ 2200) × 100
+   % efficiency ≈ <strong>93.2%</strong>
+
+b) % dissipation = 100 − 93.2 = <strong>6.8%</strong></div>
+          <div class="answer">✅ Efficiency ≈ 93.2% &nbsp;|&nbsp; Dissipation ≈ 6.8%</div>
+          <div class="tip">💡 "Useful energy out" = total in − wasted. Then use the formula. The toaster is quite efficient — most energy heats the bread!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P4 -->
+    <div class="problem-card">
+      <div class="prob-header">
+        Problem 4 — Efficiency of Electric Bike
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">An electric bike uses 3000 J of energy but only converts 2500 J into kinetic energy. Calculate the percentage energy efficiency.</div>
+        <div class="prob-solution">
+          <div class="steps">% efficiency = (useful energy out ÷ energy in) × 100
+% efficiency = (2500 ÷ 3000) × 100
+% efficiency = <strong>83.3%</strong></div>
+          <div class="answer">✅ Answer: 83.3% efficient</div>
+          <div class="tip">💡 2500 out of 3000 joules go to useful kinetic energy. The rest (500 J) is wasted — likely as heat in the motor.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P5 — Sankey reading -->
+    <div class="problem-card">
+      <div class="prob-header">
+        Problem 5 — Reading a Sankey Diagram
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">A food mixer has 1500 J of electrical energy flowing in. The Sankey diagram shows 1400 J of useful energy out, 25 J as heat loss, and 75 J as sound.<br>
+        a) What is the useful energy form?<br>
+        b) What are the dissipated energy forms?<br>
+        c) Calculate the percentage energy dissipated.</div>
+        <div class="prob-solution">
+          <div class="steps">a) Useful = kinetic (mechanical) energy → 1400 J
+
+b) Dissipated = heat (25 J) + sound (75 J) = 100 J wasted
+
+c) % dissipation = (100 ÷ 1500) × 100
+   % dissipation = <strong>6.67%</strong></div>
+          <div class="answer">✅ Useful: kinetic | Wasted: heat + sound | Dissipation: 6.67%</div>
+          <div class="tip">💡 Add up ALL wasted forms for total dissipation. Then divide by energy in × 100.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P6 — Past paper -->
+    <div class="problem-card">
+      <div class="prob-header">
+        Problem 6 — Kettle Efficiency (Past Paper style)
+        <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+      </div>
+      <div class="prob-body">
+        <div class="prob-q">A kettle has 3000 J supplied but only 2000 J converts to heating the water.<br>
+        a) How many joules are dissipated?<br>
+        b) Calculate the percentage efficiency of the kettle.</div>
+        <div class="prob-solution">
+          <div class="steps">a) Dissipated = 3000 − 2000 = <strong>1000 J</strong>
+
+b) % efficiency = (2000 ÷ 3000) × 100
+   % efficiency = <strong>66.7%</strong></div>
+          <div class="answer">✅ Dissipated: 1000 J &nbsp;|&nbsp; Efficiency: 66.7%</div>
+          <div class="tip">💡 "How many joules wasted?" = energy in − useful energy out. Then use the efficiency formula for the % answer.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL SUMMARY CARD -->
+    <div class="section-heading" style="margin-top:48px;">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="energy-table">
+      <thead>
+        <tr><th>Topic</th><th>Formula / Key Fact</th><th>Units</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Work / Energy</strong></td><td>work = force × distance</td><td>Joules (J)</td></tr>
+        <tr><td><strong>Force</strong></td><td>force = work ÷ distance</td><td>Newtons (N)</td></tr>
+        <tr><td><strong>% Efficiency</strong></td><td>(useful energy out ÷ energy in) × 100</td><td>% (no unit)</td></tr>
+        <tr><td><strong>% Dissipation</strong></td><td>100 − % efficiency</td><td>% (no unit)</td></tr>
+        <tr><td><strong>Conservation</strong></td><td>Energy cannot be created or destroyed — only converted</td><td>—</td></tr>
+        <tr><td><strong>Sankey: thick arrow</strong></td><td>More energy in that form</td><td>—</td></tr>
+        <tr><td><strong>Sankey: curved down</strong></td><td>Dissipated (wasted) energy</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+</main>
+
+<!-- CHAPTER NAV BAR -->
+<div class="chapter-nav-bar">
+  <span>Other chapters:</span>
+  <a href="index.html" class="active">Ch 29 – Energy</a>
+  <a href="ch30.html">Ch 30 – Current Electricity</a>
+</div>
+
+<script>
+function toggleSol(btn) {
+  const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+  sol.classList.toggle('open');
+  btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+}
+</script>
 </body>
 </html>
