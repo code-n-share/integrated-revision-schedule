@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 15 – Chemical and Physical Change</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column;
+      padding: 0; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--orange);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 13px; font-weight: 600;
+      opacity: 0.85; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .sidebar-header .book-title {
+      font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px;
+    }
+    .sidebar-section { padding: 14px 0 4px; }
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 0 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--yellow);
+    }
+    .sidebar a.chapter-link {
+      font-weight: 700; font-size: 15px;
+      color: var(--yellow); padding-top: 12px; padding-bottom: 12px;
+    }
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #3d1a00 0%, #7a3100 50%, #a34000 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,0,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🧪';
+      position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--text);
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 13px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 48px; font-weight: 800;
+      letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--yellow); }
+    .chapter-meta { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.6); }
+    .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px; padding: 6px 12px;
+      border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1000px; }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px; font-weight: 800;
+      color: var(--text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--orange);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 26px; }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--orange);
+      margin: 28px 0 12px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--yellow-light);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 14px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* COMPARISON TABLE */
+    .energy-table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .energy-table th {
+      background: var(--text); color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 0.8px; padding: 12px 16px; text-align: left;
+    }
+    .energy-table td {
+      padding: 12px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .energy-table tr:last-child td { border-bottom: none; }
+    .energy-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px; box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .card-title {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 15px; margin-bottom: 6px;
+    }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-simpler {
+      font-size: 12px; color: var(--purple); font-style: italic;
+      margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border);
+    }
+
+    /* CONCENTRATE / NOTICE BOX */
+    .concentrate {
+      background: #FFF3CD;
+      border: 2px dashed var(--yellow);
+      border-radius: var(--radius);
+      padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong {
+      color: var(--text); display: block;
+      font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px;
+    }
+
+    /* EUREKA BOX */
+    .eureka-box {
+      background: #fff8e1;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 18px 20px; margin: 16px 0;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .eureka-box .eureka-icon { font-size: 36px; flex-shrink: 0; }
+    .eureka-box .eureka-title {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 16px; color: #e65100; margin-bottom: 4px;
+    }
+    .eureka-box p { font-size: 14px; color: #555; line-height: 1.6; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff;
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .example-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .example-body { padding: 16px 18px; }
+    .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+    .example-box .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px;
+      margin: 8px 0; line-height: 2; white-space: pre-line;
+    }
+    .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+    .example-box .simpler-note {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555;
+    }
+
+    /* SIGNS LIST */
+    .signs-list {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px 20px; margin: 16px 0;
+      box-shadow: var(--shadow);
+    }
+    .signs-list li {
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+      font-size: 14px; display: flex; align-items: center; gap: 10px;
+      list-style: none;
+    }
+    .signs-list li:last-child { border-bottom: none; }
+    .signs-list li .sign-icon { font-size: 20px; width: 30px; flex-shrink: 0; }
+
+    /* PROBLEM CARD */
+    .problem-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      margin: 14px 0; box-shadow: var(--shadow);
+    }
+    .problem-card .prob-header {
+      background: var(--orange); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; padding: 9px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+    .toggle-btn {
+      background: var(--yellow); color: var(--text); border: none;
+      border-radius: 100px; font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 12px; padding: 4px 14px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .toggle-btn:hover { opacity: 0.8; }
+    .prob-solution {
+      display: none; margin-top: 12px;
+      border-top: 1px solid var(--border); padding-top: 12px;
+    }
+    .prob-solution.open { display: block; }
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      background: #f9fafb; border-radius: 8px;
+      padding: 12px; line-height: 2; white-space: pre-line;
+    }
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+    .prob-solution .tip {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 10px; font-size: 13px; color: #555;
+    }
+
+    /* GLOSSARY */
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px; margin: 16px 0;
+    }
+    .glossary-item {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .glossary-item .g-term {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; color: var(--orange);
+    }
+    .glossary-item .g-def { font-size: 12.5px; color: #555; margin-top: 4px; line-height: 1.45; }
+
+    /* REACTION FLOW */
+    .reaction-flow {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap; background: #fff;
+      border-radius: var(--radius); padding: 20px 24px;
+      box-shadow: var(--shadow); margin: 16px 0;
+      border: 1.5px solid var(--border);
+    }
+    .flow-node {
+      background: var(--text); color: #fff;
+      padding: 10px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      text-align: center; min-width: 100px;
+    }
+    .flow-node.reactant { background: var(--blue); }
+    .flow-node.product { background: var(--green); }
+    .flow-arrow {
+      font-size: 22px; color: var(--yellow);
+      padding: 0 6px; font-weight: 700;
+    }
+
+    /* INVESTIGATION BOX */
+    .investigation-box {
+      background: #fff;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      margin: 16px 0; overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .investigation-box .inv-header {
+      background: var(--blue); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .investigation-box .inv-body { padding: 16px 18px; font-size: 14px; }
+    .investigation-box .inv-body ol { padding-left: 20px; line-height: 2; }
+    .investigation-box .inv-body ul { padding-left: 20px; line-height: 2; }
+    .safety-box {
+      background: #fff3f3; border: 1.5px solid var(--red);
+      border-radius: 8px; padding: 10px 14px;
+      margin: 10px 0; font-size: 13px; color: #b71c1c;
+    }
+    .safety-box strong { display: block; margin-bottom: 4px; }
+
+    /* PAST PAPER */
+    .past-paper-box {
+      background: #fff;
+      border: 2px solid var(--purple);
+      border-radius: var(--radius);
+      margin: 16px 0; overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .past-paper-box .pp-header {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+    }
+    .past-paper-box .pp-body { padding: 16px 18px; font-size: 14px; line-height: 1.7; }
+    .past-paper-box .pp-q { margin-bottom: 8px; }
+    .past-paper-box ol { padding-left: 20px; }
+
+    /* ANCHOR OFFSET */
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    /* NAV BAR */
+    .chapter-nav-bar {
+      margin-left: 240px;
+      background: var(--text); color: #fff;
+      padding: 14px 48px;
+      display: flex; align-items: center; gap: 20px;
+      font-size: 14px;
+    }
+    .chapter-nav-bar a {
+      color: var(--yellow); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+
+    p { margin-bottom: 10px; font-size: 14.5px; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main, .chapter-nav-bar { margin-left: 0; }
+      .content { padding: 20px 20px; }
+      .chapter-hero { padding: 36px 20px 32px; }
+      .chapter-hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Unit 3 – Chemical World</div>
+      <div class="book-title">Elements of Science</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Chapter 15</div>
+      <a href="#overview" class="chapter-link">⚗️ Ch 15 Overview</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Sections</div>
+      <a href="#physical-chemical">Physical vs Chemical</a>
+      <a href="#key-terms">Key Terms</a>
+      <a href="#chemical-changes">Chemical Changes</a>
+      <a href="#signs">Signs of Chemical Reactions</a>
+      <a href="#conservation">Law of Conservation of Mass</a>
+      <a href="#investigations">Investigations</a>
+      <a href="#problems">Practice Problems</a>
+      <a href="#past-papers">Past Paper Questions</a>
+      <a href="#summary">Summary</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigate</div>
+      <a href="index.html">← Science Home</a>
+    </div>
+  </nav>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero" id="overview">
+      <div class="chapter-badge">Chapter 15 · Unit 3 – Chemical World</div>
+      <h1>Chemical &amp; <span>Physical</span><br>Change</h1>
+      <div class="chapter-meta">Elements of Science · Pages 147–154</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✅ Distinguish physical vs chemical change</span>
+        <span class="goal-tag">✅ Describe a chemical reaction</span>
+        <span class="goal-tag">✅ Identify signs of chemical reactions</span>
+        <span class="goal-tag">✅ Understand the Law of Conservation of Mass</span>
+        <span class="goal-tag">✅ Verify conservation of mass through investigations</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ PHYSICAL vs CHEMICAL ═══ -->
+      <div class="section-heading anchor-offset" id="physical-chemical">
+        <span class="icon">🔄</span> Physical and Chemical Change
+      </div>
+
+      <p>Matter can undergo physical and chemical changes. The key question to ask is: <strong>has a new substance been formed?</strong></p>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🧊</div>
+          <div class="card-title">Physical Change</div>
+          <div class="card-def">Matter changes shape or state but <strong>no new substance is formed</strong>. Changing states, such as melting or boiling, are all examples of physical changes.</div>
+          <div class="card-simpler">💡 The substance stays the same — just in a different form. Usually easy to reverse.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🦀</div>
+          <div class="card-title">Chemical Change</div>
+          <div class="card-def">A <strong>new substance is formed</strong>. All chemical reactions are examples of a chemical change. Usually <em>not</em> easy to reverse.</div>
+          <div class="card-simpler">💡 A completely different material is produced. Think rusting, burning, cooking — you can't un-rust a nail!</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Comparison Table</div>
+      <table class="energy-table">
+        <thead>
+          <tr>
+            <th>Physical Changes</th>
+            <th>Chemical Changes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>No new substance is formed</td>
+            <td>A new substance is formed</td>
+          </tr>
+          <tr>
+            <td>Easy to reverse</td>
+            <td>Not easy to reverse</td>
+          </tr>
+          <tr>
+            <td><strong>Example:</strong> Ice melting to water, which can be reversed by freezing.</td>
+            <td><strong>Example:</strong> An iron nail rusting to form a new substance called iron oxide.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>Exam Tip – The Golden Rule</strong>
+          Always ask two questions: (1) Has a new substance been formed? (2) Is the change reversible?
+          If a new substance formed → chemical change. If the substance just changed shape or state → physical change.
+        </div>
+      </div>
+
+      <!-- ═══ KEY TERMS ═══ -->
+      <div class="section-heading anchor-offset" id="key-terms">
+        <span class="icon">📖</span> Key Terms
+      </div>
+
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Physical Change</div>
+          <div class="g-def">A change where matter changes shape or state but no new substance is formed.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Chemical Change</div>
+          <div class="g-def">A change where a new substance is formed. All chemical reactions are examples.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Reactants</div>
+          <div class="g-def">The chemicals that react together during a chemical reaction (the starting materials).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Products</div>
+          <div class="g-def">The new substance or substances that are formed during a chemical reaction.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Effervescence</div>
+          <div class="g-def">Bubbles of gas being produced in a liquid during a chemical reaction.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Law of Conservation of Mass</div>
+          <div class="g-def">Matter cannot be created or destroyed — it can only change from one form to another.</div>
+        </div>
+      </div>
+
+      <!-- ═══ CHEMICAL CHANGES ═══ -->
+      <div class="section-heading anchor-offset" id="chemical-changes">
+        <span class="icon">⚗️</span> Chemical Changes
+      </div>
+
+      <p>Chemicals often come together to form new substances — for example, when a fuel burns in a fire, when a nail rusts, and when an egg is boiled. These processes are called <strong>chemical reactions</strong>.</p>
+
+      <div class="key-term">
+        <div class="term">Reactants → Products</div>
+        <div class="definition"><strong>The chemicals that react together during a chemical reaction are called reactants. The new substance or substances that are formed are called products.</strong></div>
+        <div class="simpler">💡 Reactants go IN; Products come OUT.</div>
+      </div>
+
+      <div class="sub-heading">Example: Water Formation</div>
+      <div class="reaction-flow">
+        <div class="flow-node reactant">Hydrogen<br><small>(reactant)</small></div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-node reactant">Oxygen<br><small>(reactant)</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node product">Water<br><small>(product)</small></div>
+      </div>
+      <p style="font-size:13px; color:var(--muted); margin-top:-6px;">Chemical equation: H₂ + O → H₂O &nbsp;(hydrogen + oxygen → water)</p>
+
+      <div class="sub-heading">Example: Methane Combustion (CH₄)</div>
+      <div class="reaction-flow">
+        <div class="flow-node reactant">CH₄<br><small>Methane</small></div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-node reactant">2O₂<br><small>Oxygen</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node product">CO₂<br><small>Carbon dioxide</small></div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-node product">2H₂O<br><small>Water</small></div>
+      </div>
+      <p style="font-size:13px; color:var(--muted); margin-top:-6px;">Natural gas (methane) burns in oxygen to produce carbon dioxide and water.</p>
+
+      <!-- ═══ SIGNS ═══ -->
+      <div class="section-heading anchor-offset" id="signs">
+        <span class="icon">🔍</span> Signs of a Chemical Reaction
+      </div>
+
+      <p>There are a number of signs that a chemical reaction has taken place. You might observe:</p>
+
+      <ul class="signs-list">
+        <li><span class="sign-icon">🎨</span> <span><strong>A change in colour</strong> — e.g., iron turning orange-brown as it rusts</span></li>
+        <li><span class="sign-icon">🌡️</span> <span><strong>A change in temperature</strong> — the reaction releases or absorbs heat</span></li>
+        <li><span class="sign-icon">💡</span> <span><strong>The production of light</strong> — e.g., a burning candle or fireworks</span></li>
+        <li><span class="sign-icon">🔊</span> <span><strong>The emission of sound</strong> — e.g., a bang from fireworks exploding</span></li>
+        <li><span class="sign-icon">👃</span> <span><strong>A distinctive smell</strong> — e.g., milk souring produces a sour odour</span></li>
+        <li><span class="sign-icon">🫧</span> <span><strong>Effervescence</strong> — bubbles of gas being produced in a liquid (e.g., vinegar + baking soda)</span></li>
+      </ul>
+
+      <div class="concentrate">
+        <div class="icon">📝</div>
+        <div class="text">
+          <strong>Remember for the Exam</strong>
+          Signs are divided into two categories: (a) those caused by a new product being formed (colour change, effervescence), and (b) those caused by energy changes (light, heat, sound). You may be asked to identify which category a sign belongs to.
+        </div>
+      </div>
+
+      <!-- ═══ CONSERVATION OF MASS ═══ -->
+      <div class="section-heading anchor-offset" id="conservation">
+        <span class="icon">⚖️</span> The Law of Conservation of Mass
+      </div>
+
+      <div class="key-term">
+        <div class="term">Law of Conservation of Mass</div>
+        <div class="definition"><strong>Matter cannot be created or destroyed but can change from one form to another. In both physical and chemical changes, the total mass of matter stays the same.</strong></div>
+        <div class="simpler">💡 Mass before a reaction = Mass after a reaction. Always!</div>
+      </div>
+
+      <div class="eureka-box">
+        <div class="eureka-icon">💡</div>
+        <div>
+          <div class="eureka-title">Eureka! — Antoine Lavoisier (1743–1794)</div>
+          <p>French chemist Antoine Lavoisier discovered the law of conservation of mass. When he heated different substances in air, he found that the total mass of the chemicals and all the apparatus at the beginning of the investigation was the same as the total mass at the end, even though a chemical change had occurred.</p>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Example — Opening a Fizzy Drink (Test Tube 4)</div>
+        <div class="example-body">
+          <div class="q">When you open a can of a fizzy drink, does the mass of the drink increase, decrease or stay the same? Is there a chemical or a physical change taking place?</div>
+          <div class="steps">When the can is opened, CO₂ gas escapes into the air.
+The mass of the can + drink DECREASES slightly.
+However, if measured in a sealed system, mass is conserved.
+This is a PHYSICAL change — the CO₂ was already dissolved;
+no new substance is formed when it is released.</div>
+          <div class="simpler-note"><strong>Simple:</strong> The drink loses mass because gas escapes, but the total mass of gas + drink stays the same. The law of conservation of mass always holds in a closed system.</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Example — Steel Wool Burning</div>
+        <div class="example-body">
+          <div class="q">In the investigation, steel wool was burned using a Bunsen burner flame. Explain why the mass of the steel wool increases.</div>
+          <div class="steps">Steel wool reacts with oxygen in the air:
+Iron + Oxygen → Iron oxide (rust)
+
+The steel wool gains mass because it is combining
+with oxygen from the air to form iron oxide.
+The oxygen atoms are added to the iron atoms.</div>
+          <div class="answer">✅ Mass increases because oxygen from the air becomes part of the new product (iron oxide).</div>
+          <div class="simpler-note"><strong>Simple:</strong> The iron atoms grab oxygen atoms from the air. Those oxygen atoms have mass, so the total mass of the steel wool goes up. Conservation of mass still holds — the mass gained by the wool = mass of oxygen taken from the air.</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Example — Burning Paper</div>
+        <div class="example-body">
+          <div class="q">If paper is burned, the mass of the paper before burning is greater than the mass of the ashes. Where does the missing mass go?</div>
+          <div class="steps">Paper + Oxygen → Carbon dioxide + Water vapour + Ash
+
+The carbon dioxide and water vapour escape as gases
+into the air. The remaining ash has much less mass
+than the original paper.</div>
+          <div class="answer">✅ The "missing" mass has escaped as gases (CO₂ and water vapour) into the atmosphere.</div>
+          <div class="simpler-note"><strong>Simple:</strong> Mass is NOT destroyed — it goes into the air as invisible gases. In a fully sealed system, the total mass before and after burning would be identical.</div>
+        </div>
+      </div>
+
+      <!-- ═══ INVESTIGATIONS ═══ -->
+      <div class="section-heading anchor-offset" id="investigations">
+        <span class="icon">🔬</span> Experimental Investigations
+      </div>
+
+      <div class="investigation-box">
+        <div class="inv-header">🧪 Investigation 15.1 — Are these changes physical or chemical?</div>
+        <div class="inv-body">
+          <p><strong>Equipment:</strong> Plastic droppers, water, teaspoon, salt, test tube, thermometer, vinegar, baking soda, clock glass, candle, tongs, crackers, Bunsen burner, retort stand &amp; clamp, boiling tube, graduated cylinder, steel wool, wire gauze.</p>
+          <div class="safety-box">
+            <strong>⚠️ Safety</strong>
+            Tie back hair. Ensure workspace is clear of flammable materials. Make sure equipment has cooled before touching. Conduct in a fume cupboard as smoke will be produced in final steps.
+          </div>
+          <strong>Method (summary):</strong>
+          <ol>
+            <li>Add drops of water to 1 teaspoon of salt — observe &amp; record temperature change.</li>
+            <li>Add drops of vinegar to baking soda on a clock glass — observe &amp; record temperature change.</li>
+            <li>Light a candle — observe what happens.</li>
+            <li>Using tongs, heat a cracker in a Bunsen burner flame — observe &amp; record.</li>
+            <li>Add 20 ml of water to a boiling tube. Use a thermometer to record starting temperature. Light a cracker and hold under the boiling tube. Record final temperature.</li>
+            <li>Hold a piece of steel wool with tongs. Heat in Bunsen burner flame. Once alight, hold over wire gauze. Record observations.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="investigation-box">
+        <div class="inv-header">⚖️ Investigation 15.2 — How can we investigate the law of conservation of mass?</div>
+        <div class="inv-body">
+          <p><strong>Equipment:</strong> Ice cubes, sealable plastic bags (1 medium, 1 large), mass balance, graduated cylinder, baking soda, vinegar, tissue paper.</p>
+          <div class="safety-box">
+            <strong>⚠️ Safety</strong>
+            Clear up any spills immediately.
+          </div>
+          <strong>Part A – Physical Change (Ice melting):</strong>
+          <ol>
+            <li>Place some ice cubes in a sealable plastic bag.</li>
+            <li>Measure the mass using a mass balance.</li>
+            <li>Set the bag aside until the ice cubes have melted.</li>
+            <li>Predict whether total mass will increase, decrease or stay the same.</li>
+            <li>Measure the mass of the bag once all ice has melted.</li>
+            <li>Is this a physical or chemical change? Explain your results.</li>
+          </ol>
+          <strong>Part B – Chemical Change (Vinegar + Baking Soda):</strong>
+          <ol>
+            <li>Measure 20 cm³ of vinegar into a large sealable plastic bag.</li>
+            <li>Measure the mass using a mass balance.</li>
+            <li>Measure out 5 g of baking soda using a mass balance. Wrap in a small sheet of tissue paper.</li>
+            <li>Measure the mass of the tissue paper + baking soda.</li>
+            <li>Calculate and record the total mass of everything.</li>
+            <li>Drop the tissue paper into the bag of vinegar and seal quickly.</li>
+            <li>Once the reaction has stopped, find the mass of the bag.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the answer and a simple explanation.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Classify Physical or Chemical?
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Classify each of the following as either physical or chemical changes. Has a new substance been made? Is the reaction reversible?<br><br>
+            a) Boiling water in a kettle &nbsp; b) Burning wood &nbsp; c) Fireworks exploding &nbsp; d) Ice cream melting &nbsp; e) A snowman melting &nbsp; f) Baking a cake &nbsp; g) An iron nail rusting
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a) Boiling water → PHYSICAL (water becomes steam; still water; reversible)
+b) Burning wood → CHEMICAL (new substances: CO₂, ash, water; irreversible)
+c) Fireworks exploding → CHEMICAL (new substances formed; light, sound, heat; irreversible)
+d) Ice cream melting → PHYSICAL (still ice cream ingredients; reversible by refreezing)
+e) A snowman melting → PHYSICAL (water → liquid water; reversible)
+f) Baking a cake → CHEMICAL (new substances formed; colour change; smell; irreversible)
+g) An iron nail rusting → CHEMICAL (iron oxide formed; colour change; irreversible)</div>
+            <div class="answer">✅ Physical: a, d, e &nbsp;|&nbsp; Chemical: b, c, f, g</div>
+            <div class="tip">💡 The key test: has a new substance formed? If yes → chemical. Is it reversible? Physical changes usually are; chemical changes usually aren't.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Signs of Chemical Reactions
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">What signs would indicate that a chemical change has taken place in the following examples?<br>a) A match burning &nbsp; b) A firework exploding &nbsp; c) Milk souring &nbsp; d) A coin rusting</div>
+          <div class="prob-solution">
+            <div class="steps">a) Match burning:
+   → Production of light, change in temperature (heat),
+     change in colour (black ash), distinctive smell
+
+b) Firework exploding:
+   → Production of light, emission of sound, change in
+     colour, change in temperature
+
+c) Milk souring:
+   → Distinctive smell, change in texture/appearance
+
+d) Coin rusting:
+   → Change in colour (green/brown patina forms)</div>
+            <div class="answer">✅ Key signs: colour change, temperature change, light, sound, smell, effervescence</div>
+            <div class="tip">💡 Remember to distinguish between signs caused by new products forming (colour, gas) vs signs caused by energy changes (heat, light, sound).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Conservation of Mass (Sealed System)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A 2 g sample of solid iodine is placed in a tube and the tube is sealed after all the air is removed. The tube and solid iodine together weigh 30 g. The iodine will sublime (change state from solid to gas) in the tube on heating. Will the mass of the tube increase, decrease or stay the same? Explain your answer.</div>
+          <div class="prob-solution">
+            <div class="steps">The tube is SEALED — no matter can enter or leave.
+The iodine changes from solid to gas (sublimation).
+This is a PHYSICAL change — no new substance is formed.
+
+By the law of conservation of mass:
+mass before = mass after = 30 g</div>
+            <div class="answer">✅ The mass will STAY THE SAME at 30 g.</div>
+            <div class="tip">💡 Because the tube is sealed, the iodine gas cannot escape. Even though the state changes from solid to gas, the total mass inside the sealed tube remains 30 g. Conservation of mass always holds in a closed system.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Ice Cubes Floating in Water
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Three ice cubes are floating in water. Mass of the beaker + ice cubes + water = 58 g. After the ice melts, will the mass of the beaker: a) be greater than 58 g, b) be less than 58 g, or c) stay the same? Explain your choice.</div>
+          <div class="prob-solution">
+            <div class="steps">Ice melting is a PHYSICAL change.
+No new substance is formed — ice (solid water) → liquid water.
+
+By the law of conservation of mass:
+Total mass before = Total mass after
+= 58 g (nothing leaves or enters the beaker)</div>
+            <div class="answer">✅ Answer: c) Stay the same — 58 g</div>
+            <div class="tip">💡 The ice is still water — just in a different state. The total number of water molecules hasn't changed. Mass is conserved in physical changes.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Methane Combustion (Past Paper Style)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Natural gas contains methane (CH₄). Methane burns in oxygen to produce carbon dioxide and water: CH₄ + 2O₂ → CO₂ + 2H₂O.<br>
+          a) Mass is conserved during this reaction. What evidence is there for this?<br>
+          b) The burning of methane is an example of a chemical change. Describe one difference between a physical change and a chemical change.</div>
+          <div class="prob-solution">
+            <div class="steps">a) The number and type of atoms on the left side of the
+   equation (reactants) is the same as on the right side
+   (products). In the molecular diagram, the same atoms
+   (C, H, O) appear in both reactants and products —
+   none are created or destroyed.
+
+b) In a physical change, no new substance is formed
+   (the matter only changes shape or state).
+   In a chemical change, a new substance IS formed.</div>
+            <div class="answer">✅ a) Same atoms before and after; balanced equation shows conservation.<br>✅ b) Physical change = no new substance; Chemical change = new substance formed.</div>
+            <div class="tip">💡 For part (a), refer to the molecular diagram or balanced equation. For part (b), always use the phrase "new substance is formed" — it's the key distinction examiners look for.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Sucrose Melting (Final Exam 2022)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A student investigated the melting point of sucrose (table sugar) by placing it on top of zinc and aluminium metal cubes on a hotplate. Is melting an example of a physical change or a chemical change? Explain your answer.</div>
+          <div class="prob-solution">
+            <div class="steps">Melting is a PHYSICAL change.
+
+When sucrose melts:
+  • It changes state from solid to liquid.
+  • No new substance is formed — it is still sucrose.
+  • The change is reversible (liquid sucrose can solidify again).
+
+∴ Melting = Physical change.</div>
+            <div class="answer">✅ Physical change — sucrose only changes state, no new substance is formed, and it is reversible.</div>
+            <div class="tip">💡 Even though heat causes the change, what matters is whether a NEW substance forms. Melted sucrose is still sucrose — just liquid. No new substance = physical change.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PAST PAPERS ═══ -->
+      <div class="section-heading anchor-offset" id="past-papers">
+        <span class="icon">📝</span> Past Paper Questions
+      </div>
+
+      <div class="past-paper-box">
+        <div class="pp-header">📄 Final Examination 2019 – Question 4</div>
+        <div class="pp-body">
+          <p><strong>Natural gas contains methane (CH₄). Methane is a fuel. Methane burns in oxygen to produce carbon dioxide and water.</strong></p>
+          <p>The reaction: CH₄ + 2O₂ → CO₂ + 2H₂O</p>
+          <ol type="a">
+            <li class="pp-q"><strong>Mass is conserved during this reaction. What evidence is there for this?</strong><br>
+            <em>Answer: The molecular diagram shows the same atoms present in both the reactants and the products — no atoms are created or destroyed. The equation is balanced: the number of C, H, and O atoms is the same on both sides.</em></li>
+            <li class="pp-q"><strong>The burning of methane is an example of a chemical change. Describe one difference between a physical change and a chemical change.</strong><br>
+            <em>Answer: In a chemical change, a new substance is formed (CO₂ and H₂O are produced). In a physical change, no new substance is formed — matter only changes shape or state.</em></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="past-paper-box">
+        <div class="pp-header">📄 Final Examination 2022 – Question 13</div>
+        <div class="pp-body">
+          <p><strong>A student carried out experiments to investigate the properties of sucrose (table sugar). In the first experiment, the student investigated the melting point of sucrose.</strong></p>
+          <p>Two metal cubes of equal volume (one zinc, one aluminium) were placed on a hotplate. One gram of sucrose was placed on top of each cube and the hotplate was turned on.</p>
+          <p><strong>Is melting an example of a physical change or a chemical change? Explain your answer.</strong></p>
+          <p><em>Answer: Melting is a physical change. When sucrose melts, it changes state from solid to liquid, but no new substance is formed. The sucrose is still sucrose in liquid form. The change is also reversible — if cooled, the liquid sucrose would solidify again. Therefore, melting is a physical change.</em></p>
+        </div>
+      </div>
+
+      <!-- ═══ SUMMARY ═══ -->
+      <div class="section-heading anchor-offset" id="summary">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="energy-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Key Fact / Rule</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Physical Change</strong></td>
+            <td>No new substance formed; usually reversible</td>
+            <td>Ice melting, water boiling</td>
+          </tr>
+          <tr>
+            <td><strong>Chemical Change</strong></td>
+            <td>New substance formed; usually irreversible</td>
+            <td>Iron rusting, wood burning</td>
+          </tr>
+          <tr>
+            <td><strong>Reactants</strong></td>
+            <td>Chemicals that react together (inputs)</td>
+            <td>H₂ + O₂ in water formation</td>
+          </tr>
+          <tr>
+            <td><strong>Products</strong></td>
+            <td>New substance(s) formed (outputs)</td>
+            <td>H₂O in water formation</td>
+          </tr>
+          <tr>
+            <td><strong>Effervescence</strong></td>
+            <td>Bubbles of gas produced in a liquid</td>
+            <td>Vinegar + baking soda</td>
+          </tr>
+          <tr>
+            <td><strong>Signs of Chemical Reaction</strong></td>
+            <td>Colour change, temp change, light, sound, smell, effervescence</td>
+            <td>Fireworks, rusting, souring milk</td>
+          </tr>
+          <tr>
+            <td><strong>Conservation of Mass</strong></td>
+            <td>Mass cannot be created or destroyed</td>
+            <td>Total mass before = total mass after</td>
+          </tr>
+          <tr>
+            <td><strong>Antoine Lavoisier</strong></td>
+            <td>Discovered the law of conservation of mass (1743–1794)</td>
+            <td>Heated substances in sealed apparatus</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+
+</body>
+</html>
