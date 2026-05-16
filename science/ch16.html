@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 16 – Atoms and Elements</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --blue-light: #E3F2FD;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --teal: #00796B;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--teal);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 13px; font-weight: 600;
+      opacity: 0.85; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .sidebar-header .book-title {
+      font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px;
+    }
+    .sidebar-section { padding: 14px 0 4px; }
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 0 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--yellow);
+    }
+    .sidebar a.chapter-link {
+      font-weight: 700; font-size: 15px;
+      color: var(--yellow); padding-top: 12px; padding-bottom: 12px;
+    }
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #003d33 0%, #00695c 50%, #00897b 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,0,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '⚛️';
+      position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--yellow);
+      color: var(--text); font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 13px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 48px; font-weight: 800;
+      letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--yellow); }
+    .chapter-meta { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.6); }
+    .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px; padding: 6px 12px;
+      border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1000px; }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--teal);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 26px; }
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--teal); margin: 28px 0 12px;
+    }
+
+    p { margin-bottom: 10px; font-size: 14.5px; }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--yellow-light);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 14px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px; box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-simpler { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* TABLE */
+    .energy-table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .energy-table th {
+      background: var(--text); color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 0.8px; padding: 12px 16px; text-align: left;
+    }
+    .energy-table td {
+      padding: 12px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .energy-table tr:last-child td { border-bottom: none; }
+    .energy-table tr:nth-child(even) td { background: #f9fafb; }
+    .energy-table .highlight-row td { background: #e0f2f1; font-weight: 600; }
+
+    /* SUBATOMIC TABLE - colour coded */
+    .particle-table th { background: #004d40; }
+    .particle-proton { background: #ffebee !important; }
+    .particle-neutron { background: #e8f5e9 !important; }
+    .particle-electron { background: #e3f2fd !important; }
+
+    /* CONCENTRATE */
+    .concentrate {
+      background: #FFF3CD;
+      border: 2px dashed var(--yellow);
+      border-radius: var(--radius);
+      padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+    /* EUREKA */
+    .eureka-box {
+      background: #fff8e1; border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 18px 20px; margin: 16px 0;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .eureka-box .eureka-icon { font-size: 36px; flex-shrink: 0; }
+    .eureka-box .eureka-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: #e65100; margin-bottom: 4px; }
+    .eureka-box p { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 0; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius);
+      margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .example-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .example-body { padding: 16px 18px; }
+    .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+    .example-box .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px;
+      margin: 8px 0; line-height: 2; white-space: pre-line;
+    }
+    .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+    .example-box .simpler-note { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555; }
+
+    /* ATOM NOTATION VISUAL */
+    .atom-notation {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 28px 24px;
+      margin: 16px 0; box-shadow: var(--shadow);
+    }
+    .atom-box {
+      background: var(--teal); color: #fff;
+      border-radius: 12px; padding: 20px 28px;
+      text-align: center; position: relative; min-width: 140px;
+    }
+    .atom-box .mass-num { font-size: 28px; font-weight: 800; font-family: 'Sora', sans-serif; line-height: 1; }
+    .atom-box .symbol { font-size: 52px; font-weight: 800; font-family: 'Sora', sans-serif; line-height: 1; color: var(--yellow); }
+    .atom-box .element-name { font-size: 14px; opacity: 0.85; margin-top: 2px; }
+    .atom-box .atomic-num { font-size: 28px; font-weight: 800; font-family: 'Sora', sans-serif; line-height: 1; }
+    .atom-labels { display: flex; flex-direction: column; gap: 8px; }
+    .atom-label {
+      background: #f9fafb; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 13px; color: var(--text);
+    }
+    .atom-label strong { color: var(--teal); }
+
+    /* BOHR DIAGRAM SVG CONTAINER */
+    .bohr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+    .bohr-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 16px;
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .bohr-card .bohr-title {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 14px; margin-bottom: 10px; color: var(--teal);
+    }
+    .bohr-card svg { display: block; margin: 0 auto; }
+    .bohr-card .bohr-config {
+      margin-top: 10px; font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--purple);
+      background: #f9fafb; border-radius: 6px; padding: 6px 10px;
+    }
+
+    /* ELEMENT SYMBOLS TABLE */
+    .symbols-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin: 16px 0;
+    }
+    .symbols-table {
+      width: 100%; border-collapse: collapse;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .symbols-table th {
+      background: var(--teal); color: #fff;
+      font-family: 'Sora', sans-serif; font-size: 12px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 10px 14px; text-align: left;
+    }
+    .symbols-table td { padding: 9px 14px; font-size: 13.5px; border-bottom: 1px solid var(--border); }
+    .symbols-table tr:last-child td { border-bottom: none; }
+    .symbols-table tr:nth-child(even) td { background: #f0faf9; }
+    .symbols-table .sym { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--teal); }
+
+    /* ISOTOPE CARDS */
+    .isotope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 16px 0;
+    }
+    .isotope-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 16px;
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .isotope-card .iso-symbol {
+      background: var(--teal); color: var(--yellow);
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 42px; border-radius: 10px;
+      padding: 10px 20px; display: inline-block;
+      line-height: 1; position: relative;
+    }
+    .isotope-card .iso-mass {
+      font-size: 20px; position: absolute;
+      top: 6px; left: 6px; color: #fff;
+    }
+    .isotope-card .iso-atomic {
+      font-size: 16px; position: absolute;
+      bottom: 6px; left: 6px; color: rgba(255,255,255,0.8);
+    }
+    .isotope-card .iso-name {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      margin-top: 10px; font-size: 14px; color: var(--teal);
+    }
+    .isotope-card .iso-detail { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* GLOSSARY */
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px; margin: 16px 0;
+    }
+    .glossary-item {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .glossary-item .g-term { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: var(--teal); }
+    .glossary-item .g-def { font-size: 12.5px; color: #555; margin-top: 4px; line-height: 1.45; }
+
+    /* PROBLEM CARD */
+    .problem-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      margin: 14px 0; box-shadow: var(--shadow);
+    }
+    .problem-card .prob-header {
+      background: var(--teal); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; padding: 9px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+    .toggle-btn {
+      background: var(--yellow); color: var(--text); border: none;
+      border-radius: 100px; font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 12px; padding: 4px 14px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .toggle-btn:hover { opacity: 0.8; }
+    .prob-solution {
+      display: none; margin-top: 12px;
+      border-top: 1px solid var(--border); padding-top: 12px;
+    }
+    .prob-solution.open { display: block; }
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      background: #f9fafb; border-radius: 8px;
+      padding: 12px; line-height: 2; white-space: pre-line;
+    }
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+    .prob-solution .tip { background: var(--yellow-light); border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: 13px; color: #555; }
+
+    /* PAST PAPER */
+    .past-paper-box {
+      background: #fff; border: 2px solid var(--purple);
+      border-radius: var(--radius);
+      margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .past-paper-box .pp-header {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+    }
+    .past-paper-box .pp-body { padding: 16px 18px; font-size: 14px; line-height: 1.7; }
+    .past-paper-box ol { padding-left: 20px; }
+    .past-paper-box li { margin-bottom: 8px; }
+
+    /* FORMULA / CALCULATION BOX */
+    .formula-box {
+      background: var(--text); color: #fff;
+      border-radius: var(--radius);
+      padding: 20px 24px; margin: 16px 0;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px; font-weight: 600;
+      letter-spacing: 1px; position: relative; overflow: hidden;
+    }
+    .formula-box::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--teal);
+    }
+    .formula-box .label {
+      font-size: 11px; font-family: 'DM Sans', sans-serif;
+      font-weight: 600; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    }
+
+    /* HISTORY TIMELINE */
+    .timeline { margin: 16px 0; }
+    .timeline-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-year {
+      background: var(--teal); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 12px; padding: 4px 10px; border-radius: 100px;
+      white-space: nowrap; flex-shrink: 0; min-width: 80px; text-align: center;
+    }
+    .timeline-text { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+    /* NAV BAR */
+    .chapter-nav-bar {
+      margin-left: 240px;
+      background: var(--text); color: #fff;
+      padding: 14px 48px;
+      display: flex; align-items: center; gap: 20px; font-size: 14px;
+    }
+    .chapter-nav-bar a { color: var(--yellow); text-decoration: none; font-weight: 600; }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main, .chapter-nav-bar { margin-left: 0; }
+      .content { padding: 20px 20px; }
+      .chapter-hero { padding: 36px 20px 32px; }
+      .chapter-hero h1 { font-size: 32px; }
+      .symbols-grid { grid-template-columns: 1fr; }
+      .isotope-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Unit 3 – Chemical World</div>
+      <div class="book-title">Elements of Science</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Chapter 16</div>
+      <a href="#overview" class="chapter-link">⚛️ Ch 16 Overview</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Sections</div>
+      <a href="#atoms">Atoms</a>
+      <a href="#elements">Elements</a>
+      <a href="#symbols">Chemical Symbols</a>
+      <a href="#subatomic">Subatomic Particles</a>
+      <a href="#atomic-numbers">Atomic &amp; Mass Numbers</a>
+      <a href="#electronic-config">Electronic Configuration</a>
+      <a href="#isotopes">Isotopes</a>
+      <a href="#key-terms">Key Terms</a>
+      <a href="#problems">Practice Problems</a>
+      <a href="#past-papers">Past Paper Questions</a>
+      <a href="#summary">Summary</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigate</div>
+      <a href="index.html">← Science Home</a>
+    </div>
+  </nav>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero" id="overview">
+      <div class="chapter-badge">Chapter 16 · Unit 3 – Chemical World</div>
+      <h1>Atoms and <span>Elements</span></h1>
+      <div class="chapter-meta">Elements of Science · Pages 155–163</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✅ Explain what an atom is</span>
+        <span class="goal-tag">✅ Explain what an element is</span>
+        <span class="goal-tag">✅ Identify chemical symbols</span>
+        <span class="goal-tag">✅ Classify protons, neutrons &amp; electrons</span>
+        <span class="goal-tag">✅ Calculate atomic &amp; mass numbers</span>
+        <span class="goal-tag">✅ Describe electronic configuration</span>
+        <span class="goal-tag">✅ Understand isotopes</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ ATOMS ═══ -->
+      <div class="section-heading anchor-offset" id="atoms">
+        <span class="icon">🔬</span> Atoms
+      </div>
+
+      <div class="key-term">
+        <div class="term">Atom</div>
+        <div class="definition"><strong>An atom is a tiny particle. Atoms are the basic building blocks of all matter.</strong></div>
+        <div class="simpler">💡 Everything you can touch, see or feel is made of atoms. They are far too small to see with a light microscope.</div>
+      </div>
+
+      <p>Atoms are far too small to see with a light microscope. Scientists have to use very powerful electron microscopes to get a closer look at atoms.</p>
+
+      <div class="eureka-box">
+        <div class="eureka-icon">💡</div>
+        <div>
+          <div class="eureka-title">Eureka! — John Dalton (1766–1844)</div>
+          <p>The chemist John Dalton developed a theory about atoms. He suggested that everything is made up of these tiny particles, and that some substances are made up of the same atoms, or that atoms could join together in different ways to create new substances. Dalton used his theory to explain the presence of the wide variety of substances on Earth.</p>
+        </div>
+      </div>
+
+      <div class="eureka-box" style="border-color: #7b1fa2; background: #f3e5f5;">
+        <div class="eureka-icon">💡</div>
+        <div>
+          <div class="eureka-title" style="color: #7b1fa2;">Eureka! — Robert Boyle (1627–1691)</div>
+          <p>Scientist and inventor Robert Boyle, born in Lismore, Co. Waterford, was one of the pioneers of the modern scientific method. He was the first scientist to suggest the name 'element'.</p>
+        </div>
+      </div>
+
+      <!-- ═══ ELEMENTS ═══ -->
+      <div class="section-heading anchor-offset" id="elements">
+        <span class="icon">🧱</span> Elements
+      </div>
+
+      <div class="key-term">
+        <div class="term">Element</div>
+        <div class="definition"><strong>An element is a substance that contains only one type of atom.</strong> For example, gold is an element, as it is made up only of gold atoms. Nitrogen is also an element, as it is made up only of nitrogen atoms. Elements cannot be separated into simpler substances.</div>
+        <div class="simpler">💡 All matter is made from elements. There are over 100 known elements listed in the periodic table (covered in Chapter 19).</div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🥇</div>
+          <div class="card-title">Gold (Au)</div>
+          <div class="card-def">Made up only of gold atoms. A solid element at room temperature. Does not react easily — that's why it's used in jewellery.</div>
+          <div class="card-simpler">💡 Every atom in a gold bar is identical.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">💨</div>
+          <div class="card-title">Nitrogen (N)</div>
+          <div class="card-def">Made up only of nitrogen atoms. A gas at room temperature. Makes up about 78% of the air we breathe.</div>
+          <div class="card-simpler">💡 Elements can be solids, liquids or gases.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">📋</div>
+          <div class="card-title">The Periodic Table</div>
+          <div class="card-def">All known elements (over 100) are listed in the periodic table. Each element has its own unique chemical symbol and properties.</div>
+          <div class="card-simpler">💡 Chapter 19 covers the periodic table in detail.</div>
+        </div>
+      </div>
+
+      <!-- ═══ CHEMICAL SYMBOLS ═══ -->
+      <div class="section-heading anchor-offset" id="symbols">
+        <span class="icon">🔤</span> Chemical Symbols
+      </div>
+
+      <p>Each element has its own name and <strong>chemical symbol</strong>. Scientists all over the world use these symbols to indicate each element. When writing a chemical symbol, always use a capital letter first. If the symbol has a second letter, it is always a small letter.</p>
+
+      <div class="cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+        <div class="info-card">
+          <div class="card-icon">🇬🇧</div>
+          <div class="card-title">Based on English Name</div>
+          <div class="card-def">Most symbols come from the English name of the element. e.g. the English word 'nitrogen' gives the symbol <strong>N</strong>.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🏛️</div>
+          <div class="card-title">Based on Latin Name</div>
+          <div class="card-def">Some symbols come from Latin names. e.g. Gold is <strong>Au</strong> from the Latin word <em>aurum</em>, meaning 'yellow'. Iron is <strong>Fe</strong> from <em>ferrum</em>.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Named after Scientists</div>
+          <div class="card-def">Some symbols come from the scientist who discovered them. e.g. <strong>Cm</strong> is the symbol for curium, named after Marie and Pierre Curie.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Common Elements and Their Symbols</div>
+      <div class="symbols-grid">
+        <table class="symbols-table">
+          <thead>
+            <tr><th>Element</th><th>Symbol</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Hydrogen</td><td class="sym">H</td></tr>
+            <tr><td>Helium</td><td class="sym">He</td></tr>
+            <tr><td>Nitrogen</td><td class="sym">N</td></tr>
+            <tr><td>Neon</td><td class="sym">Ne</td></tr>
+            <tr><td>Oxygen</td><td class="sym">O</td></tr>
+            <tr><td>Silicon</td><td class="sym">Si</td></tr>
+            <tr><td>Chlorine</td><td class="sym">Cl</td></tr>
+          </tbody>
+        </table>
+        <table class="symbols-table">
+          <thead>
+            <tr><th>Element</th><th>Symbol</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sulfur</td><td class="sym">S</td></tr>
+            <tr><td>Iron</td><td class="sym">Fe</td></tr>
+            <tr><td>Copper</td><td class="sym">Cu</td></tr>
+            <tr><td>Lead</td><td class="sym">Pb</td></tr>
+            <tr><td>Gold</td><td class="sym">Au</td></tr>
+            <tr><td>Sodium</td><td class="sym">Na</td></tr>
+            <tr><td>Potassium</td><td class="sym">K</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>Exam Tip – Writing Symbols</strong>
+          Always write the first letter as a CAPITAL and the second letter (if any) as lowercase. So it's "Na" not "NA" or "na". Water is H₂O — not h2o!
+        </div>
+      </div>
+
+      <!-- ═══ SUBATOMIC PARTICLES ═══ -->
+      <div class="section-heading anchor-offset" id="subatomic">
+        <span class="icon">⚛️</span> Subatomic Particles
+      </div>
+
+      <p>Scientists now know that an atom is made up of smaller particles called <strong>subatomic particles</strong>. There are three subatomic particles: <strong>protons</strong>, <strong>neutrons</strong>, and <strong>electrons</strong>.</p>
+
+      <!-- SVG Atom Diagram -->
+      <div style="background:#fff; border-radius:var(--radius); border:1.5px solid var(--border); padding:24px; margin:16px 0; box-shadow:var(--shadow); text-align:center;">
+        <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:16px;">Structure of an Atom</div>
+        <svg viewBox="0 0 340 260" width="340" height="260" xmlns="http://www.w3.org/2000/svg">
+          <!-- Electron orbits -->
+          <ellipse cx="170" cy="130" rx="130" ry="50" fill="none" stroke="#00796B" stroke-width="1.5" stroke-dasharray="4,3" transform="rotate(-40 170 130)"/>
+          <ellipse cx="170" cy="130" rx="130" ry="50" fill="none" stroke="#00796B" stroke-width="1.5" stroke-dasharray="4,3" transform="rotate(40 170 130)"/>
+          <ellipse cx="170" cy="130" rx="130" ry="50" fill="none" stroke="#00796B" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Nucleus -->
+          <circle cx="170" cy="130" r="28" fill="#004d40"/>
+          <!-- Protons in nucleus -->
+          <circle cx="160" cy="122" r="9" fill="#ef5350"/>
+          <circle cx="180" cy="122" r="9" fill="#ef5350"/>
+          <circle cx="170" cy="138" r="9" fill="#66bb6a"/>
+          <text x="160" y="126" text-anchor="middle" fill="white" font-size="8" font-weight="bold">P</text>
+          <text x="180" y="126" text-anchor="middle" fill="white" font-size="8" font-weight="bold">P</text>
+          <text x="170" y="142" text-anchor="middle" fill="white" font-size="8" font-weight="bold">N</text>
+          <!-- Electrons -->
+          <circle cx="50" cy="100" r="8" fill="#1976D2"/>
+          <circle cx="290" cy="160" r="8" fill="#1976D2"/>
+          <circle cx="170" cy="30" r="8" fill="#1976D2"/>
+          <text x="50" y="104" text-anchor="middle" fill="white" font-size="9" font-weight="bold">e</text>
+          <text x="290" y="164" text-anchor="middle" fill="white" font-size="9" font-weight="bold">e</text>
+          <text x="170" y="34" text-anchor="middle" fill="white" font-size="9" font-weight="bold">e</text>
+          <!-- Labels -->
+          <text x="20" y="87" fill="#1976D2" font-size="11" font-weight="700">Electron</text>
+          <text x="115" y="175" fill="#ef5350" font-size="11" font-weight="700">Proton</text>
+          <text x="200" y="145" fill="#66bb6a" font-size="11" font-weight="700">Neutron</text>
+          <text x="208" y="75" fill="#004d40" font-size="11" font-weight="700">Nucleus</text>
+          <text x="50" y="15" fill="#00796B" font-size="11" font-weight="700">Electron orbits</text>
+          <!-- Arrows -->
+          <line x1="58" y1="88" x2="58" y2="102" stroke="#1976D2" stroke-width="1.2" marker-end="url(#arr)"/>
+          <line x1="143" y1="172" x2="162" y2="138" stroke="#ef5350" stroke-width="1.2"/>
+          <line x1="198" y1="143" x2="180" y2="138" stroke="#66bb6a" stroke-width="1.2"/>
+          <line x1="208" y1="78" x2="195" y2="105" stroke="#004d40" stroke-width="1.2"/>
+        </svg>
+      </div>
+
+      <div class="sub-heading">Properties of Subatomic Particles</div>
+      <table class="energy-table particle-table">
+        <thead>
+          <tr>
+            <th>Subatomic Particle</th>
+            <th>Mass</th>
+            <th>Charge</th>
+            <th>Location in the Atom</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="particle-proton">
+            <td><strong>Proton</strong></td>
+            <td>1</td>
+            <td>Positively charged (+1)</td>
+            <td>Nucleus</td>
+          </tr>
+          <tr class="particle-neutron">
+            <td><strong>Neutron</strong></td>
+            <td>1</td>
+            <td>No charge (0)</td>
+            <td>Nucleus</td>
+          </tr>
+          <tr class="particle-electron">
+            <td><strong>Electron</strong></td>
+            <td>1/1836</td>
+            <td>Negatively charged (−1)</td>
+            <td>Orbiting the nucleus</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>Concentrate!</strong>
+          Protons and neutrons have the same mass (both = 1). Electrons have so little mass that scientists treat their mass as zero. The smaller number on an element symbol is always the atomic number (protons).
+        </div>
+      </div>
+
+      <!-- ═══ ATOMIC & MASS NUMBERS ═══ -->
+      <div class="section-heading anchor-offset" id="atomic-numbers">
+        <span class="icon">🔢</span> Atomic Numbers and Mass Numbers
+      </div>
+
+      <div class="key-term">
+        <div class="term">Atomic Number</div>
+        <div class="definition"><strong>The atomic number is the number of protons in the atom of that element.</strong> The number of protons equals the number of electrons in a neutral atom (because positive and negative charges are equal).</div>
+        <div class="simpler">💡 Atomic number = number of protons = number of electrons (in a neutral atom)</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Mass Number</div>
+        <div class="definition"><strong>The mass number is the total number of protons and neutrons in an atom.</strong></div>
+        <div class="simpler">💡 Mass number − Atomic number = Number of neutrons</div>
+      </div>
+
+      <div class="formula-box">
+        <div class="label">Number of Neutrons</div>
+        Neutrons = Mass Number − Atomic Number
+      </div>
+
+      <!-- Atom notation visual: Lithium -->
+      <div class="sub-heading">Example: Reading Atom Notation — Lithium (Li)</div>
+      <div class="atom-notation">
+        <div class="atom-box" style="position:relative; padding:24px 32px;">
+          <div class="mass-num" style="position:absolute; top:10px; left:12px; font-size:24px;">7</div>
+          <div class="symbol">Li</div>
+          <div class="element-name">Lithium</div>
+          <div class="atomic-num" style="position:absolute; bottom:10px; left:12px; font-size:24px;">3</div>
+        </div>
+        <div class="atom-labels">
+          <div class="atom-label">Mass Number (top) = <strong>7</strong> → protons + neutrons</div>
+          <div class="atom-label">Atomic Number (bottom) = <strong>3</strong> → number of protons</div>
+          <div class="atom-label">Protons = <strong>3</strong></div>
+          <div class="atom-label">Electrons = <strong>3</strong> (same as protons in neutral atom)</div>
+          <div class="atom-label">Neutrons = 7 − 3 = <strong>4</strong></div>
+        </div>
+      </div>
+
+      <!-- ═══ ELECTRONIC CONFIGURATION ═══ -->
+      <div class="section-heading anchor-offset" id="electronic-config">
+        <span class="icon">🔵</span> Electronic Configuration
+      </div>
+
+      <p>Electron shells are the spaces where electrons orbit. The shells are also called <strong>energy levels</strong>. Danish scientist Niels Bohr (1885–1962) came up with the idea of electron shells.</p>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">1️⃣</div>
+          <div class="card-title">First Shell (innermost)</div>
+          <div class="card-def">The one closest to the nucleus. Has space for up to <strong>2 electrons</strong>.</div>
+          <div class="card-simpler">💡 Always fills up first before the second shell.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">2️⃣</div>
+          <div class="card-title">Second Shell</div>
+          <div class="card-def">Has space for up to <strong>8 electrons</strong>.</div>
+          <div class="card-simpler">💡 Fills up after the first shell is full.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">3️⃣</div>
+          <div class="card-title">Third Shell</div>
+          <div class="card-def">Also has space for up to <strong>8 electrons</strong>.</div>
+          <div class="card-simpler">💡 Electrons fill shells from the inside out.</div>
+        </div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Electronic Configuration</div>
+        <div class="definition"><strong>Describing the location of electrons in an atom is called the electronic configuration.</strong> Scientists use a shorthand version showing the number of electrons in each shell, working outwards from the nucleus.</div>
+        <div class="simpler">💡 Example: Nitrogen → N: 2, 5 &nbsp;|&nbsp; Sodium → Na: 2, 8, 1</div>
+      </div>
+
+      <div class="sub-heading">Bohr Models: Nitrogen and Sodium</div>
+      <div class="bohr-grid">
+        <!-- Nitrogen Bohr model -->
+        <div class="bohr-card">
+          <div class="bohr-title">Nitrogen (N) — Atomic No. 7</div>
+          <svg viewBox="0 0 160 160" width="160" height="160">
+            <!-- Shell 1 -->
+            <circle cx="80" cy="80" r="22" fill="none" stroke="#ccc" stroke-width="1.5"/>
+            <!-- Shell 2 -->
+            <circle cx="80" cy="80" r="55" fill="none" stroke="#ccc" stroke-width="1.5"/>
+            <!-- Nucleus -->
+            <circle cx="80" cy="80" r="16" fill="#004d40"/>
+            <text x="80" y="77" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">7P</text>
+            <text x="80" y="88" text-anchor="middle" fill="#aaa" font-size="9">7N</text>
+            <!-- Shell 1: 2 electrons -->
+            <circle cx="80" cy="58" r="6" fill="#1976D2"/>
+            <circle cx="80" cy="102" r="6" fill="#1976D2"/>
+            <!-- Shell 2: 5 electrons -->
+            <circle cx="80" cy="25" r="6" fill="#1976D2"/>
+            <circle cx="112" cy="42" r="6" fill="#1976D2"/>
+            <circle cx="125" cy="80" r="6" fill="#1976D2"/>
+            <circle cx="112" cy="118" r="6" fill="#1976D2"/>
+            <circle cx="48" cy="42" r="6" fill="#1976D2"/>
+          </svg>
+          <div class="bohr-config">N: 2, 5</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:6px;">2 in shell 1, 5 in shell 2</div>
+        </div>
+        <!-- Sodium Bohr model -->
+        <div class="bohr-card">
+          <div class="bohr-title">Sodium (Na) — Atomic No. 11</div>
+          <svg viewBox="0 0 160 160" width="160" height="160">
+            <!-- Shell 1 -->
+            <circle cx="80" cy="80" r="18" fill="none" stroke="#ccc" stroke-width="1.5"/>
+            <!-- Shell 2 -->
+            <circle cx="80" cy="80" r="42" fill="none" stroke="#ccc" stroke-width="1.5"/>
+            <!-- Shell 3 -->
+            <circle cx="80" cy="80" r="65" fill="none" stroke="#ccc" stroke-width="1.5"/>
+            <!-- Nucleus -->
+            <circle cx="80" cy="80" r="14" fill="#004d40"/>
+            <text x="80" y="77" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">11P</text>
+            <text x="80" y="88" text-anchor="middle" fill="#aaa" font-size="9">12N</text>
+            <!-- Shell 1: 2 electrons -->
+            <circle cx="80" cy="62" r="5" fill="#1976D2"/>
+            <circle cx="80" cy="98" r="5" fill="#1976D2"/>
+            <!-- Shell 2: 8 electrons -->
+            <circle cx="80" cy="38" r="5" fill="#1976D2"/>
+            <circle cx="110" cy="50" r="5" fill="#1976D2"/>
+            <circle cx="122" cy="80" r="5" fill="#1976D2"/>
+            <circle cx="110" cy="110" r="5" fill="#1976D2"/>
+            <circle cx="80" cy="122" r="5" fill="#1976D2"/>
+            <circle cx="50" cy="110" r="5" fill="#1976D2"/>
+            <circle cx="38" cy="80" r="5" fill="#1976D2"/>
+            <circle cx="50" cy="50" r="5" fill="#1976D2"/>
+            <!-- Shell 3: 1 electron -->
+            <circle cx="80" cy="15" r="5" fill="#1976D2"/>
+          </svg>
+          <div class="bohr-config">Na: 2, 8, 1</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:6px;">2 in shell 1, 8 in shell 2, 1 in shell 3</div>
+        </div>
+      </div>
+
+      <!-- ═══ ISOTOPES ═══ -->
+      <div class="section-heading anchor-offset" id="isotopes">
+        <span class="icon">⚖️</span> Isotopes
+      </div>
+
+      <div class="key-term">
+        <div class="term">Isotopes</div>
+        <div class="definition"><strong>Atoms with the same number of protons but different numbers of neutrons are called isotopes.</strong> The atoms of some elements can exist with different masses. The number of protons in the atoms of the element is the same, but the number of neutrons is different.</div>
+        <div class="simpler">💡 Same element, different mass number. Same protons, different neutrons.</div>
+      </div>
+
+      <div class="sub-heading">Example: Isotopes of Carbon</div>
+      <div class="isotope-grid">
+        <div class="isotope-card">
+          <div style="position:relative; display:inline-block;">
+            <div class="iso-symbol" style="position:relative;">
+              <span style="position:absolute; top:6px; left:8px; font-size:18px; font-weight:800; color:#fff;">12</span>
+              C
+              <span style="position:absolute; bottom:6px; left:8px; font-size:14px; color:rgba(255,255,255,0.8);">6</span>
+            </div>
+          </div>
+          <div class="iso-name">Carbon-12</div>
+          <div class="iso-detail">6 protons · 6 neutrons · 6 electrons</div>
+          <div class="iso-detail" style="margin-top:4px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);">6P + 6N</div>
+        </div>
+        <div class="isotope-card">
+          <div style="position:relative; display:inline-block;">
+            <div class="iso-symbol" style="position:relative;">
+              <span style="position:absolute; top:6px; left:8px; font-size:18px; font-weight:800; color:#fff;">13</span>
+              C
+              <span style="position:absolute; bottom:6px; left:8px; font-size:14px; color:rgba(255,255,255,0.8);">6</span>
+            </div>
+          </div>
+          <div class="iso-name">Carbon-13</div>
+          <div class="iso-detail">6 protons · 7 neutrons · 6 electrons</div>
+          <div class="iso-detail" style="margin-top:4px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);">6P + 7N</div>
+        </div>
+        <div class="isotope-card">
+          <div style="position:relative; display:inline-block;">
+            <div class="iso-symbol" style="position:relative;">
+              <span style="position:absolute; top:6px; left:8px; font-size:18px; font-weight:800; color:#fff;">14</span>
+              C
+              <span style="position:absolute; bottom:6px; left:8px; font-size:14px; color:rgba(255,255,255,0.8);">6</span>
+            </div>
+          </div>
+          <div class="iso-name">Carbon-14</div>
+          <div class="iso-detail">6 protons · 8 neutrons · 6 electrons</div>
+          <div class="iso-detail" style="margin-top:4px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);">6P + 8N</div>
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>Key Rule for Isotopes</strong>
+          Isotopes of the same element always have: the SAME number of protons (same atomic number), the SAME number of electrons, but DIFFERENT numbers of neutrons (different mass numbers). The chemical properties of isotopes are identical.
+        </div>
+      </div>
+
+      <!-- ═══ KEY TERMS ═══ -->
+      <div class="section-heading anchor-offset" id="key-terms">
+        <span class="icon">📖</span> Key Terms
+      </div>
+
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Atom</div>
+          <div class="g-def">A tiny particle; the basic building block of all matter.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Element</div>
+          <div class="g-def">A substance that contains only one type of atom. Cannot be broken into simpler substances.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Chemical Symbol</div>
+          <div class="g-def">A shorthand notation for an element, using 1 or 2 letters (e.g. Na for sodium).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Subatomic Particles</div>
+          <div class="g-def">Particles smaller than an atom: protons, neutrons, and electrons.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Protons</div>
+          <div class="g-def">Positively charged (+1) subatomic particles found in the nucleus. Mass = 1.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Neutrons</div>
+          <div class="g-def">Neutral (0) subatomic particles found in the nucleus. Mass = 1.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Electrons</div>
+          <div class="g-def">Negatively charged (−1) particles that orbit the nucleus in shells. Mass ≈ 0.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Atomic Number</div>
+          <div class="g-def">The number of protons in an atom of an element. Always the smaller number.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Mass Number</div>
+          <div class="g-def">The total number of protons and neutrons in an atom.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Electronic Configuration</div>
+          <div class="g-def">The arrangement of electrons in shells around the nucleus (e.g. Na: 2, 8, 1).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Isotope</div>
+          <div class="g-def">Atoms of the same element with the same number of protons but different numbers of neutrons.</div>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the answer and a simple explanation.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Reading Atomic Notation
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Use the following information to answer the questions below:<br><br>
+            Oxygen: Atomic number = 8, Mass number = 16<br>
+            Chlorine: Atomic number = 17, Mass number = 35<br>
+            Zinc: Atomic number = 30, Mass number = 65<br>
+            Tungsten: Atomic number = 74, Mass number = 187<br><br>
+            a) Which element has the highest number of protons?<br>
+            b) How many protons are in an atom of oxygen?<br>
+            c) How many neutrons are in an atom of zinc?<br>
+            d) Which element contains the same number of protons and neutrons?
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a) Tungsten has atomic number 74 → 74 protons (highest)
+
+b) Oxygen: atomic number = 8 → 8 protons
+
+c) Zinc: neutrons = mass number − atomic number
+   neutrons = 65 − 30 = 35 neutrons
+
+d) Oxygen: protons = 8, neutrons = 16 − 8 = 8
+   → Same number of protons and neutrons ✓</div>
+            <div class="answer">✅ a) Tungsten &nbsp;|&nbsp; b) 8 protons &nbsp;|&nbsp; c) 35 neutrons &nbsp;|&nbsp; d) Oxygen</div>
+            <div class="tip">💡 Key formula: Neutrons = Mass number − Atomic number. Remember: atomic number = protons = electrons (in a neutral atom).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Completing an Atomic Table
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Complete the table using the periodic table. Fill in the missing values:<br><br>
+            Row 1: Atomic no. = 6, Mass no. = 13<br>
+            Row 2: Mass no. = 24, Neutrons = 12<br>
+            Row 3: Mass no. = 40, Electrons = 20<br>
+            Row 4: Atomic no. = 13, Neutrons = 14<br>
+            Row 5: Mass no. = 56, Neutrons = 26, Symbol = Fe
+          </div>
+          <div class="prob-solution">
+            <div class="steps">Row 1: Atomic no.=6, Mass=13
+   Protons=6, Neutrons=13−6=7, Electrons=6
+   Element: Carbon (C)
+
+Row 2: Mass=24, Neutrons=12
+   Protons=24−12=12, Electrons=12, Atomic no.=12
+   Element: Magnesium (Mg)
+
+Row 3: Mass=40, Electrons=20
+   Protons=20 (neutral atom), Atomic no.=20
+   Neutrons=40−20=20
+   Element: Calcium (Ca)
+
+Row 4: Atomic no.=13, Neutrons=14
+   Mass no.=13+14=27, Protons=13, Electrons=13
+   Element: Aluminium (Al)
+
+Row 5: Mass=56, Neutrons=26, Symbol=Fe
+   Protons=56−26=30 ← wait, Fe=Iron, Atomic no.=26
+   Protons=26, Neutrons=56−26=30, Electrons=26
+   Element: Iron (Fe)</div>
+            <div class="answer">✅ Carbon, Magnesium, Calcium, Aluminium, Iron</div>
+            <div class="tip">💡 Use Neutrons = Mass − Atomic no. and Protons = Atomic no. = Electrons (neutral). Always check your answer using the periodic table!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Electronic Configuration
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Write the electronic configuration for the following atoms:<br>a) Hydrogen (atomic no. = 1) &nbsp; b) Magnesium (atomic no. = 12) &nbsp; c) Neon (atomic no. = 10) &nbsp; d) Phosphorus (atomic no. = 15)</div>
+          <div class="prob-solution">
+            <div class="steps">Shell rules: Shell 1 → max 2 | Shell 2 → max 8 | Shell 3 → max 8
+
+a) Hydrogen (1 electron):
+   Shell 1: 1 → H: 1
+
+b) Magnesium (12 electrons):
+   Shell 1: 2, Shell 2: 8, Shell 3: 2 → Mg: 2, 8, 2
+
+c) Neon (10 electrons):
+   Shell 1: 2, Shell 2: 8 → Ne: 2, 8
+
+d) Phosphorus (15 electrons):
+   Shell 1: 2, Shell 2: 8, Shell 3: 5 → P: 2, 8, 5</div>
+            <div class="answer">✅ H: 1 &nbsp;|&nbsp; Mg: 2, 8, 2 &nbsp;|&nbsp; Ne: 2, 8 &nbsp;|&nbsp; P: 2, 8, 5</div>
+            <div class="tip">💡 Always fill the inner shells first (2, then 8, then 8). The number of electrons = the atomic number for a neutral atom.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Isotopes of Chlorine
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Two isotopes of chlorine exist: Cl-35 and Cl-37. The atomic number of chlorine is 17.<br>
+            a) How many protons, neutrons and electrons does Cl-35 have?<br>
+            b) How many protons, neutrons and electrons does Cl-37 have?<br>
+            c) What do the two isotopes have in common?<br>
+            d) How do the two isotopes differ?
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a) Cl-35 (mass no. = 35, atomic no. = 17):
+   Protons = 17
+   Neutrons = 35 − 17 = 18
+   Electrons = 17
+
+b) Cl-37 (mass no. = 37, atomic no. = 17):
+   Protons = 17
+   Neutrons = 37 − 17 = 20
+   Electrons = 17
+
+c) In common: Both have 17 protons and 17 electrons.
+   Both are the same element (chlorine).
+   Same chemical properties.
+
+d) How they differ: Different number of neutrons
+   (Cl-35 has 18; Cl-37 has 20). Different mass numbers.</div>
+            <div class="answer">✅ a) 17p, 18n, 17e &nbsp;|&nbsp; b) 17p, 20n, 17e &nbsp;|&nbsp; c) Same protons/electrons &nbsp;|&nbsp; d) Different neutrons</div>
+            <div class="tip">💡 Isotopes = same element (same protons), different mass (different neutrons). The number in the name (Cl-35) IS the mass number.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Isotopes of Boron (Past Paper Style)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Use your knowledge of isotopes to answer the following questions about boron-10 and boron-11 (atomic number of boron = 5):<br>
+            a) What is the atomic number of boron?<br>
+            b) How many protons, neutrons and electrons does B-10 have?<br>
+            c) How many protons, neutrons and electrons does B-11 have?<br>
+            d) What do the isotopes have in common?<br>
+            e) How do the isotopes differ?
+          </div>
+          <div class="prob-solution">
+            <div class="steps">a) Atomic number of boron = 5
+
+b) Boron-10 (mass no. = 10):
+   Protons = 5, Neutrons = 10−5 = 5, Electrons = 5
+
+c) Boron-11 (mass no. = 11):
+   Protons = 5, Neutrons = 11−5 = 6, Electrons = 5
+
+d) In common: Same number of protons (5),
+   same number of electrons (5), same element,
+   same chemical properties, same electronic config (B: 2, 3)
+
+e) They differ: B-10 has 5 neutrons; B-11 has 6 neutrons.
+   Different mass numbers (10 vs 11).</div>
+            <div class="answer">✅ a) 5 &nbsp;|&nbsp; b) 5p, 5n, 5e &nbsp;|&nbsp; c) 5p, 6n, 5e &nbsp;|&nbsp; d) Same protons/electrons &nbsp;|&nbsp; e) Different neutrons/mass</div>
+            <div class="tip">💡 For any isotope question: atomic number = protons = electrons. Neutrons = mass number − atomic number. Isotopes have the same protons, different neutrons.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PAST PAPERS ═══ -->
+      <div class="section-heading anchor-offset" id="past-papers">
+        <span class="icon">📝</span> Past Paper Questions
+      </div>
+
+      <div class="past-paper-box">
+        <div class="pp-header">📄 Sample Paper 2018 – Question 8</div>
+        <div class="pp-body">
+          <p><strong>Match each of the following subatomic particles to their descriptions:</strong></p>
+          <table class="energy-table" style="margin-top:10px;">
+            <thead><tr><th>Description</th><th>Particle</th></tr></thead>
+            <tbody>
+              <tr><td>Positively charged</td><td><strong>Proton</strong></td></tr>
+              <tr><td>Negatively charged</td><td><strong>Electron</strong></td></tr>
+              <tr><td>No charge</td><td><strong>Neutron</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:10px; font-size:13px; color:var(--muted);">Remember: Proton = +1, Electron = −1, Neutron = 0</p>
+        </div>
+      </div>
+
+      <div class="past-paper-box">
+        <div class="pp-header">📄 Final Examination 2019 – Question 15</div>
+        <div class="pp-body">
+          <p><strong>The diagrams show the arrangement of particles in aluminium and chlorine at room temperature.</strong></p>
+          <p style="margin-top:8px;"><em>What evidence is there in the diagrams to support the classification of these substances as elements?</em></p>
+          <p style="margin-top:10px; background:#e0f2f1; border-radius:8px; padding:10px 14px; font-size:14px;">
+            <strong>Model Answer:</strong> In the diagrams, each substance contains only one type of atom (all atoms are the same size and colour within each substance). This means that aluminium contains only aluminium atoms, and chlorine contains only chlorine atoms. Since each substance contains only one type of atom, they are classified as elements.
+          </p>
+        </div>
+      </div>
+
+      <div class="past-paper-box">
+        <div class="pp-header">📄 Final Examination 2022 – Question 3</div>
+        <div class="pp-body">
+          <p><strong>An atom of element X is shown. It has a nucleus with electrons orbiting in shells.</strong></p>
+          <ol type="a">
+            <li style="margin-bottom:10px;"><strong>Name one subatomic particle found in the nucleus of an atom.</strong><br>
+            <em>Answer: Proton (or neutron). Both protons and neutrons are found in the nucleus.</em></li>
+            <li><strong>The charge on the electron is: Positive / Negative / Neutral — tick the correct box.</strong><br>
+            <em>Answer: ✅ <strong>Negative</strong> — Electrons carry a negative charge of −1.</em></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ SUMMARY ═══ -->
+      <div class="section-heading anchor-offset" id="summary">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="energy-table">
+        <thead>
+          <tr><th>Topic</th><th>Key Fact / Rule</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Atom</strong></td>
+            <td>Tiny particle; basic building block of all matter</td>
+            <td>Everything is made of atoms</td>
+          </tr>
+          <tr>
+            <td><strong>Element</strong></td>
+            <td>One type of atom only; cannot be broken down further</td>
+            <td>Gold (Au), Nitrogen (N)</td>
+          </tr>
+          <tr>
+            <td><strong>Proton</strong></td>
+            <td>+1 charge, mass = 1, in nucleus</td>
+            <td>Li has 3 protons</td>
+          </tr>
+          <tr>
+            <td><strong>Neutron</strong></td>
+            <td>0 charge, mass = 1, in nucleus</td>
+            <td>Li has 4 neutrons</td>
+          </tr>
+          <tr>
+            <td><strong>Electron</strong></td>
+            <td>−1 charge, mass ≈ 0, orbits nucleus in shells</td>
+            <td>Li has 3 electrons</td>
+          </tr>
+          <tr>
+            <td><strong>Atomic Number</strong></td>
+            <td>= number of protons = number of electrons (neutral atom)</td>
+            <td>Li = 3</td>
+          </tr>
+          <tr>
+            <td><strong>Mass Number</strong></td>
+            <td>= protons + neutrons</td>
+            <td>Li = 7</td>
+          </tr>
+          <tr>
+            <td><strong>Neutrons</strong></td>
+            <td>= mass number − atomic number</td>
+            <td>Li: 7 − 3 = 4</td>
+          </tr>
+          <tr>
+            <td><strong>Electronic Config.</strong></td>
+            <td>Electrons fill shells: 2, 8, 8 outwards</td>
+            <td>Na: 2, 8, 1</td>
+          </tr>
+          <tr>
+            <td><strong>Isotopes</strong></td>
+            <td>Same protons, different neutrons</td>
+            <td>C-12, C-13, C-14</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+
+</body>
+</html>
