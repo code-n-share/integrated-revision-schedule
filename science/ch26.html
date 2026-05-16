@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 26 – Density | Science Revision</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 240px; height: 100vh;
+      background: var(--text);
+      color: #fff;
+      display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--yellow);
+      color: var(--text);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px; font-weight: 600;
+      opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px;
+    }
+
+    .sidebar-section { padding: 14px 0 4px; }
+
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4); padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--yellow);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700; font-size: 15px;
+      color: var(--yellow); padding-top: 12px; padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--text) 0%, #2d3561 60%, #1A1A2E 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,0,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '⚖️';
+      position: absolute; top: 20px; right: 48px;
+      font-size: 120px; opacity: 0.08;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--yellow); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 13px; padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -1px; line-height: 1;
+    }
+
+    .chapter-hero h1 span { color: var(--yellow); }
+
+    .chapter-meta {
+      margin-top: 18px; font-size: 15px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .goal-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px; padding: 6px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1000px; }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px; font-weight: 800; color: var(--text);
+      margin: 48px 0 20px; padding-bottom: 10px;
+      border-bottom: 3px solid var(--yellow);
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .section-heading .icon { font-size: 26px; }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px; font-weight: 700; color: var(--green-dark);
+      margin: 28px 0 12px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--yellow-light);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 14px 0;
+    }
+
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* FORMULA BOX */
+    .formula-box {
+      background: var(--text); color: #fff;
+      border-radius: var(--radius); padding: 20px 24px;
+      margin: 16px 0; text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px; font-weight: 600; letter-spacing: 1px;
+      position: relative; overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--yellow);
+    }
+
+    .formula-box .label {
+      font-size: 11px; font-family: 'DM Sans', sans-serif;
+      font-weight: 600; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    }
+
+    .formula-fraction {
+      display: inline-flex; flex-direction: column;
+      align-items: center; gap: 2px;
+    }
+
+    .formula-fraction .num {
+      border-bottom: 2px solid var(--yellow);
+      padding-bottom: 4px; font-weight: 700;
+    }
+
+    .formula-fraction .den { padding-top: 4px; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+
+    .example-box .example-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+      padding: 8px 18px;
+    }
+
+    .example-box .example-body { padding: 16px 18px; }
+    .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+
+    .example-box .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px; margin: 8px 0; line-height: 2;
+      white-space: pre-line;
+    }
+
+    .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+
+    .example-box .simpler-note {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555;
+    }
+
+    .example-box .simpler-note strong { color: var(--orange); }
+
+    /* CONCENTRATE */
+    .concentrate {
+      background: #FFF3CD; border: 2px dashed #F5C800;
+      border-radius: var(--radius); padding: 14px 18px;
+      margin: 16px 0; display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-simpler { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* TABLE */
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+
+    .data-table th {
+      background: var(--text); color: #fff;
+      font-family: 'Sora', sans-serif; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+
+    .data-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: middle;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table .highlight-row td { background: #E8F5E9; font-weight: 700; }
+
+    /* EUREKA */
+    .eureka {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+      border: 2px solid var(--yellow); border-radius: var(--radius);
+      padding: 16px 18px; margin: 16px 0;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+
+    .eureka .eur-icon { font-size: 30px; flex-shrink: 0; }
+    .eureka .eur-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: var(--orange); margin-bottom: 4px; }
+    .eureka .eur-text { font-size: 13px; color: #444; line-height: 1.5; }
+
+    /* PROBLEMS */
+    .problem-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      margin: 14px 0; box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px;
+      padding: 9px 18px; display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+
+    .toggle-btn {
+      background: var(--yellow); color: var(--text); border: none;
+      border-radius: 100px; font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 12px; padding: 4px 14px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+
+    .toggle-btn:hover { opacity: 0.8; }
+
+    .prob-solution {
+      display: none; margin-top: 12px;
+      border-top: 1px solid var(--border); padding-top: 12px;
+    }
+
+    .prob-solution.open { display: block; }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px; line-height: 2; white-space: pre-line;
+    }
+
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+
+    .prob-solution .tip {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 10px; font-size: 13px; color: #555;
+    }
+
+    /* TRIANGLE VISUAL */
+    .triangle-visual {
+      display: flex; justify-content: center; margin: 16px 0;
+    }
+
+    .triangle-svg-wrap {
+      background: #fff; border-radius: var(--radius);
+      padding: 24px 32px; box-shadow: var(--shadow);
+      border: 1.5px solid var(--border); text-align: center;
+    }
+
+    .triangle-svg-wrap p {
+      font-size: 13px; color: var(--muted); margin-top: 10px;
+    }
+
+    /* FLOTATION VISUAL */
+    .flotation-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin: 16px 0;
+    }
+
+    .flotation-card {
+      background: #fff; border-radius: var(--radius);
+      border: 2px solid var(--border); padding: 18px;
+      text-align: center; box-shadow: var(--shadow);
+    }
+
+    .flotation-card.float-card { border-color: var(--green); }
+    .flotation-card.sink-card { border-color: var(--red); }
+
+    .flotation-card .fc-icon { font-size: 40px; margin-bottom: 8px; }
+
+    .flotation-card .fc-rule {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 6px;
+    }
+
+    .flotation-card.float-card .fc-rule { color: var(--green-dark); }
+    .flotation-card.sink-card .fc-rule { color: var(--red); }
+    .flotation-card .fc-desc { font-size: 13px; color: #555; }
+
+    /* CHAPTER NAV */
+    .chapter-nav-bar {
+      background: var(--text); color: #fff;
+      padding: 24px 48px; margin-left: 240px;
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 13px; }
+
+    .chapter-nav-bar a {
+      background: rgba(255,255,255,0.1); color: #fff;
+      text-decoration: none; border-radius: 100px;
+      padding: 8px 20px; font-weight: 600; font-size: 14px;
+      border: 1.5px solid rgba(255,255,255,0.2); transition: all 0.2s;
+    }
+
+    .chapter-nav-bar a:hover {
+      background: var(--yellow); color: var(--text); border-color: var(--yellow);
+    }
+
+    /* MISC */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    p { margin: 10px 0; font-size: 15px; }
+    ul, ol { margin: 10px 0 10px 22px; }
+    li { font-size: 14px; margin-bottom: 4px; line-height: 1.5; }
+
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 100px; margin-left: 8px; vertical-align: middle;
+    }
+
+    .badge-blue { background: #DBEAFE; color: var(--blue); }
+    .badge-green { background: #DCFCE7; color: var(--green-dark); }
+    .badge-orange { background: #FFEDD5; color: var(--orange); }
+    .badge-purple { background: #EDE9FE; color: var(--purple); }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .content { padding: 20px; }
+      .chapter-hero { padding: 32px 20px 28px; }
+      .chapter-hero h1 { font-size: 36px; }
+      .chapter-nav-bar { margin-left: 0; padding: 20px; }
+      .flotation-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Science Revision</div>
+      <div class="book-title">Elements of Science – Unit 4</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Physical World</div>
+      <a href="index.html" class="chapter-link active">Ch 26 · Density</a>
+      <a href="#what-is-density">What is Density?</a>
+      <a href="#calculating">Calculating Density</a>
+      <a href="#measuring">Measuring Volume</a>
+      <a href="#flotation">Flotation</a>
+      <a href="#flotation-water">Flotation in Water</a>
+      <a href="#problems">Practice Problems</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <a href="index.html" class="chapter-link">&larr; Science Home</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 26 &middot; Unit 4 – Physical World</div>
+      <h1>⚖️ <span>Density</span></h1>
+      <div class="chapter-meta">Elements of Science &mdash; Physics</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✅ Calculate, measure &amp; investigate densities</span>
+        <span class="goal-tag">✅ Explain flotation</span>
+        <span class="goal-tag">✅ Relate mass, volume &amp; density</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- KEY TERMS OVERVIEW -->
+      <div class="section-heading anchor-offset" id="what-is-density">
+        <span class="icon">🔑</span> Key Terms &amp; What is Density?
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">⚖️</div>
+          <div class="card-title">Density</div>
+          <div class="card-def">How tightly packed atoms are in an object — the closer the atoms, the higher the density.</div>
+          <div class="card-simpler">💡 Same size, different mass? Density explains it!</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🏋️</div>
+          <div class="card-title">Mass</div>
+          <div class="card-def">The amount of matter in an object. Measured in grams (g) or kilograms (kg).</div>
+          <div class="card-simpler">💡 Measured with a mass balance.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">📦</div>
+          <div class="card-title">Volume</div>
+          <div class="card-def">The amount of space an object takes up. Measured in cm³ or m³.</div>
+          <div class="card-simpler">💡 Measured with a ruler (regular shapes) or a graduated cylinder (irregular shapes).</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🎈</div>
+          <div class="card-title">Flotation</div>
+          <div class="card-def">Describes how well an object or substance floats when placed in another substance, such as a liquid or gas.</div>
+          <div class="card-simpler">💡 Lower density than surroundings = float. Higher = sink.</div>
+        </div>
+      </div>
+
+      <p>Imagine two identically sized bags — one filled with feathers and the other filled with sand. The bag of sand is much heavier because there are more atoms packed into the same space — the sand has a <strong>greater density</strong> than the feathers.</p>
+
+      <div class="key-term">
+        <div class="term">Density</div>
+        <div class="definition"><strong>Density is how tightly packed atoms are in an object.</strong> The closer together the atoms are, the more of them fit into a space, and the higher the density.</div>
+        <div class="simpler">💡 SI units for density: g/cm³ or kg/m³</div>
+      </div>
+
+      <!-- ═══ CALCULATING DENSITY ═══ -->
+      <div class="section-heading anchor-offset" id="calculating">
+        <span class="icon">🧮</span> Calculating Density
+      </div>
+
+      <p>To calculate density, you need to know the object's <strong>mass</strong> (measured in g or kg) and its <strong>volume</strong> (measured in cm³ or m³).</p>
+
+      <div class="formula-box">
+        <div class="label">Density Formula</div>
+        density = <span style="display:inline-flex; flex-direction:column; align-items:center; margin-left:8px; vertical-align:middle;">
+          <span style="border-bottom:2px solid var(--yellow); padding-bottom:3px; font-weight:700;">mass</span>
+          <span style="padding-top:3px;">volume</span>
+        </span>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🔺</div>
+        <div class="text">
+          <strong>Magic Triangle – Remember the Formula!</strong>
+          Cover the quantity you want to find, and the triangle shows the formula:
+          <br>• <strong>density</strong> = mass ÷ volume
+          <br>• <strong>mass</strong> = density × volume
+          <br>• <strong>volume</strong> = mass ÷ density
+        </div>
+      </div>
+
+      <div class="triangle-visual">
+        <div class="triangle-svg-wrap">
+          <svg width="160" height="130" viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="80,10 10,120 150,120" fill="#F5C800" stroke="#E65100" stroke-width="2"/>
+            <line x1="10" y1="70" x2="150" y2="70" stroke="#E65100" stroke-width="2"/>
+            <text x="80" y="48" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="15" fill="#1A1A2E">mass</text>
+            <text x="42" y="100" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="12" fill="#1A1A2E">density</text>
+            <text x="118" y="100" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="12" fill="#1A1A2E">volume</text>
+          </svg>
+          <p>Cover what you want to find — the triangle shows the calculation!</p>
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">📐</div>
+        <div class="text">
+          <strong>Always include units!</strong>
+          Using SI units throughout a calculation makes them easier to remember. Always write the unit in your answer (e.g. g/cm³ or kg/m³).
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Example – Calculating Density of a Cube</div>
+        <div class="example-body">
+          <div class="q">Calculate the density of a cube with a mass of 200 g and a volume of 64 cm³.</div>
+          <div class="steps">density = mass ÷ volume
+density = 200 g ÷ 64 cm³
+density = 3.1 g/cm³</div>
+          <div class="answer">✅ Answer: 3.1 g/cm³</div>
+          <div class="simpler-note"><strong>Simple:</strong> Just divide mass by volume. Always write the unit — here it's g/cm³.</div>
+        </div>
+      </div>
+
+      <!-- ═══ MEASURING VOLUME ═══ -->
+      <div class="section-heading anchor-offset" id="measuring">
+        <span class="icon">🧪</span> Measuring Volume of Irregular Solids
+      </div>
+
+      <p>For regular shapes (cubes, rectangles), volume is calculated from measurements. For <strong>irregular solids</strong>, we use the <strong>water displacement method</strong>:</p>
+
+      <ol>
+        <li>Place the irregular solid on a mass balance and record its mass.</li>
+        <li>Fill an overflow can with water and place a graduated cylinder beneath the spout.</li>
+        <li>Submerge the solid in the water — the water displaced equals the object's volume.</li>
+        <li>Calculate density by dividing mass by the volume of water displaced.</li>
+      </ol>
+
+      <div class="eureka">
+        <div class="eur-icon">💡</div>
+        <div>
+          <div class="eur-title">Archimedes' Principle</div>
+          <div class="eur-text">The ancient Greek scientist Archimedes (4th century BCE) discovered that when an object is placed in water, the increase in water level equals the volume of the object. Legend says he was so excited by this discovery that he shouted <em>"Eureka!"</em> — meaning "I have found it!" He used this method to prove a king's crown was not pure gold.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Comparing Density of Liquids (Experimental Investigation 26.2)</div>
+
+      <p>To measure the density of a liquid:</p>
+      <ol>
+        <li>Measure the mass of a graduated cylinder (empty).</li>
+        <li>Add 50 ml (50 cm³) of liquid to the cylinder.</li>
+        <li>Record the new mass and subtract to find the mass of the liquid only.</li>
+        <li>Calculate density = mass ÷ volume. Repeat for other liquids.</li>
+      </ol>
+
+      <!-- ═══ FLOTATION ═══ -->
+      <div class="section-heading anchor-offset" id="flotation">
+        <span class="icon">🎈</span> Flotation
+      </div>
+
+      <div class="key-term">
+        <div class="term">Flotation</div>
+        <div class="definition"><strong>Flotation describes how well an object or substance floats when it is placed in another substance, such as a liquid or gas.</strong></div>
+        <div class="simpler">💡 Helium floats in air because helium is less dense than air.</div>
+      </div>
+
+      <div class="flotation-grid">
+        <div class="flotation-card float-card">
+          <div class="fc-icon">🏊</div>
+          <div class="fc-rule">Object FLOATS if…</div>
+          <div class="fc-desc">its density is <strong>lower</strong> than the substance it is placed in.</div>
+        </div>
+        <div class="flotation-card sink-card">
+          <div class="fc-icon">🪨</div>
+          <div class="fc-rule">Object SINKS if…</div>
+          <div class="fc-desc">its density is <strong>greater</strong> than the substance it is placed in.</div>
+        </div>
+      </div>
+
+      <!-- ═══ FLOTATION IN WATER ═══ -->
+      <div class="section-heading anchor-offset" id="flotation-water">
+        <span class="icon">💧</span> Flotation in Water
+      </div>
+
+      <p>The density of water is <strong>1000 kg/m³ (or 1 g/cm³)</strong>. This means:</p>
+      <ul>
+        <li>Substances with a density <strong>less than 1 g/cm³</strong> will float in water.</li>
+        <li>Substances with a density <strong>greater than 1 g/cm³</strong> will sink in water.</li>
+      </ul>
+
+      <div class="eureka">
+        <div class="eur-icon">🧊</div>
+        <div>
+          <div class="eur-title">Why do icebergs float?</div>
+          <div class="eur-text">Ice has a density of 0.9 g/cm³ — less dense than liquid water (1 g/cm³), so ice floats. Only about one-tenth of an iceberg is visible above the surface! Extreme care is taken when sailing near icebergs due to the large amount of submerged ice.</div>
+        </div>
+      </div>
+
+      <div class="eureka">
+        <div class="eur-icon">🌊</div>
+        <div>
+          <div class="eur-title">The Dead Sea</div>
+          <div class="eur-text">The Dead Sea is a salt lake between Israel and Jordan — one of the world's saltiest bodies of water, about 9.6 times as salty as the ocean! The higher salt content increases the water's density, making it very easy for people to float.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Density of Common Substances</div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Substance</th>
+            <th>Density (g/cm³)</th>
+            <th>Floats or Sinks in Water?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Helium gas</td>
+            <td>0.0002</td>
+            <td>🎈 Floats (also in air!)</td>
+          </tr>
+          <tr>
+            <td>Air</td>
+            <td>0.0013</td>
+            <td>🎈 Floats</td>
+          </tr>
+          <tr>
+            <td>Cork</td>
+            <td>0.3</td>
+            <td>🎈 Floats</td>
+          </tr>
+          <tr>
+            <td>Paraffin oil</td>
+            <td>0.8</td>
+            <td>🎈 Floats</td>
+          </tr>
+          <tr>
+            <td>Ice</td>
+            <td>0.9</td>
+            <td>🎈 Floats</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>Water</strong></td>
+            <td><strong>1.0</strong></td>
+            <td>— Reference point</td>
+          </tr>
+          <tr>
+            <td>Seawater</td>
+            <td>1.030</td>
+            <td>🪨 Sinks (denser than fresh water)</td>
+          </tr>
+          <tr>
+            <td>Blood</td>
+            <td>1.6</td>
+            <td>🪨 Sinks</td>
+          </tr>
+          <tr>
+            <td>Steel</td>
+            <td>7.8</td>
+            <td>🪨 Sinks</td>
+          </tr>
+          <tr>
+            <td>Mercury</td>
+            <td>13.6</td>
+            <td>🪨 Sinks</td>
+          </tr>
+          <tr>
+            <td>Iridium</td>
+            <td>22.6</td>
+            <td>🪨 Sinks</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="concentrate">
+        <div class="icon">🚢</div>
+        <div class="text">
+          <strong>Why do steel ships float?</strong>
+          Steel has a density of 7.8 g/cm³, yet ships are built of steel and they float in seawater. This is because a ship is not solid steel — it contains a large amount of air inside. The overall (average) density of the ship including all the air is less than 1 g/cm³, so it floats!
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the worked answer.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Basic Density Calculation
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A wooden fencepost has a volume of 0.02 m³ and a mass of 18 kg. Calculate its density in kg/m³.</div>
+          <div class="prob-solution">
+            <div class="steps">density = mass ÷ volume
+density = 18 kg ÷ 0.02 m³
+density = 900 kg/m³</div>
+            <div class="answer">✅ Answer: 900 kg/m³</div>
+            <div class="tip">💡 Always divide mass by volume. Check that units are consistent — both kg and m³ here, so the answer is kg/m³.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Finding Volume from Density
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Aluminium has a density of 2700 kg/m³. Calculate the volume of 240 g of this metal.<br><em>Hint: convert grams to kg first.</em></div>
+          <div class="prob-solution">
+            <div class="steps">mass = 240 g = 0.24 kg
+volume = mass ÷ density
+volume = 0.24 ÷ 2700
+volume = 0.0000889 m³ (8.89 × 10⁻⁵ m³)</div>
+            <div class="answer">✅ Answer: 8.89 × 10⁻⁵ m³</div>
+            <div class="tip">💡 Rearrange: volume = mass ÷ density. Always convert to consistent units before calculating!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Rectangular Block
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A rectangular cement block is 70 cm long, 0.6 m wide and 1 cm thick.<br>
+            a) Calculate its volume in m³.<br>
+            b) Calculate its density if its mass is 58 kg.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Convert all to metres:
+length = 70 cm = 0.7 m
+width = 0.6 m
+thickness = 1 cm = 0.01 m
+volume = 0.7 × 0.6 × 0.01 = 0.0042 m³
+
+b) density = mass ÷ volume
+density = 58 ÷ 0.0042
+density ≈ 13,810 kg/m³</div>
+            <div class="answer">✅ a) Volume = 0.0042 m³ &nbsp;|&nbsp; b) Density ≈ 13,810 kg/m³</div>
+            <div class="tip">💡 Convert ALL measurements to the same unit before multiplying. Then divide mass by volume for density.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Gold Cube (Past Paper Style)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A rectangular cube of gold has a length of 10 cm and a mass of 19.25 kg.<br>
+            a) Calculate its volume (in cm³).<br>
+            b) Calculate its density (in g/cm³).</div>
+          <div class="prob-solution">
+            <div class="steps">a) volume = length³ = 10 × 10 × 10 = 1000 cm³
+
+b) mass = 19.25 kg = 19,250 g
+density = mass ÷ volume
+density = 19,250 ÷ 1000
+density = 19.25 g/cm³</div>
+            <div class="answer">✅ a) Volume = 1000 cm³ &nbsp;|&nbsp; b) Density = 19.25 g/cm³</div>
+            <div class="tip">💡 Convert mass to grams (×1000) so it matches cm³. A cube's volume = side³.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Liquid in a Graduated Cylinder
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A graduated cylinder is placed on a mass balance and has a reading of 124 g when empty. After a liquid is placed in it, the volume reads 45 cm³ and the new mass is 200 g. Calculate the density of this liquid.</div>
+          <div class="prob-solution">
+            <div class="steps">mass of liquid = 200 − 124 = 76 g
+volume of liquid = 45 cm³
+density = mass ÷ volume
+density = 76 ÷ 45
+density ≈ 1.69 g/cm³</div>
+            <div class="answer">✅ Answer: ≈ 1.69 g/cm³</div>
+            <div class="tip">💡 Don't forget to subtract the empty cylinder mass! Only the liquid's mass goes in the formula.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Die (Cube) Density
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A student measures the length of one side of a die as 16 mm. It has a mass of 4 g.<br>
+            a) Calculate its volume in cm³.<br>
+            b) Calculate its density in g/cm³.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Convert: 16 mm = 1.6 cm
+volume = 1.6 × 1.6 × 1.6 = 4.096 cm³
+
+b) density = mass ÷ volume
+density = 4 ÷ 4.096
+density ≈ 0.977 g/cm³</div>
+            <div class="answer">✅ a) 4.096 cm³ &nbsp;|&nbsp; b) ≈ 0.977 g/cm³</div>
+            <div class="tip">💡 Convert mm → cm by dividing by 10. The die would just barely float in water (density &lt; 1 g/cm³)!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 - Past Paper -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 7 — Density of Metal (Final Exam 2019 style)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A block measuring 8 cm × 4 cm × 2 cm has a mass of 128 g.<br>
+            a) Calculate the volume of the block.<br>
+            b) Calculate the density of the block. Include the unit in your answer.</div>
+          <div class="prob-solution">
+            <div class="steps">a) volume = 8 × 4 × 2 = 64 cm³
+
+b) density = mass ÷ volume
+density = 128 ÷ 64
+density = 2 g/cm³</div>
+            <div class="answer">✅ a) 64 cm³ &nbsp;|&nbsp; b) 2 g/cm³</div>
+            <div class="tip">💡 This is a classic past-paper style question. Multiply all three dimensions for volume, then divide mass by volume. Don't forget the unit!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P8 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 8 — Metal in Water (Displacement)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A graduated cylinder contains 60 cm³ of water. A regular cuboid of metal with a mass of 78.4 g is placed in it. The new volume reads 74 cm³. Calculate the density of the metal placed in the water.</div>
+          <div class="prob-solution">
+            <div class="steps">volume of metal = 74 − 60 = 14 cm³
+density = mass ÷ volume
+density = 78.4 ÷ 14
+density = 5.6 g/cm³</div>
+            <div class="answer">✅ Answer: 5.6 g/cm³</div>
+            <div class="tip">💡 The rise in water level = volume of the object (displacement method). Subtract the two water levels to find it.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY TABLE -->
+      <div class="section-heading" style="margin-top:48px;">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Formula / Key Fact</th>
+            <th>Units</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Density</strong></td>
+            <td>density = mass ÷ volume</td>
+            <td>g/cm³ or kg/m³</td>
+          </tr>
+          <tr>
+            <td><strong>Mass</strong></td>
+            <td>mass = density × volume</td>
+            <td>g or kg</td>
+          </tr>
+          <tr>
+            <td><strong>Volume</strong></td>
+            <td>volume = mass ÷ density</td>
+            <td>cm³ or m³</td>
+          </tr>
+          <tr>
+            <td><strong>Float rule</strong></td>
+            <td>density of object &lt; density of liquid → floats</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Sink rule</strong></td>
+            <td>density of object &gt; density of liquid → sinks</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Water density</strong></td>
+            <td>1 g/cm³ or 1000 kg/m³</td>
+            <td>Reference value</td>
+          </tr>
+          <tr>
+            <td><strong>Irregular volume</strong></td>
+            <td>Use water displacement (overflow can or graduated cylinder)</td>
+            <td>cm³</td>
+          </tr>
+          <tr>
+            <td><strong>Regular volume</strong></td>
+            <td>length × width × height</td>
+            <td>cm³ or m³</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+</body>
+
+</html>
