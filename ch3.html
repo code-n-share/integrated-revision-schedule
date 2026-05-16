@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3 – Cells | Elements of Science</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --teal: #00796B;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR NAV ── */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--text);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--green);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+
+    .sidebar-section {
+      padding: 14px 0 4px;
+    }
+
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 9px 18px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-left-color: var(--green);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700;
+      font-size: 15px;
+      color: #a8e6cf;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover {
+      color: #fff;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      margin-left: 240px;
+      min-height: 100vh;
+    }
+
+    /* ── CHAPTER HEADER ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #0d3b2e 0%, #1b6e4f 60%, #2a9d72 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '🧬';
+      position: absolute;
+      top: 20px;
+      right: 48px;
+      font-size: 120px;
+      opacity: 0.1;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .chapter-hero h1 span {
+      color: #a8e6cf;
+    }
+
+    .chapter-meta {
+      margin-top: 18px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .learning-goals {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .goal-tag {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ── CONTENT AREA ── */
+    .content {
+      padding: 40px 48px;
+      max-width: 1000px;
+    }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-heading .icon {
+      font-size: 26px;
+    }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin: 28px 0 12px;
+    }
+
+    /* KEY TERM BOX */
+    .key-term {
+      background: #E8F5E9;
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+
+    .key-term .term {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .key-term .definition {
+      font-size: 14px;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .key-term .simpler {
+      font-size: 13px;
+      color: var(--purple);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* TABLE STYLES */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .data-table th {
+      background: var(--text);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .data-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: #f9fafb;
+    }
+
+    .data-table .row-label {
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .data-table th.green-header {
+      background: var(--green-dark);
+    }
+
+    /* CELL DIAGRAM SVG */
+    .diagram-container {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+      border: 1.5px solid var(--border);
+      text-align: center;
+    }
+
+    .diagram-container h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* MICROSCOPE PARTS */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .part-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .part-card .part-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .part-card .part-desc {
+      font-size: 12.5px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* CONCENTRATE BOX */
+    .concentrate {
+      background: #FFF3CD;
+      border: 2px dashed var(--yellow);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .concentrate .icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .concentrate .text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .concentrate strong {
+      color: var(--text);
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    /* EUREKA BOX */
+    .eureka {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .eureka .eur-icon {
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .eureka .eur-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .eureka .eur-text {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* SAFETY BOX */
+    .safety-box {
+      background: #FFEBEE;
+      border: 2px solid var(--red);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 14px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .safety-box .s-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .safety-box .s-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .safety-box .s-text {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* EXPERIMENTAL INVESTIGATION */
+    .experiment-box {
+      background: #fff;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      margin: 16px 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .experiment-box .exp-header {
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .experiment-box .exp-body {
+      padding: 16px 18px;
+    }
+
+    .experiment-box .exp-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .experiment-box .exp-sub {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green-dark);
+      margin: 12px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .equipment-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .equip-item {
+      background: #E8F5E9;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12.5px;
+      color: var(--green-dark);
+      font-weight: 500;
+    }
+
+    /* FIGURE IT OUT */
+    .figure-it-out {
+      background: #E3F2FD;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .figure-it-out .f-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .figure-it-out .f-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .figure-it-out .f-text {
+      font-size: 13px;
+      color: #444;
+    }
+
+    /* TEST TUBE QUESTIONS */
+    .test-tube-box {
+      background: #fff;
+      border: 2px solid var(--purple);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 16px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .test-tube-box .tt-header {
+      background: var(--purple);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .test-tube-box .tt-body {
+      padding: 16px 18px;
+    }
+
+    .test-tube-box ol {
+      padding-left: 20px;
+    }
+
+    .test-tube-box li {
+      font-size: 14px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    /* PROBLEMS SECTION */
+    .problem-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 14px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .problem-card .prob-body {
+      padding: 16px 18px;
+    }
+
+    .problem-card .prob-q {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .toggle-btn {
+      background: var(--yellow);
+      color: var(--text);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 14px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .toggle-btn:hover {
+      opacity: 0.8;
+    }
+
+    .prob-solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .prob-solution.open {
+      display: block;
+    }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 12px;
+      line-height: 2;
+    }
+
+    .prob-solution .answer {
+      color: var(--green-dark);
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .prob-solution .tip {
+      background: var(--yellow-light);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* ORGANISATION FLOW */
+    .org-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+      border: 1.5px solid var(--border);
+    }
+
+    .org-node {
+      background: var(--text);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .org-node .node-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #a8e6cf;
+    }
+
+    .org-node .node-desc {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .org-arrow {
+      font-size: 28px;
+      color: var(--green);
+      padding: 4px 0;
+    }
+
+    .org-node:nth-child(3) {
+      background: #1565C0;
+    }
+
+    .org-node:nth-child(3) .node-title {
+      color: #BBDEFB;
+    }
+
+    .org-node:nth-child(5) {
+      background: var(--green-dark);
+    }
+
+    .org-node:nth-child(5) .node-title {
+      color: #C8E6C9;
+    }
+
+    .org-node:nth-child(7) {
+      background: #6A1B9A;
+    }
+
+    .org-node:nth-child(7) .node-title {
+      color: #E1BEE7;
+    }
+
+    .org-node:nth-child(9) {
+      background: var(--orange);
+    }
+
+    .org-node:nth-child(9) .node-title {
+      color: #FFE0B2;
+    }
+
+    .org-node:nth-child(11) {
+      background: var(--red);
+    }
+
+    .org-node:nth-child(11) .node-title {
+      color: #FFCDD2;
+    }
+
+    /* COMPARE GRID */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .compare-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .compare-card.animal {
+      border-color: #FF8A65;
+    }
+
+    .compare-card.plant {
+      border-color: var(--green);
+    }
+
+    .compare-card .cc-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .compare-card.animal .cc-title {
+      color: #BF360C;
+    }
+
+    .compare-card.plant .cc-title {
+      color: var(--green-dark);
+    }
+
+    .compare-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .compare-card li {
+      font-size: 13.5px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .compare-card li:last-child {
+      border-bottom: none;
+    }
+
+    .compare-card li .has {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .compare-card li .no {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* KEY TERMS GLOSSARY */
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .glossary-item {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .glossary-item .g-term {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green-dark);
+    }
+
+    .glossary-item .g-def {
+      font-size: 12px;
+      color: #555;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* CHAPTER NAV at bottom */
+    .chapter-nav-bar {
+      background: var(--text);
+      color: #fff;
+      padding: 24px 48px;
+      margin-left: 240px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .chapter-nav-bar span {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+    }
+
+    .chapter-nav-bar a {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s;
+    }
+
+    .chapter-nav-bar a:hover {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    .chapter-nav-bar a.active {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .content {
+        padding: 20px 20px;
+      }
+
+      .chapter-hero {
+        padding: 32px 20px 28px;
+      }
+
+      .chapter-hero h1 {
+        font-size: 36px;
+      }
+
+      .chapter-nav-bar {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .badge-blue {
+      background: #DBEAFE;
+      color: var(--blue);
+    }
+
+    .badge-green {
+      background: #DCFCE7;
+      color: var(--green-dark);
+    }
+
+    .badge-orange {
+      background: #FFEDD5;
+      color: var(--orange);
+    }
+
+    .badge-purple {
+      background: #EDE9FE;
+      color: var(--purple);
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 10px 22px;
+    }
+
+    li {
+      font-size: 14px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .anchor-offset {
+      scroll-margin-top: 24px;
+    }
+
+    /* MAGNIFICATION FORMULA */
+    .formula-box {
+      background: var(--text);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--green);
+    }
+
+    .formula-box .label {
+      font-size: 11px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    /* STEP LIST */
+    .step-list {
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+
+    .step-list li:last-child {
+      border-bottom: none;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-list.blue li::before {
+      background: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Science Revision</div>
+      <div class="book-title">Elements of Science – Unit 2</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Biological World</div>
+      <a href="ch3.html" class="chapter-link active">Ch 3 · Cells</a>
+      <a href="#characteristics" class="active">Characteristics of Life</a>
+      <a href="#cells">Cells &amp; Organelles</a>
+      <a href="#animal-cells">Animal Cells</a>
+      <a href="#plant-cells">Plant Cells</a>
+      <a href="#microscope">Light Microscope</a>
+      <a href="#electron">Electron Microscope</a>
+      <a href="#organisation">Organisation of Life</a>
+      <a href="#problems">Practice Problems</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Other Chapters</div>
+      <h href="#" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 3 · Cells</a>
+        <a href="ch10.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 10 · Human
+          Health</a>
+        <a href="index.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 29 · Energy</a>
+        <a href="ch35.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 35 · Origin of
+          the Universe</a>
+        <a href="ch39.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 39 · Energy
+          Sources</a>
+
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 3 · Unit 2 – Biological World</div>
+      <h1>🧬 <span>Cells</span></h1>
+      <p class="chapter-meta">Elements of Science · Annual Exam Revision</p>
+      <div class="learning-goals">
+        <span class="goal-tag">✔ Seven characteristics of life</span>
+        <span class="goal-tag">✔ Structures of animal &amp; plant cells</span>
+        <span class="goal-tag">✔ Use a light microscope</span>
+        <span class="goal-tag">✔ Electron microscope</span>
+        <span class="goal-tag">✔ Organisation of life</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ KEY TERMS ═══ -->
+      <div class="section-heading anchor-offset" id="characteristics">
+        <span class="icon">📖</span> Key Terms at a Glance
+      </div>
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Organism</div>
+          <div class="g-def">A living thing with all the characteristics of life.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Characteristics of Life</div>
+          <div class="g-def">The seven features that tell us something is living (MRS GREN).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Cell</div>
+          <div class="g-def">The basic building block of life; has all the characteristics of life.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Organelle</div>
+          <div class="g-def">A special structure inside a cell with a specific function.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Cell membrane</div>
+          <div class="g-def">Surrounds the cell, controlling what moves in and out.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Cytoplasm</div>
+          <div class="g-def">Jelly-like substance inside the cell membrane.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Nucleus</div>
+          <div class="g-def">Control centre of the cell; contains genes.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Light Microscope</div>
+          <div class="g-def">Lab equipment that uses light to magnify cells for study.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Chloroplast</div>
+          <div class="g-def">Contains chlorophyll; allows plant cells to photosynthesise.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Vacuole</div>
+          <div class="g-def">Membrane-bound structure that stores water, food and waste.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Tissue</div>
+          <div class="g-def">A group of cells working together.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Organ</div>
+          <div class="g-def">A group of tissues working together (e.g. the heart).</div>
+        </div>
+      </div>
+
+      <!-- ═══ CHARACTERISTICS OF LIFE ═══ -->
+      <div class="section-heading anchor-offset" id="chars-detail">
+        <span class="icon">🌱</span> Characteristics of Life
+      </div>
+
+      <div class="key-term">
+        <div class="term">Organism</div>
+        <div class="definition"><strong>In science, a living thing is called an organism.</strong> There are seven
+          common features that tell us if something is living. These are known as the <strong>characteristics of
+            life</strong>.</div>
+        <div class="simpler">💡 Remember them with <strong>MRSGREN</strong>: Movement, Respiration, Sensitivity
+          (Response), Growth, Reproduction, Excretion, Nutrition.</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Characteristic</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Movement</td>
+            <td>Changing position to find food, escape danger or absorb sunlight</td>
+          </tr>
+          <tr>
+            <td class="row-label">Respiration</td>
+            <td>Releasing energy from food in the organism's cells</td>
+          </tr>
+          <tr>
+            <td class="row-label">Response</td>
+            <td>Reacting to changes in the environment</td>
+          </tr>
+          <tr>
+            <td class="row-label">Growth</td>
+            <td>Increasing in size when new cells are made or when cells become larger</td>
+          </tr>
+          <tr>
+            <td class="row-label">Reproduction</td>
+            <td>Producing new organisms</td>
+          </tr>
+          <tr>
+            <td class="row-label">Excretion</td>
+            <td>Removing waste made in cells from the organism</td>
+          </tr>
+          <tr>
+            <td class="row-label">Nutrition</td>
+            <td>Needing and getting food</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          A fire can move and grow, but it does not respire, reproduce, respond, excrete, or require nutrition in the
+          biological sense — so it is <em>not</em> a living organism. All seven characteristics must apply!
+        </div>
+      </div>
+
+      <!-- ═══ CELLS & ORGANELLES ═══ -->
+      <div class="section-heading anchor-offset" id="cells">
+        <span class="icon">🔬</span> Cells &amp; Organelles
+      </div>
+
+      <div class="key-term">
+        <div class="term">Cell</div>
+        <div class="definition"><strong>A cell is the basic building block of life and has all the characteristics of
+            life.</strong> All cells contain structures that have special functions. These cell structures are called
+          <strong>organelles</strong>.
+        </div>
+      </div>
+
+      <div class="eureka">
+        <div class="eur-icon">💡</div>
+        <div>
+          <div class="eur-title">Eureka – Robert Hooke (1635–1703)</div>
+          <div class="eur-text">Robert Hooke coined the term 'cells'. When he looked at plant cells under a microscope,
+            he noticed structures that reminded him of the small rooms monks lived in, which were known as cells.</div>
+        </div>
+      </div>
+
+      <!-- ═══ ANIMAL CELLS ═══ -->
+      <div class="sub-heading anchor-offset" id="animal-cells">🐾 Animal Cells</div>
+
+      <p>An animal cell contains <strong>three main organelles</strong>: cell membrane, cytoplasm and nucleus.</p>
+
+      <div class="diagram-container">
+        <h3>Fig. 3.2 – Animal Cell Diagram</h3>
+        <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:460px;">
+          <!-- Outer cell membrane -->
+          <ellipse cx="220" cy="155" rx="185" ry="125" fill="#FFF9C4" stroke="#F9A825" stroke-width="3" />
+          <!-- Cytoplasm dots -->
+          <circle cx="130" cy="120" r="5" fill="#F0E68C" opacity="0.6" />
+          <circle cx="160" cy="90" r="4" fill="#F0E68C" opacity="0.6" />
+          <circle cx="200" cy="75" r="6" fill="#F0E68C" opacity="0.6" />
+          <circle cx="290" cy="100" r="5" fill="#F0E68C" opacity="0.6" />
+          <circle cx="330" cy="130" r="4" fill="#F0E68C" opacity="0.6" />
+          <circle cx="100" cy="170" r="5" fill="#F0E68C" opacity="0.6" />
+          <circle cx="320" cy="190" r="5" fill="#F0E68C" opacity="0.6" />
+          <circle cx="140" cy="200" r="4" fill="#F0E68C" opacity="0.6" />
+          <!-- Nucleus -->
+          <ellipse cx="210" cy="160" rx="65" ry="52" fill="#7B1FA2" opacity="0.85" />
+          <text x="210" y="165" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="12" fill="white"
+            font-weight="bold">Nucleus</text>
+          <!-- Labels -->
+          <line x1="395" y1="100" x2="338" y2="100" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="400" y="104" font-family="'DM Sans', sans-serif" font-size="12" fill="#333">Cell membrane</text>
+          <line x1="395" y1="155" x2="285" y2="155" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="400" y="159" font-family="'DM Sans', sans-serif" font-size="12" fill="#333">Cytoplasm</text>
+          <line x1="395" y1="210" x2="265" y2="185" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="400" y="214" font-family="'DM Sans', sans-serif" font-size="12" fill="#333">Nucleus</text>
+        </svg>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Organelle</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Cell membrane</td>
+            <td>Surrounds the cell, controlling which materials move in and out of it.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Cytoplasm</td>
+            <td>A jelly-like substance surrounded by the cell membrane. Contains the nucleus and dissolved substances,
+              including oxygen.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Nucleus</td>
+            <td><strong>The control centre of the cell.</strong> Contains genes that control inherited characteristics,
+              e.g. hair colour.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══ PLANT CELLS ═══ -->
+      <div class="sub-heading anchor-offset" id="plant-cells">🌿 Plant Cells</div>
+
+      <p>A plant cell contains a cell membrane, cytoplasm and nucleus — <em>plus</em> three more organelles unique to
+        plant cells:</p>
+      <ul>
+        <li>Cell wall</li>
+        <li>Chloroplast</li>
+        <li>Vacuole</li>
+      </ul>
+
+      <div class="diagram-container">
+        <h3>Fig. 3.4 – Plant Cell Diagram</h3>
+        <svg viewBox="0 0 520 310" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:480px;">
+          <!-- Cell wall (outer rect) -->
+          <rect x="30" y="30" width="280" height="250" rx="12" fill="#A5D6A7" stroke="#388E3C" stroke-width="4" />
+          <!-- Cell membrane (inner rect) -->
+          <rect x="42" y="42" width="256" height="226" rx="8" fill="#C8E6C9" stroke="#66BB6A" stroke-width="2" />
+          <!-- Cytoplasm (fill) -->
+          <rect x="44" y="44" width="252" height="222" rx="7" fill="#E8F5E9" />
+          <!-- Vacuole -->
+          <ellipse cx="190" cy="155" rx="70" ry="65" fill="#BBDEFB" stroke="#1976D2" stroke-width="1.5" />
+          <!-- Chloroplasts -->
+          <ellipse cx="80" cy="95" rx="22" ry="12" fill="#388E3C" opacity="0.85" />
+          <ellipse cx="110" cy="220" rx="22" ry="12" fill="#388E3C" opacity="0.85" />
+          <ellipse cx="265" cy="200" rx="22" ry="12" fill="#388E3C" opacity="0.85" />
+          <ellipse cx="270" cy="95" rx="22" ry="12" fill="#388E3C" opacity="0.85" />
+          <!-- Nucleus -->
+          <ellipse cx="85" cy="165" rx="38" ry="32" fill="#7B1FA2" opacity="0.9" />
+          <text x="85" y="170" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="white"
+            font-weight="bold">Nucleus</text>
+          <!-- Labels -->
+          <line x1="315" y1="50" x2="370" y2="50" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="375" y="54" font-family="'DM Sans',sans-serif" font-size="12" fill="#333">Cytoplasm</text>
+          <line x1="315" y1="90" x2="370" y2="90" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="375" y="94" font-family="'DM Sans',sans-serif" font-size="12" fill="#333">Chloroplast</text>
+          <line x1="315" y1="155" x2="265" y2="155" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <line x1="315" y1="155" x2="370" y2="155" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="375" y="159" font-family="'DM Sans',sans-serif" font-size="12" fill="#333">Vacuole</text>
+          <line x1="315" y1="220" x2="370" y2="220" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="375" y="224" font-family="'DM Sans',sans-serif" font-size="12" fill="#333">Cell membrane</text>
+          <line x1="315" y1="265" x2="370" y2="265" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="375" y="269" font-family="'DM Sans',sans-serif" font-size="12" fill="#333">Cell wall</text>
+          <line x1="30" y1="280" x2="15" y2="280" stroke="#555" stroke-width="1.5" />
+          <line x1="15" y1="265" x2="15" y2="295" stroke="#388E3C" stroke-width="2.5" />
+        </svg>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Organelle</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Cell wall</td>
+            <td>Made of cellulose, which gives plant cells their shape.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Chloroplast</td>
+            <td><strong>Contains the green pigment chlorophyll</strong>, which allows the plant cell to absorb sunlight
+              energy so the plant can make its own food by photosynthesis.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Vacuole</td>
+            <td><strong>Membrane-bound structures that store water, food and waste products.</strong> Vacuoles are also
+              found in animal cells, but they are much smaller.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- COMPARISON -->
+      <div class="sub-heading">Comparing Animal and Plant Cells</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Organelle</th>
+            <th class="green-header">Animal Cells</th>
+            <th class="green-header">Plant Cells</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Cell membrane</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td class="row-label">Cytoplasm</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td class="row-label">Nucleus</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td class="row-label">Cell wall</td>
+            <td>❌ No</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td class="row-label">Chloroplasts</td>
+            <td>❌ No</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td class="row-label">Vacuoles</td>
+            <td>⚠️ Yes, but much smaller</td>
+            <td>✅ Yes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ═══ LIGHT MICROSCOPE ═══ -->
+      <div class="section-heading anchor-offset" id="microscope">
+        <span class="icon">🔭</span> The Light Microscope
+      </div>
+
+      <div class="key-term">
+        <div class="term">Light Microscope</div>
+        <div class="definition"><strong>A light microscope is a piece of laboratory equipment that allows biologists to
+            study organelles by passing a beam of light through cells.</strong></div>
+        <div class="simpler">💡 The sample of cells studied under a microscope is called a <strong>specimen</strong>.
+        </div>
+      </div>
+
+      <div class="eureka">
+        <div class="eur-icon">💡</div>
+        <div>
+          <div class="eur-title">Eureka – Antonie van Leeuwenhoek (1632–1723)</div>
+          <div class="eur-text">The light microscope was invented in the seventeenth century by Antonie van Leeuwenhoek.
+            It allowed scientists to 'see into' cells for the first time.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Parts of a Light Microscope</div>
+
+      <div class="parts-grid">
+        <div class="part-card">
+          <div class="part-name">Base</div>
+          <div class="part-desc">Keeps the microscope stable on the bench.</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Stage &amp; Stage Clips</div>
+          <div class="part-desc">Holds the glass slide in place during viewing.</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Light Source</div>
+          <div class="part-desc">A built-in light bulb or mirror that lights up the specimen.</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Diaphragm</div>
+          <div class="part-desc">Controls the amount of light passing through the specimen.</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Objective Lens</div>
+          <div class="part-desc">Magnifies the specimen by different factors (×4, ×10, ×40).</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Eyepiece Lens</div>
+          <div class="part-desc">Magnifies the specimen, usually by a factor of 10 (×10).</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Coarse Focus Wheel</div>
+          <div class="part-desc">Brings the image into rough focus. Always adjust this first.</div>
+        </div>
+        <div class="part-card">
+          <div class="part-name">Fine Focus Wheel</div>
+          <div class="part-desc">Brings the image into sharp, precise focus.</div>
+        </div>
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          Always start the objective lens on the <strong>lowest factor</strong>. Always adjust the <strong>coarse focus
+            wheel</strong> before adjusting the fine focus wheel.
+        </div>
+      </div>
+
+      <div class="sub-heading">Calculating Magnification</div>
+
+      <div class="formula-box">
+        <div class="label">Total Magnification</div>
+        Total magnification = eyepiece lens × objective lens
+      </div>
+
+      <div class="figure-it-out">
+        <div class="f-icon">🤔</div>
+        <div>
+          <div class="f-title">Figure it Out!</div>
+          <div class="f-text">Calculate the overall magnification of a cell in a specimen when the eyepiece lens is set
+            at ×10 and the objective lens is set at ×40.<br><br>
+            <strong>Answer:</strong> 10 × 40 = <strong>×400</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPERIMENTAL INVESTIGATION 3.1 -->
+      <div class="experiment-box">
+        <div class="exp-header">🧪 Experimental Investigation 3.1</div>
+        <div class="exp-body">
+          <div class="exp-title">How can we look at animal cells?</div>
+          <div class="exp-sub">Equipment</div>
+          <div class="equipment-list">
+            <span class="equip-item">Sterile cotton swabs / tongue depressors</span>
+            <span class="equip-item">Cover slip</span>
+            <span class="equip-item">Seeker or mounted needle</span>
+            <span class="equip-item">Water</span>
+            <span class="equip-item">Dropper</span>
+            <span class="equip-item">Microscope</span>
+            <span class="equip-item">Glass slide</span>
+            <span class="equip-item">Methylene blue stain</span>
+            <span class="equip-item">Tissue paper</span>
+          </div>
+
+          <div class="safety-box" style="margin:12px 0;">
+            <div class="s-icon">⚠️</div>
+            <div>
+              <div class="s-title">Safety</div>
+              <div class="s-text">
+                • Be careful when handling glass slides and cover slips.<br>
+                • Only use sterile swabs.<br>
+                • Never share swabs.<br>
+                • Dispose of swabs responsibly after use.
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-sub">Method – Without Stain</div>
+          <ol class="step-list">
+            <li>Gently rub the inside of your cheek with a sterile swab.</li>
+            <li>Place a drop of water on a glass slide and gently roll the swab over the surface to transfer the cheek
+              cells.</li>
+            <li>Using a seeker, gently lower a cover slip onto the glass slide.</li>
+            <li>Ensure the stage is set to its lowest position.</li>
+            <li>Place the glass slide on the stage and secure with the clips.</li>
+            <li>Click the lowest power objective lens into position first.</li>
+            <li>Use the coarse focus wheel to get the image in rough focus, then sharpen the image by using the fine
+              focus wheel.</li>
+            <li>Click the medium power objective lens into place and use fine focus only to sharpen the image.</li>
+            <li>Repeat step 8 with the highest power objective lens.</li>
+            <li>Draw labelled diagrams of what you see.</li>
+          </ol>
+
+          <div class="exp-sub">Method – With Stain (Methylene Blue)</div>
+          <ol class="step-list blue">
+            <li>Gently rub the inside of your cheek with a fresh sterile swab.</li>
+            <li>Place a drop of water on a fresh glass slide and gently roll the swab over the surface to transfer the
+              cheek cells.</li>
+            <li>Add a drop of methylene blue stain to the slide and remove any excess with tissue paper.</li>
+            <li>Repeat steps 3–10 of the 'without stain' method.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- EXPERIMENTAL INVESTIGATION 3.2 -->
+      <div class="experiment-box">
+        <div class="exp-header">🧪 Experimental Investigation 3.2</div>
+        <div class="exp-body">
+          <div class="exp-title">How can we look at plant cells?</div>
+          <div class="exp-sub">Equipment</div>
+          <div class="equipment-list">
+            <span class="equip-item">Onion</span>
+            <span class="equip-item">Knife</span>
+            <span class="equip-item">Water</span>
+            <span class="equip-item">Glass slide</span>
+            <span class="equip-item">Seeker</span>
+            <span class="equip-item">Iodine stain</span>
+            <span class="equip-item">Chopping board</span>
+            <span class="equip-item">Forceps</span>
+            <span class="equip-item">Dropper</span>
+            <span class="equip-item">Cover slip</span>
+            <span class="equip-item">Microscope</span>
+            <span class="equip-item">Tissue paper</span>
+          </div>
+
+          <div class="safety-box" style="margin:12px 0;">
+            <div class="s-icon">⚠️</div>
+            <div>
+              <div class="s-title">Safety</div>
+              <div class="s-text">
+                • Be careful when handling glass slides.<br>
+                • Take care when using a knife.
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-sub">Method – Without Stain</div>
+          <ol class="step-list">
+            <li>Cut an onion on a chopping board. Use forceps to gently peel off a thin layer of cells from the inner
+              surface of the onion.</li>
+            <li>Using a dropper, add a drop of water to the glass slide. Carefully place the thin layer of cells on the
+              glass slide, ensuring the layer of cells doesn't fold over.</li>
+            <li>Follow steps 3–10 from Experimental Investigation 3.1.</li>
+          </ol>
+
+          <div class="exp-sub">Method – With Stain (Iodine)</div>
+          <ol class="step-list blue">
+            <li>Place a drop of water on a fresh glass slide and carefully place a new, thin layer of cells on the
+              surface, ensuring the layer doesn't fold over.</li>
+            <li>Using a dropper, add a drop of iodine stain to the slide. Remove any excess stain using tissue paper.
+            </li>
+            <li>Using a seeker, gently lower a cover slip onto the glass slide.</li>
+            <li>Follow steps 4–10 from Experimental Investigation 3.1.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="test-tube-box">
+        <div class="tt-header">🧪 Test Tube Questions</div>
+        <div class="tt-body">
+          <ol>
+            <li>What organelles are present in a plant cell that are absent in an animal cell?</li>
+            <li>What stain is used in the animal cell investigation?</li>
+            <li>What stain is used in the plant cell investigation?</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ ELECTRON MICROSCOPE ═══ -->
+      <div class="section-heading anchor-offset" id="electron">
+        <span class="icon">⚛️</span> The Electron Microscope
+      </div>
+
+      <div class="key-term">
+        <div class="term">Electron Microscope</div>
+        <div class="definition"><strong>Biologists use an electron microscope to study cells in even greater
+            detail.</strong> A beam of electrons is passed through the specimen. This forms a hugely magnified image
+          (×1,000,000) called a <strong>micrograph</strong>.</div>
+        <div class="simpler">💡 Micrographs display in black and white. Two organelles only visible with an electron
+          microscope: <strong>mitochondria</strong> and <strong>ribosomes</strong>.</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Organelle</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Mitochondria</td>
+            <td>Release energy through respiration</td>
+          </tr>
+          <tr>
+            <td class="row-label">Ribosomes</td>
+            <td>Make proteins, including enzymes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          <strong>Light microscope</strong> → can see: cell membrane, cytoplasm, nucleus, chloroplasts, vacuole, cell
+          wall.<br>
+          <strong>Electron microscope</strong> → can additionally see: mitochondria and ribosomes.
+        </div>
+      </div>
+
+      <!-- ═══ ORGANISATION OF LIFE ═══ -->
+      <div class="section-heading anchor-offset" id="organisation">
+        <span class="icon">🏗️</span> The Organisation of Life
+      </div>
+
+      <p>All organisms are organised in the same way: they are made up of <strong>cells</strong>, which form
+        <strong>tissues</strong>, <strong>organs</strong> and organ <strong>systems</strong>.
+      </p>
+
+      <div class="org-flow">
+        <div class="org-node">
+          <div class="node-title">Organelle</div>
+          <div class="node-desc">Structure in a cell that carries out a particular role.</div>
+        </div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node">
+          <div class="node-title">Cell</div>
+          <div class="node-desc">Building block of life, made up of organelles. Different cells do different jobs, e.g.
+            white blood cells fight infection.</div>
+        </div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node">
+          <div class="node-title">Tissue</div>
+          <div class="node-desc">Group of cells that work together, e.g. blood is a tissue made up of red blood cells,
+            white blood cells, platelets and plasma.</div>
+        </div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node">
+          <div class="node-title">Organ</div>
+          <div class="node-desc">Group of tissues that work together, e.g. the heart is an organ made up of cardiac
+            muscle tissue, connective tissue and fat tissue.</div>
+        </div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node">
+          <div class="node-title">System</div>
+          <div class="node-desc">Group of organs that work together, e.g. the heart is the organ at the centre of the
+            circulatory system, which pumps blood around the body.</div>
+        </div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node">
+          <div class="node-title">Organism</div>
+          <div class="node-desc">The result of all systems working together, e.g. the circulatory system works with the
+            breathing system to transport oxygen around the body.</div>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the answer and explanation.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Characteristics of Life
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Explain why a dog is a living thing.</div>
+          <div class="prob-solution">
+            <div class="steps">A dog shows all seven characteristics of life:
+              Movement – A dog can walk/run to find food or escape danger
+              Respiration – It releases energy from food in its cells
+              Response – It reacts to its environment (e.g. responds to its name)
+              Growth – It increases in size from puppy to adult
+              Reproduction – It can produce new organisms (puppies)
+              Excretion – It removes waste products (urine, faeces)
+              Nutrition – It needs and gets food to survive</div>
+            <div class="answer">✅ All seven MRS GREN characteristics apply → the dog is a living organism.</div>
+            <div class="tip">💡 For any exam question like this, go through each of the seven characteristics and give a
+              specific example for that organism.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Living vs Non-Living
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Explain why a fire is NOT a living thing.</div>
+          <div class="prob-solution">
+            <div class="steps">A fire does NOT show all seven characteristics:
+              Movement – It can spread, but not purposefully ✗
+              Respiration – It oxidises fuel, but not cellular respiration ✗
+              Response – It does not respond to its environment ✗
+              Growth – It can grow bigger, but cells are not made ✗
+              Reproduction – It cannot produce new organisms ✗
+              Excretion – It does not excrete biological waste ✗
+              Nutrition – It burns fuel, but does not need nutrition ✗</div>
+            <div class="answer">✅ A fire fails all seven biological criteria → it is NOT living.</div>
+            <div class="tip">💡 The key difference: fire involves chemical combustion. Living things involve cellular
+              processes — respiration, growth, reproduction etc.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Microscope Magnification
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Calculate the total magnification when the eyepiece lens is ×10 and the objective lens is
+            ×40. Which objective should you begin with when setting up the microscope?</div>
+          <div class="prob-solution">
+            <div class="steps">Total magnification = eyepiece × objective
+              Total magnification = 10 × 40 = ×400
+
+              Always begin with the LOWEST objective lens (×4 or ×10)
+              Then move to medium (×10) then high (×40)</div>
+            <div class="answer">✅ Total magnification = ×400 | Always start with the lowest objective.</div>
+            <div class="tip">💡 Always start low! If you start at ×40 you risk smashing the slide into the lens and you
+              won't be able to find the cells.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Animal vs Plant Cell Differences
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">List three structures found in plant cells that are NOT found in animal cells.</div>
+          <div class="prob-solution">
+            <div class="steps">Plant-only structures:
+              1. Cell wall – Made of cellulose; gives the cell its rigid shape
+              2. Chloroplast – Contains chlorophyll; enables photosynthesis
+              3. (Large) Vacuole – Stores water, food and waste (much larger than in animal cells)</div>
+            <div class="answer">✅ Cell wall, Chloroplast, Large Vacuole</div>
+            <div class="tip">💡 Animal cells DO have vacuoles, but they are much smaller. The question asks for
+              structures absent or significantly different.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Organisation of Life
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Put the levels of the organisation of life in order, starting with the simplest
+            level:<br>Tissue &nbsp; System &nbsp; Organelle &nbsp; Organ &nbsp; Cell &nbsp; Organism</div>
+          <div class="prob-solution">
+            <div class="steps">Simplest → Most complex:
+              1. Organelle (e.g. nucleus, chloroplast)
+              2. Cell (e.g. white blood cell)
+              3. Tissue (e.g. blood)
+              4. Organ (e.g. heart)
+              5. System (e.g. circulatory system)
+              6. Organism (e.g. human)</div>
+            <div class="answer">✅ Organelle → Cell → Tissue → Organ → System → Organism</div>
+            <div class="tip">💡 Mnemonic: "Only Clever Tigers On Safari Observe" (Organelle, Cell, Tissue, Organ,
+              System, Organism)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Electron Microscope
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Name two organelles that can be seen with an electron microscope but NOT with a light
+            microscope.</div>
+          <div class="prob-solution">
+            <div class="steps">1. Mitochondria – release energy through respiration
+              2. Ribosomes – make proteins, including enzymes</div>
+            <div class="answer">✅ Mitochondria and Ribosomes</div>
+            <div class="tip">💡 Electron microscopes can magnify up to ×1,000,000 — far beyond a light microscope. That
+              extra power reveals these much smaller organelles.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 — Past Paper -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 7 — Past Paper 2019, Q1 (Animal Cell Labels)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">The diagram shows an animal cell with three arrows pointing to different parts. Use these
+            words to label the parts: <strong>Cytoplasm &nbsp; Cell membrane &nbsp; Nucleus</strong></div>
+          <div class="prob-solution">
+            <div class="steps">The three main parts of an animal cell are:
+              → Cell membrane – outer boundary controlling entry/exit of materials
+              → Cytoplasm – jelly-like substance filling the cell
+              → Nucleus – dark, round structure; the control centre of the cell
+
+              Which part controls the activities of the cell?
+              → The NUCLEUS controls the cell's activities.</div>
+            <div class="answer">✅ Nucleus = control centre | Cell membrane = boundary | Cytoplasm = jelly-like fill
+            </div>
+            <div class="tip">💡 In diagrams, the nucleus is usually the dark oval in the centre, cytoplasm is the
+              lighter fill, and the cell membrane is the outer line.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINAL SUMMARY TABLE -->
+      <div class="section-heading" style="margin-top:48px;">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Key Fact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Characteristics of Life</td>
+            <td>MRS GREN: Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition</td>
+          </tr>
+          <tr>
+            <td class="row-label">Animal Cell organelles</td>
+            <td>Cell membrane, Cytoplasm, Nucleus</td>
+          </tr>
+          <tr>
+            <td class="row-label">Plant cell extras</td>
+            <td>+ Cell wall, Chloroplast, (large) Vacuole</td>
+          </tr>
+          <tr>
+            <td class="row-label">Animal cell stain</td>
+            <td>Methylene blue</td>
+          </tr>
+          <tr>
+            <td class="row-label">Plant cell stain</td>
+            <td>Iodine</td>
+          </tr>
+          <tr>
+            <td class="row-label">Light microscope magnification</td>
+            <td>Total mag = eyepiece × objective; always start at lowest objective</td>
+          </tr>
+          <tr>
+            <td class="row-label">Electron microscope only</td>
+            <td>Mitochondria (respiration) + Ribosomes (protein making)</td>
+          </tr>
+          <tr>
+            <td class="row-label">Organisation (simple → complex)</td>
+            <td>Organelle → Cell → Tissue → Organ → System → Organism</td>
+          </tr>
+          <tr>
+            <td class="row-label">Nucleus function</td>
+            <td>Controls the cell; contains genes for inherited characteristics</td>
+          </tr>
+          <tr>
+            <td class="row-label">Chloroplast function</td>
+            <td>Absorbs sunlight; enables photosynthesis (food making)</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Other chapters:</span>
+    <a href="ch3.html" class="active">Ch 3 – Cells</a>
+    <a href="ch10.html">Ch 10 – Human Health</a>
+    <a href="index.html">Ch 29 – Energy</a>
+    <a href="ch35.html">Ch 35 – The Origin of the Universe</a>
+    <a href="ch39.html">Ch 39 – Energy Sources</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+</body>
+
+</html>
