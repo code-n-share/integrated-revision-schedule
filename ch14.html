@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 14 – States of Matter | Elements of Science</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --orange: #E65100;
+      --orange-mid: #F57C00;
+      --orange-light: #FFF3E0;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1976D2;
+      --red: #D32F2F;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--text);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--orange);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+
+    .sidebar-section {
+      padding: 14px 0 4px;
+    }
+
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 9px 18px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-left-color: var(--orange);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700;
+      font-size: 15px;
+      color: #FFB74D;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover {
+      color: #fff;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      margin-left: 240px;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #3e1a00 0%, #7f3300 55%, #bf5f00 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(245, 124, 0, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '🧪';
+      position: absolute;
+      top: 20px;
+      right: 48px;
+      font-size: 120px;
+      opacity: 0.1;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--orange-mid);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .chapter-hero h1 span {
+      color: #FFB74D;
+    }
+
+    .chapter-meta {
+      margin-top: 18px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .learning-goals {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .goal-tag {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      padding: 40px 48px;
+      max-width: 1000px;
+    }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--orange-mid);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-heading .icon {
+      font-size: 26px;
+    }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--orange);
+      margin: 28px 0 12px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--orange-light);
+      border-left: 4px solid var(--orange-mid);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+
+    .key-term .term {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .key-term .definition {
+      font-size: 14px;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .key-term .simpler {
+      font-size: 13px;
+      color: var(--purple);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* FORMULA */
+    .formula-box {
+      background: var(--text);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--orange-mid);
+    }
+
+    .formula-box .label {
+      font-size: 11px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    /* TABLE */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .data-table th {
+      background: var(--text);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .data-table th.orange-header {
+      background: var(--orange);
+    }
+
+    .data-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .data-table .row-label {
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* PROPERTIES COMPARISON GRID */
+    .state-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .state-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--border);
+    }
+
+    .state-card.solid {
+      border-top-color: #1976D2;
+    }
+
+    .state-card.liquid {
+      border-top-color: #00897B;
+    }
+
+    .state-card.gas {
+      border-top-color: var(--orange-mid);
+    }
+
+    .state-card .sc-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .state-card.solid .sc-title {
+      color: #1976D2;
+    }
+
+    .state-card.liquid .sc-title {
+      color: #00897B;
+    }
+
+    .state-card.gas .sc-title {
+      color: var(--orange-mid);
+    }
+
+    .state-card .sc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 13px;
+    }
+
+    .state-card .sc-row:last-child {
+      border-bottom: none;
+    }
+
+    .sc-yes {
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+
+    .sc-no {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .sc-part {
+      color: #888;
+      font-weight: 600;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    /* PARTICLE SVG DIAGRAMS */
+    .diagram-container {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+      border: 1.5px solid var(--border);
+      text-align: center;
+    }
+
+    .diagram-container h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .diagrams-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .diag-item {
+      text-align: center;
+    }
+
+    .diag-item svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .diag-label {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .diag-item.solid-d .diag-label {
+      color: #1976D2;
+    }
+
+    .diag-item.liquid-d .diag-label {
+      color: #00897B;
+    }
+
+    .diag-item.gas-d .diag-label {
+      color: var(--orange-mid);
+    }
+
+    /* CHANGES OF STATE FLOW */
+    .changes-flow {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+      border: 1.5px solid var(--border);
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .flow-node {
+      background: var(--text);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .flow-node.solid-n {
+      background: #1565C0;
+    }
+
+    .flow-node.liquid-n {
+      background: #00695C;
+    }
+
+    .flow-node.gas-n {
+      background: var(--orange);
+    }
+
+    .flow-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 8px;
+    }
+
+    .fa-top {
+      font-size: 12px;
+      color: var(--orange-mid);
+      font-weight: 700;
+      white-space: nowrap;
+      margin-bottom: 2px;
+    }
+
+    .fa-arrow-f {
+      font-size: 22px;
+      color: var(--orange-mid);
+    }
+
+    .fa-arrow-b {
+      font-size: 22px;
+      color: #1976D2;
+    }
+
+    .fa-bot {
+      font-size: 12px;
+      color: #1976D2;
+      font-weight: 700;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .sublimation-note {
+      text-align: center;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .sublimation-note strong {
+      color: var(--orange);
+    }
+
+    /* CONCENTRATE */
+    .concentrate {
+      background: #FFF3CD;
+      border: 2px dashed var(--yellow);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .concentrate .icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .concentrate .text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .concentrate strong {
+      color: var(--text);
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    /* EUREKA */
+    .eureka {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .eureka .eur-icon {
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .eureka .eur-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .eureka .eur-text {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* SAFETY */
+    .safety-box {
+      background: #FFEBEE;
+      border: 2px solid var(--red);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 14px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .safety-box .s-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .safety-box .s-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .safety-box .s-text {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* EXPERIMENT */
+    .experiment-box {
+      background: #fff;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      margin: 16px 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .experiment-box .exp-header {
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .experiment-box .exp-body {
+      padding: 16px 18px;
+    }
+
+    .experiment-box .exp-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .experiment-box .exp-sub {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green-dark);
+      margin: 12px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .equipment-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .equip-item {
+      background: #E3F2FD;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12.5px;
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .equip-suggested {
+      background: #FFF3E0;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12.5px;
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    /* TEST TUBE */
+    .test-tube-box {
+      background: #fff;
+      border: 2px solid var(--purple);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 16px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .test-tube-box .tt-header {
+      background: var(--purple);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .test-tube-box .tt-body {
+      padding: 16px 18px;
+    }
+
+    .test-tube-box ol {
+      padding-left: 20px;
+    }
+
+    .test-tube-box li {
+      font-size: 14px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    /* GLOSSARY */
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .glossary-item {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .glossary-item .g-term {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--orange);
+    }
+
+    .glossary-item .g-def {
+      font-size: 12px;
+      color: #555;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* PROBLEMS */
+    .problem-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 14px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .problem-card .prob-body {
+      padding: 16px 18px;
+    }
+
+    .problem-card .prob-q {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .toggle-btn {
+      background: var(--yellow);
+      color: var(--text);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 14px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .toggle-btn:hover {
+      opacity: 0.8;
+    }
+
+    .prob-solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .prob-solution.open {
+      display: block;
+    }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 12px;
+      line-height: 2;
+      white-space: pre-wrap;
+    }
+
+    .prob-solution .answer {
+      color: var(--green-dark);
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .prob-solution .tip {
+      background: var(--yellow-light);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* STEP LIST */
+    .step-list {
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+
+    .step-list li:last-child {
+      border-bottom: none;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      background: var(--orange-mid);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* CHAPTER NAV */
+    .chapter-nav-bar {
+      background: var(--text);
+      color: #fff;
+      padding: 24px 48px;
+      margin-left: 240px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .chapter-nav-bar span {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+    }
+
+    .chapter-nav-bar a {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s;
+    }
+
+    .chapter-nav-bar a:hover,
+    .chapter-nav-bar a.active {
+      background: var(--orange-mid);
+      color: #fff;
+      border-color: var(--orange-mid);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .content {
+        padding: 20px 20px;
+      }
+
+      .chapter-hero {
+        padding: 32px 20px 28px;
+      }
+
+      .chapter-hero h1 {
+        font-size: 36px;
+      }
+
+      .chapter-nav-bar {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .state-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 10px 22px;
+    }
+
+    li {
+      font-size: 14px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .anchor-offset {
+      scroll-margin-top: 24px;
+    }
+
+    /* melting/boiling point table badge */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .badge-solid {
+      background: #DBEAFE;
+      color: var(--blue);
+    }
+
+    .badge-liquid {
+      background: #CCFBF1;
+      color: #00695C;
+    }
+
+    .badge-gas {
+      background: #FFEDD5;
+      color: var(--orange);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Science Revision</div>
+      <div class="book-title">Elements of Science – Unit 3</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Chemical World</div>
+      <a href="ch14.html" class="chapter-link active">Ch 14 · States of Matter</a>
+      <a href="#matter">Matter</a>
+      <a href="#particle-theory">Particle Theory</a>
+      <a href="#states">Properties of States</a>
+      <a href="#diffusion">Diffusion</a>
+      <a href="#changes">Changes of State</a>
+      <a href="#investigations">Investigations</a>
+      <a href="#problems">Practice Problems</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Other Chapters</div>
+      <a href="ch3.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 3 · Cells</a>
+      <a href="ch10.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 10 · Human
+        Health</a>
+      <a href="#" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 14 · States of Matter</a>
+      <a href="index.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 29 · Energy</a>
+      <a href="ch35.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 35 · Origin of the
+        Universe</a>
+      <a href="ch39.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 39 · Energy
+        Sources and Future Needs</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 14 · Unit 3 – Chemical World</div>
+      <h1>🧪 <span>States of Matter</span></h1>
+      <p class="chapter-meta">Elements of Science · Annual Exam Revision</p>
+      <div class="learning-goals">
+        <span class="goal-tag">✔ Recognise matter is made of particles</span>
+        <span class="goal-tag">✔ Particle theory — solids, liquids &amp; gases</span>
+        <span class="goal-tag">✔ Properties of three states</span>
+        <span class="goal-tag">✔ Changes of state</span>
+        <span class="goal-tag">✔ Diffusion</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ KEY TERMS ═══ -->
+      <div class="section-heading anchor-offset" id="matter">
+        <span class="icon">📖</span> Key Terms at a Glance
+      </div>
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Matter</div>
+          <div class="g-def">Anything that takes up space and has a mass.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Particles</div>
+          <div class="g-def">The tiny units that all matter is made from.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Particle Theory</div>
+          <div class="g-def">The idea that all matter is made from very small particles; explains properties of solids,
+            liquids and gases.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Solid</div>
+          <div class="g-def">State of matter with a fixed shape and fixed volume. Particles are tightly packed.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Liquid</div>
+          <div class="g-def">State of matter with a fixed volume but no fixed shape. Particles can slide past each
+            other.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Gas</div>
+          <div class="g-def">State of matter with no fixed shape or volume. Particles spread far apart.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Diffusion</div>
+          <div class="g-def">The spreading out of particles to fill the space they are in, until concentration is even.
+          </div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Melting</div>
+          <div class="g-def">A solid changes to a liquid. The melting point of ice is 0 °C.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Freezing</div>
+          <div class="g-def">A liquid changes to a solid. The freezing point of water is 0 °C.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Evaporation</div>
+          <div class="g-def">Surface particles gain enough energy to escape a liquid as a gas (at any temperature).
+          </div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Boiling</div>
+          <div class="g-def">A liquid rapidly changes to a gas throughout. Boiling point of water = 100 °C.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Condensation</div>
+          <div class="g-def">A gas cools and changes to a liquid.</div>
+        </div>
+      </div>
+
+      <!-- ═══ MATTER ═══ -->
+      <div class="section-heading anchor-offset" id="matter-detail">
+        <span class="icon">⚗️</span> Matter
+      </div>
+
+      <div class="key-term">
+        <div class="term">Matter</div>
+        <div class="definition"><strong>Matter is anything that takes up space and has a mass.</strong> There are three
+          states of matter: solid, liquid and gas.</div>
+        <div class="simpler">💡 Examples — Solid: ice, wood, rock | Liquid: water, milk | Gas: steam (water vapour),
+          oxygen</div>
+      </div>
+
+      <!-- Experimental Investigation 14.1 -->
+      <div class="experiment-box">
+        <div class="exp-header">🧪 Experimental Investigation 14.1</div>
+        <div class="exp-body">
+          <div class="exp-title">Does air take up space and have mass?</div>
+          <div class="exp-sub">Equipment</div>
+          <div class="equipment-list">
+            <span class="equip-item">Basin</span>
+            <span class="equip-item">Cup</span>
+            <span class="equip-item">Mass balance</span>
+            <span class="equip-item">Water</span>
+            <span class="equip-item">Tissue paper</span>
+            <span class="equip-item">Balloon</span>
+          </div>
+          <div class="safety-box" style="margin:12px 0;">
+            <div class="s-icon">⚠️</div>
+            <div>
+              <div class="s-title">Safety</div>
+              <div class="s-text">Clear up any spills immediately.</div>
+            </div>
+          </div>
+          <div class="exp-sub">To show that air takes up space</div>
+          <ol class="step-list">
+            <li>Fill the basin with water so the cup will be submerged.</li>
+            <li>Place the dry tissue paper down at the bottom of the cup.</li>
+            <li>Turn the cup upside down and place the cup into the basin of water.</li>
+            <li>Keep the cup under the water for 20 seconds and remove slowly.</li>
+            <li>Record your observations. (The tissue stays dry — air occupies the space in the cup.)</li>
+          </ol>
+          <div class="exp-sub">To show that air has mass</div>
+          <ol class="step-list">
+            <li>Use a mass balance to record the mass of the empty balloon.</li>
+            <li>Blow up the balloon and tie.</li>
+            <li>Use the mass balance to record the mass of the inflated balloon.</li>
+            <li>Record your observations. (The inflated balloon is heavier — air has mass.)</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ PARTICLE THEORY ═══ -->
+      <div class="section-heading anchor-offset" id="particle-theory">
+        <span class="icon">🔬</span> Particle Theory
+      </div>
+
+      <div class="key-term">
+        <div class="term">Particle Theory</div>
+        <div class="definition"><strong>Scientists believe that all matter is made from very small particles. Particle
+            theory is used to explain the properties of solids, liquids and gases.</strong></div>
+        <div class="simpler">💡 Particles in all three states are never completely still — they all have some energy
+          that causes them to move.</div>
+      </div>
+
+      <div class="eureka">
+        <div class="eur-icon">💡</div>
+        <div>
+          <div class="eur-title">Eureka – Ancient Greeks</div>
+          <div class="eur-text">The ancient Greeks were the first to suggest that everything is made up of particles
+            that are too small to be seen.</div>
+        </div>
+      </div>
+
+      <!-- ═══ PROPERTIES OF STATES ═══ -->
+      <div class="section-heading anchor-offset" id="states">
+        <span class="icon">🧊</span> Properties of Solids, Liquids &amp; Gases
+      </div>
+
+      <p>Solids, liquids and gases differ in how quickly the particles move and how close together the particles are.
+      </p>
+
+      <!-- Particle diagrams -->
+      <div class="diagram-container">
+        <h3>Particle Arrangement in the Three States</h3>
+        <div class="diagrams-row">
+
+          <!-- SOLID -->
+          <div class="diag-item solid-d">
+            <svg viewBox="0 0 110 110" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="100" height="100" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" />
+              <!-- 4x4 grid of tightly packed circles -->
+              <circle cx="24" cy="24" r="10" fill="#1976D2" />
+              <circle cx="46" cy="24" r="10" fill="#1976D2" />
+              <circle cx="68" cy="24" r="10" fill="#1976D2" />
+              <circle cx="90" cy="24" r="10" fill="#1976D2" />
+              <circle cx="24" cy="46" r="10" fill="#1565C0" />
+              <circle cx="46" cy="46" r="10" fill="#1565C0" />
+              <circle cx="68" cy="46" r="10" fill="#1565C0" />
+              <circle cx="90" cy="46" r="10" fill="#1565C0" />
+              <circle cx="24" cy="68" r="10" fill="#1976D2" />
+              <circle cx="46" cy="68" r="10" fill="#1976D2" />
+              <circle cx="68" cy="68" r="10" fill="#1976D2" />
+              <circle cx="90" cy="68" r="10" fill="#1976D2" />
+              <circle cx="24" cy="90" r="10" fill="#1565C0" />
+              <circle cx="46" cy="90" r="10" fill="#1565C0" />
+              <circle cx="68" cy="90" r="10" fill="#1565C0" />
+              <circle cx="90" cy="90" r="10" fill="#1565C0" />
+            </svg>
+            <div class="diag-label">Solid</div>
+          </div>
+
+          <!-- LIQUID -->
+          <div class="diag-item liquid-d">
+            <svg viewBox="0 0 110 110" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="100" height="100" rx="8" fill="#E0F2F1" stroke="#00897B" stroke-width="2" />
+              <!-- Slightly irregular close packing, bottom-weighted -->
+              <circle cx="22" cy="80" r="10" fill="#00897B" />
+              <circle cx="44" cy="82" r="10" fill="#00695C" />
+              <circle cx="66" cy="79" r="10" fill="#00897B" />
+              <circle cx="88" cy="81" r="10" fill="#00897B" />
+              <circle cx="22" cy="58" r="10" fill="#00695C" />
+              <circle cx="44" cy="60" r="10" fill="#00897B" />
+              <circle cx="66" cy="57" r="10" fill="#00695C" />
+              <circle cx="88" cy="59" r="10" fill="#00897B" />
+              <circle cx="22" cy="36" r="10" fill="#00897B" />
+              <circle cx="46" cy="38" r="10" fill="#00695C" />
+              <circle cx="68" cy="35" r="10" fill="#00897B" />
+              <circle cx="33" cy="20" r="9" fill="#00695C" />
+              <circle cx="55" cy="18" r="9" fill="#00897B" />
+              <circle cx="78" cy="21" r="9" fill="#00695C" />
+            </svg>
+            <div class="diag-label">Liquid</div>
+          </div>
+
+          <!-- GAS -->
+          <div class="diag-item gas-d">
+            <svg viewBox="0 0 110 110" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="100" height="100" rx="8" fill="#FFF3E0" stroke="#F57C00" stroke-width="2" />
+              <!-- Scattered particles with motion lines -->
+              <circle cx="20" cy="20" r="9" fill="#F57C00" />
+              <line x1="30" y1="15" x2="38" y2="11" stroke="#F57C00" stroke-width="1.5" />
+              <circle cx="85" cy="18" r="9" fill="#E65100" />
+              <line x1="74" y1="14" x2="66" y2="10" stroke="#E65100" stroke-width="1.5" />
+              <circle cx="50" cy="55" r="9" fill="#F57C00" />
+              <line x1="60" y1="50" x2="68" y2="46" stroke="#F57C00" stroke-width="1.5" />
+              <circle cx="18" cy="80" r="9" fill="#E65100" />
+              <line x1="27" y1="75" x2="34" y2="71" stroke="#E65100" stroke-width="1.5" />
+              <circle cx="88" cy="75" r="9" fill="#F57C00" />
+              <line x1="78" y1="70" x2="70" y2="66" stroke="#F57C00" stroke-width="1.5" />
+              <circle cx="55" cy="92" r="9" fill="#E65100" />
+              <line x1="64" y1="87" x2="72" y2="83" stroke="#E65100" stroke-width="1.5" />
+            </svg>
+            <div class="diag-label">Gas</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="sub-heading">🧊 The Solid State</div>
+      <p>In the solid state, the particles that make up the substance touch each other because they are <strong>packed
+          tightly together</strong>. The particles do not move around, but are not completely still — they
+        <strong>vibrate on the spot</strong>. This explains why solids have a fixed shape and cannot flow.</p>
+
+      <div class="sub-heading" style="color:#00695C;">💧 The Liquid State</div>
+      <p>In the liquid state, the particles are very close together and most particles touch each other. The particles
+        have more energy than in a solid, so they can <strong>move around and slide past each other</strong>. This
+        explains why a liquid can flow and can change shape.</p>
+
+      <div class="sub-heading">💨 The Gas State</div>
+      <p>In the gas state, the particles are spread out far apart. There is a lot of space between particles in a gas.
+        As particles move to fill the container they are in, <strong>gases do not have a fixed volume</strong>.</p>
+
+      <div class="sub-heading">Compression of Gases</div>
+      <p><strong>Compression</strong> happens when the particles are pressed together to make them fit into a smaller
+        space. For example, the gas particles in a spray can of deodorant or hairspray are pressed together. When the
+        contents of the can are sprayed, the particles spread out again to fill the air.</p>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          Gases can be compressed because there is <em>lots of space</em> between the particles. Solids and liquids
+          <em>cannot</em> be easily compressed because the particles are already close together.
+        </div>
+      </div>
+
+      <!-- Summary Table -->
+      <div class="sub-heading">Summary: Properties of Solids, Liquids and Gases</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Fixed mass?</th>
+            <th>Fixed volume?</th>
+            <th>Fixed shape?</th>
+            <th>Can flow?</th>
+            <th>Can compress easily?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Solid</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+            <td>❌ No</td>
+            <td>❌ No</td>
+          </tr>
+          <tr>
+            <td class="row-label">Liquid</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+            <td>❌ No</td>
+            <td>✅ Yes</td>
+            <td>❌ No</td>
+          </tr>
+          <tr>
+            <td class="row-label">Gas</td>
+            <td>✅ Yes</td>
+            <td>❌ No</td>
+            <td>❌ No</td>
+            <td>✅ Yes</td>
+            <td>✅ Yes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="test-tube-box">
+        <div class="tt-header">🧪 Test Tube Questions</div>
+        <div class="tt-body">
+          <ol>
+            <li>In which state of matter is each of the following usually found? Butter, seawater, air in a balloon, ice
+              cream, tree, clouds, a cup of coffee, car, rock, blood, milk, perfume, steam</li>
+            <li>What do solids, liquids and gases have in common?</li>
+            <li>In which state is a substance if it:
+              <ul style="margin-top:6px;">
+                <li><strong>a.</strong> has a fixed volume and a fixed shape</li>
+                <li><strong>b.</strong> can flow and can be compressed</li>
+                <li><strong>c.</strong> has a fixed volume and can flow</li>
+                <li><strong>d.</strong> takes the shape of the container it is placed in</li>
+                <li><strong>e.</strong> does not flow and cannot be compressed</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ DIFFUSION ═══ -->
+      <div class="section-heading anchor-offset" id="diffusion">
+        <span class="icon">💨</span> Diffusion
+      </div>
+
+      <div class="key-term">
+        <div class="term">Diffusion</div>
+        <div class="definition"><strong>Diffusion is the spreading out of particles to fill the space they are
+            in</strong>, until there is an even concentration of particles in the space.</div>
+        <div class="simpler">💡 Example: if a scented diffuser is in one corner of a room, your nose will pick up the
+          smell in another part — the particles spread throughout the room even though you cannot see them.</div>
+      </div>
+
+      <p>Diffusion occurs mainly in liquids and gases. Diffusion happens by itself — you do not need to mix or stir the
+        substances. <strong>Temperature</strong> and the <strong>size of the particles</strong> affect the speed of
+        diffusion.</p>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          Diffusion happens from an area of <em>high concentration</em> to an area of <em>low concentration</em>. It
+          continues until the concentration is even throughout. Higher temperature = faster diffusion.
+        </div>
+      </div>
+
+      <!-- ═══ CHANGES OF STATE ═══ -->
+      <div class="section-heading anchor-offset" id="changes">
+        <span class="icon">🔥</span> Changes of State
+      </div>
+
+      <p>When a solid is heated, its particles gain energy and move apart. The particles break free from their tightly
+        packed positions and the solid changes to a liquid — this is <strong>melting</strong>. When a liquid is heated
+        further, the liquid turns into a gas — this is <strong>boiling</strong>. These are <strong>physical
+          changes</strong>: no new substance is formed, there is no change in mass and the reaction can be easily
+        reversed.</p>
+
+      <!-- Changes of State Flow Diagram -->
+      <div class="changes-flow">
+        <h3
+          style="font-family:'Sora',sans-serif;font-size:14px;color:var(--muted);text-align:center;margin-bottom:20px;text-transform:uppercase;letter-spacing:0.8px;">
+          Changes of State Diagram</h3>
+        <div class="flow-row">
+          <div class="flow-node solid-n">Solid</div>
+          <div class="flow-arrows">
+            <span class="fa-top">Melting →</span>
+            <span class="fa-arrow-f">⟶</span>
+            <span class="fa-arrow-b">⟵</span>
+            <span class="fa-bot">← Freezing</span>
+          </div>
+          <div class="flow-node liquid-n">Liquid</div>
+          <div class="flow-arrows">
+            <span class="fa-top">Evaporation / Boiling →</span>
+            <span class="fa-arrow-f">⟶</span>
+            <span class="fa-arrow-b">⟵</span>
+            <span class="fa-bot">← Condensation</span>
+          </div>
+          <div class="flow-node gas-n">Gas</div>
+        </div>
+        <div class="sublimation-note">
+          <strong>Sublimation</strong> — some substances change directly from solid → gas without passing through the
+          liquid state (e.g. solid CO₂ / dry ice). The reverse is <strong>deposition</strong>.
+        </div>
+      </div>
+
+      <div class="sub-heading">Melting</div>
+      <p>Heat causes water particles to vibrate faster. The solid ice cube changes state to become liquid water. The
+        temperature at which a substance melts is called its <strong>melting point</strong>. The melting point of ice is
+        <strong>0 °C</strong>.</p>
+
+      <div class="sub-heading">Freezing</div>
+      <p>Cooling a liquid takes energy from its particles so they can only vibrate, not move around. The liquid changes
+        state into a solid. <strong>When a liquid changes into a solid it is called freezing.</strong> The freezing
+        point of water is <strong>0 °C</strong>.</p>
+
+      <div class="sub-heading">Evaporation and Boiling</div>
+      <p>Both evaporation and boiling cause a change of state from a liquid to a gas, but they take place differently.
+      </p>
+      <ul>
+        <li><strong>Evaporation:</strong> Particles at the surface gain enough energy to escape and change state from a
+          liquid to a gas. The liquid does not bubble, and evaporation happens at <em>all temperatures</em>. (e.g.
+          puddles drying in sunlight)</li>
+        <li><strong>Boiling:</strong> All particles in the liquid have enough energy to break free. Bubbles form
+          throughout the liquid. The temperature at which a liquid changes to a gas is called the <strong>boiling
+            point</strong>. The boiling point of water is <strong>100 °C</strong>.</li>
+      </ul>
+
+      <div class="sub-heading">Condensation</div>
+      <p>When a gas is cooled, energy is taken from its particles. The particles slow down and move more closely
+        together. <strong>The gas changes to a liquid — this is called condensation.</strong> Steam will condense to
+        form water. (e.g. water droplets on a cold car window on a wet day)</p>
+
+      <div class="sub-heading">Sublimation</div>
+      <p>When some substances are heated, they do not melt to form a liquid. Instead, they change state from a solid to
+        a gas directly. <strong>This is called sublimation.</strong> For example, solid carbon dioxide (known as 'dry
+        ice') sublimes above −78.5 °C. The vapour it creates is used for special effects at concerts.</p>
+
+      <!-- Melting & Boiling Points Table -->
+      <div class="sub-heading">Melting &amp; Boiling Points — Common Substances</div>
+      <p style="font-size:13px;color:var(--muted);">Room temperature ≈ 20 °C. If melting point &gt; 20 °C → solid; if
+        boiling point &lt; 20 °C → gas; otherwise → liquid.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Substance</th>
+            <th class="orange-header">Melting point (°C)</th>
+            <th class="orange-header">Boiling point (°C)</th>
+            <th class="orange-header">State at room temp (20 °C)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Water</td>
+            <td>0</td>
+            <td>100</td>
+            <td><span class="badge badge-liquid">Liquid</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Ethanol</td>
+            <td>−114</td>
+            <td>78</td>
+            <td><span class="badge badge-liquid">Liquid</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Propanol</td>
+            <td>−126</td>
+            <td>97</td>
+            <td><span class="badge badge-liquid">Liquid</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Gallium</td>
+            <td>30</td>
+            <td>2205</td>
+            <td><span class="badge badge-solid">Solid</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Gold</td>
+            <td>1063</td>
+            <td>2970</td>
+            <td><span class="badge badge-solid">Solid</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Oxygen</td>
+            <td>−218</td>
+            <td>−183</td>
+            <td><span class="badge badge-gas">Gas</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Mercury</td>
+            <td>−39</td>
+            <td>357</td>
+            <td><span class="badge badge-liquid">Liquid</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="test-tube-box">
+        <div class="tt-header">🧪 Test Tube Questions</div>
+        <div class="tt-body">
+          <ol>
+            <li>Once you know the melting and boiling point, predict the state of the substance at room temperature (20
+              °C): Methane (mp −182, bp −161), Iron (mp 1538, bp 2862), Silver (mp 962, bp 2162), Acetone (mp −95, bp
+              56), Nitrogen (mp −210, bp −195), Sodium (mp 98, bp 882)</li>
+            <li>What term is used to describe the temperature at which: <strong>a.</strong> liquid → gas,
+              <strong>b.</strong> solid → liquid, <strong>c.</strong> liquid → solid?</li>
+            <li>Based on condensation, explain why car windows 'fog up' on a cold, wet day.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ INVESTIGATIONS ═══ -->
+      <div class="section-heading anchor-offset" id="investigations">
+        <span class="icon">🔩</span> Experimental Investigations
+      </div>
+
+      <!-- Exp 14.2 -->
+      <div class="experiment-box">
+        <div class="exp-header">🧪 Experimental Investigation 14.2</div>
+        <div class="exp-body">
+          <div class="exp-title">How do the melting points of various substances differ?</div>
+          <div class="exp-sub">Equipment</div>
+          <div class="equipment-list">
+            <span class="equip-item">Graduated cylinder</span>
+            <span class="equip-item">Water</span>
+            <span class="equip-item">Beaker</span>
+            <span class="equip-item">Boiling tube</span>
+            <span class="equip-item">Thermometer</span>
+            <span class="equip-item">Bunsen burner</span>
+            <span class="equip-item">Tripod stand</span>
+            <span class="equip-item">Wire gauze</span>
+            <span class="equip-item">Retort stand &amp; clamp</span>
+          </div>
+          <div
+            style="margin:8px 0 4px;font-family:'Sora',sans-serif;font-weight:700;font-size:12px;color:var(--orange);text-transform:uppercase;">
+            Suggested Substances to Test</div>
+          <div class="equipment-list">
+            <span class="equip-suggested">Candle wax</span>
+            <span class="equip-suggested">Butter</span>
+            <span class="equip-suggested">Chocolate</span>
+            <span class="equip-suggested">Cheese</span>
+            <span class="equip-suggested">Ice</span>
+          </div>
+          <div class="safety-box" style="margin:12px 0;">
+            <div class="s-icon">⚠️</div>
+            <div>
+              <div class="s-title">Safety</div>
+              <div class="s-text">
+                • Wear safety goggles.<br>
+                • Tie back hair.<br>
+                • Ensure the workspace is clear of flammable materials.<br>
+                • Make sure equipment has cooled down before touching it.
+              </div>
+            </div>
+          </div>
+          <div class="exp-sub">Method</div>
+          <ol class="step-list">
+            <li>Measure 150 cm³ of water in the graduated cylinder and transfer it to the beaker.</li>
+            <li>Place the substance being tested into the boiling tube and place the thermometer into the substance.
+            </li>
+            <li>Using the retort stand and clamp, place the boiling tube in the beaker of water.</li>
+            <li>Heat the beaker of water over a Bunsen burner on the tripod and wire gauze.</li>
+            <li>Observe the material being tested until all the solid is in the liquid state.</li>
+            <li>Record the temperature at which the solid melted to a liquid.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Exp 14.3 -->
+      <div class="experiment-box">
+        <div class="exp-header">🧪 Experimental Investigation 14.3</div>
+        <div class="exp-body">
+          <div class="exp-title">What is the boiling point of water?</div>
+          <div class="exp-sub">Equipment</div>
+          <div class="equipment-list">
+            <span class="equip-item">Graduated cylinder</span>
+            <span class="equip-item">Water</span>
+            <span class="equip-item">Beaker</span>
+            <span class="equip-item">Bunsen burner</span>
+            <span class="equip-item">Tripod stand</span>
+            <span class="equip-item">Wire gauze</span>
+            <span class="equip-item">Retort stand &amp; clamp</span>
+            <span class="equip-item">Thermometer</span>
+            <span class="equip-item">Glass stirring rod</span>
+          </div>
+          <div class="safety-box" style="margin:12px 0;">
+            <div class="s-icon">⚠️</div>
+            <div>
+              <div class="s-title">Safety</div>
+              <div class="s-text">
+                • Wear safety goggles.<br>
+                • Tie back hair.<br>
+                • Ensure the workspace is clear of flammable materials.<br>
+                • Make sure equipment has cooled down before touching it.
+              </div>
+            </div>
+          </div>
+          <div class="exp-sub">Method</div>
+          <ol class="step-list">
+            <li>Measure 150 cm³ of water in the graduated cylinder and transfer it to the beaker.</li>
+            <li>Heat the beaker of water over a Bunsen burner on the tripod stand and wire gauze. Use the retort stand
+              and clamp to hold the thermometer in the water.</li>
+            <li>Observe what happens to the water. Stir gently with the glass stirring rod at intervals.</li>
+            <li>When you observe a steady stream of bubbles, this temperature is the boiling point.</li>
+            <li>Record the temperature at which the water boils.</li>
+            <li>Repeat a number of times for accuracy.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the answer and explanation.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — States of Matter
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">In which state is a substance if it: (a) has a fixed volume and a fixed shape, (b) can
+            flow and can be compressed, (c) has a fixed volume and can flow, (d) takes the shape of its container but
+            cannot be compressed?</div>
+          <div class="prob-solution">
+            <div class="steps">a) Fixed volume + fixed shape → SOLID
+              (particles packed tightly together; can only vibrate)
+
+              b) Can flow + can be compressed → GAS
+              (particles spread far apart; lots of empty space)
+
+              c) Fixed volume + can flow → LIQUID
+              (particles close but can slide past each other)
+
+              d) Takes container shape + cannot compress → LIQUID
+              (close-packed particles; no room to compress)</div>
+            <div class="answer">✅ a) Solid &nbsp;|&nbsp; b) Gas &nbsp;|&nbsp; c) Liquid &nbsp;|&nbsp; d) Liquid</div>
+            <div class="tip">💡 Key rule: if it CAN be compressed → gas. If it has a fixed shape → solid. If it can flow
+              but NOT be compressed → liquid.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Particle Theory: Solids, Liquids, Gases
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Use the particle theory to explain why it is possible to pour a liquid but not a solid.
+          </div>
+          <div class="prob-solution">
+            <div class="steps">In a LIQUID:
+              → Particles are close together but have more energy than in a solid
+              → Particles can move around and slide past each other
+              → This allows the liquid to flow and take the shape of its container
+              → Therefore, liquids can be poured.
+
+              In a SOLID:
+              → Particles are tightly packed in fixed positions
+              → Particles can only vibrate on the spot; they cannot move past each other
+              → The solid maintains its fixed shape
+              → Therefore, solids cannot be poured.</div>
+            <div class="answer">✅ Liquid particles can slide past each other (so they flow); solid particles are fixed
+              in place (so they cannot).</div>
+            <div class="tip">💡 Always refer to particle movement and arrangement when answering particle theory
+              questions.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Diffusion
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">What does the term 'diffusion' mean? Give one example of diffusion in everyday life.</div>
+          <div class="prob-solution">
+            <div class="steps">Diffusion = the spreading out of particles to fill the space
+              they are in, until there is an even concentration of
+              particles throughout the space.
+
+              Everyday example:
+              → A perfume spray released in one corner of a room
+              spreads throughout the room until everyone can smell it.
+              → The smell of roast chicken cooking fills the whole kitchen.
+              → A drop of food dye dropped into a glass of water
+              gradually spreads until the colour is even throughout.</div>
+            <div class="answer">✅ Diffusion = particles spreading out to fill space evenly. Example: perfume spreading
+              across a room.</div>
+            <div class="tip">💡 Diffusion occurs on its own — no stirring needed. Higher temperature = faster diffusion.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 — Changes of State -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Changes of State (naming)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Name the state of matter that results when: (a) a solid melts, (b) a liquid evaporates,
+            (c) a gas condenses, (d) a solid sublimates, (e) a liquid freezes.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Solid melts → LIQUID (e.g. ice → water at 0 °C)
+              b) Liquid evaporates → GAS (e.g. water → water vapour)
+              c) Gas condenses → LIQUID (e.g. steam → water droplets)
+              d) Solid sublimates → GAS (e.g. dry ice → CO₂ gas)
+              e) Liquid freezes → SOLID (e.g. water → ice at 0 °C)</div>
+            <div class="answer">✅ a) Liquid &nbsp;|&nbsp; b) Gas &nbsp;|&nbsp; c) Liquid &nbsp;|&nbsp; d) Gas
+              &nbsp;|&nbsp; e) Solid</div>
+            <div class="tip">💡 Learn the change-of-state diagram: Solid ⇌ Liquid ⇌ Gas, plus the shortcut Solid → Gas
+              (sublimation).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 — Melting/boiling point -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Predicting State from Melting &amp; Boiling Points
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Using the data below, state whether each substance is a solid, liquid or gas at room
+            temperature (20 °C). Justify your answers.<br><br>
+            Element 1: melting point 1538 °C, boiling point 2862 °C<br>
+            Element 2: melting point −7 °C, boiling point 59 °C<br>
+            Element 3: melting point −101 °C, boiling point −34 °C</div>
+          <div class="prob-solution">
+            <div class="steps">Rule: Room temperature = 20 °C
+              → If mp > 20 °C → SOLID (hasn't melted yet)
+              → If mp < 20 °C < bp → LIQUID (melted but not boiled) → If bp < 20 °C → GAS (already boiled) Element 1: mp
+                1538 °C — 20 °C < 1538 °C → SOLID (Iron) Element 2: mp −7 °C, bp 59 °C — −7 < 20 < 59 → LIQUID Element
+                3: bp −34 °C — 20 °C> −34 °C → GAS (Chlorine)</div>
+            <div class="answer">✅ Element 1: Solid &nbsp;|&nbsp; Element 2: Liquid &nbsp;|&nbsp; Element 3: Gas</div>
+            <div class="tip">💡 Compare the room temperature (20 °C) to melting point and boiling point. If room temp is
+              between them, it's a liquid.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 — Past Paper 2019 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Past Paper 2019, Q8 (Freezing)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">When solid ice changes state to become liquid water, this is called melting. What name is
+            given to the change of state when liquid water becomes solid ice?</div>
+          <div class="prob-solution">
+            <div class="steps">liquid water → solid ice
+
+              This is the REVERSE of melting.
+              The name of this change of state is: FREEZING
+
+              The freezing point of water = 0 °C
+              (same temperature as the melting point)</div>
+            <div class="answer">✅ Freezing</div>
+            <div class="tip">💡 Melting and freezing occur at the same temperature (0 °C for water) — they are reverse
+              processes.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 — Final Exam 2019, Q15 / 2022, Q13 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 7 — Final Examination 2022, Q13 (Melting Point of Sugar)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A student placed 1 g of sucrose (table sugar) on top of two metal cubes (zinc and
+            aluminium) on a hot plate. The sugar melted, but the metals did not.<br>(a) What is meant by the melting
+            point of a substance?<br>(b) Explain why the sugar melted but the metals did not.</div>
+          <div class="prob-solution">
+            <div class="steps">a) The melting point of a substance is the temperature
+              at which it changes state from a solid to a liquid.
+
+              b) Sucrose has a much LOWER melting point than zinc
+              and aluminium.
+              The hotplate reached a temperature high enough to
+              melt the sugar but NOT high enough to melt either metal.
+              → Sugar melting point ≈ 186 °C
+              → Zinc melting point = 420 °C
+              → Aluminium melting point = 660 °C</div>
+            <div class="answer">✅ Melting point = temperature at which solid becomes liquid. Sugar has a lower melting
+              point than the metals.</div>
+            <div class="tip">💡 Different substances have different melting points — this is a physical property that
+              can be used to identify substances.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINAL SUMMARY TABLE -->
+      <div class="section-heading" style="margin-top:48px;">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Key Fact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Matter</td>
+            <td>Anything that takes up space and has a mass. Three states: solid, liquid, gas.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Particle Theory</td>
+            <td>All matter is made from very small particles that are always moving.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Solid</td>
+            <td>Fixed shape + fixed volume. Particles tightly packed, vibrate on the spot. Cannot flow or compress.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Liquid</td>
+            <td>Fixed volume, no fixed shape. Particles close, slide past each other. Can flow, cannot compress easily.
+            </td>
+          </tr>
+          <tr>
+            <td class="row-label">Gas</td>
+            <td>No fixed volume or shape. Particles spread far apart. Can flow and be compressed easily.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Diffusion</td>
+            <td>Spreading out of particles until concentration is even. Happens in liquids and gases. No stirring
+              needed.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Melting</td>
+            <td>Solid → Liquid (energy IN). Melting point of water = 0 °C.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Freezing</td>
+            <td>Liquid → Solid (energy OUT). Freezing point of water = 0 °C.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Evaporation</td>
+            <td>Liquid → Gas at surface, at any temperature. Slower than boiling.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Boiling</td>
+            <td>Liquid → Gas throughout, at boiling point only. Boiling point of water = 100 °C.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Condensation</td>
+            <td>Gas → Liquid (cooled). e.g. steam → water droplets on cold glass.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Sublimation</td>
+            <td>Solid → Gas directly (no liquid stage). e.g. dry ice (CO₂).</td>
+          </tr>
+          <tr>
+            <td class="row-label">State at room temp</td>
+            <td>Compare 20 °C to mp and bp. mp &gt; 20 °C → solid. bp &lt; 20 °C → gas. Between → liquid.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Physical change</td>
+            <td>No new substance formed; no change in mass; easily reversed.</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Other chapters:</span>
+    <a href="ch3.html">Ch 3 – Cells</a>
+    <a href="ch10.html">Ch 10 – Human Health</a>
+    <a href="ch14.html" class="active">Ch 14 – States of Matter</a>
+    <a href="index.html">Ch 29 – Energy</a>
+    <a href="ch35.html">Ch 35 – The Origin of the Universe</a>
+    <a href="ch39.html">Ch 39 – Energy Sources and Future Needs</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+</body>
+
+</html>
