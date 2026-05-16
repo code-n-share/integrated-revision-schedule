@@ -1,0 +1,17 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:8082",
+    "ANTHROPIC_AUTH_TOKEN": "freecc",
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(brew install *)",
+      "Bash(python3 -c \"import subprocess; sprint=subprocess.run\\(['python3', '-m', 'docx2txt', 'Task Instructions.docx'], capture_output=True, text=True\\); print\\(sprint.stdout if sprint.stdout else sprint.stderr\\)\")",
+      "Bash(python3 -c \"import subprocess; result = subprocess.run\\(['grep', '-a', 'Task Instructions.docx'], capture_output=True, text=True\\); print\\(result.stdout if result.stdout else 'grep failed'\\)\")",
+      "Bash(pip install *)",
+      "Bash(python3 *)",
+      "Bash(chmod +x *)"
+    ]
+  }
+}

@@ -1,1628 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Science Revision – Elements of Science</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
-    rel="stylesheet">
+  <title>Revision Space</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --yellow: #F5C800;
-      --yellow-light: #FFF3A3;
       --green: #4CAF50;
-      --green-dark: #2E7D32;
+      --orange: #E65100;
       --purple: #6C3FC5;
       --blue: #1976D2;
+      --teal: #00796B;
       --red: #D32F2F;
-      --orange: #E65100;
+      --pink: #C2185B;
+      --indigo: #303F9F;
       --bg: #F8F9FA;
       --card: #FFFFFF;
       --text: #1A1A2E;
       --muted: #6B7280;
       --border: #E5E7EB;
-      --radius: 14px;
+      --radius: 16px;
       --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
-
-    /* ── SIDEBAR NAV ── */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 240px;
-      height: 100vh;
-      background: var(--text);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-      z-index: 100;
-      overflow-y: auto;
-    }
-
-    .sidebar-header {
-      background: var(--yellow);
-      color: var(--text);
-      padding: 20px 18px 16px;
-      font-family: 'Sora', sans-serif;
-    }
-
-    .sidebar-header .site-title {
-      font-size: 13px;
-      font-weight: 600;
-      opacity: 0.7;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .sidebar-header .book-title {
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-top: 4px;
-    }
-
-    .sidebar-section {
-      padding: 14px 0 4px;
-    }
-
-    .sidebar-section-label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: rgba(255, 255, 255, 0.4);
-      padding: 0 18px 6px;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 9px 18px;
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      border-left: 3px solid transparent;
-      transition: all 0.2s;
-    }
-
-    .sidebar a:hover,
-    .sidebar a.active {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
-      border-left-color: var(--yellow);
-    }
-
-    .sidebar a.chapter-link {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--yellow);
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
-
-    .sidebar a.chapter-link:hover {
-      color: #fff;
-    }
-
-    /* ── MAIN CONTENT ── */
-    .main {
-      margin-left: 240px;
-      min-height: 100vh;
-    }
-
-    /* ── CHAPTER HEADER ── */
-    .chapter-hero {
+    .hero {
       background: linear-gradient(135deg, var(--text) 0%, #2d3561 60%, #1A1A2E 100%);
       color: #fff;
-      padding: 56px 48px 48px;
+      padding: 80px 48px 64px;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
-
-    .chapter-hero::before {
+    .hero::before {
       content: '';
       position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(245, 200, 0, 0.2) 0%, transparent 70%);
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245, 200, 0, 0.15) 0%, transparent 70%);
       border-radius: 50%;
     }
-
-    .chapter-hero::after {
-      content: '⚡';
-      position: absolute;
-      top: 20px;
-      right: 48px;
-      font-size: 120px;
-      opacity: 0.08;
-    }
-
-    .chapter-badge {
-      display: inline-block;
-      background: var(--yellow);
-      color: var(--text);
+    .hero h1 {
       font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 13px;
-      padding: 4px 14px;
-      border-radius: 100px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 14px;
-    }
-
-    .chapter-hero h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: 52px;
+      font-size: 48px;
       font-weight: 800;
       letter-spacing: -1px;
-      line-height: 1;
-    }
-
-    .chapter-hero h1 span {
-      color: var(--yellow);
-    }
-
-    .chapter-meta {
-      margin-top: 18px;
-      font-size: 15px;
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .learning-goals {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .goal-tag {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 100px;
-      font-weight: 500;
-    }
-
-    /* ── CONTENT AREA ── */
-    .content {
-      padding: 40px 48px;
-      max-width: 1000px;
-    }
-
-    /* SECTION HEADINGS */
-    .section-heading {
-      font-family: 'Sora', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--text);
-      margin: 48px 0 20px;
-      padding-bottom: 10px;
-      border-bottom: 3px solid var(--yellow);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-heading .icon {
-      font-size: 26px;
-    }
-
-    .sub-heading {
-      font-family: 'Sora', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--green-dark);
-      margin: 28px 0 12px;
-    }
-
-    /* KEY TERM BOX */
-    .key-term {
-      background: var(--yellow-light);
-      border-left: 4px solid var(--yellow);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 14px 18px;
-      margin: 14px 0;
-    }
-
-    .key-term .term {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    .key-term .definition {
-      font-size: 14px;
-      color: #444;
-      margin-top: 4px;
-    }
-
-    .key-term .simpler {
-      font-size: 13px;
-      color: var(--purple);
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    /* FORMULA BOX */
-    .formula-box {
-      background: var(--text);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      margin: 16px 0;
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 1px;
       position: relative;
-      overflow: hidden;
+      z-index: 1;
     }
-
-    .formula-box::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--yellow);
-    }
-
-    .formula-box .label {
-      font-size: 11px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.5);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-
-    /* EXAMPLE BOX */
-    .example-box {
-      background: #fff;
-      border: 2px solid var(--green);
-      border-radius: var(--radius);
-      margin: 16px 0;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .example-box .example-header {
-      background: var(--green);
-      color: #fff;
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 8px 18px;
-    }
-
-    .example-box .example-body {
-      padding: 16px 18px;
-    }
-
-    .example-box .q {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .example-box .steps {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      background: #f9fafb;
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin: 8px 0;
-      line-height: 2;
-    }
-
-    .example-box .answer {
-      color: var(--green-dark);
-      font-weight: 700;
-      font-size: 15px;
-      margin-top: 4px;
-    }
-
-    .example-box .simpler-note {
-      background: var(--yellow-light);
-      border-radius: 8px;
-      padding: 10px 12px;
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
       margin-top: 12px;
-      font-size: 13px;
-      color: #555;
+      position: relative;
+      z-index: 1;
     }
-
-    .example-box .simpler-note strong {
-      color: var(--orange);
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
     }
-
-    /* CONCENTRATE BOX */
-    .concentrate {
-      background: #FFF3CD;
-      border: 2px dashed #F5C800;
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      margin: 16px 0;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .concentrate .icon {
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-
-    .concentrate .text {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .concentrate strong {
-      color: var(--text);
-      display: block;
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      margin-bottom: 3px;
-    }
-
-    /* INFO CARDS GRID */
-    .cards-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      margin: 16px 0;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
     }
-
-    .info-card {
+    .subject-card {
       background: var(--card);
       border-radius: var(--radius);
-      border: 1.5px solid var(--border);
-      padding: 18px;
       box-shadow: var(--shadow);
+      overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .info-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .info-card .card-icon {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .info-card .card-title {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .info-card .card-def {
-      font-size: 13px;
-      color: #444;
-      line-height: 1.5;
-    }
-
-    .info-card .card-simpler {
-      font-size: 12px;
-      color: var(--purple);
-      font-style: italic;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ENERGY TYPES TABLE */
-    .energy-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .energy-table th {
-      background: var(--text);
-      color: #fff;
-      font-family: 'Sora', sans-serif;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 12px 16px;
-      text-align: left;
-    }
-
-    .energy-table td {
-      padding: 12px 16px;
-      font-size: 13.5px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .energy-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .energy-table tr:nth-child(even) td {
-      background: #f9fafb;
-    }
-
-    .energy-table .emoji {
-      font-size: 22px;
-    }
-
-    .energy-table .type-name {
-      font-weight: 700;
+      text-decoration: none;
       color: var(--text);
-      white-space: nowrap;
-    }
-
-    /* SANKEY DIAGRAM – SVG */
-    .sankey-container {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      margin: 16px 0;
-      border: 1.5px solid var(--border);
-    }
-
-    .sankey-container h3 {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    /* CONSERVATION FLOW */
-    .flow-chain {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      box-shadow: var(--shadow);
-      margin: 16px 0;
-      border: 1.5px solid var(--border);
-    }
-
-    .flow-node {
-      background: var(--text);
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      min-width: 100px;
-    }
-
-    .flow-arrow {
-      font-size: 22px;
-      color: var(--yellow);
-      padding: 0 6px;
-      font-weight: 700;
-    }
-
-    .flow-node.highlight {
-      background: var(--green);
-    }
-
-    .flow-node.heat {
-      background: var(--orange);
-    }
-
-    /* PROBLEMS SECTION */
-    .problem-card {
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin: 14px 0;
-      box-shadow: var(--shadow);
-    }
-
-    .problem-card .prob-header {
-      background: var(--purple);
-      color: #fff;
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 9px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .problem-card .prob-body {
-      padding: 16px 18px;
-    }
-
-    .problem-card .prob-q {
-      font-weight: 600;
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
-
-    .toggle-btn {
-      background: var(--yellow);
-      color: var(--text);
-      border: none;
-      border-radius: 100px;
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 4px 14px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .toggle-btn:hover {
-      opacity: 0.8;
-    }
-
-    .prob-solution {
-      display: none;
-      margin-top: 12px;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-    }
-
-    .prob-solution.open {
       display: block;
     }
-
-    .prob-solution .steps {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      background: #f9fafb;
-      border-radius: 8px;
-      padding: 12px;
-      line-height: 2;
+    .subject-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
     }
-
-    .prob-solution .answer {
-      color: var(--green-dark);
+    .card-header {
+      height: 8px;
+    }
+    .card-body {
+      padding: 28px 24px 24px;
+    }
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 20px;
       font-weight: 700;
-      margin-top: 8px;
+      margin-bottom: 6px;
     }
-
-    .prob-solution .tip {
-      background: var(--yellow-light);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-top: 10px;
-      font-size: 13px;
-      color: #555;
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
     }
-
-    /* EFFICIENCY FORMULA VISUAL */
-    .eff-visual {
+    .card-footer {
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 20px;
-      background: var(--text);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 24px;
-      margin: 16px 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 15px;
-      flex-wrap: wrap;
+      justify-content: space-between;
     }
-
-    .eff-frac {
-      text-align: center;
-    }
-
-    .eff-num {
-      border-bottom: 2px solid var(--yellow);
-      padding-bottom: 4px;
-      font-weight: 700;
-    }
-
-    .eff-den {
-      padding-top: 4px;
-    }
-
-    .eff-times {
-      font-size: 24px;
-      color: var(--yellow);
-    }
-
-    .eff-result {
-      background: var(--green);
-      color: #fff;
-      border-radius: 8px;
-      padding: 8px 18px;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    /* KEY TERMS GLOSSARY */
-    .glossary {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .glossary-item {
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-    }
-
-    .glossary-item .g-term {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
+    .chapter-count {
       font-size: 13px;
-      color: var(--purple);
-    }
-
-    .glossary-item .g-def {
-      font-size: 12px;
-      color: #555;
-      margin-top: 4px;
-      line-height: 1.4;
-    }
-
-    /* EUREKA BOX */
-    .eureka {
-      background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
-      border: 2px solid var(--yellow);
-      border-radius: var(--radius);
-      padding: 16px 18px;
-      margin: 16px 0;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .eureka .eur-icon {
-      font-size: 30px;
-      flex-shrink: 0;
-    }
-
-    .eureka .eur-title {
-      font-family: 'Sora', sans-serif;
-      font-weight: 800;
-      font-size: 16px;
-      color: var(--orange);
-      margin-bottom: 4px;
-    }
-
-    .eureka .eur-text {
-      font-size: 13px;
-      color: #444;
-      line-height: 1.5;
-    }
-
-    /* CHAPTER NAV at bottom */
-    .chapter-nav-bar {
-      background: var(--text);
-      color: #fff;
-      padding: 24px 48px;
-      margin-left: 240px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .chapter-nav-bar span {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 13px;
-    }
-
-    .chapter-nav-bar a {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 100px;
-      padding: 8px 20px;
+      color: var(--muted);
       font-weight: 600;
-      font-size: 14px;
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.2s;
     }
-
-    .chapter-nav-bar a:hover {
-      background: var(--yellow);
-      color: var(--text);
-      border-color: var(--yellow);
-    }
-
-    .chapter-nav-bar a.active {
-      background: var(--yellow);
-      color: var(--text);
-      border-color: var(--yellow);
-    }
-
-    /* SCROLLBAR */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.15);
-      border-radius: 3px;
-    }
-
-    /* MOBILE */
+    .arrow { font-size: 18px; transition: transform 0.2s; }
+    .subject-card:hover .arrow { transform: translateX(4px); }
     @media (max-width: 768px) {
-      .sidebar {
-        display: none;
-      }
-
-      .main {
-        margin-left: 0;
-      }
-
-      .content {
-        padding: 20px 20px;
-      }
-
-      .chapter-hero {
-        padding: 32px 20px 28px;
-      }
-
-      .chapter-hero h1 {
-        font-size: 36px;
-      }
-
-      .chapter-nav-bar {
-        margin-left: 0;
-        padding: 20px;
-      }
-    }
-
-    /* QUICK REF BADGE */
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 100px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    .badge-blue {
-      background: #DBEAFE;
-      color: var(--blue);
-    }
-
-    .badge-green {
-      background: #DCFCE7;
-      color: var(--green-dark);
-    }
-
-    .badge-orange {
-      background: #FFEDD5;
-      color: var(--orange);
-    }
-
-    .badge-purple {
-      background: #EDE9FE;
-      color: var(--purple);
-    }
-
-    p {
-      margin: 10px 0;
-      font-size: 15px;
-    }
-
-    ul,
-    ol {
-      margin: 10px 0 10px 22px;
-    }
-
-    li {
-      font-size: 14px;
-      margin-bottom: 4px;
-      line-height: 1.5;
-    }
-
-    .anchor-offset {
-      scroll-margin-top: 24px;
+      .hero { padding: 48px 24px 40px; }
+      .hero h1 { font-size: 36px; }
+      .container { padding: 32px 16px; }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- SIDEBAR -->
-  <nav class="sidebar">
-    <div class="sidebar-header">
-      <div class="site-title">Science Revision</div>
-      <div class="book-title">Elements of Science – Unit 4</div>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-section-label">Physical World</div>
-      <a href="index.html" class="chapter-link active">Ch 29 · Energy</a>
-      <a href="#energy-basics">What is Energy?</a>
-      <a href="#forms">Forms of Energy</a>
-      <a href="#conservation">Conservation</a>
-      <a href="#sankey">Sankey Diagrams</a>
-      <a href="#efficiency">Efficiency &amp; Dissipation</a>
-      <a href="#problems">Practice Problems</a>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-section-label">Other Chapters</div>
-      <a href="ch3.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 3 · Cells</a>
-      <a href="ch10.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 10 · Human
-        Health</a>
-      <a href="ch14.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 14 · States of
-        Matter</a>
-      <a href="#" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 29 · Energy</a>
-      <a href="ch35.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 35 · The Origin of
-        the Universe</a>
-      <a href="ch39.html" class="chapter-link" style="color:rgba(255,255,255,0.5);font-size:14px;">Ch 39 · Energy
-        Sources and Future Needs</a>
-    </div>
-  </nav>
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <!-- HERO -->
-    <div class="chapter-hero">
-      <div class="chapter-badge">Chapter 29 · Unit 4 – Physical World</div>
-      <h1>⚡ <span>Energy</span></h1>
-      <p class="chapter-meta">Elements of Science · Annual Exam Revision</p>
-      <div class="learning-goals">
-        <span class="goal-tag">✔ Calculate energy & work</span>
-        <span class="goal-tag">✔ Forms of energy</span>
-        <span class="goal-tag">✔ Conservation of energy</span>
-        <span class="goal-tag">✔ Sankey diagrams</span>
-        <span class="goal-tag">✔ Efficiency &amp; dissipation</span>
-      </div>
-    </div>
-
-    <div class="content">
-
-      <!-- ═══ QUICK GLOSSARY ═══ -->
-      <div class="section-heading anchor-offset" id="energy-basics">
-        <span class="icon">📖</span> Key Terms at a Glance
-      </div>
-      <div class="glossary">
-        <div class="glossary-item">
-          <div class="g-term">Energy</div>
-          <div class="g-def">The ability to do work. SI unit: <strong>joule (J)</strong>.</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Work</div>
-          <div class="g-def">Work done = force × distance. Same unit as energy: joule (J).</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Potential Energy</div>
-          <div class="g-def">Energy stored by an object due to its <em>position or shape</em>.</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Kinetic Energy</div>
-          <div class="g-def">Energy of an object due to its <em>motion</em>.</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Conservation of Energy</div>
-          <div class="g-def">Energy cannot be created or destroyed — only converted.</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Efficiency</div>
-          <div class="g-def">How well a device converts energy into a useful form.</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Dissipation</div>
-          <div class="g-def">Wasted energy (usually as heat) that does no useful work.</div>
-        </div>
-        <div class="glossary-item">
-          <div class="g-term">Sankey Diagram</div>
-          <div class="g-def">Arrow diagram showing useful vs. wasted energy.</div>
-        </div>
-      </div>
-
-      <!-- ═══ WHAT IS ENERGY ═══ -->
-      <div class="section-heading anchor-offset" id="energy-basics-detail">
-        <span class="icon">⚡</span> What is Energy?
-      </div>
-
-      <div class="key-term">
-        <div class="term">Energy</div>
-        <div class="definition"><strong>Energy is the ability to do work.</strong> The SI unit of energy is the
-          <strong>joule (J)</strong>.
-        </div>
-        <div class="simpler">💡 Think of energy as "stored ability" — a stretched elastic band, a held ball, a charged
-          battery all have stored energy.</div>
-      </div>
-
-      <div class="sub-heading">Calculating Work (Energy Used)</div>
-      <p>To find the energy needed to move or lift something:</p>
-
-      <div class="formula-box">
-        <div class="label">Formula</div>
-        work = force × distance
-      </div>
-
-      <div class="concentrate">
-        <div class="icon">🎯</div>
-        <div class="text">
-          <strong>CONCENTRATE!</strong>
-          Work is calculated the same way whether something is moved <em>along the ground</em> or <em>lifted
-            upward</em>. Always multiply force (N) × distance (m) to get joules (J).
-        </div>
-      </div>
-
-      <div class="example-box">
-        <div class="example-header">📘 Example 1</div>
-        <div class="example-body">
-          <div class="q">Calculate the energy required to move a 20 N box 5 metres.</div>
-          <div class="steps">work = force × distance
-            work = 20 N × 5 m
-            work = <strong>100 J</strong></div>
-          <div class="simpler-note"><strong>Simple explanation:</strong> Force is 20 N (like the weight of the push
-            needed) and distance is 5 m. Multiply both → 100 joules of energy needed.</div>
-        </div>
-      </div>
-
-      <div class="example-box">
-        <div class="example-header">📘 Example 2</div>
-        <div class="example-body">
-          <div class="q">Calculate the energy required to lift a 250 N person 0.5 metres up in the air.</div>
-          <div class="steps">work = force × distance
-            work = 250 N × 0.5 m
-            work = <strong>125 J</strong></div>
-          <div class="simpler-note"><strong>Simple explanation:</strong> The person weighs 250 N. Even though lifted
-            only 0.5 m, we still use the same formula — 125 J of energy is needed.</div>
-        </div>
-      </div>
-
-      <div class="eureka">
-        <div class="eur-icon">💡</div>
-        <div>
-          <div class="eur-title">Eureka – James Joule (1818–1889)</div>
-          <div class="eur-text">James Joule made major discoveries in electricity, electromagnetism, and heat. The unit
-            of energy — the <strong>joule (J)</strong> — is named in his honour.</div>
-        </div>
-      </div>
-
-      <!-- ═══ FORMS OF ENERGY ═══ -->
-      <div class="section-heading anchor-offset" id="forms">
-        <span class="icon">🔋</span> Forms of Energy
-      </div>
-      <p>All energy is either <strong>potential</strong>, <strong>kinetic</strong>, or both — depending on the object
-        and what it is doing.</p>
-
-      <div class="cards-grid">
-        <div class="info-card">
-          <div class="card-icon">⬆️</div>
-          <div class="card-title">Potential Energy <span class="badge badge-blue">stored</span></div>
-          <div class="card-def"><strong>Energy stored by an object due to its position or shape.</strong> If an object
-            is lifted or pulled out of shape, its potential energy increases.</div>
-          <div class="card-simpler">Examples: a raised ball, a stretched bow, water at top of a waterfall.</div>
-        </div>
-        <div class="info-card">
-          <div class="card-icon">🏃</div>
-          <div class="card-title">Kinetic Energy <span class="badge badge-green">motion</span></div>
-          <div class="card-def"><strong>Energy of an object due to its motion.</strong> Greater speed = more kinetic
-            energy. Greater mass = more kinetic energy.</div>
-          <div class="card-simpler">Examples: a moving car, a falling stone, a flowing river.</div>
-        </div>
-      </div>
-
-      <div class="sub-heading">Other Forms of Energy</div>
-      <table class="energy-table">
-        <thead>
-          <tr>
-            <th>Form</th>
-            <th>Definition (from textbook)</th>
-            <th>Simple Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="emoji">☀️</span><br><span class="type-name">Light</span></td>
-            <td>The main source of energy for our planet is light from the Sun. Allows plants to grow and produce food
-              during photosynthesis; can power solar cells.</td>
-            <td>Sunlight, torch, solar panel</td>
-          </tr>
-          <tr>
-            <td><span class="emoji">🔥</span><br><span class="type-name">Chemical</span></td>
-            <td>Present in food, batteries, fuel, explosives and plants during photosynthesis. When food is eaten or
-              fuel burned, chemical energy changes form.</td>
-            <td>Eating food, burning petrol, battery</td>
-          </tr>
-          <tr>
-            <td><span class="emoji">🌡️</span><br><span class="type-name">Heat</span></td>
-            <td>Stored in objects due to changing temperature. As objects heat up, particles vibrate faster. Can be used
-              to power turbines using steam.</td>
-            <td>Hot stove, steam engine, fire</td>
-          </tr>
-          <tr>
-            <td><span class="emoji">🔊</span><br><span class="type-name">Sound</span></td>
-            <td>Travels by vibrating atoms in a material. Atoms are pushed out of place and spring back after the sound
-              passes.</td>
-            <td>Speaker, thunder, clapping</td>
-          </tr>
-          <tr>
-            <td><span class="emoji">⚡</span><br><span class="type-name">Electrical</span></td>
-            <td>From moving electrons (charged particles). Can be converted into many other forms depending on the
-              device (heaters, speakers, TVs, ovens).</td>
-            <td>Wall socket, lightning, battery power</td>
-          </tr>
-          <tr>
-            <td><span class="emoji">☢️</span><br><span class="type-name">Nuclear</span></td>
-            <td>Stored in the nucleus. When nucleus is split or joined with another, massive energy is released as heat
-              and light. Used in power stations and weapons.</td>
-            <td>Nuclear power plant, atomic bomb</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- ═══ CONSERVATION ═══ -->
-      <div class="section-heading anchor-offset" id="conservation">
-        <span class="icon">♻️</span> Conservation of Energy
-      </div>
-
-      <div class="key-term">
-        <div class="term">Principle of Conservation of Energy</div>
-        <div class="definition"><strong>Energy cannot be created or destroyed, but only converted from one form to
-            another.</strong></div>
-        <div class="simpler">💡 When energy seems to "disappear" (e.g., a ball stops bouncing), it has been converted —
-          mostly to heat. The total always stays the same.</div>
-      </div>
-
-      <div class="sub-heading">Energy Conversion Chain — Real World Examples</div>
-
-      <div style="margin-bottom:12px;">
-        <p><strong>🚲 Cyclist powered by solar:</strong></p>
-        <div class="flow-chain">
-          <div class="flow-node">☀️ Solar<br>(Light)</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node">🌿 Chemical<br>(Plant/Food)</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node highlight">🚴 Kinetic<br>(Motion)</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node heat">🔥 Heat<br>(Wasted)</div>
-        </div>
-      </div>
-
-      <div style="margin-bottom:12px;">
-        <p><strong>📺 Television:</strong></p>
-        <div class="flow-chain">
-          <div class="flow-node">⚡ Electrical</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node highlight">💡 Light + 🔊 Sound<br>(Useful)</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node heat">🔥 Heat<br>(Wasted)</div>
-        </div>
-      </div>
-
-      <div style="margin-bottom:12px;">
-        <p><strong>🔋 Torch (Battery):</strong></p>
-        <div class="flow-chain">
-          <div class="flow-node">⚗️ Chemical<br>(Battery)</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node highlight">💡 Light<br>(Useful)</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node heat">🔥 Heat<br>(Wasted)</div>
-        </div>
-      </div>
-
-      <div class="concentrate">
-        <div class="icon">🎯</div>
-        <div class="text">
-          <strong>CONCENTRATE!</strong>
-          There may be MORE THAN ONE type of energy at any stage. Example: striking a match converts kinetic energy of
-          moving the match AND chemical energy stored in the match → light + heat + sound.
-        </div>
-      </div>
-
-      <!-- ═══ SANKEY DIAGRAMS ═══ -->
-      <div class="section-heading anchor-offset" id="sankey">
-        <span class="icon">📊</span> Sankey Diagrams
-      </div>
-
-      <div class="key-term">
-        <div class="term">Sankey Diagram</div>
-        <div class="definition">A Sankey diagram <strong>shows how the energy that flows into a device is used and
-            dissipated.</strong></div>
-        <div class="simpler">💡 Think of it like a river of energy — the main stream goes in, some goes out usefully
-          (straight), some is wasted (curves downward). <strong>Wider arrow = more energy.</strong></div>
-      </div>
-
-      <p>Rules for reading a Sankey diagram:</p>
-      <ul>
-        <li>➡️ Straight arrow going <strong>in</strong> = energy flowing <em>into</em> the device</li>
-        <li>➡️ Straight arrow going <strong>out</strong> = energy converted <em>usefully</em></li>
-        <li>⬇️ Curved arrow pointing <strong>downward</strong> = energy <em>dissipated (wasted)</em></li>
-        <li>The <strong>thickness</strong> of each arrow shows how much energy it represents</li>
-      </ul>
-
-      <div class="sub-heading">Sankey Diagram: Filament Bulb vs CFL</div>
-
-      <div class="sankey-container" style="padding:28px 24px 20px;">
-        <!-- Canvas-based Sankey — proportional arrow widths, 1px = 1J -->
-        <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;">
-
-          <!-- FILAMENT -->
-          <div style="flex:1;min-width:240px;max-width:340px;">
-            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;margin-bottom:2px;">Filament bulb
-              <span
-                style="background:#FEECEC;color:#B91C1C;font-size:11px;padding:2px 8px;border-radius:100px;font-weight:600;margin-left:6px;">10%
-                efficient</span>
-            </div>
-            <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Mostly wasted as heat</div>
-            <canvas id="sk-filament" width="340" height="300" style="width:100%;height:auto;display:block;"></canvas>
-          </div>
-
-          <!-- CFL -->
-          <div style="flex:1;min-width:240px;max-width:340px;">
-            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;margin-bottom:2px;">CFL (compact
-              fluorescent) <span
-                style="background:#DCFCE7;color:#166534;font-size:11px;padding:2px 8px;border-radius:100px;font-weight:600;margin-left:6px;">75%
-                efficient</span></div>
-            <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Most converts to useful light</div>
-            <canvas id="sk-cfl" width="340" height="300" style="width:100%;height:auto;display:block;"></canvas>
-          </div>
-        </div>
-
-        <!-- Legend -->
-        <div
-          style="display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
-          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#555;">
-            <div style="width:16px;height:14px;background:#BA7517;border-radius:3px;flex-shrink:0;"></div>Useful light
-            energy
-          </div>
-          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#555;">
-            <div style="width:16px;height:14px;background:#8B3A20;border-radius:3px;flex-shrink:0;"></div>Wasted heat
-            energy
-          </div>
-          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#555;">
-            <div style="width:16px;height:14px;background:#888;border-radius:3px;flex-shrink:0;"></div>Electrical energy
-            in (100 J)
-          </div>
-          <div style="font-size:12px;color:var(--muted);margin-left:auto;">Arrow width ∝ energy &nbsp;·&nbsp; 1 px = 1 J
-          </div>
-        </div>
-
-        <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6;">
-          Both bulbs receive <strong>100 J</strong> of electrical energy. The filament bulb converts only <strong>10 J
-            to light</strong> — wasting 90 J as heat. The CFL converts <strong>75 J to light</strong> — only 25 J is
-          wasted. Notice how the light arrow is 7.5× wider in the CFL diagram.
-        </p>
-      </div>
-
-      <script>
-        (function () {
-          function drawSankey(id, lightJ, heatJ) {
-            var cv = document.getElementById(id);
-            if (!cv) return;
-            var ctx = cv.getContext('2d');
-            var W = 340, H = 300;
-            ctx.clearRect(0, 0, W, H);
-
-            var SCALE = 1.6;          // 1 J = 1.6 px
-            var totalPx = 100 * SCALE;  // always 160px (100 J total)
-            var lightPx = lightJ * SCALE;
-            var heatPx = heatJ * SCALE;
-
-            // Layout
-            var inX = 8, inW = 68;
-            var trX = inX + inW;  // 76
-            var trW = 36;
-            var spX = trX + trW;  // 112  ← split point
-            var bY = 30;         // top of the 160px band
-            var font = "13px 'Sora', sans-serif";
-
-            // ── Input box ──
-            ctx.fillStyle = '#1A1A2E';
-            rrect(ctx, inX, bY, inW, totalPx, 6);
-            ctx.fill();
-            ctx.fillStyle = '#fff';
-            ctx.font = "600 12px 'Sora', sans-serif";
-            ctx.textAlign = 'center';
-            ctx.fillText('Electrical', inX + inW / 2, bY + totalPx / 2 - 10);
-            ctx.fillText('energy', inX + inW / 2, bY + totalPx / 2 + 5);
-            ctx.fillStyle = '#F5C800';
-            ctx.font = "700 12px 'JetBrains Mono', monospace";
-            ctx.fillText('100 J', inX + inW / 2, bY + totalPx / 2 + 22);
-
-            // ── Trunk ──
-            ctx.fillStyle = '#444';
-            ctx.fillRect(trX, bY, trW, totalPx);
-
-            // ── LIGHT band → exits RIGHT ──
-            var lTop = bY, lBot = bY + lightPx, lMid = (lTop + lBot) / 2;
-            var arEnd = 226, arTip = 14;
-            ctx.fillStyle = '#BA7517';
-            ctx.beginPath();
-            ctx.moveTo(spX, lTop);
-            ctx.lineTo(arEnd, lTop);
-            ctx.lineTo(arEnd + arTip, lMid);
-            ctx.lineTo(arEnd, lBot);
-            ctx.lineTo(spX, lBot);
-            ctx.closePath();
-            ctx.fill();
-
-            // Light label
-            ctx.fillStyle = '#633806';
-            ctx.font = "600 12px 'Sora', sans-serif";
-            ctx.textAlign = 'left';
-            ctx.fillText('Light  ' + lightJ + ' J', arEnd + arTip + 6, lMid - 6);
-            ctx.font = "400 11px 'Sora', sans-serif";
-            ctx.fillStyle = '#8B5E0A';
-            ctx.fillText('(useful)', arEnd + arTip + 6, lMid + 9);
-
-            // ── HEAT band → turns DOWN then exits RIGHT ──
-            // Centre of heat band at entry = bY + lightPx + heatPx/2
-            // We draw it as a path with bezier corners.
-            // The band is heatPx tall at entry, heatPx wide in the vertical section, heatPx tall at exit.
-            var hTop = lBot;             // y=top of heat band entry
-            var hBot = bY + totalPx;     // y=bottom of heat band entry
-            var hMid = (hTop + hBot) / 2;    // centre of entry
-
-            // Corner: horizontal run ends at x=bendX, vertical run ends at y=exitY
-            var bendX = spX + heatPx * 0.5 + 16;  // further right for wider bands
-            var exitY = hBot + 60 + heatPx * 0.8;  // bottom of diagram
-            var hExitEnd = 226;           // exit to same x as light arrow end
-            var cr = Math.min(heatPx * 0.28, 22);  // corner radius (bezier depth)
-
-            ctx.fillStyle = '#8B3A20';
-            ctx.beginPath();
-            // OUTER SURFACE (top of heat band going clockwise around corner):
-            ctx.moveTo(spX, hTop);
-            ctx.lineTo(bendX, hTop);
-            ctx.quadraticCurveTo(bendX + cr, hTop, bendX + cr, hTop + cr);
-            ctx.lineTo(bendX + cr, exitY - cr);
-            ctx.quadraticCurveTo(bendX + cr, exitY, bendX + 2 * cr, exitY);
-            ctx.lineTo(hExitEnd, exitY);
-            ctx.lineTo(hExitEnd + arTip, exitY + heatPx / 2);  // arrowhead tip
-            // INNER SURFACE (bottom of heat band going counter-clockwise):
-            ctx.lineTo(hExitEnd, exitY + heatPx);
-            ctx.lineTo(bendX + 2 * cr + heatPx, exitY + heatPx);
-            ctx.quadraticCurveTo(bendX + cr + heatPx, exitY + heatPx, bendX + cr + heatPx, exitY + heatPx - cr);
-            ctx.lineTo(bendX + cr + heatPx, hTop + cr + heatPx);
-            ctx.quadraticCurveTo(bendX + cr + heatPx, hTop + heatPx, bendX + heatPx, hTop + heatPx);
-            ctx.lineTo(spX, hTop + heatPx);
-            ctx.closePath();
-            ctx.fill();
-
-            // Heat label (positioned to the right of arrowhead)
-            var htY = exitY + heatPx / 2;
-            ctx.fillStyle = '#7A2C10';
-            ctx.font = "600 12px 'Sora', sans-serif";
-            ctx.textAlign = 'left';
-            ctx.fillText('Heat  ' + heatJ + ' J', hExitEnd + arTip + 6, htY - 6);
-            ctx.font = "400 11px 'Sora', sans-serif";
-            ctx.fillStyle = '#994020';
-            ctx.fillText('(wasted)', hExitEnd + arTip + 6, htY + 9);
-
-            // Clean divider at split point
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(trX, hTop);
-            ctx.lineTo(spX, hTop);
-            ctx.stroke();
-          }
-
-          function rrect(ctx, x, y, w, h, r) {
-            ctx.beginPath();
-            ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-            ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-            ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-            ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
-            ctx.closePath();
-          }
-
-          drawSankey('sk-filament', 10, 90);
-          drawSankey('sk-cfl', 75, 25);
-        })();
-      </script>
-
-      <div class="eureka">
-        <div class="eur-icon">💡</div>
-        <div>
-          <div class="eur-title">Eureka – H. Riall Sankey (1853–1926)</div>
-          <div class="eur-text">Irish-born engineer H. Riall Sankey developed Sankey diagrams in 1898 to show how energy
-            was being used or wasted in mechanical systems. His first diagram represented energy conversions in a steam
-            engine.</div>
-        </div>
-      </div>
-
-      <!-- ═══ EFFICIENCY ═══ -->
-      <div class="section-heading anchor-offset" id="efficiency">
-        <span class="icon">📐</span> Energy Efficiency &amp; Dissipation
-      </div>
-
-      <div class="key-term">
-        <div class="term">Efficiency</div>
-        <div class="definition"><strong>The efficiency of a device is how well it uses or converts the energy that flows
-            into it.</strong></div>
-        <div class="simpler">💡 A 90% efficient device only wastes 10%. A 10% efficient device wastes 90%. Higher % =
-          better device.</div>
-      </div>
-
-      <div class="key-term">
-        <div class="term">Dissipation</div>
-        <div class="definition"><strong>When energy is wasted and does not convert to a useful form, it is called
-            dissipation.</strong></div>
-        <div class="simpler">💡 A TV dissipates heat from its wires and screen — that heat isn't helping you watch TV!
-        </div>
-      </div>
-
-      <div class="sub-heading">Efficiency Formula</div>
-
-      <div class="formula-box">
-        <div class="label">Percentage Energy Efficiency</div>
-        % efficiency = (useful energy out ÷ energy in) × 100
-      </div>
-
-      <div class="formula-box" style="background:var(--orange);margin-top:10px;">
-        <div class="label">Percentage Energy Dissipation</div>
-        % dissipation = 100 − % efficiency
-      </div>
-
-      <div class="example-box">
-        <div class="example-header">📘 Example – Mobile Phone Charger</div>
-        <div class="example-body">
-          <div class="q">A charger uses 200 J; 180 J charges the phone, 20 J emitted as heat. Find:<br>a) energy
-            efficiency &nbsp;&nbsp; b) energy dissipation</div>
-          <div class="steps">a) % efficiency = (180 ÷ 200) × 100 = <strong>90%</strong>
-            b) % dissipation = 100 − 90 = <strong>10%</strong></div>
-          <div class="simpler-note"><strong>Simple:</strong> 180 out of 200 J are useful → 90% efficient. The remaining
-            10% is lost as heat in the plug.</div>
-        </div>
-      </div>
-
-      <!-- ═══ PRACTICE PROBLEMS ═══ -->
-      <div class="section-heading anchor-offset" id="problems">
-        <span class="icon">✏️</span> Practice Problems
-      </div>
-      <p>Click <strong>Show Solution</strong> to reveal the answer and a simple explanation.</p>
-
-      <!-- P1 -->
-      <div class="problem-card">
-        <div class="prob-header">
-          Problem 1 — Work &amp; Energy
-          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
-        </div>
-        <div class="prob-body">
-          <div class="prob-q">Calculate the energy required for a person of weight 200 N to walk 4 metres.</div>
-          <div class="prob-solution">
-            <div class="steps">work = force × distance
-              work = 200 N × 4 m
-              work = <strong>800 J</strong></div>
-            <div class="answer">✅ Answer: 800 J</div>
-            <div class="tip">💡 Force = weight = 200 N. Distance = 4 m. Just multiply!</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- P2 -->
-      <div class="problem-card">
-        <div class="prob-header">
-          Problem 2 — Finding Weight from Energy
-          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
-        </div>
-        <div class="prob-body">
-          <div class="prob-q">A lift carries 10 people 20 m upwards. 70,000 J of energy is required. How much does each
-            person weigh?</div>
-          <div class="prob-solution">
-            <div class="steps">work = force × distance
-              70,000 = force × 20
-              force (total) = 70,000 ÷ 20 = 3,500 N
-              Weight per person = 3,500 ÷ 10 = <strong>350 N</strong></div>
-            <div class="answer">✅ Answer: Each person weighs 350 N</div>
-            <div class="tip">💡 Rearrange: force = work ÷ distance. Then divide by 10 people. Always check units — force
-              is in Newtons (N).</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- P3 -->
-      <div class="problem-card">
-        <div class="prob-header">
-          Problem 3 — Efficiency Calculation
-          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
-        </div>
-        <div class="prob-body">
-          <div class="prob-q">A toaster uses 2200 J. 150 J escapes as heat.<br>a) What is the energy efficiency?
-            &nbsp;&nbsp; b) What is the energy dissipation?</div>
-          <div class="prob-solution">
-            <div class="steps">a) Useful energy = 2200 − 150 = 2050 J
-              % efficiency = (2050 ÷ 2200) × 100
-              % efficiency ≈ <strong>93.2%</strong>
-
-              b) % dissipation = 100 − 93.2 = <strong>6.8%</strong></div>
-            <div class="answer">✅ Efficiency ≈ 93.2% &nbsp;|&nbsp; Dissipation ≈ 6.8%</div>
-            <div class="tip">💡 "Useful energy out" = total in − wasted. Then use the formula. The toaster is quite
-              efficient — most energy heats the bread!</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- P4 -->
-      <div class="problem-card">
-        <div class="prob-header">
-          Problem 4 — Efficiency of Electric Bike
-          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
-        </div>
-        <div class="prob-body">
-          <div class="prob-q">An electric bike uses 3000 J of energy but only converts 2500 J into kinetic energy.
-            Calculate the percentage energy efficiency.</div>
-          <div class="prob-solution">
-            <div class="steps">% efficiency = (useful energy out ÷ energy in) × 100
-              % efficiency = (2500 ÷ 3000) × 100
-              % efficiency = <strong>83.3%</strong></div>
-            <div class="answer">✅ Answer: 83.3% efficient</div>
-            <div class="tip">💡 2500 out of 3000 joules go to useful kinetic energy. The rest (500 J) is wasted — likely
-              as heat in the motor.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- P5 — Sankey reading -->
-      <div class="problem-card">
-        <div class="prob-header">
-          Problem 5 — Reading a Sankey Diagram
-          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
-        </div>
-        <div class="prob-body">
-          <div class="prob-q">A food mixer has 1500 J of electrical energy flowing in. The Sankey diagram shows 1400 J
-            of useful energy out, 25 J as heat loss, and 75 J as sound.<br>
-            a) What is the useful energy form?<br>
-            b) What are the dissipated energy forms?<br>
-            c) Calculate the percentage energy dissipated.</div>
-          <div class="prob-solution">
-            <div class="steps">a) Useful = kinetic (mechanical) energy → 1400 J
-
-              b) Dissipated = heat (25 J) + sound (75 J) = 100 J wasted
-
-              c) % dissipation = (100 ÷ 1500) × 100
-              % dissipation = <strong>6.67%</strong></div>
-            <div class="answer">✅ Useful: kinetic | Wasted: heat + sound | Dissipation: 6.67%</div>
-            <div class="tip">💡 Add up ALL wasted forms for total dissipation. Then divide by energy in × 100.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- P6 — Past paper -->
-      <div class="problem-card">
-        <div class="prob-header">
-          Problem 6 — Kettle Efficiency (Past Paper style)
-          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
-        </div>
-        <div class="prob-body">
-          <div class="prob-q">A kettle has 3000 J supplied but only 2000 J converts to heating the water.<br>
-            a) How many joules are dissipated?<br>
-            b) Calculate the percentage efficiency of the kettle.</div>
-          <div class="prob-solution">
-            <div class="steps">a) Dissipated = 3000 − 2000 = <strong>1000 J</strong>
-
-              b) % efficiency = (2000 ÷ 3000) × 100
-              % efficiency = <strong>66.7%</strong></div>
-            <div class="answer">✅ Dissipated: 1000 J &nbsp;|&nbsp; Efficiency: 66.7%</div>
-            <div class="tip">💡 "How many joules wasted?" = energy in − useful energy out. Then use the efficiency
-              formula for the % answer.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FINAL SUMMARY CARD -->
-      <div class="section-heading" style="margin-top:48px;">
-        <span class="icon">📋</span> Exam Quick-Reference Summary
-      </div>
-      <table class="energy-table">
-        <thead>
-          <tr>
-            <th>Topic</th>
-            <th>Formula / Key Fact</th>
-            <th>Units</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Work / Energy</strong></td>
-            <td>work = force × distance</td>
-            <td>Joules (J)</td>
-          </tr>
-          <tr>
-            <td><strong>Force</strong></td>
-            <td>force = work ÷ distance</td>
-            <td>Newtons (N)</td>
-          </tr>
-          <tr>
-            <td><strong>% Efficiency</strong></td>
-            <td>(useful energy out ÷ energy in) × 100</td>
-            <td>% (no unit)</td>
-          </tr>
-          <tr>
-            <td><strong>% Dissipation</strong></td>
-            <td>100 − % efficiency</td>
-            <td>% (no unit)</td>
-          </tr>
-          <tr>
-            <td><strong>Conservation</strong></td>
-            <td>Energy cannot be created or destroyed — only converted</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Sankey: thick arrow</strong></td>
-            <td>More energy in that form</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Sankey: curved down</strong></td>
-            <td>Dissipated (wasted) energy</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div><!-- /content -->
-  </main>
-
-  <!-- CHAPTER NAV BAR -->
-  <div class="chapter-nav-bar">
-    <span>Other chapters:</span>
-    <a href="ch3.html">Ch 3 – Cells</a>
-    <a href="ch10.html">Ch 10 – Human Health</a>
-    <a href="ch14.html" class="active">Ch 14 – States of Matter</a>
-    <a href="index.html">Ch 29 – Energy</a>
-    <a href="ch35.html">Ch 35 – The Origin of the Universe</a>
-    <a href="ch39.html">Ch 39 – Energy Sources and Future Needs</a>
+  <div class="hero">
+    <h1>Revision <span>Hub</span></h1>
+    <p>Choose a subject to begin studying for your exams</p>
   </div>
-
-  <script>
-    function toggleSol(btn) {
-      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
-      sol.classList.toggle('open');
-      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
-    }
-  </script>
+  <div class="container">
+    <div class="grid">
+      <a href="science/" class="subject-card">
+        <div class="card-header" style="background: var(--green);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#128300;</div>
+          <div class="card-title">Science</div>
+          <div class="card-desc">Elements of Science - Biology, Chemistry &amp; Physics chapters.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">6 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="history/" class="subject-card">
+        <div class="card-header" style="background: var(--yellow);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#127963;</div>
+          <div class="card-title">History</div>
+          <div class="card-desc">Coming soon - Historical periods and key events.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="english/" class="subject-card">
+        <div class="card-header" style="background: var(--blue);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#128214;</div>
+          <div class="card-title">English</div>
+          <div class="card-desc">Coming soon - Literature, grammar &amp; writing skills.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="classics/" class="subject-card">
+        <div class="card-header" style="background: var(--teal);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#127993;</div>
+          <div class="card-title">Classics</div>
+          <div class="card-desc">Coming soon - Ancient civilisations &amp; mythology.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="irish/" class="subject-card">
+        <div class="card-header" style="background: #009B4D;"></div>
+        <div class="card-body">
+          <div class="card-icon">&#127758;</div>
+          <div class="card-title">Irish</div>
+          <div class="card-desc">Coming soon - Gaeilge language, literature &amp; culture.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="french/" class="subject-card">
+        <div class="card-header" style="background: var(--indigo);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#127760;</div>
+          <div class="card-title">French</div>
+          <div class="card-desc">Coming soon - French language, grammar &amp; vocabulary.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="maths/" class="subject-card">
+        <div class="card-header" style="background: var(--purple);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#128290;</div>
+          <div class="card-title">Maths</div>
+          <div class="card-desc">Coming soon - Algebra, geometry, statistics &amp; more.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="geography/" class="subject-card">
+        <div class="card-header" style="background: var(--orange);"></div>
+        <div class="card-body">
+          <div class="card-icon">&#127758;</div>
+          <div class="card-title">Geography</div>
+          <div class="card-desc">Coming soon - Physical &amp; human geography chapters.</div>
+        </div>
+        <div class="card-footer">
+          <span class="chapter-count">0 Chapters</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </body>
-
 </html>

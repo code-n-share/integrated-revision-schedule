@@ -1,41 +1,56 @@
-# Science Revision – Elements of Science (Unit 4)
+# Revision Hub
 
-A clean, fast-loading static revision website for exam preparation.
+A clean, fast-loading static revision website for exam preparation across all subjects.
 
-## 📂 File Structure
+## Project Structure
 
 ```
-index.html      ← Chapter 29: Energy  (complete)
-ch30.html       ← Chapter 30: Current Electricity  (placeholder – replace with full version)
-README.md       ← This file
+/
+├── index.html                  ← Root page with subject selector
+├── science/
+│   ├── index.html              ← Science chapter index
+│   ├── ch3.html                ← Chapter 3: Cells
+│   ├── ch10.html               ← Chapter 10: Human Health
+│   ├── ch14.html               ← Chapter 14: States of Matter
+│   ├── ch29.html               ← Chapter 29: Energy
+│   ├── ch35.html               ← Chapter 35: The Origin of the Universe
+│   └── ch39.html               ← Chapter 39: Energy Sources and Future Needs
+├── history/                    ← (coming soon)
+├── english/                    ← (coming soon)
+├── classics/                   ← (coming soon)
+├── irish/                      ← (coming soon)
+├── french/                     ← (coming soon)
+├── maths/                      ← (coming soon)
+├── geography/                  ← (coming soon)
+├── README.md                   ← This file
+└── progress.json               ← Study progress tracking
+
 ```
 
-## 🚀 Deploying to GitHub Pages
+## Navigate
 
-1. Create a new GitHub repository (e.g. `science-revision`)
-2. Upload all HTML files to the repo root
-3. Go to **Settings → Pages → Source → main branch / root**
-4. Your site will be live at `https://yourusername.github.io/science-revision/`
+1. **Root** (`/index.html`) - Choose a subject
+2. **Subject** (e.g. `/science/index.html`) - See all chapters in that subject
+3. **Chapter** (e.g. `/ science/ch29.html`) - Read the revision content
 
-## ➕ Adding New Chapters
-
-To add a new chapter (e.g. Chapter 31):
-
-1. Copy `ch30.html` and rename it `ch31.html`
-2. Fill in the content following the same structure used in `index.html`
-3. Add a link to the sidebar in **every** existing HTML file:
-   ```html
-   <a href="ch31.html" class="chapter-link">Ch 31 · Chapter Name</a>
-   ```
-4. Add it to the chapter nav bar at the bottom of each file too.
-
-## 🎨 Design System
+## Design System
 
 - Fonts: **Sora** (headings) + **DM Sans** (body) + **JetBrains Mono** (code/formulas)
-- Colors: Yellow `#F5C800`, Dark `#1A1A2E`, Green `#4CAF50`, Orange `#E65100`
-- No external dependencies beyond Google Fonts — works offline once cached.
+- Colors vary per subject (e.g. Science = Green, Maths = Purple, History = Yellow)
+- No external dependencies beyond Google Fonts -- works offline once cached.
 
-## ✅ Chapters Completed
+## Deploying to GitHub Pages
 
-- [x] Chapter 29 – Energy
-- [ ] Chapter 30 – Current Electricity
+1. Create a new GitHub repository (e.g. `revision-hub`)
+2. Upload all files to the repo (folders + HTML)
+3. Go to **Settings -> Pages -> Source -> main branch / root**
+4. Your site will be live at `https://yourusername.github.io/revision-hub/`
+
+## Chapters Completed
+
+- [x] Chapter 3 – Cells (Biological World)
+- [x] Chapter 10 – Human Health (Biological World)
+- [x] Chapter 14 – States of Matter (Chemical World)
+- [x] Chapter 29 – Energy (Physical World)
+- [x] Chapter 35 – The Origin of the Universe (Earth & Space)
+- [x] Chapter 39 – Energy Sources and Future Needs (Earth & Space)
