@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 25 – Measurements | Science Revision</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1565C0;
+      --blue-light: #E3F2FD;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --teal: #00796B;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      /* Chapter accent */
+      --accent: #1565C0;
+      --accent-dark: #0D47A1;
+      --accent-light: #E3F2FD;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--accent);
+      color: #fff;
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px; font-weight: 600;
+      opacity: 0.8; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px;
+    }
+
+    .sidebar-section { padding: 14px 0 4px; }
+
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4); padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--yellow);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700; font-size: 15px;
+      color: var(--yellow); padding-top: 12px; padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, #42A5F5 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '📏';
+      position: absolute; top: 20px; right: 48px;
+      font-size: 120px; opacity: 0.1;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--yellow); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 13px; padding: 4px 14px;
+      border-radius: 100px; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -1px; line-height: 1;
+    }
+
+    .chapter-hero h1 span { color: var(--yellow); }
+    .chapter-meta { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.65); }
+
+    .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .goal-tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+      font-size: 12px; padding: 6px 12px;
+      border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px 100px; max-width: 1000px; }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px; font-weight: 800; color: var(--text);
+      margin: 48px 0 20px; padding-bottom: 10px;
+      border-bottom: 3px solid var(--accent);
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .section-heading .icon { font-size: 26px; }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--accent); margin: 28px 0 12px;
+    }
+
+    p.body-text { font-size: 15px; color: #444; margin-bottom: 14px; line-height: 1.7; }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 14px 0;
+    }
+
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* FORMULA BOX */
+    .formula-box {
+      background: var(--text); color: #fff;
+      border-radius: var(--radius); padding: 20px 24px;
+      margin: 16px 0; text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px; font-weight: 600; letter-spacing: 1px;
+      position: relative; overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--yellow);
+    }
+
+    .formula-box .label {
+      font-size: 11px; font-family: 'DM Sans', sans-serif;
+      font-weight: 600; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--accent);
+      border-radius: var(--radius); margin: 16px 0;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+
+    .example-box .example-header {
+      background: var(--accent); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1px; padding: 8px 18px;
+    }
+
+    .example-box .example-body { padding: 16px 18px; }
+    .example-box .q { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 14px; }
+
+    .example-box .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px;
+      margin: 8px 0; line-height: 2; white-space: pre-line;
+    }
+
+    .example-box .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+
+    .example-box .simpler-note {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 12px; font-size: 13px; color: #555;
+    }
+
+    .example-box .simpler-note strong { color: var(--accent); }
+
+    /* TIP / CONCENTRATE */
+    .concentrate {
+      background: #FFF3CD; border: 2px dashed var(--yellow);
+      border-radius: var(--radius); padding: 14px 18px;
+      margin: 16px 0; display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+    /* EUREKA BOX */
+    .eureka {
+      background: #FFF8E1; border: 2px dashed #F9A825;
+      border-radius: var(--radius); padding: 14px 18px;
+      margin: 16px 0; display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .eureka .icon { font-size: 24px; flex-shrink: 0; }
+    .eureka .text { font-size: 14px; color: #555; }
+    .eureka .text strong { color: #E65100; display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; font-size: 15px; }
+
+    /* INFO CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; color: var(--accent); }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-simpler { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* DATA TABLE */
+    .data-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .data-table th {
+      background: var(--text); color: #fff;
+      font-family: 'Sora', sans-serif; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+
+    .data-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* ERROR TYPE CARDS */
+    .error-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 16px 0;
+    }
+
+    .error-card {
+      border-radius: var(--radius); padding: 18px;
+      box-shadow: var(--shadow); border: 2px solid transparent;
+    }
+
+    .error-card.blunder { background: #FFEBEE; border-color: var(--red); }
+    .error-card.systematic { background: #FFF8E1; border-color: #F9A825; }
+    .error-card.random { background: #E8EAF6; border-color: var(--purple); }
+
+    .error-card .err-name {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 15px; margin-bottom: 6px;
+    }
+
+    .error-card.blunder .err-name { color: var(--red); }
+    .error-card.systematic .err-name { color: #E65100; }
+    .error-card.random .err-name { color: var(--purple); }
+    .error-card .err-def { font-size: 13px; color: #444; margin-bottom: 6px; }
+    .error-card .err-eg { font-size: 12px; color: #666; font-style: italic; }
+
+    /* PROBLEM CARDS */
+    .problem-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      margin: 14px 0; box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 13px; padding: 9px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; line-height: 1.6; }
+
+    .toggle-btn {
+      background: var(--yellow); color: var(--text);
+      border: none; border-radius: 100px;
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 12px; padding: 4px 14px;
+      cursor: pointer; transition: opacity 0.2s; white-space: nowrap;
+    }
+
+    .toggle-btn:hover { opacity: 0.8; }
+
+    .prob-solution { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .prob-solution.open { display: block; }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px 14px;
+      margin: 8px 0; line-height: 2; white-space: pre-line;
+    }
+
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; font-size: 15px; margin-top: 4px; }
+    .prob-solution .tip {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 8px; font-size: 13px; color: #555;
+    }
+
+    /* CONVERSION VISUAL */
+    .conversion-chain {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap; justify-content: center;
+      background: #fff; border-radius: var(--radius);
+      padding: 20px 24px; box-shadow: var(--shadow);
+      margin: 16px 0; border: 1.5px solid var(--border);
+      gap: 8px;
+    }
+
+    .conv-node {
+      background: var(--accent); color: #fff;
+      padding: 10px 16px; border-radius: 8px;
+      font-size: 14px; font-weight: 700;
+      text-align: center; min-width: 90px;
+    }
+
+    .conv-arrow {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 2px;
+    }
+
+    .conv-arrow .up { font-size: 11px; color: var(--green-dark); font-weight: 700; }
+    .conv-arrow .sym { font-size: 20px; color: var(--muted); }
+    .conv-arrow .dn { font-size: 11px; color: var(--red); font-weight: 700; }
+
+    /* ANCHOR OFFSET */
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: fixed; bottom: 0; left: 240px; right: 0;
+      background: var(--text); color: rgba(255,255,255,0.7);
+      padding: 10px 48px; font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; gap: 24px;
+      z-index: 50; border-top: 2px solid var(--accent);
+    }
+
+    .chapter-nav-bar a {
+      color: var(--yellow); text-decoration: none;
+      font-weight: 700; font-size: 13px; transition: color 0.2s;
+    }
+
+    .chapter-nav-bar a:hover { color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .chapter-hero { padding: 40px 20px 32px; }
+      .chapter-hero h1 { font-size: 36px; }
+      .content { padding: 24px 16px 80px; }
+      .error-grid { grid-template-columns: 1fr; }
+      .chapter-nav-bar { left: 0; padding: 10px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Science Revision</div>
+      <div class="book-title">Ch 25 – Measurements</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Sections</div>
+      <a href="#intro">Physical Quantities &amp; SI Units</a>
+      <a href="#time">Measuring Time</a>
+      <a href="#length">Measuring Length</a>
+      <a href="#area">Measuring Area</a>
+      <a href="#volume">Measuring Volume</a>
+      <a href="#mass">Measuring Mass</a>
+      <a href="#temperature">Measuring Temperature</a>
+      <a href="#error">Error in Measurement</a>
+      <a href="#problems">Practice Problems</a>
+      <a href="#summary">Exam Summary</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigate</div>
+      <a href="index.html" class="chapter-link">← Science Home</a>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 25 · Unit 4 – Physical World</div>
+      <h1><span>Measure</span>ments</h1>
+      <div class="chapter-meta">Elements of Science · Physics</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✅ Measure time, length, area, volume, mass &amp; temperature</span>
+        <span class="goal-tag">✅ Identify SI units for each quantity</span>
+        <span class="goal-tag">✅ Choose the correct measuring instrument</span>
+        <span class="goal-tag">✅ Understand accuracy, precision &amp; errors</span>
+        <span class="goal-tag">✅ Convert between units</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ INTRO — Physical Quantities & SI Units ═══ -->
+      <div class="section-heading anchor-offset" id="intro">
+        <span class="icon">📐</span> Physical Quantities &amp; SI Units
+      </div>
+
+      <p class="body-text">We rely on measurements every day — clocks for time, rulers for length, thermometers for temperature. <strong>A physical quantity is anything that can be measured with a measuring instrument.</strong></p>
+
+      <div class="key-term">
+        <div class="term">Accuracy</div>
+        <div class="definition">Making sure that any measurement taken is as close as possible to its correct value. To measure accurately you must choose the correct instrument and use the correct units.</div>
+        <div class="simpler">💡 Think of accuracy as hitting the bullseye — correct instrument + correct units = accurate reading.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Precision</div>
+        <div class="definition">When a measurement is taken more than once, it should be the same or close in value each time. This is called precision.</div>
+        <div class="simpler">💡 Precision = repeatability. If you measure the same object five times and get almost the same answer each time, your measurements are precise.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">SI Units (International System of Units)</div>
+        <div class="definition">A system of units used by scientists worldwide to make sure measurements are carried out the same way and can be understood by everyone. Each unit is represented by a symbol.</div>
+        <div class="simpler">💡 SI units are like a universal language for science — everyone uses the same units so results can be shared and compared.</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Physical Quantity</th><th>SI Unit</th><th>Symbol</th><th>Measuring Instrument</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Time</strong></td><td>Second</td><td>s</td><td>Stopwatch / timer</td></tr>
+          <tr><td><strong>Length</strong></td><td>Metre</td><td>m</td><td>Ruler, metre stick, trundle wheel</td></tr>
+          <tr><td><strong>Area</strong></td><td>Metre squared</td><td>m²</td><td>Ruler (calculate)</td></tr>
+          <tr><td><strong>Volume</strong></td><td>Metre cubed</td><td>m³ / cm³</td><td>Graduated cylinder</td></tr>
+          <tr><td><strong>Mass</strong></td><td>Kilogram</td><td>kg</td><td>Mass balance / spring balance</td></tr>
+          <tr><td><strong>Temperature</strong></td><td>Degrees Celsius</td><td>°C</td><td>Thermometer</td></tr>
+        </tbody>
+      </table>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          Before you carry out an experimental investigation or answer a question, think about what instrument and units should be used.
+        </div>
+      </div>
+
+      <!-- ═══ TIME ═══ -->
+      <div class="section-heading anchor-offset" id="time">
+        <span class="icon">⏱️</span> Measuring Time
+      </div>
+
+      <p class="body-text">In science, the standard unit of <strong>time</strong> is the <strong>second (s)</strong>. Instruments used to measure time include <strong>stopwatches</strong> and <strong>timers</strong>. Electronic timers connected to circuits can measure time automatically — accurate to hundredths of a second.</p>
+
+      <div class="eureka">
+        <div class="icon">💡</div>
+        <div class="text">
+          <strong>Eureka! — Ancient Timekeeping</strong>
+          Since the era of the Ancient Egyptians, time has been divided into 12 parts (12 hours of day and night). Some believe this was due to the 12 joints in the fingers — four fingers with three joints each, excluding the thumb.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Figure It Out — Time Conversions</div>
+        <div class="example-body">
+          <div class="steps">Convert the following into seconds:
+a) 1 day    = 24 × 60 × 60 = 86,400 s
+b) 1 week   = 7 × 86,400   = 604,800 s
+c) 1 year   = 365 × 86,400 = 31,536,000 s
+
+Travel time: 3 hours 24 minutes from Donegal to Dublin
+→ in minutes:  (3 × 60) + 24 = 204 minutes
+→ in seconds:  204 × 60      = 12,240 s</div>
+          <div class="simpler-note"><strong>Simple:</strong> 1 min = 60 s · 1 hour = 3,600 s · 1 day = 86,400 s. Multiply up step by step.</div>
+        </div>
+      </div>
+
+      <!-- ═══ LENGTH ═══ -->
+      <div class="section-heading anchor-offset" id="length">
+        <span class="icon">📏</span> Measuring Length
+      </div>
+
+      <p class="body-text">In science, the standard unit of <strong>length</strong> is the <strong>metre (m)</strong>. When the length is shorter or longer than a metre, other units are used.</p>
+
+      <div class="conversion-chain">
+        <div class="conv-node">Kilometre<br><small>km</small></div>
+        <div class="conv-arrow">
+          <div class="up">÷ 1000</div>
+          <div class="sym">⇄</div>
+          <div class="dn">× 1000</div>
+        </div>
+        <div class="conv-node">Metre<br><small>m</small></div>
+        <div class="conv-arrow">
+          <div class="up">÷ 100</div>
+          <div class="sym">⇄</div>
+          <div class="dn">× 100</div>
+        </div>
+        <div class="conv-node">Centimetre<br><small>cm</small></div>
+        <div class="conv-arrow">
+          <div class="up">÷ 10</div>
+          <div class="sym">⇄</div>
+          <div class="dn">× 10</div>
+        </div>
+        <div class="conv-node">Millimetre<br><small>mm</small></div>
+      </div>
+
+      <div class="sub-heading">Instruments for Measuring Length</div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">📏</div>
+          <div class="card-title">Ruler</div>
+          <div class="card-def">Measures straight lines up to 30 cm.</div>
+          <div class="card-simpler">💡 Best for small, straight objects like pencils or books.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🪄</div>
+          <div class="card-title">Metre Stick</div>
+          <div class="card-def">Measures straight lines up to 1 m.</div>
+          <div class="card-simpler">💡 Good for desks, doors, or anything up to 1 metre long.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🎡</div>
+          <div class="card-title">Trundle Wheel</div>
+          <div class="card-def">Measures long, curved lengths — e.g. a running track. Circumference of 1 m; clicks every metre.</div>
+          <div class="card-simpler">💡 Each click = 1 metre. Count the clicks!</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🗺️</div>
+          <div class="card-title">Opisometer</div>
+          <div class="card-def">Measures short, curved lengths — e.g. roads or rivers on a map. Roll the wheel along the line, then along a ruler.</div>
+          <div class="card-simpler">💡 Looks like a mini trundle wheel with a pointer.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🔧</div>
+          <div class="card-title">Digital Caliper</div>
+          <div class="card-def">Measures thickness and circular objects — e.g. diameter of pipes or coins. Jaws close around the object.</div>
+          <div class="card-simpler">💡 Used for very precise measurements of small, round objects.</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Figure It Out — Length Conversions</div>
+        <div class="example-body">
+          <div class="steps">Convert into metres:
+a) 130 cm = 130 ÷ 100 = 1.3 m
+b) 540 mm = 540 ÷ 1000 = 0.54 m
+
+Convert into centimetres:
+a) 2.3 m  = 2.3 × 100 = 230 cm
+b) 15 mm  = 15 ÷ 10   = 1.5 cm
+
+Convert into millimetres:
+a) 30 m   = 30 × 1000 = 30,000 mm
+b) 86 cm  = 86 × 10   = 860 mm</div>
+          <div class="simpler-note"><strong>Rule:</strong> Going to a smaller unit → multiply. Going to a larger unit → divide.</div>
+        </div>
+      </div>
+
+      <!-- ═══ AREA ═══ -->
+      <div class="section-heading anchor-offset" id="area">
+        <span class="icon">⬛</span> Measuring Area
+      </div>
+
+      <div class="key-term">
+        <div class="term">Area</div>
+        <div class="definition"><strong>Area is the amount of space a two-dimensional shape takes up.</strong> The standard unit of area is the metre squared (m²). For smaller areas, cm² and mm² are used; for larger areas, km² is used.</div>
+        <div class="simpler">💡 Area always has a squared unit — because you're measuring in two directions (length × width).</div>
+      </div>
+
+      <div class="formula-box">
+        <div class="label">Area of a Rectangle</div>
+        Area = length × width
+      </div>
+
+      <div class="concentrate">
+        <div class="icon">🎯</div>
+        <div class="text">
+          <strong>CONCENTRATE!</strong>
+          The most important part of measuring area is to make sure the correct unit of length is used. If you want the area in metres squared, you should measure the length in metres before calculating the area.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Worked Example — Regular Rectangle</div>
+        <div class="example-body">
+          <div class="q">Calculate the area, in m², of a rectangle with sides measuring 0.25 m and 2 m.</div>
+          <div class="steps">Area = length × width
+Area = 0.25 m × 2 m
+Area = 0.5 m²</div>
+          <div class="answer">✅ Answer: 0.5 m²</div>
+          <div class="simpler-note"><strong>Simple:</strong> Multiply length by width. Because both are in metres, the answer is in m².</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Area of an Irregular Shape</div>
+
+      <p class="body-text">To find the area of an <strong>irregular shape</strong>, break it into regular shapes (rectangles, squares, triangles) and calculate the area of each, then add them together.</p>
+
+      <div class="example-box">
+        <div class="example-header">📘 Worked Example — Irregular Shape</div>
+        <div class="example-body">
+          <div class="q">A shape 12 cm wide and 15 cm tall is divided into three rectangles: A (12×6), B (6×6), C (12×3).</div>
+          <div class="steps">A: 12 cm × 6 cm = 72 cm²
+B:  6 cm × 6 cm = 36 cm²
+C: 12 cm × 3 cm = 36 cm²
+
+Total area = 72 + 36 + 36 = 144 cm²</div>
+          <div class="answer">✅ Answer: 144 cm²</div>
+          <div class="simpler-note"><strong>Simple:</strong> Split the shape into rectangles you can handle. Add the areas at the end.</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Figure It Out — Area Calculations</div>
+        <div class="example-body">
+          <div class="steps">1. Square with one side 1.2 m:
+   Area = 1.2 × 1.2 = 1.44 m²
+
+2. Rectangle: 30 cm long, 20 cm high:
+   Area = 30 × 20 = 600 cm²
+
+3. Rectangle: 240 cm × 35 cm:
+   Area = 240 × 35 = 8,400 cm²</div>
+          <div class="simpler-note"><strong>Remember:</strong> For a square, both sides are equal — just square the side length!</div>
+        </div>
+      </div>
+
+      <!-- ═══ VOLUME ═══ -->
+      <div class="section-heading anchor-offset" id="volume">
+        <span class="icon">🧊</span> Measuring Volume
+      </div>
+
+      <div class="key-term">
+        <div class="term">Volume</div>
+        <div class="definition"><strong>Volume is the amount of space an object takes up.</strong> The standard unit of volume is metres cubed (m³). When the volume is smaller, cm³ is used.</div>
+        <div class="simpler">💡 Volume is 3D — you measure in three directions (length × width × height).</div>
+      </div>
+
+      <div class="sub-heading">Volume of a Regular Solid (Cuboid)</div>
+
+      <div class="formula-box">
+        <div class="label">Volume of a Cuboid</div>
+        Volume = length × width × height
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Worked Example — Regular Cuboid</div>
+        <div class="example-body">
+          <div class="q">Find the volume in m³ of a regular cuboid with dimensions 3 m by 0.75 m by 1 m.</div>
+          <div class="steps">Volume = length × width × height
+Volume = 3 m × 0.75 m × 1 m
+Volume = 2.25 m³</div>
+          <div class="answer">✅ Answer: 2.25 m³</div>
+          <div class="simpler-note"><strong>Simple:</strong> Multiply all three dimensions together. Three metres × metres = m³.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Volume of a Liquid — Graduated Cylinder</div>
+
+      <div class="key-term">
+        <div class="term">Graduated Cylinder</div>
+        <div class="definition">The piece of laboratory equipment used to measure the volume of a liquid. It has graduated lines and measurements along the side.</div>
+        <div class="simpler">💡 Always read the bottom of the meniscus at eye level for an accurate reading.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Meniscus</div>
+        <div class="definition">The name of the curve on the top surface of a liquid in a graduated cylinder. Always read the <strong>bottom of the meniscus at eye level</strong> to ensure an accurate reading.</div>
+        <div class="simpler">💡 Water curves downward — read the lowest point of the curve, not the top edges.</div>
+      </div>
+
+      <div class="sub-heading">Volume of an Irregular Solid — Displacement Method</div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Experimental Investigation 25.4 — Displacement</div>
+        <div class="example-body">
+          <div class="q">How can we measure the volume of an irregular solid? (e.g. a stone)</div>
+          <div class="steps">Equipment: Overflow can, graduated cylinder, water, string, stone
+
+Method:
+1. Place overflow can on a block above the graduated cylinder.
+2. Pour water into overflow can until it flows from spout.
+3. Record the volume reading in the graduated cylinder (V₁).
+4. Tie string to stone. Lower stone into overflow can until submerged.
+5. Water flows out into the graduated cylinder — record new volume (V₂).
+6. Volume of stone = V₂ − V₁</div>
+          <div class="answer">✅ The volume of water displaced = the volume of the stone.</div>
+          <div class="simpler-note"><strong>Simple:</strong> The stone pushes out exactly its own volume of water. Measure that water → you have the stone's volume.</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Figure It Out — Volume Calculations</div>
+        <div class="example-body">
+          <div class="steps">1. Cuboid: 23 cm × 14 cm × 75 cm
+   Volume = 23 × 14 × 75 = 24,150 cm³
+
+2. Cube: sides = 30 cm
+   Volume = 30 × 30 × 30 = 27,000 cm³
+
+3. Graduated cylinder before stone: 40 cm³
+   Graduated cylinder after stone:  55 cm³
+   Volume of stone = 55 − 40 = 15 cm³</div>
+          <div class="simpler-note"><strong>Remember:</strong> For a cube, all sides are equal — cube the side length (side³).</div>
+        </div>
+      </div>
+
+      <!-- ═══ MASS ═══ -->
+      <div class="section-heading anchor-offset" id="mass">
+        <span class="icon">⚖️</span> Measuring Mass
+      </div>
+
+      <div class="key-term">
+        <div class="term">Mass</div>
+        <div class="definition"><strong>Mass is the amount of matter in an object.</strong> The standard unit of mass is the <strong>kilogram (kg)</strong>. When the mass is smaller, grams (g) are used (1 kg = 1000 g).</div>
+        <div class="simpler">💡 Mass stays the same whether you're on Earth or the Moon. Weight changes — mass does not.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Instruments for Measuring Mass</div>
+        <div class="definition">A <strong>mass balance</strong> (digital or beam) and a <strong>spring balance</strong> are both used to measure mass.</div>
+        <div class="simpler">💡 For very heavy objects (e.g. 100 steel ball bearings), use a spring balance. For very light objects (e.g. a feather), use a sensitive digital balance.</div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">📘 Figure It Out — Mass Conversions</div>
+        <div class="example-body">
+          <div class="steps">Convert into kilograms (kg):
+a) 300 g  = 300 ÷ 1000 = 0.3 kg
+b) 25 g   = 25 ÷ 1000  = 0.025 kg
+
+Convert into grams (g):
+a) 2.5 kg = 2.5 × 1000 = 2,500 g
+b) 150 kg = 150 × 1000 = 150,000 g</div>
+          <div class="simpler-note"><strong>Rule:</strong> kg → g: multiply by 1000. g → kg: divide by 1000.</div>
+        </div>
+      </div>
+
+      <!-- ═══ TEMPERATURE ═══ -->
+      <div class="section-heading anchor-offset" id="temperature">
+        <span class="icon">🌡️</span> Measuring Temperature
+      </div>
+
+      <div class="key-term">
+        <div class="term">Temperature</div>
+        <div class="definition"><strong>Temperature is the measure of the hotness or coldness of an object or body.</strong> The practical unit of temperature is <strong>degrees Celsius (°C)</strong>. A <strong>thermometer</strong> is the instrument used to measure temperature.</div>
+        <div class="simpler">💡 Common types: alcohol-in-glass thermometer and digital thermometer.</div>
+      </div>
+
+      <div class="eureka">
+        <div class="icon">💡</div>
+        <div class="text">
+          <strong>Eureka! — Handheld Digital Thermometers</strong>
+          Handheld digital thermometers were used to check for fever during the COVID-19 pandemic. While they allow temperature to be measured at a safe distance of one metre, they measure external body temperature only and are less accurate than other types of thermometers.
+        </div>
+      </div>
+
+      <!-- ═══ ERROR ═══ -->
+      <div class="section-heading anchor-offset" id="error">
+        <span class="icon">⚠️</span> Error in Measurement
+      </div>
+
+      <div class="key-term">
+        <div class="term">Error</div>
+        <div class="definition"><strong>In measurement, an error is a mistake that is introduced into a reading or an investigation.</strong></div>
+        <div class="simpler">💡 Errors are NOT always the student's fault — they can come from the instrument, the environment, or carelessness.</div>
+      </div>
+
+      <div class="error-grid">
+        <div class="error-card blunder">
+          <div class="err-name">🤦 Blunder</div>
+          <div class="err-def">A mistake caused by <strong>carelessness</strong>.</div>
+          <div class="err-eg">e.g. Spilling a liquid before measuring it. Not following the investigation method properly.</div>
+        </div>
+        <div class="error-card systematic">
+          <div class="err-name">⚙️ Systematic Error</div>
+          <div class="err-def">Due to a <strong>problem with the measuring instrument or environment</strong>.</div>
+          <div class="err-eg">e.g. A metre stick worn down at the end. A mass balance not set to zero. Investigation near a radiator.</div>
+        </div>
+        <div class="error-card random">
+          <div class="err-name">🎲 Random Error</div>
+          <div class="err-def">A mistake made by the <strong>person taking the measurement</strong>.</div>
+          <div class="err-eg">e.g. Reading a scale incorrectly. The table is unsteady and equipment moves.</div>
+        </div>
+      </div>
+
+      <div class="sub-heading">Ethics and Measurement</div>
+      <p class="body-text">Errors in measurement can cause major problems for consumers and the economy. Every country has a government department that regularly checks commercial instruments for error — such as petrol station pumps and shop weighing scales. In Ireland these checks are carried out by the <strong>National Metrology Laboratory</strong>.</p>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+
+      <p class="body-text">Click <strong>Show Solution</strong> to reveal the answer and explanation.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Instruments &amp; Units (Sample Paper 2018, Q2)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Complete the table for these instruments — state what physical quantity each instrument measures and the unit used:<br>
+            Metre stick · Stopwatch · Graduated cylinder · Thermometer</div>
+          <div class="prob-solution">
+            <div class="steps">Metre stick       → Length       → metres (m)
+Stopwatch         → Time         → seconds (s)
+Graduated cylinder→ Volume       → cm³ or ml
+Thermometer       → Temperature  → degrees Celsius (°C)</div>
+            <div class="answer">✅ See above — learn these four instrument/unit pairs for every exam.</div>
+            <div class="tip">💡 This type of question appears in almost every past paper. The four instruments above are the most commonly tested.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Area Calculation
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A hockey pitch has sides of 91.4 m and 55 m.<br>
+            a) What instrument would you use to measure this accurately?<br>
+            b) What is the perimeter (all exterior sides added together)?<br>
+            c) Calculate the area of the pitch.</div>
+          <div class="prob-solution">
+            <div class="steps">a) A trundle wheel — it measures long distances accurately.
+
+b) Perimeter = 2 × (91.4 + 55)
+             = 2 × 146.4
+             = 292.8 m
+
+c) Area = 91.4 × 55
+        = 5,027 m²</div>
+            <div class="answer">✅ a) Trundle wheel | b) 292.8 m | c) 5,027 m²</div>
+            <div class="tip">💡 Perimeter = add all sides. Area = length × width. A trundle wheel is the right tool for a large outdoor space.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Volume of Irregular Solid
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A stone is placed into an overflow can. Before the stone, the graduated cylinder reads 15 cm³. After the stone, it reads 50 cm³.<br>
+            a) What is the volume of the stone?<br>
+            b) Why must you read the bottom of the meniscus?<br>
+            c) Name all equipment used.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Volume of stone = 50 − 15 = 35 cm³
+
+b) Water curves upward at the edges of the cylinder
+   (the meniscus). Reading the bottom of the curve
+   gives the true volume. Reading the top of the
+   curve would give a higher, incorrect value.
+
+c) Equipment: overflow can, block, graduated cylinder,
+   water, string, stone</div>
+            <div class="answer">✅ a) 35 cm³ | b) Meniscus curves — bottom is the true level | c) See above</div>
+            <div class="tip">💡 Volume of irregular solid = V₂ − V₁. The stone pushes out exactly its own volume of water.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Errors in Measurement (Final Exam 2022, Q11)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A tradesperson is measuring a wall before painting it. Give an example of:<br>
+            a) a random error that could occur<br>
+            b) a systematic error that could occur</div>
+          <div class="prob-solution">
+            <div class="steps">a) Random error: The tradesperson misreads the ruler
+   (reads 2.3 m instead of 2.4 m). This is a mistake
+   by the person taking the measurement.
+
+b) Systematic error: The measuring tape is old and
+   slightly stretched, so every measurement is
+   slightly too long. This is a problem with
+   the measuring instrument.</div>
+            <div class="answer">✅ a) Misreading the scale (random) | b) Faulty/stretched measuring tape (systematic)</div>
+            <div class="tip">💡 Random = person's mistake. Systematic = instrument/environment problem. Blunder = careless mistake (e.g. dropping the tape).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Petrol Pump Error Calculation
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">A petrol pump is incorrectly set and delivers the wrong volume of fuel. It displays 1 litre when only 0.95 litres have been delivered.<br>
+            a) How much does the customer actually receive when 20 litres are registered?<br>
+            b) How much fuel does the customer lose per year if they use this pump to put 20 litres in their car every week?</div>
+          <div class="prob-solution">
+            <div class="steps">a) Actual fuel per "litre" = 0.95 L
+   Actual fuel for 20 registered litres
+   = 20 × 0.95 = 19 litres
+
+b) Loss per fill = 20 − 19 = 1 litre
+   Fills per year = 52 weeks
+   Total loss = 52 × 1 = 52 litres per year</div>
+            <div class="answer">✅ a) 19 litres actually received | b) 52 litres lost per year</div>
+            <div class="tip">💡 This is a systematic error — the instrument (pump) is consistently wrong by the same amount each time.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Shadow Length Investigation (Final Exam 2022, Q11)
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Two groups investigated how the length of a shadow varies over a year. Group A used a pole to cast the shadow. Group B used a student from the group instead of a pole.<br>
+            a) Name an instrument used to measure the length of the shadow.<br>
+            b) State one variable Group A should have kept constant.<br>
+            c) Which group, A or B, carried out a better investigation? Justify your answer.</div>
+          <div class="prob-solution">
+            <div class="steps">a) A metre stick or trundle wheel (ruler for shorter shadows).
+
+b) Group A should have kept the height of the pole
+   constant (always use the same pole in the same
+   upright position).
+
+c) Group A carried out the better investigation.
+   A pole is a fixed, unchanging object — its height
+   stays the same every measurement.
+   A student's height, posture, or standing position
+   could vary, introducing random error.</div>
+            <div class="answer">✅ a) Metre stick / ruler | b) Height of the pole | c) Group A — pole height is constant; a student introduces random error</div>
+            <div class="tip">💡 Good investigations keep all variables constant except the one being tested (controlled variable). A student is not a reliable constant!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ EXAM SUMMARY ═══ -->
+      <div class="section-heading anchor-offset" id="summary" style="margin-top:48px;">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Physical Quantity</th><th>SI Unit &amp; Symbol</th><th>Instrument(s)</th><th>Formula / Key Note</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Time</strong></td>
+            <td>Second (s)</td>
+            <td>Stopwatch, timer</td>
+            <td>1 min = 60 s · 1 hr = 3,600 s</td>
+          </tr>
+          <tr>
+            <td><strong>Length</strong></td>
+            <td>Metre (m)</td>
+            <td>Ruler, metre stick, trundle wheel, opisometer, digital caliper</td>
+            <td>1 km = 1000 m · 1 m = 100 cm = 1000 mm</td>
+          </tr>
+          <tr>
+            <td><strong>Area</strong></td>
+            <td>Metre squared (m²)</td>
+            <td>Ruler (then calculate)</td>
+            <td>Area = length × width</td>
+          </tr>
+          <tr>
+            <td><strong>Volume (solid)</strong></td>
+            <td>Metre cubed (m³ / cm³)</td>
+            <td>Ruler (cuboid) / overflow can + graduated cylinder (irregular)</td>
+            <td>V = l × w × h · irregular: V₂ − V₁</td>
+          </tr>
+          <tr>
+            <td><strong>Volume (liquid)</strong></td>
+            <td>cm³ / ml</td>
+            <td>Graduated cylinder</td>
+            <td>Read bottom of meniscus at eye level</td>
+          </tr>
+          <tr>
+            <td><strong>Mass</strong></td>
+            <td>Kilogram (kg)</td>
+            <td>Mass balance, spring balance</td>
+            <td>1 kg = 1000 g</td>
+          </tr>
+          <tr>
+            <td><strong>Temperature</strong></td>
+            <td>Degrees Celsius (°C)</td>
+            <td>Thermometer (alcohol / digital)</td>
+            <td>Measure hotness or coldness of object</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-heading" style="margin-top:28px;">Types of Error — Quick Reference</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Error Type</th><th>Cause</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Blunder</strong></td>
+            <td>Carelessness by the experimenter</td>
+            <td>Spilling liquid before measuring; not following method</td>
+          </tr>
+          <tr>
+            <td><strong>Systematic Error</strong></td>
+            <td>Problem with instrument or environment</td>
+            <td>Worn metre stick; balance not zeroed; near heat source</td>
+          </tr>
+          <tr>
+            <td><strong>Random Error</strong></td>
+            <td>Person misreads or records incorrectly</td>
+            <td>Reading scale at wrong angle; unsteady table</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+  </script>
+
+</body>
+</html>
