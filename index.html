@@ -661,38 +661,171 @@ work = <strong>125 J</strong></div>
 
     <div class="sub-heading">Sankey Diagram: Filament Bulb vs CFL</div>
 
-    <div class="sankey-container">
-      <h3>⚡ Filament Bulb (less efficient)</h3>
-      <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;">
-        <!-- Input arrow -->
-        <rect x="0" y="50" width="160" height="60" fill="#1A1A2E" rx="4"/>
-        <text x="80" y="76" text-anchor="middle" fill="white" font-size="13" font-family="'Sora',sans-serif" font-weight="700">Electrical</text>
-        <text x="80" y="93" text-anchor="middle" fill="#F5C800" font-size="13" font-family="'JetBrains Mono',monospace" font-weight="600">100 J</text>
-        <!-- Arrow body -->
-        <rect x="160" y="55" width="120" height="50" fill="#2d3561"/>
-        <!-- Useful: 10J light -->
-        <polygon points="280,55 280,80 420,80 420,55" fill="#4CAF50"/>
-        <text x="350" y="72" text-anchor="middle" fill="white" font-size="11" font-family="'Sora',sans-serif" font-weight="600">Light 10 J</text>
-        <!-- Wasted: 90J heat -->
-        <path d="M280 105 Q340 130 420 140" stroke="#E65100" stroke-width="28" fill="none" stroke-linecap="round"/>
-        <text x="360" y="148" text-anchor="middle" fill="#E65100" font-size="11" font-family="'Sora',sans-serif" font-weight="700">Heat 90 J</text>
-      </svg>
+    <div class="sankey-container" style="padding:28px 24px 20px;">
+      <!-- Canvas-based Sankey — proportional arrow widths, 1px = 1J -->
+      <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;">
 
-      <h3 style="margin-top:24px;">⚡ Compact Fluorescent Lamp / CFL (more efficient)</h3>
-      <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;">
-        <rect x="0" y="45" width="160" height="70" fill="#1A1A2E" rx="4"/>
-        <text x="80" y="74" text-anchor="middle" fill="white" font-size="13" font-family="'Sora',sans-serif" font-weight="700">Electrical</text>
-        <text x="80" y="91" text-anchor="middle" fill="#F5C800" font-size="13" font-family="'JetBrains Mono',monospace" font-weight="600">100 J</text>
-        <rect x="160" y="50" width="120" height="60" fill="#2d3561"/>
-        <!-- Useful: 75J light — much wider -->
-        <polygon points="280,50 280,95 420,95 420,50" fill="#4CAF50"/>
-        <text x="350" y="76" text-anchor="middle" fill="white" font-size="11" font-family="'Sora',sans-serif" font-weight="600">Light 75 J</text>
-        <!-- Wasted: 25J heat — thinner -->
-        <path d="M280 110 Q330 128 420 135" stroke="#E65100" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <text x="360" y="148" text-anchor="middle" fill="#E65100" font-size="11" font-family="'Sora',sans-serif" font-weight="700">Heat 25 J</text>
-      </svg>
-      <p style="font-size:13px;color:var(--muted);margin-top:10px;">Both bulbs receive <strong>100 J</strong>. The filament bulb wastes <strong>90 J</strong> as heat (only 10 J useful light). The CFL wastes only <strong>25 J</strong> — it converts 75 J to useful light. CFL is much more efficient!</p>
+        <!-- FILAMENT -->
+        <div style="flex:1;min-width:240px;max-width:340px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;margin-bottom:2px;">Filament bulb <span style="background:#FEECEC;color:#B91C1C;font-size:11px;padding:2px 8px;border-radius:100px;font-weight:600;margin-left:6px;">10% efficient</span></div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Mostly wasted as heat</div>
+          <canvas id="sk-filament" width="340" height="300" style="width:100%;height:auto;display:block;"></canvas>
+        </div>
+
+        <!-- CFL -->
+        <div style="flex:1;min-width:240px;max-width:340px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;margin-bottom:2px;">CFL (compact fluorescent) <span style="background:#DCFCE7;color:#166534;font-size:11px;padding:2px 8px;border-radius:100px;font-weight:600;margin-left:6px;">75% efficient</span></div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Most converts to useful light</div>
+          <canvas id="sk-cfl" width="340" height="300" style="width:100%;height:auto;display:block;"></canvas>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#555;">
+          <div style="width:16px;height:14px;background:#BA7517;border-radius:3px;flex-shrink:0;"></div>Useful light energy
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#555;">
+          <div style="width:16px;height:14px;background:#8B3A20;border-radius:3px;flex-shrink:0;"></div>Wasted heat energy
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#555;">
+          <div style="width:16px;height:14px;background:#888;border-radius:3px;flex-shrink:0;"></div>Electrical energy in (100 J)
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-left:auto;">Arrow width ∝ energy &nbsp;·&nbsp; 1 px = 1 J</div>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6;">
+        Both bulbs receive <strong>100 J</strong> of electrical energy. The filament bulb converts only <strong>10 J to light</strong> — wasting 90 J as heat. The CFL converts <strong>75 J to light</strong> — only 25 J is wasted. Notice how the light arrow is 7.5× wider in the CFL diagram.
+      </p>
     </div>
+
+    <script>
+    (function(){
+      function drawSankey(id, lightJ, heatJ) {
+        var cv = document.getElementById(id);
+        if (!cv) return;
+        var ctx = cv.getContext('2d');
+        var W = 340, H = 300;
+        ctx.clearRect(0,0,W,H);
+
+        var SCALE   = 1.6;          // 1 J = 1.6 px
+        var totalPx = 100 * SCALE;  // always 160px (100 J total)
+        var lightPx = lightJ * SCALE;
+        var heatPx  = heatJ  * SCALE;
+
+        // Layout
+        var inX = 8, inW = 68;
+        var trX = inX + inW;  // 76
+        var trW = 36;
+        var spX = trX + trW;  // 112  ← split point
+        var bY  = 30;         // top of the 160px band
+        var font = "13px 'Sora', sans-serif";
+
+        // ── Input box ──
+        ctx.fillStyle = '#1A1A2E';
+        rrect(ctx, inX, bY, inW, totalPx, 6);
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.font = "600 12px 'Sora', sans-serif";
+        ctx.textAlign = 'center';
+        ctx.fillText('Electrical', inX+inW/2, bY+totalPx/2 - 10);
+        ctx.fillText('energy',     inX+inW/2, bY+totalPx/2 + 5);
+        ctx.fillStyle = '#F5C800';
+        ctx.font = "700 12px 'JetBrains Mono', monospace";
+        ctx.fillText('100 J',      inX+inW/2, bY+totalPx/2 + 22);
+
+        // ── Trunk ──
+        ctx.fillStyle = '#444';
+        ctx.fillRect(trX, bY, trW, totalPx);
+
+        // ── LIGHT band → exits RIGHT ──
+        var lTop = bY, lBot = bY + lightPx, lMid = (lTop+lBot)/2;
+        var arEnd = 226, arTip = 14;
+        ctx.fillStyle = '#BA7517';
+        ctx.beginPath();
+        ctx.moveTo(spX, lTop);
+        ctx.lineTo(arEnd, lTop);
+        ctx.lineTo(arEnd+arTip, lMid);
+        ctx.lineTo(arEnd, lBot);
+        ctx.lineTo(spX, lBot);
+        ctx.closePath();
+        ctx.fill();
+
+        // Light label
+        ctx.fillStyle = '#633806';
+        ctx.font = "600 12px 'Sora', sans-serif";
+        ctx.textAlign = 'left';
+        ctx.fillText('Light  ' + lightJ + ' J', arEnd+arTip+6, lMid-6);
+        ctx.font = "400 11px 'Sora', sans-serif";
+        ctx.fillStyle = '#8B5E0A';
+        ctx.fillText('(useful)', arEnd+arTip+6, lMid+9);
+
+        // ── HEAT band → turns DOWN then exits RIGHT ──
+        // Centre of heat band at entry = bY + lightPx + heatPx/2
+        // We draw it as a path with bezier corners.
+        // The band is heatPx tall at entry, heatPx wide in the vertical section, heatPx tall at exit.
+        var hTop = lBot;             // y=top of heat band entry
+        var hBot = bY + totalPx;     // y=bottom of heat band entry
+        var hMid = (hTop+hBot)/2;    // centre of entry
+
+        // Corner: horizontal run ends at x=bendX, vertical run ends at y=exitY
+        var bendX = spX + heatPx * 0.5 + 16;  // further right for wider bands
+        var exitY = hBot + 60 + heatPx * 0.8;  // bottom of diagram
+        var hExitEnd = 226;           // exit to same x as light arrow end
+        var cr = Math.min(heatPx * 0.28, 22);  // corner radius (bezier depth)
+
+        ctx.fillStyle = '#8B3A20';
+        ctx.beginPath();
+        // OUTER SURFACE (top of heat band going clockwise around corner):
+        ctx.moveTo(spX, hTop);
+        ctx.lineTo(bendX, hTop);
+        ctx.quadraticCurveTo(bendX+cr, hTop,      bendX+cr, hTop+cr);
+        ctx.lineTo(bendX+cr, exitY-cr);
+        ctx.quadraticCurveTo(bendX+cr, exitY,     bendX+2*cr, exitY);
+        ctx.lineTo(hExitEnd, exitY);
+        ctx.lineTo(hExitEnd+arTip, exitY+heatPx/2);  // arrowhead tip
+        // INNER SURFACE (bottom of heat band going counter-clockwise):
+        ctx.lineTo(hExitEnd, exitY+heatPx);
+        ctx.lineTo(bendX+2*cr+heatPx, exitY+heatPx);
+        ctx.quadraticCurveTo(bendX+cr+heatPx, exitY+heatPx, bendX+cr+heatPx, exitY+heatPx-cr);
+        ctx.lineTo(bendX+cr+heatPx, hTop+cr+heatPx);
+        ctx.quadraticCurveTo(bendX+cr+heatPx, hTop+heatPx, bendX+heatPx, hTop+heatPx);
+        ctx.lineTo(spX, hTop+heatPx);
+        ctx.closePath();
+        ctx.fill();
+
+        // Heat label (positioned to the right of arrowhead)
+        var htY = exitY + heatPx/2;
+        ctx.fillStyle = '#7A2C10';
+        ctx.font = "600 12px 'Sora', sans-serif";
+        ctx.textAlign = 'left';
+        ctx.fillText('Heat  ' + heatJ + ' J', hExitEnd+arTip+6, htY-6);
+        ctx.font = "400 11px 'Sora', sans-serif";
+        ctx.fillStyle = '#994020';
+        ctx.fillText('(wasted)', hExitEnd+arTip+6, htY+9);
+
+        // Clean divider at split point
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(trX, hTop);
+        ctx.lineTo(spX, hTop);
+        ctx.stroke();
+      }
+
+      function rrect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+        ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+        ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+        ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+        ctx.closePath();
+      }
+
+      drawSankey('sk-filament', 10, 90);
+      drawSankey('sk-cfl', 75, 25);
+    })();
+    </script>
 
     <div class="eureka">
       <div class="eur-icon">💡</div>
