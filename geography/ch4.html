@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 4 – Primary Economic Activities | Geography Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-dark:   #1B5E35;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --red-light:    #FFEBEE;
+      --teal:         #00796B;
+      --teal-light:   #E0F2F1;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--green-dark); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 12px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; color: #ddd; }
+    .sidebar-header .book-title { font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff; }
+    .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 14px 18px 6px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--amber); }
+    .sidebar a.home-link { font-size: 12px; color: rgba(255,255,255,0.5); padding: 16px 18px 8px; border-left: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #1B5E35 0%, #2E8B57 60%, #43A047 100%);
+      color: #fff; padding: 56px 48px 48px; position: relative; overflow: hidden;
+    }
+    .chapter-hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%); border-radius: 50%; }
+    .chapter-hero::after { content: '🌾'; position: absolute; top: 20px; right: 48px; font-size: 110px; opacity: 0.1; }
+    .chapter-badge { display: inline-block; background: var(--amber); color: var(--text); font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px; padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .chapter-hero h1 { font-family: 'Sora', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); font-size: 12px; padding: 5px 12px; border-radius: 100px; font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* HEADINGS */
+    .section-heading { font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); margin: 48px 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--green); display: flex; align-items: center; gap: 12px; }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading { font-family: 'Sora', sans-serif; font-size: 19px; font-weight: 700; color: var(--green-dark); margin: 30px 0 10px; padding-left: 12px; border-left: 4px solid var(--green); }
+    .sub-sub-heading { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); margin: 18px 0 6px; }
+
+    /* KEY TERM */
+    .key-term { background: var(--green-light); border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 12px 0; }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--green-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+
+    /* REMEMBER */
+    .remember { background: var(--amber-light); border: 2px dashed var(--amber); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* 3 ACTIVITY TYPES GRID */
+    .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .activity-card { background: var(--card); border-radius: var(--radius); border: 2px solid var(--border); padding: 20px; box-shadow: var(--shadow); }
+    .activity-card .ac-badge { display: inline-block; font-family: 'Sora'; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+    .ac-primary .ac-badge { background: #E8F5E9; color: var(--green-dark); }
+    .ac-secondary .ac-badge { background: var(--blue-light); color: var(--blue); }
+    .ac-tertiary .ac-badge { background: var(--purple-light); color: var(--purple-dark); }
+    .activity-card .ac-title { font-family: 'Sora'; font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+    .ac-primary .ac-title { color: var(--green-dark); }
+    .ac-secondary .ac-title { color: var(--blue); }
+    .ac-tertiary .ac-title { color: var(--purple-dark); }
+    .activity-card .ac-def { font-size: 13.5px; color: #444; margin-bottom: 8px; }
+    .activity-card .ac-jobs { font-size: 12px; color: var(--muted); }
+    .activity-card .ac-jobs strong { color: var(--text); }
+
+    /* RESOURCE CARDS */
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .resource-card { background: var(--card); border-radius: var(--radius); border: 2px solid var(--border); padding: 18px; box-shadow: var(--shadow); }
+    .resource-card.renewable { border-color: var(--green); }
+    .resource-card.nonrenewable { border-color: var(--red); }
+    .resource-card .rc-title { font-family: 'Sora'; font-weight: 800; font-size: 15px; margin-bottom: 8px; }
+    .resource-card.renewable .rc-title { color: var(--green-dark); }
+    .resource-card.nonrenewable .rc-title { color: var(--red); }
+    .resource-card .rc-desc { font-size: 13.5px; color: #444; margin-bottom: 8px; }
+    .resource-card .rc-examples { font-size: 12px; color: var(--muted); }
+
+    /* WATER CYCLE STAGES */
+    .water-stages { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 16px 0; }
+    .water-stage { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 16px; box-shadow: var(--shadow); display: flex; gap: 12px; align-items: flex-start; }
+    .water-stage .ws-num { background: var(--blue); color: #fff; font-family: 'Sora'; font-weight: 800; font-size: 18px; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .water-stage .ws-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; color: var(--blue); margin-bottom: 4px; }
+    .water-stage .ws-desc { font-size: 13px; color: #444; }
+
+    /* CASE STUDY */
+    .case-study { background: var(--amber-light); border: 2px solid var(--amber); border-radius: var(--radius); margin: 20px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .case-study .cs-header { background: var(--amber); color: var(--text); font-family: 'Sora'; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; }
+    .case-study .cs-body { padding: 16px 18px; font-size: 14px; }
+    .case-study .cs-body p { margin-bottom: 8px; }
+
+    /* ADVANTAGE / DISADVANTAGE */
+    .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .adv-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 18px; box-shadow: var(--shadow); }
+    .adv-card .adv-title { font-family: 'Sora'; font-weight: 800; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .adv-card.positive .adv-title { color: var(--green); }
+    .adv-card.negative .adv-title { color: var(--red); }
+    .adv-card ul { padding-left: 18px; font-size: 13.5px; }
+    .adv-card ul li { margin-bottom: 6px; }
+
+    /* FARMING SYSTEM */
+    .system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0; }
+    .system-card { background: var(--card); border-radius: var(--radius); border: 2px solid var(--border); padding: 18px; box-shadow: var(--shadow); text-align: center; }
+    .system-card .sc-icon { font-size: 32px; margin-bottom: 10px; }
+    .system-card .sc-title { font-family: 'Sora'; font-weight: 800; font-size: 14px; margin-bottom: 6px; }
+    .system-card.inputs { border-color: var(--blue); }
+    .system-card.inputs .sc-title { color: var(--blue); }
+    .system-card.processes { border-color: var(--amber); }
+    .system-card.processes .sc-title { color: #9a6b00; }
+    .system-card.outputs { border-color: var(--green); }
+    .system-card.outputs .sc-title { color: var(--green-dark); }
+    .system-card .sc-desc { font-size: 13px; color: #444; }
+
+    /* FARMING TYPES */
+    .farming-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 16px 0; }
+    .farming-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 16px; box-shadow: var(--shadow); }
+    .farming-card .fc-icon { font-size: 28px; margin-bottom: 8px; }
+    .farming-card .fc-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--green-dark); }
+    .farming-card .fc-desc { font-size: 13px; color: #444; }
+
+    /* TABLE */
+    .geo-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .geo-table th { background: var(--green-dark); color: #fff; font-family: 'Sora'; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+    .geo-table td { padding: 11px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .geo-table tr:last-child td { border-bottom: none; }
+    .geo-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* QUIZ */
+    .quiz-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow); }
+    .quiz-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer; gap: 16px; }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; background: var(--green-light); color: var(--green-dark); white-space: nowrap; }
+    .toggle-btn { background: var(--green-dark); color: #fff; border: none; cursor: pointer; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px; font-family: 'Sora'; transition: background 0.2s; white-space: nowrap; }
+    .toggle-btn:hover { background: var(--green); }
+    .quiz-answer { display: none; padding: 14px 18px; border-top: 1px solid var(--border); background: var(--green-light); font-size: 14px; color: var(--green-dark); }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green-dark); }
+
+    /* NAV BAR */
+    .chapter-nav-bar { position: sticky; bottom: 0; background: var(--text); color: #fff; padding: 12px 48px; display: flex; gap: 16px; align-items: center; font-size: 13px; z-index: 50; flex-wrap: wrap; }
+    .chapter-nav-bar a { color: var(--amber); text-decoration: none; font-weight: 600; }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* INFO BOX */
+    .info-box { background: var(--teal-light); border-left: 4px solid var(--teal); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; font-size: 14px; }
+    .info-box strong { color: var(--teal); }
+
+    /* OVERFISH REASONS */
+    .reason-list { list-style: none; padding: 0; margin: 12px 0; }
+    .reason-list li { display: flex; gap: 12px; margin-bottom: 12px; font-size: 14px; }
+    .reason-list li::before { content: '🔴'; flex-shrink: 0; margin-top: 1px; }
+    .reason-list li strong { color: var(--green-dark); }
+
+    /* FOREST DATA TABLE highlight */
+    .data-note { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 28px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+      .activity-grid, .system-grid { grid-template-columns: 1fr; }
+      .resource-grid, .adv-grid, .water-stages { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Geography Revision</div>
+    <div class="book-title">Ch 4 — Primary Economic Activities</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Geography Home</a>
+
+  <div class="sidebar-label">Economic Activities</div>
+  <a href="#economic">Economic Activities</a>
+  <a href="#resources">Natural Resources</a>
+
+  <div class="sidebar-label">Water</div>
+  <a href="#water">Water &amp; Water Cycle</a>
+  <a href="#water-ireland">Water in Ireland</a>
+  <a href="#irrigation">Irrigation (IBIS)</a>
+
+  <div class="sidebar-label">Fishing</div>
+  <a href="#fishing">Fishing in Ireland</a>
+  <a href="#overfishing">Overfishing</a>
+  <a href="#sustainable-fish">Sustainable Fishing</a>
+
+  <div class="sidebar-label">Agriculture</div>
+  <a href="#agriculture">Agriculture in Ireland</a>
+  <a href="#farming-types">Types of Farming</a>
+  <a href="#farming-impact">Impact on Environment</a>
+  <a href="#sustainable-farming">Sustainable Agriculture</a>
+
+  <div class="sidebar-label">Forestry</div>
+  <a href="#forestry">Forestry in Ireland</a>
+  <a href="#deforestation">Deforestation</a>
+  <a href="#reforestation">Reforestation</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#flashcards">Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 4 · Geography in Action</div>
+    <h1>Primary Economic <span>Activities:</span><br>How We Use the World's Natural Resources</h1>
+    <div class="chapter-meta">Unit: Human Geography &nbsp;·&nbsp; Learning Outcomes: 2.3 and 2.4</div>
+    <div class="goal-tags">
+      <span class="goal-tag">💼 Economic Activities</span>
+      <span class="goal-tag">💧 Water &amp; Water Cycle</span>
+      <span class="goal-tag">🐟 Fishing &amp; Overfishing</span>
+      <span class="goal-tag">🌾 Agriculture</span>
+      <span class="goal-tag">🌲 Forestry</span>
+      <span class="goal-tag">♻️ Sustainability</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ ECONOMIC ACTIVITIES ═══ -->
+    <div class="section-heading anchor-offset" id="economic">
+      <span class="icon">💼</span> Economic Activities &amp; Natural Resources
+    </div>
+
+    <p>Economic activities are what people do to earn a living. They can be put into <strong>three groups</strong>: primary, secondary and tertiary economic activities.</p>
+
+    <div class="activity-grid">
+      <div class="activity-card ac-primary">
+        <div class="ac-badge">1. Primary</div>
+        <div class="ac-title">Primary Activities</div>
+        <div class="ac-def">Jobs that involve <strong>working directly with the Earth's resources</strong> — rocks, soils and waters.</div>
+        <div class="ac-jobs"><strong>Jobs:</strong> Farmer, Fisher, Forestry worker, Miner</div>
+      </div>
+      <div class="activity-card ac-secondary">
+        <div class="ac-badge">2. Secondary</div>
+        <div class="ac-title">Secondary Activities</div>
+        <div class="ac-def">Jobs that involve <strong>making or manufacturing something</strong>.</div>
+        <div class="ac-jobs"><strong>Jobs:</strong> Carpenter, Factory worker, Baker, Builder</div>
+      </div>
+      <div class="activity-card ac-tertiary">
+        <div class="ac-badge">3. Tertiary</div>
+        <div class="ac-title">Tertiary Activities</div>
+        <div class="ac-def">Activities that involve <strong>providing a service that is useful to people</strong>.</div>
+        <div class="ac-jobs"><strong>Jobs:</strong> Teacher, Garda, Solicitor, Shopkeeper</div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Did you know?</strong> In Ireland, less than 5% of the working population is employed in the primary sector. In less economically developed countries, this can be up to 60%. The physical landscape influences the type of primary economic activity in an area.
+    </div>
+
+    <!-- NATURAL RESOURCES -->
+    <div class="section-heading anchor-offset" id="resources">
+      <span class="icon">🌍</span> Natural Resources
+    </div>
+
+    <p>A <strong>natural resource</strong> is something in the natural world that people can use to their advantage such as land, rivers and seas. There are two types:</p>
+
+    <div class="resource-grid">
+      <div class="resource-card renewable">
+        <div class="rc-title">♻️ Renewable (Infinite) Resources</div>
+        <div class="rc-desc">Can be used <strong>over and over again</strong>. If looked after and used sustainably, they will not run out.</div>
+        <div class="rc-examples"><strong>Examples:</strong> Water, wind, fish, wood, solar energy</div>
+      </div>
+      <div class="resource-card nonrenewable">
+        <div class="rc-title">⛔ Non-Renewable (Finite) Resources</div>
+        <div class="rc-desc">Can <strong>only be used once</strong>. Each time one is used, less is left. They cannot be replaced quickly enough and will eventually run out.</div>
+        <div class="rc-examples"><strong>Examples:</strong> Oil, coal, gas, iron ore, peat</div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Over-exploitation</div>
+      <div class="definition">Using a resource too much, meaning it might not be available for future generations. This sort of exploitation is unsustainable.</div>
+    </div>
+
+    <!-- ═══ WATER ═══ -->
+    <div class="section-heading anchor-offset" id="water">
+      <span class="icon">💧</span> Water &amp; The Water Cycle
+    </div>
+
+    <p>Water is very important because people and animals need <strong>potable water</strong> to survive and plants need water to grow. The Earth has a limited amount of water, which is continuously recycled in the <strong>water cycle</strong>.</p>
+
+    <div class="key-term">
+      <div class="term">Potable Water</div>
+      <div class="definition">Water that is safe for people and animals to drink.</div>
+    </div>
+
+    <p>There are <strong>four main stages</strong> of the water cycle:</p>
+
+    <div class="water-stages">
+      <div class="water-stage">
+        <div class="ws-num">1</div>
+        <div>
+          <div class="ws-title">Evaporation</div>
+          <div class="ws-desc">The Sun heats up water in rivers, lakes, oceans, trees and plants and turns it into <strong>water vapour</strong>.</div>
+        </div>
+      </div>
+      <div class="water-stage">
+        <div class="ws-num">2</div>
+        <div>
+          <div class="ws-title">Condensation</div>
+          <div class="ws-desc">Water vapour rises, cools and turns back into water droplets, which come together to form a <strong>cloud</strong>.</div>
+        </div>
+      </div>
+      <div class="water-stage">
+        <div class="ws-num">3</div>
+        <div>
+          <div class="ws-title">Precipitation</div>
+          <div class="ws-desc">When so much water has condensed that the air cannot hold it anymore, it falls as <strong>rain, hail, dew, sleet or snow</strong>.</div>
+        </div>
+      </div>
+      <div class="water-stage">
+        <div class="ws-num">4</div>
+        <div>
+          <div class="ws-title">Run-off</div>
+          <div class="ws-desc">Water that falls on land either soaks into the soil (groundwater) or <strong>runs off into oceans, lakes or rivers</strong> — where the cycle starts again.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="water-ireland">Water in Ireland</div>
+
+    <p><strong>Uisce Éireann</strong> is responsible for the public water supply in Ireland. It is also responsible for Ireland's waste water.</p>
+
+    <div class="case-study">
+      <div class="cs-header">📍 Case Study — Cork City Water Supply</div>
+      <div class="cs-body">
+        <p>Uisce Éireann is upgrading the water network across Cork City. This development will ensure a sustainable supply of clean drinking water, provide additional capacity for the city's growing population, and reduce leaks.</p>
+        <p><strong>Key projects include:</strong></p>
+        <ul style="padding-left:18px;font-size:13.5px;margin-top:6px;">
+          <li><strong>Western Trunk Watermain:</strong> 5.5 km pipe link between the Cork City Water Supply Scheme and the Cork Harbour and City Water Supply Scheme, supplied from the Inniscarra Water Treatment Plant.</li>
+          <li><strong>Eastern Strategic Trunk Watermain:</strong> Replacing 2.4 km of pipes between Camden Quay and Shanakiel Reservoir.</li>
+          <li><strong>Shanakiel Watermains Upgrades:</strong> Upgrading the supply network on the north side of Cork City, including two new pumping stations.</li>
+          <li><strong>Lee Road Water Treatment Plant:</strong> €40 million upgrade; provides over 70% of drinking water to the Cork City area.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="irrigation">Irrigation &amp; Sustainable Water Use</div>
+
+    <p><strong>Irrigation</strong> is the artificial watering of the land. It is done to help crops grow in areas where there is a shortage of rainfall.</p>
+
+    <div class="key-term">
+      <div class="term">Irrigation</div>
+      <div class="definition">The artificial watering of the land to help crops grow in areas with a shortage of rainfall.</div>
+    </div>
+
+    <div class="case-study">
+      <div class="cs-header">📍 Case Study — Indus Basin Irrigation System (IBIS), Pakistan</div>
+      <div class="cs-body">
+        <p>The Indus Basin covers over 1 million km² across Afghanistan, China, India and Pakistan. Pakistan's climate is arid or semi-arid, so the country needs irrigation. The IBIS is the <strong>world's largest irrigation system</strong>, providing water to over 1.6 million km² of agricultural land in Pakistan.</p>
+        <p style="margin-top:8px;">The system uses a network of <strong>canals, dams and reservoirs</strong> to trap and store water during the rainy season, which is then used during the dry season for growing food.</p>
+        <p style="margin-top:10px;font-family:'Sora';font-weight:700;font-size:13px;color:var(--green-dark);">✅ Advantages of IBIS</p>
+        <ul style="padding-left:18px;font-size:13.5px;margin-top:4px;margin-bottom:10px;">
+          <li>Dams and reservoirs store water and can create hydroelectric power (e.g. Tarbela and Mangla dams); also control flooding.</li>
+          <li>Forty per cent more land is now available for farming.</li>
+          <li>Improved crop yields → more food and greater food security.</li>
+          <li>The diet of people in the region has improved due to greater crop variety.</li>
+        </ul>
+        <p style="font-family:'Sora';font-weight:700;font-size:13px;color:var(--red);">❌ Disadvantages of IBIS</p>
+        <ul style="padding-left:18px;font-size:13.5px;margin-top:4px;">
+          <li>High temperatures cause large water loss in reservoirs through evaporation.</li>
+          <li>Dams trap sediment, a natural fertiliser — decreasing soil fertility over time.</li>
+          <li>Construction and maintenance costs are very high.</li>
+          <li>Distribution of water can be unfair, with some farmers benefiting more than others.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ FISHING ═══ -->
+    <div class="section-heading anchor-offset" id="fishing">
+      <span class="icon">🐟</span> Fishing in Ireland
+    </div>
+
+    <p>Ireland has many fishing ports because it is located beside the <strong>Atlantic Ocean</strong>. Ports are located in sheltered, deepwater harbours such as Killybegs in Co. Donegal and Dingle in Co. Kerry. The shallow waters of the <strong>continental shelf</strong> create ideal conditions for fish. There is also a lot of <strong>plankton</strong> — microscopic organisms that fish and whales feed on.</p>
+
+    <div class="key-term">
+      <div class="term">Continental Shelf</div>
+      <div class="definition">Area of seabed around a continent, where shallow waters create ideal conditions for fish to live and grow.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Plankton</div>
+      <div class="definition">Small and microscopic organisms that fish and whales feed on. Some types convert the Sun's energy into food energy through photosynthesis.</div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="overfishing">Overfishing</div>
+
+    <p><strong>Overfishing occurs when fish are taken from the water faster than they can reproduce.</strong> This is a major problem in Ireland and many other parts of the world, causing a large number of people to lose their jobs.</p>
+
+    <p><strong>Reasons for overfishing:</strong></p>
+    <ul class="reason-list">
+      <li><strong>Membership of the EEC/EU (1973):</strong> Ireland had to share its waters with other EU member countries. Trawlers from other EU countries could fish in Irish fishing areas, leading to more and more fish being caught.</li>
+      <li><strong>Modern technology:</strong> Improved sonar and radar equipment makes fish easier to locate and catch. Larger supertrawlers can stay at sea longer and catch more fish. Factory ships process fish at sea, allowing trawlers to stay out even longer.</li>
+      <li><strong>Mesh sizes:</strong> Small mesh sizes mean young, underdeveloped fish are caught, reducing the opportunity for fish to breed and replace their stocks.</li>
+      <li><strong>Seasons:</strong> No closed season meant fish could be caught all year round, preventing them from breeding.</li>
+      <li><strong>Quotas:</strong> The lack of quotas meant no limit on the amount of fish a trawler could catch.</li>
+    </ul>
+
+    <div class="key-term">
+      <div class="term">Quota</div>
+      <div class="definition">A limit on the number of fish that can be caught.</div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="sustainable-fish">Sustainable Exploitation of Fish</div>
+
+    <p>The Irish government and the EU promote sustainable exploitation of fish through the <strong>Common Fisheries Policy (CFP)</strong>. Measures introduced include:</p>
+
+    <ul style="padding-left:20px;font-size:14px;margin:10px 0;">
+      <li>Creation of <strong>conservation zones</strong> around Ireland (the Irish Conservation Box — established 2003, extended 2022).</li>
+      <li>Introduction of yearly <strong>quotas</strong> for fish catches.</li>
+      <li>A <strong>ban</strong> on fishing some endangered species.</li>
+      <li><strong>Shortening</strong> of the fishing season for some types of fish.</li>
+      <li>Increasing <strong>net mesh sizes</strong> to allow young fish to escape and grow into adulthood.</li>
+    </ul>
+
+    <div class="key-term">
+      <div class="term">Conservation Zone</div>
+      <div class="definition">An area where natural resources are to be protected and maintained. The Irish Conservation Box was created in 2003 and altered in 2022 to extend further south.</div>
+    </div>
+
+    <!-- ═══ AGRICULTURE ═══ -->
+    <div class="section-heading anchor-offset" id="agriculture">
+      <span class="icon">🌾</span> Agriculture in Ireland
+    </div>
+
+    <p><strong>Agriculture is the practice of farming, which includes the growing of crops and the rearing of animals.</strong> It is a very important primary economic activity, providing employment and a food supply. In Ireland, 6.5% of the total workforce are employed in agriculture, and agri-food products are worth more than <strong>€18 billion</strong> to the Irish economy.</p>
+
+    <p>Farming is a <strong>system</strong> made up of inputs, processes and outputs:</p>
+
+    <div class="system-grid">
+      <div class="system-card inputs">
+        <div class="sc-icon">📥</div>
+        <div class="sc-title">Inputs</div>
+        <div class="sc-desc">Things needed to begin a process. On a farm: <em>cattle, machinery (tractors), seeds, water, fertiliser, labour.</em></div>
+      </div>
+      <div class="system-card processes">
+        <div class="sc-icon">⚙️</div>
+        <div class="sc-title">Processes</div>
+        <div class="sc-desc">Tasks or jobs done within the system. On a farm: <em>milking, ploughing, cutting silage, harvesting.</em></div>
+      </div>
+      <div class="system-card outputs">
+        <div class="sc-icon">📦</div>
+        <div class="sc-title">Outputs</div>
+        <div class="sc-desc">Products or results of the system. On a farm: <em>milk, vegetables, livestock, grain.</em></div>
+      </div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="farming-types">Types of Farming</div>
+
+    <div class="farming-grid">
+      <div class="farming-card">
+        <div class="fc-icon">🐄</div>
+        <div class="fc-title">Dairy Farming</div>
+        <div class="fc-desc">The keeping of cows for milk, butter, cheese, etc.</div>
+      </div>
+      <div class="farming-card">
+        <div class="fc-icon">🌾</div>
+        <div class="fc-title">Arable Farming</div>
+        <div class="fc-desc">The growing of crops (maize, wheat, barley, etc.). Also known as tillage farming.</div>
+      </div>
+      <div class="farming-card">
+        <div class="fc-icon">🥬</div>
+        <div class="fc-title">Horticulture</div>
+        <div class="fc-desc">The growing of vegetables, flowers, fruits, salad, etc. Also known as market gardening.</div>
+      </div>
+      <div class="farming-card">
+        <div class="fc-icon">🐑</div>
+        <div class="fc-title">Pastoral Farming</div>
+        <div class="fc-desc">The grazing of sheep or cattle.</div>
+      </div>
+      <div class="farming-card">
+        <div class="fc-icon">🐷</div>
+        <div class="fc-title">Livestock</div>
+        <div class="fc-desc">Keeping cattle, sheep, pigs, horses, etc.</div>
+      </div>
+      <div class="farming-card">
+        <div class="fc-icon">🔀</div>
+        <div class="fc-title">Mixed Farming</div>
+        <div class="fc-desc">A mixture of keeping livestock and growing crops and vegetables.</div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">🗺️</span>
+      <div class="text">
+        <strong>Agricultural Regions of Ireland</strong>
+        The type of agriculture in an area depends on the type of <strong>soil</strong> and the <strong>landscape</strong>. Sheep suit hilly and mountainous western land. Livestock and arable farming suit the central lowlands. Fringe land is not suitable for intensive farming.
+      </div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="farming-impact">Impact of Farming on the Environment</div>
+
+    <div class="adv-grid">
+      <div class="adv-card positive">
+        <div class="adv-title">✅ Benefits</div>
+        <ul>
+          <li>Provides employment and income for rural communities.</li>
+          <li>Produces food supply for the country.</li>
+          <li>Agri-food products worth over €18 billion to the Irish economy.</li>
+        </ul>
+      </div>
+      <div class="adv-card negative">
+        <div class="adv-title">❌ Environmental Impacts</div>
+        <ul>
+          <li><strong>Insect sprays</strong> on crops can be harmful and end up in our food.</li>
+          <li><strong>Fertilisers</strong> run off into streams and rivers, causing algae overgrowth, blocking sunlight and consuming oxygen (kills fish).</li>
+          <li><strong>Livestock</strong> produce methane as part of digestion — a harmful greenhouse gas.</li>
+          <li>Illegal dumping of <strong>silage/slurry</strong> can pollute rivers and kill fish.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="sustainable-farming">Sustainable Agriculture — The CAP</div>
+
+    <p>As an EU member, Irish agriculture is strongly influenced by the <strong>Common Agricultural Policy (CAP)</strong>. The main aims of the CAP are:</p>
+    <ol style="padding-left:20px;font-size:14px;margin:10px 0;">
+      <li>Provide income support to farmers.</li>
+      <li>Ensure guaranteed market prices for farmers in the EU.</li>
+      <li>Support rural development programmes.</li>
+      <li>Provide Europe with a good supply of quality food.</li>
+    </ol>
+
+    <p>The latest CAP 2023–27 reforms align with the <strong>European Green Deal</strong> (EU to become climate neutral by 2050). Measures include:</p>
+    <ol style="padding-left:20px;font-size:14px;margin:10px 0;">
+      <li>Diversifying crops — main crop cannot cover more than 75% of the land.</li>
+      <li>Farmers must keep permanent grassland to protect plants and animals.</li>
+      <li>Water sources on farmland must be fenced off to prevent cattle drinking from them.</li>
+      <li>Farmers must protect certain species such as the barn owl.</li>
+      <li>Artificial fertilisers (nitrates) and livestock manure (slurry) spreading is restricted.</li>
+      <li>Emphasis on education — farmers must attend courses and farm visits to receive payments.</li>
+    </ol>
+
+    <!-- ═══ FORESTRY ═══ -->
+    <div class="section-heading anchor-offset" id="forestry">
+      <span class="icon">🌲</span> Forestry in Ireland
+    </div>
+
+    <p>The forestry industry in Ireland employs <strong>9,500 people</strong> directly and indirectly, making it a very important primary economic activity. Wood is a natural resource that can be renewable if managed sustainably.</p>
+
+    <p>Ireland has one of the <strong>lowest forest covers in Europe</strong> — 11.6% in 2023, compared to EU averages of 30%. However, the amount of forest area has been increasing significantly in recent decades.</p>
+
+    <p>The natural vegetation of Ireland is <strong>deciduous</strong> forest. During the English colonisation of Ireland, <strong>coniferous</strong> trees (spruce, pine) were introduced as they grow faster than deciduous trees.</p>
+
+    <div class="key-term">
+      <div class="term">Deciduous Trees</div>
+      <div class="definition">Trees that lose their leaves in winter. Examples: beech, birch, oak, ash.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Coniferous Trees</div>
+      <div class="definition">Evergreen trees that don't lose their leaves in winter. Examples: spruce, pine. They grow faster than deciduous trees.</div>
+    </div>
+
+    <table class="geo-table">
+      <thead>
+        <tr><th>Year</th><th>Area (Hectares)</th><th>% of Total Land Area</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1656</td><td>170,000</td><td>2.5%</td></tr>
+        <tr><td>1908</td><td>125,200</td><td>1.8%</td></tr>
+        <tr><td>1950</td><td>98,073</td><td>1.4%</td></tr>
+        <tr><td>1985</td><td>411,529</td><td>5.9%</td></tr>
+        <tr><td>2006</td><td>697,730</td><td>10.1%</td></tr>
+        <tr><td>2017</td><td>770,020</td><td>11.0%</td></tr>
+        <tr><td>2023</td><td>808,848</td><td>11.6%</td></tr>
+      </tbody>
+    </table>
+    <p class="data-note">Forest area in Ireland has grown significantly since 1950, driven by government and EU incentives.</p>
+
+    <div class="sub-heading anchor-offset" id="deforestation">Impact of Deforestation on the Global Climate</div>
+
+    <p><strong>Deforestation is the clearing of all trees from an area by burning or cutting.</strong> Cleared land is then used in other ways. Trees absorb carbon dioxide (CO₂) from the atmosphere and release oxygen (O₂). Carbon dioxide is a greenhouse gas that causes climate change. The reduction of forested areas worldwide has been a contributing factor to climate change.</p>
+
+    <div class="key-term">
+      <div class="term">Deforestation</div>
+      <div class="definition">The clearing of all trees from an area by burning or cutting. A major contributing factor to climate change as it reduces the amount of CO₂ being absorbed.</div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="reforestation">Reforestation in Ireland</div>
+
+    <p><strong>Reforestation is the planting of trees on areas of land that were once covered by forest but were affected by deforestation.</strong></p>
+
+    <p>The <strong>Forestry Division</strong> of the Department of Agriculture, Food and the Marine is responsible for forestry development in Ireland. The semi-state body <strong>Coillte</strong> owns around half of the forests in Ireland.</p>
+
+    <ul style="padding-left:20px;font-size:14px;margin:10px 0;">
+      <li>Farmers and landowners can apply for grants from the Department of Agriculture, Food and the Marine.</li>
+      <li>The Forestry Programme covers <strong>100% of the costs</strong> to plant the forest.</li>
+      <li>All income from the forest is <strong>tax free</strong>.</li>
+      <li>Forestry is especially suited to upland areas with poor soil where it is difficult to use heavy farming equipment.</li>
+    </ul>
+
+    <div class="key-term">
+      <div class="term">Reforestation</div>
+      <div class="definition">The planting of trees on areas of land that were once covered by forest but were affected by deforestation.</div>
+    </div>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="flashcards">
+      <span class="icon">🃏</span> Flashcard Revision
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name and describe the <strong>three types of economic activity</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Economic Activities</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Primary</strong> — working directly with the Earth's resources (farmer, fisher, miner). <strong>Secondary</strong> — making or manufacturing something (carpenter, factory worker, builder). <strong>Tertiary</strong> — providing a service (teacher, garda, solicitor).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between <strong>renewable</strong> and <strong>non-renewable</strong> resources? Give an example of each.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Resources</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Renewable (infinite)</strong> resources can be used over and over again (e.g. water, wind, fish). <strong>Non-renewable (finite)</strong> resources can only be used once; they will eventually run out (e.g. oil, coal, gas).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name and describe the <strong>four stages of the water cycle</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Water Cycle</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Evaporation</strong> — Sun heats water into water vapour. 2. <strong>Condensation</strong> — vapour rises, cools, forms clouds. 3. <strong>Precipitation</strong> — water falls as rain, hail, snow, etc. 4. <strong>Run-off</strong> — water flows back into oceans/lakes/rivers or soaks into the ground.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>overfishing</strong>? Give three reasons it has occurred in Ireland.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Fishing</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Overfishing occurs when <strong>fish are taken from the water faster than they can reproduce</strong>. Reasons: (1) EU membership — other countries could fish in Irish waters. (2) Modern technology — sonar, supertrawlers, factory ships. (3) Small mesh sizes catching young fish. (4) No closed season. (5) Lack of quotas.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name <strong>three measures</strong> introduced to deal with overfishing in Ireland.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Fishing</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Any three from: (1) Irish Conservation Box (conservation zone). (2) Yearly quotas for fish catches. (3) Ban on fishing some endangered species. (4) Shorter fishing seasons. (5) Larger net mesh sizes to allow young fish to escape.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>agriculture</strong>? Name the inputs, processes and outputs of a farm.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Agriculture</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Agriculture is <strong>the practice of farming, including the growing of crops and the rearing of animals</strong>. Inputs: cattle, tractors, seeds. Processes: milking, ploughing, cutting silage. Outputs: milk, vegetables, livestock.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name <strong>two ways</strong> farming can negatively impact the environment.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Agriculture</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Any two from: (1) Insect sprays can end up in food. (2) Fertiliser run-off causes algae overgrowth in rivers, killing fish. (3) Livestock produce methane — a greenhouse gas. (4) Illegal dumping of silage/slurry can pollute rivers.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>deforestation</strong>? How does it affect the global climate?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Forestry</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Deforestation is the <strong>clearing of all trees from an area by burning or cutting</strong>. Trees absorb CO₂ and release O₂. Cutting them down means more CO₂ stays in the atmosphere. CO₂ is a greenhouse gas that causes climate change. Deforestation in the Amazon rainforest in Brazil is a major global example.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>reforestation</strong>? How does Ireland encourage it?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Forestry</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Reforestation is the <strong>planting of trees on areas once covered by forest</strong>. Ireland encourages it by: (1) grants covering 100% of planting costs. (2) Income from forests is tax free. (3) Coillte (semi-state body) manages about half of Ireland's forests. Coniferous trees are planted in upland areas with poor soil.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name <strong>one advantage and one disadvantage</strong> of the Indus Basin Irrigation System (IBIS).</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Irrigation</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Advantage:</strong> 40% more land available for farming; improved food security and crop yields. <strong>Disadvantage:</strong> Dams trap sediment, reducing soil fertility; high construction and maintenance costs; unequal distribution of water.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+
+    <table class="geo-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Points</th><th>Irish Example / Case Study</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Primary Activities</strong></td>
+          <td>Work directly with Earth's resources. Farmer, Fisher, Forester, Miner. &lt;5% of Irish workforce.</td>
+          <td>Fishing at Killybegs, Co. Donegal; farming across Ireland</td>
+        </tr>
+        <tr>
+          <td><strong>Renewable Resources</strong></td>
+          <td>Can be reused if managed sustainably (water, wind, fish, wood).</td>
+          <td>Water — managed by Uisce Éireann</td>
+        </tr>
+        <tr>
+          <td><strong>Non-Renewable Resources</strong></td>
+          <td>Can only be used once; will run out (oil, coal, gas, peat).</td>
+          <td>Oil/gas drilling; Castlecomer coal mines, Co. Kilkenny</td>
+        </tr>
+        <tr>
+          <td><strong>Water Cycle</strong></td>
+          <td>4 stages: Evaporation → Condensation → Precipitation → Run-off</td>
+          <td>Cork City Water Supply — Uisce Éireann upgrade</td>
+        </tr>
+        <tr>
+          <td><strong>Irrigation</strong></td>
+          <td>Artificial watering of the land for crops in areas with low rainfall.</td>
+          <td>IBIS, Pakistan — world's largest irrigation system</td>
+        </tr>
+        <tr>
+          <td><strong>Overfishing</strong></td>
+          <td>Fish taken faster than they can reproduce. Causes: EU membership, technology, mesh size, no seasons/quotas.</td>
+          <td>Irish Conservation Box (2003, extended 2022)</td>
+        </tr>
+        <tr>
+          <td><strong>Agriculture</strong></td>
+          <td>System: Inputs → Processes → Outputs. Types: dairy, arable, horticulture, pastoral, livestock, mixed.</td>
+          <td>6.5% Irish workforce; €18 billion to economy</td>
+        </tr>
+        <tr>
+          <td><strong>Sustainable Agriculture</strong></td>
+          <td>EU Common Agricultural Policy (CAP); European Green Deal — climate neutral by 2050.</td>
+          <td>CAP 2023–27 measures in Ireland</td>
+        </tr>
+        <tr>
+          <td><strong>Deforestation</strong></td>
+          <td>Clearing trees → more CO₂ → climate change. Ireland's forest cover: 11.6% (2023); EU avg 30%.</td>
+          <td>Amazon rainforest, Brazil</td>
+        </tr>
+        <tr>
+          <td><strong>Reforestation</strong></td>
+          <td>Planting trees on deforested land. Coillte manages ~50% of Irish forests. 100% of planting costs covered by grants; income is tax free.</td>
+          <td>Wicklow Mountains; west Limerick &amp; north Kerry gley soils</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="ch3.html">&larr; Ch 3: Rocks</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
