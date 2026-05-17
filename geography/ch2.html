@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 2 – The Earth's Surface | Geography Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1565C0;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --red-light:    #FFEBEE;
+      --orange:       #E65100;
+      --orange-light: #FFF3E0;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--purple); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 12px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; color: #ddd; }
+    .sidebar-header .book-title { font-size: 15px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff; }
+    .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 14px 18px 6px; }
+    .sidebar a { display: block; padding: 8px 18px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--amber); }
+    .sidebar a.home-link { font-size: 12px; color: rgba(255,255,255,0.5); padding: 16px 18px 8px; border-left: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #3d1a6e 50%, var(--purple) 100%);
+      color: #fff; padding: 56px 48px 48px; position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.2) 0%, transparent 70%); border-radius: 50%;
+    }
+    .chapter-hero::after { content: '🌋'; position: absolute; top: 20px; right: 48px; font-size: 110px; opacity: 0.1; }
+    .chapter-badge { display: inline-block; background: var(--amber); color: var(--text); font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px; padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .chapter-hero h1 { font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); font-size: 12px; padding: 5px 12px; border-radius: 100px; font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading { font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); margin: 48px 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--purple); display: flex; align-items: center; gap: 12px; scroll-margin-top: 24px; }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading { font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700; color: var(--purple-dark); margin: 26px 0 10px; }
+    .sub-sub-heading { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--green); margin: 18px 0 8px; }
+
+    /* KEY TERM */
+    .key-term { background: var(--purple-light); border-left: 4px solid var(--purple); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 12px 0; }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--purple-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--purple); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER / ALERT BOX */
+    .remember { background: var(--amber-light); border: 2px dashed var(--amber); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* CARDS GRID */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin: 16px 0; }
+    .info-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 18px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* TABLE */
+    .geo-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .geo-table th { background: var(--purple); color: #fff; font-family: 'Sora'; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+    .geo-table td { padding: 11px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .geo-table tr:last-child td { border-bottom: none; }
+    .geo-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE / CASE STUDY BOX */
+    .example-box { background: #fff; border: 2px solid var(--green); border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .example-box .ex-header { background: var(--green); color: #fff; font-family: 'Sora'; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; line-height: 1.7; }
+    .example-box .ex-body ul { padding-left: 18px; margin-top: 8px; }
+    .example-box .ex-body li { margin-bottom: 6px; }
+
+    /* CASE STUDY - special styling */
+    .case-study { background: #fff; border: 2px solid var(--red); border-radius: var(--radius); margin: 20px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .case-study .cs-header { background: var(--red); color: #fff; font-family: 'Sora'; font-weight: 800; font-size: 14px; padding: 10px 20px; display: flex; align-items: center; gap: 8px; }
+    .case-study .cs-label { background: var(--amber); color: var(--text); font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; }
+    .case-study .cs-body { padding: 18px 20px; }
+    .case-study .cs-sub { font-family: 'Sora'; font-weight: 700; font-size: 14px; color: var(--red); margin: 14px 0 6px; }
+    .case-study .cs-body ul { padding-left: 18px; font-size: 14px; }
+    .case-study .cs-body li { margin-bottom: 5px; }
+
+    /* BOUNDARY CARDS */
+    .boundary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+    .boundary-card { border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); border: 2px solid; }
+    .boundary-card.destructive { background: var(--red-light); border-color: var(--red); }
+    .boundary-card.constructive { background: var(--green-light); border-color: var(--green); }
+    .boundary-card.passive { background: var(--blue-light); border-color: var(--blue); }
+    .boundary-card .bc-title { font-family: 'Sora'; font-weight: 800; font-size: 15px; margin-bottom: 4px; }
+    .boundary-card.destructive .bc-title { color: var(--red); }
+    .boundary-card.constructive .bc-title { color: var(--green); }
+    .boundary-card.passive .bc-title { color: var(--blue); }
+    .boundary-card .bc-alt { font-size: 12px; font-weight: 600; margin-bottom: 10px; color: var(--muted); }
+    .boundary-card .bc-body { font-size: 13.5px; line-height: 1.6; }
+    .boundary-card .bc-example { font-size: 12.5px; font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.08); }
+
+    /* EARTH LAYERS SVG */
+    .diagram-wrap { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); margin: 16px 0; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+    /* VOLCANO PARTS */
+    .volcano-parts { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 16px 0; }
+    .vp-card { background: var(--orange-light); border: 1.5px solid var(--orange); border-radius: var(--radius); padding: 14px; text-align: center; }
+    .vp-card .vp-icon { font-size: 26px; margin-bottom: 6px; }
+    .vp-card .vp-title { font-family: 'Sora'; font-weight: 700; font-size: 13px; color: var(--orange); margin-bottom: 4px; }
+    .vp-card .vp-desc { font-size: 12px; color: #555; line-height: 1.4; }
+
+    /* RICHTER SCALE VISUAL */
+    .richter-bar { display: flex; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin: 16px 0; }
+    .richter-seg { flex: 1; padding: 10px 6px; text-align: center; }
+    .richter-seg .rs-val { font-family: 'Sora'; font-weight: 800; font-size: 16px; color: #fff; }
+    .richter-seg .rs-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.85); margin-top: 2px; }
+
+    /* QUIZ CARDS */
+    .quiz-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow); }
+    .quiz-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-weight: 600; font-size: 14px; gap: 12px; }
+    .quiz-tag { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; background: var(--purple-light); color: var(--purple-dark); white-space: nowrap; flex-shrink: 0; }
+    .toggle-btn { background: var(--purple); color: #fff; border: none; cursor: pointer; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px; font-family: 'Sora'; transition: background 0.2s; white-space: nowrap; flex-shrink: 0; }
+    .toggle-btn:hover { background: var(--purple-dark); }
+    .quiz-answer { display: none; padding: 14px 18px; border-top: 1px solid var(--border); background: var(--green-light); font-size: 14px; color: #1a4731; line-height: 1.6; }
+    .quiz-answer.open { display: block; }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li { counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start; }
+    .step-list li::before { content: counter(step); min-width: 28px; height: 28px; background: var(--purple); color: #fff; border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-list li .step-text { font-size: 14px; }
+
+    /* BULLET LIST */
+    .bullet-list { padding-left: 20px; margin: 10px 0; }
+    .bullet-list li { margin-bottom: 7px; font-size: 14px; line-height: 1.6; }
+
+    /* IMPACT GRID */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .impact-card { border-radius: var(--radius); padding: 16px 18px; font-size: 13.5px; }
+    .impact-card.positive { background: var(--green-light); border: 1.5px solid var(--green); }
+    .impact-card.negative { background: var(--red-light); border: 1.5px solid var(--red); }
+    .impact-card .ic-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+    .impact-card.positive .ic-title { color: var(--green); }
+    .impact-card.negative .ic-title { color: var(--red); }
+    .impact-card ul { padding-left: 16px; }
+    .impact-card li { margin-bottom: 5px; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar { position: sticky; bottom: 0; background: var(--text); color: #fff; padding: 12px 48px; display: flex; gap: 16px; align-items: center; font-size: 13px; z-index: 50; flex-wrap: wrap; }
+    .chapter-nav-bar a { color: var(--amber); text-decoration: none; font-weight: 600; }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 30px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Geography Revision</div>
+    <div class="book-title">Ch 2 — The Earth's Surface</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Geography Home</a>
+
+  <div class="sidebar-label">Earth Structure</div>
+  <a href="#structure">Layers of the Earth</a>
+  <a href="#plates">Plates &amp; Tectonics</a>
+  <a href="#boundaries">Plate Boundaries</a>
+
+  <div class="sidebar-label">Volcanic Activity</div>
+  <a href="#volcanoes">Volcanoes</a>
+  <a href="#types-volcano">Types of Volcano</a>
+  <a href="#mid-ocean">Mid-Ocean Ridges</a>
+  <a href="#impacts-volcano">Impacts of Volcanoes</a>
+  <a href="#case-iceland">Case Study: Iceland</a>
+  <a href="#case-lapalma">Case Study: La Palma</a>
+
+  <div class="sidebar-label">Earthquakes</div>
+  <a href="#earthquakes">Earthquakes</a>
+  <a href="#measuring">Measuring Earthquakes</a>
+  <a href="#damage-eq">Damage &amp; Response</a>
+  <a href="#case-turkiye">Case Study: Türkiye/Syria</a>
+
+  <div class="sidebar-label">Fold Mountains</div>
+  <a href="#fold-mountains">Fold Mountains</a>
+  <a href="#periods">Periods of Folding</a>
+  <a href="#mountains-people">Mountains &amp; People</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#flashcards">Key Terms Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 2 · Geography in Action</div>
+    <h1>The Earth's <span>Surface</span></h1>
+    <div class="chapter-meta">Shaping the Crust &nbsp;·&nbsp; Unit: Physical Geography</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🌍 Earth's Layers</span>
+      <span class="goal-tag">🧩 Plate Tectonics</span>
+      <span class="goal-tag">🌋 Volcanic Activity</span>
+      <span class="goal-tag">🏚️ Earthquakes</span>
+      <span class="goal-tag">⛰️ Fold Mountains</span>
+      <span class="goal-tag">👥 Human Responses</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ STRUCTURE OF THE EARTH ═══ -->
+    <div class="section-heading" id="structure">
+      <span class="icon">🌍</span> The Structure of the Earth
+    </div>
+
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 300 300" width="240" height="240" xmlns="http://www.w3.org/2000/svg">
+        <!-- Inner core -->
+        <circle cx="150" cy="150" r="50" fill="#F5A623"/>
+        <!-- Outer core -->
+        <circle cx="150" cy="150" r="80" fill="#E65100" opacity="0.85"/>
+        <!-- Mantle -->
+        <circle cx="150" cy="150" r="115" fill="#8B5CF6" opacity="0.75"/>
+        <!-- Crust -->
+        <circle cx="150" cy="150" r="138" fill="#4A2A8F" opacity="0.6"/>
+        <!-- Labels -->
+        <text x="150" y="154" text-anchor="middle" font-family="Sora" font-weight="800" font-size="11" fill="#fff">Inner Core</text>
+        <text x="150" y="117" text-anchor="middle" font-family="Sora" font-weight="700" font-size="10" fill="#fff">Outer Core</text>
+        <text x="150" y="87" text-anchor="middle" font-family="Sora" font-weight="700" font-size="10" fill="#fff">Mantle</text>
+        <text x="150" y="24" text-anchor="middle" font-family="Sora" font-weight="700" font-size="10" fill="#fff">Crust</text>
+      </svg>
+      <p style="font-size:13px;color:var(--muted);text-align:center;">Cross-section of the Earth — four distinct layers</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🪨</div>
+        <div class="card-title">Crust</div>
+        <div class="card-def">The outside layer of the Earth. Made of solid rock. Oceans and continents lie on top of the crust.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🔥</div>
+        <div class="card-title">Mantle</div>
+        <div class="card-def">Lies under the crust. Contains hot, molten (melted) or semi-molten rock called <strong>magma</strong>, moved around by convection currents like bubbles in boiling water.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Outer Core</div>
+        <div class="card-def">Part of the core — the centre of the Earth. Made of iron and nickel. The hottest part at around 6,000°C.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">💛</div>
+        <div class="card-title">Inner Core</div>
+        <div class="card-def">The very centre of the Earth. Also made of iron and nickel. Solid despite extreme heat due to immense pressure.</div>
+        <div class="card-tip">The core can be divided into inner and outer core.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PLATES ═══ -->
+    <div class="section-heading" id="plates">
+      <span class="icon">🧩</span> Plates &amp; Plate Tectonics
+    </div>
+
+    <div class="key-term">
+      <div class="term">Plate</div>
+      <div class="definition">The Earth's crust is broken into pieces called <strong>plates</strong>. Like the cracked shell of a hard-boiled egg. Continental plates have land on top; oceanic plates have oceans on top.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Plate Boundary</div>
+      <div class="definition"><strong>The line where two plates meet is called a plate boundary.</strong></div>
+    </div>
+    <div class="key-term">
+      <div class="term">Plate Tectonics</div>
+      <div class="definition"><strong>The study of plates and their movements.</strong> The theory was first proposed by German scientist Alfred Wegener.</div>
+    </div>
+
+    <div class="sub-heading">Continental Drift &amp; Pangaea</div>
+    <p>Wegener noticed the shapes of continents fit together like jigsaw pieces. He proposed they were once one huge landmass called <strong>Pangaea</strong> (meaning 'all land'). When it broke up, the continents moved to their present positions — this is called <strong>continental drift</strong>.</p>
+
+    <div class="remember">
+      <div class="icon">💡</div>
+      <div class="text"><strong>Evidence for Continental Drift:</strong> In the 1950s scientists discovered the Mid-Atlantic Ridge — where the North American Plate is separating from the Eurasian Plate. This supported Wegener's theory.</div>
+    </div>
+
+    <div class="sub-heading">Convection Currents</div>
+    <p>Magma in the mantle is moved in circular motion by <strong>convection currents</strong>, causing plates to move. This causes plates to collide, separate, or slide past each other.</p>
+    <ol class="step-list">
+      <li><div class="step-text">Magma is heated in the mantle and rises towards the crust.</div></li>
+      <li><div class="step-text">As it rises, it cools and sinks back down, creating a convection current.</div></li>
+      <li><div class="step-text">This circular motion is constantly repeated.</div></li>
+      <li><div class="step-text">The movement pushes and pulls the plates via <strong>slab pull</strong> and <strong>ridge push</strong>.</div></li>
+    </ol>
+
+    <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="info-card">
+        <div class="card-icon">⬇️</div>
+        <div class="card-title">Slab Pull</div>
+        <div class="card-def">When older, denser plates sink into the mantle, <strong>pulling</strong> plates behind them.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">↔️</div>
+        <div class="card-title">Ridge Push</div>
+        <div class="card-def">When new crust is formed, it <strong>pushes</strong> the plates at either side apart.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PLATE BOUNDARIES ═══ -->
+    <div class="section-heading" id="boundaries">
+      <span class="icon">💥</span> What Happens at Plate Boundaries?
+    </div>
+
+    <div class="boundary-grid">
+      <div class="boundary-card destructive">
+        <div class="bc-title">🔴 Destructive Boundary</div>
+        <div class="bc-alt">(Convergent — plates collide)</div>
+        <div class="bc-body">
+          Huge pressure builds up. The heavier plate is pushed under the lighter plate in a process called <strong>subduction</strong>. The heavier plate melts back into the mantle. The lighter plate is lifted up, forming <strong>fold mountains</strong>. Also causes <strong>earthquakes and volcanoes</strong>.
+        </div>
+        <div class="bc-example">📍 Example: The Andes — Nazca Plate colliding with the South American Plate.</div>
+      </div>
+      <div class="boundary-card constructive">
+        <div class="bc-title">🟢 Constructive Boundary</div>
+        <div class="bc-alt">(Divergent — plates separate)</div>
+        <div class="bc-body">
+          Plates move apart, forming a gap. Magma rises to fill the gap, cools and hardens, forming <strong>new crust</strong>. Under the sea this is called <strong>sea-floor spreading</strong>. Forms volcanic mountains, volcanic islands and mid-ocean ridges.
+        </div>
+        <div class="bc-example">📍 Example: Iceland — Eurasian Plate separating from the North American Plate.</div>
+      </div>
+      <div class="boundary-card passive">
+        <div class="bc-title">🔵 Passive Boundary</div>
+        <div class="bc-alt">(Transform — plates slide past)</div>
+        <div class="bc-body">
+          Crust is neither created nor destroyed. Plates get locked together and release huge amounts of energy when they slide past each other. Causes <strong>earthquakes</strong> and creates <strong>fault lines</strong> (long, deep cracks in the Earth's crust).
+        </div>
+        <div class="bc-example">📍 Example: San Andreas Fault, USA — Pacific Plate sliding past the North American Plate.</div>
+      </div>
+    </div>
+
+    <!-- ═══ VOLCANIC ACTIVITY ═══ -->
+    <div class="section-heading" id="volcanoes">
+      <span class="icon">🌋</span> Volcanic Activity
+    </div>
+    <p>Most volcanic activity happens around the edge of the Pacific Plate — this area is known as the <strong>Pacific Ring of Fire</strong>.</p>
+
+    <div class="sub-heading">Parts of a Volcano</div>
+    <div class="volcano-parts">
+      <div class="vp-card">
+        <div class="vp-icon">🏔️</div>
+        <div class="vp-title">Magma Chamber</div>
+        <div class="vp-desc">An area within the Earth's crust where magma collects before an eruption.</div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-icon">🕳️</div>
+        <div class="vp-title">Vent</div>
+        <div class="vp-desc">A narrow tube in the crust through which magma travels to the surface.</div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-icon">🔴</div>
+        <div class="vp-title">Lava</div>
+        <div class="vp-desc">Magma that has reached the surface. It flows from the vent during an eruption.</div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-icon">🏔</div>
+        <div class="vp-title">Cone</div>
+        <div class="vp-desc">The cone-shaped mountain formed by layers of lava, ash and rock hardening over many eruptions.</div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-icon">⭕</div>
+        <div class="vp-title">Crater</div>
+        <div class="vp-desc">The opening at the top of the volcano from which lava continues to flow.</div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-icon">☁️</div>
+        <div class="vp-title">Ash Cloud</div>
+        <div class="vp-desc">Hot ash and rocks thrown into the air as the volcano erupts, forming a cloud above it.</div>
+      </div>
+    </div>
+
+    <!-- TYPES OF VOLCANO -->
+    <div class="sub-heading" id="types-volcano">Types of Volcano</div>
+    <div class="cards-grid">
+      <div class="info-card" style="border-color: var(--red);">
+        <div class="card-icon">🔴</div>
+        <div class="card-title" style="color:var(--red);">Active</div>
+        <div class="card-def">Erupts <strong>regularly</strong>.</div>
+        <div class="card-tip">Examples: Mount Etna (Sicily, Italy), Mount St Helens (USA)</div>
+      </div>
+      <div class="info-card" style="border-color: var(--amber);">
+        <div class="card-icon">🟡</div>
+        <div class="card-title" style="color:var(--orange);">Dormant</div>
+        <div class="card-def">Has <strong>not erupted for a long time</strong> but might erupt again.</div>
+        <div class="card-tip">Example: Mount Vesuvius (Italy)</div>
+      </div>
+      <div class="info-card" style="border-color: var(--muted);">
+        <div class="card-icon">⚫</div>
+        <div class="card-title" style="color:var(--muted);">Extinct</div>
+        <div class="card-def"><strong>Will not erupt again.</strong></div>
+        <div class="card-tip">Example: Croghan Hill, Co. Offaly (Ireland)</div>
+      </div>
+    </div>
+
+    <!-- MID-OCEAN RIDGES -->
+    <div class="sub-heading" id="mid-ocean">Mid-Ocean Ridges &amp; Volcanic Islands</div>
+    <div class="key-term">
+      <div class="term">Mid-Ocean Ridge</div>
+      <div class="definition">Magma rises from the mantle through cracks in the crust at constructive boundaries. It cools, hardens and builds up a ridge of rock called a <strong>mid-ocean ridge</strong>.</div>
+      <div class="tip">📍 Example: Mid-Atlantic Ridge — formed as the North American and South American Plates separate from the Eurasian and African Plates.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Volcanic Islands</div>
+      <div class="definition">Mountains on the seabed formed when magma wells up through cracks — sometimes rising above the ocean surface.</div>
+      <div class="tip">📍 Example: Iceland</div>
+    </div>
+
+    <!-- ═══ IMPACTS ═══ -->
+    <div class="section-heading" id="impacts-volcano">
+      <span class="icon">⚠️</span> Impacts of Volcanic Activity
+    </div>
+    <div class="key-term">
+      <div class="term">Socio-economic</div>
+      <div class="definition">Refers to both social factors (people) and economic factors (money) and how they relate to each other.</div>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-card positive">
+        <div class="ic-title">✅ Positive Impacts</div>
+        <ul>
+          <li>Soils from lava are rich in minerals — excellent for farming (e.g. Campania, Italy).</li>
+          <li>Tourists visit famous volcanoes — economic boost.</li>
+          <li>Hot springs (geysers) are tourist attractions.</li>
+          <li><strong>Geothermal energy</strong> — renewable electricity from underground heat.</li>
+        </ul>
+      </div>
+      <div class="impact-card negative">
+        <div class="ic-title">❌ Negative Impacts</div>
+        <ul>
+          <li>Lava flows destroy homes and land — loss of life.</li>
+          <li>Ash clouds disrupt air travel (e.g. Iceland 2010 — 100,000+ flights cancelled).</li>
+          <li>Sulfur dioxide gases cause acid rain and poison nearby communities.</li>
+          <li><strong>Lahars</strong> — rivers of mud (volcanic material + water) can destroy towns (e.g. Colombia 1985: 22,000 deaths).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Lahar</div>
+      <div class="definition">A river of mud formed when volcanic material mixes with water from rivers, rain or melting snow and ice. Can destroy towns and villages.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Geothermal Energy</div>
+      <div class="definition">A renewable form of energy that uses heat from underground volcanic activity to generate electricity.</div>
+    </div>
+
+    <!-- CASE STUDY: ICELAND -->
+    <div class="case-study" id="case-iceland">
+      <div class="cs-header">
+        <span class="cs-label">Case Study</span>
+        🇮🇸 Volcanic Activity: Iceland
+      </div>
+      <div class="cs-body">
+        <p>Iceland has high volcanic activity because it sits on the <strong>Mid-Atlantic Ridge</strong>. The physical landscape has greatly influenced the economic and social activities of its people.</p>
+
+        <div class="cs-sub">♻️ Geothermal Energy</div>
+        <ul>
+          <li>Earth's heat used to heat water → steam → generates electricity.</li>
+          <li>Powers factories, offices, houses, offices and schools.</li>
+          <li>One of the cheapest and most <strong>sustainable</strong> energy forms.</li>
+          <li><strong>Sustainability</strong> = using Earth's resources responsibly so they are available for future generations.</li>
+        </ul>
+
+        <div class="cs-sub">🌾 Agriculture</div>
+        <ul>
+          <li>About 20% of Iceland's land is fertile (rich in volcanic minerals).</li>
+          <li>Iceland is self-sufficient in meat, dairy products and eggs.</li>
+          <li>Crops (tomatoes, cucumbers, peppers, flowers) grown in geothermally heated greenhouses.</li>
+          <li>Geothermal water reused to water plants — sustainable water use.</li>
+        </ul>
+
+        <div class="cs-sub">🏔️ Tourism</div>
+        <ul>
+          <li>Over 2 million visitors per year — 6× Iceland's population.</li>
+          <li>Attractions: black-sand beaches, geysers, geothermal spas (e.g. Blue Lagoon), 32 active volcanoes.</li>
+          <li>Tourism provides many jobs but can cause soil erosion and rising property prices.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CASE STUDY: LA PALMA -->
+    <div class="case-study" id="case-lapalma">
+      <div class="cs-header">
+        <span class="cs-label">Case Study</span>
+        🌋 Natural Disaster: Cumbre Vieja, La Palma (2021)
+      </div>
+      <div class="cs-body">
+        <p>Cumbre Vieja volcano on La Palma, Canary Islands, erupted on <strong>19 September 2021</strong> — its first eruption since 1971. The eruption lasted <strong>85 days</strong>. No deaths, but major damage.</p>
+
+        <div class="cs-sub">💥 Damage Caused</div>
+        <ul>
+          <li>70 km of road networks destroyed, cutting off villages.</li>
+          <li>Over 3,000 buildings destroyed.</li>
+          <li>The town of Todoque (pop. 1,300) was completely lost.</li>
+          <li>350 hectares of banana plantations ruined.</li>
+          <li>Over 1,000 people lost their homes.</li>
+        </ul>
+
+        <div class="cs-sub">⚡ Short-term Responses</div>
+        <ul>
+          <li>Army deployed to help with evacuation.</li>
+          <li>All flights cancelled to/from La Palma airport.</li>
+          <li>Temporary shelters provided for 1,000+ displaced people.</li>
+          <li>Exclusion zone created along coastline where lava was heading.</li>
+        </ul>
+
+        <div class="cs-sub">🏗️ Long-term Responses</div>
+        <ul>
+          <li>Estimated cost of damage: <strong>€843 million</strong>.</li>
+          <li>Spanish government pledged €225 million to help locals.</li>
+          <li>400 people still in temporary accommodation one year later.</li>
+          <li>Studies underway to exploit geothermal energy as a sustainable future energy source.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ EARTHQUAKES ═══ -->
+    <div class="section-heading" id="earthquakes">
+      <span class="icon">🏚️</span> Earthquakes
+    </div>
+
+    <div class="key-term">
+      <div class="term">Earthquake</div>
+      <div class="definition"><strong>Earthquakes are sudden tremors or vibrations in the Earth's crust.</strong> They occur when plates pressing against (colliding) or sliding past each other build up pressure along the fault line. When the plates move, the sudden release of pressure causes an earthquake.</div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">📍</div>
+        <div class="card-title">Focus</div>
+        <div class="card-def"><strong>The point beneath the surface where the earthquake happens.</strong></div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Epicentre</div>
+        <div class="card-def"><strong>The point on the surface directly above the focus.</strong> Seismic waves are strongest here — greatest damage occurs closest to the epicentre.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌊</div>
+        <div class="card-title">Seismic Waves</div>
+        <div class="card-def">Tremors/vibrations from an earthquake. Strongest at the epicentre, reducing in strength the farther away you go.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">〰️</div>
+        <div class="card-title">Aftershock</div>
+        <div class="card-def"><strong>Smaller tremors that follow an earthquake.</strong></div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌊</div>
+        <div class="card-title">Tsunami</div>
+        <div class="card-def">A huge wave caused when an earthquake occurs under the sea, displacing water. Can travel to coastlines causing devastation.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Fault Line</div>
+        <div class="card-def">A long, deep crack in the Earth's crust. Earthquakes occur along fault lines (e.g. San Andreas Fault, USA).</div>
+      </div>
+    </div>
+
+    <!-- MEASURING -->
+    <div class="sub-heading" id="measuring">Measuring Earthquakes</div>
+    <div class="key-term">
+      <div class="term">Magnitude</div>
+      <div class="definition">The measure of the <strong>size</strong> of an earthquake.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Seismologist / Seismograph</div>
+      <div class="definition">A <strong>seismologist</strong> studies earthquake activity using instruments called <strong>seismographs</strong> to measure tremors in the Earth's crust.</div>
+    </div>
+
+    <div class="richter-bar">
+      <div class="richter-seg" style="background:#4CAF50;"><div class="rs-val">1.0</div><div class="rs-label">MICRO</div></div>
+      <div class="richter-seg" style="background:#8BC34A;"><div class="rs-val">2–3</div><div class="rs-label">MINOR</div></div>
+      <div class="richter-seg" style="background:#CDDC39;"><div class="rs-val">4.0</div><div class="rs-label">LIGHT</div></div>
+      <div class="richter-seg" style="background:#FFC107;"><div class="rs-val">5.0</div><div class="rs-label">MODERATE</div></div>
+      <div class="richter-seg" style="background:#FF9800;"><div class="rs-val">6.0</div><div class="rs-label">STRONG</div></div>
+      <div class="richter-seg" style="background:#F44336;"><div class="rs-val">7.0</div><div class="rs-label">MAJOR</div></div>
+      <div class="richter-seg" style="background:#B71C1C;"><div class="rs-val">8–10</div><div class="rs-label">GREAT</div></div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">⚠️</div>
+      <div class="text"><strong>Richter Scale:</strong> Ranges from 1–10. Each unit is <strong>10 times stronger</strong> than the one before. So a magnitude 6 earthquake is 10× stronger than magnitude 5. The <strong>Moment Magnitude scale</strong> is used for larger earthquakes (over magnitude 8).</div>
+    </div>
+
+    <!-- DAMAGE -->
+    <div class="sub-heading" id="damage-eq">Damage Caused by Earthquakes</div>
+    <ul class="bullet-list">
+      <li>Loss of life.</li>
+      <li>Buildings damaged or collapsed.</li>
+      <li>Damage to electricity lines or gas pipelines may cause fires.</li>
+      <li>Damage to sewers and water supplies may spread disease.</li>
+      <li>Bridges, roads and railway lines damaged — difficult to get help into the area.</li>
+      <li>Landslides and avalanches can be triggered.</li>
+      <li>Earthquakes under the sea can cause <strong>tsunamis</strong>.</li>
+    </ul>
+
+    <div class="sub-heading">How to Reduce Earthquake Damage</div>
+    <ul class="bullet-list">
+      <li>Build <strong>earthquake-resistant buildings</strong> with shock absorbers between the building and foundations; reinforce walls with steel.</li>
+      <li>Conduct <strong>earthquake and tsunami drills</strong> so people know what to do.</li>
+      <li>Set up <strong>early-warning systems</strong> to alert people of possible tsunamis.</li>
+    </ul>
+
+    <!-- CASE STUDY: TÜRKIYE -->
+    <div class="case-study" id="case-turkiye">
+      <div class="cs-header">
+        <span class="cs-label">Case Study</span>
+        🇹🇷 Earthquakes: Türkiye / Syria (6 February 2023)
+      </div>
+      <div class="cs-body">
+        <p>An earthquake measuring <strong>7.8</strong> on the Moment Magnitude scale struck near Gaziantep, southern Türkiye. A second earthquake measuring <strong>7.5</strong> followed nine hours later. This was a result of the <strong>Eurasian and Arabian Plates colliding</strong>.</p>
+
+        <div class="cs-sub">💥 Damage Caused</div>
+        <ul>
+          <li>Over <strong>56,000 people killed</strong>.</li>
+          <li>3 million people displaced between the two countries.</li>
+          <li>230,000 buildings destroyed in Türkiye + 10,600 in Syria.</li>
+          <li>In Aleppo (Syria): 3,500 buildings destroyed, 700 unsafe.</li>
+        </ul>
+
+        <div class="cs-sub">⚡ Short-term Response</div>
+        <ul>
+          <li>Many countries sent emergency rescue teams.</li>
+          <li>WHO immediately sent health supplies.</li>
+          <li>Temporary camps set up for homeless people.</li>
+          <li>UN provided food assistance to 1.7 million people.</li>
+          <li>Rubble clear-up began immediately.</li>
+        </ul>
+
+        <div class="cs-sub">🏗️ Long-term Response</div>
+        <ul>
+          <li>Total damages: up to <strong>€31.1 billion</strong> in Türkiye + €4.7 billion in Syria.</li>
+          <li>210 million tonnes of rubble needed to be removed.</li>
+          <li>In Syria, poverty rose from 40% to 52% in the aftermath.</li>
+          <li>Many people still homeless or displaced long after the event.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ FOLD MOUNTAINS ═══ -->
+    <div class="section-heading" id="fold-mountains">
+      <span class="icon">⛰️</span> Fold Mountains
+    </div>
+
+    <div class="key-term">
+      <div class="term">Fold Mountains</div>
+      <div class="definition"><strong>Fold mountains form when two plates collide with each other.</strong> When a heavier and lighter plate collide, the heavier plate sinks under (subduction) and the lighter plate buckles upwards forming fold mountains. The magma can move to the surface forming volcanoes.</div>
+    </div>
+
+    <div class="cards-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="info-card">
+        <div class="card-icon">↑</div>
+        <div class="card-title">Anticline</div>
+        <div class="card-def">An <strong>up-fold</strong> of rock — forms the peaks/ridges of fold mountains.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">↓</div>
+        <div class="card-title">Syncline</div>
+        <div class="card-def">A <strong>down-fold</strong> of rock — forms the valleys between peaks.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading" id="periods">Periods of Folding</div>
+    <table class="geo-table">
+      <thead>
+        <tr><th>Period</th><th>When?</th><th>Plates Involved</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Alpine</strong></td>
+          <td>30–35 million years ago</td>
+          <td>Various — formed the highest mountains</td>
+          <td>Alps (Europe), Andes (S. America), Rockies (N. America), Himalayas (Asia)</td>
+        </tr>
+        <tr>
+          <td><strong>Armorican</strong></td>
+          <td>~250 million years ago</td>
+          <td>Eurasian &amp; African Plates</td>
+          <td>MacGillycuddy's Reeks, Galtees, Comeragh, Knockmealdown Mtns (Ireland); Black Forest (Germany)</td>
+        </tr>
+        <tr>
+          <td><strong>Caledonian</strong></td>
+          <td>~400 million years ago</td>
+          <td>Eurasian &amp; American Plates</td>
+          <td>Dublin &amp; Wicklow Mountains (Ireland); Appalachian Mtns (N. America); Norway, Sweden, Scotland</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="remember">
+      <div class="icon">💡</div>
+      <div class="text"><strong>Irish fold mountains are much older (and therefore lower) than the Himalayas</strong> because they were formed during much earlier folding periods. Older = more time for erosion = lower mountains.</div>
+    </div>
+
+    <!-- MOUNTAINS AND PEOPLE -->
+    <div class="sub-heading" id="mountains-people">Mountains &amp; People</div>
+    <div class="impact-grid">
+      <div class="impact-card positive">
+        <div class="ic-title">✅ Economic Activities</div>
+        <ul>
+          <li><strong>Tourism:</strong> Mountaineering, hillwalking, skiing, river rafting, rock climbing. Creates many direct and indirect jobs.</li>
+          <li><strong>Farming:</strong> Main type is cattle and sheep rearing. Transhumance (bringing cattle to summer pastures). Terraces cut for fruit and vines.</li>
+          <li><strong>Forestry:</strong> Coniferous trees planted — grow faster than deciduous trees. Important economic activity in Ireland.</li>
+        </ul>
+      </div>
+      <div class="impact-card negative">
+        <div class="ic-title">⚠️ Challenges</div>
+        <ul>
+          <li>Tourism can cause <strong>pollution</strong> from buses and traffic; litter; <strong>avalanches</strong> on ski slopes.</li>
+          <li>Farming is challenging — difficult to use machinery on steep slopes; poor weather conditions.</li>
+          <li>Forestry can lead to <strong>soil erosion, landslides and flooding</strong> when trees are cut down.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading" id="flashcards">
+      <span class="icon">🃏</span> Key Terms Flashcards
+    </div>
+    <p style="margin-bottom:16px;">Click <strong>Reveal Answer</strong> to check your definition.</p>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the <strong>four layers</strong> of the Earth?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Structure</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Crust → Mantle → Outer Core → Inner Core. The crust is solid rock; the mantle contains magma moved by convection currents; the core (iron and nickel) can be divided into outer and inner, with the inner core at ~6,000°C.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Who proposed <strong>continental drift</strong> and what is <strong>Pangaea</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Tectonics</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Alfred Wegener (German scientist) proposed the theory. He noticed continents fit together like jigsaw pieces. Pangaea was the single huge landmass that broke apart ~225 million years ago, with continents drifting to their present positions.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Explain the difference between <strong>destructive</strong>, <strong>constructive</strong> and <strong>passive</strong> plate boundaries.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Boundaries</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Destructive (convergent):</strong> Plates collide → subduction → fold mountains + volcanoes + earthquakes (e.g. Andes). <strong>Constructive (divergent):</strong> Plates separate → new crust formed → sea-floor spreading, mid-ocean ridges, volcanic islands (e.g. Iceland). <strong>Passive (transform):</strong> Plates slide past → earthquakes + fault lines (e.g. San Andreas Fault).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>subduction</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Boundaries</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Subduction is the process at destructive boundaries where the heavier (denser) plate is pushed under the lighter plate and melts back into the mantle. The lighter plate is lifted up, forming fold mountains.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name and describe the <strong>three types of volcano</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Volcanoes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Active:</strong> erupts regularly (e.g. Mt Etna, Mt St Helens). <strong>Dormant:</strong> has not erupted for a long time but might again (e.g. Vesuvius). <strong>Extinct:</strong> will never erupt again (e.g. Croghan Hill, Co. Offaly).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>lahar</strong> and give an example?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Volcanoes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A lahar is a river of mud formed when volcanic material mixes with water (rivers, rain or melting snow/ice). It can destroy towns and villages. Example: Colombia 1985 — a lahar resulted in the death of 22,000 people.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between the <strong>focus</strong> and <strong>epicentre</strong> of an earthquake?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Earthquakes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>focus</strong> is the point beneath the surface where the earthquake actually happens. The <strong>epicentre</strong> is the point on the surface directly above the focus — this is where seismic waves are strongest and damage is greatest.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>How is earthquake <strong>magnitude</strong> measured?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Earthquakes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">By a seismologist using a seismograph. Two scales are used: the <strong>Richter scale</strong> (1–10, each unit is 10× stronger than the previous) and the <strong>Moment Magnitude scale</strong> (more accurate for larger earthquakes over magnitude 8).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>How do <strong>fold mountains</strong> form?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Fold Mountains</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">When two plates collide at a destructive boundary, the heavier plate sinks (subduction) and the lighter plate buckles upwards — forming fold mountains. The magma can move to the surface forming volcanoes. Example: Andes (Nazca + South American Plates).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the <strong>three periods of folding</strong> and examples from each.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Fold Mountains</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Alpine</strong> (30–35 million years ago): Alps, Andes, Rockies, Himalayas. <strong>Armorican</strong> (~250 million years ago): MacGillycuddy's Reeks, Galtees (Ireland); Black Forest (Germany). <strong>Caledonian</strong> (~400 million years ago): Wicklow Mountains (Ireland); Appalachians (USA); Scottish Highlands.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Give <strong>two positive and two negative</strong> impacts of fold mountains on people.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Fold Mountains</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Positive:</strong> Tourism (skiing, hiking, scenic views = jobs); Farming (cattle/sheep, terraced crops). <strong>Negative:</strong> Tourism causes pollution and avalanches on ski slopes; Forestry clearing causes soil erosion and flooding.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="geo-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Fact / Definition</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Earth's Layers</strong></td><td>Crust → Mantle (magma) → Outer Core → Inner Core (~6,000°C)</td><td>Crust = solid rock; Mantle = magma moved by convection currents.</td></tr>
+        <tr><td><strong>Pangaea</strong></td><td>One original landmass; broke up 225M years ago. Theory = continental drift (Wegener).</td><td>Evidence: Mid-Atlantic Ridge; continent shapes fit together.</td></tr>
+        <tr><td><strong>Convection Currents</strong></td><td>Circular motion of magma in the mantle → moves plates via slab pull &amp; ridge push.</td><td>Draw a diagram showing heated magma rising, cooling, sinking.</td></tr>
+        <tr><td><strong>Destructive Boundary</strong></td><td>Plates collide → subduction → fold mountains, volcanoes, earthquakes.</td><td>Example: Andes (Nazca + S. American Plate).</td></tr>
+        <tr><td><strong>Constructive Boundary</strong></td><td>Plates separate → new crust, sea-floor spreading, mid-ocean ridges, volcanic islands.</td><td>Example: Iceland on Mid-Atlantic Ridge.</td></tr>
+        <tr><td><strong>Passive Boundary</strong></td><td>Plates slide past → earthquakes + fault lines. No crust created or destroyed.</td><td>Example: San Andreas Fault, USA.</td></tr>
+        <tr><td><strong>Volcano Parts</strong></td><td>Magma chamber → vent → lava → cone → crater → ash cloud.</td><td>Draw and label a volcano diagram — common exam question!</td></tr>
+        <tr><td><strong>Volcano Types</strong></td><td>Active (erupts regularly) / Dormant (not recently, might again) / Extinct (never again).</td><td>Vesuvius = dormant; Croghan Hill = extinct.</td></tr>
+        <tr><td><strong>Focus vs Epicentre</strong></td><td>Focus = underground origin. Epicentre = surface point directly above focus.</td><td>Greatest damage = closest to epicentre.</td></tr>
+        <tr><td><strong>Richter Scale</strong></td><td>1–10. Each unit = 10× stronger. Magnitude 6 = 10× stronger than magnitude 5.</td><td>Moment Magnitude scale used for earthquakes over magnitude 8.</td></tr>
+        <tr><td><strong>Fold Mountains</strong></td><td>Form at destructive boundaries. Anticline = up-fold; Syncline = down-fold.</td><td>Alpine = newest/highest; Caledonian = oldest/lowest in Ireland.</td></tr>
+        <tr><td><strong>Geothermal Energy</strong></td><td>Renewable energy from underground heat in volcanic areas (e.g. Iceland).</td><td>Sustainability = using resources so future generations can also use them.</td></tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="ch1.html">&larr; Ch 1: Geographical Skills</a>
+    <a href="index.html">Geography Home</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  const sections = document.querySelectorAll('[id]');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
