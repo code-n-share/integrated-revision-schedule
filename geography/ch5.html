@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 5 – Energy & the Environment | Geography Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --red-light:    #FDECEA;
+      --orange:       #E65100;
+      --orange-light: #FFF3E0;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--purple);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '⚡'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.08;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 42px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--purple);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--purple-dark); margin: 26px 0 10px;
+    }
+    .sub-heading-green {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--green); margin: 26px 0 10px;
+    }
+    .sub-heading-red {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--red); margin: 26px 0 10px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--purple-light); border-left: 4px solid var(--purple);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--purple-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* TABLE */
+    .geo-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .geo-table th {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .geo-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .geo-table tr:last-child td { border-bottom: none; }
+    .geo-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* ADV / DISADV TABLE */
+    .ad-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+    }
+    .ad-box {
+      border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+    }
+    .ad-box.adv { background: var(--green-light); border: 2px solid var(--green); }
+    .ad-box.dis { background: var(--red-light); border: 2px solid var(--red); }
+    .ad-box .ad-title {
+      font-family: 'Sora'; font-weight: 800; font-size: 14px; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ad-box.adv .ad-title { color: var(--green); }
+    .ad-box.dis .ad-title { color: var(--red); }
+    .ad-box ul { padding-left: 18px; font-size: 13.5px; }
+    .ad-box li { margin-bottom: 5px; }
+
+    /* CASE STUDY BOX */
+    .case-study {
+      background: #FFF8E1; border: 2px solid var(--amber);
+      border-radius: var(--radius); margin: 24px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .case-study .cs-header {
+      background: var(--amber); color: var(--text);
+      font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1.5px; padding: 8px 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .case-study .cs-body { padding: 20px; }
+    .case-study .cs-title {
+      font-family: 'Sora'; font-weight: 800; font-size: 18px;
+      color: var(--orange); margin-bottom: 10px;
+    }
+
+    /* IMPACT LIST */
+    .impact-section { margin: 14px 0; }
+    .impact-title {
+      font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .impact-title.economic { color: var(--blue); }
+    .impact-title.social { color: var(--green); }
+    .impact-title.environ { color: var(--red); }
+    .impact-list { padding-left: 18px; font-size: 13.5px; }
+    .impact-list li { margin-bottom: 5px; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .ex-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+      gap: 12px;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      background: var(--purple-light); color: var(--purple-dark); white-space: nowrap;
+    }
+    .toggle-btn {
+      background: var(--purple); color: #fff; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s; white-space: nowrap;
+    }
+    .toggle-btn:hover { background: var(--purple-dark); }
+    .quiz-answer {
+      display: none; padding: 14px 18px; border-top: 1px solid var(--border);
+      background: var(--green-light); font-size: 14px; color: #1a3d2b;
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    /* SCROLL OFFSET */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* PROCESS STEPS */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--purple); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--purple-dark); }
+
+    /* BULLET LIST */
+    .bullet-list { padding-left: 20px; font-size: 14px; margin: 10px 0; }
+    .bullet-list li { margin-bottom: 6px; }
+
+    /* DID YOU KNOW */
+    .did-you-know {
+      background: var(--blue-light); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 12px 16px; margin: 12px 0; font-size: 13.5px;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .did-you-know .dyk-icon { font-size: 20px; flex-shrink: 0; }
+
+    /* TWO-COL LAYOUT */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+
+    /* IMPACT GRID (3 cols) */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0; }
+    .impact-card {
+      border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
+    }
+    .impact-card.econ { background: var(--blue-light); border: 1.5px solid var(--blue); }
+    .impact-card.soc { background: var(--green-light); border: 1.5px solid var(--green); }
+    .impact-card.env { background: var(--red-light); border: 1.5px solid var(--red); }
+    .impact-card .ic-title {
+      font-family: 'Sora'; font-weight: 800; font-size: 13px; margin-bottom: 8px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .impact-card.econ .ic-title { color: var(--blue); }
+    .impact-card.soc .ic-title { color: var(--green); }
+    .impact-card.env .ic-title { color: var(--red); }
+    .impact-card ul { padding-left: 16px; font-size: 13px; }
+    .impact-card li { margin-bottom: 5px; }
+
+    /* HEP REQUIREMENTS */
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+    .req-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: var(--radius); padding: 16px; text-align: center; box-shadow: var(--shadow);
+    }
+    .req-card .rc-num {
+      width: 32px; height: 32px; border-radius: 50%; background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-weight: 800; font-size: 15px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+    }
+    .req-card .rc-title { font-family: 'Sora'; font-weight: 700; font-size: 13px; color: var(--purple-dark); margin-bottom: 5px; }
+    .req-card .rc-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* QUICK STATS BANNER */
+    .stats-banner {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      border-radius: var(--radius); padding: 24px; margin: 16px 0;
+      display: flex; gap: 0; flex-wrap: wrap; box-shadow: var(--shadow);
+    }
+    .stat-item {
+      flex: 1; min-width: 120px; text-align: center; color: #fff;
+      padding: 8px 12px; position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: ''; position: absolute; right: 0; top: 10%; bottom: 10%;
+      width: 1px; background: rgba(255,255,255,0.2);
+    }
+    .stat-item .stat-num { font-family: 'Sora'; font-size: 28px; font-weight: 800; color: var(--amber); }
+    .stat-item .stat-label { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+    /* SUMMARY TABLE */
+    .summary-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .summary-table th { background: #1B4332; color: #fff; font-family: 'Sora'; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+    .summary-table td { padding: 11px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 28px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+      .ad-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Geography Revision</div>
+    <div class="book-title">Ch 5 — Energy &amp; the Environment</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Geography Home</a>
+
+  <div class="sidebar-label">Energy Resources</div>
+  <a href="#intro">Intro &amp; Key Terms</a>
+  <a href="#non-renewable">Non-Renewable Resources</a>
+  <a href="#oil">Oil</a>
+  <a href="#gas">Gas</a>
+  <a href="#corrib">Case Study: Corrib</a>
+  <a href="#coal">Coal</a>
+  <a href="#peat">Peat</a>
+
+  <div class="sidebar-label">Renewable Energy</div>
+  <a href="#renewable">Renewable Resources</a>
+  <a href="#hep">Hydroelectric Power (HEP)</a>
+  <a href="#inniscarra">Case Study: Inniscarra</a>
+  <a href="#wind">Wind Energy</a>
+  <a href="#solar">Solar Energy</a>
+  <a href="#geothermal">Geothermal Energy</a>
+  <a href="#biomass">Biomass Energy</a>
+  <a href="#ireland-renewable">Ireland &amp; Renewables</a>
+
+  <div class="sidebar-label">Environmental Impacts</div>
+  <a href="#env-impacts">Environmental Consequences</a>
+  <a href="#global-warming">Global Warming</a>
+  <a href="#acid-rain">Acid Rain</a>
+  <a href="#smog">Smog</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#key-terms">Key Terms Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 5 · Geography in Action</div>
+    <h1>Energy &amp; the <span>Environment</span></h1>
+    <div class="chapter-meta">How fuelling our needs impacts on the world we live in &nbsp;·&nbsp; Human &amp; Physical Geography</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🛢️ Non-Renewable Energy</span>
+      <span class="goal-tag">💧 Hydroelectric Power</span>
+      <span class="goal-tag">💨 Wind &amp; Solar Energy</span>
+      <span class="goal-tag">🌍 Global Warming</span>
+      <span class="goal-tag">🌧️ Acid Rain &amp; Smog</span>
+      <span class="goal-tag">🇮🇪 Ireland's Energy</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ INTRO ═══ -->
+    <div class="section-heading anchor-offset" id="intro">
+      <span class="icon">⚡</span> Energy Resources — Introduction
+    </div>
+    <p><strong>Energy resources</strong> are resources that the physical world provides us with that we can make energy from. These energy resources are very important for the economy. However, our use of them can have a big impact on society and the environment.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">♻️</div>
+        <div class="card-title">Renewable Energy</div>
+        <div class="card-def">Energy resources that <strong>can be used over and over again</strong>. They will not run out.</div>
+        <div class="card-tip">Examples: wind, solar, water, geothermal, biomass</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🛢️</div>
+        <div class="card-title">Non-Renewable Energy</div>
+        <div class="card-def">Energy resources that <strong>can only be used once</strong>. They will eventually run out.</div>
+        <div class="card-tip">Examples: oil, coal, gas, peat</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🔥</div>
+        <div class="card-title">Fossil Fuels</div>
+        <div class="card-def">Fuels made from <strong>decomposing plants and animals</strong>. Used for electricity, transport and heating.</div>
+        <div class="card-tip">Around 80% of the world's energy comes from fossil fuels. In Ireland, about 86%.</div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">💡</span>
+      <div class="text">
+        <strong>Ireland's Energy Imports (Fig 5.3)</strong>
+        Ireland imports most of its energy. The largest share comes from oil (66%), followed by natural gas (24.6%), biofuels (7.1%), electricity (1.3%), and coal (1%).
+      </div>
+    </div>
+
+    <!-- ═══ NON-RENEWABLE ═══ -->
+    <div class="section-heading anchor-offset" id="non-renewable">
+      <span class="icon">🛢️</span> Non-Renewable Energy Resources
+    </div>
+    <p>Non-renewable energy comes from sources that will eventually run out. <strong>Fossil fuels</strong> such as oil, coal, gas and peat are all examples. They cause great harm to the environment, and people are too dependent (rely on too much) on them.</p>
+
+    <div class="remember">
+      <span class="icon">🗺️</span>
+      <div class="text">
+        <strong>Identifying on OS Maps</strong>
+        Power stations using non-renewable energy resources are identified on OS maps by the symbol: ⊙ (Stáisiún cumhachta breosla iontaiseach / Power Station Fossil).
+      </div>
+    </div>
+
+    <!-- OIL -->
+    <div class="sub-heading anchor-offset" id="oil">🛢️ Oil</div>
+    <p><strong>Oil is a very important non-renewable source of energy in the world today.</strong> It is used for transport (petrol/aviation fuel), heating homes, and car maintenance. About 66% of Ireland's energy imports are oil.</p>
+
+    <div class="ad-grid">
+      <div class="ad-box adv">
+        <div class="ad-title">✅ Advantages of Oil</div>
+        <ul class="bullet-list">
+          <li>Gives off hardly any smoke</li>
+          <li>Produces great heat</li>
+          <li>Very efficient</li>
+        </ul>
+      </div>
+      <div class="ad-box dis">
+        <div class="ad-title">❌ Disadvantages of Oil</div>
+        <ul class="bullet-list">
+          <li>It is expensive</li>
+          <li>In Ireland, it has to be imported</li>
+          <li>Transported by sea in tankers — oil leaks can cause serious pollution</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading">📍 Location of Oil</div>
+    <p>Many countries including the USA and Norway have oil reserves. However, the vast majority of reserves are located around the <strong>Persian Gulf in the Middle East</strong> — Saudi Arabia, Kuwait, Iran, Iraq, UAE.</p>
+    <p><strong>Oil prices are set by OPEC (Organization of the Petroleum Exporting Countries)</strong>, which causes the price to fluctuate (rise and fall).</p>
+
+    <div class="sub-heading">🇮🇪 Oil in Ireland</div>
+    <p>In Ireland, <strong>46% of our energy comes from oil</strong>. Ireland has not exploited its oil reserves because:</p>
+    <ul class="bullet-list">
+      <li>The location of Irish oil reserves makes it very difficult to drill for oil.</li>
+      <li>The oil may not be of high quality.</li>
+    </ul>
+    <p>In 2021, the Irish government brought in a policy that stopped any new exploration for oil, as it goes against their goal of a low-carbon future. The <strong>Barryroe oil field</strong> off the west Cork coast is still being explored for possible exploitation.</p>
+
+    <div class="did-you-know">
+      <span class="dyk-icon">💡</span>
+      <span>The average household energy bill in 2024 was over €3,200.</span>
+    </div>
+
+    <!-- GAS -->
+    <div class="sub-heading anchor-offset" id="gas">🔵 Gas</div>
+    <p>In Ireland, over <strong>30% of our energy needs comes from natural gas</strong>, which is a non-renewable energy source. Most gas is used in generating electricity. <strong>Kinsale Head gas field</strong> is located off the coast of Co. Cork. From 1978 to 2020, gas was exploited from this field. <strong>Barryroe</strong> is another key site off west Cork.</p>
+
+    <!-- CORRIB CASE STUDY -->
+    <div class="case-study anchor-offset" id="corrib">
+      <div class="cs-header">📋 Case Study</div>
+      <div class="cs-body">
+        <div class="cs-title">Non-Renewable Energy: Corrib Gas Field</div>
+        <p>In late 2015, the <strong>Corrib gas field</strong> came into operation. It is located off the north-west coast of Ireland, near <strong>Co. Mayo</strong>. Gas is brought ashore through a pipeline more than 90 km long, running along the seabed into a tunnel under Sruwaddacon Bay, then to the onshore gas terminal at <strong>Bellanaboy Bridge, near Belmullet</strong>.</p>
+        <p style="margin-top:10px;">The Corrib gas field is expected to <strong>cease operations and run out by the end of 2030</strong>. It currently provides around 50% of Ireland's electricity needs. No new licences are being given for gas exploration. However, surveys suggest the field could provide gas for a further ten years.</p>
+
+        <div class="impact-grid" style="margin-top:18px;">
+          <div class="impact-card econ">
+            <div class="ic-title">💰 Economic Impacts</div>
+            <ul>
+              <li>Cost around €3.6 billion to develop</li>
+              <li>Produces 100% of Ireland's home-produced gas</li>
+              <li>Makes up 30% of Ireland's overall gas needs</li>
+              <li>Created over 1,400 jobs during construction; currently employs 150 people directly</li>
+              <li>Roads network upgraded costing €22 million</li>
+            </ul>
+          </div>
+          <div class="impact-card soc">
+            <div class="ic-title">👥 Social Impacts</div>
+            <ul>
+              <li>Local communities benefited — Belmullet GAA received €450,000 for training grounds</li>
+              <li>Reduced migration from the area</li>
+              <li>Grants to local projects annually — €130,000 in 2022 alone</li>
+              <li>Sponsors festivals and shows in the region</li>
+              <li>Two scholarships to local secondary school students annually</li>
+            </ul>
+          </div>
+          <div class="impact-card env">
+            <div class="ic-title">🌿 Environmental Impacts</div>
+            <ul>
+              <li>Safety concerns about explosion along the onshore pipe route</li>
+              <li>Harm to Carrowmore Lake (local drinking water source) during construction</li>
+              <li>Waste material released into Broadhaven Bay — impacts dolphins, otters, grey seals and whales</li>
+              <li>Carbon, nitrogen and sulphur released into a clean rural atmosphere</li>
+              <li>Visual impact of the Bellanaboy Bridge gas terminal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COAL -->
+    <div class="sub-heading anchor-offset" id="coal">⬛ Coal</div>
+    <p><strong>Coal is a non-renewable solid fuel used to heat many homes.</strong> While Ireland's dependency on coal is constantly declining, around 7% of our energy still comes from coal. In 2024, the <strong>ESB (Electricity Supply Board)</strong> began converting its only coal-powered station at <strong>Moneypoint</strong> to an oil-fired station. It will then act as a back-up generator for the Irish market.</p>
+
+    <!-- PEAT -->
+    <div class="sub-heading anchor-offset" id="peat">🟤 Peat</div>
+    <p><strong>Peat is a fuel made up of decayed plants and other organic matter found in bogs.</strong> It has been an important source of heating and energy in Ireland for hundreds of years. Since 2022, commercial exploitation of peat has ceased. The selling of peat (turf) is prohibited. Exploitation is now only allowed at a local level where people can remove peat from their own land for personal use. As a result, <strong>only 1.9% of Irish energy now comes from peat</strong>.</p>
+
+    <!-- ═══ RENEWABLE ═══ -->
+    <div class="section-heading anchor-offset" id="renewable">
+      <span class="icon">♻️</span> Renewable Energy Resources
+    </div>
+    <p>The energy resources people rely on now are mostly non-renewable or finite, meaning they will eventually run out. Because of this, the use and production of renewable energy needs to be developed faster. Types of renewable energy include: <strong>hydroelectric power (HEP), wind energy, solar energy, geothermal energy, and biomass energy</strong>.</p>
+
+    <div class="remember">
+      <span class="icon">🗺️</span>
+      <div class="text">
+        <strong>Identifying on OS Maps</strong>
+        Hydroelectric power station: ○ (Stáisiún cumhachta uisce / Power Station Hydro). Wind farm: ✝ (Feirm Ghaeoithe / Wind Farm).
+      </div>
+    </div>
+
+    <!-- HEP -->
+    <div class="sub-heading anchor-offset" id="hep">💧 Hydroelectric Power (HEP)</div>
+    <p><strong>Hydroelectric power (HEP) is the creation of electricity by using the force of falling water.</strong> HEP is the largest source of renewable energy globally — it generates around 17% of the world's electricity.</p>
+
+    <div class="sub-heading-green">How HEP Works:</div>
+    <ol class="step-list">
+      <li><div class="step-text">A concrete wall called a <strong>dam</strong> is built across a river to trap and control flow of water.</div></li>
+      <li><div class="step-text">Water builds up behind the dam, forming a <strong>reservoir</strong>. This acts as a supply of water for HEP production.</div></li>
+      <li><div class="step-text">When part of the dam is opened, water rushes through.</div></li>
+      <li><div class="step-text">The water is used to turn a <strong>turbine</strong> — a machine where liquid (water) or gas (wind) flows through and turns a wheel with blades to generate electricity.</div></li>
+    </ol>
+
+    <div class="sub-heading-green">Requirements for a HEP Station:</div>
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="rc-num">1</div>
+        <div class="rc-title">Water Supply</div>
+        <div class="rc-desc">Constant supply of water. Built on fast-flowing, high-volume rivers.</div>
+      </div>
+      <div class="req-card">
+        <div class="rc-num">2</div>
+        <div class="rc-title">Slope</div>
+        <div class="rc-desc">A drop in the course of the river causes water to flow quickly.</div>
+      </div>
+      <div class="req-card">
+        <div class="rc-num">3</div>
+        <div class="rc-title">Bedrock</div>
+        <div class="rc-desc">Reservoir must be built on impermeable bedrock so water does not seep away.</div>
+      </div>
+      <div class="req-card">
+        <div class="rc-num">4</div>
+        <div class="rc-title">Climate</div>
+        <div class="rc-desc">HEP stations need areas with high levels of rainfall.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading-green">Impacts of HEP:</div>
+    <div class="impact-grid">
+      <div class="impact-card econ">
+        <div class="ic-title">💰 Economic</div>
+        <ul>
+          <li>Generates cheap, clean, renewable electricity</li>
+          <li>Water in reservoir can supply local area</li>
+          <li>Dam may help prevent flooding</li>
+        </ul>
+      </div>
+      <div class="impact-card soc">
+        <div class="ic-title">👥 Social</div>
+        <ul>
+          <li>Families may have to be relocated (costly and disruptive)</li>
+          <li>New roads and bridges built around reservoir and station</li>
+          <li>Reservoir can be a leisure facility (fishing, rowing)</li>
+        </ul>
+      </div>
+      <div class="impact-card env">
+        <div class="ic-title">🌿 Environmental</div>
+        <ul>
+          <li>Creation of reservoir may mean loss of good farmland</li>
+          <li>Dam can stop fish swimming upstream — reduces fish stocks</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- INNISCARRA CASE STUDY -->
+    <div class="case-study anchor-offset" id="inniscarra">
+      <div class="cs-header">📋 Case Study</div>
+      <div class="cs-body">
+        <div class="cs-title">Hydroelectric Power in Ireland: Inniscarra Dam</div>
+        <p>Inniscarra Dam was constructed in the <strong>1950s</strong> as part of the River Lee Hydroelectric Scheme. The dam is located west of Ballincollig in <strong>Co. Cork</strong>. The dam stands at a height of <strong>42 m</strong>.</p>
+        <p style="margin-top:8px;">The Inniscarra reservoir (also known as Inniscarra lake) was created in 1956 by flooding parts of the Lee valley, west of Cork City. The reservoir occupies an area of <strong>530 hectares or 5 km²</strong>. There are approximately 40 km of bank area that can be fished.</p>
+        <p style="margin-top:8px;">The Inniscarra HEP station generates <strong>27 megawatts (MW)</strong> of electricity for the area. A megawatt (MW) is a unit used to measure electricity — one megawatt powers about <strong>600 homes</strong>.</p>
+
+        <div class="remember" style="margin-top:14px;">
+          <span class="icon">📏</span>
+          <div class="text">
+            <strong>Key Terms</strong>
+            <strong>Megawatt (MW)</strong> = unit of electricity. 1 MW powers ~600 homes. &nbsp;|&nbsp; <strong>Gigawatt (GW)</strong> = 1,000 megawatts.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WIND -->
+    <div class="sub-heading anchor-offset" id="wind">💨 Wind Energy</div>
+    <p>The force of the wind can be used to turn turbines and create electricity. The blades on wind turbines can deal with winds blowing at up to 320 km/h. <strong>Modern wind turbines are very large in size and are generally grouped together in what is known as a wind farm.</strong></p>
+    <p>Wind energy is a clean source used by more than 127 countries worldwide. It is becoming increasingly important in Ireland. Currently, <strong>over 35% of Ireland's electricity is produced by wind</strong>.</p>
+
+    <div class="sub-heading-green">Ireland and Wind Energy:</div>
+    <p>Ireland is an ideal location because it is an island on the edge of Europe right by the Atlantic Ocean. The strong winds from the Atlantic make the west coast one of the best places for a wind farm. Most wind farms are located in upland areas near the west coast and on <strong>cutaway bogs</strong> (bogs no longer used to produce peat).</p>
+    <p>Ireland's largest wind farm is <strong>Oweninny Wind Farm in north Co. Mayo</strong>. It creates enough energy to meet the demands of around 140,000 homes. Wind energy now employs more than <strong>5,000 people</strong> nationally.</p>
+
+    <div class="did-you-know">
+      <span class="dyk-icon">💡</span>
+      <span>The largest wind farm in the world is located in the province of Gansu in China. Ireland plans to produce <strong>5 GW of electricity</strong> by 2030, <strong>20 GW</strong> by 2040 and <strong>37 GW</strong> by 2050 through wind energy — this would cover 80% of Ireland's energy needs.</span>
+    </div>
+
+    <div class="ad-grid">
+      <div class="ad-box adv">
+        <div class="ad-title">✅ Advantages of Wind Energy</div>
+        <ul class="bullet-list">
+          <li>Clean energy resource that is sustainable</li>
+          <li>Cuts overall costs of energy as it reduces the need to import energy sources</li>
+          <li>Creates employment in rural areas, both in construction and maintenance</li>
+        </ul>
+      </div>
+      <div class="ad-box dis">
+        <div class="ad-title">❌ Disadvantages of Wind Energy</div>
+        <ul class="bullet-list">
+          <li>Wind is unreliable from day to day</li>
+          <li>Wind farms are very expensive to build</li>
+          <li>Noise and visual pollution can impact local residents and lead to planning objections</li>
+          <li>Wind farms can be hazardous for local wildlife (e.g. birds)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SOLAR -->
+    <div class="sub-heading anchor-offset" id="solar">☀️ Solar Energy</div>
+    <p><strong>Solar energy is created using heat and light from the Sun.</strong> It is the fastest growing renewable energy source in the world. Solar cells on solar panels capture the heat and light and convert this into electricity.</p>
+    <p>In Ireland, you can see solar panels on the roofs of many homes. Solar energy has become <strong>Ireland's fastest-growing renewable power source</strong>. The SEAI provides grants to homeowners to install solar panels. It is estimated that solar energy on a sunny day accounts for powering the equivalent of over <strong>280,000 homes</strong>.</p>
+    <p>Around <strong>75% of solar energy is produced from May to September</strong>. Excess electricity can be exported to the national grid or stored in a battery. In 2023, the Irish government announced a programme for schools to install solar panels. Dublin Airport has a solar farm with <strong>15,000 solar panels</strong> that can power more than 10% of the airport's electricity needs.</p>
+
+    <!-- GEOTHERMAL -->
+    <div class="sub-heading anchor-offset" id="geothermal">🌋 Geothermal Energy</div>
+    <p><strong>Geothermal energy is created by using the heat from the Earth's crust.</strong></p>
+    <ol class="step-list">
+      <li><div class="step-text">Water is pumped deep into the Earth's crust and heated by the rocks.</div></li>
+      <li><div class="step-text">The heated water is then pumped back to the surface where it can be used to heat homes.</div></li>
+      <li><div class="step-text">The hot water can also be converted to steam, which is used to turn turbines and generate electricity.</div></li>
+    </ol>
+    <p>Geothermal energy can be exploited in areas where there is volcanic activity. <strong>Iceland and New Zealand</strong> are two countries that produce huge amounts of geothermal energy.</p>
+
+    <!-- BIOMASS -->
+    <div class="sub-heading anchor-offset" id="biomass">🌿 Biomass Energy</div>
+    <p><strong>Biomass energy comes from burning organic material.</strong> Examples include wood logs, chips, pellets, manure, sewage and certain crops like rapeseed oil.</p>
+    <p><strong>Biomass materials can also be used to produce biofuels.</strong> These biofuels include biodiesel, which is used to power engines such as those used in agricultural machinery. This cuts down on the use of non-renewable fuels like petrol and diesel.</p>
+
+    <!-- IRELAND AND RENEWABLE -->
+    <div class="section-heading anchor-offset" id="ireland-renewable">
+      <span class="icon">🇮🇪</span> Ireland and Renewable Energy
+    </div>
+
+    <div class="stats-banner">
+      <div class="stat-item">
+        <div class="stat-num">82%</div>
+        <div class="stat-label">of Ireland's energy imported (2022)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">€1M</div>
+        <div class="stat-label">per hour cost of energy imports</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">of Ireland's electricity from renewables</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">35%</div>
+        <div class="stat-label">of Ireland's electricity from wind</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2.5%</div>
+        <div class="stat-label">from hydroelectricity</div>
+      </div>
+    </div>
+
+    <p>According to the SEAI, in 2022 Ireland imported 82% of its energy, costing around <strong>€1 million per hour</strong>. Currently, around <strong>40% of Ireland's electricity is generated from renewables</strong>.</p>
+
+    <div class="sub-heading">🇮🇪 Ireland and Hydroelectric Power</div>
+    <p>Ireland has a long history of using hydroelectric power. The country's first and largest HEP station, <strong>Ardnacrusha HEP Station in Co. Clare, was built in 1929</strong>. About <strong>2.5%</strong> of Ireland's electricity is generated from hydroelectricity. HEP is ideal for Ireland due to the climate and annual rainfall levels.</p>
+
+    <!-- ═══ ENVIRONMENTAL CONSEQUENCES ═══ -->
+    <div class="section-heading anchor-offset" id="env-impacts">
+      <span class="icon">🌍</span> Environmental Consequences of Energy Production
+    </div>
+    <p>Burning fossil fuels has a major impact on the environment, both on a local and global scale. The three main impacts of fossil fuel use are:</p>
+
+    <div class="cards-grid">
+      <div class="info-card" style="border-color:#E65100;">
+        <div class="card-icon">🌡️</div>
+        <div class="card-title">1. Global Warming</div>
+        <div class="card-def">The increase in the temperature of the Earth due to human activities like burning fossil fuels, caused by greenhouse gases trapping the Sun's heat.</div>
+      </div>
+      <div class="info-card" style="border-color:#1976D2;">
+        <div class="card-icon">🌧️</div>
+        <div class="card-title">2. Acid Rain</div>
+        <div class="card-def">Formed when gases from burning fossil fuels (sulfur dioxide and nitrogen oxide) mix with water vapour in the atmosphere.</div>
+      </div>
+      <div class="info-card" style="border-color:#666;">
+        <div class="card-icon">🌫️</div>
+        <div class="card-title">3. Smog</div>
+        <div class="card-def">Pollution that occurs when smoke from burning fossil fuels mixes with sunlight and heat. It looks like fog and is caused by smoke.</div>
+      </div>
+    </div>
+
+    <!-- GLOBAL WARMING -->
+    <div class="sub-heading anchor-offset" id="global-warming">🌡️ Global Warming</div>
+    <p><strong>Global warming is the increase in the temperature of the Earth due to human activities like burning fossil fuels.</strong> The Earth's temperature is gradually rising every year. Since 2000, the Earth has experienced one record-breaking hottest year after another.</p>
+    <p>Although global warming has been happening for hundreds of years, scientists believe it got faster since the <strong>Industrial Revolution in the 1700s</strong>, because people have been burning more and more fossil fuels to produce energy.</p>
+
+    <div class="key-term">
+      <div class="term">Greenhouse Gases</div>
+      <div class="definition">Burning fossil fuels causes an increase in greenhouse gases, <strong>which trap the Sun's heat in the atmosphere, causing temperatures to rise</strong>. The resulting climate change is the biggest environmental issue of our time.</div>
+    </div>
+
+    <!-- ACID RAIN -->
+    <div class="sub-heading anchor-offset" id="acid-rain">🌧️ Acid Rain</div>
+    <p><strong>Acid rain is formed when gases from the burning of fossil fuels mix with water vapour.</strong></p>
+    <ul class="bullet-list">
+      <li>The gases <strong>sulfur dioxide</strong> and <strong>nitrogen oxide</strong> are released into the atmosphere when fossil fuels are burned in factories.</li>
+      <li>These gases combine with water vapour in the atmosphere and fall as acid rain.</li>
+    </ul>
+
+    <div class="key-term">
+      <div class="term">pH Value</div>
+      <div class="definition">A pH value is a scale of measurement of how acidic or alkaline a substance is. Pure water has a pH of 7 (neutral). Normal rain has a pH of around 5.6. Acid rain can have a pH of around 4 — making it acidic enough to cause serious damage.</div>
+    </div>
+
+    <div class="sub-heading-red">Problems Caused by Acid Rain:</div>
+    <ul class="bullet-list">
+      <li>Washes nutrients from the soil — stops crops from growing and forces farmers to use more fertilisers</li>
+      <li>Can wipe out fish stocks in lakes (fish cannot reproduce if water is too acidic)</li>
+      <li>Forests become vulnerable to disease — many trees can die (<strong>Black Forest in Germany</strong> is heavily affected)</li>
+      <li>Cities can be damaged as chemicals in acid rain attack old buildings and weather (wear away) the stone</li>
+    </ul>
+
+    <div class="sub-heading-green">Solutions to Acid Rain:</div>
+    <ul class="bullet-list">
+      <li>Use more renewable and clean energy resources (solar, wind)</li>
+      <li>Use natural gas instead of coal in power stations (cleaner fuel)</li>
+      <li>Use filters on coal and oil power stations to reduce sulfur dioxide emissions</li>
+      <li>Promote use of electric or hybrid cars (by 2030, all new registered cars in Ireland must be electric or hybrid)</li>
+      <li>Encourage people to use public transport</li>
+    </ul>
+
+    <div class="remember">
+      <span class="icon">📊</span>
+      <div class="text">
+        <strong>Success Story</strong>
+        Acid rain was a big problem in Europe and North America in the 1980s and 1990s, but measures were introduced (replacing coal with natural gas) and acid rain has significantly reduced in these regions. However, in Asia — especially China — acid rain remains a major environmental problem.
+      </div>
+    </div>
+
+    <!-- SMOG -->
+    <div class="sub-heading anchor-offset" id="smog">🌫️ Smog</div>
+    <p><strong>Smog is pollution that occurs when smoke from burning fossil fuels mixes with sunlight and heat.</strong> Because it looks like fog and is caused by smoke, it is called smog.</p>
+    <p>Smog was common during the last century in industrial areas. In 1952, the smog was so bad in London that roads, railway lines and airports were closed. It caused around <strong>4,000 deaths</strong>. It remains a familiar sight in cities today, especially in the densely populated and booming cities of <strong>China and India</strong>.</p>
+
+    <!-- ═══ KEY TERMS FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="key-terms">
+      <span class="icon">🃏</span> Key Terms Flashcards
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are <strong>energy resources</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Key Term</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Resources that the physical world provides us with that we can make energy from.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between <strong>renewable</strong> and <strong>non-renewable</strong> energy?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Renewable energy</strong> can be used over and over again and will not run out (e.g. wind, solar, HEP, geothermal, biomass). <strong>Non-renewable energy</strong> can only be used once and will eventually run out (e.g. oil, coal, gas, peat).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are <strong>fossil fuels</strong>? Give three examples.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Fossil Fuels</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Fuels made from decomposing plants and animals. Examples: <strong>oil, coal, gas</strong> (and peat). Around 80% of the world's energy and 86% of Ireland's energy comes from fossil fuels.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>OPEC</strong> and what does it do?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Oil</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Organization of the Petroleum Exporting Countries</strong>. It sets oil prices and causes them to fluctuate (rise and fall). Prices fall when there is a lot of oil available, and rise if it is difficult to access oil due to conflicts in oil-producing countries.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>HEP</strong>? How does it work?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">HEP</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Hydroelectric power (HEP) is <strong>the creation of electricity by using the force of falling water</strong>. A dam is built across a river, water builds up forming a reservoir, then released to turn a turbine and generate electricity.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the <strong>4 requirements</strong> for a HEP station.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">HEP</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Water supply</strong> — constant supply on fast-flowing rivers. 2. <strong>Slope</strong> — a drop in the course of the river. 3. <strong>Bedrock</strong> — impermeable bedrock so water does not seep away. 4. <strong>Climate</strong> — high levels of rainfall.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>geothermal energy</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Geothermal</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Energy created by using the <strong>heat from the Earth's crust</strong>. Water is pumped deep into the crust, heated by rocks, then pumped back to the surface to heat homes or generate electricity. Best exploited in areas with volcanic activity — e.g. <strong>Iceland, New Zealand</strong>.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>biomass energy</strong>? What is a biofuel?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Biomass</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Biomass energy comes from <strong>burning organic material</strong> (wood logs, chips, pellets, manure, sewage, crops like rapeseed). Biomass materials can produce <strong>biofuels</strong> such as biodiesel, used to power engines and reduce use of non-renewable fuels.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>global warming</strong>? What causes it?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Global Warming</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>The increase in the temperature of the Earth due to human activities like burning fossil fuels</strong>. Burning fossil fuels increases greenhouse gases which trap the Sun's heat in the atmosphere, causing temperatures to rise. Got faster since the Industrial Revolution (1700s).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>How is <strong>acid rain</strong> formed? What problems does it cause?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Acid Rain</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Formed when <strong>sulfur dioxide and nitrogen oxide</strong> (released by burning fossil fuels) mix with water vapour in the atmosphere and fall as acid rain. Problems: washes nutrients from soil; kills fish in lakes; damages forests (e.g. Black Forest, Germany); erodes stone buildings.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>smog</strong>? Where is it a problem?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Smog</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Pollution that occurs when <strong>smoke from burning fossil fuels mixes with sunlight and heat</strong>. Looks like fog, caused by smoke. Remains a major problem in densely populated cities in <strong>China and India</strong>. In London in 1952, smog caused around 4,000 deaths.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the Corrib gas field case study: <strong>3 economic impacts</strong></span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Corrib</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. Cost €3.6 billion to develop. 2. Produces 100% of Ireland's home-produced gas (30% of overall gas needs). 3. Created over 1,400 jobs during construction, currently employs 150. Roads upgraded costing €22 million.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the Inniscarra Dam case study: <strong>key facts</strong></span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Inniscarra</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Built in the <strong>1950s</strong> on the River Lee. Located west of Ballincollig, <strong>Co. Cork</strong>. Dam height: <strong>42 m</strong>. Reservoir = 530 hectares / 5 km². Generates <strong>27 MW</strong> of electricity (enough for ~16,200 homes).</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Facts</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Renewable Energy</strong></td>
+          <td>Can be used again and again — wind, solar, HEP, geothermal, biomass.</td>
+          <td>Always give examples when defining renewable energy.</td>
+        </tr>
+        <tr>
+          <td><strong>Non-Renewable Energy</strong></td>
+          <td>Can only be used once — oil, coal, gas, peat. Also called finite energy.</td>
+          <td>"Finite" = another word for non-renewable. Know both terms.</td>
+        </tr>
+        <tr>
+          <td><strong>Fossil Fuels</strong></td>
+          <td>Made from decomposing plants/animals. ~80% of world energy; ~86% of Ireland's energy.</td>
+          <td>Fossil fuels = oil, coal, gas (peat is sometimes included).</td>
+        </tr>
+        <tr>
+          <td><strong>OPEC</strong></td>
+          <td>Organization of Petroleum Exporting Countries. Sets oil prices.</td>
+          <td>Know what OPEC stands for and its function.</td>
+        </tr>
+        <tr>
+          <td><strong>HEP Requirements</strong></td>
+          <td>Water supply, slope, bedrock (impermeable), climate (high rainfall).</td>
+          <td>Learn all 4 — exams ask "Name TWO factors".</td>
+        </tr>
+        <tr>
+          <td><strong>Inniscarra Dam</strong></td>
+          <td>1950s, Co. Cork, River Lee, 42 m high, 27 MW, 530 hectares reservoir.</td>
+          <td>The named Irish HEP example — know location and output.</td>
+        </tr>
+        <tr>
+          <td><strong>Corrib Gas Field</strong></td>
+          <td>Off NW Mayo coast. Operations from 2015, expected to end 2030. 50% of Ireland's electricity needs.</td>
+          <td>Detailed case study — learn economic, social AND environmental impacts.</td>
+        </tr>
+        <tr>
+          <td><strong>Ireland Wind Energy</strong></td>
+          <td>35%+ of electricity from wind. Largest farm: Oweninny, Co. Mayo (140,000 homes).</td>
+          <td>Ireland's island location = ideal for offshore wind farms.</td>
+        </tr>
+        <tr>
+          <td><strong>Global Warming</strong></td>
+          <td>Increase in Earth's temp due to greenhouse gases from burning fossil fuels.</td>
+          <td>Greenhouse gases trap the Sun's heat — causing temperatures to rise.</td>
+        </tr>
+        <tr>
+          <td><strong>Acid Rain</strong></td>
+          <td>Sulfur dioxide + nitrogen oxide + water vapour = acid rain. pH ~4. Damages soil, fish, forests, buildings.</td>
+          <td>Name both gases (SO₂ and NO) — often asked in exams.</td>
+        </tr>
+        <tr>
+          <td><strong>Smog</strong></td>
+          <td>Smoke + sunlight + heat = smog. Major problem in China and India. London 1952 = 4,000 deaths.</td>
+          <td>Smog = smoke + fog. Know where it is a problem.</td>
+        </tr>
+        <tr>
+          <td><strong>Ireland Energy Import</strong></td>
+          <td>82% of energy imported (2022). Costs €1 million per hour. 40% of electricity from renewables.</td>
+          <td>SEAI = Sustainable Energy Authority of Ireland. Manages Ireland's renewable targets.</td>
+        </tr>
+        <tr>
+          <td><strong>Peat in Ireland</strong></td>
+          <td>Commercial exploitation ceased 2022. Now only 1.9% of Irish energy. Bogs now used for cutaway wind farms.</td>
+          <td>Know that commercial peat cutting is now banned in Ireland.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="ch4.html">&larr; Ch 4: Primary Economic Activities</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
