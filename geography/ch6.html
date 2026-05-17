@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 6 – Weathering &amp; Mass Movement | Geography Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --red-light:    #FFEBEE;
+      --teal:         #00796B;
+      --teal-light:   #E0F2F1;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--purple);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #8B5CF6 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🪨'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 42px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--purple);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--purple-dark); margin: 26px 0 10px;
+    }
+    .sub-sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700;
+      color: var(--teal); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--purple-light); border-left: 4px solid var(--purple);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--purple-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--purple); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .cards-grid-2 {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--purple-dark); }
+    .info-card .card-def { font-size: 13.5px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--purple); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--purple-dark); }
+
+    /* BULLET LIST */
+    .bullet-list { padding-left: 20px; margin: 10px 0; }
+    .bullet-list li { font-size: 14px; margin-bottom: 6px; line-height: 1.5; }
+    .bullet-list li strong { color: var(--purple-dark); }
+
+    /* TABLE */
+    .geo-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .geo-table th {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .geo-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .geo-table tr:last-child td { border-bottom: none; }
+    .geo-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .ex-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; }
+    .example-box .ex-body strong { color: var(--green); }
+
+    /* CASE STUDY BOX */
+    .case-study {
+      background: #fff; border: 2px solid var(--amber);
+      border-radius: var(--radius); margin: 20px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .case-study .cs-header {
+      background: var(--amber); color: var(--text);
+      font-family: 'Sora'; font-weight: 800; font-size: 14px;
+      padding: 10px 20px;
+    }
+    .case-study .cs-body { padding: 18px 20px; font-size: 14px; }
+    .case-study .cs-body h4 { font-family: 'Sora'; font-weight: 700; font-size: 14px; color: var(--purple-dark); margin: 14px 0 6px; }
+
+    /* ADVANATAGES / DISADVANTAGES */
+    .ad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .ad-box { border-radius: var(--radius); padding: 16px 18px; }
+    .ad-box.adv { background: var(--green-light); border: 1.5px solid var(--green); }
+    .ad-box.dis { background: var(--red-light); border: 1.5px solid var(--red); }
+    .ad-box h4 { font-family: 'Sora'; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+    .ad-box.adv h4 { color: var(--green); }
+    .ad-box.dis h4 { color: var(--red); }
+    .ad-box ul { padding-left: 16px; }
+    .ad-box ul li { font-size: 13px; margin-bottom: 6px; line-height: 1.45; }
+
+    /* FACTORS GRID */
+    .factors-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px; margin: 16px 0;
+    }
+    .factor-card {
+      background: var(--card); border-radius: var(--radius); padding: 16px;
+      border-top: 4px solid var(--purple); box-shadow: var(--shadow);
+    }
+    .factor-card .fc-title { font-family: 'Sora'; font-weight: 800; font-size: 13px; color: var(--purple-dark); margin-bottom: 6px; }
+    .factor-card .fc-body { font-size: 13px; color: #444; line-height: 1.5; }
+
+    /* MASS MOVEMENT TYPE */
+    .movement-card {
+      background: var(--card); border-radius: var(--radius); padding: 18px 20px;
+      border-left: 5px solid var(--purple); box-shadow: var(--shadow); margin-bottom: 14px;
+    }
+    .movement-card.slow { border-left-color: var(--blue); }
+    .movement-card.fast { border-left-color: var(--red); }
+    .movement-card .mc-badge {
+      display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 10px;
+      border-radius: 100px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.8px;
+    }
+    .movement-card.slow .mc-badge { background: var(--blue-light); color: var(--blue); }
+    .movement-card.fast .mc-badge { background: var(--red-light); color: var(--red); }
+    .movement-card .mc-title { font-family: 'Sora'; font-weight: 800; font-size: 16px; margin-bottom: 8px; }
+    .movement-card .mc-def { font-size: 14px; color: #333; line-height: 1.5; }
+    .movement-card .mc-evidence { font-size: 13px; color: var(--muted); margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+      gap: 12px;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      background: var(--purple-light); color: var(--purple-dark); white-space: nowrap;
+    }
+    .toggle-btn {
+      background: var(--purple); color: #fff; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s; white-space: nowrap;
+    }
+    .toggle-btn:hover { background: var(--purple-dark); }
+    .quiz-answer {
+      display: none; padding: 14px 18px; border-top: 1px solid var(--border);
+      background: var(--green-light); font-size: 14px; color: var(--green);
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* PROCESS DIAGRAM */
+    .process-diagram {
+      display: flex; gap: 0; margin: 16px 0; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .process-step {
+      flex: 1; padding: 18px 16px; text-align: center;
+      position: relative;
+    }
+    .process-step:nth-child(1) { background: #E8EAF6; }
+    .process-step:nth-child(2) { background: #C5CAE9; }
+    .process-step:nth-child(3) { background: #9FA8DA; }
+    .process-step .ps-num {
+      width: 30px; height: 30px; border-radius: 50%; background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-weight: 800; font-size: 14px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+    }
+    .process-step .ps-title { font-family: 'Sora'; font-weight: 700; font-size: 13px; margin-bottom: 6px; color: var(--purple-dark); }
+    .process-step .ps-body { font-size: 12px; color: #333; line-height: 1.4; }
+
+    /* EXAM TOOLKIT */
+    .exam-toolkit {
+      background: var(--blue-light); border: 2px solid var(--blue);
+      border-radius: var(--radius); padding: 16px 20px; margin: 16px 0;
+    }
+    .exam-toolkit .et-title { font-family: 'Sora'; font-weight: 800; font-size: 14px; color: var(--blue); margin-bottom: 8px; }
+    .depded-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+    .depded-item {
+      background: #fff; border: 1.5px solid var(--blue); border-radius: 8px;
+      padding: 6px 14px; text-align: center; flex: 1; min-width: 80px;
+    }
+    .depded-item .di-letter { font-family: 'Sora'; font-weight: 800; font-size: 18px; color: var(--blue); }
+    .depded-item .di-word { font-size: 11px; color: var(--muted); }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a { color: var(--amber); text-decoration: none; font-weight: 600; }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    /* SCROLL OFFSET */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* DID YOU KNOW */
+    .did-you-know {
+      background: var(--teal-light); border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 12px 18px; margin: 14px 0; font-size: 14px;
+    }
+    .did-you-know strong { color: var(--teal); font-family: 'Sora'; }
+
+    /* KEY TERMS GRID */
+    .kt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 16px 0; }
+    .kt-card {
+      background: var(--card); border-radius: var(--radius); padding: 14px 16px;
+      border: 1.5px solid var(--border); box-shadow: var(--shadow);
+    }
+    .kt-card .kt-word { font-family: 'Sora'; font-weight: 800; font-size: 14px; color: var(--purple-dark); margin-bottom: 4px; }
+    .kt-card .kt-def { font-size: 13px; color: #444; line-height: 1.45; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 30px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+      .ad-grid { grid-template-columns: 1fr; }
+      .process-diagram { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Geography Revision</div>
+    <div class="book-title">Ch 6 — Weathering &amp; Mass Movement</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Geography Home</a>
+
+  <div class="sidebar-label">Weathering &amp; Erosion</div>
+  <a href="#weathering">Weathering vs Erosion</a>
+  <a href="#mechanical">Mechanical Weathering</a>
+  <a href="#chemical">Chemical Weathering</a>
+  <a href="#biological">Biological Weathering</a>
+
+  <div class="sidebar-label">Karst Landscapes</div>
+  <a href="#karst">What is Karst?</a>
+  <a href="#surface">Surface Features</a>
+  <a href="#underground">Underground Features</a>
+  <a href="#burren">Case Study: The Burren</a>
+
+  <div class="sidebar-label">Mass Movement</div>
+  <a href="#mass-movement">What is Mass Movement?</a>
+  <a href="#factors">Factors Affecting It</a>
+  <a href="#types">Types of Mass Movement</a>
+  <a href="#controlling">Controlling Mass Movement</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#key-terms">Key Terms Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 6 · Geography in Action</div>
+    <h1>Weathering &amp; <span>Mass Movement</span></h1>
+    <div class="chapter-meta">Unit: Physical Geography &nbsp;·&nbsp; The Changing Face of the Earth</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🪨 Weathering &amp; Erosion</span>
+      <span class="goal-tag">❄️ Freeze-Thaw Action</span>
+      <span class="goal-tag">🧪 Carbonation &amp; Karst</span>
+      <span class="goal-tag">🗺️ The Burren, Co. Clare</span>
+      <span class="goal-tag">⛰️ Types of Mass Movement</span>
+      <span class="goal-tag">🛑 Controlling Mass Movement</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ INTRO ═══ -->
+    <div class="section-heading anchor-offset" id="weathering">
+      <span class="icon">🪨</span> Weathering &amp; Erosion
+    </div>
+    <p>The rocks and soil of the Earth's crust are constantly being worn down by processes known as <strong>denudation</strong>. The two main processes of denudation are weathering and erosion.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🪨</div>
+        <div class="card-title">Weathering</div>
+        <div class="card-def">The <strong>breaking down of rocks and soil that are exposed to the weather</strong>. The broken-down material does not move from the place where weathering occurred.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">💨</div>
+        <div class="card-title">Erosion</div>
+        <div class="card-def">The <strong>breaking down of rocks and soil and the transportation of the eroded material</strong>. Erosion is caused by moving water, moving ice (glaciers), and moving air (wind).</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Denudation</div>
+        <div class="card-def">The overall process of wearing down the Earth's crust. It includes both weathering and erosion working together over time.</div>
+      </div>
+    </div>
+
+    <p>There are <strong>three types of weathering</strong>: mechanical weathering, chemical weathering, and biological weathering.</p>
+
+    <!-- ═══ MECHANICAL WEATHERING ═══ -->
+    <div class="section-heading anchor-offset" id="mechanical">
+      <span class="icon">❄️</span> Mechanical Weathering
+    </div>
+
+    <div class="key-term">
+      <div class="term">Mechanical Weathering</div>
+      <div class="definition">The <strong>physical breaking up of rocks into smaller pieces by putting pressure on the rock</strong>. The rock breaks up but its chemical composition does not change.</div>
+    </div>
+
+    <div class="sub-heading">Freeze-Thaw Action</div>
+
+    <div class="key-term">
+      <div class="term">Freeze-Thaw Action</div>
+      <div class="definition">A type of mechanical weathering where rock is broken down due to water in the cracks <strong>repeatedly freezing and thawing</strong>. This occurs high up in mountainous areas where there is a lot of precipitation and the temperatures regularly rise and fall below freezing point (0°C). Temperatures that repeatedly rise and fall are called <strong>fluctuating temperatures</strong>.</div>
+    </div>
+
+    <div class="sub-sub-heading">Process — How It Works</div>
+    <div class="process-diagram">
+      <div class="process-step">
+        <div class="ps-num">1</div>
+        <div class="ps-title">Day</div>
+        <div class="ps-body">Water seeps into cracks and joints in the rock during the day.</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">2</div>
+        <div class="ps-title">Night</div>
+        <div class="ps-body">Temperatures fall below freezing. Water freezes and expands by 9%, putting pressure on the rock.</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">3</div>
+        <div class="ps-title">Over Time</div>
+        <div class="ps-body">Cracks widen and joints weaken. Eventually pieces break off — the broken-down rock is called <strong>scree</strong>. Scree collects at the base of a slope.</div>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-header">📍 Example</div>
+      <div class="ex-body">Freeze-thaw action occurs in upland areas like <strong>Croagh Patrick in Co. Mayo</strong>. Temperatures here frequently rise above and fall below freezing point.</div>
+    </div>
+
+    <!-- ═══ CHEMICAL WEATHERING ═══ -->
+    <div class="section-heading anchor-offset" id="chemical">
+      <span class="icon">🧪</span> Chemical Weathering
+    </div>
+
+    <div class="key-term">
+      <div class="term">Chemical Weathering</div>
+      <div class="definition">When <strong>rocks are dissolved because of a chemical reaction</strong>. The chemical composition of the rock is changed in the process.</div>
+    </div>
+
+    <div class="sub-heading">Carbonation</div>
+
+    <div class="key-term">
+      <div class="term">Carbonation</div>
+      <div class="definition">A type of chemical weathering in which <strong>limestone is broken down by the carbonic acid in rainwater</strong>.</div>
+    </div>
+
+    <div class="sub-sub-heading">Process — How Carbonation Works</div>
+    <ol class="step-list">
+      <li><div class="step-text">The atmosphere contains carbon dioxide (CO₂).</div></li>
+      <li><div class="step-text"><strong>Rainwater (H₂O) mixes with the carbon dioxide (CO₂) to form a weak carbonic acid (H₂CO₃)</strong>.</div></li>
+      <li><div class="step-text">Limestone is composed mostly of calcium carbonate. It reacts when it comes in contact with the weak carbonic acid in the rainwater, causing it to dissolve.</div></li>
+      <li><div class="step-text">Limestone is permeable, so rainwater can pass right down through the rock, creating unique karst landscapes.</div></li>
+    </ol>
+
+    <div class="example-box">
+      <div class="ex-header">📍 Irish Example</div>
+      <div class="ex-body">The next section looks at how carbonation has created a unique landscape in <strong>the Burren, a limestone region in Co. Clare</strong>.</div>
+    </div>
+
+    <!-- ═══ BIOLOGICAL WEATHERING ═══ -->
+    <div class="section-heading anchor-offset" id="biological">
+      <span class="icon">🌿</span> Biological Weathering
+    </div>
+
+    <div class="key-term">
+      <div class="term">Biological Weathering</div>
+      <div class="definition">When <strong>rocks are broken down by plants or animals</strong>. The roots of plants can enter cracks in rocks, and as they grow, they widen the cracks and weaken the rock, eventually breaking it. Animals burrowing in the ground can also dig into cracks, further widening and weakening the rock.</div>
+    </div>
+
+    <!-- ═══ KARST ═══ -->
+    <div class="section-heading anchor-offset" id="karst">
+      <span class="icon">🗺️</span> Carbonation &amp; Karst Landscapes
+    </div>
+
+    <div class="key-term">
+      <div class="term">Karst Landscape</div>
+      <div class="definition">A <strong>limestone area with surface and underground features made by carbonation</strong>.</div>
+      <div class="tip">💡 Karst landscapes are named after a limestone region called Karst in Slovenia.</div>
+    </div>
+
+    <p>An example of a karst landscape in Ireland is <strong>the Burren in Co. Clare</strong>. The soil was removed from the Burren by ice sheets during the last ice age. This left the bare limestone rock exposed to the weather. Carbonation has created a unique landscape in the region.</p>
+
+    <!-- ═══ SURFACE FEATURES ═══ -->
+    <div class="section-heading anchor-offset" id="surface">
+      <span class="icon">🏔️</span> Surface Features of a Karst Landscape
+    </div>
+
+    <div class="sub-heading">Limestone Pavement</div>
+    <div class="key-term">
+      <div class="term">Limestone Pavement</div>
+      <div class="definition">The surface of a karst landscape is called a <strong>limestone pavement</strong>.</div>
+    </div>
+
+    <div class="sub-sub-heading">How a Limestone Pavement Forms</div>
+    <ol class="step-list">
+      <li><div class="step-text">Rainwater falls onto the exposed limestone and passes through <strong>joints — long vertical cracks in limestone rock</strong>.</div></li>
+      <li><div class="step-text">Carbonation makes the joints wider by dissolving the calcium carbonate in the limestone until they look like grooves or gaps. <strong>These grooves or gaps are called grikes</strong>.</div></li>
+      <li><div class="step-text"><strong>The blocks of limestone left in between the grikes are called clints</strong>.</div></li>
+    </ol>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🔲</div>
+        <div class="card-title">Clint</div>
+        <div class="card-def">A block of limestone that is left standing between the grikes. The exposed surface of a limestone pavement.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">〰️</div>
+        <div class="card-title">Grike</div>
+        <div class="card-def">A groove or gap in the limestone pavement formed by carbonation dissolving the rock along a joint.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🕳️</div>
+        <div class="card-title">Joint</div>
+        <div class="card-def">A long vertical crack in limestone rock through which rainwater flows, allowing carbonation to occur.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Swallow Hole</div>
+    <div class="key-term">
+      <div class="term">Swallow Hole</div>
+      <div class="definition">Rivers that flow over a limestone surface can <strong>disappear underground through a swallow hole</strong>.</div>
+    </div>
+
+    <div class="sub-sub-heading">How a Swallow Hole Forms</div>
+    <ol class="step-list">
+      <li><div class="step-text">As the river flows over limestone, the water widens the joints in the rock through carbonation.</div></li>
+      <li><div class="step-text">Eventually, the river disappears from the surface and begins to flow underground along the <strong>bedding planes — the horizontal spaces between the layers or strata in limestone rock</strong>.</div></li>
+      <li><div class="step-text">Carbonation and <strong>hydraulic action (the physical force of the moving water)</strong> enlarge the joints and bedding planes.</div></li>
+      <li><div class="step-text">The place where the river disappears underground is called a swallow hole.</div></li>
+    </ol>
+
+    <div class="example-box">
+      <div class="ex-header">📍 Example</div>
+      <div class="ex-body"><strong>Pollnagollum swallow hole in the Burren</strong> is over 6 m wide and 16 m deep.</div>
+    </div>
+
+    <!-- ═══ UNDERGROUND FEATURES ═══ -->
+    <div class="section-heading anchor-offset" id="underground">
+      <span class="icon">🕳️</span> Underground Features
+    </div>
+
+    <div class="sub-heading">Caves and Caverns</div>
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🦇</div>
+        <div class="card-title">Cave</div>
+        <div class="card-def">A <strong>natural hollow space under the ground that has an opening on the surface</strong>. Formed as rivers flow underground through swallow holes, enlarging passages by carbonation and hydraulic action.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌑</div>
+        <div class="card-title">Cavern</div>
+        <div class="card-def">An <strong>underground cave that has an opening that is also underground</strong>. Formed by the same processes as caves, but the space grows even larger over time.</div>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-header">📍 Irish Examples</div>
+      <div class="ex-body">The <strong>Aillwee Caves in the Burren, Co. Clare</strong> and <strong>Crag Cave in Castleisland, Co. Kerry</strong>.</div>
+    </div>
+
+    <div class="sub-heading">Stalactites</div>
+    <p>As water seeps through the rock, it carries dissolved limestone with it. Some of this water eventually reaches the roof of a cave or cavern below ground.</p>
+    <ol class="step-list">
+      <li><div class="step-text">These water-drops on the roof slowly evaporate and leave behind <strong>small deposits of pure limestone called calcite</strong>.</div></li>
+      <li><div class="step-text">Gradually, <strong>the calcite builds up to form icicle-like shapes called stalactites, which hang from the roof</strong>.</div></li>
+    </ol>
+
+    <div class="sub-heading">Stalagmites</div>
+    <p>Drops of water may also seep through the rock and fall on the ground.</p>
+    <ol class="step-list">
+      <li><div class="step-text">This water evaporates and leaves deposits of calcite on the floor of the cave directly below the stalactites.</div></li>
+      <li><div class="step-text"><strong>The calcite builds up, forming upside-down icicle-like shapes called stalagmites</strong>.</div></li>
+    </ol>
+
+    <div class="sub-heading">Pillars (Columns)</div>
+    <p>After thousands of years, <strong>a stalactite and a stalagmite can meet and join, resulting in the formation of a pillar or column</strong>.</p>
+
+    <div class="remember">
+      <span class="icon">💡</span>
+      <div class="text">
+        <strong>Top Tip: Stalactites vs Stalagmites</strong>
+        The <strong>g</strong> in stala<strong>g</strong>mite stands for <strong>g</strong>round, and the <strong>c</strong> in stala<strong>c</strong>tite stands for <strong>c</strong>eiling. Stalactites hang from the ceiling; stalagmites grow from the ground.
+      </div>
+    </div>
+
+    <div class="exam-toolkit">
+      <div class="et-title">📝 Exam Toolkit — D·E·P·E·D Formula</div>
+      <p style="font-size:13px;margin-bottom:10px;">Apply this formula to help you answer questions on physical geography in your exam:</p>
+      <div class="depded-row">
+        <div class="depded-item"><div class="di-letter">D</div><div class="di-word">Description</div></div>
+        <div class="depded-item"><div class="di-letter">E</div><div class="di-word">Example</div></div>
+        <div class="depded-item"><div class="di-letter">P</div><div class="di-word">Processes</div></div>
+        <div class="depded-item"><div class="di-letter">E</div><div class="di-word">Explanation</div></div>
+        <div class="depded-item"><div class="di-letter">D</div><div class="di-word">Diagram</div></div>
+      </div>
+      <p style="font-size:13px;margin-top:10px;color:var(--blue);">Try to remember this by using a sentence that contains the first letter of each word, e.g.: <strong>"Do Eat Porridge Each Day."</strong></p>
+    </div>
+
+    <!-- ═══ BURREN CASE STUDY ═══ -->
+    <div class="section-heading anchor-offset" id="burren">
+      <span class="icon">🌿</span> Case Study: The Burren, Co. Clare
+    </div>
+
+    <div class="case-study">
+      <div class="cs-header">📋 Case Study — A Karst Landscape: The Burren, Co. Clare</div>
+      <div class="cs-body">
+        <p>The limestone of the Burren was formed around <strong>350 million years ago under the sea</strong>. The Burren is now a region of exposed limestone. Chemical weathering in the Burren has resulted in a unique landscape in Ireland.</p>
+        <p style="margin-top:10px;">The region is also known for:</p>
+        <ul class="bullet-list" style="margin-top:6px;">
+          <li>Its <strong>historical attractions</strong>, with over 2,700 ancient monuments dating back 6,000 years.</li>
+          <li>Its unique mix of wildflowers, including flowers found in <strong>Alpine, Arctic and Mediterranean regions</strong>.</li>
+          <li>The <strong>Cliffs of Moher</strong>, which receives upwards of 1.6 million visitors each year.</li>
+        </ul>
+
+        <h4>Tourism in the Burren</h4>
+        <p>Tourism in the Burren is promoted by its inclusion on the popular <strong>Wild Atlantic Way</strong> tourist trail, which spans the entire west coast of Ireland. The region is also part of the <strong>Burren and Cliffs of Moher UNESCO Geopark</strong>, which are internationally protected areas that promote sustainable tourism.</p>
+        <p style="margin-top:8px;">With upwards of one million people passing through the region annually, tourism can have many advantages and disadvantages:</p>
+
+        <div class="ad-grid" style="margin-top:14px;">
+          <div class="ad-box adv">
+            <h4>✅ Advantages</h4>
+            <ul>
+              <li>Tourism provides <strong>employment</strong> in the area for local people in the form of restaurants, accommodation, leisure facilities and transport.</li>
+              <li>It <strong>reduces migration</strong> from the area, meaning younger people have opportunities for employment locally.</li>
+              <li>It brings <strong>income</strong> to the region and therefore improves services and infrastructure.</li>
+            </ul>
+          </div>
+          <div class="ad-box dis">
+            <h4>❌ Disadvantages</h4>
+            <ul>
+              <li>Increased <strong>pollution</strong> caused by tourism can cause damage to the limestone and the natural flora and fauna.</li>
+              <li>New buildings and increased services can <strong>destroy the scenic beauty</strong> of the region.</li>
+              <li>Visitors can cause <strong>damage to the rare flora and fauna</strong> of the region.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>Transport in the Burren</h4>
+        <p>The Burren is an area where road access is limited due to the physical landscape. There is only one national secondary road (the <strong>N67</strong>) that runs through the Burren, and the coastal route is serviced by a regional road. These roads are unsuitable for the current amount of traffic that uses them. Due to tourism, upwards of <strong>20,000 buses</strong> use the road network in the Burren annually, causing huge disruption.</p>
+      </div>
+    </div>
+
+    <!-- ═══ MASS MOVEMENT ═══ -->
+    <div class="section-heading anchor-offset" id="mass-movement">
+      <span class="icon">⛰️</span> Mass Movement
+    </div>
+
+    <p>Weathering and erosion produce loose material called <strong>regolith</strong>.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🪨</div>
+        <div class="card-title">Regolith</div>
+        <div class="card-def">Made up of <strong>rock particles, dust and soil</strong> that sits on the Earth's bedrock, produced by weathering and erosion.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⛰️</div>
+        <div class="card-title">Mass Movement</div>
+        <div class="card-def">When <strong>regolith moves down a slope due to gravity</strong>. It is classified by the speed at which it occurs — slow or fast.</div>
+      </div>
+    </div>
+
+    <!-- ═══ FACTORS ═══ -->
+    <div class="section-heading anchor-offset" id="factors">
+      <span class="icon">🔍</span> Factors That Affect Mass Movement
+    </div>
+
+    <p>Mass movement is usually caused by two or more of the following factors:</p>
+
+    <div class="factors-grid">
+      <div class="factor-card">
+        <div class="fc-title">📐 Gradient</div>
+        <div class="fc-body">Gradient refers to the steepness of the slope. Mass movement generally occurs in upland areas or areas that have steep slopes. The steeper the slope, the faster the movement of the regolith.</div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-title">💧 Water Content</div>
+        <div class="fc-body">Water makes regolith heavier and <strong>saturated</strong> (absorbed all the water it possibly can). Heavier, more saturated regolith moves downslope faster. Water also acts as a lubricant, reducing friction and making movement easier.</div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-title">🏗️ Human Activity</div>
+        <div class="fc-body">People sometimes dig into slopes during construction of things such as wind turbines, roads, quarrying or mining. Digging into the slope makes it steeper and more unstable, leading to mass movement.</div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-title">🌱 Vegetation</div>
+        <div class="fc-body">Grass and shrubs protect the soil from weathering and erosion. Plant and tree roots bind the soil together and keep it stable. When trees and vegetation are removed, it can lead to mass movement.</div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-title">🐄 Animals</div>
+        <div class="fc-body">Burrowing animals can loosen the soil, making it unstable. Overgrazing by cattle and sheep removes the vegetation cover, exposing the soil and making the slope unstable and prone to mass movement.</div>
+      </div>
+    </div>
+
+    <!-- ═══ TYPES OF MASS MOVEMENT ═══ -->
+    <div class="section-heading anchor-offset" id="types">
+      <span class="icon">🏔️</span> Types of Mass Movement
+    </div>
+
+    <p>Mass movement is classified by the speed at which it occurs. There are <strong>slow</strong> (soil creep) and <strong>fast</strong> (bog bursts, mudflows, landslides and avalanches) mass movements.</p>
+
+    <div class="movement-card slow">
+      <span class="mc-badge">🐢 Slow</span>
+      <div class="mc-title">Soil Creep</div>
+      <div class="mc-def">Soil creep is the <strong>slow movement of soil down a slope under the influence of gravity</strong>. It is the slowest form of mass movement and becomes evident only when you examine the landscape closely.</div>
+      <div class="mc-evidence">
+        <strong>Evidence of soil creep:</strong><br>
+        • Trees grow at an angle, with the base of the tree turned downslope.<br>
+        • A series of steps called <strong>terracettes</strong> form, giving the surface a wrinkled appearance.<br>
+        • Fences bend and telegraph poles tilt downhill.<br>
+        • Walls crack and break when soil piles up behind them.
+      </div>
+    </div>
+
+    <div class="movement-card fast">
+      <span class="mc-badge">⚡ Fast</span>
+      <div class="mc-title">Bog Burst (Bog Slide)</div>
+      <div class="mc-def">A bog burst is the <strong>sudden movement of a mass of bog or peat down a slope after a period of heavy rainfall</strong>. The peat becomes so saturated that water can no longer soak downwards, so the peat moves downslope. It can block roads, knock down trees, damage roads and buildings and pollute lakes and rivers.</div>
+    </div>
+
+    <div class="movement-card fast">
+      <span class="mc-badge">⚡ Fast</span>
+      <div class="mc-title">Mudflows</div>
+      <div class="mc-def">Mudflows occur when <strong>soil and regolith become saturated with water after periods of heavy rainfall and move downslope like a river of mud</strong>. They are one of the fastest forms of mass movement and can reach speeds of over 100 km/h. Mudflows can also occur in the aftermath of a volcano — this meltwater mixes with ash, soil and rock fragments to create a particularly dangerous kind of mudflow known as a <strong>lahar</strong>.</div>
+    </div>
+
+    <div class="movement-card fast">
+      <span class="mc-badge">⚡ Fast</span>
+      <div class="mc-title">Landslides</div>
+      <div class="mc-def">A landslide is the <strong>rapid movement of regolith down a steep slope that has become unstable</strong>. Causes of landslides include coastal erosion, deforestation, heavy rainfall, earthquakes and undercutting by road building or quarrying.</div>
+      <div class="mc-evidence">
+        <strong>Did you know?</strong> The biggest landslide in recorded history was triggered by the eruption of Mount St Helens in 1980. Nearly 3 km³ of rock moved downslope.
+      </div>
+    </div>
+
+    <div class="movement-card fast">
+      <span class="mc-badge">⚡ Fast</span>
+      <div class="mc-title">Avalanches</div>
+      <div class="mc-def">An avalanche is the <strong>rapid movement of snow and ice downslope when the weight of the snow becomes too much for the slope to hold</strong>. In February 2023, several avalanches over the course of two days led to the deaths of 10 people in the Austrian-Swiss Alps.</div>
+    </div>
+
+    <!-- CASE STUDY LANDSLIDE -->
+    <div class="case-study">
+      <div class="cs-header">📋 Case Study — Landslide: Papua New Guinea</div>
+      <div class="cs-body">
+        <p>The mountainous area of <strong>Maip Mulitaka, Enga Province, Papua New Guinea</strong>, is home to six villages and an estimated 4,000 people. At 3 a.m. local time, on <strong>23 May 2024</strong>, a huge landslide occurred there.</p>
+        <p style="margin-top:8px;">The landslide occurred in this upland area due to the <strong>extraordinarily high levels of rainfall</strong> the region experienced in the weeks and days leading up to the disaster. Due to the timing of the landslide, casualties were much higher as people were asleep when the landslide buried their homes.</p>
+
+        <h4>Impact of the Landslide</h4>
+        <ul class="bullet-list">
+          <li>Over <strong>2,000 people were buried and killed</strong> as a result of the landslide.</li>
+          <li>Over <strong>7,800 people were displaced</strong> and lost their homes.</li>
+          <li>The regolith was <strong>10 m deep</strong> in some areas.</li>
+          <li>Upwards of <strong>200 m of the main highway</strong> linking the remote region was blocked and covered.</li>
+        </ul>
+
+        <h4>Response</h4>
+        <ul class="bullet-list">
+          <li>Residents had to use shovels and their bare hands to dig and search for survivors.</li>
+          <li>Rescue teams were <strong>slow to reach the region</strong> due to its remoteness and the road access being blocked by the landslide.</li>
+          <li>Military equipment was eventually brought in from over 400 km away but was not used due to the fear of triggering more landslides in the area.</li>
+          <li><strong>Australia</strong>, Papua New Guinea's nearest neighbour, pledged an AU$4.5 million aid package to the affected area.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ CONTROLLING MASS MOVEMENT ═══ -->
+    <div class="section-heading anchor-offset" id="controlling">
+      <span class="icon">🛑</span> Controlling Mass Movement
+    </div>
+
+    <p>Humans can try to control natural disasters caused by mass movement. These hazards can be reduced or prevented in the following ways:</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🌳</div>
+        <div class="card-title">Vegetation</div>
+        <div class="card-def">Trees and vines can be planted on slopes to stabilise them. Their roots bind the soil and prevent regolith from moving.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🪜</div>
+        <div class="card-title">Steps</div>
+        <div class="card-def">Steps can be built into a mountainside to trap moving material and slow down or prevent mass movement.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🐄</div>
+        <div class="card-title">Restrict Overgrazing</div>
+        <div class="card-def">Restricting overgrazing keeps vegetation cover on slopes and stops soil creep from occurring.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">💥</div>
+        <div class="card-title">Controlled Explosions</div>
+        <div class="card-def">Controlled explosions in mountainous areas can be used to trigger small avalanches, making large, life-threatening avalanches less likely.</div>
+      </div>
+    </div>
+
+    <!-- ═══ KEY TERMS FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="key-terms">
+      <span class="icon">🔖</span> Key Terms Flashcards
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>denudation</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Weathering</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Denudation is the breakdown of rocks and soil that are exposed on the Earth's surface. The two main processes are <strong>weathering</strong> and <strong>erosion</strong>.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>freeze-thaw action</strong> and where does it occur?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Mechanical</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Freeze-thaw action is a type of mechanical weathering where rock is broken down due to water in cracks repeatedly <strong>freezing and thawing</strong>. It occurs in mountainous areas where temperatures fluctuate above and below 0°C — e.g. Croagh Patrick, Co. Mayo.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>scree</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Mechanical</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Scree</strong> is the broken-down rock that falls to the base of a slope as a result of freeze-thaw action. The pieces pile up at the base.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Explain how <strong>carbonation</strong> occurs.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Chemical</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Rainwater (H₂O) mixes with CO₂ in the atmosphere to form weak <strong>carbonic acid</strong> (H₂CO₃). This acid reacts with calcium carbonate in limestone, dissolving it. This creates karst features like grikes, swallow holes, caves and stalactites.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are <strong>clints</strong> and <strong>grikes</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Karst</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Clints</strong> are the blocks of limestone left in between the grikes on a limestone pavement. <strong>Grikes</strong> are the grooves or gaps in the limestone pavement formed when carbonation widens the joints.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between a <strong>stalactite</strong> and a <strong>stalagmite</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Karst</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A <strong>stalactite</strong> hangs from the ceiling of a cave — built up from calcite deposits left by dripping water. A <strong>stalagmite</strong> grows upward from the ground — formed by the same process directly below. (Tip: <strong>c</strong>eiling = stala<strong>c</strong>tite; <strong>g</strong>round = stala<strong>g</strong>mite)</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>mass movement</strong>? Name five factors that affect it.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Mass Movement</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Mass movement is when <strong>regolith moves down a slope due to gravity</strong>. Five factors: <strong>Gradient</strong> · <strong>Water content</strong> · <strong>Human activity</strong> · <strong>Vegetation</strong> · <strong>Animals</strong>.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name two types of <strong>slow</strong> and three types of <strong>fast</strong> mass movement.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Mass Movement</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Slow:</strong> Soil creep (and technically terracettes as evidence). <strong>Fast:</strong> Bog bursts · Mudflows (lahars) · Landslides · Avalanches.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>lahar</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Mudflows</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A <strong>lahar</strong> is a particularly dangerous type of mudflow that occurs in the aftermath of a volcanic eruption. Meltwater mixes with ash, soil and rock fragments to create a fast-moving river of mud.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Give <strong>three ways</strong> humans can control mass movement.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Controlling</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Plant vegetation</strong> (trees/vines) on slopes to bind soil. 2. <strong>Build steps</strong> into a mountainside to trap moving material. 3. <strong>Controlled explosions</strong> to trigger small avalanches and prevent large ones. Also: restrict overgrazing to preserve vegetation cover.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+
+    <table class="geo-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Definition / Process</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Weathering</strong></td>
+          <td>Breaking down of rocks/soil exposed to weather. Material stays in place.</td>
+          <td>Distinguish from erosion — erosion involves transportation of material.</td>
+        </tr>
+        <tr>
+          <td><strong>Erosion</strong></td>
+          <td>Breaking down of rocks/soil AND transportation of eroded material.</td>
+          <td>Caused by moving water, ice (glaciers), and wind.</td>
+        </tr>
+        <tr>
+          <td><strong>Freeze-Thaw Action</strong></td>
+          <td>Water enters cracks → freezes (expands 9%) → widens cracks → scree forms.</td>
+          <td>Occurs where temperatures fluctuate above/below 0°C. Draw the 3-stage diagram!</td>
+        </tr>
+        <tr>
+          <td><strong>Carbonation</strong></td>
+          <td>H₂O + CO₂ → H₂CO₃ (carbonic acid) → dissolves limestone (CaCO₃).</td>
+          <td>Only affects limestone. Creates karst landscape features.</td>
+        </tr>
+        <tr>
+          <td><strong>Biological Weathering</strong></td>
+          <td>Plants/animal roots widen cracks; burrowing animals loosen soil.</td>
+          <td>Often combined with mechanical weathering in exams.</td>
+        </tr>
+        <tr>
+          <td><strong>Karst Landscape</strong></td>
+          <td>Limestone area with surface + underground features made by carbonation.</td>
+          <td>Named after Karst in Slovenia. Irish example: the Burren, Co. Clare.</td>
+        </tr>
+        <tr>
+          <td><strong>Limestone Pavement</strong></td>
+          <td>Surface of karst. Clints (blocks) separated by grikes (grooves).</td>
+          <td>Joints are the vertical cracks that carbonation widens into grikes.</td>
+        </tr>
+        <tr>
+          <td><strong>Swallow Hole</strong></td>
+          <td>River disappears underground through a hole in limestone. Flows along bedding planes.</td>
+          <td>Example: Pollnagollum, the Burren — over 6 m wide, 16 m deep.</td>
+        </tr>
+        <tr>
+          <td><strong>Stalactite</strong></td>
+          <td>Calcite deposit hanging from cave ceiling.</td>
+          <td>"c" in stalac<strong>t</strong>ite = ceiling.</td>
+        </tr>
+        <tr>
+          <td><strong>Stalagmite</strong></td>
+          <td>Calcite deposit growing up from cave floor.</td>
+          <td>"g" in stala<strong>g</strong>mite = ground.</td>
+        </tr>
+        <tr>
+          <td><strong>Pillar/Column</strong></td>
+          <td>Formed when stalactite and stalagmite meet and join.</td>
+          <td>Takes thousands of years to form.</td>
+        </tr>
+        <tr>
+          <td><strong>Mass Movement</strong></td>
+          <td>Regolith moves downslope due to gravity. Slow = soil creep. Fast = bog bursts, mudflows, landslides, avalanches.</td>
+          <td>Factors: Gradient, Water, Human activity, Vegetation, Animals.</td>
+        </tr>
+        <tr>
+          <td><strong>Soil Creep</strong></td>
+          <td>Slowest mass movement. Evidence: tilted trees, terracettes, bent fences.</td>
+          <td>Not immediately visible — requires close landscape examination.</td>
+        </tr>
+        <tr>
+          <td><strong>Lahar</strong></td>
+          <td>Volcanic mudflow — meltwater + ash + soil + rock fragments.</td>
+          <td>One of the most dangerous mass movements; can reach 100+ km/h.</td>
+        </tr>
+        <tr>
+          <td><strong>Burren Tourism</strong></td>
+          <td>Wild Atlantic Way + UNESCO Geopark. Over 1 million visitors annually.</td>
+          <td>Know 2 advantages and 2 disadvantages of tourism for the exam.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="ch5.html">&larr; Ch 5: Energy &amp; Environment</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
