@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 1 – Geographical Skills | Geography Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--purple);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #8B5CF6 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🗺️'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 46px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--purple);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--purple-dark); margin: 26px 0 10px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--purple-light); border-left: 4px solid var(--purple);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--purple-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--purple); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--purple); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--purple-dark); }
+
+    /* TABLE */
+    .geo-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .geo-table th {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .geo-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .geo-table tr:last-child td { border-bottom: none; }
+    .geo-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .ex-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; }
+    .example-box .ex-body strong { color: var(--green); }
+
+    /* COMPASS SVG WRAPPER */
+    .compass-wrap {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 16px 0;
+    }
+
+    /* GRAPH METHOD BOX */
+    .method-box {
+      background: var(--blue-light); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0;
+    }
+    .method-box .method-title {
+      font-family: 'Sora'; font-weight: 700; color: var(--blue); font-size: 14px; margin-bottom: 8px;
+    }
+    .method-box ul { padding-left: 18px; font-size: 13.5px; }
+    .method-box li { margin-bottom: 5px; }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      background: var(--purple-light); color: var(--purple-dark);
+    }
+    .toggle-btn {
+      background: var(--purple); color: #fff; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: var(--purple-dark); }
+    .quiz-answer {
+      display: none; padding: 14px 18px; border-top: 1px solid var(--border);
+      background: var(--green-light); font-size: 14px; color: var(--green);
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* SCALE VISUAL */
+    .scale-strip {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px; margin: 16px 0; box-shadow: var(--shadow);
+    }
+    .scale-row { display: flex; gap: 20px; align-items: stretch; flex-wrap: wrap; }
+    .scale-card {
+      flex: 1; min-width: 200px; background: var(--purple-light);
+      border-radius: 10px; padding: 16px 18px; border-left: 4px solid var(--purple);
+    }
+    .scale-card .sc-label { font-family: 'Sora'; font-weight: 800; font-size: 18px; color: var(--purple-dark); }
+    .scale-card .sc-name { font-size: 13px; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+    .scale-card .sc-rule { font-size: 14px; color: var(--text); }
+    .scale-card .sc-rule strong { color: var(--purple-dark); }
+
+    /* HEIGHT METHODS */
+    .height-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+    .height-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: var(--radius); padding: 16px; text-align: center; box-shadow: var(--shadow);
+    }
+    .height-card .hc-icon { font-size: 32px; margin-bottom: 8px; }
+    .height-card .hc-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--purple-dark); }
+    .height-card .hc-desc { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+    /* LEN FORMULA */
+    .len-box {
+      display: flex; gap: 0; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); margin: 16px 0; max-width: 500px;
+    }
+    .len-part {
+      flex: 1; padding: 16px 20px; text-align: center;
+      font-family: 'Sora'; font-weight: 800; font-size: 22px; color: #fff;
+    }
+    .len-part .len-label { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 4px; display: block; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    /* SCROLL OFFSET for anchors */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* GRAPH SALT BOX */
+    .salt-box {
+      background: #FFF3CD; border: 2px solid var(--amber);
+      border-radius: var(--radius); padding: 16px 20px; margin: 16px 0;
+    }
+    .salt-box .salt-title { font-family: 'Sora'; font-weight: 800; color: var(--amber); font-size: 15px; margin-bottom: 10px; }
+    .salt-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .salt-item {
+      background: #fff; border: 1.5px solid var(--amber); border-radius: 10px;
+      padding: 10px 16px; flex: 1; min-width: 120px; text-align: center;
+    }
+    .salt-item .si-letter { font-family: 'Sora'; font-weight: 800; font-size: 24px; color: var(--amber); }
+    .salt-item .si-word { font-size: 13px; color: var(--text); font-weight: 700; }
+    .salt-item .si-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 32px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Geography Revision</div>
+    <div class="book-title">Ch 1 — Geographical Skills</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Geography Home</a>
+
+  <div class="sidebar-label">OS Map Skills</div>
+  <a href="#geography">What is Geography?</a>
+  <a href="#scale">Scale &amp; Ratio</a>
+  <a href="#national-grid">National Grid</a>
+  <a href="#grid-refs">Grid References</a>
+  <a href="#symbols">Symbols &amp; Legend</a>
+  <a href="#height">Height</a>
+  <a href="#direction">Direction</a>
+  <a href="#sketch">Sketch Maps</a>
+
+  <div class="sidebar-label">Charts &amp; Graphs</div>
+  <a href="#bar-charts">Bar Charts</a>
+  <a href="#pie-charts">Pie Charts</a>
+  <a href="#trend-graphs">Trend Graphs</a>
+
+  <div class="sidebar-label">Units</div>
+  <a href="#units">Percentages, Area &amp; Height</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#key-terms">Key Terms Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 1 · Geography in Action</div>
+    <h1>Geographical <span>Skills</span><br>for First Years</h1>
+    <div class="chapter-meta">Unit: Geographical Skills &nbsp;·&nbsp; Ordnance Survey Maps &amp; Graph Skills</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🗺 OS Map Reading</span>
+      <span class="goal-tag">📐 Scale &amp; Grid References</span>
+      <span class="goal-tag">🧭 Direction &amp; Height</span>
+      <span class="goal-tag">✏️ Sketch Maps</span>
+      <span class="goal-tag">📊 Bar, Pie &amp; Trend Graphs</span>
+      <span class="goal-tag">📏 Units of Measurement</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ WHAT IS GEOGRAPHY ═══ -->
+    <div class="section-heading anchor-offset" id="geography">
+      <span class="icon">🌍</span> What is Geography?
+    </div>
+    <p>Geography is the study of the world around you. It explores where you live and makes you think about your village, town, city, country and the whole world.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🏔️</div>
+        <div class="card-title">Strand 1: Exploring the Physical World</div>
+        <div class="card-def">Looking at the physical world and examining how and why the world is shaped the way it is. E.g. formation of soil (Ch 16).</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌾</div>
+        <div class="card-title">Strand 2: Interacting with the Physical World</div>
+        <div class="card-def">Looking at how people use the planet Earth to their advantage and the impacts of this. E.g. growing crops (Ch 4), desertification (Ch 16).</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌆</div>
+        <div class="card-title">Strand 3: People, Place &amp; Change</div>
+        <div class="card-def">Looking at the people in the world, the places they live and the conditions in which they live.</div>
+        <div class="card-tip">These three strands overlap — most topics in Geography involve all three!</div>
+      </div>
+    </div>
+
+    <!-- ═══ SCALE ═══ -->
+    <div class="section-heading anchor-offset" id="scale">
+      <span class="icon">📏</span> Scale &amp; Ratio
+    </div>
+
+    <div class="key-term">
+      <div class="term">Scale</div>
+      <div class="definition"><strong>The scale of a map is the ratio of the distance on the map to the corresponding distance on the ground.</strong></div>
+      <div class="tip">💡 Ratio is how much of one thing there is compared to another. Trick: multiply or divide by the same value.</div>
+    </div>
+
+    <div class="scale-strip">
+      <div class="scale-row">
+        <div class="scale-card">
+          <div class="sc-name">Discovery Ireland Series</div>
+          <div class="sc-label">1 : 50,000</div>
+          <div class="sc-rule">1 cm on map = <strong>500 m (0.5 km)</strong> on ground<br>Every 2 cm = 1 km</div>
+        </div>
+        <div class="scale-card">
+          <div class="sc-name">Urban / Town Maps</div>
+          <div class="sc-label">1 : 10,000</div>
+          <div class="sc-rule">1 cm on map = <strong>100 m (0.1 km)</strong> on ground<br>Every 10 cm = 1 km</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">⚠️</div>
+      <div class="text"><strong>Larger scale = more detail, smaller area shown.</strong>
+        1:10,000 shows MORE detail than 1:50,000. The bigger the second number, the LESS detail shown.</div>
+    </div>
+
+    <!-- ═══ NATIONAL GRID ═══ -->
+    <div class="section-heading anchor-offset" id="national-grid">
+      <span class="icon">🇮🇪</span> The National Grid
+    </div>
+    <p>The national grid is used to locate places on 1:50,000 OS maps. The grid divides Ireland into 25 squares, each called a <strong>subzone</strong>, covering 100 km × 100 km. Each subzone is labelled with a letter (A–Z, skipping I).</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">➡️</div>
+        <div class="card-title">Eastings</div>
+        <div class="card-def"><strong>Vertical lines</strong> on OS maps. Numbers get higher as you go further <strong>east</strong>.</div>
+        <div class="card-tip">Think: "Go in the door" — move along east first!</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⬆️</div>
+        <div class="card-title">Northings</div>
+        <div class="card-def"><strong>Horizontal lines</strong> on OS maps. Numbers get higher as you go further <strong>north</strong>.</div>
+        <div class="card-tip">Think: "Go upstairs" — then go up (north)!</div>
+      </div>
+    </div>
+
+    <!-- ═══ GRID REFERENCES ═══ -->
+    <div class="section-heading anchor-offset" id="grid-refs">
+      <span class="icon">📍</span> Grid References
+    </div>
+    <p>Grid references locate areas or exact points on an OS map. The term <strong>LEN</strong> helps you remember the order:</p>
+
+    <div class="len-box">
+      <div class="len-part" style="background: var(--purple-dark);">L<span class="len-label">Letter of Subzone</span></div>
+      <div class="len-part" style="background: var(--purple);">E<span class="len-label">Easting (across)</span></div>
+      <div class="len-part" style="background: var(--amber); color: var(--text);">N<span class="len-label">Northing (up)</span></div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">🚪</div>
+      <div class="text"><strong>"Go in the door before you go upstairs"</strong>
+        Always write the easting (across) BEFORE the northing (up). E comes before N in the alphabet — and in grid references!</div>
+    </div>
+
+    <div class="sub-heading">Four-Figure Grid Reference</div>
+    <p>Identifies a <strong>1 km² grid square</strong>. Used for areas (e.g. a forest, a lake).</p>
+    <ol class="step-list">
+      <li><div class="step-text">Write the <strong>subzone letter</strong> (e.g. V)</div></li>
+      <li><div class="step-text">Read the <strong>easting</strong> — two-digit number at the bottom-left corner of the square (e.g. 44)</div></li>
+      <li><div class="step-text">Read the <strong>northing</strong> — two-digit number at the bottom-left corner (e.g. 99)</div></li>
+      <li><div class="step-text">Combine: <strong>V 44 99</strong></div></li>
+    </ol>
+
+    <div class="sub-heading">Six-Figure Grid Reference</div>
+    <p>Pinpoints an <strong>exact location</strong> (e.g. a church, post office). Imagine each grid square divided further into 10 × 10.</p>
+    <ol class="step-list">
+      <li><div class="step-text">Write the subzone letter (e.g. <strong>V</strong>)</div></li>
+      <li><div class="step-text">Write the two-digit easting, then estimate tenths into the square → easting becomes 3 digits (e.g. 44 → <strong>447</strong>)</div></li>
+      <li><div class="step-text">Write the two-digit northing, then estimate tenths up the square → northing becomes 3 digits (e.g. 99 → <strong>996</strong>)</div></li>
+      <li><div class="step-text">Result: <strong>V 447 996</strong></div></li>
+    </ol>
+
+    <div class="sub-heading">Grid Reference on a 1:10,000 Map</div>
+    <div class="example-box">
+      <div class="ex-header">📘 Example — 1:10,000 Grid Reference</div>
+      <div class="ex-body">
+        On a 1:10,000 map, move along the bottom to find the <strong>letter</strong> directly under your square, then up the side to find the <strong>number</strong> directly beside your square. Combine them: e.g. <strong>B1</strong>.
+      </div>
+    </div>
+
+    <!-- ═══ SYMBOLS ═══ -->
+    <div class="section-heading anchor-offset" id="symbols">
+      <span class="icon">🔑</span> Symbols &amp; the Legend
+    </div>
+    <div class="key-term">
+      <div class="term">Legend</div>
+      <div class="definition"><strong>A legend helps us identify what the symbols on a map stand for.</strong> OS maps come with a legend (also called a key). 1:50,000 and 1:10,000 maps have different legends.</div>
+    </div>
+
+    <table class="geo-table">
+      <thead>
+        <tr><th>Symbol</th><th>What it means (1:50,000)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>+</td><td>Church or Chapel</td></tr>
+        <tr><td>△ 136</td><td>Triangulation pillar (height 136 m)</td></tr>
+        <tr><td>• 310</td><td>Spot height (310 m)</td></tr>
+        <tr><td>P</td><td>Parking</td></tr>
+        <tr><td>🏔 (coloured dot)</td><td>Summit height — brown (600m+), orange (400–599m), green (below 400m)</td></tr>
+        <tr><td>Blue wavy lines</td><td>River or stream</td></tr>
+        <tr><td>N11 / N71</td><td>National Primary / Secondary Road</td></tr>
+        <tr><td>R574</td><td>Regional road</td></tr>
+        <tr><td>Green shading</td><td>Lowland / wooded area</td></tr>
+        <tr><td>Brown shading</td><td>Upland area (above 200 m)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═══ HEIGHT ═══ -->
+    <div class="section-heading anchor-offset" id="height">
+      <span class="icon">⛰️</span> Identifying Height
+    </div>
+    <p>Height is shown in <strong>five ways</strong> on a 1:50,000 OS map:</p>
+
+    <div class="height-grid">
+      <div class="height-card">
+        <div class="hc-icon">🎨</div>
+        <div class="hc-title">Colour</div>
+        <div class="hc-desc">Green = lowland (up to 200 m). Changes to light cream → light brown → dark brown as height increases. Dark brown = upland.</div>
+      </div>
+      <div class="height-card">
+        <div class="hc-icon">〰️</div>
+        <div class="hc-title">Contours</div>
+        <div class="hc-desc">Lines joining places of equal height. Placed 10 m apart. <strong>Closer together = steeper slope.</strong></div>
+      </div>
+      <div class="height-card">
+        <div class="hc-icon">△</div>
+        <div class="hc-title">Triangulation Pillars</div>
+        <div class="hc-desc">Concrete pillars on mountain peaks/hilltops. Shown as triangle with height beside it.</div>
+      </div>
+      <div class="height-card">
+        <div class="hc-icon">•</div>
+        <div class="hc-title">Spot Heights</div>
+        <div class="hc-desc">A black dot with a number showing the exact height in metres at that point. Can appear anywhere on the map.</div>
+      </div>
+      <div class="height-card">
+        <div class="hc-icon">🏔️</div>
+        <div class="hc-title">Summit Heights</div>
+        <div class="hc-desc">Coloured dot showing the highest point of a hill/mountain. Brown = 600m+, Orange = 400–599m, Green = below 400m.</div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Summit</div>
+      <div class="definition">The highest point of a hill or mountain.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Contour Lines</div>
+      <div class="definition">Lines on a map that show areas of equal height. Height in metres is written on them — placed 10 m apart. Closer lines = steeper slope.</div>
+    </div>
+
+    <!-- ═══ DIRECTION ═══ -->
+    <div class="section-heading anchor-offset" id="direction">
+      <span class="icon">🧭</span> Direction
+    </div>
+    <p>Direction is given using the <strong>cardinal points</strong> of the compass: <strong>North, South, East</strong> and <strong>West</strong>. Between these are intermediate points: NE, NW, SE, SW, and finer points like NNE, ENE, etc. North is always shown on OS maps.</p>
+
+    <div class="compass-wrap">
+      <svg viewBox="0 0 260 260" width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="130" cy="130" r="120" fill="#f5f4fa" stroke="#6C3FC5" stroke-width="2.5"/>
+        <circle cx="130" cy="130" r="90" fill="#ede7ff" stroke="#6C3FC5" stroke-width="1"/>
+        <!-- Cardinal arrows -->
+        <!-- N -->
+        <polygon points="130,16 122,50 130,44 138,50" fill="#C62828"/>
+        <!-- S -->
+        <polygon points="130,244 122,210 130,216 138,210" fill="#6C3FC5"/>
+        <!-- E -->
+        <polygon points="244,130 210,122 216,130 210,138" fill="#6C3FC5"/>
+        <!-- W -->
+        <polygon points="16,130 50,122 44,130 50,138" fill="#6C3FC5"/>
+        <!-- Labels -->
+        <text x="130" y="12" text-anchor="middle" font-family="Sora" font-weight="800" font-size="16" fill="#C62828">N</text>
+        <text x="130" y="255" text-anchor="middle" font-family="Sora" font-weight="800" font-size="15" fill="#4A2A8F">S</text>
+        <text x="252" y="135" text-anchor="middle" font-family="Sora" font-weight="800" font-size="15" fill="#4A2A8F">E</text>
+        <text x="8" y="135" text-anchor="middle" font-family="Sora" font-weight="800" font-size="15" fill="#4A2A8F">W</text>
+        <!-- Intercardinals -->
+        <text x="204" y="56" text-anchor="middle" font-family="Sora" font-weight="700" font-size="12" fill="#6C3FC5">NE</text>
+        <text x="56" y="56" text-anchor="middle" font-family="Sora" font-weight="700" font-size="12" fill="#6C3FC5">NW</text>
+        <text x="204" y="210" text-anchor="middle" font-family="Sora" font-weight="700" font-size="12" fill="#6C3FC5">SE</text>
+        <text x="56" y="210" text-anchor="middle" font-family="Sora" font-weight="700" font-size="12" fill="#6C3FC5">SW</text>
+        <!-- Fine points -->
+        <text x="168" y="34" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">NNE</text>
+        <text x="92" y="34" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">NNW</text>
+        <text x="168" y="232" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">SSE</text>
+        <text x="92" y="232" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">SSW</text>
+        <text x="230" y="98" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">ENE</text>
+        <text x="230" y="166" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">ESE</text>
+        <text x="30" y="98" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">WNW</text>
+        <text x="30" y="166" text-anchor="middle" font-family="DM Sans" font-size="9.5" fill="#888">WSW</text>
+      </svg>
+      <p style="font-size:13px;color:var(--muted);text-align:center;">North is always shown at the top of OS maps with an N arrow symbol.</p>
+    </div>
+
+    <div class="remember">
+      <div class="icon">💡</div>
+      <div class="text"><strong>Direction tip:</strong> When stating direction, note whether you are travelling <em>towards</em> an area or <em>coming from</em> it. "I am travelling in a <strong>northerly</strong> direction from Cork to Dublin."</div>
+    </div>
+
+    <!-- ═══ SKETCH MAP ═══ -->
+    <div class="section-heading anchor-offset" id="sketch">
+      <span class="icon">✏️</span> Sketch Maps
+    </div>
+    <div class="key-term">
+      <div class="term">Sketch Map</div>
+      <div class="definition"><strong>A sketch map is a hand-drawn copy of a part of an OS map.</strong> Features must be drawn to scale and not out of proportion.</div>
+    </div>
+
+    <div class="sub-heading">How to Draw a Sketch Map — 10 Steps</div>
+    <ol class="step-list">
+      <li><div class="step-text">Always use a <strong>pencil</strong>.</div></li>
+      <li><div class="step-text">Draw a <strong>frame</strong>: measure the OS map width ÷ 2 and height ÷ 2 to get your frame size in cm.</div></li>
+      <li><div class="step-text">Add a <strong>title</strong>: "Sketch map of _______ OS map".</div></li>
+      <li><div class="step-text">Divide the OS map into <strong>8 sections</strong> using a ruler (draw diagonals + centre cross).</div></li>
+      <li><div class="step-text">Divide the <strong>sketch map frame</strong> into the same 8 sections.</div></li>
+      <li><div class="step-text">Draw any major physical feature (coastline, upland, river, large lake) to help with location.</div></li>
+      <li><div class="step-text">Draw <strong>only the features asked</strong> — don't add extra detail.</div></li>
+      <li><div class="step-text">Draw a <strong>key / legend</strong> using different symbols and colours for each feature.</div></li>
+      <li><div class="step-text">Draw the <strong>north arrow</strong> and the <strong>subzone letter</strong>.</div></li>
+      <li><div class="step-text">Rub out the section lines drawn in step 5.</div></li>
+    </ol>
+
+    <!-- ═══ BAR CHARTS ═══ -->
+    <div class="section-heading anchor-offset" id="bar-charts">
+      <span class="icon">📊</span> Bar Charts
+    </div>
+    <div class="key-term">
+      <div class="term">Bar Chart</div>
+      <div class="definition"><strong>Bar charts show data in a simple form using rectangles of different heights.</strong> They help compare two or more pieces of information.</div>
+    </div>
+
+    <div class="salt-box">
+      <div class="salt-title">🧂 Remember SALT when drawing any graph!</div>
+      <div class="salt-row">
+        <div class="salt-item"><div class="si-letter">S</div><div class="si-word">Scale</div><div class="si-desc">Draw a scale on the axes</div></div>
+        <div class="salt-item"><div class="si-letter">A</div><div class="si-word">Axes</div><div class="si-desc">Check intervals are even on the Axes</div></div>
+        <div class="salt-item"><div class="si-letter">L</div><div class="si-word">Labels</div><div class="si-desc">Check the axes are Labelled</div></div>
+        <div class="salt-item"><div class="si-letter">T</div><div class="si-word">Title</div><div class="si-desc">Give your graph a Title</div></div>
+      </div>
+    </div>
+
+    <div class="method-box">
+      <div class="method-title">📋 How to Draw a Bar Chart</div>
+      <ul>
+        <li>Write a title describing the information being shown.</li>
+        <li>Draw an x-axis (horizontal) and a y-axis (vertical).</li>
+        <li>x-axis: work out how many groups to show (e.g. 8 years → 8 bars).</li>
+        <li>Make bars the same width; leave equal space between each. Label each bar.</li>
+        <li>y-axis always starts at 0. Choose appropriate units and even intervals.</li>
+        <li>Label both axes with titles AND units.</li>
+      </ul>
+    </div>
+
+    <!-- ═══ PIE CHARTS ═══ -->
+    <div class="section-heading anchor-offset" id="pie-charts">
+      <span class="icon">🥧</span> Pie Charts
+    </div>
+    <div class="key-term">
+      <div class="term">Pie Chart</div>
+      <div class="definition"><strong>A pie chart is a circular graph. Data is shown in slices or sectors.</strong> The size of the slice shows how important that slice is. Pie charts usually show data in percentages.</div>
+    </div>
+
+    <div class="method-box">
+      <div class="method-title">📋 How to Draw a Pie Chart (you need: compass, protractor, calculator)</div>
+      <ul>
+        <li>A full circle = <strong>360°</strong> = 100%. Total of all data = 360°.</li>
+        <li>Find each value as a <strong>percentage</strong>: (value ÷ total) × 100.</li>
+        <li>Find each value in <strong>degrees</strong>: (value ÷ total) × 360°.</li>
+        <li>Draw a circle with a compass. Draw a line from the centre to the edge (your starting line).</li>
+        <li>Use a protractor to measure each sector's angle. Draw a line. This becomes the start of the next sector.</li>
+        <li>Label each sector or provide a colour-coded key.</li>
+      </ul>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-header">📘 Worked Example — Pie Chart (Pet Ownership: 20 pets total)</div>
+      <div class="ex-body">
+        <table class="geo-table" style="margin:0;">
+          <thead><tr><th>Pet</th><th>Number</th><th>Percentage</th><th>Degrees</th></tr></thead>
+          <tbody>
+            <tr><td>Dogs</td><td>10</td><td>(10÷20)×100 = <strong>50%</strong></td><td>(10÷20)×360 = <strong>180°</strong></td></tr>
+            <tr><td>Cats</td><td>4</td><td>(4÷20)×100 = <strong>20%</strong></td><td>(4÷20)×360 = <strong>72°</strong></td></tr>
+            <tr><td>Fish</td><td>5</td><td>(5÷20)×100 = <strong>25%</strong></td><td>(5÷20)×360 = <strong>90°</strong></td></tr>
+            <tr><td>Rabbits</td><td>1</td><td>(1÷20)×100 = <strong>5%</strong></td><td>(1÷20)×360 = <strong>18°</strong></td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>20</strong></td><td><strong>100%</strong></td><td><strong>360°</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ TREND GRAPHS ═══ -->
+    <div class="section-heading anchor-offset" id="trend-graphs">
+      <span class="icon">📈</span> Trend Graphs
+    </div>
+    <div class="key-term">
+      <div class="term">Trend Graph</div>
+      <div class="definition"><strong>Trend graphs show a trend or pattern of data over a period of time. They can also show the relationship between two or more sets of data.</strong></div>
+      <div class="tip">💡 Example: Global demand for energy vs. supply of fossil fuels — one rising, one falling over time.</div>
+    </div>
+
+    <div class="method-box">
+      <div class="method-title">📋 How to Draw a Trend Graph</div>
+      <ul>
+        <li>Write a title. Draw an x-axis and y-axis.</li>
+        <li>x-axis: time (years, months, etc.) — label it.</li>
+        <li>y-axis: starts at 0. Choose units and even intervals — label it.</li>
+        <li>Plot each data point for each group/line.</li>
+        <li>Join the points with a line to show the trend. Use different colours for different lines.</li>
+        <li>Include a key/legend if there are multiple lines.</li>
+      </ul>
+    </div>
+
+    <!-- ═══ UNITS ═══ -->
+    <div class="section-heading anchor-offset" id="units">
+      <span class="icon">📐</span> Units of Measurement
+    </div>
+
+    <div class="sub-heading">Percentages</div>
+    <div class="key-term">
+      <div class="term">Percentage Formula</div>
+      <div class="definition"><strong>To get a percentage: divide the number by the total and multiply by 100.</strong></div>
+      <div class="tip">Example: 18 out of 30 → (18 ÷ 30) × 100 = 60%</div>
+    </div>
+
+    <div class="sub-heading">Area</div>
+    <div class="key-term">
+      <div class="term">Area</div>
+      <div class="definition"><strong>Area = length × width.</strong> Measured in mm², cm², m², km², acres, or hectares.</div>
+      <div class="tip">💡 1 hectare = 10,000 m². 1 acre ≈ just over 4,000 m². A 1:50,000 OS map covering 8 grid squares × 10 grid squares = 80 km².</div>
+    </div>
+
+    <div class="sub-heading">Height</div>
+    <p style="font-size:14px;">In Geography, height above sea level and building heights are measured in <strong>metres (m)</strong>. Key facts:</p>
+    <table class="geo-table">
+      <thead><tr><th>Landmark</th><th>Height</th></tr></thead>
+      <tbody>
+        <tr><td>Mount Everest</td><td>8,848 m</td></tr>
+        <tr><td>Carrauntoohil (Ireland's highest)</td><td>1,038 m</td></tr>
+        <tr><td>Eiffel Tower</td><td>324 m</td></tr>
+        <tr><td>Standard double-decker bus</td><td>4.4 m</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="key-terms">
+      <span class="icon">🃏</span> Key Terms Flashcards
+    </div>
+    <p style="margin-bottom:16px;">Click <strong>Reveal Answer</strong> to check your definition.</p>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>cartographer</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">OS Maps</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A person who creates maps. Maps are representations of the world created by cartographers.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the <strong>national grid</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">OS Maps</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A grid used to locate places on 1:50,000 OS maps. Divided into 25 subzones (100 km × 100 km each), each with a letter (A–Z, no I).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What does LEN stand for in grid references?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Grid Refs</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>L</strong> = Letter of the subzone · <strong>E</strong> = Easting (across first) · <strong>N</strong> = Northing (up second). Always "go in the door before you go upstairs."</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between a <strong>4-figure</strong> and <strong>6-figure</strong> grid reference?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Grid Refs</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">4-figure: identifies a 1 km² grid square (an area). 6-figure: pinpoints an exact location within that square by estimating tenths into the square (adds one extra digit to both easting and northing).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What do <strong>contour lines</strong> show? What do closely-spaced contours mean?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Height</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Contour lines join places of equal height. They are placed 10 m apart. Contours that are close together indicate a <strong>steep slope</strong>. Far apart = gentle slope.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the <strong>five ways</strong> height is shown on a 1:50,000 OS map?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Height</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. Colour (green → cream → brown) · 2. Contour lines · 3. Triangulation pillars (△) · 4. Spot heights (•) · 5. Summit heights (coloured dot)</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>sketch map</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sketch Maps</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A hand-drawn copy of a part of an OS map. It must be drawn to scale, include a title, key, north sign and subzone letter. Always drawn in pencil.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What does SALT stand for in graph drawing?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Graphs</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>S</strong>cale · <strong>A</strong>xes (even intervals) · <strong>L</strong>abels (both axes) · <strong>T</strong>itle</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>ratio</strong>? Give a map scale example.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Scale</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Ratio is how much of one thing there is compared to another. On a 1:50,000 map, 1 cm on the map = 50,000 cm (500 m) on the ground.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>triangulation pillar</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Height</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A concrete pillar used by map-makers, usually found on mountain peaks or hilltops. Shown as a triangle (△) with the height in metres beside it.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="geo-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Rule / Definition</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Scale 1:50,000</strong></td>
+          <td>1 cm = 500 m (0.5 km) on ground. 2 cm = 1 km.</td>
+          <td>Multiply map distance × 50,000 to get real distance (in cm).</td>
+        </tr>
+        <tr>
+          <td><strong>Scale 1:10,000</strong></td>
+          <td>1 cm = 100 m. 10 cm = 1 km.</td>
+          <td>More detailed than 1:50,000 — used for towns.</td>
+        </tr>
+        <tr>
+          <td><strong>LEN</strong></td>
+          <td>Letter → Easting → Northing. "Go in the door before going upstairs."</td>
+          <td>Easting ALWAYS before Northing.</td>
+        </tr>
+        <tr>
+          <td><strong>4-figure grid ref</strong></td>
+          <td>Locates a 1 km² area. E.g. V 44 99.</td>
+          <td>Use bottom-left corner of the grid square.</td>
+        </tr>
+        <tr>
+          <td><strong>6-figure grid ref</strong></td>
+          <td>Pinpoints exact location. E.g. V 447 996.</td>
+          <td>Estimate tenths into the square for the 3rd digit.</td>
+        </tr>
+        <tr>
+          <td><strong>Contours</strong></td>
+          <td>Lines of equal height, 10 m apart. Closer = steeper.</td>
+          <td>If contours are very close together → cliff or very steep hill.</td>
+        </tr>
+        <tr>
+          <td><strong>Height — 5 ways</strong></td>
+          <td>Colour, Contours, Triangulation pillars, Spot heights, Summit heights.</td>
+          <td>Learn all 5 — they often ask "Name TWO ways".</td>
+        </tr>
+        <tr>
+          <td><strong>Bar Chart</strong></td>
+          <td>Rectangles of different heights comparing data. SALT rule.</td>
+          <td>Y-axis starts at 0. Bars same width, equal spacing.</td>
+        </tr>
+        <tr>
+          <td><strong>Pie Chart</strong></td>
+          <td>Circular graph in sectors. (value ÷ total) × 360 = degrees.</td>
+          <td>Always check degrees add up to 360°.</td>
+        </tr>
+        <tr>
+          <td><strong>Trend Graph</strong></td>
+          <td>Line graph showing data over time or relationship between datasets.</td>
+          <td>Different coloured lines for different data sets. Always include a key.</td>
+        </tr>
+        <tr>
+          <td><strong>Percentage</strong></td>
+          <td>(number ÷ total) × 100</td>
+          <td>Very common in Geography — population, land use, etc.</td>
+        </tr>
+        <tr>
+          <td><strong>Area</strong></td>
+          <td>Length × Width. 1 hectare = 10,000 m².</td>
+          <td>1 grid square on 1:50,000 = 1 km × 1 km = 1 km².</td>
+        </tr>
+        <tr>
+          <td><strong>Cardinal Points</strong></td>
+          <td>N, S, E, W + NE, NW, SE, SW + NNE, ENE, etc.</td>
+          <td>North is always shown on OS maps. State direction of travel.</td>
+        </tr>
+        <tr>
+          <td><strong>Sketch Map</strong></td>
+          <td>Hand-drawn copy of OS map. Frame = OS dimensions ÷ 2.</td>
+          <td>Must include: title, key, north arrow, subzone letter, correct features only.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Geography Home</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
