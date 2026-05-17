@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 34 – Celestial Objects | Science Revision</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --yellow-light: #FFF3A3;
+      --green: #4CAF50;
+      --green-dark: #2E7D32;
+      --purple: #6C3FC5;
+      --blue: #1565C0;
+      --blue-light: #E3F2FD;
+      --red: #D32F2F;
+      --orange: #E65100;
+      --space: #0D1B3E;
+      --bg: #F8F9FA;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 240px; height: 100vh;
+      background: var(--space);
+      color: #fff;
+      display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--yellow);
+      color: var(--text);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 13px; font-weight: 600;
+      opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px;
+    }
+
+    .sidebar-section { padding: 14px 0 4px; }
+
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      padding: 0 18px 6px;
+    }
+
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      border-left-color: var(--yellow);
+    }
+
+    .sidebar a.chapter-link {
+      font-weight: 700; font-size: 15px;
+      color: var(--yellow);
+      padding-top: 12px; padding-bottom: 12px;
+    }
+
+    .sidebar a.chapter-link:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #0D1B3E 0%, #1a2a5e 60%, #2d3561 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,0,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '🔭';
+      position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--text);
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 13px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -1px; line-height: 1;
+    }
+
+    .chapter-hero h1 span { color: var(--yellow); }
+
+    .chapter-meta {
+      margin-top: 18px; font-size: 15px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .learning-goals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .goal-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px; padding: 6px 12px;
+      border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1000px; }
+
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px; font-weight: 800;
+      color: var(--text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--yellow);
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .section-heading .icon { font-size: 26px; }
+
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--green-dark);
+      margin: 28px 0 12px;
+    }
+
+    p { font-size: 15px; color: #333; margin-bottom: 12px; }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--yellow-light);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 14px 0;
+    }
+
+    .key-term .term { font-weight: 700; font-size: 16px; color: var(--text); }
+    .key-term .definition { font-size: 14px; color: #444; margin-top: 4px; }
+    .key-term .simpler { font-size: 13px; color: var(--purple); margin-top: 6px; font-style: italic; }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+
+    .info-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+
+    .info-card .card-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 15px; margin-bottom: 6px;
+    }
+
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+
+    .info-card .card-simpler {
+      font-size: 12px; color: var(--purple); font-style: italic;
+      margin-top: 8px; padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* CONCENTRATE / TIP BOX */
+    .concentrate {
+      background: #FFF3CD;
+      border: 2px dashed #F5C800;
+      border-radius: var(--radius);
+      padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .concentrate .icon { font-size: 22px; flex-shrink: 0; }
+    .concentrate .text { font-size: 14px; color: #555; }
+    .concentrate strong { color: var(--text); display: block; font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 3px; }
+
+    /* EUREKA BOX */
+    .eureka-box {
+      background: #F3E5F5;
+      border: 2px solid var(--purple);
+      border-radius: var(--radius);
+      padding: 16px 18px; margin: 16px 0;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+
+    .eureka-box .eureka-icon { font-size: 28px; flex-shrink: 0; }
+
+    .eureka-box .eureka-content { font-size: 14px; color: #333; }
+
+    .eureka-box .eureka-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 15px;
+      color: var(--purple); margin-bottom: 6px;
+    }
+
+    /* DATA TABLE */
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+      font-size: 13.5px;
+    }
+
+    .data-table th {
+      background: var(--space);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 12px; text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 11px 14px; text-align: left;
+    }
+
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table .bold { font-weight: 700; }
+
+    /* PLANET COMPARISON TABLE */
+    .planet-img {
+      width: 40px; height: 40px;
+      border-radius: 50%; object-fit: cover;
+      vertical-align: middle; margin-right: 6px;
+    }
+
+    /* MNEMONIC BOX */
+    .mnemonic {
+      background: linear-gradient(135deg, var(--space) 0%, #2d3561 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 22px 24px; margin: 16px 0;
+      text-align: center;
+    }
+
+    .mnemonic .mnemo-label {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--yellow); margin-bottom: 10px;
+    }
+
+    .mnemonic .mnemo-text {
+      font-family: 'Sora', sans-serif;
+      font-size: 20px; font-weight: 800;
+      letter-spacing: 2px; color: #fff;
+    }
+
+    .mnemonic .mnemo-words {
+      margin-top: 10px;
+      display: flex; justify-content: center;
+      gap: 8px; flex-wrap: wrap;
+    }
+
+    .mnemo-word {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      padding: 4px 10px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    .mnemo-word span { color: var(--yellow); font-weight: 800; }
+
+    /* SCALE VISUAL */
+    .scale-chain {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap;
+      background: #fff;
+      border-radius: var(--radius); padding: 20px 24px;
+      box-shadow: var(--shadow); margin: 16px 0;
+      border: 1.5px solid var(--border);
+    }
+
+    .scale-node {
+      background: var(--space); color: #fff;
+      padding: 10px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      text-align: center; min-width: 90px;
+    }
+
+    .scale-arrow { font-size: 22px; color: var(--yellow); padding: 0 6px; font-weight: 700; }
+    .scale-node.sun { background: #F57F17; }
+    .scale-node.solar { background: var(--blue); }
+    .scale-node.galaxy { background: var(--purple); }
+    .scale-node.universe { background: #1A1A2E; border: 2px solid var(--yellow); }
+
+    /* PROBLEM CARDS */
+    .problem-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden; margin: 14px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .problem-card .prob-header {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 13px;
+      padding: 9px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .problem-card .prob-body { padding: 16px 18px; }
+    .problem-card .prob-q { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+
+    .toggle-btn {
+      background: var(--yellow); color: var(--text);
+      border: none; border-radius: 100px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 12px;
+      padding: 4px 14px; cursor: pointer; transition: opacity 0.2s;
+    }
+
+    .toggle-btn:hover { opacity: 0.8; }
+
+    .prob-solution { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .prob-solution.open { display: block; }
+
+    .prob-solution .steps {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: #f9fafb;
+      border-radius: 8px; padding: 12px; line-height: 2;
+      white-space: pre-line;
+    }
+
+    .prob-solution .answer { color: var(--green-dark); font-weight: 700; margin-top: 8px; }
+
+    .prob-solution .tip {
+      background: var(--yellow-light); border-radius: 8px;
+      padding: 10px 12px; margin-top: 10px;
+      font-size: 13px; color: #555;
+    }
+
+    /* GLOSSARY */
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px; margin: 16px 0;
+    }
+
+    .glossary-item {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+    }
+
+    .glossary-item .g-term {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 13px; color: var(--purple);
+    }
+
+    .glossary-item .g-def { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+    /* SUMMARY TABLE */
+    .summary-table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+
+    .summary-table th {
+      background: var(--text); color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+
+    .summary-table td {
+      padding: 12px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      background: var(--text); color: rgba(255,255,255,0.6);
+      padding: 14px 48px;
+      display: flex; gap: 20px; align-items: center;
+      font-size: 13px; margin-left: 240px;
+    }
+
+    .chapter-nav-bar a {
+      color: var(--yellow); text-decoration: none; font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .chapter-nav-bar a:hover { color: #fff; }
+
+    /* HIGHLIGHT BADGE */
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 10px; border-radius: 100px; margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .badge-blue { background: var(--blue-light); color: var(--blue); }
+    .badge-green { background: #E8F5E9; color: var(--green-dark); }
+    .badge-purple { background: #F3E5F5; color: var(--purple); }
+    .badge-orange { background: #FBE9E7; color: var(--orange); }
+
+    /* PLANET ROW */
+    .planet-row {
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .planet-circle {
+      width: 36px; height: 36px; border-radius: 50%;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main, .chapter-nav-bar { margin-left: 0; }
+      .chapter-hero { padding: 40px 24px 32px; }
+      .chapter-hero h1 { font-size: 36px; }
+      .chapter-hero::after { display: none; }
+      .content { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Revision Hub</div>
+      <div class="book-title">Elements of Science</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">This Chapter</div>
+      <a href="#celestial">Celestial Objects</a>
+      <a href="#moons">Moons</a>
+      <a href="#asteroids">Asteroids</a>
+      <a href="#comets">Comets</a>
+      <a href="#stars">Stars</a>
+      <a href="#planets">Planets</a>
+      <a href="#solarsystem">The Solar System</a>
+      <a href="#galaxies">Galaxies</a>
+      <a href="#problems">Practice Problems</a>
+      <a href="#summary">Quick-Reference</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Other Chapters</div>
+      <a href="index.html" class="chapter-link">← Science Home</a>
+      <a href="ch35.html">Ch 35 – Origin of the Universe</a>
+      <a href="ch39.html">Ch 39 – Energy Sources</a>
+      <a href="ch29.html">Ch 29 – Energy</a>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 34 &nbsp;·&nbsp; Unit 5 – Earth &amp; Space</div>
+      <h1>Celestial <span>Objects</span></h1>
+      <div class="chapter-meta">Elements of Science &nbsp;|&nbsp; Earth &amp; Space</div>
+      <div class="learning-goals">
+        <span class="goal-tag">✓ Describe moons, asteroids, comets, stars, planets &amp; galaxies</span>
+        <span class="goal-tag">✓ Compare moons in our solar system</span>
+        <span class="goal-tag">✓ Compare Earth with other planets</span>
+        <span class="goal-tag">✓ Interpret data on mass, gravity, size &amp; composition</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ CELESTIAL OBJECTS ═══ -->
+      <div class="section-heading anchor-offset" id="celestial">
+        <span class="icon">🌌</span> Celestial Objects
+      </div>
+
+      <div class="key-term">
+        <div class="term">Celestial Object</div>
+        <div class="definition"><strong>Any natural body beyond the Earth's atmosphere is known as a celestial object.</strong> Celestial objects include moons, asteroids, comets, stars and the other planets in our solar system.</div>
+        <div class="simpler">💡 Basically anything in space that occurs naturally — from tiny asteroids to giant stars.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Orbit</div>
+        <div class="definition"><strong>The path that a celestial object follows around another celestial object is its orbit.</strong> For example, the Earth orbits the Sun.</div>
+        <div class="simpler">💡 Think of orbit like a racetrack — objects follow a curved path around a central object due to gravity.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Space</div>
+        <div class="definition"><strong>Space is the empty region between celestial objects.</strong></div>
+        <div class="simpler">💡 Space isn't completely empty (tiny particles exist) but it's considered a vacuum compared to Earth's atmosphere.</div>
+      </div>
+
+      <div class="sub-heading">Scale of the Universe</div>
+      <p>From smallest to largest, here is the scale of celestial structures:</p>
+
+      <div class="scale-chain">
+        <div class="scale-node">☄️<br>Comet / Asteroid</div>
+        <div class="scale-arrow">→</div>
+        <div class="scale-node">🌍<br>Planet</div>
+        <div class="scale-arrow">→</div>
+        <div class="scale-node sun">⭐<br>Star</div>
+        <div class="scale-arrow">→</div>
+        <div class="scale-node solar">☀️<br>Solar System</div>
+        <div class="scale-arrow">→</div>
+        <div class="scale-node galaxy">🌌<br>Galaxy</div>
+        <div class="scale-arrow">→</div>
+        <div class="scale-node universe">✨<br>Universe</div>
+      </div>
+
+      <!-- ═══ MOONS ═══ -->
+      <div class="section-heading anchor-offset" id="moons">
+        <span class="icon">🌕</span> Moons
+      </div>
+
+      <div class="key-term">
+        <div class="term">Moon</div>
+        <div class="definition"><strong>A moon is a celestial object that orbits a planet.</strong> The Earth's moon is simply called the Moon. The moons of other planets have been given names — e.g. Titan is a moon of Saturn.</div>
+        <div class="simpler">💡 Moons orbit planets; planets orbit stars. Think: moon → planet → star.</div>
+      </div>
+
+      <p>The number of moons a planet can have varies greatly. Planet Earth has only one moon, but Jupiter and Saturn have more than 80 moons each.</p>
+
+      <p>Moons vary in <strong>composition</strong> (the materials they are made up of). Earth's moon is composed of oxygen, silicon, magnesium, iron and other elements. Titan is composed of ice and rock. The atmosphere of different moons also varies — Earth's moon has no atmosphere, but Titan has an atmosphere of nitrogen and methane.</p>
+
+      <div class="sub-heading">Moon Comparison Data</div>
+      <p>The table below shows the features of some moons in our solar system. Relative mass is the mass of the moon compared to Earth (Earth = 1).</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Moon</th>
+            <th>Location</th>
+            <th>Relative Mass*</th>
+            <th>Relative Radius</th>
+            <th>Composition of Atmosphere</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Ganymede</td><td>Moon of Jupiter</td><td>0.0248</td><td>0.413</td><td>Oxygen</td></tr>
+          <tr><td class="bold">Titan</td><td>Moon of Saturn</td><td>0.0225</td><td>0.404</td><td>Nitrogen and methane</td></tr>
+          <tr><td class="bold">Callisto</td><td>Moon of Jupiter</td><td>0.0180</td><td>0.378</td><td>Carbon dioxide</td></tr>
+          <tr><td class="bold">Io</td><td>Moon of Jupiter</td><td>0.0150</td><td>0.286</td><td>Sulfur dioxide</td></tr>
+          <tr><td class="bold">Moon</td><td>Moon of Earth</td><td>0.0123</td><td>0.273</td><td>No atmosphere</td></tr>
+          <tr><td class="bold">Europa</td><td>Moon of Jupiter</td><td>0.00803</td><td>0.245</td><td>Oxygen</td></tr>
+          <tr><td class="bold">Triton</td><td>Moon of Neptune</td><td>0.00359</td><td>0.212</td><td>No atmosphere</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--muted);">* Relative mass is the mass of the moon compared to Earth — a ratio where Earth = 1.</p>
+
+      <div class="concentrate">
+        <div class="icon">⭐</div>
+        <div class="text">
+          <strong>Exam tip — Moon ordering</strong>
+          In order of increasing relative radius: Triton (0.212) → Europa (0.245) → Moon (0.273) → Io (0.286) → Callisto (0.378) → Titan (0.404) → Ganymede (0.413). Ganymede has the largest relative mass (0.0248).
+        </div>
+      </div>
+
+      <!-- ═══ ASTEROIDS ═══ -->
+      <div class="section-heading anchor-offset" id="asteroids">
+        <span class="icon">☄️</span> Asteroids
+      </div>
+
+      <div class="key-term">
+        <div class="term">Asteroid</div>
+        <div class="definition"><strong>An asteroid is a small lump of rock that orbits the Sun.</strong> Asteroids range in size from less than 1 km to 1000 km in diameter. They are thought to have been left over from the formation of the solar system.</div>
+        <div class="simpler">💡 Think of asteroids as leftover rocky rubble from when the solar system was being built billions of years ago.</div>
+      </div>
+
+      <p>The <strong>asteroid belt</strong> lies between the orbits of Mars and Jupiter. It contains a large number of asteroids that vary in shape and size. Some well-known asteroids include Apophis, Ceres, Chiron, Eros and Vesta.</p>
+
+      <div class="concentrate">
+        <div class="icon">📍</div>
+        <div class="text">
+          <strong>Location:</strong> The asteroid belt sits between Mars and Jupiter — remember this by thinking of the belt as a boundary between the inner rocky planets and the outer gas giants.
+        </div>
+      </div>
+
+      <!-- ═══ COMETS ═══ -->
+      <div class="section-heading anchor-offset" id="comets">
+        <span class="icon">💫</span> Comets
+      </div>
+
+      <div class="key-term">
+        <div class="term">Comet</div>
+        <div class="definition"><strong>A comet is a small lump of ice and dust that orbits the Sun.</strong></div>
+        <div class="simpler">💡 Key difference from an asteroid: asteroids are <em>rock</em>, comets are <em>ice and dust</em>.</div>
+      </div>
+
+      <p>A comet has three main parts:</p>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">⚪</div>
+          <div class="card-title">Nucleus (Centre)</div>
+          <div class="card-def">The nucleus of a comet is made up of dust and ice.</div>
+          <div class="card-simpler">The solid core — the "dirty snowball" part of the comet.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🌫️</div>
+          <div class="card-title">Coma (Fuzzy Layer)</div>
+          <div class="card-def">The coma is the fuzzy layer around the nucleus. It is caused by heat from the Sun and is made up of carbon dioxide, dust and water vapour.</div>
+          <div class="card-simpler">Forms as the comet nears the Sun and ice begins to evaporate.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">✨</div>
+          <div class="card-title">Tail</div>
+          <div class="card-def">The tail is made up of gas and dust produced by the nucleus. The tail is blown away from the Sun by solar winds, so it always points away from the Sun.</div>
+          <div class="card-simpler">Always points away from the Sun — regardless of which direction the comet is travelling!</div>
+        </div>
+      </div>
+
+      <p>Comets can only be seen when they travel near the Sun, as they reflect the Sun's light. When a comet moves towards the Sun, it is blown away from it by solar winds, causing its tail to travel behind it. When a comet moves away from the Sun, its tail travels in front of it.</p>
+
+      <p>Comets originate in the <strong>Kuiper Belt</strong> beyond Neptune, or in the <strong>Oort cloud</strong> at the edge of our solar system.</p>
+
+      <div class="eureka-box">
+        <div class="eureka-icon">💡</div>
+        <div class="eureka-content">
+          <div class="eureka-title">Eureka! — Halley's Comet</div>
+          <p>Halley's Comet is one of the most famous comets in the solar system. It is named after English astronomer Edmond Halley (1656–1742), who first discovered that the comet returns to Earth every 75 years. It can be seen with the naked eye and is due to return in 2061.</p>
+          <p style="margin-top:8px;">On 12 November 2014, as part of the European Space Agency's Rosetta mission, the <em>Philae</em> lander became the <strong>first spacecraft to land on a comet</strong>. <em>Philae</em> was able to record images of the comet's surface and take measurements that had never before been possible.</p>
+        </div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Craters</div>
+        <div class="definition">Comets, asteroids and other large space rocks can crash onto the surface of moons and planets. On impact, these objects can cause <strong>craters</strong> that vary in size, shape and depth. Some of the Moon's craters can be seen from Earth.</div>
+        <div class="simpler">💡 The dark circles on the Moon's surface are craters — formed by high-speed asteroid and comet impacts over billions of years.</div>
+      </div>
+
+      <!-- ═══ STARS ═══ -->
+      <div class="section-heading anchor-offset" id="stars">
+        <span class="icon">⭐</span> Stars
+      </div>
+
+      <div class="key-term">
+        <div class="term">Star</div>
+        <div class="definition"><strong>A star is a celestial object that emits light.</strong> This is why they can be seen clearly in the night sky. The Sun is a star.</div>
+        <div class="simpler">💡 Stars <em>emit</em> (produce) their own light. Planets and moons only <em>reflect</em> light from a star.</div>
+      </div>
+
+      <p>Stars are mainly composed of <strong>hydrogen</strong> and contain small amounts of <strong>helium</strong> and other elements. They are held together by gravity.</p>
+
+      <p>Nuclear reactions are the source of a star's energy. The gases that make up the star burn and release energy in the form of heat and light.</p>
+
+      <div class="eureka-box">
+        <div class="eureka-icon">👩‍🔬</div>
+        <div class="eureka-content">
+          <div class="eureka-title">Eureka! — Cecilia Payne-Gaposchkin</div>
+          <p>British astronomer Cecilia Payne-Gaposchkin (1900–1979) was the first scientist to identify the composition of stars. Her 1925 research concluded that stars, including the Sun, were mostly made up of the gases hydrogen and helium. As this discovery went against scientific beliefs held at the time, it was denied by other astronomers. It turns out she was, in fact, correct.</p>
+        </div>
+      </div>
+
+      <!-- ═══ PLANETS ═══ -->
+      <div class="section-heading anchor-offset" id="planets">
+        <span class="icon">🪐</span> Planets
+      </div>
+
+      <div class="key-term">
+        <div class="term">Planet</div>
+        <div class="definition">A planet is a celestial object that:
+          <ul style="margin:8px 0 0 18px;font-size:14px;">
+            <li>orbits a star</li>
+            <li>has enough mass to have a nearly round shape</li>
+            <li>has enough gravity to clear the space debris (waste) in its orbit</li>
+          </ul>
+        </div>
+        <div class="simpler">💡 Pluto lost its planet status because it hasn't cleared its orbital neighbourhood — it's now a "dwarf planet".</div>
+      </div>
+
+      <p>Many planets are visible from Earth, as they can reflect the light from the Sun.</p>
+
+      <!-- ═══ SOLAR SYSTEM ═══ -->
+      <div class="section-heading anchor-offset" id="solarsystem">
+        <span class="icon">☀️</span> The Solar System
+      </div>
+
+      <div class="key-term">
+        <div class="term">Solar System</div>
+        <div class="definition"><strong>The solar system is made up of a star (the Sun) and the celestial objects that orbit it.</strong> The Sun is orbited by eight planets, their moons and smaller objects such as asteroids and comets. The solar system is held together by gravity.</div>
+      </div>
+
+      <p>The solar system contains <strong>four inner planets</strong> and <strong>four outer planets</strong>.</p>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🪨</div>
+          <div class="card-title">Terrestrial Planets (Inner)</div>
+          <div class="card-def">The four inner planets are called <strong>terrestrial planets</strong> because they are made up of rock, like the Earth. They are: Mercury, Venus, Earth, Mars.</div>
+          <div class="card-simpler">"Terrestrial" comes from Latin for Earth/land — rocky, solid surfaces.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🌬️</div>
+          <div class="card-title">Gas Giants (Outer)</div>
+          <div class="card-def">The four outer planets are called <strong>gas giants</strong> because they are mainly made of gases such as hydrogen and helium. They are: Jupiter, Saturn, Uranus, Neptune.</div>
+          <div class="card-simpler">No solid surface to stand on — they're enormous balls of swirling gas.</div>
+        </div>
+      </div>
+
+      <div class="mnemonic">
+        <div class="mnemo-label">🧠 Mnemonic — Planet Order from the Sun</div>
+        <div class="mnemo-text">My Very Educated Mother Just Served Us Nachos</div>
+        <div class="mnemo-words">
+          <span class="mnemo-word"><span>M</span>ercury</span>
+          <span class="mnemo-word"><span>V</span>enus</span>
+          <span class="mnemo-word"><span>E</span>arth</span>
+          <span class="mnemo-word"><span>M</span>ars</span>
+          <span class="mnemo-word"><span>J</span>upiter</span>
+          <span class="mnemo-word"><span>S</span>aturn</span>
+          <span class="mnemo-word"><span>U</span>ranus</span>
+          <span class="mnemo-word"><span>N</span>eptune</span>
+        </div>
+      </div>
+
+      <div class="sub-heading">Comparing the Planets</div>
+      <p>The eight planets in our solar system are very different from each other in terms of mass, gravity, size and atmosphere.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Planet</th>
+            <th>Mass (kg)</th>
+            <th>Relative Mass*</th>
+            <th>Gravity (m/s²)</th>
+            <th>Diameter (km)</th>
+            <th>Atmosphere</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="planet-row">🟤 <strong>Mercury</strong></div></td>
+            <td>3.3 × 10²³</td><td>0.06</td><td>3.7</td><td>4,879</td>
+            <td>Very thin – nearly a vacuum</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🟡 <strong>Venus</strong></div></td>
+            <td>4.9 × 10²⁴</td><td>0.8</td><td>8.9</td><td>12,103</td>
+            <td>Carbon dioxide, Nitrogen</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🔵 <strong>Earth</strong></div></td>
+            <td>5.9 × 10²⁴</td><td>1</td><td>9.8</td><td>12,742</td>
+            <td>Carbon dioxide, Nitrogen, Oxygen</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🔴 <strong>Mars</strong></div></td>
+            <td>6.4 × 10²³</td><td>0.012</td><td>3.7</td><td>6,779</td>
+            <td>Carbon dioxide, Nitrogen, Argon</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🟠 <strong>Jupiter</strong></div></td>
+            <td>1.9 × 10²⁷</td><td>317.8</td><td>24.8</td><td>137,822</td>
+            <td>Hydrogen, Helium</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🪐 <strong>Saturn</strong></div></td>
+            <td>5.7 × 10²⁶</td><td>95.2</td><td>10.4</td><td>116,464</td>
+            <td>Hydrogen, Helium</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🩵 <strong>Uranus</strong></div></td>
+            <td>8.7 × 10²⁵</td><td>14.6</td><td>8.9</td><td>50,724</td>
+            <td>Hydrogen, Helium, Methane</td>
+          </tr>
+          <tr>
+            <td><div class="planet-row">🔵 <strong>Neptune</strong></div></td>
+            <td>1 × 10²⁶</td><td>17.2</td><td>11.2</td><td>49,244</td>
+            <td>Hydrogen, Helium, Methane</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--muted);">* Relative mass is the mass of the planet compared to Earth — a ratio where Earth = 1.</p>
+
+      <div class="concentrate">
+        <div class="icon">🏆</div>
+        <div class="text">
+          <strong>Key facts to remember</strong>
+          Jupiter has the largest mass (317.8 × Earth). Mercury and Mars both have the same gravity (3.7 m/s²). Uranus and Venus have the same gravity (8.9 m/s²). Uranus and Neptune both contain methane (which gives them their blue/green colour).
+        </div>
+      </div>
+
+      <!-- ═══ GALAXIES ═══ -->
+      <div class="section-heading anchor-offset" id="galaxies">
+        <span class="icon">🌌</span> Galaxies
+      </div>
+
+      <div class="key-term">
+        <div class="term">Galaxy</div>
+        <div class="definition"><strong>A galaxy is a system of billions of stars.</strong> Galaxies differ in size based on the number of stars they contain.</div>
+        <div class="simpler">💡 Our solar system is a tiny part of a galaxy, which is itself a tiny part of the universe.</div>
+      </div>
+
+      <p>Galaxies also differ in shape. Some galaxies have a <strong>spiral shape</strong> and others have an <strong>elliptical (oval) shape</strong>.</p>
+
+      <p>Planet Earth and our solar system are part of a galaxy called the <strong>Milky Way</strong>. Our solar system is in one of the spiral arms of this galaxy.</p>
+
+      <p>Astronomers can see billions of other galaxies in the universe using powerful telescopes, and they predict that there are many more galaxies yet to be discovered.</p>
+
+      <div class="eureka-box">
+        <div class="eureka-icon">🌌</div>
+        <div class="eureka-content">
+          <div class="eureka-title">The Milky Way</div>
+          <p>The Milky Way is a spiral galaxy containing an estimated 100–400 billion stars. Our Sun is located about two-thirds of the way out from the centre, in one of the spiral arms. The Milky Way is approximately 100,000 light-years in diameter.</p>
+        </div>
+      </div>
+
+      <!-- ═══ PRACTICE PROBLEMS ═══ -->
+      <div class="section-heading anchor-offset" id="problems">
+        <span class="icon">✏️</span> Practice Problems
+      </div>
+      <p>Click <strong>Show Solution</strong> to reveal the answer.</p>
+
+      <!-- P1 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 1 — Celestial Object Definitions
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Match each celestial object to its correct description:<br>
+            1. Asteroid &nbsp;&nbsp; 2. Comet &nbsp;&nbsp; 3. Star &nbsp;&nbsp; 4. Planet &nbsp;&nbsp; 5. Moon<br><br>
+            a. A celestial object that orbits a planet<br>
+            b. A celestial object that orbits a star and is rounded by gravity<br>
+            c. A small lump of ice and dust that orbits the Sun<br>
+            d. A celestial object that emits its own light<br>
+            e. A small lump of rock that orbits the Sun
+          </div>
+          <div class="prob-solution">
+            <div class="steps">1 → e (Asteroid: small lump of rock that orbits the Sun)
+2 → c (Comet: small lump of ice and dust that orbits the Sun)
+3 → d (Star: emits its own light)
+4 → b (Planet: orbits a star and is rounded by gravity)
+5 → a (Moon: orbits a planet)</div>
+            <div class="answer">✅ 1–e, 2–c, 3–d, 4–b, 5–a</div>
+            <div class="tip">💡 Key difference to remember: Asteroids = rock. Comets = ice and dust. Stars emit light; planets reflect it.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 2 — Asteroids vs Comets
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">a) Which celestial object do both asteroids and comets orbit?<br>
+            b) Outline the difference between an asteroid and a comet.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Both asteroids and comets orbit the Sun.
+
+b) An asteroid is a small lump of rock that orbits the Sun.
+   A comet is a small lump of ice and dust that orbits the Sun.
+   Asteroids are found mainly in the asteroid belt (between Mars and Jupiter).
+   Comets originate in the Kuiper Belt or Oort Cloud.</div>
+            <div class="answer">✅ Both orbit the Sun. Asteroid = rock; Comet = ice and dust.</div>
+            <div class="tip">💡 Use the phrase "Rock vs Ice" to remember the key difference.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 3 — Halley's Comet Age Calculation
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Halley's Comet is visible from Earth approximately every 75 years. It was last visible in 1986. Calculate what age you will be the next time Halley's Comet is visible with the naked eye from Earth. (Assume you were born in 2012.)</div>
+          <div class="prob-solution">
+            <div class="steps">Last visible: 1986
+Period: every 75 years
+Next visible: 1986 + 75 = 2061
+
+Age in 2061 = 2061 − 2012 = 49 years old</div>
+            <div class="answer">✅ Halley's Comet next visible in 2061. Age = 49 (adjust for your own birth year).</div>
+            <div class="tip">💡 Formula: Next visibility = last year + 75. Then subtract your birth year from 2061.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 4 — Inner vs Outer Planets
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">State one similarity and one difference between the inner and outer planets in our solar system.</div>
+          <div class="prob-solution">
+            <div class="steps">Similarity: Both inner and outer planets orbit the Sun.
+
+Difference: 
+• Inner planets (Mercury, Venus, Earth, Mars) are terrestrial planets made of rock.
+• Outer planets (Jupiter, Saturn, Uranus, Neptune) are gas giants made mainly of hydrogen and helium.
+
+(Also acceptable: outer planets are much larger / have more moons / are further from the Sun)</div>
+            <div class="answer">✅ Similarity: both orbit the Sun. Difference: inner = rocky; outer = gas giants.</div>
+            <div class="tip">💡 Remember: the asteroid belt acts as the boundary between terrestrial planets and gas giants.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 5 — Planet Data Analysis
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">Using the planet data table, answer the following:<br>
+            a) Which planet has the largest mass?<br>
+            b) List the planets in order of increasing gravity.<br>
+            c) Which planet is most like Earth? Justify your answer.</div>
+          <div class="prob-solution">
+            <div class="steps">a) Jupiter has the largest mass (1.9 × 10²⁷ kg, relative mass = 317.8).
+
+b) Increasing gravity order:
+Mercury = Mars (3.7) → Uranus = Venus (8.9) → Earth (9.8) → Saturn (10.4) → Neptune (11.2) → Jupiter (24.8)
+
+c) Venus is most like Earth because:
+• Similar relative mass (0.8 vs 1)
+• Similar gravity (8.9 vs 9.8 m/s²)
+• Similar diameter (12,103 vs 12,742 km)
+• Both have an atmosphere containing carbon dioxide and nitrogen</div>
+            <div class="answer">✅ a) Jupiter &nbsp;|&nbsp; b) Mercury/Mars → Venus/Uranus → Earth → Saturn → Neptune → Jupiter &nbsp;|&nbsp; c) Venus</div>
+            <div class="tip">💡 When justifying, always use data from the table — e.g. mention the similar mass, gravity or diameter figures.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 — Past Paper -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 6 — Past Paper: Final Exam 2019, Q10
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">a) A star and all of the objects that orbit it is called a:<br>
+          &nbsp;&nbsp;&nbsp;□ Moon &nbsp;&nbsp;&nbsp;□ Solar system &nbsp;&nbsp;&nbsp;□ Galaxy<br><br>
+          b) A system of billions of stars is called a:<br>
+          &nbsp;&nbsp;&nbsp;□ Moon &nbsp;&nbsp;&nbsp;□ Solar system &nbsp;&nbsp;&nbsp;□ Galaxy</div>
+          <div class="prob-solution">
+            <div class="steps">a) ✅ Solar system — a star (the Sun) plus all objects orbiting it.
+
+b) ✅ Galaxy — a galaxy is a system of billions of stars.</div>
+            <div class="answer">✅ a) Solar system &nbsp;|&nbsp; b) Galaxy</div>
+            <div class="tip">💡 Scale order: Moon (orbits planet) → Planet (orbits star) → Solar System (star + all its objects) → Galaxy (billions of stars) → Universe (all galaxies).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 — Past Paper -->
+      <div class="problem-card">
+        <div class="prob-header">
+          Problem 7 — Past Paper: Final Exam 2022, Q6
+          <button class="toggle-btn" onclick="toggleSol(this)">Show Solution</button>
+        </div>
+        <div class="prob-body">
+          <div class="prob-q">An object weighs less on the Moon than on Earth. Tick (✓) the box next to the sentence that explains why:<br><br>
+          □ It is colder on the Moon than on Earth.<br>
+          □ The Moon has a smaller radius than Earth.<br>
+          □ The Moon has a smaller mass than Earth.<br>
+          □ The Moon has no atmosphere.</div>
+          <div class="prob-solution">
+            <div class="steps">✅ The Moon has a smaller mass than Earth.
+
+Explanation: Weight depends on gravity. Gravity depends on mass.
+The Moon has much less mass than Earth, so its gravitational pull is weaker.
+Objects therefore weigh less on the Moon (about 1/6 of their weight on Earth).</div>
+            <div class="answer">✅ The Moon has a smaller mass than Earth.</div>
+            <div class="tip">💡 Weight = mass × gravity. Less mass → less gravity → less weight. Temperature and atmosphere do NOT affect weight/gravity.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ QUICK REFERENCE ═══ -->
+      <div class="section-heading anchor-offset" id="summary">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Object</th>
+            <th>Definition</th>
+            <th>Orbits</th>
+            <th>Key Feature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Moon</strong></td>
+            <td>Celestial object that orbits a planet</td>
+            <td>A planet</td>
+            <td>Earth has 1; Jupiter has 80+</td>
+          </tr>
+          <tr>
+            <td><strong>Asteroid</strong></td>
+            <td>Small lump of rock</td>
+            <td>The Sun</td>
+            <td>Found in asteroid belt (Mars–Jupiter)</td>
+          </tr>
+          <tr>
+            <td><strong>Comet</strong></td>
+            <td>Small lump of ice and dust</td>
+            <td>The Sun</td>
+            <td>Has nucleus, coma and tail; tail points away from Sun</td>
+          </tr>
+          <tr>
+            <td><strong>Star</strong></td>
+            <td>Celestial object that <em>emits</em> light</td>
+            <td>Centre of galaxy</td>
+            <td>Made of hydrogen &amp; helium; nuclear reactions = energy</td>
+          </tr>
+          <tr>
+            <td><strong>Planet</strong></td>
+            <td>Orbits a star, rounded by gravity, clears its orbit</td>
+            <td>A star</td>
+            <td>8 in our solar system; 4 rocky + 4 gas giants</td>
+          </tr>
+          <tr>
+            <td><strong>Solar System</strong></td>
+            <td>Star + all objects orbiting it</td>
+            <td>Centre of galaxy</td>
+            <td>Held together by gravity</td>
+          </tr>
+          <tr>
+            <td><strong>Galaxy</strong></td>
+            <td>System of billions of stars</td>
+            <td>—</td>
+            <td>Milky Way = our galaxy; spiral or elliptical shape</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-heading">Key Terms Glossary</div>
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="g-term">Celestial Object</div>
+          <div class="g-def">Any natural body beyond Earth's atmosphere</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Orbit</div>
+          <div class="g-def">The path a celestial object follows around another</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Composition</div>
+          <div class="g-def">The materials that something is made up of</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Asteroid Belt</div>
+          <div class="g-def">Region between Mars and Jupiter containing many asteroids</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Nucleus (comet)</div>
+          <div class="g-def">The solid ice and dust centre of a comet</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Coma</div>
+          <div class="g-def">Fuzzy cloud of gas around a comet's nucleus</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Terrestrial Planet</div>
+          <div class="g-def">Rocky inner planet (Mercury, Venus, Earth, Mars)</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Gas Giant</div>
+          <div class="g-def">Outer planet made mainly of gas (Jupiter, Saturn, Uranus, Neptune)</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Crater</div>
+          <div class="g-def">Circular depression caused by impact of a space rock</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Milky Way</div>
+          <div class="g-def">The spiral galaxy that contains our solar system</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Kuiper Belt</div>
+          <div class="g-def">Region beyond Neptune where many comets originate</div>
+        </div>
+        <div class="glossary-item">
+          <div class="g-term">Solar Wind</div>
+          <div class="g-def">Stream of particles from the Sun that blows comet tails away</div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Science Home</a>
+    <a href="ch35.html">Ch 35 – Origin of the Universe →</a>
+  </div>
+
+  <script>
+    function toggleSol(btn) {
+      const sol = btn.closest('.problem-card').querySelector('.prob-solution');
+      sol.classList.toggle('open');
+      btn.textContent = sol.classList.contains('open') ? 'Hide Solution' : 'Show Solution';
+    }
+
+    // Highlight active sidebar link on scroll
+    const anchors = document.querySelectorAll('.anchor-offset');
+    const links = document.querySelectorAll('.sidebar a[href^="#"]');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    anchors.forEach(a => observer.observe(a));
+  </script>
+</body>
+</html>
