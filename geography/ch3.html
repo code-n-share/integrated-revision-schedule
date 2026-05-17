@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 3 – Rocks: How They Are Formed and Used | Geography Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --red-light:    #FFEBEE;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--purple);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #8B5CF6 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🪨'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 46px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--purple);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 19px; font-weight: 700;
+      color: var(--purple-dark); margin: 30px 0 10px;
+      padding-left: 12px; border-left: 4px solid var(--purple);
+    }
+    .sub-sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700;
+      color: var(--text); margin: 18px 0 6px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--purple-light); border-left: 4px solid var(--purple);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--purple-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* ROCK TYPE CARDS (3-col grid) */
+    .rock-type-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 20px 0;
+    }
+    .rock-type-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 2px solid var(--border); padding: 20px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .rock-type-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .rock-type-card .rt-badge {
+      display: inline-block; font-family: 'Sora'; font-weight: 800; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .rt-igneous .rt-badge { background: #FFE4B5; color: #8B4513; }
+    .rt-sedimentary .rt-badge { background: #E8F5E9; color: #2E7D32; }
+    .rt-metamorphic .rt-badge { background: var(--purple-light); color: var(--purple-dark); }
+    .rock-type-card .rt-title { font-family: 'Sora'; font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+    .rt-igneous .rt-title { color: #8B4513; }
+    .rt-sedimentary .rt-title { color: #2E7D32; }
+    .rt-metamorphic .rt-title { color: var(--purple-dark); }
+    .rock-type-card .rt-desc { font-size: 13.5px; color: #444; line-height: 1.5; }
+
+    /* ROCK FACT CARD */
+    .rock-fact-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px; margin: 20px 0;
+    }
+    .rock-fact-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .rock-fact-card .rfc-header {
+      padding: 10px 16px;
+      font-family: 'Sora'; font-weight: 800; font-size: 14px; color: #fff;
+    }
+    .rfc-basalt .rfc-header { background: #4A4A4A; }
+    .rfc-granite .rfc-header { background: #8D7561; }
+    .rfc-limestone .rfc-header { background: #5D8A5E; }
+    .rfc-sandstone .rfc-header { background: #B5651D; }
+    .rfc-marble .rfc-header { background: #9C7BB5; }
+    .rfc-quartzite .rfc-header { background: #6A8EAE; }
+    .rock-fact-card .rfc-body { padding: 14px 16px; font-size: 13.5px; }
+    .rock-fact-card .rfc-row { display: flex; gap: 8px; margin-bottom: 6px; align-items: flex-start; }
+    .rock-fact-card .rfc-label { font-weight: 700; min-width: 90px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-top: 1px; }
+    .rock-fact-card .rfc-val { color: var(--text); line-height: 1.4; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+
+    /* IMPACT SECTION */
+    .impact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+    }
+    .impact-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px; box-shadow: var(--shadow);
+    }
+    .impact-card .impact-title {
+      font-family: 'Sora'; font-weight: 800; font-size: 14px;
+      margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .impact-card.positive .impact-title { color: var(--green); }
+    .impact-card.negative .impact-title { color: var(--red); }
+    .impact-card ul { padding-left: 18px; font-size: 13.5px; }
+    .impact-card ul li { margin-bottom: 6px; }
+
+    /* TABLE */
+    .geo-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .geo-table th {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .geo-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .geo-table tr:last-child td { border-bottom: none; }
+    .geo-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .ex-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; }
+
+    /* CASE STUDY BOX */
+    .case-study {
+      background: var(--amber-light); border: 2px solid var(--amber);
+      border-radius: var(--radius); margin: 20px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .case-study .cs-header {
+      background: var(--amber); color: var(--text);
+      font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .case-study .cs-body { padding: 16px 18px; font-size: 14px; }
+    .case-study .cs-body strong { color: var(--text); }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+      gap: 16px;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      background: var(--purple-light); color: var(--purple-dark); white-space: nowrap;
+    }
+    .toggle-btn {
+      background: var(--purple); color: #fff; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s; white-space: nowrap;
+    }
+    .toggle-btn:hover { background: var(--purple-dark); }
+    .quiz-answer {
+      display: none; padding: 14px 18px; border-top: 1px solid var(--border);
+      background: var(--green-light); font-size: 14px; color: var(--green);
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* ROCK CYCLE DIAGRAM */
+    .rock-cycle-box {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+      margin: 16px 0; text-align: center;
+    }
+    .rock-cycle-box .rc-title {
+      font-family: 'Sora'; font-weight: 800; font-size: 15px;
+      color: var(--purple-dark); margin-bottom: 16px;
+    }
+    .rc-diagram {
+      display: flex; justify-content: center; align-items: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .rc-node {
+      background: var(--purple); color: #fff;
+      font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      padding: 12px 18px; border-radius: 10px; text-align: center; min-width: 110px;
+    }
+    .rc-node.igneous { background: #8B4513; }
+    .rc-node.sedimentary { background: #2E7D32; }
+    .rc-node.metamorphic { background: var(--purple); }
+    .rc-arrow {
+      font-size: 20px; color: var(--muted); margin: 0 6px;
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 11px; color: var(--muted); text-align: center;
+    }
+    .rc-arrow .arr { font-size: 20px; line-height: 1; }
+
+    /* ENERGY BOX */
+    .energy-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .energy-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px; box-shadow: var(--shadow);
+    }
+    .energy-card .ec-icon { font-size: 32px; margin-bottom: 10px; }
+    .energy-card .ec-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .energy-card .ec-desc { font-size: 13px; color: #444; line-height: 1.5; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    /* SCROLL OFFSET for anchors */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 32px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+      .rock-type-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Geography Revision</div>
+    <div class="book-title">Ch 3 — Rocks</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Geography Home</a>
+
+  <div class="sidebar-label">Types of Rock</div>
+  <a href="#types">Types of Rock</a>
+  <a href="#rock-cycle">The Rock Cycle</a>
+
+  <div class="sidebar-label">Igneous Rocks</div>
+  <a href="#igneous">Igneous Rocks</a>
+  <a href="#basalt">Basalt</a>
+  <a href="#granite">Granite</a>
+
+  <div class="sidebar-label">Sedimentary Rocks</div>
+  <a href="#sedimentary">Sedimentary Rocks</a>
+  <a href="#limestone">Limestone</a>
+  <a href="#sandstone">Sandstone</a>
+
+  <div class="sidebar-label">Metamorphic Rocks</div>
+  <a href="#metamorphic">Metamorphic Rocks</a>
+  <a href="#marble">Marble</a>
+  <a href="#quartzite">Quartzite</a>
+
+  <div class="sidebar-label">Uses &amp; Impacts</div>
+  <a href="#uses">Uses of Rock</a>
+  <a href="#energy">Energy &amp; Fossil Fuels</a>
+  <a href="#building">Building Materials</a>
+  <a href="#impacts">Impacts of Mining</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#flashcards">Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 3 · Geography in Action</div>
+    <h1>Rocks: <span>How They Are</span><br>Formed and Used</h1>
+    <div class="chapter-meta">Unit: Physical Geography &nbsp;·&nbsp; Learning Outcomes: 1.2, 1.10, 2.2 and 2.7</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🪨 Three Rock Groups</span>
+      <span class="goal-tag">🌋 Igneous Rocks</span>
+      <span class="goal-tag">🏔️ Sedimentary Rocks</span>
+      <span class="goal-tag">💎 Metamorphic Rocks</span>
+      <span class="goal-tag">⛏️ Uses of Rock</span>
+      <span class="goal-tag">🏭 Mining &amp; Quarrying</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ TYPES OF ROCK ═══ -->
+    <div class="section-heading anchor-offset" id="types">
+      <span class="icon">🪨</span> Types of Rock
+    </div>
+
+    <p>The Earth's crust is made up of rock. Rocks are composed of different <strong>minerals</strong> — naturally occurring elements usually found in the ground. These minerals are held together by a natural cement. Rocks differ from one another in terms of hardness, texture, colour and mineral content.</p>
+
+    <p>All rocks can be divided into <strong>three groups</strong> depending on how they were formed:</p>
+
+    <div class="rock-type-grid">
+      <div class="rock-type-card rt-igneous">
+        <div class="rt-badge">1. Igneous</div>
+        <div class="rt-title">Igneous Rocks</div>
+        <div class="rt-desc">Formed as a result of <strong>volcanic activity</strong>. When hot molten magma escapes from the mantle, it cools and hardens. Lava cools quickly on the surface; magma inside the crust cools more slowly.</div>
+      </div>
+      <div class="rock-type-card rt-sedimentary">
+        <div class="rt-badge">2. Sedimentary</div>
+        <div class="rt-title">Sedimentary Rocks</div>
+        <div class="rt-desc">Formed from particles of other rocks, as well as dead plants and animals. Sediments are deposited on sea and lake beds and on land. They are <strong>compressed</strong> (pressed tightly together) and <strong>cemented</strong> (stuck together) to create solid rock.</div>
+      </div>
+      <div class="rock-type-card rt-metamorphic">
+        <div class="rt-badge">3. Metamorphic</div>
+        <div class="rt-title">Metamorphic Rocks</div>
+        <div class="rt-desc">Formed when existing igneous or sedimentary rocks are changed into new, harder rocks by <strong>great heat or pressure</strong> or sometimes both. The heat and pressure come from magma in the mantle or from plate movement.</div>
+      </div>
+    </div>
+
+    <!-- ROCK CYCLE -->
+    <div class="section-heading anchor-offset" id="rock-cycle">
+      <span class="icon">🔄</span> The Rock Cycle
+    </div>
+
+    <p>Rocks are continuously being formed, broken down and reformed in what is called the <strong>rock cycle</strong>. The processes of weathering, erosion, transportation, deposition, sedimentation, compression, cementation, burial, melting and volcanic activity all drive the cycle.</p>
+
+    <div class="rock-cycle-box">
+      <div class="rc-title">The Rock Cycle — How rocks are formed</div>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:8px;">
+        <div style="background:#8B4513;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;min-width:130px;">
+          <div style="font-family:'Sora';font-weight:800;font-size:14px;">Magma</div>
+          <div style="font-size:11px;opacity:0.85;margin-top:4px;">from mantle/crust</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:22px;color:var(--muted);">→</div>
+        <div style="background:#8B4513;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;min-width:130px;">
+          <div style="font-family:'Sora';font-weight:800;font-size:14px;">Igneous Rock</div>
+          <div style="font-size:11px;opacity:0.85;margin-top:4px;">cools &amp; hardens</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:22px;color:var(--muted);">→</div>
+        <div style="background:#2E7D32;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;min-width:130px;">
+          <div style="font-family:'Sora';font-weight:800;font-size:14px;">Sedimentary</div>
+          <div style="font-size:11px;opacity:0.85;margin-top:4px;">weathering → deposit</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:22px;color:var(--muted);">→</div>
+        <div style="background:var(--purple);color:#fff;border-radius:10px;padding:14px 20px;text-align:center;min-width:130px;">
+          <div style="font-family:'Sora';font-weight:800;font-size:14px;">Metamorphic</div>
+          <div style="font-size:11px;opacity:0.85;margin-top:4px;">heat &amp; pressure</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:22px;color:var(--muted);">→</div>
+        <div style="background:#8B4513;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;min-width:130px;">
+          <div style="font-family:'Sora';font-weight:800;font-size:14px;">Melting</div>
+          <div style="font-size:11px;opacity:0.85;margin-top:4px;">back to magma</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">💡</span>
+      <div class="text">
+        <strong>Key Terms</strong>
+        <strong>Mineral:</strong> A naturally occurring element usually found in the ground.<br>
+        <strong>Cement:</strong> The natural substance that holds minerals together in a rock.<br>
+        <strong>Compress:</strong> To press tightly together and make smaller.
+      </div>
+    </div>
+
+    <!-- ═══ IGNEOUS ROCKS ═══ -->
+    <div class="section-heading anchor-offset" id="igneous">
+      <span class="icon">🌋</span> Igneous Rocks
+    </div>
+
+    <p>Igneous rocks are formed as a result of <strong>volcanic activity</strong>. There are two main types: <strong>extrusive</strong> (formed above the surface — basalt) and <strong>intrusive</strong> (formed below the surface — granite).</p>
+
+    <div class="sub-heading anchor-offset" id="basalt">Basalt</div>
+
+    <div class="rock-fact-grid">
+      <div class="rock-fact-card rfc-basalt">
+        <div class="rfc-header">🪨 Basalt</div>
+        <div class="rfc-body">
+          <div class="rfc-row"><span class="rfc-label">Colour</span><span class="rfc-val">Grey / black</span></div>
+          <div class="rfc-row"><span class="rfc-label">Texture</span><span class="rfc-val">Fine-grained (tiny crystals, invisible to naked eye)</span></div>
+          <div class="rfc-row"><span class="rfc-label">Formation</span><span class="rfc-val">An <strong>extrusive</strong> igneous rock. Lava spreads over the Earth's surface during volcanic activity, then cools and hardens quickly in the open air, producing tiny crystals.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Use</span><span class="rfc-val">Base for roads and pavements; tourist landscape attraction.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Example in Ireland</span><span class="rfc-val">Antrim–Derry Plateau (NE Ireland). The Giant's Causeway — lava contracted as it cooled to form famous hexagonal (six-sided) columns.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Extrusive Rock</div>
+      <div class="definition">Igneous rock formed <em>above</em> the surface of the Earth, when lava cools rapidly in open air. Produces small crystals.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Crystal</div>
+      <div class="definition">A solid form of mineral. The size of crystals in an igneous rock depends on how quickly the magma or lava cooled — slow cooling = large crystals; fast cooling = small crystals.</div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="granite">Granite</div>
+
+    <div class="rock-fact-grid">
+      <div class="rock-fact-card rfc-granite">
+        <div class="rfc-header">🪨 Granite</div>
+        <div class="rfc-body">
+          <div class="rfc-row"><span class="rfc-label">Colour</span><span class="rfc-val">Range of colours — black, grey, pink and cream</span></div>
+          <div class="rfc-row"><span class="rfc-label">Texture</span><span class="rfc-val">Coarse-grained (large crystals visible to naked eye)</span></div>
+          <div class="rfc-row"><span class="rfc-label">Formation</span><span class="rfc-val">An <strong>intrusive</strong> igneous rock. Molten magma pushes into the crust and cools <em>very slowly</em> over millions of years below the surface, producing large crystals. Includes minerals quartz, feldspar and mica. Exposed at surface when overlying rock is worn away.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Use</span><span class="rfc-val">Counter tops in kitchens; everyday products due to hardness and durability. Mount Rushmore (USA) carved from granite.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Example in Ireland</span><span class="rfc-val">The Wicklow Mountains in the east of Ireland.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Intrusive Rock</div>
+      <div class="definition">Igneous rock formed <em>below</em> the surface of the Earth, when magma cools slowly deep within the crust. Produces large crystals.</div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">⚡</span>
+      <div class="text">
+        <strong>Basalt vs Granite — Key Difference</strong>
+        Basalt cools <em>quickly</em> above ground → <em>small</em> crystals, fine-grained.<br>
+        Granite cools <em>slowly</em> underground → <em>large</em> crystals, coarse-grained.
+      </div>
+    </div>
+
+    <!-- ═══ SEDIMENTARY ROCKS ═══ -->
+    <div class="section-heading anchor-offset" id="sedimentary">
+      <span class="icon">🏔️</span> Sedimentary Rocks
+    </div>
+
+    <p>Sedimentary rocks are formed from particles of other rocks, as well as dead plants and animals. These <strong>sediments</strong> are deposited on sea and lake beds. The weight of upper layers compresses and cements the lower layers into <strong>strata</strong> — layers of solid rock separated by bedding planes.</p>
+
+    <div class="key-term">
+      <div class="term">Sediment</div>
+      <div class="definition">Particles that sink to the seabed or lake bed and build up over millions of years.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Strata</div>
+      <div class="definition">Layers of solid rock within sedimentary rock. Each layer is called a stratum.</div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="limestone">Limestone</div>
+
+    <div class="rock-fact-grid">
+      <div class="rock-fact-card rfc-limestone">
+        <div class="rfc-header">🪨 Limestone</div>
+        <div class="rfc-body">
+          <div class="rfc-row"><span class="rfc-label">Colour</span><span class="rfc-val">Grey</span></div>
+          <div class="rfc-row"><span class="rfc-label">Texture</span><span class="rfc-val">Coarse-grained</span></div>
+          <div class="rfc-row"><span class="rfc-label">Formation</span><span class="rfc-val">Made from particles of <strong>shells and the remains of sea creatures' skeletons</strong>. When these particles sink to the seabed they are called sediment. The sediment piles up in warm, shallow seas over millions of years; upper layers compress and cement lower layers into strata. Ireland's limestone formed ~350 million years ago when Ireland was near the equator.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Properties</span><span class="rfc-val">Limestone is <strong>permeable</strong> (water can pass through it) and <strong>soluble</strong> (dissolves in water).</span></div>
+          <div class="rfc-row"><span class="rfc-label">Use</span><span class="rfc-val">Monuments, construction of buildings, making cement; ground into lime to improve soil fertility.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Example in Ireland</span><span class="rfc-val">The Burren, Co. Clare — one of Ireland's biggest tourist attractions.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Permeable</div>
+      <div class="definition">Water can pass through the rock.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Soluble</div>
+      <div class="definition">The rock can dissolve in water.</div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="sandstone">Sandstone</div>
+
+    <div class="rock-fact-grid">
+      <div class="rock-fact-card rfc-sandstone">
+        <div class="rfc-header">🪨 Sandstone</div>
+        <div class="rfc-body">
+          <div class="rfc-row"><span class="rfc-label">Colour</span><span class="rfc-val">Reddish / brown</span></div>
+          <div class="rfc-row"><span class="rfc-label">Texture</span><span class="rfc-val">Coarse-grained</span></div>
+          <div class="rfc-row"><span class="rfc-label">Formation</span><span class="rfc-val">Formed from <strong>sand worn away from the Earth's surface</strong>. Wind and rivers carry this sand and deposit it in seas, lakes and deserts; layers build up over time, are compressed and cemented to form sandstone.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Use</span><span class="rfc-val">Used in patios and as a building material in the construction industry.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Example in Ireland</span><span class="rfc-val">MacGillycuddy's Reeks in Co. Kerry and the Galtee Mountains in the south of Ireland. Uluru (Ayers Rock) in Australia is a world-famous sandstone landmark.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ METAMORPHIC ROCKS ═══ -->
+    <div class="section-heading anchor-offset" id="metamorphic">
+      <span class="icon">💎</span> Metamorphic Rocks
+    </div>
+
+    <p>Metamorphic rocks are formed when existing igneous or sedimentary rocks are changed into <strong>new, harder rocks</strong> by great heat or great pressure (or both). The heat and pressure come from magma in the mantle or from plate movement.</p>
+
+    <div class="sub-heading anchor-offset" id="marble">Marble</div>
+
+    <div class="rock-fact-grid">
+      <div class="rock-fact-card rfc-marble">
+        <div class="rfc-header">🪨 Marble</div>
+        <div class="rfc-body">
+          <div class="rfc-row"><span class="rfc-label">Colour</span><span class="rfc-val">White / red / green / black (varies)</span></div>
+          <div class="rfc-row"><span class="rfc-label">Texture</span><span class="rfc-val">Smooth</span></div>
+          <div class="rfc-row"><span class="rfc-label">Original Rock</span><span class="rfc-val">Limestone</span></div>
+          <div class="rfc-row"><span class="rfc-label">Formation</span><span class="rfc-val">Formed when <strong>limestone is put under great heat or pressure</strong> due to plate movement, or when molten magma comes in contact with limestone. It is a hard rock that can vary in colour.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Use</span><span class="rfc-val">Can be cut to any size and polished to make it more appealing. Used for monuments, floor tiles, fireplaces and ornaments.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Examples in Ireland</span><span class="rfc-val">Co. Antrim (white), Co. Cork (red), Connemara, Co. Galway (green), Co. Kilkenny (black).</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-heading anchor-offset" id="quartzite">Quartzite</div>
+
+    <div class="rock-fact-grid">
+      <div class="rock-fact-card rfc-quartzite">
+        <div class="rfc-header">🪨 Quartzite</div>
+        <div class="rfc-body">
+          <div class="rfc-row"><span class="rfc-label">Colour</span><span class="rfc-val">White / grey</span></div>
+          <div class="rfc-row"><span class="rfc-label">Texture</span><span class="rfc-val">Granular (grainy)</span></div>
+          <div class="rfc-row"><span class="rfc-label">Original Rock</span><span class="rfc-val">Sandstone</span></div>
+          <div class="rfc-row"><span class="rfc-label">Formation</span><span class="rfc-val">Formed when <strong>sandstone is put under great heat or pressure</strong> due to plate movement or when molten magma comes in contact with sandstone. An extremely hard rock found on the tops of many of Ireland's mountains because it is not easily broken down.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Use</span><span class="rfc-val">Counter tops, base for roads and pavements, making glass.</span></div>
+          <div class="rfc-row"><span class="rfc-label">Examples in Ireland</span><span class="rfc-val">Croagh Patrick in Co. Mayo and the Great Sugarloaf in Co. Wicklow.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">💡</span>
+      <div class="text">
+        <strong>Metamorphic Memory Aid</strong>
+        Limestone + heat/pressure → <strong>Marble</strong><br>
+        Sandstone + heat/pressure → <strong>Quartzite</strong>
+      </div>
+    </div>
+
+    <!-- ═══ USES OF ROCK ═══ -->
+    <div class="section-heading anchor-offset" id="uses">
+      <span class="icon">⛏️</span> Uses of Rock
+    </div>
+
+    <p>Rocks are a <strong>natural resource</strong> — something in the natural world that people can use to their advantage. They can be <strong>exploited</strong> (used for a benefit) in many different ways. Rocks can be used as sources of energy and as building materials. The production of energy and building materials are of great socio-economic importance.</p>
+
+    <div class="key-term">
+      <div class="term">Natural Resource</div>
+      <div class="definition">Something in the natural world that people can use to their advantage.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Exploit</div>
+      <div class="definition">To use something for a benefit.</div>
+    </div>
+
+    <!-- ENERGY -->
+    <div class="sub-heading anchor-offset" id="energy">Energy — Fossil Fuels</div>
+
+    <p>Some rocks contain <strong>fossil fuels</strong> — fuels made from decomposing plants and animals. There are three main types of fossil fuels, each extracted from the crust in different ways.</p>
+
+    <div class="energy-grid">
+      <div class="energy-card">
+        <div class="ec-icon">⛏️</div>
+        <div class="ec-title">Coal</div>
+        <div class="ec-desc">Mined in <strong>open pits</strong> (if near the surface) or <strong>shaft mining</strong> (vertical tunnels underground if deeper). Example: Castlecomer, Co. Kilkenny.</div>
+      </div>
+      <div class="energy-card">
+        <div class="ec-icon">🛢️</div>
+        <div class="ec-title">Oil and Gas</div>
+        <div class="ec-desc">Extracted by <strong>drilling deep</strong> into the Earth's crust and pumping to the surface. Can also be done offshore from a rig. Oil or gas is then piped ashore.</div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Fossil Fuel</div>
+      <div class="definition">Fuels made from decomposing plants and animals found in rock. Include coal, oil and gas.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Mining</div>
+      <div class="definition">The process of extracting fossil fuels or other resources from within the Earth's crust, including shaft mining (underground tunnels).</div>
+    </div>
+
+    <!-- BUILDING MATERIALS -->
+    <div class="sub-heading anchor-offset" id="building">Building Materials — Quarrying</div>
+
+    <p><strong>Quarrying</strong> is the process of extracting rock directly from the surface of the Earth. Large machinery cuts rock out of the crust, or explosives break rock away from the crust. Rocks used as building materials include <strong>limestone, sandstone and marble</strong>.</p>
+
+    <div class="key-term">
+      <div class="term">Quarrying</div>
+      <div class="definition">The process of extracting rock directly from the surface of the Earth using machinery or explosives.</div>
+    </div>
+
+    <div class="case-study">
+      <div class="cs-header">📍 Case Study — Irish Cement: Platin Works, Drogheda, Co. Louth</div>
+      <div class="cs-body">
+        <p>Irish Cement quarries <strong>limestone</strong> to produce cement at Platin Works factory, near Drogheda in Co. Louth. Limestone is the main raw material in cement production, which is why the factory is located next to the quarry.</p>
+        <p style="margin-top:8px;">At the quarry, carefully controlled explosions dislodge up to <strong>80,000 tonnes</strong> of rock at a time. The rock is transported by truck to the factory, crushed to tennis-ball sized chunks, then blended with raw materials (bauxite, iron ore and shale) and put through an intense heat process in a kiln for burning, baking and drying. The result is milled to form <strong>cement</strong>.</p>
+        <p style="margin-top:8px;">Platin Works is the largest of Irish Cement's two factories. Together with their Limerick factory, they employ <strong>306 people</strong>.</p>
+      </div>
+    </div>
+
+    <!-- IMPACTS -->
+    <div class="section-heading anchor-offset" id="impacts">
+      <span class="icon">⚖️</span> Impacts of Mining and Quarrying
+    </div>
+
+    <p>Mining and quarrying have economic, social and environmental impacts, and sometimes these can be in conflict with each other. This can make mining or quarrying a controversial activity.</p>
+
+    <div class="impact-grid">
+      <div class="impact-card positive">
+        <div class="impact-title">✅ Positive (Economic) Impacts</div>
+        <ul>
+          <li>Provides <strong>direct and indirect employment</strong> (stationery suppliers, cleaners, etc.).</li>
+          <li>Supports local economy and other economic activities.</li>
+          <li>Provides raw materials for copper, steel, iron and glass.</li>
+          <li>Local services such as roads can be improved due to high traffic volume.</li>
+          <li>Reduces need to import building and energy materials.</li>
+        </ul>
+      </div>
+      <div class="impact-card negative">
+        <div class="impact-title">❌ Negative (Social &amp; Environmental) Impacts</div>
+        <ul>
+          <li><strong>Noise pollution</strong> from controlled explosions (e.g. Belgard Quarry, Tallaght, weekly blasting).</li>
+          <li>Can be an <strong>eyesore</strong> — bare rock exposed.</li>
+          <li>Large trucks cause <strong>traffic congestion</strong> on narrow country roads.</li>
+          <li>Abandoned quarries can form <strong>dangerous lakes</strong>.</li>
+          <li>Quarries leave <strong>scars on the landscape</strong> when closed.</li>
+          <li>Dust and air pollution — hazardous to people's health.</li>
+          <li>Wildlife and <strong>biodiversity</strong> heavily impacted. Damage to natural habitats is hard to fix.</li>
+          <li>Local water supply quality can be affected.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Biodiversity</div>
+      <div class="definition">All the different kinds of plants and animals you will find in a particular area or region.</div>
+    </div>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="flashcards">
+      <span class="icon">🃏</span> Flashcard Revision
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the <strong>three groups of rocks</strong>? How does each form?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Types</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Igneous</strong> — formed from cooled magma/lava. <strong>Sedimentary</strong> — formed from compressed and cemented sediment (particles of rock, plants and animals). <strong>Metamorphic</strong> — formed when existing rock is changed by great heat or pressure.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between <strong>basalt</strong> and <strong>granite</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Igneous</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Basalt</strong> is extrusive — it forms above ground when lava cools quickly, giving it fine-grained, tiny crystals (grey/black). Found at the Giant's Causeway, Co. Antrim. <strong>Granite</strong> is intrusive — forms below ground when magma cools very slowly, giving it coarse-grained, large crystals (mixed colours). Found in the Wicklow Mountains.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What does it mean that limestone is <strong>permeable</strong> and <strong>soluble</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sedimentary</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Permeable</strong> = water can pass through the rock. <strong>Soluble</strong> = the rock dissolves in water. Both properties are important in shaping limestone landscapes like the Burren, Co. Clare.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are <strong>strata</strong>? Which rock type has them?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sedimentary</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Strata are <strong>layers of solid rock</strong> found in sedimentary rocks. They are separated by bedding planes. They form because sediment is deposited in layers over millions of years, with each layer being compressed and cemented.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the two metamorphic rocks, their original rock and one use each.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Metamorphic</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Marble</strong>: from limestone → used for floor tiles, monuments, fireplaces. <strong>Quartzite</strong>: from sandstone → used for counter tops, road bases, glass-making.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>quarrying</strong>? How is it different from <strong>mining</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Uses of Rock</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Quarrying</strong> extracts rock <em>directly from the surface</em> using machinery or explosives. <strong>Mining</strong> extracts resources from <em>within</em> the Earth's crust, often using underground shaft mines or open pits.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name <strong>three fossil fuels</strong> and how each is extracted.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Energy</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Coal</strong> — mined in open pits or via shaft mining underground. <strong>Oil</strong> — extracted by drilling and pumping from the crust (or offshore rigs). <strong>Gas</strong> — also extracted by drilling and pumping; piped ashore.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Give one positive and one negative <strong>environmental impact</strong> of quarrying.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Impacts</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Positive</strong>: Provides employment and raw materials; supports local economy. <strong>Negative</strong>: Quarries damage biodiversity and natural habitats; can leave scars on the landscape; dust and air pollution is a health hazard; abandoned quarries form dangerous lakes.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Where is <strong>basalt</strong> found in Ireland, and what famous tourist attraction does it form?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Igneous</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Basalt is found in the <strong>Antrim–Derry Plateau</strong> in the north-east of Ireland. The <strong>Giant's Causeway</strong> in Co. Antrim is part of this plateau — as lava cooled and contracted (shrank), it formed the famous <strong>hexagonal (six-sided) columns</strong>.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+
+    <table class="geo-table">
+      <thead>
+        <tr><th>Rock Type</th><th>Rock Name</th><th>Formed From</th><th>Key Property / Use</th><th>Irish Location</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Igneous</strong> (Extrusive)</td>
+          <td>Basalt</td>
+          <td>Lava cools quickly above ground</td>
+          <td>Fine-grained; roads, pavements; tourist attraction</td>
+          <td>Giant's Causeway, Co. Antrim</td>
+        </tr>
+        <tr>
+          <td><strong>Igneous</strong> (Intrusive)</td>
+          <td>Granite</td>
+          <td>Magma cools slowly underground</td>
+          <td>Coarse-grained; kitchen counter tops</td>
+          <td>Wicklow Mountains</td>
+        </tr>
+        <tr>
+          <td><strong>Sedimentary</strong></td>
+          <td>Limestone</td>
+          <td>Shells &amp; sea creature skeletons compressed over millions of years</td>
+          <td>Permeable &amp; soluble; buildings, cement, soil fertility</td>
+          <td>The Burren, Co. Clare</td>
+        </tr>
+        <tr>
+          <td><strong>Sedimentary</strong></td>
+          <td>Sandstone</td>
+          <td>Sand particles compressed &amp; cemented</td>
+          <td>Coarse-grained; patios, construction</td>
+          <td>MacGillycuddy's Reeks, Co. Kerry</td>
+        </tr>
+        <tr>
+          <td><strong>Metamorphic</strong></td>
+          <td>Marble</td>
+          <td>Limestone + heat/pressure</td>
+          <td>Smooth; floor tiles, monuments, fireplaces</td>
+          <td>Connemara (green), Co. Antrim (white)</td>
+        </tr>
+        <tr>
+          <td><strong>Metamorphic</strong></td>
+          <td>Quartzite</td>
+          <td>Sandstone + heat/pressure</td>
+          <td>Extremely hard; counter tops, road base, glass</td>
+          <td>Croagh Patrick, Co. Mayo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="geo-table" style="margin-top:24px;">
+      <thead>
+        <tr><th colspan="2">Mining &amp; Quarrying — Impacts Summary</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>✅ Economic Positives</strong></td>
+          <td>Employment (direct &amp; indirect), supports local economy, provides raw materials, reduces imports, improves local roads.</td>
+        </tr>
+        <tr>
+          <td><strong>❌ Social Negatives</strong></td>
+          <td>Noise pollution (explosions), eyesore (exposed rock), traffic congestion on country roads, dangerous abandoned quarry lakes.</td>
+        </tr>
+        <tr>
+          <td><strong>❌ Environmental Negatives</strong></td>
+          <td>Scars on landscape, dust and air pollution (health hazard), damage to biodiversity and habitats, affects local water supply.</td>
+        </tr>
+        <tr>
+          <td><strong>Case Study</strong></td>
+          <td>Irish Cement, Platin Works, Drogheda, Co. Louth — quarries limestone to make cement; employs 306 people.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="ch2.html">&larr; Ch 2: Earth's Surface</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
