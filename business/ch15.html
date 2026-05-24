@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 15 – The Entrepreneur | Business Revision</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --green: #E8630A;
+      --green-dark: #A84000;
+      --green-light: #FFF0E6;
+      --amber: #F5C842;
+      --amber-light: #FFF8E1;
+      --purple: #E8630A;
+      --purple-light: #FFF0E6;
+      --blue: #1565C0;
+      --blue-light: #E3F2FF;
+      --red: #C62828;
+      --red-light: #FFEBEE;
+      --bg: #FBF7F4;
+      --card: #FFFFFF;
+      --text: #1F1208;
+      --muted: #6B7280;
+      --border: #EDE0D4;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--text);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      background: var(--green);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+
+    .sidebar-header .site-title {
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ddd;
+    }
+
+    .sidebar-header .book-title {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-top: 4px;
+      color: #fff;
+    }
+
+    .sidebar-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 14px 18px 6px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 9px 18px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-left-color: var(--amber);
+    }
+
+    .sidebar a.home-link {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 16px 18px 8px;
+      border-left: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar a.home-link:hover {
+      color: var(--amber);
+      background: none;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      margin-left: 240px;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, #FF8C42 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chapter-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(245, 166, 35, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .chapter-hero::after {
+      content: '💡';
+      position: absolute;
+      top: 20px;
+      right: 48px;
+      font-size: 110px;
+      opacity: 0.1;
+    }
+
+    .chapter-badge {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--text);
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .chapter-hero h1 span {
+      color: var(--amber);
+    }
+
+    .chapter-meta {
+      margin-top: 12px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .goal-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .goal-tag {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      padding: 40px 48px;
+      max-width: 1020px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-heading .icon {
+      font-size: 24px;
+    }
+
+    .sub-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin: 26px 0 10px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--green-light);
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+
+    .key-term .term {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--green-dark);
+    }
+
+    .key-term .definition {
+      font-size: 14px;
+      color: #333;
+      margin-top: 3px;
+    }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light);
+      border: 2px dashed var(--amber);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .remember .icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .remember .text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .remember .text strong {
+      color: var(--text);
+      display: block;
+      font-family: 'Sora';
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    /* ENTERPRISE IN ACTION */
+    .enterprise-action {
+      background: #fff;
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      margin: 20px 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .enterprise-action .ea-header {
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora';
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .enterprise-action .ea-title {
+      background: var(--green-light);
+      padding: 10px 18px;
+      font-family: 'Sora';
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--green-dark);
+    }
+
+    .enterprise-action .ea-body {
+      padding: 16px 18px;
+      font-size: 14px;
+    }
+
+    .enterprise-action .ea-body strong {
+      color: var(--green-dark);
+    }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .info-card .card-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .info-card .card-title {
+      font-family: 'Sora';
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .info-card .card-def {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* TWO-COL TABLE */
+    .biz-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .biz-table th {
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sora';
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .biz-table td {
+      padding: 11px 16px;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .biz-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .biz-table tr:nth-child(even) td {
+      background: #f9fafb;
+    }
+
+    /* BULLET LIST */
+    .biz-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .biz-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .biz-list li::before {
+      content: '›';
+      color: var(--green);
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    .biz-list li strong {
+      color: var(--green-dark);
+    }
+
+    /* REWARD/RISK COLS */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .col-box {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .col-box.rewards {
+      border-top: 4px solid var(--green);
+    }
+
+    .col-box.risks {
+      border-top: 4px solid var(--red);
+    }
+
+    .col-box .col-title {
+      font-family: 'Sora';
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .col-box.rewards .col-title {
+      color: var(--green-dark);
+    }
+
+    .col-box.risks .col-title {
+      color: var(--red);
+    }
+
+    /* CHARACTERISTICS GRID */
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .char-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .char-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .char-card .cc-icon {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .char-card .cc-title {
+      font-family: 'Sora';
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    .char-card .cc-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* PRODUCT DEVELOPMENT TABLE */
+    .dev-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .dev-table th {
+      background: var(--green-dark);
+      color: #fff;
+      font-family: 'Sora';
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 14px;
+      text-align: left;
+    }
+
+    .dev-table td {
+      padding: 12px 14px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .dev-table tr:nth-child(even) td {
+      background: #f4faf6;
+    }
+
+    .dev-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .dev-table .step-num {
+      font-family: 'Sora';
+      font-weight: 800;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .quiz-header:hover {
+      background: #f9fafb;
+    }
+
+    .quiz-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-dark);
+    }
+
+    .toggle-btn {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-family: 'Sora';
+      transition: background 0.2s;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
+
+    .toggle-btn:hover {
+      background: var(--green-dark);
+    }
+
+    .quiz-answer {
+      display: none;
+      padding: 14px 18px;
+      border-top: 1px solid var(--border);
+      background: var(--green-light);
+      font-size: 14px;
+      color: var(--green-dark);
+    }
+
+    .quiz-answer.open {
+      display: block;
+    }
+
+    .quiz-answer strong {
+      color: var(--green-dark);
+    }
+
+    /* DID YOU KNOW */
+    .did-you-know {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    .did-you-know .dyk-label {
+      font-family: 'Sora';
+      font-weight: 800;
+      color: var(--blue);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky;
+      bottom: 0;
+      background: var(--text);
+      color: #fff;
+      padding: 12px 48px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 13px;
+      z-index: 50;
+      flex-wrap: wrap;
+    }
+
+    .chapter-nav-bar a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .chapter-nav-bar a:hover {
+      text-decoration: underline;
+    }
+
+    .chapter-nav-bar span {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+    }
+
+    .anchor-offset {
+      scroll-margin-top: 24px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar {
+        width: 0;
+        overflow: hidden;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .content {
+        padding: 28px 18px;
+      }
+
+      .chapter-hero {
+        padding: 44px 20px 36px;
+      }
+
+      .chapter-hero h1 {
+        font-size: 28px;
+      }
+
+      .chapter-hero::after {
+        display: none;
+      }
+
+      .chapter-nav-bar {
+        padding: 12px 18px;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="site-title">Business Revision</div>
+      <div class="book-title">Ch 15 — The Entrepreneur</div>
+    </div>
+    <a href="../index.html" class="home-link">← Back to Subjects</a>
+    <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">Business Home</a>
+
+    <div class="sidebar-label">Enterprise</div>
+    <a href="#enterprise">What is Enterprise?</a>
+    <a href="#business">Enterprise in Business</a>
+
+    <div class="sidebar-label">Characteristics &amp; Skills</div>
+    <a href="#characteristics">Characteristics</a>
+    <a href="#skills">Skills of Entrepreneurs</a>
+
+    <div class="sidebar-label">Role &amp; Economy</div>
+    <a href="#rewards-risks">Rewards &amp; Risks</a>
+    <a href="#role-org">Role in Organisation</a>
+    <a href="#role-economy">Role in Economy &amp; Society</a>
+
+    <div class="sidebar-label">Business Ideas</div>
+    <a href="#sources">Sources of Business Ideas</a>
+    <a href="#new-products">New Product Ideas</a>
+    <a href="#product-dev">Product Development Process</a>
+
+    <div class="sidebar-label">Revision</div>
+    <a href="#flashcards">Key Term Flashcards</a>
+    <a href="#summary">Quick-Reference Summary</a>
+  </nav>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 15 · Strand Two – Enterprise</div>
+      <h1>The Skills, Characteristics<br>and Role of the <span>Entrepreneur</span></h1>
+      <div class="chapter-meta">Learning Outcome 2.2 &nbsp;·&nbsp; Enterprise, Business &amp; the Economy</div>
+      <div class="goal-tags">
+        <span class="goal-tag">💡 What is Enterprise?</span>
+        <span class="goal-tag">🚀 Entrepreneur Characteristics</span>
+        <span class="goal-tag">⚖️ Rewards &amp; Risks</span>
+        <span class="goal-tag">🏢 Role in Organisation</span>
+        <span class="goal-tag">💼 Sources of Business Ideas</span>
+        <span class="goal-tag">🔬 Product Development</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ WHAT IS ENTERPRISE ═══ -->
+      <div class="section-heading anchor-offset" id="enterprise">
+        <span class="icon">💡</span> What is Enterprise?
+      </div>
+
+      <div class="key-term">
+        <div class="term">Enterprise</div>
+        <div class="definition">Enterprise is any attempt to start or do something new. It is about turning ideas into
+          actions, using creativity and a willingness to try new things.</div>
+      </div>
+
+      <p>Enterprise is not just about business. Enterprise can happen in many different areas of people's personal,
+        working and social lives.</p>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🏠</div>
+          <div class="card-title">Enterprise in the Home</div>
+          <div class="card-def">Learning new skills, DIY projects, managing household budgets, or selling unwanted items
+            for extra cash.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🏫</div>
+          <div class="card-title">Enterprise in School</div>
+          <div class="card-def">Starting a student mini-company, setting up a club, organising events, or introducing
+            new subjects like LCVP.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🤝</div>
+          <div class="card-title">Enterprise in the Community</div>
+          <div class="card-def">Setting up a sports club, organising a Neighbourhood Watch scheme, or starting a Meals
+            on Wheels service.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🏛️</div>
+          <div class="card-title">Enterprise in Public Service</div>
+          <div class="card-def">Government initiatives like the National Broadband Plan, Coillte, Revenue's online ROS
+            system, and Local Enterprise Offices (LEOs).</div>
+        </div>
+      </div>
+
+      <!-- ═══ ENTERPRISE IN BUSINESS ═══ -->
+      <div class="section-heading anchor-offset" id="business">
+        <span class="icon">🏢</span> Enterprise in Business
+      </div>
+
+      <div class="key-term">
+        <div class="term">Entrepreneur</div>
+        <div class="definition">A person who takes the initiative as well as the personal and financial risk to set up a
+          business or organisation.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Social Entrepreneur</div>
+        <div class="definition">Uses their skills to create organisations that benefit the wider community. Less
+          concerned about making a profit than business entrepreneurs.</div>
+      </div>
+
+      <p>Enterprise is about turning an idea into action. Entrepreneurs are people who put ideas into practice — they
+        show initiative by making decisions and taking a chance to set up a business.</p>
+
+      <div class="enterprise-action">
+        <div class="ea-header">🚀 Enterprise in Action</div>
+        <div class="ea-title">Limerick brothers Patrick and John Collison — Stripe</div>
+        <div class="ea-body">
+          Patrick and John Collison started computer programming as teenagers and developed a web and mobile payments
+          company called <strong>Stripe</strong>. With dual headquarters in Dublin and San Francisco, the business is
+          valued at $50 billion and is the main payments platform for online businesses. It has a presence in more than
+          20 countries and has linked up with FreeNow, Amazon and AirBnB, with over 7,000 employees worldwide.
+        </div>
+      </div>
+
+      <div class="enterprise-action">
+        <div class="ea-header">🚀 Enterprise in Action</div>
+        <div class="ea-title">Grasper — Student Enterprise Programme</div>
+        <div class="ea-body">
+          Grasper, designed by students from Drumshanbo Vocational School, Co. Leitrim, won the junior category at the
+          2023 national final of the Student Enterprise Programme. The tool <strong>safely opens and closes the lid of a
+            slatted tank</strong>, addressing a real safety issue for farmers.
+        </div>
+      </div>
+
+      <!-- ═══ CHARACTERISTICS ═══ -->
+      <div class="section-heading anchor-offset" id="characteristics">
+        <span class="icon">🧩</span> Characteristics of Entrepreneurs
+      </div>
+
+      <p>A <strong>characteristic</strong> is a personality trait that you are born with. It is part of your
+        personality.</p>
+
+      <div class="char-grid">
+        <div class="char-card">
+          <div class="cc-icon">🎲</div>
+          <div class="cc-title">Realistic Risk-Taker</div>
+          <div class="cc-desc">Willing to risk money and time, but research carefully and only take a chance if there's
+            a reasonable chance of success.</div>
+        </div>
+        <div class="char-card">
+          <div class="cc-icon">💡</div>
+          <div class="cc-title">Innovative / Creative</div>
+          <div class="cc-desc">Good at coming up with new ideas or creative ways of doing things. E.g. Steve Jobs'
+            iPhone in 2007 — the first multi-functional smartphone.</div>
+        </div>
+        <div class="char-card">
+          <div class="cc-icon">⚡</div>
+          <div class="cc-title">Proactive</div>
+          <div class="cc-desc">Prepared to take action and make things happen, rather than waiting for something to
+            happen or for someone else to do it.</div>
+        </div>
+        <div class="char-card">
+          <div class="cc-icon">🔄</div>
+          <div class="cc-title">Flexible</div>
+          <div class="cc-desc">Accepts change as natural. Learns from mistakes and failures, and can adapt plans and
+            actions to new situations.</div>
+        </div>
+        <div class="char-card">
+          <div class="cc-icon">💪</div>
+          <div class="cc-title">Self-Confident</div>
+          <div class="cc-desc">Believes in themselves and their business idea. Believes they have what it takes to be
+            successful and can cope with setbacks.</div>
+        </div>
+        <div class="char-card">
+          <div class="cc-icon">⚖️</div>
+          <div class="cc-title">Decisive</div>
+          <div class="cc-desc">Able to make timely decisions and take responsibility for the decisions they make.</div>
+        </div>
+        <div class="char-card">
+          <div class="cc-icon">🏆</div>
+          <div class="cc-title">Determined / Resilient</div>
+          <div class="cc-desc">Does not give up easily when faced with obstacles and failures. Sticks with a task until
+            it is completed and recovers from setbacks.</div>
+        </div>
+      </div>
+
+      <div class="did-you-know">
+        <div class="dyk-label">💬 Did You Know?</div>
+        Thomas Edison famously said: <em>"I have not failed. I've just found 10,000 ways that won't work."</em> James
+        Dyson developed 5,127 prototype designs before he successfully invented the bagless vacuum cleaner!
+      </div>
+
+      <div class="enterprise-action">
+        <div class="ea-header">🚀 Enterprise in Action — Risky Business</div>
+        <div class="ea-title">Brian Lee, Co-founder of Chopped</div>
+        <div class="ea-body">
+          "You have to be fearless but you have to be calculated too. I usually have a ratio whenever I'm looking at a
+          new business and if I think there's a 70% chance it's going to do well, according to the business plan, the
+          research and the market analysis, then I go with it. I'm never going to be 100% certain."
+        </div>
+      </div>
+
+      <!-- ═══ SKILLS ═══ -->
+      <div class="section-heading anchor-offset" id="skills">
+        <span class="icon">🛠️</span> Skills of Entrepreneurs
+      </div>
+
+      <p>A <strong>skill</strong> is an ability or expertise that people develop through practice, experience, learning
+        or training.</p>
+
+      <table class="biz-table">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>What it means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Planning &amp; Goal-Setting</strong></td>
+            <td>Set strategic goals and use plans to achieve them. Write a business plan when establishing a
+              new/start-up business.</td>
+          </tr>
+          <tr>
+            <td><strong>Time Management</strong></td>
+            <td>Use time carefully to achieve goals by prioritising daily tasks.</td>
+          </tr>
+          <tr>
+            <td><strong>Communication Skills</strong></td>
+            <td>Use various methods to exchange information — letters, business plans, staff meetings, advertisements,
+              etc. Both oral and written.</td>
+          </tr>
+          <tr>
+            <td><strong>Ability to Manage Money</strong></td>
+            <td>Good financial skills to prepare budgets and manage cash flow.</td>
+          </tr>
+          <tr>
+            <td><strong>Human Relations Skills</strong></td>
+            <td>Good communication and listening skills to get on with employees, suppliers, investors, customers and
+              state agencies.</td>
+          </tr>
+          <tr>
+            <td><strong>Problem-Solving Skills</strong></td>
+            <td>Spot when consumers have a problem and use creativity to come up with an innovative solution — e.g.
+              developing prototypes, sourcing finance.</td>
+          </tr>
+          <tr>
+            <td><strong>Ability to Assess &amp; Manage Risk</strong></td>
+            <td>Measure risk in a potential course of action and take steps to minimise these risks.</td>
+          </tr>
+          <tr>
+            <td><strong>Ability to Identify Opportunities</strong></td>
+            <td>Spot a need or gap in the market not currently being met, by listening carefully to customers' needs and
+              being aware of future business opportunities.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Characteristics vs Skills Summary Table -->
+      <div class="remember">
+        <div class="icon">📌</div>
+        <div class="text">
+          <strong>Characteristics vs Skills — Key Difference</strong>
+          A <strong>characteristic</strong> is a personality trait you are born with. A <strong>skill</strong> is an
+          ability you develop through practice, experience, learning or training.
+        </div>
+      </div>
+
+      <!-- ═══ INTRAPRENEUR ═══ -->
+      <div class="sub-heading">Should Entrepreneurial Types Become Entrepreneurs?</div>
+
+      <div class="key-term">
+        <div class="term">Intrapreneur</div>
+        <div class="definition">An enterprising employee in an existing business. Uses entrepreneurial skills to benefit
+          or improve their employer's business.</div>
+      </div>
+
+      <p>Not everyone with entrepreneurial characteristics wants to start their own business. Some may be happy working
+        for someone else. Examples of intrapreneur innovations include: Sony PlayStation, Post-it notes and Gmail.
+        Google allows employees to spend 20% of their working week on a personal project.</p>
+
+      <!-- ═══ REWARDS AND RISKS ═══ -->
+      <div class="section-heading anchor-offset" id="rewards-risks">
+        <span class="icon">⚖️</span> Rewards &amp; Risks of Self-Employment
+      </div>
+
+      <div class="two-col">
+        <div class="col-box rewards">
+          <div class="col-title">✅ Rewards of Being an Entrepreneur</div>
+          <ul class="biz-list">
+            <li>You are your own boss and make all decisions.</li>
+            <li>You keep some or all of the profit the business makes.</li>
+            <li>Possibility of more flexible working hours.</li>
+            <li>Great sense of satisfaction if the business is a success.</li>
+          </ul>
+        </div>
+        <div class="col-box risks">
+          <div class="col-title">❌ Risks of Starting Your Own Business</div>
+          <ul class="biz-list">
+            <li>You may lose the money you invested — a major risk as a sole trader (unlimited liability).</li>
+            <li>You will need to work long hours to get the business running.</li>
+            <li>Difficult to take time away from running the business.</li>
+            <li>Sales may vary each week — income is not guaranteed.</li>
+            <li>You may not have all the necessary skills to run a business.</li>
+            <li>Your personal reputation and credit rating may suffer if the business fails.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ═══ ROLE IN ORGANISATION ═══ -->
+      <div class="section-heading anchor-offset" id="role-org">
+        <span class="icon">🏗️</span> The Role of the Entrepreneur in an Organisation
+      </div>
+
+      <ul class="biz-list">
+        <li><strong>Generates ideas:</strong> Uses innovation and creativity to come up with new ideas, or new uses for
+          existing products.</li>
+        <li><strong>Takes risks:</strong> Takes a risk to put their ideas into practice and try to develop successful
+          organisations.</li>
+        <li><strong>Provides vision and motivation:</strong> Generates ideas and sets out the organisation's future
+          direction and goals — important for guiding and motivating all staff.</li>
+        <li><strong>Provides leadership and management:</strong> In start-up organisations, the entrepreneur is usually
+          the person who provides leadership for others.</li>
+        <li><strong>Creates long-term plans:</strong> Turns their vision into business plans to help raise finance and
+          guide future growth and development.</li>
+        <li><strong>Raises finance:</strong> If the entrepreneur doesn't have all the money they need, they will attract
+          investment and funding.</li>
+      </ul>
+
+      <!-- ═══ ROLE IN ECONOMY ═══ -->
+      <div class="section-heading anchor-offset" id="role-economy">
+        <span class="icon">🌍</span> The Role of the Entrepreneur in the Economy &amp; Society
+      </div>
+
+      <div class="sub-heading">Role in the Economy</div>
+      <ul class="biz-list">
+        <li><strong>Provide goods and services:</strong> Organisations started by entrepreneurs provide consumers and
+          communities with a range of goods and services.</li>
+        <li><strong>Make use of resources:</strong> Entrepreneurs use their creative ability to make the best use of
+          available resources.</li>
+        <li><strong>Create jobs and wealth:</strong> By starting new businesses, entrepreneurs help create direct and
+          indirect employment.</li>
+        <li><strong>Provide training and develop skills:</strong> As a result of employment, workers become more skilled
+          and better able to contribute.</li>
+        <li><strong>Raise standards of living:</strong> Through productive use of resources and increased employment,
+          they help improve the standard of living.</li>
+        <li><strong>Taxation:</strong> Entrepreneurs and their employees pay taxes to the government which can be
+          reinvested into the local or national economy.</li>
+        <li><strong>Foreign trade:</strong> Irish entrepreneurs sell goods and services abroad (exports). They also help
+          reduce imports by producing goods and services in Ireland.</li>
+      </ul>
+
+      <div class="sub-heading">Role in Society</div>
+      <ul class="biz-list">
+        <li><strong>Provide services:</strong> Social entrepreneurs provide services and supports — e.g. clubs and
+          charities.</li>
+        <li><strong>Develop infrastructure and amenities:</strong> Help develop transport, recreation or childcare
+          facilities.</li>
+        <li><strong>Support and sustain communities:</strong> Create jobs and improve standard of living, especially in
+          rural areas.</li>
+        <li><strong>Enterprise culture:</strong> Inspire other entrepreneurs through positive example.</li>
+        <li><strong>Sponsorship:</strong> Many entrepreneurs support and sponsor community-based organisations,
+          including clubs and charities.</li>
+      </ul>
+
+      <!-- ═══ SOURCES OF BUSINESS IDEAS ═══ -->
+      <div class="section-heading anchor-offset" id="sources">
+        <span class="icon">🔍</span> Sources of Business Ideas for Entrepreneurs
+      </div>
+
+      <p>To start in business, entrepreneurs obviously need a good idea. Ideas can come from many sources:</p>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">🧠</div>
+          <div class="card-title">Brainstorming</div>
+          <div class="card-def">A way of working together as a group to generate ideas. E.g. the founders of Innocent
+            drinks brainstormed until they came up with the idea of smoothies.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">📈</div>
+          <div class="card-title">Market Trend</div>
+          <div class="card-def">A growing trend can create an opportunity. E.g. the major move towards organically
+            produced foods creates opportunities in organic farming and food products.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">👨‍👩‍👧</div>
+          <div class="card-title">Family &amp; Friends</div>
+          <div class="card-def">An idea could come from hearing a family member complain about not being able to buy a
+            product or service they need.</div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">✈️</div>
+          <div class="card-title">Ideas from Abroad</div>
+          <div class="card-def">An entrepreneur may spot something working well in another country and bring the idea
+            back to their own country.</div>
+        </div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Brainstorming</div>
+        <div class="definition">A way of working together as a group to generate ideas.</div>
+      </div>
+
+      <!-- ═══ NEW PRODUCT IDEAS ═══ -->
+      <div class="section-heading anchor-offset" id="new-products">
+        <span class="icon">🏭</span> Sources of New Product Ideas for Existing Businesses
+      </div>
+
+      <p>Existing businesses also need new ideas to replace or improve existing products. Ideas can come from inside the
+        business (<strong>internal</strong>) or from outside (<strong>external</strong>).</p>
+
+      <div class="sub-heading">Internal Sources</div>
+      <ul class="biz-list">
+        <li><strong>Brainstorming sessions:</strong> People come together to think of new ideas.</li>
+        <li><strong>Sales personnel:</strong> Feedback from salespeople in touch with customers is a vital source of
+          information about customer needs and wants.</li>
+        <li><strong>Ideas from employees (intrapreneurship):</strong> Employees may be encouraged to think of new ideas
+          by rewarding good ideas with a bonus.</li>
+        <li><strong>R&amp;D department:</strong> Research and Development staff may discover a new product or improve an
+          existing one. In 2022 Amazon spent almost €67 billion on R&amp;D.</li>
+        <li><strong>Market research:</strong> Gathering, recording and analysing information about consumer preferences
+          to identify gaps and trends.</li>
+      </ul>
+
+      <div class="sub-heading">External Sources</div>
+      <ul class="biz-list">
+        <li><strong>Competitors:</strong> A business sees what competitors are doing and might use some of their ideas —
+          known as "me-too" products (e.g. tablets similar to the iPad).</li>
+        <li><strong>Import substitution:</strong> Some entrepreneurs create a business by replacing imports with goods
+          and services produced in Ireland.</li>
+        <li><strong>Customer complaints or feedback:</strong> Could lead to changing or developing existing products or
+          services.</li>
+      </ul>
+
+      <div class="enterprise-action">
+        <div class="ea-header">🚀 Enterprise in Action</div>
+        <div class="ea-title">The Wriggler — Pluxty Ltd.</div>
+        <div class="ea-body">
+          Inspired by personal experience with their own children, Dublin couple <strong>James and Aileen
+            McCauley</strong> created The Wriggler, a portable anti-roll changing mat that resembles an adorable bear
+          character. They appeared on <em>Dragons' Den</em> (UK) seeking £50k for a 25% stake — and accepted Sara
+          Davies's offer of £50k for a 35% stake in the business.
+        </div>
+      </div>
+
+      <div class="enterprise-action">
+        <div class="ea-header">🚀 Enterprise in Action</div>
+        <div class="ea-title">Stira Folding Attic Stairs</div>
+        <div class="ea-body">
+          Michael Burke founded Stira Folding Attic Stairs Ltd in 1982. When asked to repair an imported attic stairs,
+          he immediately saw the problem and an opportunity — inferior material was used on the arms. He built a
+          prototype and took six months to get the design sorted out, resulting in a strong, safe product.
+        </div>
+      </div>
+
+      <div class="enterprise-action">
+        <div class="ea-header">🚀 Enterprise in Action</div>
+        <div class="ea-title">Roll It Hand Made All Butter Pastry — Mairéad Finnegan</div>
+        <div class="ea-body">
+          Mairéad Finnegan, a property surveyor, couldn't find all-butter puff pastry made in Ireland — this was her
+          <strong>gap in the market</strong>. She produced samples, displayed them at a food festival in Kells in 2012,
+          and sold them all within hours. She approached SuperValu, took business courses with Leader, and received
+          grants through Co. Meath LEO. She now provides advice to new food start-ups in her local area.
+        </div>
+      </div>
+
+      <!-- ═══ PRODUCT DEVELOPMENT PROCESS ═══ -->
+      <div class="section-heading anchor-offset" id="product-dev">
+        <span class="icon">🔬</span> The Product Development Process
+      </div>
+
+      <p>This process helps entrepreneurs and businesses develop ideas that have genuine market potential, ensuring the
+        finished product has the best possible chance of success. Product development is expensive and risky.</p>
+
+      <div class="key-term">
+        <div class="term">Market Research</div>
+        <div class="definition">Gathering, recording and analysing information about consumer preferences for a good or
+          service in order to make informed decisions about a potential market.</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">Prototype</div>
+        <div class="definition">A realistic working model of a product.</div>
+      </div>
+
+      <table class="dev-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>What happens</th>
+            <th>Example (Scented Candle Mini-Company)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="step-num">1. Idea Generation</span></td>
+            <td>Think up as many new ideas as possible via brainstorming. No idea should be ruled out at this point.
+            </td>
+            <td>Students decide to set up a mini-company to produce scented candles, cupcakes or T-shirts or wooden
+              ornaments.</td>
+          </tr>
+          <tr>
+            <td><span class="step-num">2. Product Screening</span></td>
+            <td>The best ideas are considered further and any unworkable ones are rejected.</td>
+            <td>Students realise they don't have the resources to make T-shirts, cupcakes or wooden ornaments — scented
+              candles have the best chance.</td>
+          </tr>
+          <tr>
+            <td><span class="step-num">3. Concept Development</span></td>
+            <td>The chosen idea is developed into a product that will appeal to consumers. Identify a <strong>Unique
+                Selling Point (USP)</strong>.</td>
+            <td>Students consider candle ingredients, shapes and scents that will distinguish their candles from rivals
+              — their USP.</td>
+          </tr>
+          <tr>
+            <td><span class="step-num">4. Feasibility Study</span></td>
+            <td>A <strong>feasibility study</strong> is carried out — is it actually possible to make, and can it be
+              produced and sold profitably?</td>
+            <td>Students research costs and speak to potential customers. They decide the scented candle idea is
+              realistic and has potential to be profitable.</td>
+          </tr>
+          <tr>
+            <td><span class="step-num">5. Prototype Development</span></td>
+            <td>A sample or model of the product is made so the developer can see how it will be manufactured. It can
+              then be tested and altered.</td>
+            <td>Students make several attempts; their fourth prototype is the most successful and sets the standard for
+              all future production.</td>
+          </tr>
+          <tr>
+            <td><span class="step-num">6. Test Marketing</span></td>
+            <td>In <strong>test marketing</strong>, the product is tested on a small sample of the market before going
+              into full production.</td>
+            <td>Students produce a batch of five candles and sell them to neighbours and teachers — receiving very
+              positive feedback.</td>
+          </tr>
+          <tr>
+            <td><span class="step-num">7. Product Launch</span></td>
+            <td>The product goes into full-scale production and is introduced to the market. A marketing strategy is
+              needed to persuade consumers to buy.</td>
+            <td>Students invest in raw materials for 50 candles, advertise in school, get free publicity in a local
+              paper, and take a stall at a local Christmas market.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-term">
+        <div class="term">Feasibility Study</div>
+        <div class="definition">A study carried out to see if an idea is commercially viable — i.e. is it actually
+          possible to make, and can it be produced and sold profitably?</div>
+      </div>
+
+      <div class="key-term">
+        <div class="term">USP (Unique Selling Point)</div>
+        <div class="definition">The feature of the product that will make it different from other products on the
+          market.</div>
+      </div>
+
+      <!-- ═══ FLASHCARDS ═══ -->
+      <div class="section-heading anchor-offset" id="flashcards">
+        <span class="icon">🃏</span> Key Term Flashcards
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What is <strong>enterprise</strong>?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Enterprise</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">Enterprise is any attempt to start or do something new. It is about turning ideas into
+          actions, using creativity and a willingness to try new things.</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What is an <strong>entrepreneur</strong>?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Key Term</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">A person who takes the initiative as well as the personal and financial risk to set up
+          a business or organisation.</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What is an <strong>intrapreneur</strong>?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Key Term</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">An enterprising employee in an existing business who uses entrepreneurial skills to
+          benefit or improve their employer's business. E.g. the creators of Post-it notes and Gmail.</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>Name <strong>4 characteristics</strong> of an entrepreneur and explain each briefly.</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Characteristics</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">
+          <strong>Realistic risk-taker</strong> — takes calculated risks after careful research.<br>
+          <strong>Innovative/creative</strong> — comes up with new ideas or ways of doing things.<br>
+          <strong>Proactive</strong> — takes action rather than waiting for things to happen.<br>
+          <strong>Self-confident</strong> — believes in themselves and their business idea.<br>
+          <strong>Determined/resilient</strong> — doesn't give up when faced with obstacles.
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>Name <strong>4 skills</strong> of an entrepreneur.</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Skills</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">Planning and goal-setting · Time management · Communication skills · Ability to manage
+          money · Human relations skills · Problem-solving skills · Ability to assess and manage risk · Ability to
+          identify opportunities.</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>Name <strong>3 rewards</strong> and <strong>3 risks</strong> of self-employment.</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Rewards &amp; Risks</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">
+          <strong>Rewards:</strong> You are your own boss · Keep some/all profit · Flexible hours · Sense of
+          satisfaction.<br>
+          <strong>Risks:</strong> May lose investment/personal assets · Long working hours · Income not guaranteed · May
+          lack all necessary skills.
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What are the <strong>7 steps</strong> of the product development process?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Product Dev</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">
+          1. Idea Generation · 2. Product Screening · 3. Concept Development · 4. Feasibility Study · 5. Prototype
+          Development · 6. Test Marketing · 7. Product Launch
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What is a <strong>feasibility study</strong>?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Key Term</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">A study carried out to see if an idea is commercially viable — (a) Is it actually
+          possible to make this product? (b) Can it be produced and sold profitably in the current market?</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What is <strong>test marketing</strong>?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Key Term</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">When the product is tested on a small sample of the market before going into full
+          production. The aim is to identify possible faults and test customer reaction.</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>What is <strong>market research</strong>?</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Key Term</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">Gathering, recording and analysing information about consumer preferences for a good or
+          service in order to make informed decisions about a potential market.</div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <span>Name <strong>3 roles</strong> entrepreneurs play in the economy.</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="quiz-tag">Economy</span>
+            <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+          </div>
+        </div>
+        <div class="quiz-answer">Any 3 of: Provide goods and services · Make use of resources · Create jobs and wealth ·
+          Provide training and develop skills · Raise standards of living · Taxation · Foreign trade (exports/reduce
+          imports).</div>
+      </div>
+
+      <!-- ═══ SUMMARY TABLE ═══ -->
+      <div class="section-heading anchor-offset" id="summary">
+        <span class="icon">📋</span> Exam Quick-Reference Summary
+      </div>
+
+      <table class="biz-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Key Definition / Rule</th>
+            <th>Exam Tip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Enterprise</strong></td>
+            <td>Any attempt to start or do something new — turning ideas into actions using creativity.</td>
+            <td>Give examples from home, school, community AND public service.</td>
+          </tr>
+          <tr>
+            <td><strong>Entrepreneur</strong></td>
+            <td>Takes initiative AND personal/financial risk to set up a business or organisation.</td>
+            <td>Must mention BOTH initiative AND risk in your definition.</td>
+          </tr>
+          <tr>
+            <td><strong>Social Entrepreneur</strong></td>
+            <td>Creates organisations that benefit the wider community — less focused on profit.</td>
+            <td>Contrast with business entrepreneur — both can appear in questions.</td>
+          </tr>
+          <tr>
+            <td><strong>Intrapreneur</strong></td>
+            <td>Enterprising employee in an existing business. E.g. Post-it notes (3M), Gmail (Google).</td>
+            <td>Know at least 2 real examples of intrapreneurs/products.</td>
+          </tr>
+          <tr>
+            <td><strong>Characteristics (7)</strong></td>
+            <td>Risk-taker · Innovative · Proactive · Flexible · Self-confident · Decisive · Determined</td>
+            <td>Learn ALL 7 — exams often ask for 4+. These are things you're BORN with.</td>
+          </tr>
+          <tr>
+            <td><strong>Skills (8)</strong></td>
+            <td>Planning · Time management · Communication · Money management · Human relations · Problem-solving · Risk
+              management · Identifying opportunities</td>
+            <td>Skills are DEVELOPED through practice. Know all 8.</td>
+          </tr>
+          <tr>
+            <td><strong>Rewards of Self-Employment</strong></td>
+            <td>Own boss · Keep profit · Flexible hours · Satisfaction</td>
+            <td>Clearly state it's a reward, not just list it.</td>
+          </tr>
+          <tr>
+            <td><strong>Risks of Self-Employment</strong></td>
+            <td>Lose investment · Long hours · No guaranteed income · May lack skills · Reputation risk</td>
+            <td>Mention unlimited liability risk for sole traders.</td>
+          </tr>
+          <tr>
+            <td><strong>Role in Organisation</strong></td>
+            <td>Generates ideas · Takes risks · Provides vision · Provides leadership · Creates plans · Raises finance
+            </td>
+            <td>6 roles — learn all 6 with a brief explanation for each.</td>
+          </tr>
+          <tr>
+            <td><strong>Feasibility Study</strong></td>
+            <td>Is the idea possible to make? Can it be produced and sold profitably?</td>
+            <td>Two-part check: (a) Can it be made? (b) Will it make a profit?</td>
+          </tr>
+          <tr>
+            <td><strong>Prototype</strong></td>
+            <td>A realistic working model of a product, used for testing.</td>
+            <td>Prototype comes at step 5 — after feasibility study, before test marketing.</td>
+          </tr>
+          <tr>
+            <td><strong>Test Marketing</strong></td>
+            <td>Testing the product on a small sample of the market before full production.</td>
+            <td>Aim: identify faults and test customer reaction. Comes before product launch.</td>
+          </tr>
+          <tr>
+            <td><strong>Product Dev — 7 Steps</strong></td>
+            <td>Idea Generation → Screening → Concept Dev → Feasibility → Prototype → Test Marketing → Product Launch
+            </td>
+            <td>Learn the correct ORDER — exam questions often ask for steps in sequence.</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- /content -->
+
+    <!-- CHAPTER NAV BAR -->
+    <div class="chapter-nav-bar">
+      <span>Navigation:</span>
+      <a href="index.html">&larr; Business Home</a>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleQuiz(btn) {
+      const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+      answer.classList.toggle('open');
+      btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+    }
+
+    // Highlight sidebar active link on scroll
+    const sections = document.querySelectorAll('.anchor-offset');
+    const links = document.querySelectorAll('.sidebar a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+      });
+      links.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === current);
+      });
+    });
+  </script>
+</body>
+
+</html>
