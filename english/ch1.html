@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 1 – Poetry | English Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--purple); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 12px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; color: #ddd; }
+    .sidebar-header .book-title { font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff; }
+    .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 14px 18px 6px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--amber); }
+    .sidebar a.home-link { font-size: 12px; color: rgba(255,255,255,0.5); padding: 16px 18px 8px; border-left: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #8B5CF6 100%);
+      color: #fff; padding: 56px 48px 48px; position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after { content: '📚'; position: absolute; top: 20px; right: 48px; font-size: 110px; opacity: 0.1; }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 { font-family: 'Sora', sans-serif; font-size: 46px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); font-size: 12px; padding: 5px 12px; border-radius: 100px; font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--purple);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading { font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700; color: var(--purple-dark); margin: 26px 0 10px; }
+
+    /* KEY TERM */
+    .key-term { background: var(--purple-light); border-left: 4px solid var(--purple); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 12px 0; }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--purple-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--purple); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER BOX */
+    .remember { background: var(--amber-light); border: 2px dashed var(--amber); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+    .info-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 18px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--purple); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li { counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start; }
+    .step-list li::before { content: counter(step); min-width: 28px; height: 28px; background: var(--purple); color: #fff; border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--purple-dark); }
+
+    /* TABLE */
+    .eng-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .eng-table th { background: var(--purple); color: #fff; font-family: 'Sora'; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+    .eng-table td { padding: 11px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .eng-table tr:last-child td { border-bottom: none; }
+    .eng-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE BOX */
+    .example-box { background: #fff; border: 2px solid var(--green); border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .example-box .ex-header { background: var(--green); color: #fff; font-family: 'Sora'; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; line-height: 1.6; }
+    .example-box .ex-body strong { color: var(--green); }
+
+    /* METHOD BOX */
+    .method-box { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .method-box .method-title { font-family: 'Sora'; font-weight: 700; color: var(--blue); font-size: 14px; margin-bottom: 8px; }
+    .method-box ul { padding-left: 18px; font-size: 13.5px; }
+    .method-box li { margin-bottom: 5px; }
+
+    /* QUIZ CARDS */
+    .quiz-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow); }
+    .quiz-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer; gap: 12px; }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; background: var(--purple-light); color: var(--purple-dark); white-space: nowrap; flex-shrink: 0; }
+    .toggle-btn { background: var(--purple); color: #fff; border: none; cursor: pointer; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px; font-family: 'Sora'; transition: background 0.2s; white-space: nowrap; flex-shrink: 0; }
+    .toggle-btn:hover { background: var(--purple-dark); }
+    .quiz-answer { display: none; padding: 14px 18px; border-top: 1px solid var(--border); background: var(--green-light); font-size: 14px; color: #1a4a2e; line-height: 1.6; }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* POEM CARD */
+    .poem-card {
+      background: var(--card); border-radius: var(--radius); border: 2px solid var(--border);
+      box-shadow: var(--shadow); overflow: hidden; margin-bottom: 24px;
+    }
+    .poem-card-header {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      color: #fff; padding: 18px 24px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .poem-card-header .poem-title { font-family: 'Sora'; font-size: 19px; font-weight: 800; }
+    .poem-card-header .poem-author { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+    .poem-card-header .poem-emoji { font-size: 38px; flex-shrink: 0; }
+    .poem-card-body { padding: 20px 24px; }
+    .poem-meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .poem-meta-item { background: var(--bg); border-radius: 10px; padding: 12px 14px; border: 1px solid var(--border); }
+    .poem-meta-item .pmi-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+    .poem-meta-item .pmi-value { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .techniques-list { list-style: none; padding: 0; }
+    .techniques-list li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.5; }
+    .techniques-list li:last-child { border-bottom: none; }
+    .tech-badge { background: var(--purple-light); color: var(--purple-dark); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .quote-highlight { background: var(--amber-light); border-left: 3px solid var(--amber); padding: 4px 10px; border-radius: 0 6px 6px 0; font-style: italic; font-size: 13px; display: inline-block; margin: 2px 0; }
+
+    /* TECHNIQUE REFERENCE GRID */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 16px 0; }
+    .tech-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 16px 18px; box-shadow: var(--shadow); }
+    .tech-card .tc-name { font-family: 'Sora'; font-weight: 800; font-size: 15px; color: var(--purple-dark); margin-bottom: 6px; }
+    .tech-card .tc-def { font-size: 13px; color: #333; margin-bottom: 6px; line-height: 1.5; }
+    .tech-card .tc-why { font-size: 12px; color: var(--purple); font-style: italic; padding-top: 6px; border-top: 1px solid var(--border); }
+    .tc-example { font-size: 12px; color: var(--green); margin-top: 4px; font-style: italic; }
+
+    /* 5 THINGS BOX */
+    .five-box { background: var(--purple-light); border-radius: var(--radius); padding: 20px 24px; margin: 16px 0; }
+    .five-box .fb-title { font-family: 'Sora'; font-weight: 800; font-size: 16px; color: var(--purple-dark); margin-bottom: 14px; }
+    .five-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+    .five-item { background: #fff; border-radius: 10px; padding: 12px 14px; border: 1.5px solid var(--purple); text-align: center; }
+    .five-item .fi-num { font-family: 'Sora'; font-weight: 800; font-size: 22px; color: var(--purple); }
+    .five-item .fi-label { font-family: 'Sora'; font-weight: 700; font-size: 13px; color: var(--purple-dark); margin-top: 2px; }
+    .five-item .fi-desc { font-size: 11.5px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar { position: sticky; bottom: 0; background: var(--text); color: #fff; padding: 12px 48px; display: flex; gap: 16px; align-items: center; font-size: 13px; z-index: 50; flex-wrap: wrap; }
+    .chapter-nav-bar a { color: var(--amber); text-decoration: none; font-weight: 600; }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 32px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">English Revision</div>
+    <div class="book-title">Ch 1 — Poetry</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">English Home</a>
+
+  <div class="sidebar-label">Studied Poems</div>
+  <a href="#daffodils">Daffodils — Wordsworth</a>
+  <a href="#road-not-taken">The Road Not Taken — Frost</a>
+  <a href="#innisfree">Lake Isle of Innisfree — Yeats</a>
+  <a href="#midterm">Midterm Break — Heaney</a>
+  <a href="#quoi-bon">À Quoi Bon Dire — Mew</a>
+
+  <div class="sidebar-label">Poetry Skills</div>
+  <a href="#techniques">All Poetic Techniques</a>
+  <a href="#five-things">5 Things to Consider</a>
+  <a href="#analysing">How to Analyse a Poem</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#flashcards">Technique Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 1 · Junior Cycle English</div>
+    <h1>Poetry — <span>Studied Poems</span><br>&amp; Poetic Techniques</h1>
+    <div class="chapter-meta">Unit: Literature &amp; Language &nbsp;·&nbsp; 5 Studied Poems &amp; Full Technique Reference</div>
+    <div class="goal-tags">
+      <span class="goal-tag">📖 5 Studied Poems</span>
+      <span class="goal-tag">🖊️ Poetic Techniques</span>
+      <span class="goal-tag">💡 Mood &amp; Tone</span>
+      <span class="goal-tag">✍️ PQE Analysis</span>
+      <span class="goal-tag">🃏 Flashcard Drill</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ INTRO ═══ -->
+    <div class="section-heading anchor-offset" id="overview">
+      <span class="icon">📖</span> What You Need to Know for the Poetry Section
+    </div>
+    <p>The poetry section of your exam has two parts: an <strong>unseen poem</strong> (analyse and answer questions on a poem you haven't seen before) and a <strong>studied poem</strong> question (based on the poems below). Both use <strong>PQE format</strong>.</p>
+
+    <div class="five-box">
+      <div class="fb-title">For every studied poem, know these 5 things:</div>
+      <div class="five-grid">
+        <div class="five-item"><div class="fi-num">1</div><div class="fi-label">Poet &amp; Title</div><div class="fi-desc">Full name of poet and exact title of poem</div></div>
+        <div class="five-item"><div class="fi-num">2</div><div class="fi-label">Techniques</div><div class="fi-desc">Name the technique + give a quote example</div></div>
+        <div class="five-item"><div class="fi-num">3</div><div class="fi-label">Message / Meaning</div><div class="fi-desc">What the poem is really about</div></div>
+        <div class="five-item"><div class="fi-num">4</div><div class="fi-label">Mood / Tone</div><div class="fi-desc">The feeling/atmosphere of the poem</div></div>
+        <div class="five-item"><div class="fi-num">5</div><div class="fi-label">Theme</div><div class="fi-desc">The big idea the poem explores</div></div>
+      </div>
+    </div>
+
+    <!-- ═══ POEM 1: DAFFODILS ═══ -->
+    <div class="section-heading anchor-offset" id="daffodils">
+      <span class="icon">🌼</span> Poem 1 — Daffodils
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-card-header">
+        <div>
+          <div class="poem-title">"I Wandered Lonely as a Cloud"</div>
+          <div class="poem-title" style="font-size:14px;font-weight:600;margin-top:2px;">(also known as "Daffodils")</div>
+          <div class="poem-author">by William Wordsworth</div>
+        </div>
+        <div class="poem-emoji">🌼</div>
+      </div>
+      <div class="poem-card-body">
+        <div class="poem-meta-grid">
+          <div class="poem-meta-item"><div class="pmi-label">Rhyme Scheme</div><div class="pmi-value">A B A B C C — same for all stanzas (ends in a rhyming couplet)</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Mood / Tone</div><div class="pmi-value">Happy · Joyful · Peaceful · Appreciation of nature · Calm and relaxed · Signs of admiration</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Theme</div><div class="pmi-value">The healing power of nature · Memory · Joy</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Message</div><div class="pmi-value">The poet reflects on the joy of nature, which lifts him from loneliness and sadness. Even in memory, nature brings happiness.</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Development</div><div class="pmi-value">Sadness and loneliness → happiness and joy — reflected through nature (= Pathetic Fallacy)</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Main Technique</div><div class="pmi-value">IMAGERY (visual) — used throughout the poem</div></div>
+        </div>
+
+        <div class="sub-heading" style="margin-top:8px;">Techniques &amp; Quotes</div>
+        <ul class="techniques-list">
+          <li><span class="tech-badge">Simile</span><div><div class="quote-highlight">"I wandered lonely as a cloud"</div><br>Compares the poet to a cloud floating alone — shows his isolation and freedom.</div></li>
+          <li><span class="tech-badge">Simile</span><div><div class="quote-highlight">"Continuous as the stars that shine"</div><br>Shows the vast number of daffodils, stretching endlessly.</div></li>
+          <li><span class="tech-badge">Personification</span><div><div class="quote-highlight">"When all at once I saw a crowd"</div>&nbsp;·&nbsp;<div class="quote-highlight">"Fluttering and dancing in the breeze"</div>&nbsp;·&nbsp;<div class="quote-highlight">"Tossing their heads in sprightly dance"</div><br>The daffodils are given human actions — they become alive, joyful companions for the poet.</div></li>
+          <li><span class="tech-badge">Personification</span><div><div class="quote-highlight">"And dances with the daffodils"</div><br>In the final stanza, the poet's heart joins the dance — the memory brings joy.</div></li>
+          <li><span class="tech-badge">Hyperbole</span><div><div class="quote-highlight">"Ten thousand saw I at a glance"</div><br>Exaggeration to emphasise the enormous number of daffodils.</div></li>
+          <li><span class="tech-badge">Hyperbole</span><div><div class="quote-highlight">"They stretched in never-ending line"</div><br>Further exaggerates the scale of the scene.</div></li>
+          <li><span class="tech-badge">Metaphor</span><div><div class="quote-highlight">"What wealth the show to me had brought"</div><br>The experience is metaphorically compared to wealth — precious and valuable.</div></li>
+          <li><span class="tech-badge">Metaphor</span><div><div class="quote-highlight">"They flash upon that inward eye"</div><br>The memory flashes in his mind like a light — vivid and sudden.</div></li>
+          <li><span class="tech-badge">Metaphor</span><div><div class="quote-highlight">"And then my heart with pleasure fills"</div><br>The heart is a container that fills up with joy.</div></li>
+          <li><span class="tech-badge">Pathetic Fallacy</span><div>The poem develops from sadness and loneliness to happiness and joy — all reflected through nature (the daffodils, the waves, the breeze).</div></li>
+          <li><span class="tech-badge">Repetition</span><div><div class="quote-highlight">"I gazed — and gazed — but little thought"</div><br>Repetition of "gazed" shows he kept staring, almost in a trance.</div></li>
+          <li><span class="tech-badge">Imagery (visual)</span><div>Stanzas 2–4 are full of visual imagery. Especially: <div class="quote-highlight">"The waves beside them danced; but they out-did the sparkling waves in glee"</div></div></li>
+          <li><span class="tech-badge">Sibilance</span><div><div class="quote-highlight">"Continuous as the stars that shine"</div><br>The repeated 's' sound creates a soft, flowing, peaceful effect.</div></li>
+          <li><span class="tech-badge">Assonance</span><div>Repeated vowel sounds throughout (e.g. "host of golden daffodils", "beside the lake, beneath the trees").</div></li>
+          <li><span class="tech-badge">Alliteration</span><div><div class="quote-highlight">"That floats on high o'er vales and hills"</div> — 'f' and 'h' sounds create a light, airy feeling.</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ POEM 2: ROAD NOT TAKEN ═══ -->
+    <div class="section-heading anchor-offset" id="road-not-taken">
+      <span class="icon">🛤️</span> Poem 2 — The Road Not Taken
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-card-header">
+        <div>
+          <div class="poem-title">"The Road Not Taken"</div>
+          <div class="poem-author">by Robert Frost</div>
+        </div>
+        <div class="poem-emoji">🛤️</div>
+      </div>
+      <div class="poem-card-body">
+        <div class="poem-meta-grid">
+          <div class="poem-meta-item"><div class="pmi-label">Mood / Tone</div><div class="pmi-value">Mysterious · Thoughtful · Lonely · Calm · Sad / Overwhelming</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Theme</div><div class="pmi-value">Choices in life · Individuality · Not following the crowd</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Message</div><div class="pmi-value">Life is full of decisions; you can only choose one path. Decisions shape your life (butterfly effect). Be different — don't do what's expected.</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Context</div><div class="pmi-value">Written by Frost — who, what, where, when and why of the poem. A personal reflection on choice and regret.</div></div>
+        </div>
+
+        <div class="sub-heading" style="margin-top:8px;">Techniques &amp; Quotes</div>
+        <ul class="techniques-list">
+          <li><span class="tech-badge">Extended Metaphor</span><div><div class="quote-highlight">"Two roads diverged in a yellow wood … Two roads diverged in a wood"</div><br>The two roads = the choices we face in life. You can only take one. This metaphor runs through the entire poem. When Frost removes "yellow" at the end, it could mean: the colour of happiness is gone; time has passed; he is no longer afraid of his decision; autumn (things coming to an end) has turned to something new.</div></li>
+          <li><span class="tech-badge">Pathetic Fallacy</span><div><div class="quote-highlight">"… diverged in a yellow wood"</div><br>"Yellow" represents autumn — change, things coming to an end. Used throughout the poem to reflect the poet's uncertainty.</div></li>
+          <li><span class="tech-badge">Anaphora</span><div><div class="quote-highlight">"And sorry I … And be one … And looked down"</div><br>Repetition of "And" at the beginning of sentences in a sequence. Shows the poet feels overwhelmed and hesitant.</div></li>
+          <li><span class="tech-badge">Repetition</span><div><div class="quote-highlight">"… sorry I … long I stood … as I could"</div><br>Repetition of the personal pronoun "I" — emphasises this is entirely his personal decision.</div></li>
+          <li><span class="tech-badge">Enjambment</span><div><div class="quote-highlight">"And sorry I could not travel both. And be one traveller, long I stood. And looked down as far as I could"</div><br>Lines run into one another — shows distress, panic and urgency. He is trying to prove his point so people don't judge him for the decision he's about to make.</div></li>
+          <li><span class="tech-badge">Contrast</span><div><div class="quote-highlight">"And both that morning equally lay / In leaves no step had trodden black."</div><br>"Morning" = new beginnings; "leaves" = autumn, something coming to an end. Moving between choices symbolises 2 choices: one story coming to an end, another beginning.</div></li>
+          <li><span class="tech-badge">Imagery (visual)</span><div><div class="quote-highlight">"I shall be telling this with a sigh"</div><br>Aural imagery too — the sigh conveys relief, doubt, worry or regret (open to interpretation).</div></li>
+        </ul>
+
+        <div class="remember">
+          <div class="icon">💡</div>
+          <div class="text"><strong>Key insight about "yellow":</strong> The extended metaphor changes when Frost removes "yellow" at the end of the poem. By just doing that, it had a huge effect — it could mean he removed the colour of happiness, showing how times passed and his perspective of his decision has changed. Or it could mean yellow = symbol of fear, and the poet is no longer afraid.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ POEM 3: INNISFREE ═══ -->
+    <div class="section-heading anchor-offset" id="innisfree">
+      <span class="icon">🏝️</span> Poem 3 — The Lake Isle of Innisfree
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-card-header">
+        <div>
+          <div class="poem-title">"The Lake Isle of Innisfree"</div>
+          <div class="poem-author">by William Butler Yeats</div>
+        </div>
+        <div class="poem-emoji">🏝️</div>
+      </div>
+      <div class="poem-card-body">
+        <div class="poem-meta-grid">
+          <div class="poem-meta-item"><div class="pmi-label">Mood / Tone</div><div class="pmi-value">Peaceful · Quiet · Tranquil · Calmness · Silence</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Theme</div><div class="pmi-value">Belonging · Home · Longing</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Rhyme Scheme</div><div class="pmi-value">Same rhyming scheme for the whole poem</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Message</div><div class="pmi-value">How he longs to go back to the place where he can be himself. Even standing on a busy roadway, he can still hear the sounds of home calling to him. The power of being somewhere where you truly belong.</div></div>
+        </div>
+
+        <div class="sub-heading" style="margin-top:8px;">Techniques &amp; Quotes</div>
+        <ul class="techniques-list">
+          <li><span class="tech-badge">Repetition</span><div><div class="quote-highlight">"… and go now, and go to Innisfree"</div> — all of last stanza: <div class="quote-highlight">"I will arise … I hear lake water … While I stand … I hear it …"</div><br>The repetition of "I" and "go" shows his deep personal longing to return.</div></li>
+          <li><span class="tech-badge">Assonance</span><div><div class="quote-highlight">"I will arise …"</div> · <div class="quote-highlight">"And a small cabin build there, of clay and wattles made."</div><br>Repeated vowel sounds create a musical, flowing rhythm — like the sounds of nature he is longing for.</div></li>
+          <li><span class="tech-badge">Alliteration</span><div><div class="quote-highlight">"… hear lake water lapping with low sounds …"</div><br>The repeated 'l' sounds create a slow, gentle, calming effect — sound of pleasure and peace.</div></li>
+          <li><span class="tech-badge">Metaphor</span><div><div class="quote-highlight">"I hear it in the deep heart's core."</div><br>He can hear Innisfree calling to him even in the city. It's in the core of his heart — showing how deeply he feels connected to that place.</div></li>
+          <li><span class="tech-badge">Metaphor</span><div><div class="quote-highlight">"… veils of the morning …"</div><br>Metaphor for fog. Also spiritual — connection to nature.</div></li>
+          <li><span class="tech-badge">Pathetic Fallacy</span><div><div class="quote-highlight">"… veils of the morning … midnights all a glimmer … noon a purple glow …"</div><br>"Morning" = calmness, almost a nurturing quality. "Midnight" = magical, tranquil. "Noon" = warm, mystical, emotional richness. The times of day reflect different emotional states.</div></li>
+          <li><span class="tech-badge">Imagery (aural)</span><div><div class="quote-highlight">"I hear lake water lapping with low sounds by the shore"</div><br>He can hear the sounds of home with such precision — how it's calling him to go back. Shows the intensity of his longing.</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ POEM 4: MIDTERM BREAK ═══ -->
+    <div class="section-heading anchor-offset" id="midterm">
+      <span class="icon">📿</span> Poem 4 — Midterm Break
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-card-header">
+        <div>
+          <div class="poem-title">"Midterm Break"</div>
+          <div class="poem-author">by Seamus Heaney</div>
+        </div>
+        <div class="poem-emoji">📿</div>
+      </div>
+      <div class="poem-card-body">
+        <div class="poem-meta-grid">
+          <div class="poem-meta-item"><div class="pmi-label">Mood / Tone</div><div class="pmi-value">Grief · Shock · Numbness · Restrained sadness</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Theme</div><div class="pmi-value">Death · Loss · Grief · Childhood innocence cut short</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Message</div><div class="pmi-value">A personal poem about the death of the poet's younger brother. Explores how grief affects a family differently and the painful experience of confronting death for the first time.</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Key Fact</div><div class="pmi-value">Studied poem — know the poet's name, the title, key techniques, message, mood and at least 2 PQE quotes.</div></div>
+        </div>
+
+        <div class="remember">
+          <div class="icon">📌</div>
+          <div class="text"><strong>For the exam:</strong> Know this poem's poet, title, theme (death/grief), mood (restrained sadness/shock), and be able to identify and quote at least 2 techniques using PQE format. The final line — the length of the coffin equalling the age of the child — is one of the most powerful moments.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ POEM 5: QUOI BON DIRE ═══ -->
+    <div class="section-heading anchor-offset" id="quoi-bon">
+      <span class="icon">🕊️</span> Poem 5 — À Quoi Bon Dire
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-card-header">
+        <div>
+          <div class="poem-title">"À Quoi Bon Dire"</div>
+          <div class="poem-author">by Charlotte Mew</div>
+        </div>
+        <div class="poem-emoji">🕊️</div>
+      </div>
+      <div class="poem-card-body">
+        <div class="poem-meta-grid">
+          <div class="poem-meta-item"><div class="pmi-label">Mood / Tone</div><div class="pmi-value">Sad · Mysterious · Gloomy</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Theme</div><div class="pmi-value">Loss of a loved one · Grief · Enduring love</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Rhyme Scheme</div><div class="pmi-value">Stanza 1 = ABAB · Stanza 2 = ABAB · Stanza 3 = ABABB (ends in a rhyming couplet)</div></div>
+          <div class="poem-meta-item"><div class="pmi-label">Message / Meaning</div><div class="pmi-value">She's lost someone she used to love and is not ready to accept that they're gone. She's linking her memories with what's happening around her. Also about how she still loves him, even though he died seventeen years ago. Hints at reunion as her own life nears its end.</div></div>
+        </div>
+
+        <div class="sub-heading" style="margin-top:8px;">Techniques &amp; Quotes</div>
+        <ul class="techniques-list">
+          <li><span class="tech-badge">Repetition</span><div><div class="quote-highlight">"But"</div> · <div class="quote-highlight">"Good-bye"</div> · <div class="quote-highlight">"everybody"</div><br>The word "But" is repeated — shows she is silently arguing against the world's reality. "Good-bye" and "everybody" repeat to emphasise the finality others accept but she refuses to.</div></li>
+          <li><span class="tech-badge">Contrast</span><div><div class="quote-highlight">"kiss and swear"</div><br>"Kiss" represents affection and love; "swear" represents commitment and promises in the relationship. These contrasting words together show the full depth of what she shared with her loved one.</div></li>
+          <li><span class="tech-badge">Repetition (deeper effect)</span><div><div class="quote-highlight">"everybody thinks … But I"</div> and <div class="quote-highlight">"everybody sees … But you"</div><br>Shows the clear difference between what the world thought and what she and her loved one knew. It is almost like a silent argument she is trying to have with what the world's reality is — versus what she believes is still true. Like her love for her loved one who passed.</div></li>
+        </ul>
+
+        <div class="example-box">
+          <div class="ex-header">📘 PQE Example — "À Quoi Bon Dire"</div>
+          <div class="ex-body">
+            <p><strong>Question:</strong> From your study of the poem "À Quoi Bon Dire" by Charlotte Mew, what do you think the message of the poem is?</p>
+            <br>
+            <p><strong>Introduction:</strong> From studying the poem, "À Quoi Bon Dire", by Charlotte Mew, I think the message of the poem is the loss of someone you loved, and the grief of losing them.</p>
+            <br>
+            <p><strong>Quote:</strong> You can see this when she says, <em>"Seventeen years ago … sounded like Good-bye / everybody thinks that you are dead, But I"</em>. This shows that even though the person she loved died seventeen years ago, she's still grieving. This quote also shows that she's somewhat still in denial — she still isn't ready to accept that someone she loved has passed away.</p>
+            <br>
+            <p><strong>Second PQE:</strong> Another place you can see this is when she says, <em>"… as I grow stiff and cold … say Good-bye too … everybody sees that I am old… But you."</em> This shows how even though she understands that she's getting older and her time to say "Good-bye" might be near. But, that only makes her closer to being reunited with the one she loves.</p>
+            <br>
+            <p><strong>Conclusion:</strong> In conclusion, I think the message of the poem, "À Quoi Bon Dire", is the loss of someone you loved, and the grief that she's carried with her seventeen years after her loved one died. But also hints at the reunion of her and her loved one, as her journey comes to a near end.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ALL TECHNIQUES ═══ -->
+    <div class="section-heading anchor-offset" id="techniques">
+      <span class="icon">🛠️</span> All Poetic Techniques — Definitions &amp; Why They Are Used
+    </div>
+    <p style="margin-bottom:16px;">Learn each technique: its definition, why the poet uses it, and at least one example from your studied poems.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tc-name">Simile</div>
+        <div class="tc-def">A comparison using <strong>'like'</strong>, <strong>'as'</strong>, or <strong>'than'</strong>.</div>
+        <div class="tc-why">Why used: allows the reader to create a vivid image in their mind.</div>
+        <div class="tc-example">e.g. "I wandered lonely as a cloud" (Daffodils)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Metaphor</div>
+        <div class="tc-def">A comparison <strong>NOT</strong> using 'like', 'as', or 'than'. Says one thing IS another.</div>
+        <div class="tc-why">Why used: creates an image that is easier for the reader to understand.</div>
+        <div class="tc-example">e.g. "What wealth the show to me had brought" (Daffodils); "I hear it in the deep heart's core" (Innisfree)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Extended Metaphor</div>
+        <div class="tc-def">A metaphor that is developed and sustained across an entire poem or large section of it.</div>
+        <div class="tc-why">Why used: gives the poem deeper symbolic meaning that builds as the reader progresses.</div>
+        <div class="tc-example">e.g. "Two roads diverged in a yellow wood" — roads = life choices (The Road Not Taken)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Personification</div>
+        <div class="tc-def">When an inanimate (non-living) object is given <strong>human characteristics</strong>.</div>
+        <div class="tc-why">Why used: connects the reader to the objects being personified and makes them feel emotions towards them.</div>
+        <div class="tc-example">e.g. "Fluttering and dancing in the breeze" (Daffodils)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Alliteration</div>
+        <div class="tc-def">When two or more words close together begin with the <strong>same consonant sound</strong>.</div>
+        <div class="tc-why">Why used: makes the piece sound pleasing to the reader; creates a musical effect.</div>
+        <div class="tc-example">e.g. "hear lake water lapping with low sounds" (Innisfree); "floats on high o'er vales and hills" (Daffodils)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Assonance</div>
+        <div class="tc-def">When the <strong>same vowel sound</strong> is repeated in nearby words.</div>
+        <div class="tc-why">Why used: creates rhythm within the piece.</div>
+        <div class="tc-example">e.g. "A host, of golden daffodils;" · "Beside the lake, beneath the trees"</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Sibilance</div>
+        <div class="tc-def">The repetition of <strong>'s' sounds</strong> in nearby words.</div>
+        <div class="tc-why">Why used: slows down the reading process; can hint at danger, serenity or mystery.</div>
+        <div class="tc-example">e.g. "Continuous as the stars that shine" (Daffodils)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Imagery</div>
+        <div class="tc-def">A vivid and vibrant description that appeals to the reader's <strong>senses and imagination</strong>.</div>
+        <div class="tc-why">Why used: allows the reader to see, touch, taste, smell and hear what is happening.</div>
+        <div class="tc-example">Types: Aural (hear) · Visual (see) · Tactile (touch) · Olfactory (smell) · Gustatory (taste)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Hyperbole</div>
+        <div class="tc-def">An <strong>exaggerated statement</strong> that is not meant to be taken literally or seriously.</div>
+        <div class="tc-why">Why used: adds emphasis or humour to a piece.</div>
+        <div class="tc-example">e.g. "Ten thousand saw I at a glance" · "They stretched in never-ending line" (Daffodils)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Pathetic Fallacy</div>
+        <div class="tc-def">When <strong>human emotions are reflected in nature</strong>; the weather, seasons or time of day.</div>
+        <div class="tc-why">Why used: makes the environment reflect the inner experience of the author — allows the reader to understand on a deeper level.</div>
+        <div class="tc-example">e.g. "diverged in a yellow wood" (Frost) — autumn = change/endings</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Enjambment</div>
+        <div class="tc-def">Continuing a sentence <strong>across a line break</strong> without pause (also called run-on lines).</div>
+        <div class="tc-why">Why used: speeds up the pace of the poem; creates a sense of urgency, tension or rising emotion in the poet.</div>
+        <div class="tc-example">e.g. "And sorry I could not travel both. And be one traveller, long I stood." (The Road Not Taken)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Repetition</div>
+        <div class="tc-def">Repeating a word or phrase to <strong>emphasise its importance</strong>.</div>
+        <div class="tc-why">Why used: helps draw the reader's attention to an idea, thought or feeling.</div>
+        <div class="tc-example">e.g. "I gazed — and gazed — but little thought" (Daffodils); "and go now, and go to Innisfree" (Innisfree)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Anaphora</div>
+        <div class="tc-def">Repetition of a word or phrase at the <strong>beginning of multiple consecutive lines</strong>.</div>
+        <div class="tc-why">Why used: creates a sense of being overwhelmed or hesitant; builds emotional intensity.</div>
+        <div class="tc-example">e.g. "And sorry I … And be one … And looked down" (The Road Not Taken)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Contrast</div>
+        <div class="tc-def">Placing two very <strong>different things side by side</strong>.</div>
+        <div class="tc-why">Why used: makes arguments stronger by giving emphasis; makes differences clearer.</div>
+        <div class="tc-example">e.g. "kiss and swear" (À Quoi Bon Dire) — affection vs. commitment</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Onomatopoeia</div>
+        <div class="tc-def">When the word <strong>sounds like the noise</strong> it is describing.</div>
+        <div class="tc-why">Why used: creates a sensory effect to help create a vivid image.</div>
+        <div class="tc-example">e.g. "lapping" (Innisfree) — the sound of gentle water</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Motif</div>
+        <div class="tc-def">A <strong>dominant, recurring idea</strong> through repeated use of images, ideas and symbols.</div>
+        <div class="tc-why">Why used: emphasises what is most important about the poem.</div>
+        <div class="tc-example">e.g. Roads and choices in The Road Not Taken; daffodils and nature in Daffodils</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Mood / Tone</div>
+        <div class="tc-def">The <strong>state of mind of the poet</strong> being reflected in their work.</div>
+        <div class="tc-why">Why used: builds setting, creates atmosphere and projects the poet's emotions onto the reader.</div>
+        <div class="tc-example">e.g. Daffodils = joyful; Innisfree = peaceful; À Quoi Bon Dire = sad/mysterious</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Rhyme</div>
+        <div class="tc-def">When words have the <strong>same sound pattern</strong>. Shown as ABAB, ABCB etc.</div>
+        <div class="tc-why">Why used: makes the poem sound more musical; creates a satisfying pattern.</div>
+        <div class="tc-example">Daffodils = ABABCC; Innisfree = same scheme throughout; À Quoi Bon Dire = ABAB / ABAB / ABABB</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-name">Stanza</div>
+        <div class="tc-def">A <strong>group of lines</strong> in a poem, arranged together — similar to a paragraph.</div>
+        <div class="tc-why">Why used: structure affects how the poem is meant to be read; stanzas organise the poem's ideas.</div>
+        <div class="tc-example">All stanzas in Daffodils have the same ABABCC rhyming pattern.</div>
+      </div>
+    </div>
+
+    <!-- ═══ 5 THINGS ═══ -->
+    <div class="section-heading anchor-offset" id="five-things">
+      <span class="icon">🔍</span> 5 Things to Consider When Analysing Any Poem
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">💡</div>
+        <div class="card-title">1. Theme</div>
+        <div class="card-def">The central idea and the subject matter of the poem. The subject matter can reveal the underlying theme.</div>
+        <div class="card-tip">Ask: What is this poem really about beneath the surface?</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🗣️</div>
+        <div class="card-title">2. Language</div>
+        <div class="card-def">Creates the mood and tone of the poem. Also impacts the rhythm of the poem. What word choices stand out?</div>
+        <div class="card-tip">Look for unusual or powerful word choices — why did the poet pick that word?</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🎵</div>
+        <div class="card-title">3. Sound and Rhythm</div>
+        <div class="card-def">The syllabic patterns and stresses create the metrical pattern of a poem. Does it rhyme? What is the effect?</div>
+        <div class="card-tip">Read the poem aloud — what do you notice about how it sounds?</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📐</div>
+        <div class="card-title">4. Structure</div>
+        <div class="card-def">Affects how the poem is meant to be read. How many stanzas? How many lines per stanza? Are there run-on lines?</div>
+        <div class="card-tip">Structure = the framework of the poem.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">5. Context</div>
+        <div class="card-def">The who, what, where, when and why of a poem. Knowing the poet's life or historical setting can help explain its purpose.</div>
+        <div class="card-tip">Context = background information that helps you understand the poem better.</div>
+      </div>
+    </div>
+
+    <!-- ═══ HOW TO ANALYSE ═══ -->
+    <div class="section-heading anchor-offset" id="analysing">
+      <span class="icon">✍️</span> How to Analyse a Poem Using PQE
+    </div>
+
+    <div class="key-term">
+      <div class="term">PQE Format</div>
+      <div class="definition"><strong>P = Point (1 mark) · Q = Quote (1 mark) · E = Explanation (3 marks) = 5 marks total</strong></div>
+      <div class="tip">💡 20 marks = 5 PQEs · 15 marks = 3 PQEs · 10 marks = 2 PQEs</div>
+    </div>
+
+    <div class="sub-heading">Introduction Formula (for studied poetry)</div>
+    <ol class="step-list">
+      <li><div class="step-text">Introduce the <strong>written work first</strong> (name of poem in quotation marks)</div></li>
+      <li><div class="step-text">Introduce the <strong>author / poet</strong></div></li>
+      <li><div class="step-text">Reference the <strong>question</strong> being asked</div></li>
+      <li><div class="step-text">State your <strong>point</strong> clearly</div></li>
+    </ol>
+
+    <div class="example-box">
+      <div class="ex-header">📘 Introduction Example</div>
+      <div class="ex-body">
+        <p>"From my study of the poem, <strong>'The Road Not Taken'</strong>, by <strong>Robert Frost</strong>, a memorable metaphor or simile used by Frost would be the <strong>extended metaphor</strong> he uses through his poem."</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">Conclusion Phrase</div>
+    <div class="method-box">
+      <div class="method-title">Always finish your PQE answer with a conclusion</div>
+      <ul>
+        <li>"In conclusion / To conclude, it is clear to see that…"</li>
+        <li>Re-state your overall point without repeating the same words.</li>
+        <li>For unseen poems: identify the message/mood, then explain the techniques used to create it.</li>
+      </ul>
+    </div>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="flashcards">
+      <span class="icon">🃏</span> Technique Flashcards — Test Yourself
+    </div>
+    <p style="margin-bottom:16px;">Click <strong>Reveal Answer</strong> to check your definition. Try to answer before clicking!</p>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the rhyme scheme of <strong>"I Wandered Lonely as a Cloud"</strong> and what is the mood?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Daffodils</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Rhyme scheme: <strong>ABABCC</strong> — same for all stanzas (ends in a rhyming couplet). Mood/Tone: happy, joyful, peaceful, appreciation of nature's beauty, calm and relaxed, signs of admiration. The poem develops from sadness and loneliness → happiness and joy — all reflected through nature (= Pathetic Fallacy).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name 3 examples of <strong>personification</strong> in "Daffodils" and explain their effect.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Daffodils</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. "When all at once I saw a crowd" — the daffodils are compared to a crowd of people. 2. "Fluttering and dancing in the breeze" — they dance like humans. 3. "Tossing their heads in sprightly dance" — they toss their heads in joy. 4. "And dances with the daffodils" — in memory, the poet's heart dances WITH them. Effect: gives the daffodils life and personality, making them joyful companions.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the extended metaphor in <strong>"The Road Not Taken"</strong> and what does it represent?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Road Not Taken</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">"Two roads diverged in a yellow wood" — the two roads are a metaphor for the choices we face in life. You can only choose one and decisions shape your life (butterfly effect). Frost later removes "yellow" at the end of the poem. This could mean: the colour of happiness is gone, time has passed, his perspective has changed, yellow = symbol of fear and he's no longer afraid.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>enjambment</strong>? Give an example and explain why Frost uses it in "The Road Not Taken".</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Road Not Taken</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Enjambment</strong> = continuing a sentence across a line break (also called run-on lines). Example: "And sorry I could not travel both. And be one traveller, long I stood. And looked down as far as I could." Frost uses this to show distress, panic and urgency — he is trying to justify his decision so people don't judge him. It also speeds up the pace, creating a sense of rising tension.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the message of <strong>"The Lake Isle of Innisfree"</strong> and what is the mood?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Innisfree</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Message: He longs to go back to the place where he can be himself and where he feels most connected. Even standing on a busy roadway where things aren't peaceful, he can still hear the sounds of home calling to him. The power of being somewhere where you truly belong. Mood: peaceful, quiet, tranquil, calmness, silence. Theme: belonging and home.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What does the metaphor <strong>"I hear it in the deep heart's core"</strong> mean in Innisfree?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Innisfree</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Even though he's in the city, he can hear Innisfree calling to him — it's at the very core (deepest part) of his heart. This shows the intensity of his longing to go back and how deeply he feels connected to that place. It is a metaphor because the "deep heart's core" is not a real physical place but represents his innermost feelings.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>In <strong>"À Quoi Bon Dire"</strong>, what are the two key techniques and what do they show?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">À Quoi Bon Dire</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Repetition</strong> — "everybody thinks… But I" and "everybody sees… But you" — shows the clear difference between what the world thought and what she and her loved one knew; almost a silent argument with reality. Like her love for her loved one who passed. 2. <strong>Contrast</strong> — "kiss and swear" — 'kiss' represents affection and love; 'swear' represents commitment and promises; together they show the depth and seriousness of the relationship.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>pathetic fallacy</strong>? Give an example from a studied poem.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Techniques</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Pathetic Fallacy</strong> = when human emotions are reflected in nature; the weather, seasons, or time of day. Why used: to make the environment reflect the inner experience of the author. Example 1: In Daffodils — "Continuous as the stars that shine" — the endless stars reflect the poet's joy. Example 2: In The Road Not Taken — "diverged in a yellow wood" — the yellowing autumn wood represents change and things coming to an end.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>anaphora</strong>? How does Frost use it in "The Road Not Taken"?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Techniques</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Anaphora</strong> = repetition of a word at the beginning of multiple lines, usually in sequence. Frost uses it with "And": "And sorry I … And be one … And looked down". The repetition of "And" at the beginning of sentences in a sequence shows the poet is feeling overwhelmed and hesitant — he is piling up reasons and thoughts one after another.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the 5 types of imagery and give an example of each.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Techniques</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Visual (see)</strong> — "Ten thousand saw I at a glance" (Daffodils). 2. <strong>Aural (hear)</strong> — "I hear lake water lapping with low sounds" (Innisfree). 3. <strong>Tactile (touch)</strong> — "I grow stiff and cold" (À Quoi Bon Dire). 4. <strong>Olfactory (smell)</strong> — any description involving scent. 5. <strong>Gustatory (taste)</strong> — any description involving taste. Imagery allows the reader to see, touch, taste, smell and hear what is happening.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the PQE <strong>introduction formula</strong> for a studied poem? Give an example.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Exam Skill</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Order: Written work → Author → Question → Point (WAQP). Example: "From my study of the poem, 'The Road Not Taken', by Robert Frost, a memorable metaphor or simile used by Frost would be the extended metaphor he uses through his poem." Then state your point, give your quote, explain the effect on the reader.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="eng-table">
+      <thead>
+        <tr><th>Poem</th><th>Poet</th><th>Key Techniques</th><th>Mood</th><th>Theme</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>I Wandered Lonely as a Cloud (Daffodils)</strong></td>
+          <td>William Wordsworth</td>
+          <td>Imagery · Personification · Simile · Hyperbole · Metaphor · Pathetic Fallacy · Assonance · Alliteration · Repetition · Sibilance</td>
+          <td>Happy · Joyful · Peaceful · Appreciative</td>
+          <td>Nature's healing power · Memory · Joy</td>
+        </tr>
+        <tr>
+          <td><strong>The Road Not Taken</strong></td>
+          <td>Robert Frost</td>
+          <td>Extended Metaphor · Pathetic Fallacy · Anaphora · Repetition · Enjambment · Contrast · Imagery</td>
+          <td>Mysterious · Thoughtful · Lonely · Calm</td>
+          <td>Choices in life · Individuality</td>
+        </tr>
+        <tr>
+          <td><strong>The Lake Isle of Innisfree</strong></td>
+          <td>W.B. Yeats</td>
+          <td>Repetition · Assonance · Alliteration · Metaphor · Pathetic Fallacy · Imagery (aural)</td>
+          <td>Peaceful · Quiet · Tranquil · Calm</td>
+          <td>Belonging · Home · Longing</td>
+        </tr>
+        <tr>
+          <td><strong>Midterm Break</strong></td>
+          <td>Seamus Heaney</td>
+          <td>Imagery · Contrast · Enjambment · Understatement</td>
+          <td>Grief · Shock · Numbness</td>
+          <td>Death · Loss · Grief</td>
+        </tr>
+        <tr>
+          <td><strong>À Quoi Bon Dire</strong></td>
+          <td>Charlotte Mew</td>
+          <td>Repetition · Contrast · Rhyme (ABAB / ABABB)</td>
+          <td>Sad · Mysterious · Gloomy</td>
+          <td>Loss of a loved one · Enduring love</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="eng-table" style="margin-top:24px;">
+      <thead>
+        <tr><th>Technique</th><th>Definition (in one line)</th><th>Why the poet uses it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Simile</strong></td><td>Comparison using 'like', 'as', 'than'</td><td>Creates a vivid image in the reader's mind</td></tr>
+        <tr><td><strong>Metaphor</strong></td><td>Comparison NOT using 'like/as' — says one thing IS another</td><td>Creates an image easier to understand</td></tr>
+        <tr><td><strong>Extended Metaphor</strong></td><td>A metaphor sustained across the whole poem</td><td>Gives the poem deep symbolic meaning</td></tr>
+        <tr><td><strong>Personification</strong></td><td>Inanimate object given human characteristics</td><td>Connects readers to objects; creates empathy</td></tr>
+        <tr><td><strong>Alliteration</strong></td><td>Two+ words begin with the same consonant sound</td><td>Makes piece sound pleasing / musical</td></tr>
+        <tr><td><strong>Assonance</strong></td><td>Same vowel sound repeated in nearby words</td><td>Creates rhythm within the piece</td></tr>
+        <tr><td><strong>Sibilance</strong></td><td>Repetition of 's' sounds</td><td>Slows reading; hints at danger or serenity</td></tr>
+        <tr><td><strong>Imagery</strong></td><td>Vivid description appealing to the senses (5 types)</td><td>Allows reader to see, touch, taste, smell, hear</td></tr>
+        <tr><td><strong>Hyperbole</strong></td><td>Exaggerated statement not meant literally</td><td>Adds emphasis or humour</td></tr>
+        <tr><td><strong>Pathetic Fallacy</strong></td><td>Human emotions reflected in nature/weather/seasons</td><td>Makes environment reflect poet's inner experience</td></tr>
+        <tr><td><strong>Enjambment</strong></td><td>Sentence continues across a line break</td><td>Speeds up pace; creates urgency/tension</td></tr>
+        <tr><td><strong>Repetition</strong></td><td>Repeating a word/phrase for emphasis</td><td>Draws attention to an idea, thought or feeling</td></tr>
+        <tr><td><strong>Anaphora</strong></td><td>Repetition at the beginning of multiple lines</td><td>Shows overwhelm, hesitation or building emotion</td></tr>
+        <tr><td><strong>Contrast</strong></td><td>Two very different things placed side by side</td><td>Makes arguments stronger; emphasis</td></tr>
+        <tr><td><strong>Onomatopoeia</strong></td><td>Word sounds like the noise it describes</td><td>Creates a vivid sensory effect</td></tr>
+        <tr><td><strong>Motif</strong></td><td>Dominant recurring idea through images/symbols</td><td>Emphasises what is most important</td></tr>
+        <tr><td><strong>Mood / Tone</strong></td><td>State of mind of the poet reflected in the work</td><td>Creates atmosphere; projects poet's emotions</td></tr>
+        <tr><td><strong>Rhyme</strong></td><td>Words with the same sound pattern (ABAB etc.)</td><td>Makes poem musical; creates satisfying pattern</td></tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; English Home</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
