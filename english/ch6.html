@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 6 – Creative Writing | English Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --teal:         #00796B;
+      --teal-light:   #E0F2F1;
+      --rose:         #C2185B;
+      --rose-light:   #FCE4EC;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--teal); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 12px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; color: #ddd; }
+    .sidebar-header .book-title { font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff; }
+    .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 14px 18px 6px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--amber); }
+    .sidebar a.home-link { font-size: 12px; color: rgba(255,255,255,0.5); padding: 16px 18px 8px; border-left: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #003d33 0%, #00796B 60%, #26A69A 100%);
+      color: #fff; padding: 56px 48px 48px; position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after { content: '✍️'; position: absolute; top: 20px; right: 48px; font-size: 110px; opacity: 0.1; }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 { font-family: 'Sora', sans-serif; font-size: 46px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); font-size: 12px; padding: 5px 12px; border-radius: 100px; font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--teal);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading { font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700; color: var(--teal); margin: 26px 0 10px; }
+
+    /* STEP CARD */
+    .step-card {
+      background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border);
+      padding: 22px; box-shadow: var(--shadow); margin-bottom: 16px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .step-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .step-number {
+      min-width: 44px; height: 44px; background: var(--teal); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora'; font-weight: 800; font-size: 18px; flex-shrink: 0;
+    }
+    .step-body .step-title { font-family: 'Sora'; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+    .step-body .step-desc { font-size: 14px; color: #444; line-height: 1.6; }
+    .step-body .step-tip { font-size: 13px; color: var(--teal); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+
+    /* PLOT DIAGRAM */
+    .plot-diagram {
+      background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+      border: 1.5px solid var(--border); padding: 28px; margin: 20px 0;
+    }
+    .plot-line {
+      display: flex; align-items: flex-end; gap: 0; height: 140px; position: relative; margin-bottom: 20px;
+    }
+    .plot-segment {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      position: relative;
+    }
+    .plot-bar {
+      width: 100%; border-radius: 6px 6px 0 0; transition: opacity 0.2s;
+    }
+    .plot-label { font-family: 'Sora'; font-size: 11px; font-weight: 700; text-align: center; margin-top: 8px; color: var(--muted); }
+    .plot-num { position: absolute; top: -24px; font-family: 'Sora'; font-weight: 800; font-size: 18px; }
+    .plot-stages { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .plot-stage { flex: 1; min-width: 140px; background: var(--teal-light); border-radius: 10px; padding: 12px 14px; }
+    .plot-stage .ps-num { font-family: 'Sora'; font-weight: 800; font-size: 22px; color: var(--teal); }
+    .plot-stage .ps-name { font-family: 'Sora'; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+    .plot-stage .ps-desc { font-size: 12.5px; color: #555; }
+
+    /* SENSES GRID */
+    .senses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 16px 0; }
+    .sense-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 16px; box-shadow: var(--shadow); text-align: center; }
+    .sense-card .sense-icon { font-size: 32px; margin-bottom: 8px; }
+    .sense-card .sense-name { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .sense-card .sense-example { font-size: 12px; color: var(--muted); font-style: italic; }
+
+    /* REMEMBER BOX */
+    .remember { background: var(--amber-light); border: 2px dashed var(--amber); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* TIP BOX */
+    .tip-box { background: var(--teal-light); border-left: 4px solid var(--teal); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .tip-box .tip-title { font-family: 'Sora'; font-weight: 700; color: var(--teal); font-size: 14px; margin-bottom: 8px; }
+    .tip-box ul { list-style: none; padding: 0; }
+    .tip-box li { font-size: 14px; color: #333; padding: 4px 0 4px 20px; position: relative; }
+    .tip-box li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+    /* EXAMPLE BOX */
+    .example-box { background: #fff; border: 2px solid var(--green); border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow); }
+    .example-box .ex-header { background: var(--green); color: #fff; font-family: 'Sora'; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px; }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; line-height: 1.6; font-style: italic; }
+    .example-box .ex-tags { padding: 0 18px 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .example-box .ex-tag { font-size: 11px; background: var(--green-light); color: var(--green); font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+
+    /* CHARS GRID */
+    .chars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+    .char-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 16px; box-shadow: var(--shadow); }
+    .char-card .char-type { font-family: 'Sora'; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .char-card .char-desc { font-size: 13.5px; color: #444; }
+
+    /* CONFLICT CARDS */
+    .conflict-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .conflict-card { background: var(--card); border-radius: var(--radius); border: 2px solid; padding: 18px; box-shadow: var(--shadow); }
+    .conflict-card.internal { border-color: var(--rose); }
+    .conflict-card.external { border-color: var(--blue); }
+    .conflict-card .conflict-label { font-family: 'Sora'; font-weight: 800; font-size: 13px; text-transform: uppercase; margin-bottom: 8px; }
+    .conflict-card.internal .conflict-label { color: var(--rose); }
+    .conflict-card.external .conflict-label { color: var(--blue); }
+    .conflict-card .conflict-desc { font-size: 14px; color: #444; }
+
+    /* DIALOGUE SECTION */
+    .dialogue-rules { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 20px; box-shadow: var(--shadow); margin: 16px 0; }
+    .dialogue-rules .dr-title { font-family: 'Sora'; font-weight: 700; font-size: 15px; margin-bottom: 14px; color: var(--teal); }
+    .dialogue-purpose { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 10px; margin-bottom: 14px; }
+    .dp-item { background: var(--teal-light); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; color: var(--teal); font-weight: 600; }
+    .dp-item::before { content: '→ '; }
+    .dialogue-example-block { background: var(--green-light); border-radius: 10px; padding: 14px 18px; font-size: 13.5px; line-height: 1.8; }
+
+    /* CHECKLIST */
+    .checklist { background: var(--card); border-radius: var(--radius); border: 2px solid var(--teal); padding: 22px; box-shadow: var(--shadow); margin: 20px 0; }
+    .checklist .cl-title { font-family: 'Sora'; font-weight: 800; font-size: 18px; color: var(--teal); margin-bottom: 16px; }
+    .checklist ol { list-style: none; counter-reset: cl; padding: 0; }
+    .checklist li { counter-increment: cl; display: flex; gap: 14px; margin-bottom: 12px; font-size: 14px; align-items: flex-start; }
+    .checklist li::before { content: counter(cl); min-width: 28px; height: 28px; background: var(--teal); color: #fff; border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+    /* QUIZ */
+    .quiz-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); margin-bottom: 10px; overflow: hidden; box-shadow: var(--shadow); }
+    .quiz-header { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; font-size: 14px; font-weight: 500; }
+    .quiz-tag { background: var(--teal-light); color: var(--teal); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+    .toggle-btn { background: var(--teal); color: white; border: none; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-family: 'Sora'; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+    .toggle-btn:hover { background: var(--teal-light); color: var(--teal); }
+    .quiz-answer { display: none; padding: 14px 18px; border-top: 1px solid var(--border); background: var(--teal-light); font-size: 14px; line-height: 1.6; }
+    .quiz-answer.open { display: block; }
+
+    /* CHAPTER NAV */
+    .chapter-nav-bar { background: var(--text); padding: 18px 48px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.4); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .chapter-nav-bar a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 8px; background: rgba(255,255,255,0.08); transition: all 0.2s; }
+    .chapter-nav-bar a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .chapter-hero { padding: 36px 20px 28px; }
+      .chapter-hero h1 { font-size: 30px; }
+      .content { padding: 24px 16px; }
+      .conflict-row { grid-template-columns: 1fr; }
+      .chapter-nav-bar { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">English Revision</div>
+    <div class="book-title">Ch 6 — Creative Writing</div>
+  </div>
+  <a href="index.html" class="home-link">← Back to English Home</a>
+  <div class="sidebar-label">Sections</div>
+  <a href="#steps">7 Steps to a Story</a>
+  <a href="#plot">Plot Structure</a>
+  <a href="#setting">Setting & Characters</a>
+  <a href="#conflict">Conflict</a>
+  <a href="#descriptive">Descriptive Writing</a>
+  <a href="#dialogue">Dialogue</a>
+  <a href="#tips">Top Tips</a>
+  <a href="#quiz">Quick Quiz</a>
+</nav>
+
+<main class="main">
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 6</div>
+    <h1>Creative <span>Writing</span></h1>
+    <div class="chapter-meta">Junior Cycle English · Writing Skills</div>
+    <div class="goal-tags">
+      <span class="goal-tag">Plot Structure</span>
+      <span class="goal-tag">Setting & Characters</span>
+      <span class="goal-tag">Conflict</span>
+      <span class="goal-tag">Five Senses</span>
+      <span class="goal-tag">Dialogue</span>
+      <span class="goal-tag">Short Story Tips</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ══ 7 STEPS ══ -->
+    <div class="section-heading anchor-offset" id="steps">
+      <span class="icon">🗺️</span> The 7 Steps to Writing a Short Story
+    </div>
+    <p>Follow these steps in order to plan and write a strong, well-structured short story.</p>
+
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <div class="step-body">
+        <div class="step-title">Brainstorm</div>
+        <div class="step-desc">Let your imagination run wild. Write down ideas, create mind maps, list possible events or characters. Don't filter yourself at this stage — everything is worth considering.</div>
+        <div class="step-tip">Tip: Think about a character, a problem, and a setting first.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <div class="step-body">
+        <div class="step-title">The Plot</div>
+        <div class="step-desc">The plot is what your story revolves around. It has four parts: <strong>(1) Beginning/Exposition</strong>, <strong>(2) Middle/Conflict + Rising Action</strong>, <strong>(3) Climax</strong>, <strong>(4) End/Resolution</strong>.</div>
+        <div class="step-tip">Always start in the middle of the action — don't waste your opening lines on background!</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <div class="step-body">
+        <div class="step-title">The Setting</div>
+        <div class="step-desc">The setting is where and when the action takes place — e.g. the past, present or future; countryside, city, a mansion, a slum. Setting affects character and gives hints about what has happened or what's going to happen.</div>
+        <div class="step-tip">Setting can reveal a character's background and foreshadow events.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">4</div>
+      <div class="step-body">
+        <div class="step-title">The Characters</div>
+        <div class="step-desc">Keep character numbers small — 3 or 4 max for a short story. You need a <strong>protagonist</strong> (leading character), an <strong>antagonist</strong> (who opposes the protagonist), and possibly a <strong>supporting character</strong> (sidekick, best friend, love interest) who develops the main characters.</div>
+        <div class="step-tip">Give the reader someone to root for — make them care about your protagonist!</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">5</div>
+      <div class="step-body">
+        <div class="step-title">The Theme</div>
+        <div class="step-desc">The theme is the central message of your story — the main point the writer wants the reader to take away. It's not the plot (what happens), it's the <em>meaning</em> (what it's really about). e.g. friendship, courage, loss, identity.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">6</div>
+      <div class="step-body">
+        <div class="step-title">The Conflict</div>
+        <div class="step-desc">Conflict is the problem the main character must solve. The plot revolves around this conflict. It can be <strong>internal</strong> (the character battling themselves — emotions, fears, decisions) or <strong>external</strong> (battling another person, nature, society, or circumstances).</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">7</div>
+      <div class="step-body">
+        <div class="step-title">Be Descriptive — Use Your Five Senses</div>
+        <div class="step-desc">Transport your reader into the story. Use sight, sound, smell, taste, and touch. Use your poetic techniques (simile, metaphor, personification, alliteration, assonance, imagery) to bring your writing to life.</div>
+        <div class="step-tip">Good descriptive writing doesn't just say "it was dark" — it makes the reader <em>feel</em> the darkness.</div>
+      </div>
+    </div>
+
+    <!-- ══ PLOT STRUCTURE ══ -->
+    <div class="section-heading anchor-offset" id="plot">
+      <span class="icon">📈</span> Plot Structure Diagram
+    </div>
+
+    <div class="plot-diagram">
+      <p style="font-family:'Sora';font-weight:700;font-size:15px;margin-bottom:16px;color:var(--teal);">The Short Story Plot Diagram</p>
+      <div class="remember" style="margin-bottom:16px;">
+        <span class="icon">⭐</span>
+        <div class="text"><strong>Always Start in the Middle!</strong> Don't start at the beginning of your story — start right in the action. Your opening line should grab the reader immediately. The backstory (what happened before) can be revealed gradually as the story unfolds.</div>
+      </div>
+      <div class="plot-stages">
+        <div class="plot-stage">
+          <div class="ps-num">①</div>
+          <div class="ps-name">Rising Action + Conflict</div>
+          <div class="ps-desc">Your story begins here — in the middle of action. Introduce characters and the central problem. Build tension.</div>
+        </div>
+        <div class="plot-stage">
+          <div class="ps-num">②</div>
+          <div class="ps-name">Climax</div>
+          <div class="ps-desc">The peak of the story — the most dramatic, tense, or emotional moment. Everything has been building to this.</div>
+        </div>
+        <div class="plot-stage">
+          <div class="ps-num">③</div>
+          <div class="ps-name">Back Story</div>
+          <div class="ps-desc">Reveal the background — who the characters are, how they got here. This is revealed after the climax or woven in naturally.</div>
+        </div>
+        <div class="plot-stage">
+          <div class="ps-num">④</div>
+          <div class="ps-name">Falling Action</div>
+          <div class="ps-desc">The tension drops after the climax. The main conflict begins to be resolved. Consequences become clear.</div>
+        </div>
+        <div class="plot-stage">
+          <div class="ps-num">⑤</div>
+          <div class="ps-name">Resolution</div>
+          <div class="ps-desc">The story ends. Loose ends are tied up — though not always with a happy ending. Leave the reader satisfied (or thoughtfully unsettled).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SETTING & CHARACTERS ══ -->
+    <div class="section-heading anchor-offset" id="setting">
+      <span class="icon">🏙️</span> Setting &amp; Characters
+    </div>
+
+    <div class="sub-heading">Types of Characters</div>
+    <div class="chars-grid">
+      <div class="char-card">
+        <div class="char-type" style="color:var(--teal);">Protagonist</div>
+        <div class="char-desc">The leading character in the story — the one the reader follows. We usually root for them. Their decisions drive the plot forward.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-type" style="color:var(--rose);">Antagonist</div>
+        <div class="char-desc">The character who contends with or opposes the protagonist. They create the conflict. Not always a villain — could be a force or circumstance.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-type" style="color:var(--blue);">Supporting Character</div>
+        <div class="char-desc">Adds to the character development of the protagonist or antagonist. e.g. the sidekick, best friend, love interest, mentor, comic relief.</div>
+      </div>
+    </div>
+
+    <!-- ══ CONFLICT ══ -->
+    <div class="section-heading anchor-offset" id="conflict">
+      <span class="icon">⚡</span> Conflict — Internal vs External
+    </div>
+    <p>Every good story has conflict. The conflict is the central problem that drives the plot. It can be internal, external, or both.</p>
+
+    <div class="conflict-row">
+      <div class="conflict-card internal">
+        <div class="conflict-label">🧠 Internal Conflict</div>
+        <div class="conflict-desc">The character is battling <strong>themselves</strong> — their own emotions, fears, doubts, or decisions. This creates a psychological tension the reader can relate to.<br><br><em>Example: A character torn between doing what is right and what is easy.</em></div>
+      </div>
+      <div class="conflict-card external">
+        <div class="conflict-label">⚔️ External Conflict</div>
+        <div class="conflict-desc">The character is battling <strong>something outside themselves</strong> — another person, nature, society, fate, or circumstances beyond their control.<br><br><em>Example: A character being chased, facing a storm, or fighting injustice.</em></div>
+      </div>
+    </div>
+
+    <!-- ══ DESCRIPTIVE WRITING ══ -->
+    <div class="section-heading anchor-offset" id="descriptive">
+      <span class="icon">🎨</span> Descriptive Writing — Five Senses
+    </div>
+    <p>The key to powerful creative writing is to transport the reader into your story. Use all five senses to make your descriptions vivid and immersive.</p>
+
+    <div class="senses-grid">
+      <div class="sense-card">
+        <div class="sense-icon">👁️</div>
+        <div class="sense-name">Sight (Visual)</div>
+        <div class="sense-example">"The amber sky blazed like a furnace above the rooftops."</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-icon">👂</div>
+        <div class="sense-name">Sound (Aural)</div>
+        <div class="sense-example">"The creak of the floorboard cut through the silence."</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-icon">✋</div>
+        <div class="sense-name">Touch (Tactile)</div>
+        <div class="sense-example">"The rough bark scraped against her palms as she climbed."</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-icon">👃</div>
+        <div class="sense-name">Smell (Olfactory)</div>
+        <div class="sense-example">"The metallic tang of gunpowder mingled with the salt of her sweat."</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-icon">👅</div>
+        <div class="sense-name">Taste (Gustatory)</div>
+        <div class="sense-example">"Fear tasted like copper at the back of his throat."</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Use Your Poetic Techniques</div>
+    <div class="tip-box">
+      <div class="tip-title">Techniques to use in creative writing:</div>
+      <ul>
+        <li><strong>Simile</strong> — "A bomb blew bits of him everywhere, a fully grown man now reduced to small pieces falling from the sky <em>like confetti</em>."</li>
+        <li><strong>Alliteration</strong> — "bits… blew… bomb" — makes writing punchy and musical.</li>
+        <li><strong>Metaphor</strong> — "She was a hurricane of emotion, destroying everything in her path."</li>
+        <li><strong>Personification</strong> — "The fog crept through the streets like a thief."</li>
+        <li><strong>Repetition</strong> — "He ran. He ran until his lungs screamed. He ran until the world disappeared."</li>
+        <li><strong>Imagery</strong> — "I could taste the metallic tang of gunpowder, mingled with the salt of my sweat, my breath heaving from my chest as I ran."</li>
+      </ul>
+    </div>
+
+    <!-- ══ DIALOGUE ══ -->
+    <div class="section-heading anchor-offset" id="dialogue">
+      <span class="icon">💬</span> Dialogue
+    </div>
+    <p>Dialogue brings your story to life. Use it to reveal character, advance the plot, and create tension. It should sound natural — like people actually speak.</p>
+
+    <div class="dialogue-rules">
+      <div class="dr-title">What Good Dialogue Does:</div>
+      <div class="dialogue-purpose">
+        <div class="dp-item">Make it sound natural</div>
+        <div class="dp-item">Show characters' personality</div>
+        <div class="dp-item">Convey emotions</div>
+        <div class="dp-item">Include descriptions — tone, body language, gestures</div>
+        <div class="dp-item">Advance the plot</div>
+        <div class="dp-item">Create tension or humour</div>
+      </div>
+      <div class="dialogue-example-block">
+        <strong>Example 1:</strong><br>
+        "Oh no. We're going to die," I said, rolling my eyes.<br>
+        "Could you be more sarcastic!" yelled Bob.<br><br>
+        <strong>Example 2:</strong><br>
+        "His suit trousers ripped the whole way up the seam," I said sadly.<br>
+        "Oh wow!" said my friend, holding back her laughter. "What happened next?" she said, almost at the brink of bursting.<br><br>
+        <strong>Example 3:</strong><br>
+        "Due to unfortunate events, she is no longer coming," said my dad.<br>
+        "What do you mean?" I said, angrily and shocked. "She's the bride!"
+      </div>
+    </div>
+
+    <!-- ══ TOP TIPS ══ -->
+    <div class="section-heading anchor-offset" id="tips">
+      <span class="icon">🏆</span> Top Tips for Short Stories
+    </div>
+
+    <div class="checklist">
+      <div class="cl-title">Short Story Checklist</div>
+      <ol>
+        <li><strong>Start in the middle of the action</strong> — don't waste the opening with background. If you're writing about aliens landing on Earth, start as they're about to land.</li>
+        <li><strong>Keep up the pace</strong> — don't let the story drag. Every sentence should do something: reveal character, create tension, or advance the plot.</li>
+        <li><strong>Keep the number of characters small</strong> — 3 or 4 maximum for a short story.</li>
+        <li><strong>Give the reader someone to root for</strong> — make the protagonist likeable or interesting enough to care about.</li>
+        <li><strong>Create conflict</strong> — a story without a problem isn't a story. The conflict is the engine.</li>
+        <li><strong>Appeal to the five senses</strong> — transport the reader into your story with vivid sensory details.</li>
+        <li><strong>Use dialogue</strong> — it will bring your story to life and make your characters feel real.</li>
+        <li><strong>Check grammar and punctuation</strong> — especially dialogue punctuation and tenses.</li>
+      </ol>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-header">✍️ Strong Opening Example</div>
+      <div class="ex-body">
+        "I could taste the metallic tang of gunpowder, mingled with the salt of my sweat, my breath heaving from my chest as I ran. A bomb blew bits of him everywhere — a fully grown man, now reduced to small pieces falling from the sky like confetti. I didn't stop running."
+      </div>
+      <div class="ex-tags">
+        <span class="ex-tag">Gustatory imagery</span>
+        <span class="ex-tag">Tactile imagery</span>
+        <span class="ex-tag">Simile</span>
+        <span class="ex-tag">Alliteration</span>
+        <span class="ex-tag">Starts in action</span>
+        <span class="ex-tag">Creates tension</span>
+      </div>
+    </div>
+
+    <!-- ══ QUIZ ══ -->
+    <div class="section-heading anchor-offset" id="quiz">
+      <span class="icon">🧠</span> Quick Quiz — Test Yourself
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the four stages of a plot?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Plot</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Beginning/Exposition</strong> — introduce characters and situation. 2. <strong>Middle/Conflict + Rising Action</strong> — the problem develops, tension builds. 3. <strong>Climax</strong> — the peak moment, everything comes to a head. 4. <strong>End/Resolution</strong> — the conflict is resolved. Remember: always start your story in the middle of the action!</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between internal and external conflict?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Conflict</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Internal conflict</strong> = the character is battling themselves — their own emotions, fears, or decisions. e.g. choosing between loyalty and honesty. <strong>External conflict</strong> = the character is battling something outside themselves — another person, nature, society. e.g. being chased or fighting injustice. Good stories often have BOTH.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the five types of imagery and give a creative example for each.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Descriptive Writing</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Visual (sight)</strong> — "The amber sky blazed above the rooftops." 2. <strong>Aural (sound)</strong> — "The creak of the floorboard split the silence." 3. <strong>Tactile (touch)</strong> — "The rough bark scraped her palms." 4. <strong>Olfactory (smell)</strong> — "The metallic tang of gunpowder hung in the air." 5. <strong>Gustatory (taste)</strong> — "Fear tasted like copper at the back of his throat."</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the three types of characters? Define each.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Characters</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Protagonist</strong> — the leading character; the reader follows their journey and usually roots for them. <strong>Antagonist</strong> — the character who contends with or opposes the protagonist; they create conflict. <strong>Supporting character</strong> — adds to the character development of the protagonist or antagonist (sidekick, best friend, love interest, mentor).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the theme of a story, and how is it different from the plot?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Theme</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>plot</strong> is WHAT happens — the sequence of events. The <strong>theme</strong> is WHAT IT MEANS — the central message the author wants the reader to take away. e.g. Plot: a boy runs away from an orphanage. Theme: hope / the will to survive. A strong theme gives your story depth and meaning beyond just the events.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name 4 things good dialogue should do in a story.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Dialogue</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Dialogue should: 1. <strong>Sound natural</strong> — like real people talking. 2. <strong>Show character personality</strong> — how someone speaks reveals who they are. 3. <strong>Convey emotions</strong> — through word choice and tone. 4. <strong>Include descriptions</strong> — body language, gesture, and tone (she said hesitantly / he snapped). 5. <strong>Advance the plot</strong> or create tension/humour.</div>
+    </div>
+
+  </div><!-- /content -->
+
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">← English Home</a>
+    <a href="ch5.html">← Ch 5: Grammar & Punctuation</a>
+  </div>
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id; });
+    links.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === current); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 5 – Grammar, Punctuation & Spelling | English Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #6C3FC5;
+      --purple-dark:  #4A2A8F;
+      --purple-light: #EDE7FF;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --red:          #C62828;
+      --red-light:    #FFEBEE;
+      --bg:           #F5F4FA;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--purple); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 12px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; color: #ddd; }
+    .sidebar-header .book-title { font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff; }
+    .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); padding: 14px 18px 6px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--amber); }
+    .sidebar a.home-link { font-size: 12px; color: rgba(255,255,255,0.5); padding: 16px 18px 8px; border-left: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #1976D2 60%, #42A5F5 100%);
+      color: #fff; padding: 56px 48px 48px; position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after { content: '✏️'; position: absolute; top: 20px; right: 48px; font-size: 110px; opacity: 0.1; }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 { font-family: 'Sora', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); font-size: 12px; padding: 5px 12px; border-radius: 100px; font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--blue);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading { font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700; color: var(--blue); margin: 26px 0 10px; }
+
+    /* PUNCTUATION CARD */
+    .punct-card {
+      background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border);
+      padding: 20px; box-shadow: var(--shadow); margin-bottom: 14px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .punct-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .punct-symbol {
+      min-width: 52px; height: 52px; background: var(--blue); color: #fff;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora'; font-weight: 800; font-size: 22px; flex-shrink: 0;
+    }
+    .punct-body .punct-name { font-family: 'Sora'; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .punct-body .punct-rule { font-size: 14px; color: #444; margin-bottom: 6px; }
+    .punct-body .punct-example { font-size: 13px; background: var(--blue-light); padding: 6px 10px; border-radius: 8px; color: var(--blue); font-style: italic; }
+
+    /* RULES GRID */
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 16px 0; }
+    .rule-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 16px; box-shadow: var(--shadow); }
+    .rule-card .rule-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; color: var(--blue); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .rule-card .rule-title .badge { background: var(--blue-light); color: var(--blue); font-size: 11px; padding: 2px 8px; border-radius: 100px; }
+    .rule-card .rule-body { font-size: 13.5px; color: #444; line-height: 1.5; }
+    .rule-card .rule-example { margin-top: 8px; font-size: 12.5px; background: var(--amber-light); padding: 5px 10px; border-radius: 6px; }
+    .rule-card .rule-example .wrong { color: var(--red); text-decoration: line-through; }
+    .rule-card .rule-example .right { color: var(--green); font-weight: 600; }
+
+    /* REMEMBER BOX */
+    .remember { background: var(--amber-light); border: 2px dashed var(--amber); border-radius: var(--radius); padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* SPELLING TABLE */
+    .eng-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .eng-table th { background: var(--blue); color: #fff; font-family: 'Sora'; font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+    .eng-table td { padding: 11px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .eng-table tr:last-child td { border-bottom: none; }
+    .eng-table tr:nth-child(even) td { background: #f9fafb; }
+    .wrong { color: var(--red); text-decoration: line-through; }
+    .right { color: var(--green); font-weight: 700; }
+
+    /* TENSE TABLE */
+    .tense-table { width: 100%; border-collapse: collapse; margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .tense-table th { background: var(--purple); color: #fff; font-family: 'Sora'; font-size: 13px; padding: 12px 16px; text-align: left; }
+    .tense-table td { padding: 11px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); }
+    .tense-table tr:last-child td { border-bottom: none; }
+
+    /* DIALOGUE BOX */
+    .dialogue-box { background: var(--green-light); border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 18px; margin: 14px 0; }
+    .dialogue-box .dialogue-title { font-family: 'Sora'; font-weight: 700; color: var(--green); font-size: 14px; margin-bottom: 10px; }
+    .dialogue-box ul { list-style: none; padding: 0; }
+    .dialogue-box li { font-size: 14px; color: #333; padding: 4px 0; padding-left: 20px; position: relative; }
+    .dialogue-box li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .dialogue-example { font-size: 13px; background: white; padding: 8px 12px; border-radius: 8px; margin-top: 10px; font-style: italic; color: #333; border: 1px solid var(--green); }
+
+    /* QUIZ */
+    .quiz-card { background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border); margin-bottom: 10px; overflow: hidden; box-shadow: var(--shadow); }
+    .quiz-header { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; font-size: 14px; font-weight: 500; }
+    .quiz-tag { background: var(--blue-light); color: var(--blue); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+    .toggle-btn { background: var(--blue); color: white; border: none; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-family: 'Sora'; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+    .toggle-btn:hover { background: var(--blue-light); color: var(--blue); }
+    .quiz-answer { display: none; padding: 14px 18px; border-top: 1px solid var(--border); background: var(--blue-light); font-size: 14px; line-height: 1.6; }
+    .quiz-answer.open { display: block; }
+
+    /* CHAPTER NAV */
+    .chapter-nav-bar { background: var(--text); padding: 18px 48px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-left: 0; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.4); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .chapter-nav-bar a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 8px; background: rgba(255,255,255,0.08); transition: all 0.2s; }
+    .chapter-nav-bar a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .chapter-hero { padding: 36px 20px 28px; }
+      .chapter-hero h1 { font-size: 30px; }
+      .content { padding: 24px 16px; }
+      .chapter-nav-bar { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">English Revision</div>
+    <div class="book-title">Ch 5 — Grammar, Punctuation & Spelling</div>
+  </div>
+  <a href="index.html" class="home-link">← Back to English Home</a>
+  <div class="sidebar-label">Sections</div>
+  <a href="#punctuation">Punctuation Marks</a>
+  <a href="#dialogue-punct">Punctuating Dialogue</a>
+  <a href="#spelling">Common Spellings</a>
+  <a href="#tenses">Tenses</a>
+  <a href="#sentence">Sentence Rules</a>
+  <a href="#quiz">Quick Quiz</a>
+</nav>
+
+<main class="main">
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 5</div>
+    <h1>Grammar, Punctuation<br><span>&amp; Spelling</span></h1>
+    <div class="chapter-meta">Junior Cycle English · Language Skills</div>
+    <div class="goal-tags">
+      <span class="goal-tag">Punctuation Rules</span>
+      <span class="goal-tag">Dialogue Punctuation</span>
+      <span class="goal-tag">Common Spelling Corrections</span>
+      <span class="goal-tag">Tenses</span>
+      <span class="goal-tag">Sentence Structure</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ══ PUNCTUATION MARKS ══ -->
+    <div class="section-heading anchor-offset" id="punctuation">
+      <span class="icon">📌</span> Punctuation Marks
+    </div>
+    <p>Each punctuation mark has a specific job. Use them correctly to make your writing clear and professional.</p>
+
+    <div class="punct-card">
+      <div class="punct-symbol">.</div>
+      <div class="punct-body">
+        <div class="punct-name">Full Stop</div>
+        <div class="punct-rule">Ends a sentence. Always follow with a capital letter for the next sentence.</div>
+        <div class="punct-example">I love cats. She plays soccer.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">?</div>
+      <div class="punct-body">
+        <div class="punct-name">Question Mark</div>
+        <div class="punct-rule">Used at the end of a direct question.</div>
+        <div class="punct-example">What's your name? Do you like pizza?</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">!</div>
+      <div class="punct-body">
+        <div class="punct-name">Exclamation Mark</div>
+        <div class="punct-rule">Shows excitement, surprise, or strong feelings.</div>
+        <div class="punct-example">Wow! That was amazing!</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">,</div>
+      <div class="punct-body">
+        <div class="punct-name">Comma</div>
+        <div class="punct-rule">Separates ideas in a list, or marks a pause in a sentence. Use the Oxford comma before 'and' in a list.</div>
+        <div class="punct-example">I bought apples, bananas, and oranges. &nbsp;|&nbsp; After school, I went home.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">" "</div>
+      <div class="punct-body">
+        <div class="punct-name">Quotation Marks</div>
+        <div class="punct-rule">Go around spoken words (dialogue) — like little taking marks! When a new person speaks, start a new line.</div>
+        <div class="punct-example">Emma said, "I love reading books!" &nbsp;|&nbsp; "Can we go to the park?" asked Jake.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">;</div>
+      <div class="punct-body">
+        <div class="punct-name">Semicolon</div>
+        <div class="punct-rule">Separates two independent clauses (two complete sentences that are closely related).</div>
+        <div class="punct-example">We could go shopping tomorrow; you could borrow my brother's car to drive us there.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">:</div>
+      <div class="punct-body">
+        <div class="punct-name">Colon</div>
+        <div class="punct-rule">Introduces a list or an explanation.</div>
+        <div class="punct-example">English list: textbooks, pens, and a copybook.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">-</div>
+      <div class="punct-body">
+        <div class="punct-name">Hyphen</div>
+        <div class="punct-rule">Joins two adjectives before a noun, or adds extra info in the middle of a sentence.</div>
+        <div class="punct-example">The hike was organised for May 12th–15th. &nbsp;|&nbsp; People — both young and old — are advised to be careful.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">( )</div>
+      <div class="punct-body">
+        <div class="punct-name">Brackets</div>
+        <div class="punct-rule">Used to add extra or additional information that isn't essential to the sentence.</div>
+        <div class="punct-example">I read that novel (The Great Gatsby) in school.</div>
+      </div>
+    </div>
+
+    <div class="punct-card">
+      <div class="punct-symbol">…</div>
+      <div class="punct-body">
+        <div class="punct-name">Ellipsis</div>
+        <div class="punct-rule">Signifies missing text, a pause, or a trailing off in thought.</div>
+        <div class="punct-example">Jack of all trades… better than a master of one. &nbsp;|&nbsp; I don't know… it sounds like a bad idea.</div>
+      </div>
+    </div>
+
+    <!-- ══ APOSTROPHES ══ -->
+    <div class="sub-heading">Apostrophes — Two Rules</div>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-title">Possession <span class="badge">Ownership</span></div>
+        <div class="rule-body">Use an apostrophe + s to show that something belongs to someone.</div>
+        <div class="rule-example">
+          Jane's parents work in the school's office.<br>
+          The children's bags are in my way.
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Contraction <span class="badge">Shortening</span></div>
+        <div class="rule-body">Use an apostrophe to replace a missing letter when two words are joined together.</div>
+        <div class="rule-example">
+          I am → I'm &nbsp;|&nbsp; do not → don't &nbsp;|&nbsp; it is → it's
+        </div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">⚠️</span>
+      <div class="text">
+        <strong>Common Apostrophe Traps</strong>
+        <b>it's</b> = it is (contraction) &nbsp;|&nbsp; <b>its</b> = belonging to it (possession — NO apostrophe). Never use an apostrophe to make a word plural: "the dog's" means one dog owns something, "the dogs" is just the plural.
+      </div>
+    </div>
+
+    <!-- ══ DIALOGUE PUNCTUATION ══ -->
+    <div class="section-heading anchor-offset" id="dialogue-punct">
+      <span class="icon">💬</span> Punctuating Dialogue
+    </div>
+    <p>Dialogue in stories has its own special punctuation rules. Follow these carefully in your creative writing.</p>
+
+    <div class="dialogue-box">
+      <div class="dialogue-title">Dialogue Punctuation Rules</div>
+      <ul>
+        <li>Use quotation marks (" ") around what's being said.</li>
+        <li>A new line every time someone new speaks.</li>
+        <li>Use dialogue tags → 'said', 'asked', 'whispered', 'yelled', 'answered'.</li>
+        <li>Use a comma to separate dialogue from dialogue tags.</li>
+        <li>Always start dialogue with a capital letter.</li>
+        <li>Use punctuation at the end of dialogue: " , ! ? . … "</li>
+      </ul>
+      <div class="dialogue-example">
+        "Hello," said Mary, with a grin.<br>
+        "Ah hiya Mary," said John. "Where are you off to?"<br>
+        "I'm going to get ice cream, it's roasting out!" she answered, mopping her brow exaggeratedly.<br>
+        "Sounds great! Where are you getting it?"<br>
+        "The van in the village," she answered, pointing excitedly.
+      </div>
+    </div>
+
+    <!-- ══ SPELLING ══ -->
+    <div class="section-heading anchor-offset" id="spelling">
+      <span class="icon">🔤</span> Common Spelling Corrections
+    </div>
+    <p>These are words that come up often in your writing. Learn the correct spelling!</p>
+
+    <table class="eng-table">
+      <thead>
+        <tr><th>❌ Wrong Spelling</th><th>✅ Correct Spelling</th><th>Memory Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="wrong">alot</span></td><td><span class="right">a lot</span></td><td>Always two separate words — never "alot"</td></tr>
+        <tr><td><span class="wrong">journy / journy</span></td><td><span class="right">journey</span></td><td>Think of "jour" (day in French) + ney</td></tr>
+        <tr><td><span class="wrong">senery</span></td><td><span class="right">scenery</span></td><td>Scene + ry = scenery</td></tr>
+        <tr><td><span class="wrong">probaly</span></td><td><span class="right">probably</span></td><td>Pro-ba-bly — say each syllable</td></tr>
+        <tr><td><span class="wrong">traumatizing</span></td><td><span class="right">traumatising</span></td><td>Irish/British English uses -ising not -izing</td></tr>
+        <tr><td><span class="wrong">togeter</span></td><td><span class="right">together</span></td><td>to-geth-er — three syllables</td></tr>
+        <tr><td><span class="wrong">caputures</span></td><td><span class="right">captures</span></td><td>cap-tures — no extra 'u'</td></tr>
+        <tr><td><span class="wrong">Me and my friends</span></td><td><span class="right">My friends and I</span></td><td>Take away the others — "Me went" doesn't work!</td></tr>
+        <tr><td><span class="wrong">favorite</span></td><td><span class="right">favourite</span></td><td>Irish/British English keeps the 'u'</td></tr>
+        <tr><td><span class="wrong">Their are / There is</span></td><td><span class="right">There are / There is</span></td><td>Their = belonging to them. There = place/existence.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="remember">
+      <span class="icon">📝</span>
+      <div class="text">
+        <strong>Class Rules for Writing</strong>
+        Always title and date your work. Use blue or black pens only. Do NOT use numbers when writing — spell them out. Exception: dates, statistics, numbers over 10, addresses. Do NOT use symbols (%, &amp;, #) in formal writing.
+      </div>
+    </div>
+
+    <!-- ══ TENSES ══ -->
+    <div class="section-heading anchor-offset" id="tenses">
+      <span class="icon">⏱️</span> Tenses
+    </div>
+    <p>Watch your tenses! You must stay consistent throughout your writing. Don't switch randomly between past and present.</p>
+
+    <table class="tense-table">
+      <thead>
+        <tr><th>Tense</th><th>When to Use</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Past</strong></td>
+          <td>Events that already happened</td>
+          <td>I <em>walked</em> to the shop. She <em>was</em> nervous.</td>
+        </tr>
+        <tr>
+          <td><strong>Present</strong></td>
+          <td>Events happening now</td>
+          <td>I <em>walk</em> to the shop. She <em>is</em> nervous.</td>
+        </tr>
+        <tr>
+          <td><strong>Future</strong></td>
+          <td>Events that will happen</td>
+          <td>I <em>will walk</em> to the shop. She <em>will be</em> nervous.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="remember">
+      <span class="icon">🔁</span>
+      <div class="text">
+        <strong>Tense Consistency</strong>
+        Pick ONE tense for your story and stick to it. Most creative writing uses the <strong>past tense</strong>. Only switch tense intentionally (e.g. for dialogue or a flashback).
+      </div>
+    </div>
+
+    <!-- ══ SENTENCE RULES ══ -->
+    <div class="section-heading anchor-offset" id="sentence">
+      <span class="icon">📐</span> Sentence Structure Rules
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-title">Keep Sentences Short</div>
+        <div class="rule-body">Long, rambling sentences are hard to follow. Aim for clear, punchy sentences. End with a full stop before starting fresh.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Capital Letters</div>
+        <div class="rule-body">Always capitalise: the start of a sentence, names of people and places, the word "I", titles.</div>
+        <div class="rule-example">
+          <span class="wrong">ireland</span> → <span class="right">Ireland</span>&nbsp;&nbsp;
+          <span class="wrong">house</span> = lowercase (common noun)
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Never Start with "Because"</div>
+        <div class="rule-body">"Because" introduces a dependent clause — it can't stand alone as a sentence. Attach it to an independent clause.</div>
+        <div class="rule-example">
+          <span class="wrong">Because the bombing could start.</span><br>
+          <span class="right">They ran because the bombing could start.</span>
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">No Symbols in Writing</div>
+        <div class="rule-body">Don't use &amp;, %, @, # in formal or creative writing. Spell words out in full.</div>
+        <div class="rule-example">
+          <span class="wrong">100%</span> → <span class="right">one hundred percent</span>
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">No Numbers as Digits</div>
+        <div class="rule-body">Spell out numbers in writing. Exceptions: dates, statistics, numbers over 10, and addresses.</div>
+        <div class="rule-example">
+          <span class="wrong">There were 3 cats.</span><br>
+          <span class="right">There were three cats.</span>
+        </div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Spelling Correction (SP)</div>
+        <div class="rule-body">When you get an SP mark, write the correct word three times to help it stick in your memory.</div>
+        <div class="rule-example">
+          <span class="wrong">togeter</span> → together → together → together
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ QUIZ ══ -->
+    <div class="section-heading anchor-offset" id="quiz">
+      <span class="icon">🧠</span> Quick Quiz — Test Yourself
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What punctuation mark ends a sentence?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Basics</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A <strong>full stop (.)</strong> ends a sentence. It must always be followed by a capital letter for the next sentence.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between a semicolon (;) and a colon (:)?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Punctuation</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A <strong>semicolon (;)</strong> separates two independent clauses — two complete sentences that are closely related. A <strong>colon (:)</strong> introduces a list or an explanation. e.g. "We could go tomorrow; bring your coat." vs "I need three things: a pen, a notebook, and patience."</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name the 5 key dialogue punctuation rules.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Dialogue</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. Quotation marks around speech. 2. New line every time someone new speaks. 3. Dialogue tags (said, asked, whispered). 4. Comma before the dialogue tag. 5. Capital letter to start dialogue. 6. End punctuation inside the quotation marks.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the TWO uses of an apostrophe?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Apostrophes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. <strong>Possession</strong> — to show something belongs to someone (Jane's book, the children's bags). 2. <strong>Contraction</strong> — to replace a missing letter when two words join (I'm, don't, it's). Remember: "its" (belonging) never has an apostrophe — only "it's" (it is) does.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What's wrong with this sentence: "Their are too many people here."?</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Spelling</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">"Their" is wrong — <strong>their</strong> means belonging to them. The correct word here is <strong>there</strong> (referring to existence). Correct sentence: "There are too many people here."</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Correct this sentence: "Me and my friends went to the shop."</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Grammar</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Correct: "My friends and I went to the shop."</strong> A quick trick: remove the others. "Me went to the shop" doesn't work — so it should be "I". Also, put yourself last as a matter of politeness.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name three things an ellipsis (...) can be used for.</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="quiz-tag">Punctuation</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">1. To signify <strong>missing text</strong> in a quotation. 2. To show a <strong>pause or hesitation</strong> in speech. 3. To create a <strong>trailing off</strong> — leaving something unsaid for dramatic effect. e.g. "I don't know… it sounds like a bad idea."</div>
+    </div>
+
+  </div><!-- /content -->
+
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">← English Home</a>
+    <a href="ch4.html">← Ch 4: Film Studies</a>
+    <a href="ch6.html">Ch 6: Creative Writing →</a>
+  </div>
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id; });
+    links.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === current); });
+  });
+</script>
+</body>
+</html>
