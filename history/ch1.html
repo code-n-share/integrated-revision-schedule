@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 1 – The Historian | History Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:          #B91C1C;
+      --red-dark:     #7F1D1D;
+      --red-light:    #FEE2E2;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --bg:           #FAF5F5;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--red);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, #DC2626 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '📜'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 46px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--red);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--red-dark); margin: 26px 0 10px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--red-light); border-left: 4px solid var(--red);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--red-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--red); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--red); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--red); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--red-dark); }
+
+    /* TABLE */
+    .hist-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .hist-table th {
+      background: var(--red); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .hist-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .hist-table tr:last-child td { border-bottom: none; }
+    .hist-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .ex-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; }
+    .example-box .ex-body strong { color: var(--green); }
+
+    /* METHOD BOX */
+    .method-box {
+      background: var(--blue-light); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0;
+    }
+    .method-box .method-title {
+      font-family: 'Sora'; font-weight: 700; color: var(--blue); font-size: 14px; margin-bottom: 8px;
+    }
+    .method-box ul { padding-left: 18px; font-size: 13.5px; }
+    .method-box li { margin-bottom: 5px; }
+
+    /* WORTH IT BOX */
+    .worth-box {
+      background: #FFF3CD; border: 2px solid var(--amber);
+      border-radius: var(--radius); padding: 16px 20px; margin: 16px 0;
+    }
+    .worth-box .worth-title { font-family: 'Sora'; font-weight: 800; color: #92400E; font-size: 15px; margin-bottom: 10px; }
+    .worth-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .worth-item {
+      background: #fff; border: 1.5px solid var(--amber); border-radius: 10px;
+      padding: 10px 14px; flex: 1; min-width: 120px; text-align: center;
+    }
+    .worth-item .wi-letter { font-family: 'Sora'; font-weight: 800; font-size: 22px; color: #D97706; }
+    .worth-item .wi-word { font-size: 12px; color: var(--text); font-weight: 700; }
+    .worth-item .wi-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      background: var(--red-light); color: var(--red-dark);
+    }
+    .toggle-btn {
+      background: var(--red); color: #fff; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: var(--red-dark); }
+    .quiz-answer {
+      display: none; padding: 14px 18px; border-top: 1px solid var(--border);
+      background: var(--green-light); font-size: 14px; color: #1A5C3A;
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* TIMELINE VIZ */
+    .timeline-wrap {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 28px 24px; margin: 16px 0; box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+    .timeline-strip {
+      display: flex; align-items: center; gap: 0; min-width: 600px; position: relative;
+    }
+    .tl-segment {
+      flex: 1; text-align: center; padding: 0 4px;
+    }
+    .tl-label {
+      font-family: 'Sora'; font-weight: 800; font-size: 13px; margin-bottom: 6px;
+    }
+    .tl-bar {
+      height: 14px; border-radius: 7px; margin-bottom: 6px;
+    }
+    .tl-sub { font-size: 11px; color: var(--muted); }
+    .tl-arrow {
+      font-size: 20px; color: var(--muted); flex-shrink: 0; padding: 0 4px;
+    }
+
+    /* SCROLL OFFSET for anchors */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 32px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">History Revision</div>
+    <div class="book-title">Ch 1 — The Historian</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">History Home</a>
+
+  <div class="sidebar-label">What is History?</div>
+  <a href="#what-is-history">History &amp; Prehistory</a>
+  <a href="#study-history">Why We Study History</a>
+
+  <div class="sidebar-label">The Historian's Work</div>
+  <a href="#job">Finding Evidence</a>
+  <a href="#sources">Primary &amp; Secondary Sources</a>
+  <a href="#working">Reliability of Sources</a>
+  <a href="#types">Types of Source</a>
+
+  <div class="sidebar-label">Time</div>
+  <a href="#time">Time &amp; Timelines</a>
+  <a href="#reinterpreting">Reinterpreting History</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#key-terms">Key Terms Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 1 · Junior Cycle History</div>
+    <h1>The <span>Historian</span></h1>
+    <div class="chapter-meta">Unit: The Historian &nbsp;·&nbsp; History, Sources, Evidence &amp; Time</div>
+    <div class="goal-tags">
+      <span class="goal-tag">📖 What is History?</span>
+      <span class="goal-tag">🔍 Primary &amp; Secondary Sources</span>
+      <span class="goal-tag">🏛️ Historical Repositories</span>
+      <span class="goal-tag">⚖️ Reliability &amp; Bias</span>
+      <span class="goal-tag">📅 Time &amp; Timelines</span>
+      <span class="goal-tag">🔄 Reinterpretation</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══ 1.1 WHAT IS HISTORY ═══ -->
+    <div class="section-heading anchor-offset" id="what-is-history">
+      <span class="icon">📖</span> 1.1 What is History?
+    </div>
+
+    <div class="key-term">
+      <div class="term">History</div>
+      <div class="definition">The study of the past. The word comes from the Greek word <em>historia</em>, meaning knowledge from investigation.</div>
+    </div>
+
+    <p>History is based on <strong>evidence</strong> and the study of <strong>sources</strong>. It concerns the story of human activity — from the lives of ordinary people (their jobs, clothing, entertainment) to major events, investigating not only <em>what</em> happened but <em>why</em>.</p>
+
+    <div class="key-term">
+      <div class="term">Source</div>
+      <div class="definition">Something that gives us information or evidence about a person, place or thing in the past.</div>
+      <div class="tip">💡 Sources are the raw material of history. No source = no history!</div>
+    </div>
+
+    <div class="sub-heading">History vs Prehistory</div>
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">✍️</div>
+        <div class="card-title">History</div>
+        <div class="card-def">Everything that has happened <strong>since people began using writing</strong>. Written sources and documents can be used as evidence. Example: the <em>Annals of the Four Masters</em>.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🪨</div>
+        <div class="card-title">Prehistory</div>
+        <div class="card-def">The period of time <strong>before writing was used</strong>. We rely on archaeology for evidence. Example: a weapon made to hunt food is a prehistoric source.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⛏️</div>
+        <div class="card-title">Archaeology</div>
+        <div class="card-def">The study of the remains left by people in the past. Archaeologists investigate places and objects, including the time before written records were kept.</div>
+        <div class="card-tip">You will learn more about archaeology in Chapter 2.</div>
+      </div>
+    </div>
+
+    <!-- ═══ 1.2 WHY STUDY HISTORY ═══ -->
+    <div class="section-heading anchor-offset" id="study-history">
+      <span class="icon">🎓</span> 1.2 Why We Study History
+    </div>
+
+    <p>Through the study of history, we can:</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">👀</div>
+        <div class="card-title">Learn how people lived</div>
+        <div class="card-def">Understand life before us — how people worked, dressed, ate and spent their time.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Understand causes &amp; effects</div>
+        <div class="card-def">Gain understanding of why past events happened and what their consequences were.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Shape the present</div>
+        <div class="card-def">Understand how human experience has shaped our world today, and avoid repeating past mistakes.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Recognise patterns</div>
+        <div class="card-def">Learn to recognise patterns of change across different periods of time.</div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Historical Consciousness</div>
+      <div class="definition">Being able to place ourselves in past human experience, linking the past, the present and the future.</div>
+      <div class="tip">💡 George Santayana: <em>"Those who do not remember the past are condemned to repeat it."</em></div>
+    </div>
+
+    <div class="sub-heading">Who Studies History?</div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Historian</div>
+        <div class="card-def">Someone who is an expert in, or a student of, history. Historians gather evidence from a variety of sources to piece together information about the past.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏺</div>
+        <div class="card-title">Archaeologist</div>
+        <div class="card-def">Someone who investigates places and objects left by people in the past, including the time before written records were kept.</div>
+      </div>
+    </div>
+
+    <!-- ═══ 1.3 JOB OF THE HISTORIAN ═══ -->
+    <div class="section-heading anchor-offset" id="job">
+      <span class="icon">🔍</span> 1.3 The Job of the Historian
+    </div>
+
+    <div class="sub-heading">Finding Evidence</div>
+    <p>The historian gathers as much evidence as possible from different sources, then <strong>cross-checks</strong> their work using multiple sources.</p>
+
+    <div class="key-term">
+      <div class="term">Cross-Checking</div>
+      <div class="definition">When more than one source is used to make sure the information is correct.</div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Historical Repository</div>
+      <div class="definition">A place where evidence of the past can be stored and maintained — for example, artefacts, government documents, manuscripts or photographs.</div>
+    </div>
+
+    <p>Historians visit repositories such as libraries, archives and museums to find evidence and sources.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Archive</div>
+        <div class="card-def">A place that catalogues and stores a collection of written and other sources. Example: the <strong>National Archives of Ireland</strong> in Dublin, where records of the Irish State are held.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Museum</div>
+        <div class="card-def">A place that collects and displays objects for public education and appreciation. Example: the <strong>National Museum of Ireland</strong> — home to Bronze Age metalwork, Viking artefacts and ancient Egyptian treasures.</div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">💡</div>
+      <div class="text"><strong>The Broighter Boat (c.100 BC)</strong>
+        In the National Museum of Ireland, artefacts like the Broighter Boat add to our knowledge of the Iron Age, showing how skilled the Celts were with metalwork and the type of boats used in trade with Britain and western Europe.</div>
+    </div>
+
+    <div class="sub-heading">The WORTH IT Strategy</div>
+    <p>Use this strategy to assess whether a repository (online or in person) is a good source of information:</p>
+
+    <div class="worth-box">
+      <div class="worth-title">⭐ WORTH IT — Assessing Repositories</div>
+      <div class="worth-row">
+        <div class="worth-item"><div class="wi-letter">W</div><div class="wi-word">Worthwhile</div><div class="wi-desc">Unique experience?</div></div>
+        <div class="worth-item"><div class="wi-letter">O</div><div class="wi-word">Open to all</div><div class="wi-desc">Easy to access?</div></div>
+        <div class="worth-item"><div class="wi-letter">R</div><div class="wi-word">Range</div><div class="wi-desc">Other sources to view?</div></div>
+        <div class="worth-item"><div class="wi-letter">T</div><div class="wi-word">Thorough</div><div class="wi-desc">Full story told?</div></div>
+        <div class="worth-item"><div class="wi-letter">H</div><div class="wi-word">Historical accuracy</div><div class="wi-desc">Accurate &amp; balanced?</div></div>
+        <div class="worth-item"><div class="wi-letter">I</div><div class="wi-word">Interesting</div><div class="wi-desc">Did you enjoy it?</div></div>
+        <div class="worth-item"><div class="wi-letter">T</div><div class="wi-word">Tactful</div><div class="wi-desc">Handles sensitive topics well?</div></div>
+      </div>
+    </div>
+
+    <!-- ═══ 1.3 SOURCES ═══ -->
+    <div class="section-heading anchor-offset" id="sources">
+      <span class="icon">📄</span> Sources Used by Historians
+    </div>
+
+    <p>Sources can be split into two categories: <strong>primary</strong> and <strong>secondary</strong>.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">1️⃣</div>
+        <div class="card-title">Primary Source</div>
+        <div class="card-def">A source <strong>from the time in question</strong>; a first-hand account of what happened. Created by someone who witnessed or participated in the event.</div>
+        <div class="card-tip">★ Generally tells us more clearly what life was like at the time.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">2️⃣</div>
+        <div class="card-title">Secondary Source</div>
+        <div class="card-def">A source <strong>from a later date</strong>, after the time in question. Created by someone who did not witness the event directly.</div>
+        <div class="card-tip">★ Gives background information that helps us understand primary sources.</div>
+      </div>
+    </div>
+
+    <table class="hist-table">
+      <thead>
+        <tr><th>Examples of Primary Sources</th><th>Examples of Secondary Sources</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Artefacts, Diaries, Letters, Emails</td><td>TV/film and radio documentaries</td></tr>
+        <tr><td>Interviews, Speeches, Posters</td><td>Podcasts, Websites</td></tr>
+        <tr><td>Photographs, Cartoons and drawings</td><td>History books and textbooks</td></tr>
+        <tr><td>Government records (e.g. a census)</td><td>Biographies, Movies</td></tr>
+        <tr><td>Newspapers, Magazines, Maps</td><td>Handling boxes</td></tr>
+        <tr><td>Autobiographies</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Useful Definitions</div>
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🏺</div>
+        <div class="card-title">Artefact</div>
+        <div class="card-def">Any human-made object, e.g. pottery, a tool or a weapon such as a spear.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Census</div>
+        <div class="card-def">An official survey of a population. In Ireland, a census is held every five years.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">✍️</div>
+        <div class="card-title">Autobiography</div>
+        <div class="card-def">An account of a person's life written by the person themselves.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📕</div>
+        <div class="card-title">Biography</div>
+        <div class="card-def">An account of a person's life written by someone else.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Handling Box</div>
+        <div class="card-def">A box containing replicas (copies) of artefacts, so that anyone can examine them without damaging an original.</div>
+      </div>
+    </div>
+
+    <!-- ═══ 1.4 WORKING WITH SOURCES ═══ -->
+    <div class="section-heading anchor-offset" id="working">
+      <span class="icon">⚖️</span> 1.4 Working with Sources: Reliability
+    </div>
+
+    <p>Historians must carefully assess how <strong>reliable</strong> a source is. They examine the point of view of the person behind the source, being aware of:</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">✔️</div>
+        <div class="card-title">Accuracy</div>
+        <div class="card-def">Judging how correct the information you are using is.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Bias</div>
+        <div class="card-def">When an account is not balanced, but unfairly favours one side. Can be deliberate or unconscious. Historians must watch for bias in sources — and in themselves!</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📣</div>
+        <div class="card-title">Exaggeration</div>
+        <div class="card-def">When something is represented as better or worse than it actually was.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📢</div>
+        <div class="card-title">Propaganda</div>
+        <div class="card-def">Information designed to influence the attitudes and behaviours of the general public. Often biased, appeals to emotions (fear, anger, loyalty) and may even be made up. Common in wartime.</div>
+      </div>
+    </div>
+
+    <!-- ═══ 1.4 TYPES OF SOURCE ═══ -->
+    <div class="section-heading anchor-offset" id="types">
+      <span class="icon">🗂️</span> Types of Source
+    </div>
+
+    <p>Sources can also be categorised by type:</p>
+
+    <table class="hist-table">
+      <thead>
+        <tr><th>Type</th><th>Description</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Written</strong></td><td>Text-based sources</td><td>Letters, diaries, newspapers, government records</td></tr>
+        <tr><td><strong>Visual</strong></td><td>Image-based sources</td><td>Photographs, paintings, cartoons, maps, posters</td></tr>
+        <tr><td><strong>Aural</strong></td><td>Sound-based sources</td><td>Radio broadcasts, recorded interviews, speeches</td></tr>
+        <tr><td><strong>Oral</strong></td><td>Spoken accounts</td><td>Interviews, stories passed down through generations</td></tr>
+        <tr><td><strong>Tactile</strong></td><td>Objects that can be touched</td><td>Artefacts, handling box items</td></tr>
+      </tbody>
+    </table>
+
+    <div class="key-term">
+      <div class="term">Tactile Source</div>
+      <div class="definition">A source that can be touched — a physical object, like an artefact.</div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">⚠️</div>
+      <div class="text"><strong>Primary vs Secondary — Strengths &amp; Limits</strong>
+        Primary sources tell us more clearly what life was like at the time, but can be biased. Secondary sources give useful background context, but we must check how they were created and whether the author was reliable.</div>
+    </div>
+
+    <!-- ═══ 1.5 TIME AND TIMELINES ═══ -->
+    <div class="section-heading anchor-offset" id="time">
+      <span class="icon">📅</span> 1.5 Time and Timelines
+    </div>
+
+    <div class="key-term">
+      <div class="term">Chronology</div>
+      <div class="definition">Putting events into the sequence in which they happened. This makes it easier to follow the story of what happened.</div>
+    </div>
+
+    <p>Historians use time in several ways:</p>
+    <ul class="step-list">
+      <li><div class="step-text">Divide time into <strong>hours, days, weeks, months and years</strong>.</div></li>
+      <li><div class="step-text">Group years into <strong>decades</strong> (10 years), <strong>centuries</strong> (100 years) and <strong>millennia</strong> (1,000 years).</div></li>
+      <li><div class="step-text">Organise events using a <strong>common feature</strong> from a period — e.g. the Stone Age, Bronze Age, Iron Age.</div></li>
+      <li><div class="step-text">Use <strong>timelines</strong> to show the order in which events happened.</div></li>
+    </ul>
+
+    <div class="sub-heading">BCE / BC and CE / AD</div>
+    <p>In the Western world, the birth of Jesus Christ is the fixed starting point. Dates go either forwards or backwards from this point.</p>
+
+    <div class="timeline-wrap">
+      <div class="timeline-strip">
+        <div class="tl-segment">
+          <div class="tl-label" style="color:#7F1D1D;">BCE / BC</div>
+          <div class="tl-bar" style="background:linear-gradient(90deg,#FCA5A5,#B91C1C);"></div>
+          <div class="tl-sub"><strong>Before Common Era</strong><br>Before Christ<br>Numbers count <em>down</em> toward 1</div>
+        </div>
+        <div class="tl-arrow">⟶</div>
+        <div class="tl-segment" style="flex:0 0 80px;">
+          <div class="tl-label" style="color:#374151;">Year 1</div>
+          <div class="tl-bar" style="background:#374151;"></div>
+          <div class="tl-sub"><strong>Birth of<br>Jesus</strong></div>
+        </div>
+        <div class="tl-arrow">⟶</div>
+        <div class="tl-segment">
+          <div class="tl-label" style="color:#065F46;">CE / AD</div>
+          <div class="tl-bar" style="background:linear-gradient(90deg,#6EE7B7,#065F46);"></div>
+          <div class="tl-sub"><strong>Common Era</strong><br>Anno Domini (Year of Our Lord)<br>Numbers count <em>up</em> — we are in CE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">⬅️</div>
+        <div class="card-title">BCE / BC dates</div>
+        <div class="card-def"><strong>Before the Common Era / Before Christ.</strong> Example: the first Olympic Games took place in 776 BCE (776 years before Jesus was born). Bigger number = earlier! Think of it as a countdown.</div>
+        <div class="card-tip">776 BC → 700 BC → 1 → CE begins. Bigger BC number = further back in time.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">➡️</div>
+        <div class="card-title">CE / AD dates</div>
+        <div class="card-def"><strong>Common Era / Anno Domini</strong> ('Year of Our Lord' in Latin). Example: 2003 CE was 2,003 years after the birth of Jesus — just over two millennia.</div>
+        <div class="card-tip">The 21st century = AD 2000–2099. Both BCE/CE and BC/AD sets mean the same thing.</div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">⚠️</div>
+      <div class="text"><strong>Centuries can be confusing!</strong>
+        The year 776 BC was in the 8th century BC: it began with 799 BC and ended with 700 BC. The smaller number is actually later in time for BC dates. AD 1066 is in the 11th century (1000–1099).</div>
+    </div>
+
+    <!-- ═══ 1.6 REINTERPRETING HISTORY ═══ -->
+    <div class="section-heading anchor-offset" id="reinterpreting">
+      <span class="icon">🔄</span> 1.6 Reinterpreting History
+    </div>
+
+    <div class="key-term">
+      <div class="term">Reinterpretation</div>
+      <div class="definition">To see something in a new or different light. When a new piece of evidence emerges, it may lead to an event or time in history being reinterpreted.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-header">📘 Real Example — Women in the War of Independence</div>
+      <div class="ex-body">
+        For decades after the Irish War of Independence, the role of women was not widely recognised or celebrated. However, recent research uncovering evidence in military archives and pension files has shown the <strong>crucial roles played by women</strong> in the struggle for independence — providing safe houses, distributing money, obtaining and smuggling arms, visiting prisons, and spying. This new evidence led to a <strong>reinterpretation</strong> of this period of Irish history.
+      </div>
+    </div>
+
+    <div class="remember">
+      <div class="icon">💡</div>
+      <div class="text"><strong>History is never fully finished!</strong>
+        New evidence can always emerge — from archives, archaeology or technology — that forces us to reconsider what we thought we knew. This is why historians must keep an open mind.</div>
+    </div>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="key-terms">
+      <span class="icon">🃏</span> Key Terms Flashcards
+    </div>
+    <p style="margin-bottom:16px;">Click <strong>Reveal Answer</strong> to check your definition.</p>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>history</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>study of the past</strong>. It comes from the Greek word <em>historia</em>, meaning knowledge from investigation. It is based on evidence and sources.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between <strong>history</strong> and <strong>prehistory</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>History</strong> covers everything since people began using writing — written sources can be used. <strong>Prehistory</strong> is the period before writing was used — we rely on archaeology for evidence.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>primary source</strong>? Give two examples.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sources</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A source <strong>from the time in question</strong>; a first-hand account of what happened. Examples: a diary, a letter, a photograph, a speech, a government census, an artefact.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>secondary source</strong>? Give two examples.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sources</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A source <strong>from a later date</strong>, after the time in question. Examples: a history textbook, a biography, a TV documentary, a podcast, a website about history.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>propaganda</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sources</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Information <strong>designed to influence the attitudes and behaviours of the general public</strong>. It is generally biased, often appeals to emotions (fear, anger, loyalty) and may even be made up. It is common during wartime.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>cross-checking</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">The Historian</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">When <strong>more than one source is used to make sure the information is correct</strong>. Historians cross-check their work to improve accuracy and reliability.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>historical repository</strong>? Give two examples.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">The Historian</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A place where evidence of the past can be stored and maintained. Examples: <strong>archives</strong> (e.g. National Archives of Ireland) and <strong>museums</strong> (e.g. National Museum of Ireland).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>chronology</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Time</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Putting events into the <strong>sequence in which they happened</strong>. It makes it easier for people to follow the story of what happened.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What does <strong>BCE / BC</strong> mean? What does <strong>CE / AD</strong> mean?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Time</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>BCE</strong> = Before Common Era / <strong>BC</strong> = Before Christ — dates before the birth of Jesus. Numbers count down toward 1. <strong>CE</strong> = Common Era / <strong>AD</strong> = Anno Domini — dates since the birth of Jesus. Numbers count up.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>reinterpretation</strong> in history?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">To <strong>see something in a new or different light</strong>. New evidence sometimes creates doubt about what we believed happened, requiring history to be studied and understood again.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>historical consciousness</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Being able to <strong>place ourselves in past human experience</strong>, linking the past, the present and the future.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What are the five <strong>types of source</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sources</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Written</strong> (letters, diaries) · <strong>Visual</strong> (photos, maps) · <strong>Aural</strong> (radio, recordings) · <strong>Oral</strong> (interviews, stories) · <strong>Tactile</strong> (artefacts, handling box items).</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Rule / Definition</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>History</strong></td>
+          <td>Study of the past, based on evidence and sources.</td>
+          <td>Always link history to sources — no source, no history.</td>
+        </tr>
+        <tr>
+          <td><strong>Prehistory</strong></td>
+          <td>Time before writing was used. We use archaeology.</td>
+          <td>Distinguish clearly: writing began = history begins.</td>
+        </tr>
+        <tr>
+          <td><strong>Primary Source</strong></td>
+          <td>From the time in question. First-hand account.</td>
+          <td>Learn at least 5 examples: diary, letter, photo, artefact, census.</td>
+        </tr>
+        <tr>
+          <td><strong>Secondary Source</strong></td>
+          <td>From a later date, after the events.</td>
+          <td>Learn at least 5 examples: textbook, documentary, biography, website, podcast.</td>
+        </tr>
+        <tr>
+          <td><strong>Cross-checking</strong></td>
+          <td>Using more than one source to verify information.</td>
+          <td>Essential for accuracy — one source alone is never enough.</td>
+        </tr>
+        <tr>
+          <td><strong>Propaganda</strong></td>
+          <td>Information designed to influence public attitudes. Often biased or false.</td>
+          <td>Common exam source question — explain bias and purpose.</td>
+        </tr>
+        <tr>
+          <td><strong>Bias</strong></td>
+          <td>Unfairly favouring one side. Not balanced.</td>
+          <td>Historians must check for bias in sources and in themselves.</td>
+        </tr>
+        <tr>
+          <td><strong>BCE / BC</strong></td>
+          <td>Before Common Era / Before Christ. Numbers count down to 1.</td>
+          <td>Bigger number = earlier date. 500 BC is earlier than 100 BC.</td>
+        </tr>
+        <tr>
+          <td><strong>CE / AD</strong></td>
+          <td>Common Era / Anno Domini. Numbers count up from 1.</td>
+          <td>21st century = 2000–2099. AD 1066 = 11th century.</td>
+        </tr>
+        <tr>
+          <td><strong>Chronology</strong></td>
+          <td>Events arranged in order of time.</td>
+          <td>Timelines are the main tool — practise creating them.</td>
+        </tr>
+        <tr>
+          <td><strong>Reinterpretation</strong></td>
+          <td>New evidence = history seen in a new light.</td>
+          <td>Example: women's role in the Irish War of Independence.</td>
+        </tr>
+        <tr>
+          <td><strong>Tactile Source</strong></td>
+          <td>A source that can be touched — a physical object.</td>
+          <td>An artefact or handling box item is a tactile source.</td>
+        </tr>
+        <tr>
+          <td><strong>Archaeology</strong></td>
+          <td>Study of remains left by people in the past.</td>
+          <td>Key for prehistoric evidence before written records exist.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; History Home</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
