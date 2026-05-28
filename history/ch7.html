@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 7 – The Age of Exploration &amp; Conquest | History Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:          #B91C1C;
+      --red-dark:     #7F1D1D;
+      --red-light:    #FEE2E2;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --bg:           #FAF5F5;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--red);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, #DC2626 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🧭'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 42px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--red);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--red-dark); margin: 26px 0 10px;
+    }
+    .anchor-offset { scroll-margin-top: 20px; }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--red-light); border-left: 4px solid var(--red);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--red-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* DID YOU KNOW */
+    .did-you-know {
+      background: var(--blue-light); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 16px 0;
+    }
+    .did-you-know .dyk-label { font-family: 'Sora'; font-weight: 700; font-size: 13px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .did-you-know p { font-size: 14px; color: #333; margin-bottom: 0; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--red); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* TIMELINE */
+    .timeline { margin: 20px 0; position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+      width: 3px; background: linear-gradient(to bottom, var(--red), var(--amber));
+      border-radius: 2px;
+    }
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -22px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--red); border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--red);
+    }
+    .timeline-date {
+      font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      color: var(--red); margin-bottom: 3px;
+    }
+    .timeline-text { font-size: 14px; color: var(--text); }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--red); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--red-dark); }
+
+    /* BULLET LIST */
+    .bullet-list { list-style: none; margin: 10px 0 14px; padding: 0; }
+    .bullet-list li {
+      font-size: 14px; padding: 5px 0 5px 22px; position: relative; color: #333;
+    }
+    .bullet-list li::before {
+      content: '›'; position: absolute; left: 6px;
+      color: var(--red); font-weight: 700; font-size: 16px; top: 4px;
+    }
+
+    /* TABLE */
+    .hist-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .hist-table th {
+      background: var(--red); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .hist-table td {
+      padding: 11px 16px; font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hist-table tr:last-child td { border-bottom: none; }
+    .hist-table tr:nth-child(even) td { background: #FAF5F5; }
+
+    /* PERSON CARD */
+    .person-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 2px solid var(--border); padding: 20px;
+      box-shadow: var(--shadow); margin: 16px 0;
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .person-card .person-emoji { font-size: 48px; flex-shrink: 0; }
+    .person-card .person-info .person-name {
+      font-family: 'Sora'; font-weight: 800; font-size: 18px;
+      color: var(--red-dark); margin-bottom: 4px;
+    }
+    .person-card .person-info .person-dates {
+      font-size: 13px; color: var(--muted); margin-bottom: 8px;
+    }
+    .person-card .person-info p { font-size: 14px; margin-bottom: 6px; }
+
+    /* QUIZ SECTION */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin: 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden;
+    }
+    .quiz-header {
+      padding: 14px 18px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      font-size: 14px; font-weight: 500;
+    }
+    .quiz-answer {
+      display: none; padding: 14px 18px;
+      background: var(--green-light); border-top: 2px solid var(--green);
+      font-size: 14px; color: #2D4A39; line-height: 1.55;
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700;
+      background: var(--red-light); color: var(--red-dark);
+      padding: 3px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .toggle-btn {
+      background: var(--red); color: #fff; border: none;
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0; transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: var(--red-dark); }
+
+    /* TWO-COL */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0;
+    }
+
+    /* IMPACT BOX */
+    .impact-box {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .impact-box .impact-title {
+      font-family: 'Sora'; font-weight: 700; font-size: 14px;
+      margin-bottom: 10px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--red);
+      color: var(--red-dark);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      background: var(--text); color: rgba(255,255,255,0.6);
+      padding: 14px 48px; font-size: 13px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .chapter-hero { padding: 40px 20px 32px; }
+      .chapter-hero h1 { font-size: 30px; }
+      .content { padding: 24px 20px; }
+      .chapter-nav-bar { padding: 12px 20px; }
+      .two-col { grid-template-columns: 1fr; }
+      .person-card { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Artefact · JC History</div>
+    <div class="book-title">Ch 7 — Age of Exploration &amp; Conquest</div>
+  </div>
+  <a href="index.html" class="home-link">← History Home</a>
+  <div class="sidebar-label">Sections</div>
+  <a href="#reasons">7.1 Reasons for Exploration</a>
+  <a href="#tech">7.2 Technology &amp; Navigation</a>
+  <a href="#voyages">7.3 Voyages of Exploration</a>
+  <a href="#conquest">7.4 Conquest of the New World</a>
+  <a href="#impact">7.5 Impact of Colonisation</a>
+  <a href="#keyterms">Key Terms</a>
+  <a href="#quiz">Quick Quiz</a>
+  <a href="#summary">Summary Table</a>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="chapter-hero">
+    <div class="chapter-badge">Chapter 7 · Year 1</div>
+    <h1>The Age of <span>Exploration</span><br>&amp; Conquest</h1>
+    <div class="chapter-meta">Element – The Wider World · Junior Cycle History (Artefact)</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🌍 Reasons for exploration</span>
+      <span class="goal-tag">⚓ Navigation technology</span>
+      <span class="goal-tag">🚢 Portuguese &amp; Spanish voyages</span>
+      <span class="goal-tag">⚔️ Conquest of Aztecs &amp; Incas</span>
+      <span class="goal-tag">🌎 Impact of colonisation</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ═══ TIMELINE OVERVIEW ═══ -->
+    <div class="section-heading anchor-offset" id="reasons">
+      <span class="icon">🌐</span> 7.1 — Reasons for European Exploration
+    </div>
+    <p>In the fifteenth and sixteenth centuries, many European countries began to explore the wider world by sea. New technology made long voyages possible for the first time, beginning a period of several hundred years when Europeans first explored, then took over, much of the rest of the world.</p>
+
+    <div class="sub-heading">Key Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">1453</div>
+        <div class="timeline-text"><strong>The fall of Constantinople</strong> — Ottoman Turks cut off the Great Silk Road, making new trade routes urgently needed</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1487</div>
+        <div class="timeline-text"><strong>Bartolomeu Dias</strong> rounds the southern tip of Africa (Cape of Good Hope)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1492</div>
+        <div class="timeline-text"><strong>Columbus</strong> lands in the Americas (Latin America)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1497</div>
+        <div class="timeline-text"><strong>Vasco da Gama</strong> rounds Africa and sails to India</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1519</div>
+        <div class="timeline-text"><strong>Hernán Cortés</strong> conquers the Aztecs</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1532</div>
+        <div class="timeline-text"><strong>Francisco Pizarro</strong> conquers the Incas</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Problems faced by sailors in the early 1400s</div>
+    <ul class="bullet-list">
+      <li>Sea travel was limited and difficult — sailors could not navigate accurately</li>
+      <li>Sailors were afraid of the unknown; some believed the earth was flat</li>
+      <li>Others feared sea monsters lurked in distant waters</li>
+    </ul>
+
+    <div class="sub-heading">Six Reasons Europeans began to explore (from mid-1400s)</div>
+    <ol class="step-list">
+      <li><div class="step-text"><strong>Influence of the Renaissance:</strong> People were eager to learn and question old beliefs. The rediscovery of <em>Geographia</em> by the Roman writer Ptolemy changed how Europeans understood the world.</div></li>
+      <li><div class="step-text"><strong>Travels of Marco Polo:</strong> His accounts of China's great wealth made people want to experience these wonders themselves.</div></li>
+      <li><div class="step-text"><strong>New trade routes:</strong> After the Black Death, Europe's population grew and became wealthier. The spice trade was very profitable; explorers who found new routes to the East could get rich.</div></li>
+      <li><div class="step-text"><strong>Fall of Constantinople (1453):</strong> The <strong>Great Silk Road</strong> was cut off when the Ottoman Turks captured Constantinople. New routes between Europe and Asia were urgently needed.</div></li>
+      <li><div class="step-text"><strong>Desire for empire:</strong> European rulers sponsored voyages to expand their territory. Atlantic-coast countries (Portugal, Spain, France, England) wanted to bypass Italy's hold on Mediterranean trade.</div></li>
+      <li><div class="step-text"><strong>Spreading Christianity:</strong> The Pope encouraged Christian rulers to defeat Muslims. Explorers often aimed to convert peoples they discovered.</div></li>
+    </ol>
+
+    <div class="did-you-know">
+      <div class="dyk-label">📖 Did You Know?</div>
+      <p>Legends told of a mythical Christian kingdom in Africa or Asia ruled by a king named <strong>Prester John</strong>. If found, he would unite with Christendom to defeat Islam — another motivation for exploration.</p>
+    </div>
+
+    <!-- ═══ TECHNOLOGY ═══ -->
+    <div class="section-heading anchor-offset" id="tech">
+      <span class="icon">⚙️</span> 7.2 — Technological Change: Advances in Navigation
+    </div>
+    <p>Before the new technology, European sailors stayed close to coastlines. For ships to sail straight out into open ocean without a single landmark, better navigation was needed.</p>
+
+    <div class="sub-heading">New Maps</div>
+    <p>New, more accurate maps were needed. <strong>Cartographers</strong> (people who draw maps) used maps brought from Constantinople that were far more detailed. The Portuguese developed <strong>portolan charts</strong>, which mapped harbours and coastlines more precisely, recording currents, tides and depth. As explorers returned, they updated these maps.</p>
+
+    <div class="sub-heading">New Equipment</div>
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">📐</div>
+        <div class="card-title">Quadrant &amp; Astrolabe</div>
+        <div class="card-def">Helped determine a ship's <strong>latitude</strong> (distance from the equator) by measuring the position of the stars and the sun.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🧭</div>
+        <div class="card-title">Compass</div>
+        <div class="card-def">Used to identify <strong>north</strong>, so the direction the ship was sailing could always be calculated.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🪢</div>
+        <div class="card-title">Log and Line</div>
+        <div class="card-def">Measured a ship's <strong>speed in knots</strong>. A sailor threw the log overboard and counted how many knots passed through his hand in a given time (measured by hourglass). Recorded in the logbook.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Line and Lead Weight</div>
+        <div class="card-def">Used to measure the <strong>depth of water</strong>, especially near coasts, to ensure the sea was not too shallow for the ship.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">New Ships — The Caravel</div>
+    <p>The fifteenth century saw a revolutionary new ship design: the <strong>caravel</strong>. It was large and sturdy enough for long voyages and able to sail in all winds, combining the best of Atlantic and Mediterranean ship designs.</p>
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">⛵</div>
+        <div class="card-title">Triangular Lateen Sails</div>
+        <div class="card-def">Allowed ships to sail into the wind and made them easier to manoeuvre in bays and along coasts.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🪵</div>
+        <div class="card-title">Carvel-built Hulls</div>
+        <div class="card-def">Planks fitted edge to edge (unlike Viking overlapping planks) — far lighter. Ships could be built bigger with more masts and carry more men and supplies.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🚢</div>
+        <div class="card-title">Rudder</div>
+        <div class="card-def">Made the caravel much easier to steer accurately at sea.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏰</div>
+        <div class="card-title">Castle</div>
+        <div class="card-def">A structure at the back of the deck that improved crew quarters and served as a defensible area in case of attack.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Life on Board Ship</div>
+    <ul class="bullet-list">
+      <li>Life during a voyage of discovery was extremely tough</li>
+      <li>The navigator had his own cabin; most sailors slept on deck or below deck in hammocks</li>
+      <li>Constant hard work: raising sails, steering, cleaning, repairing, preparing food</li>
+      <li><strong>Mutiny</strong> (sailors rebelling against their captain) was not unusual; men were flogged or chained for breaking rules</li>
+      <li>Food was scarce — sailors often ate flat hard bread (ship's biscuit) made from water, flour and salt</li>
+      <li><strong>Typhoid fever</strong> (from lack of fresh water) and <strong>scurvy</strong> (lack of vitamin C / citrus fruit) were common and could cause death</li>
+    </ul>
+
+    <div class="remember">
+      <span class="icon">💡</span>
+      <div class="text">
+        <strong>Exam Tip — Navigation Equipment</strong>
+        Learn all seven: Portolan charts · Quadrant · Astrolabe · Compass · Log and line · Line and lead weight · Caravels (with lateen sails and carvel-built hulls)
+      </div>
+    </div>
+
+    <!-- ═══ VOYAGES ═══ -->
+    <div class="section-heading anchor-offset" id="voyages">
+      <span class="icon">🗺️</span> 7.3 — The Voyages of Exploration
+    </div>
+
+    <div class="sub-heading">The Early Portuguese Voyages</div>
+    <p>The first major voyages of discovery set out from Portugal in the 1400s. Portugal was ideally placed — on the edge of Europe and close to Africa. Its kings wanted new trade routes to protect Portugal from its more powerful neighbour, Spain.</p>
+    <p><strong>Prince Henry the Navigator</strong> set up a school of navigation at <strong>Sagres</strong>, bringing together cartographers, instrument-makers, astronomers and experienced sailors. The Portuguese focused on exploring the African coast to find a sea route from Africa to Asia.</p>
+    <ul class="bullet-list">
+      <li>Over the following decades they discovered the <strong>Azores, the Canary Islands</strong> and the <strong>Cape Verde Islands</strong>, and rounded the <strong>Gold Coast</strong> (modern-day Sierra Leone)</li>
+      <li>In 1487, <strong>Bartolomeu Dias</strong> rounded the southern tip of Africa — now called the <strong>Cape of Good Hope</strong></li>
+      <li>In 1497, <strong>Vasco da Gama</strong> continued up the eastern African coast and sailed east from modern-day Kenya to <strong>Calicut</strong> in India. The round trip took two years</li>
+    </ul>
+
+    <div class="sub-heading">Results of the Portuguese Voyages</div>
+    <ul class="bullet-list">
+      <li>Made Portugal enormously wealthy</li>
+      <li>Portugal established a large empire in Africa, Asia and later South America</li>
+      <li>Gained control of the spice trade by defeating Arab and Muslim kingdoms</li>
+      <li>Imports of spices into Europe increased dramatically</li>
+      <li>Other European rulers were inspired to launch their own voyages of discovery</li>
+    </ul>
+
+    <div class="sub-heading">The Discovery of the 'New World'</div>
+    <p>As Portugal controlled trade routes around Africa, its rival Spain had to look west across the Atlantic Ocean for opportunities to discover new lands.</p>
+
+    <div class="person-card">
+      <div class="person-emoji">🧑‍✈️</div>
+      <div class="person-info">
+        <div class="person-name">Christopher Columbus</div>
+        <div class="person-dates">1451–1506 · Change Maker</div>
+        <p>Born in Genoa, Italy in 1451. A merchant sailor who studied at Sagres. Columbus was convinced the quickest way to China was by sailing <strong>west</strong> across the Atlantic. He thought the world was significantly smaller than it actually is.</p>
+        <p>After many European rulers rejected his plan, he convinced <strong>King Ferdinand and Queen Isabella of Spain</strong>. They gave him three ships: the <em>Niña</em>, the <em>Pinta</em> and the <em>Santa Maria</em>.</p>
+        <p>On <strong>12 October 1492</strong> — 69 days after leaving Spain — land was sighted. Columbus named it <strong>San Salvador</strong> and called the inhabitants <strong>Indians</strong>, believing he had reached India. He returned to Spain with slaves, exotic fruit, maize, parrots and gold. People believed he had found a sea route to Asia and he was appointed governor of the new territory.</p>
+      </div>
+    </div>
+
+    <div class="did-you-know">
+      <div class="dyk-label">🔄 Reinterpreting the Past</div>
+      <p>Columbus did <strong>not</strong> prove the Earth was round — most educated people in the 1400s already knew it was. This myth was invented by nineteenth-century US historians. Greek scholars like Pythagoras and Aristotle had determined the planet was a sphere over 2,000 years before Columbus.</p>
+    </div>
+
+    <div class="sub-heading">The Age of Exploration After Columbus</div>
+    <ul class="bullet-list">
+      <li><strong>John Cabot</strong> landed in <strong>Newfoundland</strong>, Canada, and claimed it for English king Henry VII</li>
+      <li><strong>Ferdinand Magellan</strong> led a fleet on a voyage to finally prove the world was round by circumnavigating (sailing around) the globe</li>
+      <li><strong>Abel Tasman</strong> was the first European to find <strong>Tasmania</strong>, south of Australia, and <strong>New Zealand</strong></li>
+    </ul>
+
+    <!-- ═══ CONQUEST ═══ -->
+    <div class="section-heading anchor-offset" id="conquest">
+      <span class="icon">⚔️</span> 7.4 — The Conquest of the New World
+    </div>
+    <p>Rumours of entire cities made of gold spread quickly around Europe. Men known as <strong>conquistadores</strong> (Spanish for 'conquerors') travelled across the sea to conquer indigenous American civilisations, such as the <strong>Aztecs</strong> and the <strong>Incas</strong>.</p>
+
+    <div class="did-you-know">
+      <div class="dyk-label">🍫 Did You Know?</div>
+      <p>The cacao bean — from which we get chocolate — was sacred to the Aztecs, used only by the elite. The Aztecs' drink was bitter, heavily spiced and quite intoxicating. The Spanish brought beans home but didn't enjoy the taste; our chocolate is the result of their experiments with milk and sugar. The word 'chocolate' comes from the Aztec word <em>'xocoatl'</em>.</p>
+    </div>
+
+    <div class="sub-heading">Conquering the Aztecs</div>
+    <p>The Aztecs came from the south of modern-day Mexico. By 1519 their empire covered central Mexico and contained around 489 cities. Their capital, <strong>Tenochtitlan</strong>, was a city of over 250,000 people on an island in the middle of a lake — Mexico City stands on the same spot today.</p>
+    <ul class="bullet-list">
+      <li>The Aztecs had a complex society with a king and priests at the top</li>
+      <li>No iron or steel — most weapons were made from wood, stone or copper</li>
+      <li>No horses, cattle, sheep, pigs or goats before Europeans arrived</li>
+      <li>They worshipped many gods; the most important was the sun god, <strong>Huitzilopochtli</strong> — they believed he needed to be nourished by human blood sacrifice</li>
+    </ul>
+
+    <div class="person-card">
+      <div class="person-emoji">🏴‍☠️</div>
+      <div class="person-info">
+        <div class="person-name">Hernán Cortés</div>
+        <div class="person-dates">Spanish Conquistador · Conquered the Aztecs 1519–1521</div>
+        <p>Hearing of the Aztecs' vast riches, Cortés left the Spanish colonies in the Caribbean in February 1519 with <strong>500 soldiers and 13 horses</strong>. He burned his ships to show there was no going back.</p>
+        <p>He made alliances with local tribes conquered by the Aztecs. Many Aztecs were terrified of his horses and cannons. His key translator was a woman called <strong>Malinche</strong> who spoke multiple languages.</p>
+        <p>Cortés marched to Tenochtitlan, where the Aztec ruler <strong>Montezuma</strong> greeted him — the Aztecs believed he was the returning god <strong>Quetzalcoatl</strong>. The Spaniards soon began to steal and were driven out. Cortés regrouped and <strong>returned with 100,000 men</strong>, besieged Tenochtitlan for three months, and the city fell. Its people were massacred. Cortés built his capital on the site of Tenochtitlan.</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">Conquering the Incas</div>
+    <p>To the south of the Aztecs lay an even more powerful civilisation. The <strong>Incas</strong> controlled vast territory in the Andes mountains along the western coast of South America. Their empire was ruled from the capital <strong>Cuzco</strong> by a god-king.</p>
+    <ul class="bullet-list">
+      <li>Sophisticated engineers, architects and very fine artists</li>
+      <li>Used no written script, but kept records using a system of knotted string</li>
+      <li>Roads ran to every corner of their empire; they collected tribute from their subjects</li>
+    </ul>
+
+    <div class="person-card">
+      <div class="person-emoji">🗡️</div>
+      <div class="person-info">
+        <div class="person-name">Francisco Pizarro</div>
+        <div class="person-dates">1475–1541 · Conquered the Incas 1532</div>
+        <p>A Spanish soldier with a reputation for ruthless behaviour. He heard of the great wealth of the Incas and was granted a commission to conquer them by <strong>King Charles V of Spain</strong> in 1528. He gathered just <strong>180 men and 27 horses</strong> and invaded in 1532.</p>
+        <p>At <strong>Cajamarca</strong>, Pizarro met the Incan king <strong>Atahualpa</strong>. He had a priest approach with a Bible; when the king threw it aside, Pizarro attacked. Although vastly outnumbered, Spanish superior weapons won the day. The Incas offered to <strong>fill a room with gold and silver</strong> for their king's release — Pizarro accepted the treasure but executed Atahualpa anyway.</p>
+        <p>The death of Atahualpa threw the empire into chaos. Pizarro defeated the remaining armies at Cuzco, declared the Spanish province of New Castile and built a new capital at Lima. Huge deposits of gold found in the Andes made Spain the wealthiest country in Europe.</p>
+      </div>
+    </div>
+
+    <!-- ═══ IMPACT ═══ -->
+    <div class="section-heading anchor-offset" id="impact">
+      <span class="icon">🌏</span> 7.5 — The Impact of Colonisation
+    </div>
+    <p><strong>Colonisation</strong> is when a country takes over another territory and settles some of its own people there to control it. In the century after Columbus arrived in the Americas, about 300,000 people from Spain and Portugal settled in Latin America.</p>
+
+    <div class="sub-heading">Impact on the New World — The Indigenous Population</div>
+
+    <div class="two-col">
+      <div class="impact-box">
+        <div class="impact-title">🦠 Disease &amp; Population Collapse</div>
+        <ul class="bullet-list">
+          <li>In 1519, South America's indigenous population was roughly <strong>25 million</strong></li>
+          <li>By 1605, it had fallen to about <strong>3 million</strong></li>
+          <li><strong>Cocoliztli</strong> (causing fevers and bleeding), <strong>smallpox</strong>, measles and influenza were introduced by Europeans who had built up resistance</li>
+          <li>Indigenous peoples had no immune defences — <strong>almost 90%</strong> of the indigenous population died as a result</li>
+        </ul>
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">🏛️ Destruction of Cultures</div>
+        <ul class="bullet-list">
+          <li>The sharp decline in indigenous population contributed to the loss of civilisations</li>
+          <li>As Spanish and Portuguese became languages of the new states, indigenous languages and customs disappeared</li>
+          <li>The Catholic Church set up in the New World; Jesuits carried out hundreds of thousands of conversions</li>
+          <li>Those who continued worshipping old gods were severely punished</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading">The Slavery Triangle</div>
+    <p>Because indigenous peoples could not be taken as slaves and were dying from disease, millions of Africans were transported across the Atlantic. The <strong>slavery triangle</strong> was a trade triangle whereby:</p>
+    <ul class="bullet-list">
+      <li><strong>Europe → Americas:</strong> European-manufactured goods (cloth, glass, iron, guns)</li>
+      <li><strong>Africa → Americas:</strong> Enslaved Africans transported to work plantations and mines</li>
+      <li><strong>Americas → Europe:</strong> Raw materials (sugar, cotton, tobacco, rum) sent back to Europe</li>
+    </ul>
+
+    <div class="sub-heading">Impact on Europe</div>
+    <ol class="step-list">
+      <li><div class="step-text">Other European states — <strong>England, France, the Netherlands</strong> — saw Spain and Portugal's wealth and created their own empires.</div></li>
+      <li><div class="step-text">So many countries were competing for territory that <strong>conflict was inevitable</strong>. The <strong>Treaty of Tordesillas (1494)</strong> divided the New World between Spain and Portugal.</div></li>
+      <li><div class="step-text">Huge deposits of <strong>gold and silver</strong> from the Andes made Spain the most powerful country in Europe throughout the 1500s and 1600s.</div></li>
+      <li><div class="step-text">The <strong>Columbian exchange</strong>: the exchange of foods, animals and technologies between Europe and the Americas changed both continents forever. Horses, cattle, sheep, new farming methods and technologies like steel went to the Americas; potatoes, chocolate, coffee, tomatoes and tobacco came to Europe.</div></li>
+    </ol>
+
+    <!-- ═══ KEY TERMS ═══ -->
+    <div class="section-heading anchor-offset" id="keyterms">
+      <span class="icon">🔑</span> Key Terms
+    </div>
+
+    <div class="key-term">
+      <div class="term">Caravel</div>
+      <div class="definition">A type of ship large and sturdy enough to make long voyages and sail in all winds; featured lateen sails and carvel-built hulls.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Conquistadores</div>
+      <div class="definition">Spanish for 'conquerors'; soldiers who conquered indigenous American civilisations such as the Aztecs and the Incas.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Colonisation</div>
+      <div class="definition">When a country takes over another territory and settles some of its own people there to control it.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Slavery Triangle</div>
+      <div class="definition">The trade triangle whereby enslaved Africans were delivered to the Americas; American raw materials to Europe; and European-manufactured goods back to Africa.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Columbian Exchange</div>
+      <div class="definition">The exchange of foods, animals and technologies between Europe and the Americas that changed both continents forever.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Portolan Chart</div>
+      <div class="definition">A detailed nautical map developed by the Portuguese that recorded harbours, coastlines, currents, tides and depth.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Mutiny</div>
+      <div class="definition">When sailors rebel against their captain. Was not unusual on long voyages; punishments were severe (flogging, chains).</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Cocoliztli</div>
+      <div class="definition">An epidemic disease characterised by high fevers and bleeding, introduced by Europeans; one of the main causes of the catastrophic collapse of indigenous populations.</div>
+    </div>
+
+    <!-- ═══ QUIZ ═══ -->
+    <div class="section-heading anchor-offset" id="quiz">
+      <span class="icon">❓</span> Quick Quiz — Reveal Answers
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name <strong>four reasons</strong> why Europeans began to explore from the mid-1400s.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Reasons</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Any four of: <strong>(1)</strong> Influence of the Renaissance — people eager to learn. <strong>(2)</strong> Travels of Marco Polo — stories of Eastern wealth. <strong>(3)</strong> New trade routes — the spice trade was very profitable. <strong>(4)</strong> Fall of Constantinople (1453) — the Silk Road was cut off, new routes needed. <strong>(5)</strong> Desire for empire — rulers wanted to expand territory. <strong>(6)</strong> Spreading Christianity — the Pope encouraged converting peoples they discovered.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was the <strong>caravel</strong> and what were its key features?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Technology</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A new type of ship first developed in the fifteenth century. It was large and sturdy enough for long ocean voyages and able to sail in all winds. Key features: <strong>triangular lateen sails</strong> (could sail into the wind), <strong>carvel-built hulls</strong> (lighter and bigger), <strong>rudders</strong> (easier to steer), and a <strong>castle</strong> at the back for crew quarters and defence.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What did a <strong>portolan chart</strong> show sailors?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Technology</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Portolan charts were detailed nautical maps that showed <strong>harbours, coastlines, currents, tides and depth</strong>. They were far more accurate than older maps and were updated after each voyage of discovery.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What did <strong>Prince Henry the Navigator</strong> do to support exploration?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Voyages</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Prince Henry set up a <strong>school of navigation at Sagres</strong> in Portugal. It brought together cartographers, instrument-makers, astronomers and experienced sailors. The Portuguese then focused on exploring the African coast to find a sea route from Europe to Asia.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What voyages did <strong>Bartolomeu Dias</strong> and <strong>Vasco da Gama</strong> make?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Voyages</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Bartolomeu Dias (1487):</strong> Rounded the southern tip of Africa, now called the <strong>Cape of Good Hope</strong>. <strong>Vasco da Gama (1497):</strong> Continued up the eastern African coast and sailed east to <strong>Calicut in India</strong>. The round trip took two years, opening a sea route from Europe to Asia.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Why did Columbus call the people he met <strong>'Indians'</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Columbus</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Because Columbus was convinced he had reached <strong>India</strong>. He thought he had sailed west across the Atlantic and arrived in Asia. He did not realise he had arrived in an entirely different continent — the Americas.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Why were the <strong>Aztecs</strong> defeated by Cortés despite vastly outnumbering him?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Conquest</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Several reasons: <strong>(1)</strong> Cortés made alliances with local tribes who hated the Aztecs. <strong>(2)</strong> Many Aztecs were terrified of his horses and cannons (unknown to them). <strong>(3)</strong> The Aztecs initially believed Cortés was the returning god Quetzalcoatl. <strong>(4)</strong> The Spanish had superior iron and steel weapons, armour and military tactics.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was the <strong>Columbian exchange</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Impact</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The exchange of foods, animals and technologies between <strong>Europe and the Americas</strong> that changed both continents forever. <strong>To the Americas:</strong> horses, cattle, sheep, new farming methods, steel technology. <strong>To Europe:</strong> potatoes, chocolate, coffee, tomatoes, tobacco.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Explain the <strong>slavery triangle</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Impact</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A three-way trade route: <strong>Europe → Americas:</strong> manufactured goods (cloth, glass, iron, guns). <strong>Africa → Americas:</strong> enslaved Africans transported to replace the dying indigenous workforce on sugar, tobacco and cotton plantations and in gold and silver mines. <strong>Americas → Europe:</strong> raw materials (sugar, cotton, tobacco, rum).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>How did European diseases affect the <strong>indigenous population</strong> of South America?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Impact</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">In 1519, South America's indigenous population was roughly <strong>25 million</strong>. By 1605 it had fallen to about <strong>3 million</strong>. Europeans brought diseases like <strong>smallpox, Cocoliztli, measles and influenza</strong>. Europeans had built up resistance over time, but indigenous peoples had no immune defences, so <strong>almost 90%</strong> of the indigenous population died as a result.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was the <strong>Treaty of Tordesillas (1494)</strong> and why was it needed?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Impact</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A treaty negotiated by the Pope that <strong>divided the New World between Spain and Portugal</strong>. It was needed because so many European countries were competing for new territories that conflict between Spain and Portugal was becoming inevitable.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Facts</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Reasons for exploration</strong></td>
+          <td>Renaissance, Marco Polo, new trade routes, fall of Constantinople (1453), desire for empire, spreading Christianity.</td>
+          <td>Learn all 6 — exam questions often ask for 3–4 with an explanation.</td>
+        </tr>
+        <tr>
+          <td><strong>Navigation technology</strong></td>
+          <td>Portolan charts, astrolabe, quadrant, compass, log &amp; line, line &amp; lead weight, caravels.</td>
+          <td>Be able to explain what each instrument did.</td>
+        </tr>
+        <tr>
+          <td><strong>Caravel features</strong></td>
+          <td>Lateen sails, carvel-built hulls, rudder, castle.</td>
+          <td>Know why each feature was important for long voyages.</td>
+        </tr>
+        <tr>
+          <td><strong>Portuguese exploration</strong></td>
+          <td>Prince Henry sets up Sagres school; Dias rounds Africa (1487); da Gama reaches India (1497).</td>
+          <td>Dates and key figures are commonly tested.</td>
+        </tr>
+        <tr>
+          <td><strong>Columbus (1492)</strong></td>
+          <td>Funded by Spain; reached Americas; thought he found India; named people 'Indians'.</td>
+          <td>Did NOT discover the Earth was round — that myth is a 19th-century invention.</td>
+        </tr>
+        <tr>
+          <td><strong>Conquest of Aztecs</strong></td>
+          <td>Hernán Cortés (1519); used alliances, horses, cannons; Aztecs mistook him for Quetzalcoatl; Tenochtitlan fell.</td>
+          <td>Explain at least 3 reasons why Cortés succeeded.</td>
+        </tr>
+        <tr>
+          <td><strong>Conquest of Incas</strong></td>
+          <td>Francisco Pizarro (1532); 180 men; met Atahualpa at Cajamarca; accepted gold ransom then executed him.</td>
+          <td>Why was Pizarro able to defeat a much larger force?</td>
+        </tr>
+        <tr>
+          <td><strong>Impact — New World</strong></td>
+          <td>Population collapse (25m → 3m); disease (Cocoliztli, smallpox); destruction of cultures; forced Christianity; slavery triangle.</td>
+          <td>For extended answers: cover both conquest AND colonisation effects.</td>
+        </tr>
+        <tr>
+          <td><strong>Impact — Europe</strong></td>
+          <td>New European empires; Treaty of Tordesillas (1494); Spain became wealthiest; Columbian exchange.</td>
+          <td>Contrast positive impact on Europe with devastating impact on indigenous peoples.</td>
+        </tr>
+        <tr>
+          <td><strong>Columbian Exchange</strong></td>
+          <td>Europe → Americas: horses, cattle, steel. Americas → Europe: potatoes, chocolate, tomatoes, tobacco.</td>
+          <td>Both directions — make sure you know examples of each.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">← History Home</a>
+    <a href="ch6.html">← Ch 6: The Renaissance</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
