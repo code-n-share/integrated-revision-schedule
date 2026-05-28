@@ -300,6 +300,90 @@
     .chapter-nav-bar a:hover { text-decoration: underline; }
     .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
 
+    /* IRISH PERIODS TIMELINE */
+    .periods-timeline {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 32px 28px 24px;
+      margin: 20px 0; box-shadow: var(--shadow); overflow-x: auto;
+    }
+    .periods-timeline h3 {
+      font-family: 'Sora'; font-weight: 800; font-size: 14px;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 24px; text-align: center;
+    }
+    .tl-axis {
+      position: relative; min-width: 620px;
+    }
+    /* The horizontal rule */
+    .tl-line {
+      position: absolute; top: 38px; left: 0; right: 0;
+      height: 4px; background: linear-gradient(90deg, #7c3aed, #B91C1C, #D97706, #2E8B57, #1976D2);
+      border-radius: 2px; z-index: 0;
+    }
+    .tl-periods {
+      display: flex; gap: 0; position: relative; z-index: 1;
+    }
+    .tl-period {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      padding: 0 6px;
+    }
+    /* dot on the line */
+    .tl-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 3px solid #fff; box-shadow: 0 0 0 2px currentColor;
+      margin-bottom: 10px; flex-shrink: 0;
+    }
+    .tl-period-label {
+      font-family: 'Sora'; font-weight: 800; font-size: 12px;
+      text-align: center; line-height: 1.2; margin-bottom: 4px;
+    }
+    .tl-period-dates {
+      font-size: 11px; color: var(--muted); text-align: center;
+      font-weight: 600; margin-bottom: 6px;
+    }
+    .tl-period-desc {
+      font-size: 11px; color: #555; text-align: center; line-height: 1.4;
+    }
+    .tl-period-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 100px; margin-top: 6px;
+      color: #fff;
+    }
+    /* BCE/CE axis labels */
+    .tl-axis-labels {
+      display: flex; justify-content: space-between;
+      min-width: 620px; margin-top: 16px; padding: 0 8px;
+    }
+    .tl-axis-tick {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+    .tl-axis-tick .tick-line {
+      width: 1px; height: 10px; background: var(--border);
+    }
+    .tl-axis-tick .tick-label {
+      font-size: 10px; color: var(--muted); font-weight: 600; white-space: nowrap;
+    }
+    .tl-bce-ce {
+      display: flex; justify-content: space-between; min-width: 620px;
+      margin-top: 6px; padding: 0 8px;
+    }
+    .tl-bce-ce span {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--muted);
+    }
+    .tl-example-row {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; min-width: 620px;
+    }
+    .tl-example-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: #f9fafb; border: 1.5px solid var(--border);
+      border-radius: 100px; padding: 5px 12px; font-size: 12px;
+    }
+    .tl-example-pill .pill-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tl-example-pill strong { font-weight: 700; }
+
     /* RESPONSIVE */
     @media (max-width: 860px) {
       .sidebar { width: 0; overflow: hidden; }
@@ -516,7 +600,85 @@
       <span class="icon">🔬</span> 2.3 Skills and Methods Used in Archaeology
     </div>
 
-    <p>Archaeologists use various skills and methods to locate information within sites and to date artefacts or remains that are found. The main dating methods are:</p>
+    <p>Archaeologists use various skills and methods to locate information within sites and to date artefacts or remains that are found. The timeline below shows the key periods of Irish prehistory that these methods have helped us understand.</p>
+
+    <!-- IRISH PREHISTORIC PERIODS TIMELINE -->
+    <div class="periods-timeline">
+      <h3>Irish Prehistoric Periods — BCE to CE</h3>
+      <div class="tl-axis">
+        <div class="tl-line"></div>
+        <div class="tl-periods">
+
+          <div class="tl-period">
+            <div class="tl-dot" style="color:#7c3aed; background:#7c3aed;"></div>
+            <div class="tl-period-label" style="color:#7c3aed;">Stone Age<br>(Mesolithic)</div>
+            <div class="tl-period-dates">8,000–3,500 BC</div>
+            <div class="tl-period-desc">First people arrive in Ireland. Hunter-gatherers — hunt animals, gather berries &amp; nuts. No farming yet.</div>
+            <span class="tl-period-badge" style="background:#7c3aed;">Middle Stone Age</span>
+          </div>
+
+          <div class="tl-period">
+            <div class="tl-dot" style="color:#B91C1C; background:#B91C1C;"></div>
+            <div class="tl-period-label" style="color:#B91C1C;">Stone Age<br>(Neolithic)</div>
+            <div class="tl-period-dates">3,500–2,000 BC</div>
+            <div class="tl-period-desc">First farmers arrive. Build passage tombs. Organised communities with permanent settlements.</div>
+            <span class="tl-period-badge" style="background:#B91C1C;">New Stone Age</span>
+          </div>
+
+          <div class="tl-period">
+            <div class="tl-dot" style="color:#D97706; background:#D97706;"></div>
+            <div class="tl-period-label" style="color:#D97706;">Bronze Age</div>
+            <div class="tl-period-dates">2,000–500 BC</div>
+            <div class="tl-period-desc">People learn to mix copper and tin to make bronze. Used for tools and weapons. Elaborate burials.</div>
+            <span class="tl-period-badge" style="background:#D97706;">Metal Age</span>
+          </div>
+
+          <div class="tl-period">
+            <div class="tl-dot" style="color:#2E8B57; background:#2E8B57;"></div>
+            <div class="tl-period-label" style="color:#2E8B57;">Iron Age</div>
+            <div class="tl-period-dates">500 BC–AD 400</div>
+            <div class="tl-period-desc">Iron replaces bronze for tools and weapons. Celts arrive from Central Europe. La Tène culture.</div>
+            <span class="tl-period-badge" style="background:#2E8B57;">Iron Age</span>
+          </div>
+
+          <div class="tl-period">
+            <div class="tl-dot" style="color:#1976D2; background:#1976D2;"></div>
+            <div class="tl-period-label" style="color:#1976D2;">Early Christian<br>Ireland</div>
+            <div class="tl-period-dates">AD 400 onwards</div>
+            <div class="tl-period-desc">Christianity spreads. Written records begin. Ireland moves from prehistory into the historical period.</div>
+            <span class="tl-period-badge" style="background:#1976D2;">History Begins</span>
+          </div>
+
+        </div><!-- /tl-periods -->
+      </div><!-- /tl-axis -->
+
+      <!-- Key site examples pinned to periods -->
+      <div class="tl-example-row">
+        <div class="tl-example-pill">
+          <div class="pill-dot" style="background:#7c3aed;"></div>
+          <strong>Mount Sandel</strong>&nbsp;— Mesolithic, Co. Derry (7,000 BC)
+        </div>
+        <div class="tl-example-pill">
+          <div class="pill-dot" style="background:#B91C1C;"></div>
+          <strong>Newgrange</strong>&nbsp;— Neolithic, Co. Meath (3,200 BC)
+        </div>
+        <div class="tl-example-pill">
+          <div class="pill-dot" style="background:#B91C1C;"></div>
+          <strong>Céide Fields</strong>&nbsp;— Neolithic, Co. Mayo (4,000–3,000 BC)
+        </div>
+        <div class="tl-example-pill">
+          <div class="pill-dot" style="background:#2E8B57;"></div>
+          <strong>Clonycavan Man</strong>&nbsp;— Iron Age, Co. Meath (500 BC–AD 400)
+        </div>
+      </div>
+    </div><!-- /periods-timeline -->
+
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px;">
+      <strong>BCE</strong> = Before Common Era (also written BC — Before Christ). Numbers count <em>down</em> toward 1. &nbsp;|&nbsp;
+      <strong>CE</strong> = Common Era (also written AD — Anno Domini). Numbers count <em>up</em> from 1.
+    </p>
+
+    <p>The main dating methods archaeologists use are:</p>
 
     <div class="method-strip">
       <div class="method-card">
