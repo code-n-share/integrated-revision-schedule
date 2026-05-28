@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revision Notes | History – Artefact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:         #B91C1C;
+      --red-dark:    #7F1D1D;
+      --red-light:   #FEE2E2;
+      --amber:       #F5A623;
+      --amber-light: #FFF3D6;
+      --green:       #166534;
+      --green-light: #DCFCE7;
+      --blue:        #1D4ED8;
+      --blue-light:  #DBEAFE;
+      --purple:      #6D28D9;
+      --purple-light:#EDE9FE;
+      --teal:        #0F766E;
+      --teal-light:  #CCFBF1;
+      --orange:      #C2410C;
+      --orange-light:#FFEDD5;
+      --bg:          #FAF5F5;
+      --card:        #FFFFFF;
+      --text:        #1A1A2E;
+      --muted:       #6B7280;
+      --border:      #E5E7EB;
+      --radius:      14px;
+      --shadow:      0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header { background: var(--red); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7); }
+    .sidebar-header .book-title { font-size: 15px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff; }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.35);
+      padding: 14px 18px 5px;
+    }
+    .sidebar a {
+      display: block; padding: 8px 18px;
+      color: rgba(255,255,255,0.72); text-decoration: none;
+      font-size: 13px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.18s;
+    }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: var(--amber); }
+    .sidebar a.home-link {
+      font-size: 11px; color: rgba(255,255,255,0.4); padding: 14px 18px 6px;
+      border-left: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+    .sidebar .topic-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 7px; vertical-align: middle;
+    }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .notes-hero {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, #DC2626 100%);
+      color: #fff; padding: 56px 48px 44px; position: relative; overflow: hidden;
+    }
+    .notes-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.2) 0%, transparent 70%); border-radius: 50%;
+    }
+    .notes-hero::after { content: '📝'; position: absolute; bottom: -10px; right: 60px; font-size: 120px; opacity: 0.08; }
+    .notes-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora'; font-weight: 800; font-size: 11px;
+      padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .notes-hero h1 { font-family: 'Sora'; font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1.05; }
+    .notes-hero h1 span { color: var(--amber); }
+    .notes-hero p { margin-top: 10px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .topic-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .topic-pill {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px; padding: 5px 12px;
+      border-radius: 100px; font-weight: 500; display: flex; align-items: center; gap: 6px;
+    }
+    .topic-pill .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1060px; }
+    p { margin-bottom: 10px; font-size: 14.5px; }
+
+    /* TOPIC SECTION */
+    .topic-block { margin-bottom: 56px; }
+    .topic-heading {
+      font-family: 'Sora'; font-size: 22px; font-weight: 800; color: #fff;
+      padding: 14px 22px; border-radius: var(--radius) var(--radius) 0 0;
+      display: flex; align-items: center; gap: 12px; margin-bottom: 0;
+    }
+    .topic-heading .t-icon { font-size: 22px; }
+    .topic-heading .t-sub { font-size: 12px; font-weight: 600; opacity: 0.75; margin-left: auto; text-transform: uppercase; letter-spacing: 0.5px; }
+    .topic-body {
+      background: var(--card); border: 2px solid var(--border);
+      border-top: none; border-radius: 0 0 var(--radius) var(--radius);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    /* COLOUR ACCENTS PER TOPIC */
+    .topic-historian  .topic-heading { background: linear-gradient(90deg, #7F1D1D, #B91C1C); }
+    .topic-archaeology .topic-heading { background: linear-gradient(90deg, #78350F, #D97706); }
+    .topic-middle-ages .topic-heading { background: linear-gradient(90deg, #1E3A5F, #1976D2); }
+    .topic-renaissance .topic-heading { background: linear-gradient(90deg, #4C1D95, #7C3AED); }
+    .topic-exploration .topic-heading { background: linear-gradient(90deg, #065F46, #059669); }
+
+    /* NOTE GROUPS */
+    .note-group { margin-bottom: 22px; }
+    .note-group-title {
+      font-family: 'Sora'; font-weight: 700; font-size: 14px;
+      margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .note-group-title .ng-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      color: #fff; font-size: 11px; font-weight: 800; flex-shrink: 0;
+    }
+
+    /* KEY TERM INLINE */
+    .kt { font-weight: 700; }
+    .kt-red    { color: var(--red); }
+    .kt-amber  { color: #B45309; }
+    .kt-blue   { color: var(--blue); }
+    .kt-purple { color: var(--purple); }
+    .kt-green  { color: var(--green); }
+    .kt-teal   { color: var(--teal); }
+
+    /* BULLET LIST */
+    .note-list { list-style: none; padding: 0; }
+    .note-list li {
+      display: flex; gap: 10px; padding: 6px 0; font-size: 14px;
+      border-bottom: 1px solid #f3f4f6; align-items: flex-start;
+    }
+    .note-list li:last-child { border-bottom: none; }
+    .note-list li::before { content: '▸'; color: var(--red); flex-shrink: 0; margin-top: 1px; font-size: 15px; }
+    .note-list.amber li::before { color: #D97706; }
+    .note-list.blue li::before { color: var(--blue); }
+    .note-list.purple li::before { color: var(--purple); }
+    .note-list.green li::before { color: var(--green); }
+    .note-list.teal li::before { color: var(--teal); }
+
+    /* DEFINITION CARD */
+    .def-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 12px 0; }
+    .def-card {
+      background: #f9fafb; border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 13px 15px;
+    }
+    .def-card .def-term { font-family: 'Sora'; font-weight: 800; font-size: 13px; margin-bottom: 4px; }
+    .def-card .def-body { font-size: 12.5px; color: #444; line-height: 1.5; }
+
+    /* HIGHLIGHT BOX */
+    .hl-box {
+      border-radius: var(--radius); padding: 14px 18px; margin: 14px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .hl-box .hl-icon { font-size: 20px; flex-shrink: 0; }
+    .hl-box .hl-body { font-size: 13.5px; line-height: 1.6; }
+    .hl-box .hl-body strong { display: block; font-family: 'Sora'; font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+    .hl-red    { background: var(--red-light);    border-left: 4px solid var(--red); }
+    .hl-amber  { background: var(--amber-light);  border-left: 4px solid var(--amber); }
+    .hl-blue   { background: var(--blue-light);   border-left: 4px solid var(--blue); }
+    .hl-purple { background: var(--purple-light);  border-left: 4px solid var(--purple); }
+    .hl-green  { background: var(--green-light);  border-left: 4px solid var(--green); }
+    .hl-teal   { background: var(--teal-light);   border-left: 4px solid var(--teal); }
+    .hl-orange { background: var(--orange-light);  border-left: 4px solid var(--orange); }
+
+    /* TWO-COL COMPARE */
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .compare-col { background: #f9fafb; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .compare-col h4 { font-family: 'Sora'; font-weight: 700; font-size: 13px; margin-bottom: 8px; }
+
+    /* PERSON CARD */
+    .person-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+    .person-card {
+      background: var(--card); border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 14px 16px; flex: 1 1 200px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .person-card .pc-name { font-family: 'Sora'; font-weight: 800; font-size: 14px; margin-bottom: 2px; }
+    .person-card .pc-role { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 6px; }
+    .person-card .pc-body { font-size: 12.5px; color: #444; line-height: 1.5; }
+
+    /* QUIZ FLASHCARD */
+    .quiz-section-title {
+      font-family: 'Sora'; font-size: 16px; font-weight: 800;
+      margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; font-size: 13.5px; font-weight: 600; cursor: pointer; gap: 10px;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-q { flex: 1; }
+    .quiz-tag {
+      font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 100px;
+      white-space: nowrap; color: #fff;
+    }
+    .toggle-btn {
+      background: var(--red); color: #fff; border: none; cursor: pointer;
+      font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s; white-space: nowrap;
+    }
+    .toggle-btn:hover { background: var(--red-dark); }
+    .quiz-answer {
+      display: none; padding: 12px 16px; border-top: 1px solid var(--border);
+      background: #f0fdf4; font-size: 13.5px; color: #166534; line-height: 1.6;
+    }
+    .quiz-answer.open { display: block; }
+
+    /* CHAPTER NAV BAR */
+    .bottom-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .bottom-bar a { color: var(--amber); text-decoration: none; font-weight: 600; }
+    .bottom-bar a:hover { text-decoration: underline; }
+    .bottom-bar span { color: rgba(255,255,255,0.4); font-size: 12px; }
+
+    /* DIVIDER */
+    .topic-divider { height: 1px; background: var(--border); margin: 8px 0 24px; }
+
+    /* SCROLL OFFSET */
+    .anchor { scroll-margin-top: 24px; }
+
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 24px 16px; }
+      .notes-hero { padding: 44px 20px 36px; }
+      .notes-hero h1 { font-size: 30px; }
+      .notes-hero::after { display: none; }
+      .compare { grid-template-columns: 1fr; }
+      .bottom-bar { padding: 12px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">History Revision</div>
+    <div class="book-title">Quick-Reference Notes</div>
+  </div>
+  <a href="../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:11px;padding:5px 18px;color:rgba(255,255,255,0.4);">History Home</a>
+
+  <div class="sidebar-label">The Historian</div>
+  <a href="#historian"><span class="topic-dot" style="background:#B91C1C;"></span>Ch 1 – The Historian</a>
+
+  <div class="sidebar-label">Archaeology</div>
+  <a href="#archaeology"><span class="topic-dot" style="background:#D97706;"></span>Ch 2 – The Archaeologist</a>
+
+  <div class="sidebar-label">Middle Ages</div>
+  <a href="#normans"><span class="topic-dot" style="background:#1976D2;"></span>The Normans</a>
+  <a href="#medieval-life"><span class="topic-dot" style="background:#1976D2;"></span>Life in Medieval Times</a>
+  <a href="#religion"><span class="topic-dot" style="background:#1976D2;"></span>Religion &amp; Health</a>
+
+  <div class="sidebar-label">Renaissance</div>
+  <a href="#renaissance"><span class="topic-dot" style="background:#7C3AED;"></span>Renaissance</a>
+
+  <div class="sidebar-label">Age of Exploration</div>
+  <a href="#exploration"><span class="topic-dot" style="background:#059669;"></span>Age of Exploration</a>
+  <a href="#explorers"><span class="topic-dot" style="background:#059669;"></span>Key Explorers</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#flashcards">🃏 Flashcard Quiz</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="notes-hero">
+    <div class="notes-badge">Junior Cycle History · Artefact</div>
+    <h1>Revision <span>Notes</span></h1>
+    <p>All key topics from your handwritten notes — structured, colour-coded &amp; ready to revise.</p>
+    <div class="topic-pills">
+      <span class="topic-pill"><span class="dot" style="background:#B91C1C;"></span>The Historian</span>
+      <span class="topic-pill"><span class="dot" style="background:#D97706;"></span>The Archaeologist</span>
+      <span class="topic-pill"><span class="dot" style="background:#1976D2;"></span>The Middle Ages</span>
+      <span class="topic-pill"><span class="dot" style="background:#7C3AED;"></span>The Renaissance</span>
+      <span class="topic-pill"><span class="dot" style="background:#059669;"></span>Age of Exploration</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ════════════════════════════════════
+         TOPIC 1 — THE HISTORIAN
+    ═══════════════════════════════════════ -->
+    <div class="topic-block topic-historian anchor" id="historian">
+      <div class="topic-heading">
+        <span class="t-icon">📜</span> The Historian
+        <span class="t-sub">Chapter 1</span>
+      </div>
+      <div class="topic-body">
+
+        <!-- 1. What is History -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#B91C1C;">1</span>
+            What is History?
+          </div>
+          <div class="def-grid">
+            <div class="def-card">
+              <div class="def-term kt-red">History</div>
+              <div class="def-body">The study of the past.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Sources</div>
+              <div class="def-body">Provide evidence about the past.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Prehistory</div>
+              <div class="def-body">The period of time before writing was used to record history.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Archaeologist</div>
+              <div class="def-body">Studies things left behind by people from the past, like artefacts.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Artefact</div>
+              <div class="def-body">Any human-made object from the past.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Archaeology</div>
+              <div class="def-body">The study of remains from the past.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Why Study History -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#B91C1C;">2</span>
+            Why We Study History
+          </div>
+          <ul class="note-list">
+            <li>To learn how people from the past lived</li>
+            <li>To understand the causes and consequences of past events</li>
+            <li>To understand how human experience has shaped our world today</li>
+            <li>To learn to recognise patterns of change</li>
+          </ul>
+        </div>
+
+        <!-- 3. How We Study History -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#B91C1C;">3</span>
+            How We Study History
+          </div>
+          <ul class="note-list">
+            <li>Historians <strong>cross-check</strong> more than one source to make sure information is correct when investigating and studying the past</li>
+            <li><strong>Historical consciousness</strong> — being able to place ourselves in past human experience and link the past, present and future</li>
+            <li><strong>Archives</strong> — catalogue and store written sources</li>
+            <li><strong>Museums</strong> — collect and display sources and objects for the public</li>
+          </ul>
+        </div>
+
+        <!-- 4. Sources -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#B91C1C;">4</span>
+            Sources
+          </div>
+          <div class="compare">
+            <div class="compare-col">
+              <h4 style="color:var(--red);">Primary Source</h4>
+              <p style="font-size:13px;">A <strong>first-hand account</strong> that comes directly from the time being studied.</p>
+            </div>
+            <div class="compare-col">
+              <h4 style="color:var(--muted);">Secondary Source</h4>
+              <p style="font-size:13px;">A <strong>second-hand account</strong> that comes from after the time being studied.</p>
+            </div>
+          </div>
+          <div class="def-grid">
+            <div class="def-card">
+              <div class="def-term">Types of Sources</div>
+              <div class="def-body">Tactile, visual, aural, oral, written</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term">Census</div>
+              <div class="def-body">An official survey of the population.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term">Biography</div>
+              <div class="def-body">An account of someone's life written by someone else.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term">Autobiography</div>
+              <div class="def-body">An account of someone's life written by the person themselves.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Reliability -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#B91C1C;">5</span>
+            Reliability — Key Terms
+          </div>
+          <div class="def-grid">
+            <div class="def-card">
+              <div class="def-term kt-red">Accuracy</div>
+              <div class="def-body">Is the information right/correct?</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Bias</div>
+              <div class="def-body">Unfairly favouring one side over the other.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Exaggeration</div>
+              <div class="def-body">Making something sound/appear better or worse than it is.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Propaganda</div>
+              <div class="def-body">Information designed to influence the behaviours/attitudes of the public.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term kt-red">Reinterpretation</div>
+              <div class="def-body">Viewing something in a new or different light.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Timelines -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#B91C1C;">6</span>
+            Timelines
+          </div>
+          <div class="def-grid">
+            <div class="def-card">
+              <div class="def-term">AD</div>
+              <div class="def-body">'Anno Domini' — 'the Year of our Lord'. The period of time <strong>after</strong> Christ was born.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term">BC</div>
+              <div class="def-body">'Before Christ'. The period of time <strong>before</strong> Christ was born. Numbers count down toward 1.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term">Chronology</div>
+              <div class="def-body">Means the order in which events took place.</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /topic-body -->
+    </div><!-- /topic-historian -->
+
+
+    <!-- ════════════════════════════════════
+         TOPIC 2 — ARCHAEOLOGY
+    ═══════════════════════════════════════ -->
+    <div class="topic-block topic-archaeology anchor" id="archaeology">
+      <div class="topic-heading">
+        <span class="t-icon">⛏️</span> The Archaeologist
+        <span class="t-sub">Chapter 2</span>
+      </div>
+      <div class="topic-body">
+
+        <!-- 1. What is Archaeology -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#D97706;">1</span>
+            What is Archaeology?
+          </div>
+          <ul class="note-list amber">
+            <li>It is the study of remains from the past — the <strong>only</strong> source of information we have about prehistoric times</li>
+            <li>Archaeologists work with historians to study and date these remains to learn about the past</li>
+            <li>An <strong>excavation</strong> is when archaeologists dig up the ground to find evidence from the past</li>
+          </ul>
+        </div>
+
+        <!-- 2. How Sites Are Found -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#D97706;">2</span>
+            How Archaeologists Find Sites
+          </div>
+          <ul class="note-list amber">
+            <li>By examining old buildings/ruins</li>
+            <li><strong>Aerial photographs</strong> — photos taken from a drone or helicopter that might reveal patterns in the soil suggesting something buried underneath</li>
+            <li><strong>Research archaeology</strong> — old documents or records might reveal information about old historical sites</li>
+            <li><strong>Rescue archaeology</strong> — making sure that no historical evidence is destroyed before building new structures</li>
+            <li><strong>Accidental discovery</strong> of sites/artefacts (e.g. the Ardagh Chalice)</li>
+          </ul>
+        </div>
+
+        <!-- 3. Job of the Archaeologist -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#D97706;">3</span>
+            The Job of an Archaeologist
+          </div>
+          <ul class="note-list amber">
+            <li>Carry out a <strong>survey</strong> and dig <strong>test trenches</strong> to see if the site is worth excavating</li>
+            <li>Remove <strong>topsoil</strong> with a <strong>digger</strong></li>
+            <li>Dig carefully with <strong>trowels and shovels</strong> to recover small, delicate items</li>
+            <li>Use <strong>brushes and sieves</strong> to recover small delicate items</li>
+            <li>Record the <strong>location</strong> of anything found in the excavation's <strong>site book</strong></li>
+            <li>Put recovered artefacts in <strong>labelled bags</strong> and send them to the <strong>laboratory</strong> for testing and dating</li>
+          </ul>
+        </div>
+
+        <!-- 4. Dating Methods -->
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#D97706;">4</span>
+            Methods Used in Archaeology
+          </div>
+          <div class="def-grid">
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Radiocarbon / Carbon-14 Dating</div>
+              <div class="def-body">Measures the amount of carbon-14 left in an organism. Determines how old an organism is.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Geophysical Survey</div>
+              <div class="def-body">Like an X-ray of the ground — maps/images are made of underground evidence without an excavation.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Pollen Analysis</div>
+              <div class="def-body">The study of pollen remains to determine what was growing at a site during a particular period.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Stratigraphy</div>
+              <div class="def-body">Dating artefacts/evidence by how deeply they are buried in the soil. Deeper = older.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Dendrochronology / Tree-Ring Dating</div>
+              <div class="def-body">Measures how old a tree is by the number of rings in the trunk/branch.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">DNA Testing</div>
+              <div class="def-body">Can reveal a person's origins or ethnicity.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">3D Reconstruction</div>
+              <div class="def-body">Can reveal what someone looked like while they were still alive.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Examining Bones</div>
+              <div class="def-body">Can tell us a lot about a deceased person and their lifestyle.</div>
+            </div>
+            <div class="def-card">
+              <div class="def-term" style="color:#D97706;">Conservation</div>
+              <div class="def-body">When artefacts are protected and preserved so they do not decay.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /topic-archaeology -->
+
+
+    <!-- ════════════════════════════════════
+         TOPIC 3 — THE NORMANS / MIDDLE AGES
+    ═══════════════════════════════════════ -->
+    <div class="topic-block topic-middle-ages anchor" id="normans">
+      <div class="topic-heading">
+        <span class="t-icon">🏰</span> The Normans &amp; Introduction to the Middle Ages
+        <span class="t-sub">Middle Ages</span>
+      </div>
+      <div class="topic-body">
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">1</span>
+            Introduction — The Middle Ages
+          </div>
+          <ul class="note-list blue">
+            <li>The Middle Ages (or medieval times) refers to the period of European history from around <strong>500–1,500 AD</strong>. Warfare and violence were widespread and constant.</li>
+            <li>While the Vikings were settling elsewhere too (like north-west <strong>France</strong>), this area became known as <strong>Normandy</strong> and the people who lived there as <strong>Normans</strong>.</li>
+            <li>In <strong>1066</strong>, the King of England died without an heir and <strong>William, the Duke of Normandy</strong>, claimed the English crown. When this claim was rejected by the English nobles, William invaded England and won the <strong>Battle of Hastings</strong>. He became King of England and the story of the Norman Conquest is told in the <strong>Bayeux Tapestry</strong>.</li>
+            <li><strong>Feudalism</strong> was the system of land ownership where rulers divided land among their followers in return for loyalty and taxes. Social hierarchy: king → vassals → knights → peasants.</li>
+          </ul>
+        </div>
+
+        <div class="note-group anchor" id="medieval-life">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">2</span>
+            Life in a Norman Castle
+          </div>
+          <ul class="note-list blue">
+            <li>William the Conqueror divided his land among his followers (vassals or nobles). While taking control of new land, a lord would build a temporary <strong>motte and bailey</strong> — a small artificial hill (motte) with a wooden tower or keep on top, surrounded by fences and a ditch or moat.</li>
+            <li>Below was an enclosed area where soldiers lived (bailey).</li>
+            <li>Once control of land was secured, the lord would build a permanent <strong>stone castle</strong> to live in.</li>
+            <li>Stone castles had these key parts: <strong>curtain walls, a keep, a great hall, a chapel, dungeons, battlements, towers/turrets, a bailey, the lord's apartments, a gatehouse, a drawbridge, a portcullis</strong> and <strong>a moat</strong>.</li>
+            <li>Castles were key to the defence of a lord's lands and the whole kingdom. Defenders of the castle would fire arrows and pour boiling water or oil on invaders using <strong>catapults, battering rams or siege towers</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">3</span>
+            Lords and Ladies
+          </div>
+          <ul class="note-list blue">
+            <li>A Norman lady was usually married at a young age. Marriages were often arranged to seal an alliance. A <strong>dowry</strong> was a sum of money or land paid to the groom.</li>
+            <li>The lady's main duty was to produce heirs, teach the children and run the household. The lord's main duty was to maintain order, act as a judge and train soldiers.</li>
+            <li>Sometimes he went hunting or held <strong>tournaments</strong> for knights. Feasts were held in the great hall and musicians and jesters provided entertainment.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">4</span>
+            Soldiers in the Middle Ages
+          </div>
+          <ul class="note-list blue">
+            <li>The Norman army was made up of three types of soldiers: <strong>foot soldiers, archers and knights</strong>.</li>
+            <li>There were three stages to becoming a knight: At age 7, the page was fostered by another family and learned to ride a horse, use a sword and have good manners.</li>
+            <li>At age 14, the <strong>squire</strong> (learning to fight on horseback and would accompany the lord into battle).</li>
+            <li>At age of 21, he spent the night before the <strong>dubbing ceremony</strong> in prayer. He swore the <strong>oath of chivalry</strong> before the lord touched his shoulders with a sword and gave him a manor to manage.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">5</span>
+            Life in the Countryside
+          </div>
+          <ul class="note-list blue">
+            <li>Most people in the Middle Ages lived in the countryside and lived in <strong>villages called manors</strong> owned by a knight or lord. Each manor had a manor house, a church, a mill, a blacksmith's forge, a house for the bailiff, and woodland for the lord to hunt and the villagers to collect wood.</li>
+            <li>Farmers had an <strong>open field system</strong> of farming — fields were divided into sections and one section was left <strong>fallow (empty)</strong> each year to let the soil regain its nutrients.</li>
+            <li>There were two kinds of peasant: <strong>Freemen and serfs</strong>. Freemen had to pay a title to the lord. A serf could not leave the manor or marry without permission.</li>
+            <li>Serfs worked six days a week and received a small plot of land in return. If a serf escaped a stayed free for a year and a day, he became a freeman. Their main diet consisted of bread, cheese and pottage. They drank ale. They grew vegetables and kept a few animals.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">6</span>
+            Life in a Medieval Town
+          </div>
+          <ul class="note-list blue">
+            <li>Norman towns were much smaller than towns today — many were built on rivers or near the coast. Each town needed a <strong>charter</strong> from the king.</li>
+            <li>Each town was different, but most had: <strong>high walls, gates, a main or high street, a market square, narrow streets, a church or cathedral and a fair green</strong>.</li>
+            <li>The average person's house was made of wood; only important buildings were made of stone. Houses had no toilets — people used <strong>chamber pots</strong> which were emptied into the streets. Fire was a constant danger so towns imposed <strong>curfews</strong> where people had to extinguish their fires at a certain time. Life was generally very cramped and dirty and disease spread easily.</li>
+            <li>Craftsmen produced the everyday goods that towns needed — they had <strong>guilds</strong> to set standards for their work, set prices/wages and care for sick/old members. Boys usually learned their father's trade. At age 12 he became an <strong>apprentice</strong>. At age 18 he became a <strong>journeyman</strong>. If they decided it was good enough he created a <strong>masterpiece</strong> for a guild.</li>
+          </ul>
+        </div>
+
+        <div class="note-group anchor" id="religion">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">7</span>
+            Religion in the Middle Ages
+          </div>
+          <ul class="note-list blue">
+            <li>Medieval Europe (including Ireland) was almost entirely <strong>Catholic</strong>. Europe was constantly in fear of going to hell because religion was so important.</li>
+            <li>The <strong>Pope</strong> was the head of the Catholic Church and the most powerful ruler in Europe. Europe was divided into <strong>dioceses</strong> run by archbishops and bishops, and then into <strong>parishes</strong> run by priests.</li>
+            <li><strong>Kings gave land and money to the Church</strong> in the hope this would earn them a place in heaven, and the Church became extremely wealthy as a result.</li>
+            <li>There were two different styles of cathedral built in the Middle Ages: <strong>Gothic and Romanesque</strong>.</li>
+            <li>Priests, unlike most peasants, were able to read and write so priests were often asked to write letters or offer legal advice. They said Mass in <strong>Latin</strong> every Sunday and collected <strong>tithes</strong> from parishioners.</li>
+            <li>Monasteries were the first places to offer education to children based on the ability rather than their parents' wealth. A boy who wanted to become a monk would join a monastery as a <strong>novice</strong> around the age of 13 or younger.</li>
+            <li>The head of a medieval monastery was called an <strong>abbot</strong> (an <strong>abbess</strong> for a convent). Monks took three vows: <strong>chastity, poverty and obedience</strong>. The crown of the head was shaved (the <strong>tonsure</strong>). After years, if the abbot agreed he took his vows of <strong>language of the Church</strong> (learned to read and write in Latin). Some monks preferred to live among people to help them better — these monks were called <strong>friars</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">8</span>
+            Health and Medicine in the Middle Ages
+          </div>
+          <ul class="note-list blue">
+            <li>Medieval medicine was based on Ancient Greek writings. Treatments included <strong>cupping, leeching and amputation</strong>. For illnesses, monks used <strong>Monasteries and Herbal medicine</strong>.</li>
+            <li>Medieval conditions were cramped and filthy with no sanitation or basic hygiene. People were poor and did not have a good diet. People were less able to fight off infection, became infected, and people were so weak that even minor wounds could be fatal.</li>
+            <li>The worst diseases to affect Europe in the Middle Ages included: <strong>smallpox and influenza</strong>. Many women and infants also died in childbirth. Many Ages included <strong>typhoid, leprosy, smallpox and influenza</strong>.</li>
+            <li>One third of Europe's population was killed by the <strong>bubonic plague or 'Black Death'</strong>. It was extremely contagious and spread quickly. Bodies were simply left on the street to be collected and dumped in mass graves or burial pits. People had no idea what caused the plague so sought to cure it through human sin, fasting or whipping themselves.</li>
+            <li>Doctors wore masks filled with dried flowers and herbs to repel infection. Europe was greatly changed by the Black Death — as many serfs left manors and moved to towns to demand better treatment from their lords.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">9</span>
+            The Normans in Ireland
+          </div>
+          <ul class="note-list blue">
+            <li>In <strong>1167</strong>, the King of Leinster, <strong>Dermot McMurrough</strong>, was stripped of his kingdom by the King of Ireland, Rory O'Connor. McMurrough made a deal with a Norman nobleman named <strong>Richard de Clare (nicknamed Strongbow)</strong> that he could marry McMurrough's daughter and become King of Leinster if he helped McMurrough regain his lands.</li>
+            <li>In <strong>1169</strong>, McMurrough invaded Ireland with a Norman army and easily defeated the Vikings. Strongbow became King of Leinster after McMurrough's death.</li>
+            <li>In <strong>1171</strong>, Strongbow could become too powerful, so the <strong>English King Henry II</strong> landed in Ireland and combined their forces in 1170, taking Dublin city and ending Viking rule in Dublin, ending the Viking trail.</li>
+            <li><strong>Impact on Ireland</strong> — The Normans never fully conquered Ireland. The Norman names became very common in Ireland. The <strong>Gaelic Brehon law</strong> was replaced by English common law. Norman names became very common in Ireland. These Anglo-Irish families adopted Irish Gaelic law and customs. The Normans intermarried — between Gaelic and Norman families leading to new Anglo-Irish families. Gaelic law and customs were dressed Gaelic and followed Gaelic law.</li>
+            <li>Ireland — English rule limited to the <strong>Pale</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#1976D2;">10</span>
+            Legacy of the Normans
+          </div>
+          <ul class="note-list blue">
+            <li>When William the Conqueror became King of England in 1066, he established a new ruling dynasty. All kings and queens of England since then are directly descended from him.</li>
+            <li>The Normans made significant contributions to architecture across England and Ireland — building stone castles and Romanesque and Gothic churches.</li>
+            <li>After 1066, French became the language of government in England. As a result, the development of the English language was hugely influenced by French. As English nobility spoke French, it replaced the native Gaelic Irish (from France).</li>
+            <li>The Normans did not just conquer England — they were considered the best warriors in all of medieval Europe. Their most important military involvements were the <strong>Crusades</strong> — a series of invasions between 1095 and 1291 by European Christians to try to seize control of the Holy Land from its Muslim rulers.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /topic-middle-ages -->
+
+
+    <!-- ════════════════════════════════════
+         TOPIC 4 — RENAISSANCE
+    ═══════════════════════════════════════ -->
+    <div class="topic-block topic-renaissance anchor" id="renaissance">
+      <div class="topic-heading">
+        <span class="t-icon">🎨</span> The Renaissance
+        <span class="t-sub">Renaissance</span>
+      </div>
+      <div class="topic-body">
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">1</span>
+            Introduction
+          </div>
+          <ul class="note-list purple">
+            <li>The word Renaissance means <strong>'rebirth'</strong>. It refers to the rebirth of European interest in <strong>Ancient Greek and Roman civilisations</strong>.</li>
+            <li><strong>Humanism</strong> was very popular during the Renaissance — a shift in mindset from a focus on God to a focus on humans and human knowledge. People began to question old medieval ideas and develop <strong>new ideas in art, science, architecture, literature and medicine</strong>.</li>
+            <li>This was very different to the Middle Ages, where everything was seen in the context of Church teachings.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">2</span>
+            Why did the Renaissance Begin in Italy?
+          </div>
+          <ul class="note-list purple">
+            <li>Italy was at the centre of the <strong>Roman Empire</strong> — remains of Roman art/buildings were everywhere. The Italian language was based on Latin which made it easier for Italians to read ancient works.</li>
+            <li>When Constantinople was captured by the Turks in 1453, many Greek scholars fled to Italy and brought ancient Greek and Roman manuscripts with them.</li>
+            <li>Italy had grown rich from trade — merchants had lots of money to spend on works of art/architecture.</li>
+            <li>Italy was made up of independent city states all in competition with each other over territory, wealth and and in advanced civilisations like China, India and Arabia.</li>
+            <li>There were many <strong>patrons</strong> (wealthy people who paid artists to produce art for them) during the Renaissance including the Catholic Church and the de Medici family.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">3</span>
+            Changes in Painting
+          </div>
+          <div class="compare">
+            <div class="compare-col">
+              <h4>Medieval Paintings</h4>
+              <ul class="note-list" style="margin-top:6px;">
+                <li>Mainly religious images — to encourage people to follow church teachings</li>
+                <li>Two-dimensional</li>
+                <li>People's bodies not to scale</li>
+                <li>Identical faces with lifeless expressions</li>
+                <li>Painted on wooden panels or onto wet plaster (<strong>fresco</strong>)</li>
+                <li>Egg tempera paint — egg yolk mixed with powdered pigment</li>
+              </ul>
+            </div>
+            <div class="compare-col">
+              <h4 style="color:var(--purple);">Renaissance Paintings</h4>
+              <ul class="note-list purple" style="margin-top:6px;">
+                <li>Much more varied subject matter</li>
+                <li>More realistic; three-dimensional, perspective</li>
+                <li>Study of anatomy and use of real-life models</li>
+                <li>Faces looked more lifelike</li>
+                <li>Painted on canvas or wet plaster (<strong>fresco</strong>)</li>
+                <li>Paint mixed with oil so dried slowly. <strong>Sfumato</strong> — smoky effect. More nudity — influence of humanism</li>
+              </ul>
+            </div>
+          </div>
+          <div class="hl-box hl-purple" style="margin-top:12px;">
+            <span class="hl-icon">🖼️</span>
+            <div class="hl-body">
+              <strong>Mona Lisa (Leonardo Da Vinci)</strong>
+              One of the world's most famous paintings, housed in the Louvre Museum in Paris. It is a portrait of the wife of a wealthy Florentine merchant and took two years to complete. Use of light and shadow, sfumato, detail on face and body.
+              <br><br>
+              <strong>The Last Supper (Leonardo Da Vinci)</strong>
+              Shows the moment when Jesus tells his disciples that one of them will betray him. Use of perspective and depth. Da Vinci experimented with oil and tempera onto dry wall; the paint soon began peeling off the wall — many attempts have been made to preserve it.
+            </div>
+          </div>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">4</span>
+            Changes in Sculpture
+          </div>
+          <div class="compare">
+            <div class="compare-col">
+              <h4>Medieval Sculptures</h4>
+              <ul class="note-list" style="margin-top:6px;">
+                <li>Not very realistic</li>
+                <li>Bodies long and thin</li>
+                <li>Not in proportion</li>
+                <li>Used to decorate churches/monuments rather than free-standing</li>
+                <li>Long straight clothing, not much detail</li>
+              </ul>
+            </div>
+            <div class="compare-col">
+              <h4 style="color:var(--purple);">Renaissance Sculptures</h4>
+              <ul class="note-list purple" style="margin-top:6px;">
+                <li>More realistic</li>
+                <li>Greater attention to detail</li>
+                <li>Used real life models and studied anatomy to make bodies as realistic as possible</li>
+                <li>Many sculptures tended to be naked, like Ancient Greek sculptures</li>
+              </ul>
+            </div>
+          </div>
+          <div class="hl-box hl-purple" style="margin-top:12px;">
+            <span class="hl-icon">🗿</span>
+            <div class="hl-body">
+              <strong>Michelangelo's David</strong> — one of the most famous Renaissance sculptures. It depicts the biblical figure David (from the story of David and Goliath) with a slingshot on his shoulder. It represents the ideal human body. Michelangelo was born near Florence and studied in Lorenzo de Medici's sculpture academy. As a child he depicted great interest in sculpting and studied in Michelangelo's sculpture academy. His works include the ceiling of the Sistine Chapel, which he painted by lying on scaffolding over four years, and the Pietà (a sculpture of Mary holding the body of the crucified Jesus). He was also an architect who designed the St Peter's Basilica.
+            </div>
+          </div>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">5</span>
+            The Printing Press + Literature
+          </div>
+          <ul class="note-list purple">
+            <li>The Renaissance spread from Italy to the rest of Europe thanks to artists visiting Italy and learning from Italian masters, outside trade with Italy spreading ideas around Europe.</li>
+            <li>Before the 1400s, all books in Europe had to be copied by hand so there were very few in circulation and very few people knew how to read and write.</li>
+            <li><strong>Johannes Gutenberg</strong>, a German goldsmith, invented the <strong>movable type printing press</strong>. The first book he printed was the Bible. Printed books were cheaper than handwritten manuscripts so 3/4 of these to learn off by heart.</li>
+            <li>More people learned to read and write. People read more and were introduced to new ideas. Fiction became popular as people began to read for entertainment.</li>
+            <li>The use of Latin declined as writers wrote in the <strong>vernacular</strong> (their own language). The Catholic Church had less control over learning and ideas declined.</li>
+            <li><strong>William Shakespeare</strong> is considered one of the greatest ever playwrights in English language. He was born in Stratford-upon-Avon, England and joined a company of actors called The King's Men. He quickly became the most popular and famous playwright in England and the company opened a theatre called the Globe. He wrote a total of 38 plays.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">6</span>
+            Health and Medicine (Renaissance)
+          </div>
+          <ul class="note-list purple">
+            <li>Ideas about medicine began to change as doctors studied anatomy.</li>
+            <li><strong>Andreas Vesalius</strong> wrote <em>Oh the Fabric of the Human Body</em> which was full of correct information and drawings.</li>
+            <li><strong>William Harvey</strong> discovered that the heart pumped blood around the body.</li>
+            <li>Medical treatments improved considerably now that they were based on accurate information.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#7C3AED;">7</span>
+            Science (Renaissance)
+          </div>
+          <ul class="note-list purple">
+            <li>Since ancient times, people believed the Earth was the centre of the solar system — the Catholic Church held this view as it supported the belief that God created the Earth and mankind. This was challenged by astronomers.</li>
+            <li><strong>Nicholas Copernicus</strong> wrote a book in which he claimed that the Earth rotated around the Sun. Galileo read it and later backed up his findings.</li>
+            <li><strong>Galileo Galilei</strong> improved on the Dutch invention of the telescope, and discovered that the moon has craters and mountains and that Saturn has rings. The Catholic Church remained very powerful during the Renaissance and opposed any scientific enquiries that went against their teachings — they banned doctors from examining bodies and Copernicus didn't publish his book until he knew he was dying, fearing their reaction.</li>
+            <li>When Galileo revived his ideas, he was tried and convicted of heresy by the Inquisition. To avoid being burned at the stake, he agreed to say that he was wrong and remained under house arrest until his death.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /topic-renaissance -->
+
+
+    <!-- ════════════════════════════════════
+         TOPIC 5 — AGE OF EXPLORATION
+    ═══════════════════════════════════════ -->
+    <div class="topic-block topic-exploration anchor" id="exploration">
+      <div class="topic-heading">
+        <span class="t-icon">🧭</span> The Age of Exploration
+        <span class="t-sub">Exploration</span>
+      </div>
+      <div class="topic-body">
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#059669;">1</span>
+            Reasons for Exploration
+          </div>
+          <ul class="note-list teal">
+            <li>At first, sea travel was difficult — many sailors were afraid of the unknown (sea monsters, flat earth etc.) and ships couldn't navigate properly.</li>
+            <li>Influence of the Renaissance: people were questioning their existing beliefs and were eager to learn.</li>
+            <li>The stories of <strong>Marco Polo</strong>, an Italian explorer who travelled to China, wrote about the great wealth and incredible things he had seen — people wanted to see these things themselves.</li>
+            <li>In <strong>1453</strong>, the Great Silk Road (main overland trade route for spices) was cut off when Constantinople fell, so new trade routes between Europe and Asia were needed.</li>
+            <li>European rulers wanted to expand their territory and increase their power. The Pope encouraged Christian rulers to spread Christianity.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#059669;">2</span>
+            Advances in Navigation Technology
+          </div>
+          <ul class="note-list teal">
+            <li><strong>Cartographers</strong> (mapmakers) started using more detailed maps from Constantinople. The Portuguese developed <strong>portolan charts</strong> which mapped harbours and coastlines more precisely. As explorers returned from voyages, the information they brought was used to update maps.</li>
+            <li>A <strong>quadrant and astrolabe</strong> helped determine a ship's latitude (distance from the equator).</li>
+            <li>A <strong>compass</strong> was used to identify the direction north.</li>
+            <li>A <strong>log and line</strong> measured a ship's speed in knots. A <strong>line and lead</strong> was used to measure the depth of the water beneath the ship's logbook.</li>
+            <li>New ships called <strong>caravels</strong> were designed — large and sturdy enough to make long voyages with triangular lateen sails, carvel-built hulls and rudders for steerage.</li>
+            <li>Life on board a ship was extremely tough with constant hard work. The captain had his own cabin but most of the sailors slept on the deck. <strong>Mutiny</strong> (sailors rebelling against their captain) was common. Harsh discipline and flogging (whipping) were used to keep order. Ill health was also common: typhoid fever and scurvy.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#059669;">3</span>
+            Portuguese Voyages of Exploration
+          </div>
+          <ul class="note-list teal">
+            <li>The first major Portuguese voyages of discovery set out from Portugal in the <strong>1400s</strong>. <strong>Prince Henry the Navigator</strong> set up a school of navigation in Sagres.</li>
+            <li>The Portuguese focused on exploring the coast of Africa to try to find a way around Africa to Asia. Over the following decades they discovered the Cape Verde Islands, the Canary Islands and set up bases along the modern-day Sierra-Leone and African coast.</li>
+            <li>In <strong>1487</strong>, <strong>Bartholomew Diaz</strong> sailed down the coast of Africa and rounded the southern tip of Africa which was named the <strong>Cape of Good Hope</strong>, in the hope that it could be used to find a route to Asia.</li>
+            <li>In <strong>1497</strong>, <strong>Vasco da Gama</strong> sailed past the Cape of Good Hope and up the eastern African coast, then sailed from modern-day Kenya to Calicut in India. The round trip took two years. Da Gama had proven that it was possible to sail around Africa and reach Asia and later China. Trade made Portugal wealthy. Portugal gained control of the spice trade. Portugal established a large empire in Africa and Asia.</li>
+          </ul>
+        </div>
+
+        <div class="note-group anchor" id="explorers">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#059669;">4</span>
+            Christopher Columbus
+          </div>
+          <ul class="note-list teal">
+            <li>The most famous explorer of the Atlantic was <strong>Christopher Columbus</strong>, who reached the Americas in <strong>1492</strong>. He was born in Italy and studied at Sagres navigation school.</li>
+            <li>He convinced King Ferdinand and Queen Isabella of Spain to sponsor a voyage across the Atlantic to try to reach India and China. They gave him three ships: the Niña, the Pinta and the Santa Maria. Land was sighted 69 days after they left Spain.</li>
+            <li>Columbus called it '<strong>San Salvador</strong>' as he thought they had reached India. He called the inhabitants '<strong>Indians</strong>'. He returned to Spain with some indigenous slaves, exotic fruit, parrots, maize and a little gold and was appointed governor of the new territory.</li>
+            <li>Spanish settlers travelled to the islands. After Columbus's successful voyage, Spanish settlers realised that Columbus had not reached India but a whole new continent. They enslaved indigenous peoples and forced them to work in mines or on sugar plantations.</li>
+            <li>By the mid-1490s, the indigenous population had been almost entirely wiped out by disease and enslavement. The Spanish began to import African slaves to replace the indigenous population.</li>
+            <li>Explorers continued to explore the world over the next 200 years. John Cabot landed in Newfoundland and Ferdinand Magellan circumnavigated the world.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#059669;">5</span>
+            The Conquest of the Aztecs and Incas
+          </div>
+          <ul class="note-list teal">
+            <li>Stories of the New World inspired Spanish <strong>conquistadors</strong> to conquer indigenous American civilisations like the Aztecs and Incas.</li>
+            <li>The <strong>Aztecs</strong> had a complex society very different from European societies. Their capital city of <strong>Tenochtitlán</strong> (where Mexico City stands today) was a large, advanced city. The Aztecs worshipped many gods, including the sun god, and performed human sacrifices.</li>
+            <li>In <strong>1519</strong>, <strong>Hernán Cortés</strong> landed with 11 ships and made contact with local tribes that had been conquered by the Aztecs who marched to Tenochtitlán where they were greeted by Aztec king <strong>Montezuma</strong>. The Aztecs mistook Cortés for one of their gods. Spaniards later captured Montezuma after protests over stealing gold. Montezuma was killed and Cortés later returned with 100,000 men to Tenochtitlán. The city fell in Cuzco by a god-king. The Incan empire was ruled from its capital in Cuzco. Skilled engineers, architects and artists. In 1528, Francisco Pizarro was granted permission by the King of Spain to conquer the Incas.</li>
+            <li>The <strong>Incas</strong> were a powerful empire in South America. <strong>Francisco Pizarro</strong> defeated them — he defeated the remaining Incas and had their leader <strong>Atahualpa</strong> executed. Pizarro took the treasure and silver. He established a new capital city in Lima.</li>
+          </ul>
+        </div>
+
+        <div class="note-group">
+          <div class="note-group-title">
+            <span class="ng-num" style="background:#059669;">6</span>
+            The Impact of Colonisation
+          </div>
+          <ul class="note-list teal">
+            <li>The indigenous population was decimated due to <strong>violence, mistreatment and disease</strong> — they had no resistance to diseases like smallpox, influenza and measles that were introduced by the Europeans.</li>
+            <li>The destruction of cultures: indigenous languages and customs disappeared. Priests set up Christian churches in the New World and carried out thousands of conversions, but privately many indigenous people continued to worship their many gods.</li>
+            <li>Massive growth in the <strong>slave trade</strong> which led to the 'slavery triangle' — African slaves were shipped to the Americas, European manufactured goods to Africa, American raw materials to Europe and the Americas.</li>
+            <li>So many countries were scrambling for territory that conflict was inevitable. The <strong>Treaty of Tordesillas</strong> was signed in 1494 which divided the New World between Spain and Portugal. Huge deposits of gold and silver were shipped back to Spain, making it the most powerful country in Europe throughout the 1500s and 1600s.</li>
+            <li>The '<strong>Columbian exchange</strong>' changed both continents forever: horses, cattle, sheep, new farming methods and technologies were introduced to the Americas and potatoes, chillies, avocadoes, cocoa coffee and tobacco were introduced to Europe.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /topic-exploration -->
+
+
+    <!-- ════════════════════════════════════
+         FLASHCARD QUIZ
+    ═══════════════════════════════════════ -->
+    <div class="anchor" id="flashcards">
+      <div class="quiz-section-title">
+        🃏 Flashcard Quiz — All Topics
+      </div>
+      <p style="margin-bottom:18px;color:var(--muted);font-size:13.5px;">Click <em>Reveal</em> to check your answer, then test yourself again from memory!</p>
+
+      <!-- HISTORIAN -->
+      <div style="font-family:'Sora';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin:18px 0 8px;">The Historian</div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What is the difference between a primary and secondary source?</div><span class="quiz-tag" style="background:#B91C1C;">Ch 1</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">A <strong>primary source</strong> is a first-hand account from the time being studied. A <strong>secondary source</strong> is a second-hand account created after the time being studied.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What is propaganda? Give an example of how it is used.</div><span class="quiz-tag" style="background:#B91C1C;">Ch 1</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>Propaganda</strong> is information designed to influence the behaviours and attitudes of the public. It may be biased, exaggerated or one-sided to make people think or act in a certain way.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What do AD and BC stand for? How do they work on a timeline?</div><span class="quiz-tag" style="background:#B91C1C;">Ch 1</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>AD</strong> = Anno Domini ('the Year of our Lord') — time after Christ was born. Numbers count up. <strong>BC</strong> = Before Christ — time before Christ was born. Numbers count down toward 1. <strong>Chronology</strong> means the order in which events took place.</div>
+      </div>
+
+      <!-- ARCHAEOLOGY -->
+      <div style="font-family:'Sora';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#D97706;margin:18px 0 8px;">The Archaeologist</div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">Why is archaeology our only source of information about prehistoric times?</div><span class="quiz-tag" style="background:#D97706;">Ch 2</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">Because <strong>prehistory</strong> is the time before writing was used to record events. There are no written records, so physical remains (artefacts, bones, structures) found through archaeology are the only evidence we have.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">Explain the difference between rescue archaeology and research archaeology.</div><span class="quiz-tag" style="background:#D97706;">Ch 2</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>Rescue archaeology</strong> — making sure no historical evidence is destroyed before building new structures (e.g. 126 sites excavated before M3 motorway). <strong>Research archaeology</strong> — old documents or records reveal information about historical sites, leading archaeologists to investigate.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What is stratigraphy and how does it work?</div><span class="quiz-tag" style="background:#D97706;">Ch 2</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>Stratigraphy</strong> is dating artefacts/evidence by how deeply they are buried in the soil. The deeper something is found, the older it is. Used in most archaeological excavations.</div>
+      </div>
+
+      <!-- MIDDLE AGES -->
+      <div style="font-family:'Sora';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#1976D2;margin:18px 0 8px;">The Middle Ages</div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was feudalism and what was the social hierarchy?</div><span class="quiz-tag" style="background:#1976D2;">Middle Ages</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>Feudalism</strong> was the system of land ownership where rulers divided land among their followers in return for loyalty and taxes. Social hierarchy: <strong>King → Vassals → Knights → Peasants</strong>.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What were the three stages to becoming a knight?</div><span class="quiz-tag" style="background:#1976D2;">Middle Ages</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>1. Page</strong> (age 7) — fostered by another family, learned to ride, use a sword and good manners. <strong>2. Squire</strong> (age 14) — learning to fight on horseback, accompanied the lord into battle. <strong>3. Knight</strong> (age 21) — after the dubbing ceremony, swore the oath of chivalry.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was the Black Death and what impact did it have on Europe?</div><span class="quiz-tag" style="background:#1976D2;">Middle Ages</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">The <strong>Black Death (bubonic plague)</strong> killed one third of Europe's population. It was extremely contagious and spread quickly. People had no idea of the cause. It greatly changed Europe — serfs left manors and moved to towns to demand better treatment, weakening the feudal system.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">How did the Normans come to Ireland and what was their impact?</div><span class="quiz-tag" style="background:#1976D2;">Middle Ages</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">In 1167, <strong>Dermot McMurrough</strong> (King of Leinster) made a deal with <strong>Strongbow</strong> (Richard de Clare) to help him regain his kingdom. The Normans invaded in 1169 and defeated the Vikings. King Henry II came in 1171. Impact: Brehon law replaced by English common law, Norman names became common, intermarriage led to new Anglo-Irish families, English rule limited to the Pale.</div>
+      </div>
+
+      <!-- RENAISSANCE -->
+      <div style="font-family:'Sora';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#7C3AED;margin:18px 0 8px;">The Renaissance</div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was Humanism and why was it important to the Renaissance?</div><span class="quiz-tag" style="background:#7C3AED;">Renaissance</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer"><strong>Humanism</strong> was a shift in mindset from a focus on God to a focus on humans and human knowledge. People began to question old medieval ideas and develop new ideas in art, science, architecture, literature and medicine. This was very different to the Middle Ages where everything was seen in the context of Church teachings.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was the impact of Gutenberg's printing press?</div><span class="quiz-tag" style="background:#7C3AED;">Renaissance</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">Books became much cheaper and more widely available. More people learned to read and write. People were introduced to new ideas. Fiction became popular. The use of Latin declined as writers wrote in the vernacular. The Catholic Church had less control over learning and ideas.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">Why was Galileo put on trial and what happened to him?</div><span class="quiz-tag" style="background:#7C3AED;">Renaissance</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">Galileo supported Copernicus's view that the <strong>Earth rotated around the Sun</strong>, which went against the Catholic Church's teaching (that Earth was the centre of the universe). He was convicted of heresy by the Inquisition. To avoid being burned at the stake, he agreed he was wrong and remained under house arrest until his death.</div>
+      </div>
+
+      <!-- EXPLORATION -->
+      <div style="font-family:'Sora';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#059669;margin:18px 0 8px;">Age of Exploration</div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">Give three reasons why Europeans began to explore in the 15th century.</div><span class="quiz-tag" style="background:#059669;">Exploration</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">1. The Great Silk Road was cut off when Constantinople fell in 1453 — new trade routes were needed. 2. Influence of the Renaissance — people were questioning existing beliefs and eager to learn. 3. The stories of Marco Polo made people want to see the wealth of China for themselves. Also: desire for trade, spread of Christianity, new navigation technology.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was the significance of Vasco da Gama's voyage?</div><span class="quiz-tag" style="background:#059669;">Exploration</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">In 1497, <strong>Vasco da Gama</strong> proved it was possible to sail around Africa and reach Asia and later China. He sailed past the Cape of Good Hope, up the eastern African coast and reached Calicut in India. The round trip took two years. This gave Portugal control of the lucrative spice trade and established a large empire.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was the impact of colonisation on indigenous peoples of the Americas?</div><span class="quiz-tag" style="background:#059669;">Exploration</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">The indigenous population was decimated by violence, mistreatment and disease (smallpox, influenza, measles — they had no resistance). Indigenous languages and customs disappeared. Massive growth in the slave trade. European countries scrambled to create empires — leading to the Treaty of Tordesillas dividing the New World between Spain and Portugal.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-header"><div class="quiz-q">What was the 'Columbian Exchange'?</div><span class="quiz-tag" style="background:#059669;">Exploration</span><button class="toggle-btn" onclick="toggleQ(this)">Reveal</button></div>
+        <div class="quiz-answer">The exchange of goods, animals, plants and diseases between the Americas and Europe/Africa following Columbus's voyages. To the Americas: horses, cattle, sheep, new farming methods. To Europe: potatoes, chillies, avocadoes, cocoa, coffee and tobacco.</div>
+      </div>
+
+    </div><!-- /flashcards -->
+
+  </div><!-- /content -->
+
+  <!-- BOTTOM NAV BAR -->
+  <div class="bottom-bar">
+    <span>Navigate:</span>
+    <a href="index.html">← History Home</a>
+    <a href="ch1.html">Ch 1: The Historian</a>
+    <a href="ch2.html">Ch 2: The Archaeologist</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQ(btn) {
+    const ans = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    ans.classList.toggle('open');
+    btn.textContent = ans.classList.contains('open') ? 'Hide' : 'Reveal';
+  }
+
+  // Sidebar active link highlight on scroll
+  const anchors = document.querySelectorAll('.anchor');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    anchors.forEach(a => { if (window.scrollY >= a.offsetTop - 100) current = '#' + a.id; });
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === current));
+  });
+</script>
+</body>
+</html>
