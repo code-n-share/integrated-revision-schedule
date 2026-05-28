@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 5 – Life & Death in Medieval Times | History Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:          #B91C1C;
+      --red-dark:     #7F1D1D;
+      --red-light:    #FEE2E2;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --bg:           #FAF5F5;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--red);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, #DC2626 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🏰'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 42px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* ── TIMELINE STRIP ── */
+    .timeline-strip {
+      background: var(--red-dark); display: flex; gap: 0;
+      overflow-x: auto; padding: 0;
+    }
+    .tl-item {
+      flex: 1; min-width: 130px; padding: 14px 18px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .tl-item:last-child { border-right: none; }
+    .tl-year { font-family: 'Sora'; font-weight: 800; font-size: 18px; color: var(--amber); display: block; }
+    .tl-event { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 3px; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--red);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--red-dark); margin: 26px 0 10px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--red-light); border-left: 4px solid var(--red);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--red-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--red); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--red); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* FEUDAL PYRAMID */
+    .pyramid-container {
+      background: var(--card); border-radius: var(--radius); border: 1.5px solid var(--border);
+      padding: 28px; margin: 16px 0; box-shadow: var(--shadow);
+    }
+    .pyramid-level {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+      padding: 12px 18px; border-radius: 10px; position: relative;
+    }
+    .pyramid-level.king { background: #7F1D1D; color: #fff; max-width: 280px; margin-left: auto; margin-right: auto; justify-content: center; text-align: center; }
+    .pyramid-level.lords { background: var(--red); color: #fff; max-width: 500px; margin-left: auto; margin-right: auto; justify-content: center; text-align: center; }
+    .pyramid-level.knights { background: #DC2626; color: #fff; max-width: 700px; margin-left: auto; margin-right: auto; justify-content: center; text-align: center; }
+    .pyramid-level.peasants { background: var(--red-light); color: var(--red-dark); max-width: 100%; justify-content: center; text-align: center; }
+    .pyramid-level .plevel-title { font-family: 'Sora'; font-weight: 800; font-size: 15px; }
+    .pyramid-level .plevel-desc { font-size: 13px; opacity: 0.85; margin-top: 2px; }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--red); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--red-dark); }
+
+    /* BULLET LIST */
+    .content-list { list-style: none; margin: 12px 0; padding: 0; }
+    .content-list li {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    .content-list li:last-child { border-bottom: none; }
+    .content-list li::before { content: '▸'; color: var(--red); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+
+    /* TABLE */
+    .hist-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .hist-table th {
+      background: var(--red); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .hist-table td {
+      padding: 10px 16px; font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hist-table tr:nth-child(even) td { background: #f9fafb; }
+    .hist-table tr:last-child td { border-bottom: none; }
+
+    /* COMPARE TABLE */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; box-shadow: var(--shadow); border-radius: var(--radius); overflow: hidden; }
+    .compare-table th { padding: 12px 16px; font-family: 'Sora'; font-size: 13px; font-weight: 700; text-align: left; }
+    .compare-table th.romanesque { background: #6B7280; color: #fff; }
+    .compare-table th.gothic { background: var(--red-dark); color: #fff; }
+    .compare-table td { padding: 10px 16px; font-size: 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table td:first-child { background: #f3f4f6; }
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    /* QUIZ */
+    .quiz-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;
+    }
+    .quiz-header {
+      padding: 14px 18px; display: flex; justify-content: space-between;
+      align-items: center; gap: 12px; cursor: pointer;
+      font-size: 14.5px; font-weight: 500;
+    }
+    .quiz-answer {
+      display: none; padding: 14px 18px;
+      background: var(--green-light); border-top: 1px solid #c3e6d0;
+      font-size: 14px; color: #1a3d2b; line-height: 1.6;
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px;
+      border-radius: 100px; background: var(--red-light); color: var(--red-dark);
+      white-space: nowrap;
+    }
+    .toggle-btn {
+      background: var(--red); color: #fff; border: none;
+      padding: 6px 14px; border-radius: 100px; font-size: 12px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+      font-family: 'DM Sans'; transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: var(--red-dark); }
+
+    /* DID YOU KNOW */
+    .did-you-know {
+      background: var(--blue-light); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 16px 0;
+    }
+    .did-you-know .dyk-label { font-family: 'Sora'; font-weight: 700; font-size: 13px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .did-you-know p { font-size: 14px; color: #1a3860; margin: 0; }
+
+    /* CHECKPOINT */
+    .checkpoint {
+      background: #F0FDF4; border: 2px solid #86EFAC;
+      border-radius: var(--radius); padding: 18px 20px; margin: 24px 0;
+    }
+    .checkpoint .cp-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; color: var(--green); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .checkpoint ol { padding-left: 20px; }
+    .checkpoint li { font-size: 14px; margin-bottom: 6px; color: #166534; }
+
+    /* ANCHOR OFFSET */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      background: var(--text); color: rgba(255,255,255,0.7);
+      padding: 16px 48px; display: flex; align-items: center; gap: 20px;
+      font-size: 13px; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+
+    /* SOLDIER CARDS */
+    .soldier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 16px 0; }
+    .soldier-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .soldier-card .s-icon { font-size: 36px; margin-bottom: 10px; }
+    .soldier-card .s-title { font-family: 'Sora'; font-weight: 800; font-size: 15px; color: var(--red-dark); margin-bottom: 6px; }
+    .soldier-card .s-desc { font-size: 13px; color: #444; line-height: 1.5; }
+
+    /* IMPACT LIST */
+    .impact-list { list-style: none; margin: 14px 0; padding: 0; }
+    .impact-list li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; margin-bottom: 8px; border-radius: 10px; background: var(--card); border: 1.5px solid var(--border); font-size: 14px; }
+    .impact-list li .imp-icon { font-size: 20px; flex-shrink: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .sidebar { width: 100%; height: auto; position: static; flex-direction: row; flex-wrap: wrap; overflow: visible; }
+      .main { margin-left: 0; }
+      .content { padding: 24px 16px; }
+      .chapter-hero { padding: 36px 20px 28px; }
+      .chapter-hero h1 { font-size: 28px; }
+      .chapter-hero::after { display: none; }
+      .timeline-strip { flex-direction: column; }
+      .chapter-nav-bar { padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ SIDEBAR ════ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">Artefact · Junior Cycle</div>
+    <div class="book-title">📜 History</div>
+  </div>
+  <a href="index.html" class="home-link">← History Home</a>
+  <div class="sidebar-label">Chapter 5 Topics</div>
+  <a href="#normans">5.1 The Normans</a>
+  <a href="#castle">5.2 Life in a Norman Castle</a>
+  <a href="#soldiers">5.3 Soldiers in the Middle Ages</a>
+  <a href="#countryside">5.4 Life in the Countryside</a>
+  <a href="#town">5.5 Life in a Town</a>
+  <a href="#religion">5.6 Religion in the Middle Ages</a>
+  <a href="#health">5.7 Health &amp; Medicine</a>
+  <a href="#ireland">5.8 The Normans in Ireland</a>
+  <a href="#legacy">5.9 Legacy of the Normans</a>
+  <div class="sidebar-label">Revision</div>
+  <a href="#keyterms">Key Terms</a>
+  <a href="#quiz">Quick-Fire Quiz</a>
+  <a href="#summary">Summary Table</a>
+</nav>
+
+<!-- ════ MAIN ════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 5</div>
+    <h1>Life &amp; Death in<br><span>Medieval Times</span></h1>
+    <div class="chapter-meta">Norman England &nbsp;·&nbsp; Junior Cycle History &nbsp;·&nbsp; Artefact</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🏰 The Normans &amp; Feudalism</span>
+      <span class="goal-tag">⚔️ Castles &amp; Warfare</span>
+      <span class="goal-tag">🌾 Peasants &amp; Manor Life</span>
+      <span class="goal-tag">⛪ Religion</span>
+      <span class="goal-tag">☠️ The Black Death</span>
+      <span class="goal-tag">🍀 Normans in Ireland</span>
+    </div>
+  </div>
+
+  <!-- TIMELINE STRIP -->
+  <div class="timeline-strip">
+    <div class="tl-item">
+      <span class="tl-year">1066</span>
+      <div class="tl-event">Norman Conquest of England</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1169</span>
+      <div class="tl-event">Norman invasion of Ireland</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1337–1453</span>
+      <div class="tl-event">Hundred Years' War (France vs England)</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1347–1359</span>
+      <div class="tl-event">The Black Death</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══════════════════ 5.1 THE NORMANS ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="normans">
+      <span class="icon">⚔️</span> 5.1 The Normans
+    </div>
+
+    <p>The <strong>Middle Ages</strong> was the period of European history from about 500 to around 1500 — from the end of the Roman Empire to the start of the Renaissance. It was a time when war and violence were widespread, and life was especially difficult for people at the lower levels of society.</p>
+
+    <div class="key-term">
+      <div class="term">The Normans</div>
+      <div class="definition">After the fall of Rome, there was no single strong ruler in Europe. The stronger rulers gathered more territory and became kings — they organised society under the <strong>feudal system</strong>. The Normans were among the most powerful of these groups. While the Vikings were settling in Ireland, they were also settling in north-west France. This area became known as <strong>Normandy</strong>.</div>
+    </div>
+
+    <p>In 1066, the King of England, <strong>Edward the Confessor</strong>, died without an heir. <strong>William, the Duke of Normandy</strong>, claimed the English Crown — but this was rejected by the English nobles, led by <strong>Harold, Earl of Hereford</strong>. William invaded England and defeated Harold at the <strong>Battle of Hastings</strong>. William became King of England and was known as <strong>William the Conqueror</strong>. The story of the Norman Conquest is told in the <strong>Bayeux Tapestry</strong>.</p>
+
+    <p>By 1200, different groups of Normans had set out to conquer many different parts of Europe. They eventually controlled land in England, Ireland, France, Italy, Tunisia, Libya and the Middle East.</p>
+
+    <div class="sub-heading">Feudalism</div>
+
+    <div class="key-term">
+      <div class="term">Feudalism</div>
+      <div class="definition">The system of land ownership where rulers divided land among their followers in return for loyalty and taxes. Followers were called <strong>nobles or vassals</strong> and were given land called a <strong>fief</strong>. They swore an <strong>oath of fealty</strong> to the king, promising to fight for him, provide troops, and pay taxes.</div>
+    </div>
+
+    <div class="pyramid-container">
+      <p style="font-family:'Sora';font-weight:700;font-size:14px;text-align:center;margin-bottom:18px;color:var(--red-dark);">The Feudal Pyramid</p>
+      <div class="pyramid-level king">
+        <div>
+          <div class="plevel-title">👑 King</div>
+          <div class="plevel-desc">Owned all land · Received loyalty &amp; military aid · Gave fiefs to lords</div>
+        </div>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:20px;margin:4px 0;">▼</div>
+      <div class="pyramid-level lords">
+        <div>
+          <div class="plevel-title">🏰 Lords (Vassals to the King)</div>
+          <div class="plevel-desc">Gave homage, military service &amp; food · Received protection &amp; shelter · Gave land to knights</div>
+        </div>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:20px;margin:4px 0;">▼</div>
+      <div class="pyramid-level knights">
+        <div>
+          <div class="plevel-title">⚔️ Knights (Vassals to Lords)</div>
+          <div class="plevel-desc">Protected lords · Farm the land · Pay rent · Looked after peasants</div>
+        </div>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:20px;margin:4px 0;">▼</div>
+      <div class="pyramid-level peasants">
+        <div>
+          <div class="plevel-title">🌾 Peasants (also called Serfs)</div>
+          <div class="plevel-desc">Largest group · Farmed the land · Paid rent · Received food, shelter &amp; protection</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="remember">
+      <span class="icon">⚠️</span>
+      <div class="text">
+        <strong>Exam Tip: Feudalism</strong>
+        Remember the chain: King → Lords → Knights → Peasants. Each level owed loyalty to the one above and received protection in return. The key word is <em>fief</em> (land granted in return for loyalty).
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.1</div>
+      <ol>
+        <li>From where did the Normans originate?</li>
+        <li>When did they conquer England?</li>
+        <li>Name three other countries that the Normans controlled.</li>
+        <li>Explain the term: peasants.</li>
+        <li>Explain, with the aid of a diagram, the feudal system.</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.2 LIFE IN A NORMAN CASTLE ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="castle">
+      <span class="icon">🏰</span> 5.2 Life in a Norman Castle
+    </div>
+
+    <p>The Normans needed a way to control their newly conquered territory and people. William the Conqueror divided the land among his followers. In order to take control of a new fief quickly, a lord would first build a temporary castle called a <strong>motte and bailey</strong>.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">⛰️</div>
+        <div class="card-title">Motte and Bailey Castle</div>
+        <div class="card-def">A <strong>motte</strong> was a small artificial hill with a wooden tower or <strong>keep</strong> at the top. Below was a large enclosed area — the <strong>bailey</strong> — surrounded by high wooden fences and a ditch or moat.</div>
+        <div class="card-tip">Temporary structure — once control was established, a permanent stone castle was built.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🧱</div>
+        <div class="card-title">Stone Castles</div>
+        <div class="card-def">Medieval stone castles were huge fortifications, taking several hundred men working for several years to complete. They had curtain walls, a keep, dungeons, battlements, towers/turrets, the bailey, and a gatehouse.</div>
+        <div class="card-tip">Key defensive features: high walls, narrow windows, battlements for soldiers to patrol.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🚪</div>
+        <div class="card-title">Gatehouse</div>
+        <div class="card-def">Found in the gatehouse were the <strong>drawbridge</strong> (raised and lowered to control entry; raised at night or under attack) and the <strong>portcullis</strong> (a metal grid lowered over the gate if necessary).</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">💧</div>
+        <div class="card-title">Moat</div>
+        <div class="card-def">The castle was surrounded by a deep ditch filled with water, called the <strong>moat</strong>. This made it extremely difficult for attackers to approach the castle walls.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Castles and War</div>
+    <p>Warfare was widespread during the Middle Ages. Castles were key to the defence of a lord's land and a kingdom generally. Even if an attacking army surrounded the castle (a <strong>siege</strong>), the castle could hold out for a long time if it had enough food stores and a well. Defenders could fire arrows from the walls, or pour boiling water or oil down on attackers.</p>
+    <p>Laying siege was difficult and time-consuming. Attacking armies used <strong>catapults</strong> and <strong>siege towers</strong>. If these failed, attackers would tunnel under the castle walls to undermine them. When gunpowder and the <strong>cannon</strong> were brought from China to Europe in the 1400s, castle walls could be easily destroyed — and castles were no longer key to warfare.</p>
+
+    <div class="sub-heading">Lords and Ladies</div>
+    <p>A Norman lord was very powerful. He owned huge areas of land and commanded many knights and soldiers. A Norman lady usually married at a young age. Marriages were arranged by the two families, often to create an alliance. A <strong>dowry</strong> (usually money or land) was paid to the groom.</p>
+    <p>The lady's main duty was to bear children as <strong>heirs</strong>. The family lived upstairs in the keep, near the chapel and a warm sunny room called a <strong>solar</strong>. The lady would weave, teach the children, play music, and also run the <strong>household</strong> — instructing servants, supervising storage and preparation of food, and acting for her husband when he was away.</p>
+    <p>Feasts were held in the <strong>great hall</strong>, which had big fireplaces and tapestries. Beef, pork, mutton, duck, deer, pheasant or rabbit were served. Without refrigeration, people salted, smoked, or dried meat. Instead of plates, people often ate from large pieces of hard bread called <strong>trenchers</strong>. <strong>Minstrels</strong> (musicians) and <strong>jesters</strong> (comic performers) provided entertainment. Clothing embroidered or dyed in vivid colours showed off wealth.</p>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.2</div>
+      <ol>
+        <li>Why were castles built in the Middle Ages?</li>
+        <li>Describe a motte and bailey castle.</li>
+        <li>What were the main defensive features of a stone castle?</li>
+        <li>Why were castles so difficult to capture?</li>
+        <li>How were marriages arranged between nobles?</li>
+        <li>What was a solar?</li>
+        <li>Describe a medieval feast.</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.3 SOLDIERS ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="soldiers">
+      <span class="icon">🗡️</span> 5.3 Soldiers in the Middle Ages
+    </div>
+
+    <p>The Norman army that conquered England was made up of three main types of soldiers:</p>
+
+    <div class="soldier-grid">
+      <div class="soldier-card">
+        <div class="s-icon">🪖</div>
+        <div class="s-title">Foot Soldiers</div>
+        <div class="s-desc">Made up the largest part of any medieval army. They fought with swords, daggers and spears, and had shields and leather padded jackets for protection. They were peasants who returned to the fields when the battle or war was over.</div>
+      </div>
+      <div class="soldier-card">
+        <div class="s-icon">🏹</div>
+        <div class="s-title">Archers</div>
+        <div class="s-desc">Fought with a bow and arrows, or sometimes a longbow or crossbow. They wore little protective clothing. Norman archers in England were considered the best in Europe and gave their side a major advantage in battles.</div>
+      </div>
+      <div class="soldier-card">
+        <div class="s-icon">🐴</div>
+        <div class="s-title">Knights</div>
+        <div class="s-desc">Minor nobles who fought on horseback and swore an <strong>oath of chivalry</strong>. They wore full body armour (plate armour), chainmail, a shield and a helmet, and used lances, swords and maces. Only a few hundred knights existed, but they proved decisive at the <strong>Battle of Hastings</strong> in 1066.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">The Training of a Knight</div>
+    <p>There were two ways for a man to become a knight. If a foot soldier showed exceptional bravery on the battlefield, he could be knighted by a lord — though this was very rare. The main way was a three-stage process followed by the sons of nobles:</p>
+
+    <ol class="step-list">
+      <li>
+        <div class="step-text"><strong>Stage 1: Page</strong> — At the age of seven, a boy was sent to live with the family of another lord. He would learn to ride a horse, use a sword, sing and dance. He was taught manners by the lady of the castle and served the lord and lady at table.</div>
+      </li>
+      <li>
+        <div class="step-text"><strong>Stage 2: Squire</strong> — At around 14, the boy began learning to fight on horseback. He would accompany the lord into battle, look after his horse and weapons, and help the lord dress for battle and tournaments.</div>
+      </li>
+      <li>
+        <div class="step-text"><strong>Stage 3: Knight</strong> — At the age of 21, he was ready to become a knight. He spent the night before the ceremony in prayer in the chapel. Then, dressed in white and full armour, he underwent the ceremony of <strong>dubbing</strong>. He swore the <strong>oath of chivalry</strong> (to stay loyal to, protect the poor and weak, and be brave in battle). The lord touched him on both shoulders with a sword, saying "Arise, sir knight." The lord would give a manor to the knight to manage. When not fighting in wars and battles, a knight would often take part in <strong>tournaments</strong> — events featuring mock battles and <strong>jousting</strong> contests.</div>
+      </li>
+    </ol>
+
+    <div class="key-term">
+      <div class="term">Oath of Chivalry</div>
+      <div class="definition">Sworn by a knight: to stay loyal to his lord, protect the poor and weak, and be brave in battle.</div>
+      <div class="tip">Exam tip: Know all three parts of the oath — loyalty, protection, bravery.</div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.3</div>
+      <ol>
+        <li>Name three differences between a foot soldier and a knight.</li>
+        <li>Why did foot soldiers and archers have very little protection?</li>
+        <li>Explain what happened at the page and squire stages of becoming a knight.</li>
+        <li>Explain the following term: oath of chivalry.</li>
+        <li>Why did knights engage in tournaments?</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.4 COUNTRYSIDE ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="countryside">
+      <span class="icon">🌾</span> 5.4 Life in the Norman Countryside
+    </div>
+
+    <p>The vast majority of people in the Middle Ages lived in the countryside. Most were peasants and lived in villages called <strong>manors</strong> that were owned by a lord or knight. Each manor was quite small, made up of about 50 houses for peasants, as well as the <strong>manor house</strong> of the lord or knight and the <strong>church</strong> of the local priest.</p>
+
+    <p>A manor usually had a <strong>mill</strong> for grinding wheat to make bread, a blacksmith's <strong>forge</strong>, and a house for the <strong>bailiff</strong> — the man who ran the manor in the lord's absence and was responsible for collecting taxes and keeping law and order in the village. The peasants were strictly forbidden to hunt in the nearby woodland — if caught, they could lose a hand!</p>
+
+    <div class="sub-heading">Farming in the Middle Ages — The Open Field System</div>
+
+    <ul class="content-list">
+      <li>The land for crops was divided into three huge fields. Each field was divided into long strips tended by different families. Each family had strips in each of the three fields.</li>
+      <li>They practised <strong>crop rotation</strong> — the crop planted in each field changed each year.</li>
+      <li>A fourth large field called the <strong>commons</strong> was used for grazing the animals that belonged to the peasants.</li>
+    </ul>
+
+    <table class="hist-table">
+      <thead>
+        <tr><th>Year</th><th>Field 1</th><th>Field 2</th><th>Field 3</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Year 1</strong></td><td>Wheat</td><td>Oats and Barley</td><td>Fallow</td></tr>
+        <tr><td><strong>Year 2</strong></td><td>Oats and Barley</td><td>Fallow</td><td>Wheat</td></tr>
+        <tr><td><strong>Year 3</strong></td><td>Fallow</td><td>Wheat</td><td>Oats and Barley</td></tr>
+      </tbody>
+    </table>
+
+    <div class="key-term">
+      <div class="term">Fallow</div>
+      <div class="definition">To leave land uncultivated for one year so that the soil could recover its nutrients and be fertile again the next year.</div>
+    </div>
+
+    <div class="sub-heading">Peasants in the Middle Ages: Freemen and Serfs</div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🧑‍🌾</div>
+        <div class="card-title">Freemen</div>
+        <div class="card-def">Had to pay rent to the lord and pay a <strong>tithe</strong> (a tenth of their income) to the local priest — but did not have to work the land for free. They could marry and leave the manor as they wished.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⛓️</div>
+        <div class="card-title">Serfs</div>
+        <div class="card-def">Essentially belonged to their lord. They worked six days a week farming the lord's lands. They could not leave the manor or marry without the lord's permission. They paid taxes to the lord and a tithe to the priest.</div>
+        <div class="card-tip">If a serf escaped and stayed free for a year and a day, he became a freeman.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">How Serfs Lived</div>
+    <p>A serf's home was tiny — a single room with <strong>wattle and daub walls</strong>, an earthen floor and a thatched roof. Inside was cramped, dark and smoky. At night, animals were kept inside for warmth. Men wore tunics and leggings; women wore long dresses with a head scarf. Their main diet was bread, cheese and a vegetable and oat soup called <strong>pottage</strong>. They drank ale (a weak beer made from barley) because it was safer to drink than water. They ate meat very rarely, possibly only at Christmas and Easter. Leisure time was only on Sundays and saints' days — there was singing, dancing, drinking and village games.</p>
+
+    <div class="did-you-know">
+      <div class="dyk-label">📖 Did You Know?</div>
+      <p>The average life expectancy for a child born in England in 1300 was just 30–33 years. In 2000, it was 77–79 years.</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.4</div>
+      <ol>
+        <li>What crops were grown in the manor's fields and what was made from them?</li>
+        <li>Explain the following terms: open field system; fallow; commons; tithe.</li>
+        <li>Name two differences between a serf and a freeman.</li>
+        <li>Describe a serf's house.</li>
+        <li>What different types of work were done by male and female serfs?</li>
+        <li>Describe leisure time for a serf.</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.5 TOWN LIFE ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="town">
+      <span class="icon">🏘️</span> 5.5 Life in a Town in Norman England
+    </div>
+
+    <p>Towns in Norman England and around Europe in the Middle Ages were much smaller than towns today — most had about 1,000 people. Many were built on rivers or coasts so people could make money from trade, and sometimes near castles to cater to castle needs. A town needed a <strong>charter</strong> from the king — this was a contract granting the town freedom to run its own affairs but requiring it to pay taxes to the king. A <strong>mayor</strong> ran the town.</p>
+
+    <div class="sub-heading">Key Features of a Medieval Town</div>
+    <ul class="content-list">
+      <li><strong>High walls</strong> to protect against attack.</li>
+      <li><strong>Strong gates</strong> — the only way in and out. Anyone wanting to conduct business had to pay a <strong>toll</strong> (a tax on entry).</li>
+      <li>A <strong>main/high street</strong> ran from the main gates to the <strong>market square</strong> in the middle — the only wide, paved street. The richest people lived here.</li>
+      <li><strong>Narrow streets</strong> ran off the main street with houses and shops for townspeople.</li>
+      <li>Larger towns had several <strong>churches</strong> and even a <strong>cathedral</strong> if a bishop was based there.</li>
+      <li>Outside the walls was the <strong>fair green</strong> for the annual fair — a huge market where traders from all over the country sold silks, spices, tools and weapons.</li>
+    </ul>
+
+    <div class="sub-heading">Houses and Streets</div>
+    <p>The average person's house was made of wood, usually several storeys high. The higher floors stuck out over the street, blocking the sun and making streets very dark. Only important buildings — the church, town hall and richer homes — were made of stone. Craftsmen had their shops on the ground floor, with their family living above. Houses had no toilets; people used <strong>chamber pots</strong>. Fire was a constant danger due to all the wooden buildings — towns imposed <strong>curfews</strong> requiring people to extinguish their fires at sundown. Streets were little more than mud tracks with an open drain down the middle, making the spread of disease very easy.</p>
+
+    <div class="sub-heading">Craftsmen and Guilds</div>
+    <p>Craftsmen produced everyday goods — examples include butchers, bakers, blacksmiths, carpenters, stonemasons, coopers (barrel-makers), weavers and glovers (leather-makers). As most could not read, their shop sign was a picture, not words.</p>
+
+    <div class="key-term">
+      <div class="term">Guild</div>
+      <div class="definition">An organisation of people who worked in the same trade. Craftsmen of each town formed guilds — charged a fee for membership — which set standards for quality, set prices and wages, decided who could trade in the town, and looked after sick members and families of dead members.</div>
+    </div>
+
+    <div class="sub-heading">Becoming a Master Craftsman — Three Stages</div>
+    <ol class="step-list">
+      <li>
+        <div class="step-text"><strong>Apprentice</strong> (age ~12) — lived with a master craftsman, slept in the workshop, received no pay but was often treated harshly. After about seven years, he became a journeyman.</div>
+      </li>
+      <li>
+        <div class="step-text"><strong>Journeyman</strong> — must be paid for his work and could travel to different workshops and towns for work and experience.</div>
+      </li>
+      <li>
+        <div class="step-text"><strong>Master Craftsman</strong> — eventually applied to the guild. He created a <strong>masterpiece</strong> (the finest example of his work). If the guild accepted it, he could open his own workshop, train apprentices and sell his work.</div>
+      </li>
+    </ol>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.5</div>
+      <ol>
+        <li>Where were towns built in the Middle Ages and why?</li>
+        <li>How did towns protect themselves?</li>
+        <li>Describe a house in a medieval town.</li>
+        <li>Explain the following term: charter.</li>
+        <li>Why did disease spread so easily in towns?</li>
+        <li>Why did craftsmen use pictures on their signs?</li>
+        <li>What were guilds and what did they do?</li>
+        <li>Explain how a boy would train to become a master craftsman.</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.6 RELIGION ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="religion">
+      <span class="icon">⛪</span> 5.6 Religion in the Middle Ages
+    </div>
+
+    <div class="key-term">
+      <div class="term">Christendom</div>
+      <div class="definition">Medieval Europe was almost entirely Catholic. Religious belief was very strong and had a huge influence on people's daily lives. Many people lived in constant fear of going to hell. So powerful was the Catholic Church that Europe was often called <strong>Christendom</strong>, meaning the "kingdom of Christ."</div>
+    </div>
+
+    <p>The <strong>Pope in Rome</strong> was the head of the Catholic Church and the most powerful ruler in Europe. Europe was divided into <strong>dioceses</strong> by archbishops and bishops, and then into smaller <strong>parishes</strong>, run by priests. Kings often gave land and money to bishops, making the Church very wealthy. The most important churchman in Norman England was the <strong>Archbishop of Canterbury</strong>.</p>
+
+    <div class="sub-heading">Cathedrals in the Middle Ages</div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="romanesque">Romanesque Features</th>
+          <th class="gothic">Gothic Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rounded doorways, arches and windows</td>
+          <td><strong>Pointed</strong> doorways, arches and windows</td>
+        </tr>
+        <tr>
+          <td>Smaller windows</td>
+          <td>More and <strong>larger windows</strong>, sometimes with stained glass</td>
+        </tr>
+        <tr>
+          <td>Low ceilings</td>
+          <td><strong>High ceilings</strong></td>
+        </tr>
+        <tr>
+          <td>Thick pillars</td>
+          <td><strong>Narrow pillars</strong></td>
+        </tr>
+        <tr>
+          <td>Weight of roof supported by the walls — windows made small inside</td>
+          <td>Roof partially supported by <strong>flying buttresses</strong> on the outside — allowing fewer pillars, higher ceilings and more windows. This was one of the Normans' great architectural innovations.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="did-you-know">
+      <div class="dyk-label">🏛️ Irish Example</div>
+      <p><strong>Christ Church Cathedral</strong> in Dublin is an example of a building with both Gothic and Romanesque features.</p>
+    </div>
+
+    <div class="sub-heading">Priests in the Middle Ages</div>
+    <p>Every village and town made up a <strong>parish</strong>. The local priest was rare in being able to read and write, so he was often asked to write letters or advise people on legal problems. Priests gave children a very basic education focused on the Bible. They said Mass every Sunday, tended to the sick, and oversaw marriages and baptisms. As each peasant had to pay the priest a <strong>tithe</strong> every year, most priests were quite wealthy. The Church helped maintain order by encouraging people to accept their hard lives and look forward to getting their reward in heaven.</p>
+
+    <div class="sub-heading">Monasteries</div>
+    <p>Some people wanted to withdraw from the world to focus on prayer and be closer to God. They set up <strong>monasteries</strong> (for men, who became monks) and <strong>convents</strong> (for women, who became nuns). These were closed communities. An <strong>abbot</strong> was head of a monastery; an <strong>abbess</strong> of a convent.</p>
+    <p>Monasteries were very important in medieval life — they were the first places to offer education based on ability, regardless of wealth. They provided help to the poor, the sick, and shelter to travellers. They also copied books in the <strong>scriptorium</strong>.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🛏️</div>
+        <div class="card-title">Dormitory</div>
+        <div class="card-def">A large room where the monks slept.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🍽️</div>
+        <div class="card-title">Refectory</div>
+        <div class="card-def">The room where the monks ate.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🚶</div>
+        <div class="card-title">Cloisters</div>
+        <div class="card-def">Covered walkways used for prayer and walking.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📖</div>
+        <div class="card-title">Chapter House</div>
+        <div class="card-def">Where the monks gathered for readings.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏥</div>
+        <div class="card-title">Infirmary</div>
+        <div class="card-def">Where the infirmarian looked after the ill of the monastery and nearby community.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏠</div>
+        <div class="card-title">Hostel</div>
+        <div class="card-def">Guests and travellers could stay here, managed by the hosteller.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Becoming a Monk</div>
+    <p>A boy who wanted to become a monk would join a monastery as a <strong>novice</strong> around the age of 15 (though much younger children could be sent). He was taught to live by the <strong>Rule of St Benedict</strong>. He learned to read and write in Latin and would study Church teachings and history.</p>
+    <p>After a number of years, if accepted, he swore three solemn vows: <strong>poverty</strong> (could not own anything), <strong>chastity</strong> (could not get married), and <strong>obedience</strong> (must do what the abbot told him). The crown of his head was shaved — called a <strong>tonsure</strong> — and he received his <strong>habit</strong> (monks' garments). Two major monastic orders were the <strong>Benedictines</strong> and the <strong>Cistercians</strong>.</p>
+    <p>Some monks preferred to live among the people. These monks, called <strong>friars</strong>, travelled around the countryside or set up friaries in towns. Famous orders include the <strong>Franciscans</strong>, the <strong>Augustinians</strong> and the <strong>Dominicans</strong>.</p>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.6</div>
+      <ol>
+        <li>What was Christendom?</li>
+        <li>Explain the structure of the Catholic Church.</li>
+        <li>Why was the Church so wealthy in the Middle Ages?</li>
+        <li>Why was the priest an important person in manors and towns?</li>
+        <li>Why did people join monasteries and convents?</li>
+        <li>Why were monasteries so important in medieval life?</li>
+        <li>What is the difference between friars and monks?</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.7 HEALTH AND MEDICINE ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="health">
+      <span class="icon">☠️</span> 5.7 Health and Medicine in the Middle Ages
+    </div>
+
+    <p>Medieval medicine was based on the writings of the Ancient Greeks. Their beliefs about the body were very far from modern medicine.</p>
+
+    <div class="key-term">
+      <div class="term">Four Humours (Hippocrates)</div>
+      <div class="definition"><strong>Hippocrates</strong>, the "Father of Medicine", believed the body was made up of four humours: blood, black bile, yellow bile and phlegm. If a person was sick, it was due to an imbalance between these humours.</div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🩸</div>
+        <div class="card-title">Bleeding</div>
+        <div class="card-def">Cutting the patient and draining some blood to restore the balance of humours.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🫙</div>
+        <div class="card-title">Cupping</div>
+        <div class="card-def">Placing heated metal cups on the skin to draw fluids to the surface.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🐛</div>
+        <div class="card-title">Leeching</div>
+        <div class="card-def">Using leeches to draw blood or other fluids out of the body.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🪚</div>
+        <div class="card-title">Amputation</div>
+        <div class="card-def">Cutting off a limb to stop infection from spreading throughout the body.</div>
+      </div>
+    </div>
+
+    <p>Herbal medicine was also common, with mixtures of herbs given to the sick. <strong>Monasteries</strong> specialised in the care of the sick and functioned as the first hospitals. Medieval conditions were cramped and filthy, and people lacked the basics of good sanitation. Even minor wounds often became infected and could kill. Diseases widespread in the Middle Ages included typhoid, leprosy, smallpox, puerperal fever and dysentery.</p>
+
+    <div class="sub-heading">The Black Death — ⚠️ MUST KNOW</div>
+
+    <div class="remember">
+      <span class="icon">⚠️</span>
+      <div class="text">
+        <strong>This is a key exam topic — know it well!</strong>
+        The Black Death is one of the most important topics in this chapter. Be able to describe: what it was, how it spread, symptoms, how people responded, and its impact.
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">The Black Death (Bubonic Plague) — 1347–1359</div>
+      <div class="definition">The worst disease to affect Europe in the Middle Ages was the <strong>bubonic plague</strong>. It is estimated to have killed at least one-third of Europe's population and became known as the <strong>Black Death</strong>. The plague was carried by fleas, thought to have first arrived via ships' rats from the Black Sea area, spreading along the trade network throughout Europe.</div>
+    </div>
+
+    <table class="hist-table">
+      <thead>
+        <tr><th>Aspect</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cause</strong></td>
+          <td>Bacterium <em>Yersinia pestis</em>, carried by fleas on rats. Isolated in 1894; confirmed as the Black Death through burial analysis in 2010.</td>
+        </tr>
+        <tr>
+          <td><strong>Symptoms</strong></td>
+          <td>Oozing swellings (buboes) all over the body, darkly discoloured skin, filling of the lungs with phlegm. Once infected, a 75% chance of dying within a week.</td>
+        </tr>
+        <tr>
+          <td><strong>How it spread</strong></td>
+          <td>Extremely contagious — contracted by sneezing, spitting, or touching dead bodies. Spread quickly in crowded, dirty towns.</td>
+        </tr>
+        <tr>
+          <td><strong>How people responded</strong></td>
+          <td>Believed it was a result of God's anger at human sin — sought to cure it through prayer, fasting or beating themselves with whips. Others blamed outsiders, especially Jewish communities.</td>
+        </tr>
+        <tr>
+          <td><strong>Impact</strong></td>
+          <td>The feudal system went into decline; serfs left manors to replace those who died. Peasants who remained could demand better treatment, reduced taxes and more land. Doctors began to question their practices, leading to big changes in medicine during the Renaissance.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.7</div>
+      <ol>
+        <li>What were medieval medical practices based on?</li>
+        <li>What were the main treatments for illness in the Middle Ages?</li>
+        <li>Why did diseases spread so easily?</li>
+        <li>What was the Black Death?</li>
+        <li>How was it spread?</li>
+        <li>What were the symptoms?</li>
+        <li>How did people respond to the plague?</li>
+        <li>Why did the Black Death lead to better conditions for peasants?</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.8 NORMANS IN IRELAND ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="ireland">
+      <span class="icon">🍀</span> 5.8 The Normans in Ireland
+    </div>
+
+    <p>In 1167 the King of Leinster, <strong>Dermot MacMurrough</strong>, was stripped of his kingdom by <strong>Rory O'Connor</strong>, the High King of Ireland. MacMurrough asked King <strong>Henry II</strong> of England for help in regaining his lands, offering to become Henry's vassal in return. Henry allowed him to recruit soldiers from among his Norman lords.</p>
+
+    <p>MacMurrough made a deal with <strong>Richard de Clare</strong> (nicknamed <strong>Strongbow</strong>) for a Norman army: Strongbow would marry MacMurrough's daughter <strong>Aoife</strong> and become King of Leinster upon MacMurrough's death.</p>
+
+    <p>In <strong>1169</strong>, MacMurrough invaded Ireland with a force of 40 knights, 500 foot soldiers and 360 archers. They easily defeated the Vikings of Wexford. The Normans were successful in their military campaigns because of their use of horses and archers and their better armour and swords. In 1170, Strongbow arrived with 200 knights and 1,000 foot soldiers. He and MacMurrough marched on Dublin, taking the city and ending Viking power in Ireland.</p>
+
+    <p>In 1171 MacMurrough died and Strongbow became King of Leinster. Henry II landed in September 1171 with 500 knights and 4,000 soldiers to establish himself as ruler of Ireland. Many Irish kings swore allegiance to Henry, who gave himself the title of <strong>'Lord of Ireland'</strong>.</p>
+
+    <div class="sub-heading">The Impact of Norman Rule on Ireland</div>
+
+    <ul class="impact-list">
+      <li><span class="imp-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> The Normans introduced <strong>English rule</strong> to Ireland — it would last for nearly 800 years.</li>
+      <li><span class="imp-icon">🏰</span> The <strong>feudal system</strong> was introduced to Ireland.</li>
+      <li><span class="imp-icon">🗼</span> The Normans built big <strong>castles</strong> (e.g. Trim, Carrickfergus, Kilkenny). Towns, manors and villages grew up around them.</li>
+      <li><span class="imp-icon">🌾</span> Farming practices shifted from herding cattle to <strong>growing crops</strong>.</li>
+      <li><span class="imp-icon">⚖️</span> <strong>English Common Law</strong> replaced the old Gaelic Brehon Law system.</li>
+      <li><span class="imp-icon">📛</span> <strong>Norman names</strong> became very common in Ireland — names with 'Fitz' (meaning 'son of'), and surnames Burke, Butler, Browne and Barry are Norman names.</li>
+    </ul>
+
+    <p>However, the Gaelic Irish also influenced the Normans. Many Norman families intermarried with native Irish (Gaelic) chieftains. The new families became known as the <strong>Anglo-Irish</strong> or <strong>'Old English'</strong>. They adopted the Irish language, dressed like the Gaelic Irish and followed Irish customs and laws — becoming, as one English official noted, "more Irish than the Irish themselves." Several failed attempts were made to ban these practices, such as the <strong>Statutes of Kilkenny</strong> in 1367.</p>
+
+    <p>The Normans never fully conquered Ireland. Gaelic rule remained strong in the north and west. Over time, the Anglo-Irish lords became increasingly independent. Direct English control was limited to an area surrounding Dublin known as <strong>the Pale</strong>.</p>
+
+    <div class="checkpoint">
+      <div class="cp-title">✅ Checkpoint 5.8</div>
+      <ol>
+        <li>When and why did the Normans invade Ireland?</li>
+        <li>Why did Henry II visit Ireland in 1171?</li>
+        <li>Name three ways in which the Normans changed Ireland.</li>
+        <li>Why were the Normans in Ireland described as "more Irish than the Irish themselves"?</li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════ 5.9 LEGACY ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="legacy">
+      <span class="icon">🌍</span> 5.9 The Legacy of the Normans
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">👑</div>
+        <div class="card-title">The British Royal Family</div>
+        <div class="card-def">When William the Conqueror became King of England in 1066, he established a new ruling dynasty. All kings and queens of England since then are directly descended from him.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Architecture</div>
+        <div class="card-def">The Normans made significant contributions to architecture across England and Ireland. They introduced Romanesque and Gothic styles into church building, meaning much bigger buildings with higher roofs could be built. Christ Church Cathedral in Dublin is an example.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🇫🇷</div>
+        <div class="card-title">Language</div>
+        <div class="card-def">After 1066, French became the language of government in England, as Normans replaced the Anglo-Saxon nobility. French heavily influenced the development of the English language — over 10,000 words in modern-day English have their roots in French.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">✝️</div>
+        <div class="card-title">The Crusades</div>
+        <div class="card-def">Norman knights played important parts in many wars and battles across Europe and the Mediterranean. Beginning in 1095 and concluding in 1291, the Crusades were a series of invasions of the Middle East by European Christians to wrest control of the Holy Land from its Muslim rulers.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ KEY TERMS ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="keyterms">
+      <span class="icon">📖</span> Key Terms
+    </div>
+
+    <div class="key-term"><div class="term">Feudalism</div><div class="definition">The system of land ownership where rulers (kings, lords) divided land among their followers in return for loyalty and taxes.</div></div>
+    <div class="key-term"><div class="term">Peasants</div><div class="definition">The people who worked on a lord's land.</div></div>
+    <div class="key-term"><div class="term">Oath of Chivalry</div><div class="definition">Sworn by a knight: to stay loyal to his lord, protect the poor and weak, and be brave in battle.</div></div>
+    <div class="key-term"><div class="term">Open Field System</div><div class="definition">The system of farming where peasants were each given strips of land to farm in large fields.</div></div>
+    <div class="key-term"><div class="term">Fallow</div><div class="definition">Leave the land uncultivated for one year so that the soil could recover its nutrients.</div></div>
+    <div class="key-term"><div class="term">Commons</div><div class="definition">A large field used for grazing the animals that belonged to the peasants.</div></div>
+    <div class="key-term"><div class="term">Tithe</div><div class="definition">The payment of one-tenth of a peasant's annual income to the Church.</div></div>
+    <div class="key-term"><div class="term">Charter</div><div class="definition">A contract whereby a town was granted freedom to run its own affairs but paid taxes to the king.</div></div>
+    <div class="key-term"><div class="term">Guild</div><div class="definition">An organisation of skilled people who worked in the same trade.</div></div>
+    <div class="key-term"><div class="term">Christendom</div><div class="definition">The name given to medieval Christian Europe — meaning "the kingdom of Christ."</div></div>
+    <div class="key-term"><div class="term">Black Death / Bubonic Plague</div><div class="definition">The bubonic plague (caused by the bacterium <em>Yersinia pestis</em>) which killed at least one-third of Europe's population between 1347–1359.</div></div>
+    <div class="key-term"><div class="term">The Pale</div><div class="definition">The area surrounding Dublin that was under direct English control after the Norman invasion of Ireland.</div></div>
+
+    <!-- ═══════════════════ QUIZ ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="quiz">
+      <span class="icon">🧠</span> Quick-Fire Quiz
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was <strong>feudalism</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Feudalism</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>system of land ownership</strong> where rulers divided land among their followers (nobles/vassals) in return for loyalty and taxes. The king granted land (a <em>fief</em>) to lords, who gave land to knights, who looked after peasants.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Who were the <strong>Normans</strong> and where did they originate?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Normans</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The Normans were descendants of <strong>Vikings who settled in north-west France</strong>. This area became known as Normandy. They were among the most powerful groups in medieval Europe, eventually controlling England, Ireland, France, Italy, Tunisia, Libya and the Middle East.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was a <strong>motte and bailey</strong> castle?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Castle</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A <strong>temporary castle</strong>. The <strong>motte</strong> was a small artificial hill with a wooden tower (keep) at the top. The <strong>bailey</strong> was a large enclosed area below, surrounded by high wooden fences and a ditch or moat.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was the <strong>open field system</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Countryside</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The system of farming where: (1) land was divided into <strong>three large fields</strong> split into strips for different families; (2) <strong>crop rotation</strong> was practised; (3) a <strong>commons</strong> field was used for grazing peasants' animals.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What were the <strong>three stages</strong> of becoming a knight?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Knights</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Page</strong> (age 7 — learned manners, horse riding, basic skills) → <strong>Squire</strong> (age 14 — learned to fight on horseback, accompanied lord to battle) → <strong>Knight</strong> (age 21 — underwent ceremony of dubbing, swore the oath of chivalry).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was the <strong>Black Death</strong> and what caused it?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Black Death</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>bubonic plague</strong> (1347–1359) which killed at least one-third of Europe's population. It was caused by the bacterium <em>Yersinia pestis</em>, carried by fleas on rats, which arrived via ships from the Black Sea area.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What were the <strong>symptoms</strong> of the Black Death?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Black Death</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Oozing swellings called <strong>buboes</strong> all over the body, darkly discoloured skin, filling of the lungs with phlegm. Once infected, there was a 75% chance of dying within a week.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was the <strong>impact</strong> of the Black Death?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Black Death</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>feudal system went into decline</strong> — many serfs left manors and moved to replace those who had died. Peasants who remained could demand <strong>better treatment, reduced taxes and more land</strong>. Doctors began to question their practices, leading to changes in medicine during the Renaissance.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name three <strong>impacts of Norman rule on Ireland</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Ireland</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Any three from: <strong>(1) English rule</strong> was introduced (lasting ~800 years) · <strong>(2) Feudal system</strong> introduced · <strong>(3) Castles</strong> built (e.g. Trim, Carrickfergus) · <strong>(4) Farming</strong> shifted to growing crops · <strong>(5) English Common Law</strong> replaced Brehon Law · <strong>(6) Norman names</strong> became common (Fitz, Burke, Butler).</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What was <strong>Christendom</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Religion</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The name given to <strong>medieval Catholic Europe</strong> — meaning "the kingdom of Christ." The Catholic Church was so powerful that it dominated every aspect of people's daily lives. The Pope in Rome was the most powerful ruler in Europe.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>guild</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Town Life</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">An <strong>organisation of skilled people who worked in the same trade</strong>. Guilds set standards for quality of members' work, set prices and wages, decided who could trade in the town, and looked after sick members and families of dead members.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the difference between <strong>Romanesque</strong> and <strong>Gothic</strong> cathedrals?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Religion</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><strong>Romanesque:</strong> rounded arches, smaller windows, low ceilings, thick pillars. <strong>Gothic:</strong> pointed arches, large/stained glass windows, high ceilings, narrow pillars, flying buttresses. Flying buttresses were a Norman innovation — they supported the roof from the outside, allowing for taller, lighter buildings.</div>
+    </div>
+
+    <!-- ═══════════════════ SUMMARY TABLE ═══════════════════ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+
+    <table class="hist-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Facts</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Normans</strong></td>
+          <td>Vikings who settled in Normandy, France. Conquered England at Battle of Hastings, 1066.</td>
+          <td>Know William the Conqueror's name and the date 1066.</td>
+        </tr>
+        <tr>
+          <td><strong>Feudalism</strong></td>
+          <td>Land ownership system: King → Lords → Knights → Peasants. Key word: fief (land granted).</td>
+          <td>Draw the pyramid! Know the oath of fealty.</td>
+        </tr>
+        <tr>
+          <td><strong>Motte &amp; Bailey</strong></td>
+          <td>Temporary castle: motte = artificial hill with keep; bailey = enclosed area below.</td>
+          <td>Distinguish motte and bailey clearly.</td>
+        </tr>
+        <tr>
+          <td><strong>Stone Castle</strong></td>
+          <td>Key parts: curtain walls, keep, dungeons, battlements, bailey, gatehouse, moat, portcullis, drawbridge.</td>
+          <td>Know at least 5 castle features and their purpose.</td>
+        </tr>
+        <tr>
+          <td><strong>Knights</strong></td>
+          <td>3 stages: Page (7) → Squire (14) → Knight (21). Swore oath of chivalry. Fought on horseback.</td>
+          <td>Know all 3 stages AND what happens at each.</td>
+        </tr>
+        <tr>
+          <td><strong>Open Field System</strong></td>
+          <td>Three fields, crop rotation, fallow year, commons field for grazing.</td>
+          <td>Know what "fallow" means and why it was used.</td>
+        </tr>
+        <tr>
+          <td><strong>Serfs vs Freemen</strong></td>
+          <td>Serfs: belonged to lord, 6 days' work, couldn't leave without permission. Freemen: paid rent but free to leave.</td>
+          <td>Two key differences: ownership of freedom + work obligations.</td>
+        </tr>
+        <tr>
+          <td><strong>Medieval Towns</strong></td>
+          <td>Charter, high walls, toll gates, market square, guilds. Houses wooden, fire a constant danger.</td>
+          <td>Explain why disease spread easily — filthy streets, cramped houses.</td>
+        </tr>
+        <tr>
+          <td><strong>Christendom</strong></td>
+          <td>Catholic Europe; Pope most powerful; Church divided into dioceses &gt; parishes. Flying buttresses = Gothic innovation.</td>
+          <td>Know difference between Romanesque and Gothic cathedrals.</td>
+        </tr>
+        <tr>
+          <td><strong>Black Death</strong></td>
+          <td>1347–1359. Bubonic plague. Killed 1/3 of Europe. Fleas on rats. Symptoms: buboes, discoloured skin.</td>
+          <td>Know cause, spread, symptoms, response, and impact on feudalism.</td>
+        </tr>
+        <tr>
+          <td><strong>Normans in Ireland</strong></td>
+          <td>1169 invasion. MacMurrough + Strongbow. Henry II 1171. Impact: English rule, feudalism, castles, Common Law, Norman names.</td>
+          <td>Know three impacts of Norman rule on Ireland.</td>
+        </tr>
+        <tr>
+          <td><strong>Legacy</strong></td>
+          <td>British royal family descended from William. 10,000+ French words in English. The Crusades.</td>
+          <td>Christ Church Cathedral, Dublin = Norman architecture in Ireland.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; History Home</a>
+    <a href="ch1.html">Ch 1: The Historian</a>
+    <a href="ch2.html">Ch 2: The Archaeologist</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
