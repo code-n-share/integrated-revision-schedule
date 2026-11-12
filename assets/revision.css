@@ -82,3 +82,10 @@ li.collapsed > ul { display: none; }
 details.rv-dump { background: var(--rv-accent-light); border: 1.5px dashed var(--rv-accent); border-radius: 14px; padding: 14px 18px; margin: 14px 0 24px; }
 details.rv-dump summary { cursor: pointer; font-weight: 700; }
 details.rv-dump textarea { width: 100%; min-height: 90px; margin-top: 10px; padding: 10px; border: 1.5px solid var(--rv-border); border-radius: 10px; font: 14px 'DM Sans', sans-serif; }
+
+/* Practice questions (click to reveal a model answer) */
+details.rv-qa { background: #fff; border: 1.5px solid var(--rv-border); border-radius: 14px; margin: 10px 0; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.05); }
+details.rv-qa summary { cursor: pointer; font-weight: 600; font-size: 14px; padding: 14px 18px; }
+details.rv-qa summary:hover { background: var(--rv-accent-light); }
+details.rv-qa .rv-model { padding: 12px 18px 16px; border-top: 1px solid var(--rv-border); font-size: 14px; }
+details.rv-qa .rv-model::before { content: "Model answer: "; font-weight: 700; color: var(--rv-ok); }

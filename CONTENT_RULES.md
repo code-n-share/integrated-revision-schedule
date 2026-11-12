@@ -22,7 +22,7 @@ Sidebar link + `id` for each; every section heading uses `.section-heading` with
 | 6 | **Flashcards** | 1 card per key term/fact/formula (aim 10–25) | `.rv-flash` |
 | 7 | **Fill the gaps** | Recall exact wording of definitions (5–10 sentences) | `.rv-cloze` |
 | 8 | **Quick quiz** | 6–12 MCQs with explanations | `.rv-quiz` |
-| 9 | **Practice questions** | Exam-style / worked, "Show Solution" pattern | `.problem-card` / `.quiz-card` |
+| 9 | **Practice questions** | Exam-style questions with click-to-reveal model answers (4–6) | `details.rv-qa` |
 | 10 | **Exam quick-reference summary** | One table: Topic · Rule/Definition · Exam tip | `table` |
 | 11 | **Revision tracker** | Spaced repetition: Day 0,1,3,7,14,30 | `.rv-tracker` |
 
@@ -57,6 +57,9 @@ Details and live examples are in `templates/chapter-template.html`.
 <!-- Fill the gaps: {{answer}} or {{answer|alternative}} -->
 <div class="rv-cloze"><p>Work = force × {{distance}}.</p></div>
 
+<!-- Practice question: click to reveal the model answer -->
+<details class="rv-qa"><summary>Question?</summary><div class="rv-model">Model answer</div></details>
+
 <!-- Brain dump + spaced-revision tracker -->
 <details class="rv-dump"><summary>…</summary><textarea></textarea></details>
 <div class="rv-tracker"></div>
@@ -69,7 +72,7 @@ Quality bar for the question sets:
 
 ## 5. Design & code conventions
 - Static HTML only, no build step, no frameworks. Fonts: Sora (headings), DM Sans (body), JetBrains Mono (formulae).
-- Each subject keeps its accent colour (take it from that subject's `index.html`); set `--accent` / `--accent-light` in the chapter's `:root`.
+- Each subject keeps its accent colour (take it from that subject's `index.html`); set `--accent` / `--accent-light` in the chapter's `:root`.  If the accent is dark or saturated (e.g. history red), switch text on the accent (sidebar header, badge) to white for contrast.
 - Layout: fixed 240px dark sidebar, hero, `.content` max 900px, bottom chapter-nav bar. Must stay readable on mobile (sidebar hidden under 800px).
 - Interactive state lives in `localStorage` under `rv:<page path>:…`; never require a server or login.
 - Accessible: real `<button>`s for actions, sufficient contrast, don't rely on colour alone (✓/✗ icons accompany right/wrong).

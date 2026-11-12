@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History Revision – Ch 9 The Plantations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #B91C1C; --accent-light: #FEE2E2;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: var(--text); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: var(--text); font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+      /* red accent: light text for contrast */
+    .sidebar-header, .chapter-badge { color: #fff; }
+    .chapter-hero h1 span { color: #FCA5A5; }
+    .sidebar a:hover, .sidebar a.active { border-left-color: #FCA5A5; }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">History Revision</div><div class="book-title">Year 2 – The Plantations</div></div>
+    <a href="index.html">&larr; History Year 2</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#ireland">1. Ireland in the 1500s</a>
+    <a href="#tudors">2. The Tudors</a>
+    <a href="#reasons">3. The Tudors’ Reasons for the Plantations</a>
+    <a href="#laois">4. First Plantation – Laois-Offaly (Mary I)</a>
+    <a href="#munster">5. Second Plantation – Munster (Elizabeth I)</a>
+    <a href="#ulster">6. Final Plantation – Ulster (James I) ★</a>
+    <a href="#identity">7. Effect of the Plantations on Irish Identity</a>
+    <a href="#towns">8. Growth of Towns</a>
+    <a href="#plantations-table">9. Summary of the Irish Plantations</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 9 · The Plantations</div>
+      <h1>🏰 <span>The Plantations</span></h1>
+      <p class="chapter-meta">History · Year 2 · Annual Exam Revision</p>
+      <div><span class="goal-tag">✔ Ireland in the 1500s</span><span class="goal-tag">✔ The Tudors</span><span class="goal-tag">✔ Reasons for the Plantations</span><span class="goal-tag">✔ Laois-Offaly, Munster and Ulster</span><span class="goal-tag">✔ Effects on identity</span><span class="goal-tag">✔ Growth of towns</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about The Plantations, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>The Plantations<ul><li>Ireland in the 1500s<ul><li>Pale: loyal to the Crown</li><li>Anglo-Irish</li><li>Gaelic Irish (Brehon Law)</li></ul></li><li>The Tudors<ul><li>Henry VII first Tudor</li><li>Henry VIII: Church of England</li><li>Mary, Elizabeth, Edward</li></ul></li><li>Reasons<ul><li>Expand beyond the Pale</li><li>Spread English laws + Protestantism</li><li>Stop alliances with Catholic countries</li><li>Stop rebellions</li><li>Save money</li></ul></li><li>Plantations<ul><li>Laois-Offaly (Mary I): failure</li><li>Munster (Elizabeth I): partial success</li><li>Ulster (James I): most successful</li></ul></li><li>Effects<ul><li>Protestant Ascendancy</li><li>Penal Laws</li><li>Gaelic culture declined</li><li>Tensions to this day</li></ul></li><li>Towns<ul><li>Medieval: Dublin</li><li>Plantation: Killarney, Portlaoise, Derry</li><li>Canals + railways</li><li>Mullingar, Ballina</li></ul></li></ul></li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><strong>The Pale</strong></td><td>Dublin and its surrounding areas – the only part of Ireland under English control in the 1500s.</td></tr>
+          <tr><td><strong>Anglo-Irish</strong></td><td>People descended from the Anglo-Normans who had become independent of the English crown and adopted Gaelic laws and traditions.</td></tr>
+          <tr><td><strong>Gaelic Irish</strong></td><td>Chieftains who followed Brehon Law.</td></tr>
+          <tr><td><strong>Act of Supremacy</strong></td><td>Henry VIII made himself head of the Church of England.</td></tr>
+          <tr><td><strong>Plantation</strong></td><td>Confiscating land and settling it with English (and later Scottish) planters. <!-- gloss added: summarised from notes --></td></tr>
+          <tr><td><strong>Planters</strong></td><td>Settlers brought in to farm confiscated land (undertakers, servitors and loyal Irish in Ulster).</td></tr>
+          <tr><td><strong>Surrender and regrant</strong></td><td>Henry VIII’s first, peaceful policy to control Ireland.</td></tr>
+          <tr><td><strong>Protestant Ascendancy</strong></td><td>The wealthy Protestant landlord class that owned 85% of land by 1700.</td></tr>
+          <tr><td><strong>Penal Laws</strong></td><td>Laws that discriminated against Catholics.</td></tr>
+          <tr><td><strong>Londonderry</strong></td><td>Name given to Derry by the London guilds who worked there.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="timeline">⏳ Timeline</div>
+      <table><thead><tr><th>Date</th><th>Event</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tudor era begins</strong></td><td>King Henry VII is the first Tudor monarch</td></tr>
+          <tr><td><strong>Henry VIII</strong></td><td>Breaks from Rome, Act of Supremacy; surrender and regrant</td></tr>
+          <tr><td><strong>Mary I</strong></td><td>Laois-Offaly plantation – a failure</td></tr>
+          <tr><td><strong>Elizabeth I</strong></td><td>Munster plantation – partial success</td></tr>
+          <tr><td><strong>James I</strong></td><td>Ulster plantation – the most successful</td></tr>
+          <tr><td><strong>1700</strong></td><td>1700 Protestants own 85% of the land</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="ireland">🗺️ 1. Ireland in the 1500s</div>
+      <p>Ireland was <strong>divided into three major groups</strong>:</p>
+      <ul>
+        <li>People <strong>loyal to the English Crown</strong> who lived in <strong>the Pale</strong> (Dublin and its surrounding areas, the only part of Ireland under English control).</li>
+        <li>The <strong>Anglo-Irish</strong> – descended from the Anglo-Normans, they had become independent of the English crown and had adopted Gaelic laws and traditions.</li>
+        <li>The <strong>Gaelic Irish</strong> chieftains, who followed <strong>Brehon Law</strong>.</li>
+      </ul>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> Three groups: <strong>Pale</strong> (loyal), <strong>Anglo-Irish</strong> (went Gaelic), <strong>Gaelic</strong> (Brehon Law).</div>
+
+      <div class="section-heading" id="tudors">👑 2. The Tudors</div>
+      <ul>
+        <li>The first Tudor monarch was <strong>King Henry VII</strong>.</li>
+        <li>His son <strong>Henry VIII</strong> was originally Catholic, but broke from the church to divorce his first wife <strong>Catherine of Aragon</strong> as she had not provided him with a male heir.</li>
+        <li>He then married <strong>Anne Boleyn</strong> and set up his own church, the <strong>Church of England</strong>, with himself as head (<strong>Act of Supremacy</strong>).</li>
+        <li>Henry had a total of <strong>six wives</strong> and <strong>three children</strong>: <strong>Mary</strong> (by his first wife), <strong>Elizabeth</strong> (by Anne Boleyn) and <strong>Edward</strong> (by his third wife, Jane Seymour).</li>
+      </ul>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> Henry VII was the <em>first</em> Tudor; Henry VIII broke from the Church. Don’t swap them.</div>
+
+      <div class="section-heading" id="reasons">🎯 3. The Tudors’ Reasons for the Plantations</div>
+      <ul>
+        <li>To <strong>expand their territory</strong> beyond the Pale</li>
+        <li>To spread <strong>English laws, customs and culture</strong></li>
+        <li>To spread <strong>Protestantism</strong></li>
+        <li>To prevent the Catholic Gaelic Irish forming <strong>alliances with other Catholic countries</strong> to attack England</li>
+        <li>To prevent further <strong>rebellions</strong> from the Gaelic Irish</li>
+        <li>To <strong>save money</strong></li>
+      </ul>
+      <div class="key-term"><strong>Before the plantations:</strong> At first, Henry attempted to control Ireland using peaceful means through a policy of <strong>surrender and regrant</strong>.</div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>L-L-R-P-A-M</strong> hook: <strong>L</strong>and, <strong>L</strong>aws/culture, <strong>R</strong>ebellion stopped, <strong>P</strong>rotestantism, <strong>A</strong>lliances stopped, <strong>M</strong>oney saved.</div>
+
+      <div class="section-heading" id="laois">1️⃣ 4. First Plantation – Laois-Offaly (Mary I)</div>
+      <ul>
+        <li>The <strong>O’Moores</strong> and the <strong>O’Connors of Laois and Offaly</strong> frequently raided the Pale.</li>
+        <li><strong>Mary I</strong> ordered their lands to be <strong>confiscated as punishment</strong>.</li>
+        <li>It was a <strong>failure</strong>: not enough planters came from England, the confiscated lands were still attacked by the Gaelic Irish, and English customs/laws didn’t spread.</li>
+        <li>Gaelic planters had to be given land.</li>
+        <li>Led to better planning for future plantations.</li>
+      </ul>
+
+      <div class="section-heading" id="munster">2️⃣ 5. Second Plantation – Munster (Elizabeth I)</div>
+      <ul>
+        <li>Munster was ruled by the <strong>Fitzgeralds of Desmond</strong>, who remained Catholic.</li>
+        <li><strong>Elizabeth I</strong>, who was Protestant, sent <strong>adventurers</strong> to claim land and spread English law, language and religion.</li>
+        <li><strong>Partially successful</strong>: new trades, towns and farming methods were set up, but only a <strong>small number of planters</strong> came (about 4,000; the Crown wanted 20,000) and confiscated lands were still attacked by the Gaelic Irish.</li>
+        <li>Planters still had to rent to the Gaelic Irish.</li>
+        <li>Lessons were learned for future plantations.</li>
+      </ul>
+
+      <div class="section-heading" id="ulster">3️⃣ 6. Final Plantation – Ulster (James I) ★</div>
+      <div class="key-term"><strong>Most important:</strong> This is the plantation you need to know best.</div>
+      <ul>
+        <li>Ulster was dominated by powerful Gaelic Irish clans like the <strong>O’Neills of Tyrone</strong> and the <strong>O’Donnells of Donegal</strong>.</li>
+        <li>Organised by <strong>James I</strong>. The land was divided into <strong>smaller estates</strong> than Munster and the rules for <strong>planters</strong> (undertakers, servitors and loyal Irish) were stricter.</li>
+        <li>James reserved the county of <strong>Derry for craft guilds</strong>.</li>
+        <li>More successful than both previous plantations: many planters came (large numbers of English and Scottish settlers), the Protestant population increased, new towns and markets were set up, English-style houses and castles were built and the Irish were driven off the land that had always been theirs.</li>
+        <li><strong>Cromwell</strong> confiscated more land.</li>
+        <li><strong>Rebellions persisted</strong>. Tensions flared between Catholics and Protestants and still exist to this day.</li>
+      </ul>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> Ulster = <strong>U</strong>ndertakers, <strong>L</strong>arge numbers of settlers, <strong>S</strong>maller estates, <strong>T</strong>owns, <strong>E</strong>nglish-style houses, <strong>R</strong>ebellions kept going.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> Don’t say the earlier plantations succeeded – Laois-Offaly was a failure, Munster only partially successful. Ulster was the most successful.</div>
+
+      <div class="section-heading" id="identity">🪪 7. Effect of the Plantations on Irish Identity</div>
+      <ul>
+        <li>Most of Ireland’s population remained Catholic, but by <strong>1700 Protestants owned 85% of the land</strong>.</li>
+        <li>This wealthy landlord class became known as the <strong>Protestant Ascendancy</strong>.</li>
+        <li>The division and inequality between Catholics and Protestants gave rise to a <strong>long history of anger, distrust and violence</strong>.</li>
+        <li>Catholics were also discriminated against by the <strong>Penal Laws</strong>.</li>
+        <li><strong>Gaelic Irish laws, language, culture and farming methods declined.</strong></li>
+      </ul>
+
+      <div class="section-heading" id="towns">🏘️ 8. Growth of Towns</div>
+      <ul>
+        <li>Many Irish towns <strong>founded as Viking settlements</strong> (wattle and daub houses) continued to grow during and because of the plantations.</li>
+        <li><strong>Dublin</strong> is an example of a <strong>medieval town</strong>: the centre of Norman rule in Ireland and a busy port for foreign trade. Many worked at a trade/craft, but it was very unsanitary.</li>
+        <li><strong>Plantation towns</strong> like <strong>Killarney and Portlaoise</strong> had a different layout (courthouse, gaol and Protestant church).</li>
+        <li><strong>Derry</strong> was renamed <strong>Londonderry</strong> by the London guilds who worked there.</li>
+        <li>After the plantations, landowners built market towns close to their estates, which <strong>expanded as canals and railways</strong> better connected the country. Transport links such as <strong>Mullingar</strong> and coast towns like <strong>Ballina</strong> were founded.</li>
+        <li>Ireland’s larger cities like <strong>Dublin and Belfast</strong> also expanded.</li>
+      </ul>
+
+      <div class="section-heading" id="plantations-table">📊 9. Summary of the Irish Plantations</div>
+      <table><thead><tr><th>Plantation</th><th>Gaelic family</th><th>English monarch</th><th>Results</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Laois-Offaly</strong></td><td>The O’Moores of Laois and the O’Connors of Offaly</td><td>Mary I</td><td>Failure; not enough planters; Gaelic planters had to be given land; English laws and customs did not flourish; confiscated lands attacked; led to better planning</td></tr>
+          <tr><td><strong>Munster</strong></td><td>The Fitzgeralds of Desmond</td><td>Elizabeth I</td><td>Partial success; about 4,000 planters (Crown wanted 20,000); still had to rent to the Gaelic Irish; lands still attacked; new towns, farming methods and trades; lessons learned</td></tr>
+          <tr><td><strong>Ulster ★</strong></td><td>O’Neills of Tyrone and O’Donnells of Donegal</td><td>James I</td><td>Most successful; Cromwell confiscated more land; large numbers of English and Scottish settlers; Protestant population grew; tensions still exist; new towns and markets; English-style houses and castles; rebellions persisted</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Three groups in Ireland in the 1500s?</div><div class="a">Loyal to the Crown (the Pale), the Anglo-Irish, the Gaelic Irish</div></div>
+        <div class="rv-card"><div class="q">What was the Pale?</div><div class="a">Dublin and surrounding areas – the only part of Ireland under English control</div></div>
+        <div class="rv-card"><div class="q">Who were the Anglo-Irish?</div><div class="a">Descendants of the Anglo-Normans, independent of the Crown, who had adopted Gaelic laws and traditions</div></div>
+        <div class="rv-card"><div class="q">What law did the Gaelic Irish chieftains follow?</div><div class="a">Brehon Law</div></div>
+        <div class="rv-card"><div class="q">First Tudor monarch?</div><div class="a">Henry VII</div></div>
+        <div class="rv-card"><div class="q">Why did Henry VIII break from the Church?</div><div class="a">To divorce Catherine of Aragon, who had not given him a male heir</div></div>
+        <div class="rv-card"><div class="q">What did the Act of Supremacy do?</div><div class="a">Made Henry VIII head of the Church of England</div></div>
+        <div class="rv-card"><div class="q">Henry VIII’s children</div><div class="a">Mary (Catherine of Aragon), Elizabeth (Anne Boleyn), Edward (Jane Seymour) – six wives in total</div></div>
+        <div class="rv-card"><div class="q">Henry’s first policy in Ireland</div><div class="a">Peaceful control through surrender and regrant</div></div>
+        <div class="rv-card"><div class="q">Give three Tudor reasons for plantations</div><div class="a">Expand beyond the Pale; spread English laws/culture; spread Protestantism (also stop alliances, stop rebellions, save money)</div></div>
+        <div class="rv-card"><div class="q">Why did the Tudors fear Catholic alliances?</div><div class="a">The Gaelic Irish might ally with other Catholic countries to attack England</div></div>
+        <div class="rv-card"><div class="q">Laois-Offaly: monarch and Gaelic families</div><div class="a">Mary I; O’Moores and O’Connors of Laois and Offaly</div></div>
+        <div class="rv-card"><div class="q">Laois-Offaly: result</div><div class="a">Failure – too few planters, lands still attacked, English laws did not spread</div></div>
+        <div class="rv-card"><div class="q">Munster: monarch and Gaelic family</div><div class="a">Elizabeth I; the Fitzgeralds of Desmond</div></div>
+        <div class="rv-card"><div class="q">Munster: result</div><div class="a">Partial success – about 4,000 planters (20,000 wanted); new towns and farming methods</div></div>
+        <div class="rv-card"><div class="q">Ulster: monarch and Gaelic families</div><div class="a">James I; O’Neills of Tyrone and O’Donnells of Donegal</div></div>
+        <div class="rv-card"><div class="q">How was the Ulster plantation organised?</div><div class="a">Smaller estates than Munster, stricter rules for planters (undertakers, servitors, loyal Irish); Derry reserved for craft guilds</div></div>
+        <div class="rv-card"><div class="q">Why is Ulster the most important plantation?</div><div class="a">Most successful – many English and Scottish settlers, Protestant population grew, tensions still exist today</div></div>
+        <div class="rv-card"><div class="q">Protestant Ascendancy?</div><div class="a">The wealthy Protestant landlord class; by 1700 Protestants owned 85% of the land</div></div>
+        <div class="rv-card"><div class="q">Which laws discriminated against Catholics?</div><div class="a">The Penal Laws</div></div>
+        <div class="rv-card"><div class="q">Effect on Gaelic culture?</div><div class="a">Gaelic laws, language, culture and farming methods declined</div></div>
+        <div class="rv-card"><div class="q">Who renamed Derry Londonderry?</div><div class="a">The London guilds who worked there</div></div>
+        <div class="rv-card"><div class="q">Two plantation towns</div><div class="a">Killarney and Portlaoise (courthouse, gaol, Protestant church)</div></div>
+        <div class="rv-card"><div class="q">What helped market towns expand after the plantations?</div><div class="a">Canals and railways connecting the country (e.g. Mullingar, Ballina)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The {{Pale}} was the only part of Ireland under English control in the 1500s.</p>
+        <p>The {{Anglo-Irish}} were descended from the Anglo-Normans and had adopted Gaelic laws and traditions.</p>
+        <p>Henry VIII set up the Church of {{England}} after the {{Act of Supremacy}}.</p>
+        <p>Henry’s first policy in Ireland was {{surrender and regrant}}.</p>
+        <p>The Laois-Offaly plantation took place under {{Mary I}} and was a {{failure}}.</p>
+        <p>The Fitzgeralds of {{Desmond}} ruled Munster, which was planted under {{Elizabeth I}}.</p>
+        <p>In Ulster, James I reserved the county of {{Derry}} for craft guilds.</p>
+        <p>By 1700, Protestants owned {{85}}% of the land, a landlord class called the Protestant {{Ascendancy}}.</p>
+        <p>Catholics were discriminated against by the {{Penal Laws}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>The Pale was…</p><ol><li>The Gaelic Irish heartland</li><li>Dublin and its surrounding areas under English control</li><li>Ulster</li><li>A Norman castle</li></ol><div class="explain">The Pale – Dublin and its surroundings – was the only part under English control.</div></div>
+        <div class="rv-q" data-answer="c"><p>Who followed Brehon Law?</p><ol><li>English planters</li><li>People loyal to the Crown in the Pale</li><li>Gaelic Irish chieftains</li><li>Henry VIII</li></ol><div class="explain">Gaelic Irish chieftains followed Brehon Law.</div></div>
+        <div class="rv-q" data-answer="b"><p>Why did Henry VIII break from the Catholic Church?</p><ol><li>To spread Protestantism in Ireland</li><li>To divorce Catherine of Aragon, who had no male heir for him</li><li>To save money</li><li>Because the Pope attacked the Pale</li></ol><div class="explain">He wanted to divorce Catherine of Aragon.</div></div>
+        <div class="rv-q" data-answer="c"><p>Henry VIII’s first policy to control Ireland was…</p><ol><li>Plantation</li><li>Penal Laws</li><li>Surrender and regrant</li><li>Act of Supremacy</li></ol><div class="explain">He first used peaceful means: surrender and regrant.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which was NOT a Tudor reason for the plantations?</p><ol><li>Spread Protestantism</li><li>Prevent alliances with Catholic countries</li><li>Save money</li><li>Build canals and railways</li></ol><div class="explain">Canals and railways expanded market towns later; they were not a Tudor reason.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which plantation was a failure?</p><ol><li>Laois-Offaly</li><li>Munster</li><li>Ulster</li><li>Derry</li></ol><div class="explain">Laois-Offaly (Mary I): too few planters and lands still attacked.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which monarch organised the Munster plantation?</p><ol><li>Mary I</li><li>Elizabeth I</li><li>James I</li><li>Henry VII</li></ol><div class="explain">Elizabeth I, against the Fitzgeralds of Desmond.</div></div>
+        <div class="rv-q" data-answer="a"><p>How many planters came to Munster, compared with what the Crown wanted?</p><ol><li>About 4,000 vs 20,000</li><li>About 20,000 vs 4,000</li><li>About 2,000 vs 5,000</li><li>About 85,000 vs 1,700</li></ol><div class="explain">About 4,000 came; the Crown wanted 20,000 – hence “partial success”.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which Gaelic families were targeted in Ulster?</p><ol><li>Fitzgeralds of Desmond</li><li>O’Moores and O’Connors</li><li>O’Neills and O’Donnells</li><li>Anglo-Irish lords of the Pale</li></ol><div class="explain">O’Neills of Tyrone and O’Donnells of Donegal.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which county did James I reserve for craft guilds?</p><ol><li>Derry</li><li>Tyrone</li><li>Donegal</li><li>Dublin</li></ol><div class="explain">Derry – later renamed Londonderry by the London guilds.</div></div>
+        <div class="rv-q" data-answer="b"><p>The Protestant Ascendancy was…</p><ol><li>A rebellion against the Tudors</li><li>A wealthy Protestant landlord class who owned 85% of land by 1700</li><li>A Gaelic Irish clan</li><li>A plantation town</li></ol><div class="explain">1700: Protestants owned 85% of the land.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which of these helped plantation-town growth after the plantations?</p><ol><li>Brehon Law</li><li>Canals and railways</li><li>The Act of Supremacy</li><li>Surrender and regrant</li></ol><div class="explain">Canals and railways connected the market towns (e.g. Mullingar).</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p>Try answering in full sentences first, then click a question to see the model answer.</p>
+      <details class="rv-qa"><summary>Give three reasons why the Tudors set up plantations in Ireland.</summary><div class="rv-model">To expand their territory beyond the Pale; to spread English laws, customs and culture and Protestantism; to stop the Catholic Gaelic Irish making alliances with other Catholic countries to attack England; to prevent further rebellions; to save money.</div></details>
+      <details class="rv-qa"><summary>Why did the plantation of Laois-Offaly fail?</summary><div class="rv-model">Not enough planters came from England, so Gaelic planters had to be given land; the confiscated lands were still attacked by the Gaelic Irish; English laws and customs did not flourish. It did lead to better planning for future plantations.</div></details>
+      <details class="rv-qa"><summary>Explain why the Munster plantation was only partially successful.</summary><div class="rv-model">New trades, towns and farming methods were set up, but only about 4,000 planters came (the Crown wanted 20,000), planters still had to rent to the Gaelic Irish, and confiscated lands were still attacked.</div></details>
+      <details class="rv-qa"><summary>Describe the Ulster plantation and why it was the most successful.</summary><div class="rv-model">Ulster was dominated by the O’Neills and O’Donnells. James I organised it in smaller estates with stricter rules for planters (undertakers, servitors, loyal Irish), and reserved Derry for craft guilds. Many English and Scottish settlers came, the Protestant population grew, new towns and markets were set up and English-style houses and castles were built. Tensions between Catholics and Protestants still exist today.</div></details>
+      <details class="rv-qa"><summary>How did the plantations affect Irish identity?</summary><div class="rv-model">By 1700 Protestants owned 85% of land (the Protestant Ascendancy). Inequality between Catholics and Protestants caused a long history of anger, distrust and violence; Catholics were discriminated against by the Penal Laws; Gaelic laws, language, culture and farming methods declined.</div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key points</th><th>Exam tip</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ireland 1500s</strong></td><td>Pale (loyal) · Anglo-Irish · Gaelic Irish (Brehon Law)</td><td>Name all three groups.</td></tr>
+          <tr><td><strong>Tudors</strong></td><td>Henry VII first; Henry VIII – Church of England; Mary, Elizabeth, Edward</td><td>Link the monarch to the plantation: Mary → Laois-Offaly, Elizabeth → Munster, James I → Ulster.</td></tr>
+          <tr><td><strong>Reasons</strong></td><td>Territory, English law/culture, Protestantism, stop alliances, stop rebellions, save money</td><td>Give 3 reasons with a short explanation each.</td></tr>
+          <tr><td><strong>Laois-Offaly</strong></td><td>Mary I · O’Moores/O’Connors · failure</td><td>Say WHY it failed.</td></tr>
+          <tr><td><strong>Munster</strong></td><td>Elizabeth I · Fitzgeralds of Desmond · partial success (4,000 vs 20,000)</td><td>Quote the numbers.</td></tr>
+          <tr><td><strong>Ulster ★</strong></td><td>James I · O’Neills/O’Donnells · most successful · tensions today</td><td>The one to know best – give detail.</td></tr>
+          <tr><td><strong>Effects</strong></td><td>85% land by 1700; Protestant Ascendancy; Penal Laws; Gaelic culture declined</td><td>Mention the long-term tension.</td></tr>
+          <tr><td><strong>Towns</strong></td><td>Viking/medieval Dublin; plantation towns; Derry→Londonderry; canals + railways</td><td>Contrast medieval and plantation town layout.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; History Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
