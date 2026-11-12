@@ -1,0 +1,84 @@
+/* Revision Hub – shared interactive components.
+   Used by: flashcards, quiz, mindmap, cloze, tracker, brain-dump.
+   Theming: set --accent (and optionally --accent-light) in the chapter's :root. */
+:root {
+  --rv-accent: var(--accent, #6C3FC5);
+  --rv-accent-light: var(--accent-light, #EDE7F9);
+  --rv-ok: #2E7D32; --rv-ok-bg: #E8F5E9;
+  --rv-bad: #C62828; --rv-bad-bg: #FDECEA;
+  --rv-border: #E5E7EB; --rv-muted: #6B7280; --rv-text: #1A1A2E;
+}
+.rv-box { background: #fff; border: 1.5px solid var(--rv-border); border-radius: 14px; padding: 18px; margin: 14px 0 24px; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+.rv-btn { font: 600 13px 'DM Sans', sans-serif; padding: 8px 14px; border-radius: 100px; border: 1.5px solid var(--rv-accent); background: #fff; color: var(--rv-accent); cursor: pointer; }
+.rv-btn:hover { background: var(--rv-accent-light); }
+.rv-btn.primary { background: var(--rv-accent); color: #fff; }
+.rv-btn.ok { border-color: var(--rv-ok); color: var(--rv-ok); }
+.rv-btn.bad { border-color: var(--rv-bad); color: var(--rv-bad); }
+.rv-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin-top: 12px; }
+.rv-meta { font-size: 12px; color: var(--rv-muted); text-align: center; }
+.rv-bar { height: 6px; background: var(--rv-border); border-radius: 6px; overflow: hidden; margin: 8px 0; }
+.rv-bar > i { display: block; height: 100%; background: var(--rv-accent); transition: width .3s; }
+
+/* Flashcards */
+.rv-flash { outline: none; }
+.rv-flip { perspective: 900px; height: 190px; cursor: pointer; margin: 12px 0; }
+.rv-flip-inner { position: relative; width: 100%; height: 100%; transition: transform .45s; transform-style: preserve-3d; }
+.rv-flip.flipped .rv-flip-inner { transform: rotateY(180deg); }
+.rv-face { position: absolute; inset: 0; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; border-radius: 14px; font-size: 17px; font-weight: 600; overflow: auto; }
+.rv-front { background: var(--rv-accent-light); border: 2px solid var(--rv-accent); color: var(--rv-text); }
+.rv-back { background: var(--rv-accent); color: #fff; transform: rotateY(180deg); font-weight: 500; font-size: 15px; }
+.rv-empty { text-align: center; padding: 30px 0; font-weight: 600; }
+
+/* Quiz */
+.rv-qblock { padding: 14px 0; border-bottom: 1px solid var(--rv-border); }
+.rv-qblock:last-of-type { border-bottom: 0; }
+.rv-qtext { font-weight: 600; margin-bottom: 10px; }
+.rv-opt { display: block; width: 100%; text-align: left; margin: 6px 0; padding: 10px 14px; border: 1.5px solid var(--rv-border); border-radius: 10px; background: #fff; font: 500 14px 'DM Sans', sans-serif; cursor: pointer; }
+.rv-opt:hover:not(:disabled) { border-color: var(--rv-accent); background: var(--rv-accent-light); }
+.rv-opt.right { border-color: var(--rv-ok); background: var(--rv-ok-bg); }
+.rv-opt.wrong { border-color: var(--rv-bad); background: var(--rv-bad-bg); }
+.rv-explain { display: none; margin-top: 8px; padding: 10px 14px; border-left: 4px solid var(--rv-accent); background: var(--rv-accent-light); border-radius: 6px; font-size: 13px; }
+.rv-qblock.done .rv-explain { display: block; }
+.rv-score { text-align: center; font-size: 18px; font-weight: 700; padding: 12px 0; }
+
+/* Mind map (horizontal tree) */
+.rv-mindmap { overflow-x: auto; padding: 8px 0; }
+.rv-mindmap ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; }
+.rv-mindmap li { position: relative; display: flex; align-items: center; padding: 4px 0 4px 30px; --c: var(--rv-accent); }
+.rv-mindmap > ul > li { padding-left: 0; }
+.rv-mindmap li li::before { content: ""; position: absolute; left: 0; top: 50%; width: 30px; border-top: 2px solid var(--c); }
+.rv-mindmap li li::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 2px solid var(--c); }
+.rv-mindmap li li:first-child::after { top: 50%; }
+.rv-mindmap li li:last-child::after { bottom: 50%; }
+.rv-mindmap li li:only-child::after { display: none; }
+.rv-node { white-space: nowrap; padding: 6px 12px; border-radius: 100px; border: 2px solid var(--c); background: #fff; font-size: 13px; font-weight: 600; color: var(--rv-text); }
+.rv-mindmap > ul > li > .rv-node { background: var(--rv-accent); color: #fff; border-color: var(--rv-accent); font-size: 15px; }
+.rv-node.has-kids { cursor: pointer; }
+.rv-node.has-kids::after { content: " ▸"; color: var(--c); }
+li:not(.collapsed) > .rv-node.has-kids::after { content: " ◂"; }
+.rv-mindmap > ul > li > .rv-node.has-kids::after { color: #fff; }
+li.collapsed > ul { display: none; }
+.rv-mindmap > ul > li > ul > li:nth-child(6n+1) { --c: #1976D2; }
+.rv-mindmap > ul > li > ul > li:nth-child(6n+2) { --c: #2E7D32; }
+.rv-mindmap > ul > li > ul > li:nth-child(6n+3) { --c: #E65100; }
+.rv-mindmap > ul > li > ul > li:nth-child(6n+4) { --c: #6C3FC5; }
+.rv-mindmap > ul > li > ul > li:nth-child(6n+5) { --c: #D32F2F; }
+.rv-mindmap > ul > li > ul > li:nth-child(6n+6) { --c: #00838F; }
+
+/* Cloze (fill in the blanks) */
+.rv-cloze p { margin: 10px 0; line-height: 2.1; }
+.rv-blank { font: 600 14px 'DM Sans', sans-serif; border: 0; border-bottom: 2px solid var(--rv-accent); background: var(--rv-accent-light); padding: 2px 6px; margin: 0 3px; text-align: center; border-radius: 4px 4px 0 0; outline: none; }
+.rv-blank.right { border-color: var(--rv-ok); background: var(--rv-ok-bg); }
+.rv-blank.wrong { border-color: var(--rv-bad); background: var(--rv-bad-bg); }
+
+/* Spaced-revision tracker */
+.rv-steps { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+.rv-step { flex: 1 1 120px; max-width: 160px; text-align: center; padding: 10px 6px; border: 1.5px solid var(--rv-border); border-radius: 12px; font-size: 12px; cursor: pointer; background: #fff; }
+.rv-step b { display: block; font-size: 14px; }
+.rv-step.done { background: var(--rv-ok-bg); border-color: var(--rv-ok); }
+.rv-step.due { border-color: var(--rv-bad); background: var(--rv-bad-bg); }
+
+/* Brain dump (recall before reading) */
+details.rv-dump { background: var(--rv-accent-light); border: 1.5px dashed var(--rv-accent); border-radius: 14px; padding: 14px 18px; margin: 14px 0 24px; }
+details.rv-dump summary { cursor: pointer; font-weight: 700; }
+details.rv-dump textarea { width: 100%; min-height: 90px; margin-top: 10px; padding: 10px; border: 1.5px solid var(--rv-border); border-radius: 10px; font: 14px 'DM Sans', sans-serif; }
