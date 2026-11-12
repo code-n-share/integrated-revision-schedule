@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 6 – The Renaissance | History Revision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:          #B91C1C;
+      --red-dark:     #7F1D1D;
+      --red-light:    #FEE2E2;
+      --amber:        #F5A623;
+      --amber-light:  #FFF3D6;
+      --green:        #2E8B57;
+      --green-light:  #E6F4ED;
+      --blue:         #1976D2;
+      --blue-light:   #E3F0FF;
+      --bg:           #FAF5F5;
+      --card:         #FFFFFF;
+      --text:         #1A1A2E;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --radius:       14px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+      background: var(--text); color: #fff;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sidebar-header {
+      background: var(--red);
+      padding: 20px 18px 16px;
+      font-family: 'Sora', sans-serif;
+    }
+    .sidebar-header .site-title {
+      font-size: 12px; font-weight: 600; opacity: 0.8;
+      text-transform: uppercase; letter-spacing: 1px; color: #ddd;
+    }
+    .sidebar-header .book-title {
+      font-size: 16px; font-weight: 800; line-height: 1.2; margin-top: 4px; color: #fff;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+      padding: 14px 18px 6px;
+    }
+    .sidebar a {
+      display: block; padding: 9px 18px;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 13.5px; font-weight: 500;
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      color: #fff; background: rgba(255,255,255,0.08);
+      border-left-color: var(--amber);
+    }
+    .sidebar a.home-link {
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      padding: 16px 18px 8px; border-left: none; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar a.home-link:hover { color: var(--amber); background: none; }
+
+    /* ── MAIN ── */
+    .main { margin-left: 240px; min-height: 100vh; }
+
+    /* ── HERO ── */
+    .chapter-hero {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, #DC2626 100%);
+      color: #fff; padding: 56px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .chapter-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .chapter-hero::after {
+      content: '🎨'; position: absolute; top: 20px; right: 48px;
+      font-size: 110px; opacity: 0.1;
+    }
+    .chapter-badge {
+      display: inline-block; background: var(--amber); color: var(--text);
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+      padding: 4px 14px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    .chapter-hero h1 {
+      font-family: 'Sora', sans-serif; font-size: 46px;
+      font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    }
+    .chapter-hero h1 span { color: var(--amber); }
+    .chapter-meta { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.65); }
+    .goal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+    .goal-tag {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); font-size: 12px;
+      padding: 5px 12px; border-radius: 100px; font-weight: 500;
+    }
+
+    /* TIMELINE BANNER */
+    .timeline-banner {
+      background: var(--text); color: #fff;
+      padding: 18px 48px; display: flex; gap: 0; overflow-x: auto; align-items: stretch;
+    }
+    .tl-item {
+      flex: 1; min-width: 120px; text-align: center; padding: 10px 12px;
+      border-right: 1px solid rgba(255,255,255,0.1); position: relative;
+    }
+    .tl-item:last-child { border-right: none; }
+    .tl-year {
+      font-family: 'Sora'; font-weight: 800; font-size: 18px; color: var(--amber);
+    }
+    .tl-event { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 4px; line-height: 1.3; }
+
+    /* ── CONTENT ── */
+    .content { padding: 40px 48px; max-width: 1020px; }
+    p { margin-bottom: 12px; font-size: 15px; }
+
+    /* SECTION HEADINGS */
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 800;
+      color: var(--text); margin: 48px 0 20px;
+      padding-bottom: 10px; border-bottom: 3px solid var(--red);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading .icon { font-size: 24px; }
+    .sub-heading {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--red-dark); margin: 26px 0 10px;
+    }
+
+    /* KEY TERM */
+    .key-term {
+      background: var(--red-light); border-left: 4px solid var(--red);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px; margin: 12px 0;
+    }
+    .key-term .term { font-weight: 700; font-size: 15px; color: var(--red-dark); }
+    .key-term .definition { font-size: 14px; color: #333; margin-top: 3px; }
+    .key-term .tip { font-size: 13px; color: var(--red); font-style: italic; margin-top: 6px; }
+
+    /* REMEMBER BOX */
+    .remember {
+      background: var(--amber-light); border: 2px dashed var(--amber);
+      border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .remember .icon { font-size: 22px; flex-shrink: 0; }
+    .remember .text { font-size: 14px; color: #555; }
+    .remember .text strong { color: var(--text); display: block; font-family: 'Sora'; font-weight: 700; margin-bottom: 3px; }
+
+    /* INFO CARDS */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px; margin: 16px 0;
+    }
+    .info-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1.5px solid var(--border); padding: 18px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-card .card-icon { font-size: 30px; margin-bottom: 10px; }
+    .info-card .card-title { font-family: 'Sora'; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .info-card .card-def { font-size: 13px; color: #444; line-height: 1.5; }
+    .info-card .card-tip { font-size: 12px; color: var(--red); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+    .step-list li {
+      counter-increment: step; display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(step); min-width: 28px; height: 28px;
+      background: var(--red); color: #fff;
+      border-radius: 50%; font-family: 'Sora'; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-text { font-size: 14px; }
+    .step-list li .step-text strong { color: var(--red-dark); }
+
+    /* BULLET LIST */
+    .bullet-list { list-style: none; margin: 12px 0; padding: 0; }
+    .bullet-list li {
+      padding: 6px 0 6px 26px; font-size: 14px; position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .bullet-list li:last-child { border-bottom: none; }
+    .bullet-list li::before {
+      content: '▸'; position: absolute; left: 6px; color: var(--red); font-size: 13px;
+    }
+    .bullet-list li strong { color: var(--red-dark); }
+
+    /* TABLE */
+    .hist-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .hist-table th {
+      background: var(--red); color: #fff;
+      font-family: 'Sora'; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 12px 16px; text-align: left;
+    }
+    .hist-table td {
+      padding: 11px 16px; font-size: 13.5px;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .hist-table tr:last-child td { border-bottom: none; }
+    .hist-table tr:nth-child(even) td { background: #f9fafb; }
+
+    /* EXAMPLE BOX / BIOGRAPHY BOX */
+    .example-box {
+      background: #fff; border: 2px solid var(--green);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .example-box .ex-header {
+      background: var(--green); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .example-box .ex-body { padding: 16px 18px; font-size: 14px; }
+    .example-box .ex-body strong { color: var(--green); }
+
+    /* CHANGE MAKER BOX */
+    .change-maker {
+      background: #fff; border: 2px solid var(--blue);
+      border-radius: var(--radius); margin: 16px 0; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .change-maker .cm-header {
+      background: var(--blue); color: #fff;
+      font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 1px; padding: 8px 18px;
+    }
+    .change-maker .cm-name {
+      font-family: 'Sora'; font-weight: 800; font-size: 15px; color: var(--blue);
+      padding: 14px 18px 0;
+    }
+    .change-maker .cm-body { padding: 8px 18px 16px; font-size: 14px; }
+    .change-maker .cm-body strong { color: var(--blue); }
+
+    /* COMPARE TABLE */
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+    }
+    .compare-col {
+      background: var(--card); border-radius: var(--radius); padding: 18px;
+      border: 1.5px solid var(--border); box-shadow: var(--shadow);
+    }
+    .compare-col.medieval .col-header { background: var(--muted); }
+    .compare-col.renaissance .col-header { background: var(--red); }
+    .col-header {
+      color: #fff; font-family: 'Sora'; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 8px 14px; border-radius: 8px; margin-bottom: 12px;
+    }
+    .compare-col ul { list-style: none; padding: 0; }
+    .compare-col ul li {
+      font-size: 13.5px; padding: 6px 0; border-bottom: 1px solid var(--border);
+    }
+    .compare-col ul li:last-child { border-bottom: none; }
+    .compare-col ul li::before { content: '• '; color: var(--red); font-weight: 700; }
+    .compare-col.medieval ul li::before { color: var(--muted); }
+
+    /* METHOD BOX */
+    .method-box {
+      background: var(--blue-light); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0;
+    }
+    .method-box .method-title {
+      font-family: 'Sora'; font-weight: 700; color: var(--blue); font-size: 14px; margin-bottom: 8px;
+    }
+    .method-box ul { padding-left: 18px; font-size: 13.5px; }
+    .method-box li { margin-bottom: 5px; }
+
+    /* QUIZ CARDS */
+    .quiz-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+    }
+    .quiz-header:hover { background: #f9fafb; }
+    .quiz-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      background: var(--red-light); color: var(--red-dark);
+    }
+    .toggle-btn {
+      background: var(--red); color: #fff; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+      font-family: 'Sora'; transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: var(--red-dark); }
+    .quiz-answer {
+      display: none; padding: 14px 18px; border-top: 1px solid var(--border);
+      background: var(--green-light); font-size: 14px; color: #1A5C3A;
+    }
+    .quiz-answer.open { display: block; }
+    .quiz-answer strong { color: var(--green); }
+
+    /* DID YOU KNOW */
+    .did-you-know {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border: 2px solid var(--amber); border-radius: var(--radius);
+      padding: 16px 18px; margin: 16px 0;
+    }
+    .did-you-know .dyk-label {
+      font-family: 'Sora'; font-weight: 800; font-size: 12px;
+      text-transform: uppercase; letter-spacing: 1px; color: #92400E; margin-bottom: 6px;
+    }
+    .did-you-know p { font-size: 13.5px; color: #78350F; margin: 0; }
+
+    /* SCROLL OFFSET for anchors */
+    .anchor-offset { scroll-margin-top: 24px; }
+
+    /* CHAPTER NAV BAR */
+    .chapter-nav-bar {
+      position: sticky; bottom: 0; background: var(--text); color: #fff;
+      padding: 12px 48px; display: flex; gap: 16px; align-items: center;
+      font-size: 13px; z-index: 50; flex-wrap: wrap;
+    }
+    .chapter-nav-bar a {
+      color: var(--amber); text-decoration: none; font-weight: 600;
+    }
+    .chapter-nav-bar a:hover { text-decoration: underline; }
+    .chapter-nav-bar span { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .sidebar { width: 0; overflow: hidden; }
+      .main { margin-left: 0; }
+      .content { padding: 28px 18px; }
+      .chapter-hero { padding: 44px 20px 36px; }
+      .chapter-hero h1 { font-size: 32px; }
+      .chapter-hero::after { display: none; }
+      .chapter-nav-bar { padding: 12px 18px; }
+      .timeline-banner { padding: 14px 18px; }
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="site-title">History Revision</div>
+    <div class="book-title">Ch 6 — The Renaissance</div>
+  </div>
+  <a href="../../index.html" class="home-link">← Back to Subjects</a>
+  <a href="index.html" style="font-size:12px;padding:6px 18px;color:rgba(255,255,255,0.45);">History Home</a>
+
+  <div class="sidebar-label">Causes</div>
+  <a href="#causes">Why Italy?</a>
+  <a href="#florence">Florence</a>
+
+  <div class="sidebar-label">Art &amp; Sculpture</div>
+  <a href="#art">Changes in Art</a>
+  <a href="#paintings">Key Paintings</a>
+  <a href="#sculpture">Sculpture</a>
+
+  <div class="sidebar-label">Ideas &amp; Technology</div>
+  <a href="#printing">The Printing Press</a>
+  <a href="#science">Science &amp; Medicine</a>
+
+  <div class="sidebar-label">Revision</div>
+  <a href="#key-terms">Key Terms Flashcards</a>
+  <a href="#summary">Quick-Reference Summary</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="chapter-hero">
+    <div class="chapter-badge">Chapter 6 · Junior Cycle History</div>
+    <h1>The <span>Renaissance</span></h1>
+    <div class="chapter-meta">Unit: The Renaissance &nbsp;·&nbsp; Art, Science, Technology &amp; Change</div>
+    <div class="goal-tags">
+      <span class="goal-tag">🏛️ Causes of the Renaissance</span>
+      <span class="goal-tag">🎨 Changes in Art &amp; Sculpture</span>
+      <span class="goal-tag">🖨️ The Printing Press</span>
+      <span class="goal-tag">🔭 Science &amp; Medicine</span>
+      <span class="goal-tag">👤 Humanism</span>
+      <span class="goal-tag">🌍 Spread Beyond Italy</span>
+    </div>
+  </div>
+
+  <!-- TIMELINE BANNER -->
+  <div class="timeline-banner">
+    <div class="tl-item">
+      <div class="tl-year">c.1440</div>
+      <div class="tl-event">Gutenberg invents the printing press</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1453</div>
+      <div class="tl-event">Fall of Constantinople</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1496</div>
+      <div class="tl-event">Da Vinci's <em>Last Supper</em></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1501</div>
+      <div class="tl-event">Michelangelo begins <em>David</em></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1504</div>
+      <div class="tl-event">Michelangelo's <em>David</em> completed</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1508</div>
+      <div class="tl-event">Sistine Chapel ceiling begun</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1610</div>
+      <div class="tl-event">Galileo publishes <em>The Starry Messenger</em></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1632</div>
+      <div class="tl-event">Galileo's <em>Dialogue Concerning the Two Chief World Systems</em></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- INTRO -->
+    <p>The Renaissance was a hugely important period in European history. <strong>'Renaissance'</strong> means <strong>rebirth</strong> — specifically the rebirth of European interest in the civilisations of Ancient Greece and Rome. During this period, people began to question old ideas from the Middle Ages and develop new ideas about art, architecture, science, literature and medicine.</p>
+
+    <div class="key-term">
+      <div class="term">Renaissance</div>
+      <div class="definition">The rebirth of European interest in the civilisations of Ancient Greece and Rome. During this period, people developed new ideas about art, architecture, science, literature and medicine.</div>
+      <div class="tip">💡 The word comes from French/Italian meaning 'rebirth'.</div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Humanism</div>
+      <div class="definition">A shift in mindset from a focus on God to a focus on human knowledge. Artists focused on recreating the real world, nature and real people in their work — very different from the Middle Ages when everything was seen through the lens of Church teaching.</div>
+    </div>
+
+    <!-- ═══ 6.1 CAUSES ═══ -->
+    <div class="section-heading anchor-offset" id="causes">
+      <span class="icon">🏛️</span> 6.1 The Causes of the Renaissance
+    </div>
+
+    <p>Although the Renaissance would eventually affect all of Europe, it began in Italy. There are several reasons for this:</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🏟️</div>
+        <div class="card-title">Remains of the Roman Empire</div>
+        <div class="card-def">Italy was the centre of the ancient Roman Empire. Roman buildings, art and statues were everywhere. The Italian language was based on Latin, making it easier to read ancient works. This inspired Italians to copy their ancestors' achievements.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Fall of Constantinople (1453)</div>
+        <div class="card-def">Constantinople, capital of the Eastern Roman (Byzantine) Empire, was captured by the Ottoman Turks. Many Greek scholars fled to Italy, bringing priceless ancient Greek and Roman manuscripts — books from the ancient world that Italians had never seen.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Wealth from Trade</div>
+        <div class="card-def">Italy's position in the centre of the Mediterranean meant it had grown wealthy from trade in silks and spices from the East. Merchants had money to spend on art and architecture to show their wealth and power.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🧮</div>
+        <div class="card-title">New Ideas from Trade</div>
+        <div class="card-def">Traders brought back ideas as well as goods. Merchants returned from Turkey, India and Arabia with new ideas from advanced civilisations — for example, they brought the Arabic number system (1, 2, 3…) which we still use today.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏙️</div>
+        <div class="card-title">Competition Between City States</div>
+        <div class="card-def">Italy was not one country but many independent city states competing over territory, trade, wealth and power. To show who was richest and most powerful, they all hired artists and built great buildings. Florence was among the most important.</div>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Patron</div>
+      <div class="definition">A wealthy person who commissioned (hired) an artist to produce a work of art for them. There were many types of patrons: the Catholic Church, kings and governments, and private individuals such as the de Medici family.</div>
+    </div>
+
+    <!-- ═══ FLORENCE ═══ -->
+    <div class="section-heading anchor-offset" id="florence">
+      <span class="icon">🌆</span> Florence: A Renaissance City
+    </div>
+
+    <p>By 1400, Florence was the wealthiest city in Italy, with a population of over 100,000. Its wealth came initially from the wool trade and later from banking. Florentines were very proud of their city and willing to spend lavishly on works of art to decorate it.</p>
+
+    <p>Florence was a republic, but most of the power in the city lay in the hands of the <strong>de Medici family</strong>. They owned the largest bank in the city and used their money to ensure that the men who led the city did what they wanted. They were very important patrons, especially <strong>Cosimo (1389–1464)</strong> and his grandson <strong>Lorenzo (1449–1492)</strong>. They sponsored artists and architects, set up schools for the study of Roman and Greek manuscripts, and established an academy in their own palace.</p>
+
+    <div class="remember">
+      <div class="icon">💡</div>
+      <div class="text">
+        <strong>Exam Tip — The de Medici Family</strong>
+        The de Medici are a key example of Renaissance <em>patrons</em>. Remember Cosimo and Lorenzo de Medici. They used their banking wealth to fund artists and scholars, making Florence the centre of the Renaissance.
+      </div>
+    </div>
+
+    <!-- ═══ CHANGES IN ART ═══ -->
+    <div class="section-heading anchor-offset" id="art">
+      <span class="icon">🎨</span> 6.2 Changes in Art
+    </div>
+
+    <div class="sub-heading">Medieval Painting vs Renaissance Painting</div>
+
+    <div class="compare-grid">
+      <div class="compare-col medieval">
+        <div class="col-header">Medieval Art</div>
+        <ul>
+          <li>Mainly religious images (Bible, life of Jesus)</li>
+          <li>Painted on wooden panels or wet plaster (fresco)</li>
+          <li>Egg tempera — dried quickly, limited colours</li>
+          <li>No real depth — images appeared two-dimensional</li>
+          <li>Bodies not to scale; limbs wrong size</li>
+          <li>Faces the same with lifeless expressions</li>
+          <li>Jesus depicted with an adult face as a child</li>
+        </ul>
+      </div>
+      <div class="compare-col renaissance">
+        <div class="col-header">Renaissance Art</div>
+        <ul>
+          <li>Varied subjects: mythology, portraits, landscapes, everyday life as well as religious images</li>
+          <li>Painted on canvas or wet plaster; paint mixed with oil</li>
+          <li>Oil paint dried slowly — more flexible, varied colours</li>
+          <li><strong>Sfumato</strong> — blurring lines to create a smoky, lifelike effect</li>
+          <li><strong>Perspective</strong> — creating depth and distance</li>
+          <li>Artists studied <strong>anatomy</strong> closely</li>
+          <li>Real-life people used as models; wrinkles, muscles, shadows depicted</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Sfumato</div>
+      <div class="definition">Meaning 'smoky'. A technique of blurring or softening lines and colours to soften textures and create a smoky effect, making paintings more lifelike.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Perspective</div>
+      <div class="definition">The creation of depth and distance in a painting. Objects and people appear smaller in the background and larger in the foreground, creating a three-dimensional effect.</div>
+    </div>
+    <div class="key-term">
+      <div class="term">Anatomy</div>
+      <div class="definition">The study of the structure of the human body. Renaissance artists studied anatomy closely to make people in their paintings and sculptures look realistic.</div>
+    </div>
+
+    <div class="did-you-know">
+      <div class="dyk-label">🤔 Did You Know?</div>
+      <p>During the Renaissance, purple paint was very rare and expensive, as the pigment was only produced from shells in a small area of the Mediterranean. Artists had to use special techniques like <em>glazing</em> — layering red and blue paint — to achieve the colour.</p>
+    </div>
+
+    <!-- ═══ KEY PAINTINGS ═══ -->
+    <div class="section-heading anchor-offset" id="paintings">
+      <span class="icon">🖼️</span> 6.3 Key Renaissance Paintings
+    </div>
+
+    <div class="change-maker">
+      <div class="cm-header">🖌️ Artist Profile</div>
+      <div class="cm-name">Leonardo da Vinci, 1452–1519</div>
+      <div class="cm-body">
+        <p>Da Vinci was one of the greatest geniuses of the Renaissance — a supremely skilled painter and visionary inventor. He is considered the ideal 'Renaissance man'. Born in 1452 in Vinci, near Florence, he became an apprentice to Andrea del Verrocchio at age 14. He went to work for the Duke of Milan in 1482 as a military engineer. While in Milan, he painted <em>The Virgin of the Rocks</em> and the <em>Last Supper</em>. In 1499 he returned to Florence and painted his most famous work, the <em>Mona Lisa</em>. He dissected corpses to understand the human body and filled thousands of pages of notebooks with sketches. He went to live in France in 1516 and died there.</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">The Mona Lisa</div>
+    <p>The <em>Mona Lisa</em> is one of the world's most famous paintings, housed in the Louvre Museum in Paris. It is a portrait of a wealthy Florentine merchant's wife and took over two years to complete. Da Vinci used the <strong>sfumato</strong> technique to make the skin appear soft, blending colours without hard lines. He also used light and shadow to focus attention on her smile and eyes. The detail on her face shows his detailed knowledge of the human body.</p>
+
+    <div class="sub-heading">The Last Supper</div>
+    <p>The <em>Last Supper</em> shows the moment when Jesus tells his disciples that one of them will betray him. It demonstrates da Vinci's excellent use of <strong>perspective</strong> — the wall behind the table recedes away from the viewer, creating great depth. Da Vinci made Jesus the focal point by having the others positioned around him. Unusually, instead of painting on wet plaster, he experimented with oil and tempera on a dry wall — a mistake, as the paint soon began peeling. Many attempts have since been made to preserve it.</p>
+
+    <div class="sub-heading">Gentileschi's Judith Slaying Holofernes</div>
+    <p>This famous painting depicts the biblical story of Judith killing the Assyrian general Holofernes. It displays many elements of Renaissance painting: rich, contrasting colours; close attention to realism in the figures and the gruesome scene; and a black background to focus all attention on the action. It shows a common theme in Gentileschi's work — powerful women doing things considered inappropriate for women at the time.</p>
+
+    <div class="change-maker">
+      <div class="cm-header">⚡ Change Maker</div>
+      <div class="cm-name">Artemisia Gentileschi, 1593–1656</div>
+      <div class="cm-body">
+        <p>Women in the Renaissance faced huge barriers in pursuing any profession, including the arts. Gentileschi was one of the few women who gained renown for her talent. Her father was a painter and she began working in his workshop. From age 15 she was taking her own commissions. Her work was often presumed to be that of her father or husband. Throughout her career she served as a court painter in Florence (for the Medicis), Rome, Naples and London (for King Charles I). When she was 18, she was assaulted by one of her father's business partners — a traumatic event that may have influenced how she depicted powerful women in her work.</p>
+      </div>
+    </div>
+
+    <!-- ═══ SCULPTURE ═══ -->
+    <div class="section-heading anchor-offset" id="sculpture">
+      <span class="icon">🗿</span> 6.4 Sculpture in the Renaissance
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-col medieval">
+        <div class="col-header">Medieval Sculpture</div>
+        <ul>
+          <li>Not very realistic</li>
+          <li>Bodies were long and thin</li>
+          <li>Limbs out of proportion</li>
+          <li>Long, straight clothing reduced detail</li>
+          <li>Attached to churches and monuments</li>
+          <li>Not free-standing</li>
+        </ul>
+      </div>
+      <div class="compare-col renaissance">
+        <div class="col-header">Renaissance Sculpture</div>
+        <ul>
+          <li>Known for realism and attention to detail</li>
+          <li>Used real people as models</li>
+          <li>Made detailed drawings and plans beforehand</li>
+          <li>Studied anatomy — some dissected corpses</li>
+          <li>Tended to be naked to show skill and copy ancient Greeks</li>
+          <li>Often free-standing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading">Michelangelo's David</div>
+    <p>One of the most famous Renaissance sculptures is <em>David</em> by Michelangelo Buonarroti. In 1501 he won a competition to carve a single huge block of white marble. From it he created the statue of <em>David</em> from the biblical story of David and Goliath, to celebrate Florence defeating France in war. At five metres high, it was the largest free-standing statue since Roman times. <em>David</em> is naked, with a slingshot resting on his shoulder, and his body is very detailed (veins, ligaments, muscles). The statue represents the ideal human body and is evidence that Michelangelo made a close study of anatomy.</p>
+
+    <div class="change-maker">
+      <div class="cm-header">⚡ Change Maker</div>
+      <div class="cm-name">Michelangelo Buonarroti, 1475–1564</div>
+      <div class="cm-body">
+        <p>Michelangelo was born near Florence in 1475. As a child he showed great interest in sculpture and came to the attention of Lorenzo de Medici, who invited him to study in his sculpture academy. In Rome in 1496, he sculpted the <em>Pietà</em> (meaning 'sorrow') — a sculpture of Mary holding the body of Jesus. In 1501, in Florence, he created the statue of <em>David</em>, his most famous work. In 1508 he began painting the ceiling of the Sistine Chapel in the Vatican — a task that took over four years to complete, all while standing or lying on high scaffolding. He also wrote poetry and designed buildings as an architect, including St Peter's Basilica. During his lifetime, Michelangelo was known as <em>'Il Divino'</em> — the divine one.</p>
+      </div>
+    </div>
+
+    <!-- ═══ PRINTING PRESS ═══ -->
+    <div class="section-heading anchor-offset" id="printing">
+      <span class="icon">🖨️</span> 6.5 Technological Change: The Printing Press
+    </div>
+
+    <div class="sub-heading">The Spread of the Renaissance</div>
+    <p>The Renaissance spread from Italy into the rest of Europe — France, England, Germany and other parts of Europe began to follow the example set by Italy. This was helped by:</p>
+
+    <ul class="bullet-list">
+      <li>Visiting Italy and learning directly from Italian masters</li>
+      <li>Trade with Italy, which spread ideas around Europe</li>
+      <li>Northern European rulers and merchants becoming patrons to artists in their own countries</li>
+      <li><strong>The invention of the movable type printing press</strong> — considered the single most important cause of the spread of the Renaissance</li>
+    </ul>
+
+    <div class="sub-heading">The Printing Press</div>
+    <p>Before the 1440s, all books in Europe had to be copied by hand. Because of this, very few books were in circulation — books were very precious and very few people learned to read or write.</p>
+
+    <div class="example-box">
+      <div class="ex-header">📖 Johannes Gutenberg (1398–1468)</div>
+      <div class="ex-body">
+        <p>Gutenberg was a German goldsmith. Around <strong>1440</strong>, he is believed to have invented the <strong>movable type printing press</strong>. He placed individual metal letters into a frame to form words, coated them with ink and pressed the frame onto paper. The process was repeated as many times as needed. He then moved the letters to make the next page. The first book he printed was the <strong>Gutenberg Bible</strong>.</p>
+      </div>
+    </div>
+
+    <div class="key-term">
+      <div class="term">Movable Type Printing Press</div>
+      <div class="definition">A method of printing books that placed individual metal letters into a frame to form words, coated them with ink and pressed the frame onto paper. Invented by Gutenberg around 1440.</div>
+    </div>
+
+    <div class="sub-heading">Impact of the Printing Press</div>
+    <p>Gutenberg's invention spread quickly — printing presses were operating in every major European city by 1500. The consequences were enormous:</p>
+
+    <ul class="bullet-list">
+      <li>Printed books were much <strong>cheaper than handwritten manuscripts</strong>, allowing more people to afford them</li>
+      <li>More people <strong>learned to read and write</strong></li>
+      <li>People read more and were <strong>introduced to new ideas</strong></li>
+      <li><strong>Fiction became more popular</strong> as people began to read for entertainment</li>
+      <li>The <strong>Church's control over learning declined</strong> — it was now possible for people to challenge the Church and spread ideas to a wide audience quickly (this would be key to the Reformation)</li>
+      <li>The use of <strong>Latin declined</strong> as writers wrote in the <strong>vernacular</strong> — the spoken language of their native country</li>
+    </ul>
+
+    <div class="key-term">
+      <div class="term">Vernacular</div>
+      <div class="definition">The language as spoken in a native country. As more people could read, writers began writing in their local spoken language rather than Latin.</div>
+    </div>
+
+    <div class="change-maker">
+      <div class="cm-header">⚡ Change Maker</div>
+      <div class="cm-name">William Shakespeare, 1564–1616</div>
+      <div class="cm-body">
+        <p>Shakespeare is considered one of the greatest writers in the English language. Born in Stratford-on-Avon in 1564, he moved to London where he joined a company of actors called The King's Men. He wrote his first play, <em>The Comedy of Errors</em>, in 1594. In 1599, the company opened a theatre called The Globe. Shakespeare wrote 38 plays in total. Famous works include: <em>A Midsummer Night's Dream</em>, <em>Much Ado About Nothing</em>, <em>The Merchant of Venice</em> (comedies); <em>Hamlet</em>, <em>Romeo and Juliet</em>, <em>Macbeth</em> (tragedies); <em>Henry V</em> and <em>Julius Caesar</em> (histories).</p>
+      </div>
+    </div>
+
+    <div class="change-maker">
+      <div class="cm-header">⚡ Change Maker</div>
+      <div class="cm-name">Laura Cereta, 1469–1499</div>
+      <div class="cm-body">
+        <p>Cereta is considered one of the earliest feminist writers and was the most widely read female humanist of the Renaissance. She wrote long letters to notable humanists and political figures arguing against traditional stereotypes about women. She argued that marriage was akin to slavery and advocated for girls' education and for marriage as a partnership of honour, respect, honesty and love. Her letters were collected and published after her death.</p>
+      </div>
+    </div>
+
+    <!-- ═══ SCIENCE & MEDICINE ═══ -->
+    <div class="section-heading anchor-offset" id="science">
+      <span class="icon">🔭</span> 6.6 Health, Medicine and Science in the Renaissance
+    </div>
+
+    <div class="sub-heading">Medicine during the Renaissance</div>
+    <p>Medieval medicine was based on some very strange ideas about the body. This began to change in the 1500s when doctors began to investigate <strong>anatomy</strong> — the study of the structure of the human body.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🫀</div>
+        <div class="card-title">Andreas Vesalius (1514–)</div>
+        <div class="card-def">Carried out dissections to learn about the body. Wrote <em>On the Fabric of the Human Body</em> — full of correct information and 270 accurate drawings of the human bones, muscles, veins and organs. Transformed medical knowledge.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🩸</div>
+        <div class="card-title">William Harvey (1578–1657)</div>
+        <div class="card-def">Discovered that the <strong>heart pumped blood around the body</strong>. Medical treatments such as surgery improved considerably as they were now based on correct information about how the body worked.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Science during the Renaissance</div>
+    <p>The influence of humanism meant people were very interested in understanding the world around them. The biggest change came in <strong>astronomy</strong> — the study of the stars. Since ancient times, people believed the Earth was the centre of the solar system and the sun rotated around it. The Catholic Church supported this view, as it fitted the belief that God had created the Earth and humankind as central to the universe.</p>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">🔭</div>
+        <div class="card-title">Galileo Galilei</div>
+        <div class="card-def">A professor of mathematics in Padua, Italy. He heard of the Dutch invention of the telescope and improved it to magnify objects hundreds of times. He discovered that the moon's surface has craters and mountains and that Saturn has rings. He published these in <em>The Starry Messenger</em> in 1610.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Nicolaus Copernicus</div>
+        <div class="card-def">A Polish priest and astronomer who in the 1540s wrote <em>On the Revolutions of the Heavenly Spheres</em>, declaring that the <strong>Earth rotates around the sun</strong>. He did not publish his book until he knew he was dying — he feared the Church's reaction.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">The Church and Science</div>
+    <p>The Catholic Church remained hugely powerful throughout the Renaissance. It opposed any scientific enquiry that went against its teachings. When Galileo backed up Copernicus's ideas in 1632 in <em>Dialogue Concerning the Two Chief World Systems</em>, the Pope ordered him to be put on trial before <strong>the Inquisition</strong> (a Church court).</p>
+
+    <div class="key-term">
+      <div class="term">Heresy</div>
+      <div class="definition">Knowingly holding a view that went against the official teachings of the Catholic Church. Galileo was convicted of heresy for supporting the view that the Earth moved around the sun.</div>
+    </div>
+
+    <p>Galileo was threatened with being burned at the stake (the usual punishment for heretics) and eventually agreed to say he was wrong. The Church banned his books and he was kept under house arrest until his death.</p>
+
+    <div class="remember">
+      <div class="icon">⚠️</div>
+      <div class="text">
+        <strong>Exam Tip — Galileo</strong>
+        Galileo's trial by the Inquisition in the 1630s tells us that the Catholic Church remained very powerful during the Renaissance and was willing to punish those who challenged its teachings, even when the science was correct.
+      </div>
+    </div>
+
+    <!-- ═══ FLASHCARDS ═══ -->
+    <div class="section-heading anchor-offset" id="key-terms">
+      <span class="icon">🃏</span> Key Terms Flashcards
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What does <strong>Renaissance</strong> mean?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>rebirth</strong> of European interest in the civilisations of Ancient Greece and Rome. During this period, people questioned old Middle Ages ideas and developed new ideas about art, architecture, science, literature and medicine.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>Humanism</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Core Concept</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A shift in mindset from a <strong>focus on God</strong> to a <strong>focus on human knowledge</strong>. Artists focused on recreating the real world, nature and real people — very different to the medieval focus on the Church.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is a <strong>patron</strong>? Give an example.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Causes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">A <strong>wealthy person who commissioned (hired) an artist</strong> to produce a work of art for them. Example: <strong>the de Medici family of Florence</strong> — Cosimo and Lorenzo de Medici sponsored artists and architects and established schools for the study of manuscripts.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>List <strong>five reasons why the Renaissance started in Italy</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Causes</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">
+        1. <strong>Remains of the Roman Empire</strong> — buildings, art, Latin language inspired Italians.<br>
+        2. <strong>Fall of Constantinople (1453)</strong> — Greek scholars fled to Italy with ancient manuscripts.<br>
+        3. <strong>Wealth from trade</strong> — merchants had money to spend on art.<br>
+        4. <strong>New ideas from trade</strong> — the Arabic number system and other ideas reached Italy.<br>
+        5. <strong>Competition between city states</strong> — cities competed by hiring artists and building great works.
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>sfumato</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Art</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Meaning <strong>'smoky'</strong>. A technique of <strong>blurring or softening lines and colours</strong> to create a smoky effect, making paintings more lifelike. Used famously by da Vinci in the <em>Mona Lisa</em>.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>perspective</strong> in art?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Art</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The creation of <strong>depth and distance</strong> in a painting. Objects appear <strong>smaller in the background and larger in the foreground</strong>, creating a three-dimensional effect. Da Vinci used it brilliantly in <em>The Last Supper</em>.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Name and describe <strong>Michelangelo's David</strong>.</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Sculpture</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer"><em>David</em> was carved by <strong>Michelangelo Buonarroti</strong> in 1501 from a single block of white marble. At <strong>five metres high</strong>, it was the largest free-standing statue since Roman times. It depicts the biblical David naked with a slingshot, showing detailed veins, muscles and ligaments — proof of Michelangelo's close study of <strong>anatomy</strong>.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>How did the <strong>printing press</strong> help spread the Renaissance?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Printing Press</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Gutenberg's printing press (c.1440) made books <strong>much cheaper and more available</strong>. More people could read, new ideas spread faster across Europe, fiction became popular, the Church's control over learning declined, and writers began writing in the <strong>vernacular</strong> instead of Latin.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>Who was <strong>Galileo Galilei</strong> and why did he get into trouble with the Church?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Science</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Galileo was an Italian professor of mathematics who improved the telescope and made important astronomical discoveries. He backed up Copernicus's claim that the <strong>Earth rotates around the sun</strong>. The Catholic Church put him on trial before the <strong>Inquisition</strong> for <strong>heresy</strong>. He was threatened with being burned at the stake, forced to recant, and kept under house arrest until his death.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What did <strong>Andreas Vesalius</strong> contribute to medicine?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Science</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Vesalius carried out dissections and wrote <em>On the Fabric of the Human Body</em>, which contained <strong>correct information</strong> and <strong>270 accurate drawings</strong> of human bones, muscles, veins and organs. This revolutionised medical knowledge and led to much better medical treatments.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is <strong>heresy</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Church</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">Knowingly <strong>holding a view that went against the official teachings of the Catholic Church</strong>. The punishment could be being burned at the stake. Galileo was convicted of heresy for supporting the idea that the Earth moved around the sun.</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>What is the <strong>vernacular</strong>?</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="quiz-tag">Printing Press</span>
+          <button class="toggle-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+        </div>
+      </div>
+      <div class="quiz-answer">The <strong>language as spoken in a native country</strong>. After the printing press, writers began writing in their local spoken language rather than in Latin. This made texts accessible to far more people.</div>
+    </div>
+
+    <!-- ═══ SUMMARY TABLE ═══ -->
+    <div class="section-heading anchor-offset" id="summary">
+      <span class="icon">📋</span> Exam Quick-Reference Summary
+    </div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Topic</th><th>Key Fact / Definition</th><th>Exam Tip</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Renaissance</strong></td>
+          <td>Rebirth of interest in Ancient Greece and Rome; new ideas in art, science, medicine and literature.</td>
+          <td>Link to humanism — focus on humans, not just God.</td>
+        </tr>
+        <tr>
+          <td><strong>Humanism</strong></td>
+          <td>A shift from a focus on God to a focus on human knowledge.</td>
+          <td>Explains why Renaissance art is more realistic than medieval art.</td>
+        </tr>
+        <tr>
+          <td><strong>Why Italy?</strong></td>
+          <td>Roman ruins, fall of Constantinople, trade wealth, trade ideas, competition between city states.</td>
+          <td>Learn all 5 reasons. Be able to say which was most important and why.</td>
+        </tr>
+        <tr>
+          <td><strong>Patron</strong></td>
+          <td>Wealthy person who hired an artist. Example: de Medici of Florence.</td>
+          <td>Name specific patrons — Cosimo and Lorenzo de Medici.</td>
+        </tr>
+        <tr>
+          <td><strong>Sfumato</strong></td>
+          <td>Blurring lines to create a smoky, lifelike effect. Used by da Vinci.</td>
+          <td>Used in the <em>Mona Lisa</em> — the soft skin appearance.</td>
+        </tr>
+        <tr>
+          <td><strong>Perspective</strong></td>
+          <td>Creating depth and distance in a painting; things appear smaller in background.</td>
+          <td>Used in <em>The Last Supper</em> — the wall behind the table recedes.</td>
+        </tr>
+        <tr>
+          <td><strong>Anatomy</strong></td>
+          <td>Study of the structure of the human body. Renaissance artists studied it closely.</td>
+          <td>Visible in Michelangelo's <em>David</em> — veins, muscles, ligaments.</td>
+        </tr>
+        <tr>
+          <td><strong>Leonardo da Vinci</strong></td>
+          <td>Painted <em>Mona Lisa</em> and <em>Last Supper</em>; inventor; dissected corpses.</td>
+          <td>The ideal 'Renaissance man' — skilled in art, science and engineering.</td>
+        </tr>
+        <tr>
+          <td><strong>Michelangelo</strong></td>
+          <td>Sculpted <em>David</em> (1501) and painted the Sistine Chapel ceiling (1508–1512).</td>
+          <td>Known as 'Il Divino'. Learn key facts about both works.</td>
+        </tr>
+        <tr>
+          <td><strong>Printing Press</strong></td>
+          <td>Invented by Gutenberg c.1440. Made books cheaper; spread ideas across Europe.</td>
+          <td>Most important cause of the spread of the Renaissance.</td>
+        </tr>
+        <tr>
+          <td><strong>Vernacular</strong></td>
+          <td>Local spoken language, as opposed to Latin.</td>
+          <td>The printing press led writers to use the vernacular instead of Latin.</td>
+        </tr>
+        <tr>
+          <td><strong>Vesalius</strong></td>
+          <td>Performed dissections; wrote <em>On the Fabric of the Human Body</em> with 270 accurate drawings.</td>
+          <td>Transformed medicine — based it on correct information rather than old ideas.</td>
+        </tr>
+        <tr>
+          <td><strong>Galileo</strong></td>
+          <td>Improved telescope; backed up Copernicus that Earth revolves around the sun.</td>
+          <td>Tried by Inquisition for heresy — shows the Church was still very powerful.</td>
+        </tr>
+        <tr>
+          <td><strong>Heresy</strong></td>
+          <td>Holding a view against official Church teaching. Punishable by death.</td>
+          <td>Galileo was convicted of this — an important exam example.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /content -->
+
+  <!-- CHAPTER NAV BAR -->
+  <div class="chapter-nav-bar">
+    <span>Navigation:</span>
+    <a href="index.html">&larr; History Home</a>
+    <a href="ch5.html">&larr; Ch 5: Medieval Times</a>
+  </div>
+
+</main>
+
+<script>
+  function toggleQuiz(btn) {
+    const answer = btn.closest('.quiz-card').querySelector('.quiz-answer');
+    answer.classList.toggle('open');
+    btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Answer';
+  }
+
+  // Highlight sidebar active link on scroll
+  const sections = document.querySelectorAll('.anchor-offset');
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = '#' + sec.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === current);
+    });
+  });
+</script>
+</body>
+</html>
