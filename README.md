@@ -6,7 +6,7 @@ A clean, fast-loading static revision website for exam preparation across all su
 
 ```
 /
-├── index.html                  ← Root page with subject selector (links to <subject>/year-1/)
+├── index.html                  ← Root page with subject selector
 ├── CLAUDE.md                   ← Project guide for Claude Code
 ├── CONTENT_RULES.md            ← Rules every new chapter must follow (sections, formatting, quality)
 ├── assets/
@@ -16,6 +16,7 @@ A clean, fast-loading static revision website for exam preparation across all su
 │   └── chapter-template.html   ← Copy this to start a new chapter
 ├── <subject>/                  ← business, classics, english, french, geography,
 │   │                             history, irish, maths, science
+│   ├── index.html          ← Year picker (Year 1 / Year 2)
 │   ├── year-1/
 │   │   ├── index.html          ← Chapter list for that subject (Year 1)
 │   │   └── ch<N>.html          ← Chapter pages (existing content lives here)
@@ -27,8 +28,9 @@ A clean, fast-loading static revision website for exam preparation across all su
 ## Navigate
 
 1. **Root** (`/index.html`) - Choose a subject
-2. **Subject** (e.g. `/science/year-1/`) - See all chapters in that subject for the year
-3. **Chapter** (e.g. `/science/year-1/ch29.html`) - Read the revision content
+2. **Subject** (e.g. `/science/`) - Choose Year 1 or Year 2
+3. **Year** (e.g. `/science/year-1/`) - See all chapters for that year
+4. **Chapter** (e.g. `/science/year-1/ch29.html`) - Read the revision content
 
 ## Adding a New Chapter
 

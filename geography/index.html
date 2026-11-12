@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🗺️ Geography – Select Year</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #F8F9FA; color: #1A1A2E; line-height: 1.6; }
+    .hero { background: linear-gradient(135deg, #4A2A8F, #6C3FC5); color: #fff; padding: 60px 48px 48px; text-align: center; }
+    .hero h1 { font-family: 'Sora', sans-serif; font-size: 42px; font-weight: 800; }
+    .hero a { color: #fff; opacity: .85; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 14px; }
+    .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .year { display: block; background: #fff; border: 2px solid #E5E7EB; border-radius: 16px; padding: 28px; text-decoration: none; color: inherit; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    a.year:hover { border-color: #6C3FC5; transform: translateY(-2px); }
+    .year h2 { font-family: 'Sora', sans-serif; color: #4A2A8F; }
+    .year p { color: #6B7280; font-size: 14px; margin-top: 6px; }
+    .year.soon { opacity: .6; border-style: dashed; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <a href="../index.html">&larr; Back to Subjects</a>
+    <h1>🗺️ Geography</h1>
+    <p>Select a year</p>
+  </div>
+  <div class="container">
+    <a href="year-1/" class="year"><h2>Year 1</h2><p>Chapters and revision notes</p></a>
+    <div class="year soon"><h2>Year 2</h2><p>Coming soon</p></div>
+  </div>
+</body>
+</html>

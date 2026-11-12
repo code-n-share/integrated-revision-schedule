@@ -4,7 +4,8 @@ Static revision website for school exams, hosted on GitHub Pages (`main` branch,
 
 ## Layout
 ```
-index.html                         subject picker (cards link to <subject>/year-1/)
+index.html                         subject picker (cards link to <subject>/)
+<subject>/index.html              year picker (Year 1 / Year 2)
 <subject>/year-1/ index.html       chapter list for that subject/year
 <subject>/year-1/ ch<N>.html       one self-contained chapter page
 <subject>/year-2/                  empty, awaiting content
