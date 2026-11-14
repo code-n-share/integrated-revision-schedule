@@ -71,3 +71,4 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] English Year 2 – Chapter 1 – The Personal Essay
 - [x] English Year 2 – Chapter 2 – The Outsiders: Plot & Key Quotes
 - [x] English Year 2 – Chapter 3 – The Outsiders: Characters & Key Scenes
+- [x] Maths Year 2 – Chapter 1 – Algebra 1

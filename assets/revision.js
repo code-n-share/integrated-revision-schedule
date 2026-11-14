@@ -176,8 +176,36 @@
     t.addEventListener('input', function () { store.set(key, t.value); });
   }
 
+  /* ── Number line (maths) ── <div class="rv-numline" data-min="-2" data-max="5" data-label="x ≥ 3, x ∈ R" data-line="3:" data-ends="c"></div>
+     data-min/max/step set the ticks. data-dots="3,4,5" = filled points (N, Z); add data-arrow="right|left|both" if they continue.
+     data-line="a:b" = heavy line (R); empty a or b = runs off that side with an arrow. data-ends = circle at a then b, c = closed (included), o = open (not included). */
+  function numline(root) {
+    var d = root.dataset, min = +d.min, max = +d.max, step = +(d.step || 1), W = 440, pad = 34, y = 30, RED = '#D32F2F';
+    var X = function (v) { return pad + (v - min) / (max - min) * (W - 2 * pad); };
+    var s = '<svg viewBox="0 0 ' + W + ' 58" role="img" aria-label="' + (d.label || 'number line') + '">' +
+      '<line x1="' + (pad - 18) + '" y1="' + y + '" x2="' + (W - pad + 18) + '" y2="' + y + '" stroke="#1A1A2E" stroke-width="1.5"/>' +
+      '<polygon points="' + (pad - 22) + ',' + y + ' ' + (pad - 14) + ',' + (y - 4) + ' ' + (pad - 14) + ',' + (y + 4) + '" fill="#1A1A2E"/>' +
+      '<polygon points="' + (W - pad + 22) + ',' + y + ' ' + (W - pad + 14) + ',' + (y - 4) + ' ' + (W - pad + 14) + ',' + (y + 4) + '" fill="#1A1A2E"/>';
+    for (var v = min; v <= max; v += step) s += '<line x1="' + X(v) + '" y1="' + (y - 5) + '" x2="' + X(v) + '" y2="' + (y + 5) + '" stroke="#1A1A2E"/><text x="' + X(v) + '" y="' + (y + 20) + '" text-anchor="middle">' + String(v).replace('-', '−') + '</text>';
+    var head = function (x, dir) { return '<polygon points="' + (x + dir * 8) + ',' + y + ' ' + x + ',' + (y - 5) + ' ' + x + ',' + (y + 5) + '" fill="' + RED + '"/>'; };
+    var dot = function (v, open) { return '<circle cx="' + X(v) + '" cy="' + y + '" r="5.5" fill="' + (open ? '#fff' : RED) + '" stroke="' + RED + '" stroke-width="2"/>'; };
+    if (d.line != null) {
+      var ab = d.line.split(':'), ends = d.ends || '', lo = ab[0] !== '', hi = ab[1] !== '';
+      var x1 = lo ? X(+ab[0]) : pad - 14, x2 = hi ? X(+ab[1]) : W - pad + 14;
+      s += '<line x1="' + x1 + '" y1="' + y + '" x2="' + x2 + '" y2="' + y + '" stroke="' + RED + '" stroke-width="4"/>';
+      if (!lo) s += head(x1, -1); if (!hi) s += head(x2, 1);
+      var e = 0;
+      if (lo) s += dot(+ab[0], ends[e++] === 'o');
+      if (hi) s += dot(+ab[1], ends[e++] === 'o');
+    }
+    (d.dots ? d.dots.split(',') : []).forEach(function (v) { s += dot(+v, false); });
+    if (d.arrow === 'right' || d.arrow === 'both') s += head(W - pad + 14, 1);
+    if (d.arrow === 'left' || d.arrow === 'both') s += head(pad - 14, -1);
+    root.innerHTML = s + '</svg>';
+  }
+
   function init() {
-    var map = { '.rv-flash': flashcards, '.rv-quiz': quiz, '.rv-cloze': cloze, '.rv-tracker': tracker, 'details.rv-dump': dump, '.rv-mindmap': mindmap };
+    var map = { '.rv-flash': flashcards, '.rv-quiz': quiz, '.rv-cloze': cloze, '.rv-tracker': tracker, 'details.rv-dump': dump, '.rv-mindmap': mindmap, '.rv-numline': numline };
     Object.keys(map).forEach(function (sel) { $$(sel).forEach(function (r, i) { map[sel](r, i); }); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

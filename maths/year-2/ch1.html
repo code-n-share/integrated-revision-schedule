@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!--
+  QUESTION PLAN (CONTENT_RULES §6 – maths): one distinct sub-concept per question, quiz + practice combined.
+  Source: Text & Tests 2 (Higher Level) Ch 1, pp.1-23; answers cross-checked with the book's answer key (pp.584-585).
+
+  Sub-concept                                   Quiz  Practice (book ref)
+  1.1  like terms / vocabulary                  Q1    P1  (Ex 1.1 Q25)
+  1.1  collect like terms, negative lead        –     P2  (Ex 1.1 Q19)
+  1.2  multiply terms, add indices              Q2    –
+  1.2  missing factor (reverse multiply)        –     P3  (Ex 1.2 Q28)
+  1.2  minus outside a bracket                  Q3    –
+  1.2  two brackets + collect                   –     P4  (Ex 1.2 Q4)
+  1.2  binomial x binomial (grid)               Q4    –
+  1.2  binomial x trinomial (grid)              –     P5  (Ex 1.2 Q19)
+  1.3  square of a negative                     Q5    –
+  1.3  multi-variable substitution              –     P6  (Ex 1.3 Q9)
+  1.3  formula + units                          –     P7  (Ex 1.3 Q11)
+  1.4  two-step equation                        Q6    –
+  1.4  x on both sides                          Q7    –
+  1.4  brackets + x on both sides               –     P8  (Ex 1.4 Q24)
+  1.5  consecutive numbers -> equation          Q8    –
+  1.5  ages                                     –     P9  (Ex 1.5 Q4)
+  1.5  perimeter -> equation                    –     P10 (Ex 1.5 Q5)
+  1.6  algebraic division, grid                 Q9    P11 (Ex 1.6 Q13)
+  1.6  missing power -> 0x^2                    Q10   –
+  1.7  members of N, Z from inequality         Q11   P12 (Ex 1.7 Q5)
+  1.7  read/draw graph on number line           Q12   P13 (Ex 1.7 Q15)
+  1.8  reverse sign rule (concept)              Q13   –
+  1.8  solve + graph with negative coefficient  –     P14 (Ex 1.8 Q15)
+  1.8  inequality from context (inclusive)      –     P15 (Ex 1.8 Q20)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Revision – Algebra 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: #B79CF0; }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+
+    /* ── Maths kit (see CONTENT_RULES §6) ── */
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 600; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 10px 16px; margin: 12px 0; text-align: center; }
+    .method { background: #fff; border: 1.5px solid var(--accent); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .method-title { background: var(--accent); color: #fff; font: 700 14px 'Sora', sans-serif; padding: 8px 16px; }
+    .method ol { margin: 10px 16px 10px 38px; }
+    .work { font-family: 'JetBrains Mono', monospace; font-size: 14px; margin: 8px 0; }
+    .work .ln { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 4px 0; border-bottom: 1px dashed var(--border); flex-wrap: wrap; }
+    .work .why { font: 500 12.5px 'DM Sans', sans-serif; color: #1565C0; text-align: right; margin-left: auto; }
+    .work .ans .eq { background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 6px; padding: 0 8px; font-weight: 600; }
+    .work + .work { margin-top: 14px; }
+    table.mgrid { width: auto; margin: 10px 0; }
+    table.mgrid td, table.mgrid th { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 6px 14px; }
+    table.mgrid th { background: var(--accent-light); }
+    .nl-caption { text-align: center; font-size: 13px; color: var(--muted); }
+    .rv-model .work { margin-top: 6px; }
+
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Maths Revision</div><div class="book-title">Text &amp; Tests 2 · Algebra 1</div></div>
+    <a href="index.html">&larr; Maths Year 2</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#simplify">1.1 Simplifying</a>
+    <a href="#brackets">1.2 Removing Brackets</a>
+    <a href="#evaluate">1.3 Evaluating</a>
+    <a href="#equations">1.4 Linear Equations</a>
+    <a href="#problems">1.5 Word Problems</a>
+    <a href="#division">1.6 Algebraic Division</a>
+    <a href="#numberline">1.7 Number Line</a>
+    <a href="#inequalities">1.8 Inequalities</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 1 · Algebra</div>
+      <h1>🔤 <span>Algebra 1</span></h1>
+      <p class="chapter-meta">Text &amp; Tests 2 (Higher Level) · Junior Cycle Maths Revision</p>
+      <div>
+        <span class="goal-tag">✔ Simplify, expand &amp; evaluate</span>
+        <span class="goal-tag">✔ Solve equations &amp; word problems</span>
+        <span class="goal-tag">✔ Divide algebraic expressions</span>
+        <span class="goal-tag">✔ Plot ℕ, ℤ, ℝ on a number line</span>
+        <span class="goal-tag">✔ Solve inequalities (flip rule)</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write everything you remember about Algebra 1 – terms, brackets, equations, inequalities – then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Algebra 1
+          <ul>
+            <li>Simplify<ul><li>Like terms</li></ul></li>
+            <li>Brackets<ul><li>Single bracket</li><li>Grid method</li></ul></li>
+            <li>Evaluate<ul><li>Substitute</li><li>Formulae</li></ul></li>
+            <li>Equations<ul><li>Balance method</li><li>Word problems</li></ul></li>
+            <li>Division<ul><li>Array method</li></ul></li>
+            <li>Inequalities<ul><li>ℕ ℤ ℝ number line</li><li>Solve</li><li>Flip rule</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Expression</strong></td><td>Terms joined by + or −, no equals sign. E.g. 2x² + 3x − 4</td></tr>
+          <tr><td><strong>Term</strong></td><td>One chunk of an expression, separated by + or −. 2x² + 3x − 4 has 3 terms</td></tr>
+          <tr><td><strong>Variable</strong></td><td>The letter that stands for an unknown number (x)</td></tr>
+          <tr><td><strong>Coefficient</strong></td><td>The number in front of a variable. In 3x it is 3</td></tr>
+          <tr><td><strong>Constant</strong></td><td>A term with no variable – its value never changes (−4)</td></tr>
+          <tr><td><strong>Like terms</strong></td><td>Terms with the same letters and the same powers (5x and 3x; 2x² and 4x²)</td></tr>
+          <tr><td><strong>Evaluate</strong></td><td>Replace the letters with given numbers and work out the value</td></tr>
+          <tr><td><strong>Equation</strong></td><td>Two sides that are equal (=). <strong>Solve</strong> it = find the value of x that makes it true</td></tr>
+          <tr><td><strong>Consecutive numbers</strong></td><td>Numbers that follow each other: x, x + 1, x + 2</td></tr>
+          <tr><td><strong>Array (grid) method</strong></td><td>A box diagram used to multiply brackets and to divide expressions</td></tr>
+          <tr><td><strong>Natural numbers ℕ</strong></td><td>Counting numbers: 1, 2, 3, 4 …</td></tr>
+          <tr><td><strong>Integers ℤ</strong></td><td>Whole numbers, positive or negative: … −2, −1, 0, 1, 2 …</td></tr>
+          <tr><td><strong>Real numbers ℝ</strong></td><td>Every number on the number line, incl. fractions, decimals, √5, π</td></tr>
+          <tr><td><strong>Inequality</strong></td><td>Two sides that are <em>not</em> equal: uses &gt; &lt; ≥ ≤</td></tr>
+          <tr><td><strong>Closed / open circle</strong></td><td>● number included (≥ ≤) · ○ number not included (&gt; &lt;)</td></tr>
+          <tr><td><strong>Reverse the sign</strong></td><td>Multiply or divide an inequality by a negative → flip &gt; to &lt; (and ≥ to ≤)</td></tr>
+        </tbody></table>
+
+      <!-- ───────── 1.1 ───────── -->
+      <div class="section-heading" id="simplify">🧮 1.1 Simplifying Expressions</div>
+      <div class="key-term"><strong>Expression:</strong> terms joined by + or −. In 2x² + 3x − 4: three <strong>terms</strong>, variable <strong>x</strong>, <strong>coefficients</strong> 2 and 3, <strong>constant</strong> −4.
+        <div class="tip">💡 Terms are shopping items: you can only add apples to apples, never apples to oranges.</div></div>
+      <div class="key-term"><strong>Like terms</strong> have the same letters with the same powers: 2x² and 4x², 5x and 3x. <strong>Only like terms may be added or subtracted.</strong></div>
+
+      <div class="method"><div class="method-title">🔧 Method: simplify</div>
+        <ol><li>Spot like terms. The sign in front belongs to the term.</li><li>Group them.</li><li>Add/subtract the coefficients.</li></ol></div>
+
+      <div class="example-box"><div class="example-header">📘 Simplify 2x² − 3x − 7 − x² − 5x + 3</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">2x² − x² − 3x − 5x − 7 + 3</span><span class="why">group like terms</span></div>
+          <div class="ln ans"><span class="eq">x² − 8x − 4</span><span class="why">2x² − x² = 1x² = x²</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> x and x² are <em>not</em> like terms, and neither are 3xy and 3x. Don’t merge them.</div>
+
+      <!-- ───────── 1.2 ───────── -->
+      <div class="section-heading" id="brackets">🔓 1.2 Removing Brackets</div>
+      <table><thead><tr><th>Skill</th><th>Rule</th><th>Example</th></tr></thead><tbody>
+        <tr><td>Multiply terms</td><td>numbers first, then letters</td><td>3x × 4y = 12xy · −3p × 4q = −12pq</td></tr>
+        <tr><td>Multiply powers</td><td>same letter → <strong>add the indices</strong></td><td>a² × a³ = a⁵ · 2a²b × ab = 2a³b²</td></tr>
+        <tr><td>Single bracket</td><td>a(b + c) = ab + ac</td><td>3x(2x² − x + 4) = 6x³ − 3x² + 12x</td></tr>
+        <tr><td>Minus outside</td><td>every sign inside changes</td><td>−4(5a − 2) = −20a + 8 · −(6x − 4) = −6x + 4</td></tr>
+      </tbody></table>
+
+      <div class="method"><div class="method-title">🔧 Method: two brackets (grid)</div>
+        <ol><li>One bracket across the top, the other down the side.</li><li>Each box = row × column (watch signs).</li><li>Add all boxes, then collect like terms.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Expand (2x − 3)(3x + 4)</div><div class="example-body">
+        <table class="mgrid"><tr><th></th><th>2x</th><th>−3</th></tr><tr><th>3x</th><td>6x²</td><td>−9x</td></tr><tr><th>+4</th><td>8x</td><td>−12</td></tr></table>
+        <div class="work">
+          <div class="ln"><span class="eq">6x² − 9x + 8x − 12</span><span class="why">add the four boxes</span></div>
+          <div class="ln ans"><span class="eq">6x² − x − 12</span><span class="why">−9x + 8x = −x</span></div>
+        </div></div></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> in the grid, <em>every term meets every term</em>. Two terms × three terms = six boxes.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> with −(…) or −4(…) only the first sign gets changed. Change <em>all</em> of them.</div>
+
+      <!-- ───────── 1.3 ───────── -->
+      <div class="section-heading" id="evaluate">🔢 1.3 Evaluating Expressions</div>
+      <div class="key-term"><strong>Evaluate:</strong> substitute the numbers for the letters, then work it out. Put each substituted number in <strong>brackets</strong>.
+        <div class="tip">💡 Letters are blanks. Fill them in with brackets so the signs can’t escape.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: evaluate</div>
+        <ol><li>Substitute, with brackets: x → (3).</li><li>Powers first (square before you multiply).</li><li>× and ÷ before + and −. Anything × 0 = 0.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 x = 3, y = −2: find 3x² − 4xy − 2y²</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">3(3)² − 4(3)(−2) − 2(−2)²</span><span class="why">substitute</span></div>
+          <div class="ln"><span class="eq">3(9) − 4(−6) − 2(4)</span><span class="why">powers, then (3)(−2) = −6</span></div>
+          <div class="ln"><span class="eq">27 + 24 − 8</span><span class="why">multiply</span></div>
+          <div class="ln ans"><span class="eq">= 43</span></div>
+        </div></div></div>
+      <div class="formula">Triangle: A = bh ÷ 2 &nbsp;|&nbsp; Trapezium: A = ½(a + b)h &nbsp;(area in cm²)</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> (−2)² = <strong>+4</strong>, not −4. Always bracket a negative before squaring. Also give units (cm²) for areas.</div>
+
+      <!-- ───────── 1.4 ───────── -->
+      <div class="section-heading" id="equations">⚖️ 1.4 Solving Linear Equations</div>
+      <div class="key-term"><strong>Solve an equation:</strong> find the value of the variable that makes both sides equal. Whatever you do to one side, do the <strong>same to the other</strong>.
+        <div class="tip">💡 A balanced scale: add or remove the same weight on both sides and it stays level.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: solve</div>
+        <ol><li>Remove brackets.</li><li>Collect x-terms on one side (subtract the smaller).</li><li>Move numbers to the other side.</li><li>Divide by the coefficient of x.</li><li>Check by substituting back.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Solve 3(2x − 6) = 2(2x + 1)</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">6x − 18 = 4x + 2</span><span class="why">remove brackets</span></div>
+          <div class="ln"><span class="eq">2x − 18 = 2</span><span class="why">− 4x each side</span></div>
+          <div class="ln"><span class="eq">2x = 20</span><span class="why">+ 18 each side</span></div>
+          <div class="ln ans"><span class="eq">x = 10</span><span class="why">÷ 2</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> moving a term across without changing its sign. “+18 to the other side” becomes −18 – or, better, add 18 to <em>both</em> sides.</div>
+
+      <!-- ───────── 1.5 ───────── -->
+      <div class="section-heading" id="problems">📝 1.5 Solving Problems Using Linear Equations</div>
+      <div class="method"><div class="method-title">🔧 Method: word problems</div>
+        <ol><li>“Let x = …” (say what x stands for).</li><li>Translate the sentence into an equation.</li><li>Solve it.</li><li>Answer in words, with units, and check.</li></ol></div>
+      <table><thead><tr><th>Words</th><th>Algebra</th></tr></thead><tbody>
+        <tr><td>3 more than / sum / added to</td><td>+</td></tr>
+        <tr><td>reduced by / less than / take away</td><td>−</td></tr>
+        <tr><td>times / twice / double</td><td>× (twice x = 2x)</td></tr>
+        <tr><td>is / gives / the result is / equals</td><td>=</td></tr>
+        <tr><td>consecutive numbers</td><td>x, x + 1, x + 2</td></tr>
+        <tr><td>age now x · 6 years ago · in 12 years</td><td>x · x − 6 · x + 12</td></tr>
+      </tbody></table>
+      <div class="example-box"><div class="example-header">📘 A rectangle has sides x, (2x + 1), x, (2x + 1). Perimeter = 44 cm. Find x.</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">x + (2x + 1) + x + (2x + 1) = 44</span><span class="why">add all sides</span></div>
+          <div class="ln"><span class="eq">6x + 2 = 44</span><span class="why">collect</span></div>
+          <div class="ln"><span class="eq">6x = 42</span><span class="why">− 2</span></div>
+          <div class="ln ans"><span class="eq">x = 7 cm</span><span class="why">÷ 6</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> stopping at x. If the question asks for the <em>other</em> number, an age or a length, work it out and give units.</div>
+
+      <!-- ───────── 1.6 ───────── -->
+      <div class="section-heading" id="division">➗ 1.6 Algebraic Division</div>
+      <div class="key-term"><strong>Array method:</strong> the grid used to multiply brackets, run backwards. The divisor goes down the side and the answer builds along the top.
+        <div class="tip">💡 Multiplying fills the boxes from the answer. Dividing starts from the boxes and finds the answer.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: (x² + x − 12) ÷ (x + 4)</div>
+        <ol><li>Put the first term x² in box 1. Divide by x → <strong>x</strong> goes on top.</li>
+          <li>x × (+4) = 4x goes in box 2.</li>
+          <li>Box 2 + box 3 must make the middle term: x − 4x = <strong>−3x</strong> in box 3. −3x ÷ x → <strong>−3</strong> on top.</li>
+          <li>Check: (+4)(−3) = −12 ✓. <strong>Answer: x − 3</strong></li></ol>
+        <div style="padding:0 16px 12px"><table class="mgrid"><tr><th></th><th>x</th><th>−3</th></tr><tr><th>x</th><td>x²</td><td>−3x</td></tr><tr><th>+4</th><td>4x</td><td>−12</td></tr></table></div></div>
+      <div class="key-term"><strong>Missing power:</strong> if a power is missing, write it with a zero coefficient before dividing. E.g. 4x³ − 13x − 6 becomes 4x³ <strong>+ 0x²</strong> − 13x − 6. Dividing by (x − 2) gives 4x² + 8x + 3.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> the divisor (x − 2) goes into the grid as <em>−2</em>, not +2. Always check by multiplying back.</div>
+
+      <!-- ───────── 1.7 ───────── -->
+      <div class="section-heading" id="numberline">📏 1.7 Plotting Numbers on the Number Line</div>
+      <table><thead><tr><th>Set</th><th>Meaning</th><th>On the number line</th></tr></thead><tbody>
+        <tr><td><strong>ℕ</strong> natural</td><td>1, 2, 3, 4 …</td><td>separate dots, arrow = continues</td></tr>
+        <tr><td><strong>ℤ</strong> integers</td><td>… −2, −1, 0, 1, 2 …</td><td>separate dots</td></tr>
+        <tr><td><strong>ℝ</strong> real</td><td>all numbers on the line (fractions, decimals, √5, π)</td><td>a <strong>heavy line</strong> – it “fills” the line</td></tr>
+      </tbody></table>
+      <div class="key-term"><strong>Inequality signs:</strong> &gt; greater than · &lt; less than · ≥ greater than or equal to · ≤ less than or equal to. An <strong>equation</strong> (x + 3 = 7) has equal sides; an <strong>inequality</strong> (x + 3 &gt; 7) does not.</div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>●</strong> closed circle = <em>counted in</em> (≥ ≤) · <strong>○</strong> open circle = <em>out</em> (&gt; &lt;)</div>
+
+      <div class="rv-numline" data-min="1" data-max="7" data-dots="4,5,6,7" data-arrow="right" data-label="x ≥ 4, x in N"></div>
+      <p class="nl-caption">x ≥ 4, x ∈ ℕ → 4, 5, 6, 7 …</p>
+      <div class="rv-numline" data-min="-2" data-max="5" data-dots="-1,0,1,2,3,4,5" data-arrow="right" data-label="x > -2, x in Z"></div>
+      <p class="nl-caption">x &gt; −2, x ∈ ℤ → −1, 0, 1, 2 … (−2 itself is not included)</p>
+      <div class="rv-numline" data-min="0" data-max="5" data-line="3:" data-ends="c" data-label="x ≥ 3, x in R"></div>
+      <p class="nl-caption">x ≥ 3, x ∈ ℝ → closed circle, heavy line to the right</p>
+      <div class="rv-numline" data-min="-4" data-max="2" data-line=":-2" data-ends="o" data-label="x < -2, x in R"></div>
+      <p class="nl-caption">x &lt; −2, x ∈ ℝ → open circle, heavy line to the left</p>
+      <div class="rv-numline" data-min="-5" data-max="5" data-line="-3:2" data-ends="co" data-label="-3 ≤ x < 2, x in R"></div>
+      <p class="nl-caption">−3 ≤ x &lt; 2, x ∈ ℝ → closed at −3, open at 2 (combined inequality)</p>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> ℕ starts at <strong>1</strong>, not 0. And for ℤ / ℕ use dots, for ℝ use a line.</div>
+
+      <!-- ───────── 1.8 ───────── -->
+      <div class="section-heading" id="inequalities">⚖️ 1.8 Solving Inequalities</div>
+      <table><thead><tr><th>Do this to both sides</th><th>Sign</th><th>Test: 6 &gt; 4</th></tr></thead><tbody>
+        <tr><td>add or subtract the same number</td><td>stays</td><td>6 + 4 &gt; 4 + 4 ✓</td></tr>
+        <tr><td>multiply or divide by a <strong>positive</strong></td><td>stays</td><td>6 × 3 &gt; 4 × 3 ✓ (18 &gt; 12)</td></tr>
+        <tr><td>multiply or divide by a <strong>negative</strong></td><td><strong>reverses</strong></td><td>6 × (−2) &lt; 4 × (−2) ✓ (−12 &lt; −8)</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> negative flips the sign. On the number line, −12 is <em>left</em> of −8, so the order turns round.</div>
+      <div class="method"><div class="method-title">🔧 Method: solve an inequality</div>
+        <ol><li>Solve like an equation.</li><li>Negative multiply/divide? → flip the sign.</li><li>Graph in the right set: dots for ℕ ℤ, line for ℝ.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Solve 4 − 3x &gt; −5, x ∈ ℤ</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">−3x &gt; −9</span><span class="why">− 4 each side</span></div>
+          <div class="ln"><span class="eq">x &lt; 3</span><span class="why">÷ (−3) → reverse the sign</span></div>
+          <div class="ln ans"><span class="eq">x = 2, 1, 0, −1 …</span><span class="why">integers less than 3</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting to flip when dividing by a negative. Check by trying one value from your answer in the original inequality.</div>
+
+      <!-- ───────── Practice tools ───────── -->
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Term, variable, coefficient, constant in 2x² + 3x − 4?</div><div class="a">3 terms · variable x · coefficients 2 and 3 · constant −4</div></div>
+        <div class="rv-card"><div class="q">What are like terms?</div><div class="a">Same letters, same powers (5x &amp; 3x). Only like terms can be added or subtracted</div></div>
+        <div class="rv-card"><div class="q">Are x and x² like terms?</div><div class="a">No – the powers differ, so they can’t be combined</div></div>
+        <div class="rv-card"><div class="q">3x × 4y = ?</div><div class="a">12xy – multiply numbers, then letters</div></div>
+        <div class="rv-card"><div class="q">a² × a³ = ?</div><div class="a">a⁵ – same letter, <strong>add</strong> the indices</div></div>
+        <div class="rv-card"><div class="q">a(b + c) = ?</div><div class="a">ab + ac</div></div>
+        <div class="rv-card"><div class="q">−4(5a − 2) = ?</div><div class="a">−20a + 8 – the minus changes every sign inside</div></div>
+        <div class="rv-card"><div class="q">How do you expand (2x − 3)(3x + 4)?</div><div class="a">Grid: every term × every term, add boxes → 6x² − x − 12</div></div>
+        <div class="rv-card"><div class="q">First step to evaluate 3x² when x = −2?</div><div class="a">Substitute in brackets: 3(−2)²</div></div>
+        <div class="rv-card"><div class="q">(−2)² = ?</div><div class="a">+4 (negative × negative = positive)</div></div>
+        <div class="rv-card"><div class="q">Order of work when evaluating?</div><div class="a">Powers, then × and ÷, then + and −</div></div>
+        <div class="rv-card"><div class="q">Area of a triangle / trapezium?</div><div class="a">A = bh ÷ 2 · A = ½(a + b)h</div></div>
+        <div class="rv-card"><div class="q">Golden rule for solving equations?</div><div class="a">Do the same to both sides</div></div>
+        <div class="rv-card"><div class="q">Five steps to solve an equation?</div><div class="a">Brackets → x-terms together → numbers across → divide → check</div></div>
+        <div class="rv-card"><div class="q">First step of every word problem?</div><div class="a">“Let x = …” – say what the unknown is</div></div>
+        <div class="rv-card"><div class="q">Three consecutive numbers?</div><div class="a">x, x + 1, x + 2</div></div>
+        <div class="rv-card"><div class="q">Ruth is x. Her age 6 years ago / in 12 years?</div><div class="a">x − 6 / x + 12</div></div>
+        <div class="rv-card"><div class="q">Array method for division: first step?</div><div class="a">Put the first term in box 1, divide by the divisor’s first term, write it on top</div></div>
+        <div class="rv-card"><div class="q">How do you write x³ + 11x − 30 before dividing?</div><div class="a">x³ + 0x² + 11x − 30</div></div>
+        <div class="rv-card"><div class="q">What are ℕ, ℤ, ℝ?</div><div class="a">Natural (1, 2, 3 …) · Integers (… −1, 0, 1 …) · Real (every number on the line)</div></div>
+        <div class="rv-card"><div class="q">Open vs closed circle?</div><div class="a">Open ○ = not included (&gt; &lt;) · Closed ● = included (≥ ≤)</div></div>
+        <div class="rv-card"><div class="q">What does −3 ≤ x &lt; 2 mean?</div><div class="a">x is from −3 (included) up to 2 (not included)</div></div>
+        <div class="rv-card"><div class="q">When do you add/subtract on both sides of an inequality?</div><div class="a">Any time – the sign stays the same</div></div>
+        <div class="rv-card"><div class="q">Multiply/divide an inequality by a positive?</div><div class="a">Sign stays the same</div></div>
+        <div class="rv-card"><div class="q">Multiply/divide an inequality by a negative?</div><div class="a">Reverse the sign (&gt; becomes &lt;, ≥ becomes ≤)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>In 3x the number 3 is the {{coefficient}}, and a term with no letter, like −4, is a {{constant}}.</p>
+        <p>Only {{like}} terms may be added or subtracted.</p>
+        <p>When multiplying powers of the same letter, {{add}} the indices: a² × a³ = a<sup>{{5}}</sup>.</p>
+        <p>A minus sign outside a bracket {{changes|reverses|flips}} the sign of every term inside.</p>
+        <p>When evaluating, work out powers first, then multiply and divide, and only then {{add or subtract|add and subtract}}.</p>
+        <p>To solve an equation, do the {{same}} thing to {{both sides|both}}.</p>
+        <p>x³ + 11x − 30 is written x³ + {{0}}x² + 11x − 30 before dividing.</p>
+        <p>ℕ is the set of {{natural}} numbers, ℤ the {{integers}} and ℝ the {{real}} numbers.</p>
+        <p>A {{closed|filled|solid}} circle means the number is included; an {{open|empty|hollow}} circle means it is not.</p>
+        <p>Multiply or divide an inequality by a {{negative}} number and you must {{reverse|flip|change}} the sign.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>Which pair are <strong>like terms</strong>?</p><ol><li>3x² and 3x</li><li>5xy and 5x</li><li>4a²b and 2a²b</li><li>2x and 2x²</li></ol><div class="explain">Like terms need the same letters <em>and</em> the same powers. 4a²b and 2a²b match exactly; the others differ in a power or a letter.</div></div>
+        <div class="rv-q" data-answer="b"><p>2a²b × ab = ?</p><ol><li>2a²b²</li><li>2a³b²</li><li>2a⁴b</li><li>3a³b²</li></ol><div class="explain">Numbers: 2 × 1 = 2. Letters: a²×a = a³ (add indices), b×b = b². Answer 2a³b².</div></div>
+        <div class="rv-q" data-answer="b"><p>−4(5a − 2) = ?</p><ol><li>−20a − 8</li><li>−20a + 8</li><li>20a + 8</li><li>−20a − 2</li></ol><div class="explain">−4 × 5a = −20a and −4 × (−2) = +8. The minus changes <em>both</em> signs.</div></div>
+        <div class="rv-q" data-answer="c"><p>(2x − 3)(3x + 4) = ?</p><ol><li>6x² − 12</li><li>6x² + x − 12</li><li>6x² − x − 12</li><li>5x² − x − 12</li></ol><div class="explain">Grid: 6x², −9x, +8x, −12. Middle terms: −9x + 8x = −x.</div></div>
+        <div class="rv-q" data-answer="b"><p>If x = −3, what is x²?</p><ol><li>−9</li><li>9</li><li>−6</li><li>6</li></ol><div class="explain">(−3)² = (−3) × (−3) = +9. Negative × negative is positive; bracket negatives before squaring.</div></div>
+        <div class="rv-q" data-answer="b"><p>Solve 3x − 5 = 16.</p><ol><li>x = 11/3</li><li>x = 7</li><li>x = 5</li><li>x = 21</li></ol><div class="explain">Add 5 to both sides: 3x = 21. Divide by 3: x = 7. (11/3 comes from subtracting 5 by mistake; 21 forgets to divide.)</div></div>
+        <div class="rv-q" data-answer="b"><p>Solve 5x − 4 = 4x + 7.</p><ol><li>x = 3</li><li>x = 11</li><li>x = −11</li><li>x = 7</li></ol><div class="explain">Subtract 4x from both sides: x − 4 = 7. Add 4: x = 11.</div></div>
+        <div class="rv-q" data-answer="b"><p>x is the first of three consecutive numbers with sum 168. Which equation?</p><ol><li>3x = 168</li><li>x + (x + 1) + (x + 2) = 168</li><li>x + 2x + 3x = 168</li><li>x + (x + 2) + (x + 4) = 168</li></ol><div class="explain">Consecutive numbers go up by 1: x, x + 1, x + 2. So 3x + 3 = 168 and x = 55.</div></div>
+        <div class="rv-q" data-answer="a"><p>(x² + x − 12) ÷ (x + 4) = ?</p><ol><li>x − 3</li><li>x + 3</li><li>x − 4</li><li>x + 8</li></ol><div class="explain">Check by multiplying back: (x + 4)(x − 3) = x² + x − 12 ✓.</div></div>
+        <div class="rv-q" data-answer="a"><p>Before dividing 4x³ − 13x − 6 by (x − 2), what must you do?</p><ol><li>Rewrite it as 4x³ + 0x² − 13x − 6</li><li>Change it to 4x³ + 13x − 6</li><li>Divide −13x by x first</li><li>Drop the x³ term</li></ol><div class="explain">The x² term is missing, so write it as 0x². It keeps the boxes in the grid lined up.</div></div>
+        <div class="rv-q" data-answer="b"><p>List the values for x &gt; −2, x ∈ ℤ.</p><ol><li>−2, −1, 0, 1 …</li><li>−1, 0, 1, 2 …</li><li>1, 2, 3 …</li><li>… −4, −3</li></ol><div class="explain">&gt; excludes −2, so the first integer is −1. They continue to the right.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which graph shows x &lt; −2, x ∈ ℝ?</p><ol><li>Closed circle at −2, heavy line to the right</li><li>Open circle at −2, heavy line to the left</li><li>Open circle at −2, dots at −3, −4, −5 …</li><li>Closed circle at −2, heavy line to the left</li></ol><div class="explain">&lt; = open circle (−2 not included); “less than” = to the left; ℝ = a heavy line, not dots.</div></div>
+        <div class="rv-q" data-answer="b"><p>6 &gt; 4. Multiply both sides by −2. Which is true?</p><ol><li>−12 &gt; −8</li><li>−12 &lt; −8</li><li>12 &lt; 8</li><li>−12 = −8</li></ol><div class="explain">6 × (−2) = −12 and 4 × (−2) = −8. −12 is left of −8, so the sign reverses to &lt;.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="font-size:14px;color:var(--muted)">Try each one on paper first, then click to check. The book exercise number is shown so you can find more like it.</p>
+
+      <details class="rv-qa"><summary>1. (Ex 1.1 Q25) In 3x² − 2x + 4xy + 8: (i) how many terms? (ii) coefficient of xy? (iii) how many variables? (iv) the constant?</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">3x² | −2x | 4xy | +8</span><span class="why">split at + / −</span></div>
+          <div class="ln ans"><span class="eq">(i) 4 (ii) 4 (iii) 2 (iv) 8</span><span class="why">variables: x and y</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>2. (Ex 1.1 Q19) Simplify x² − 3x + 4 − 2x² + 5x − 3</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">x² − 2x² − 3x + 5x + 4 − 3</span><span class="why">group like terms</span></div>
+          <div class="ln ans"><span class="eq">−x² + 2x + 1</span><span class="why">x² − 2x² = −x²</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>3. (Ex 1.2 Q28) Find the missing term: (i) 5p × □ = 10pq &nbsp; (ii) □ × 7n = 21mn</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) 10pq ÷ 5p</span><span class="why">divide to undo ×</span></div>
+          <div class="ln ans"><span class="eq">(i) 2q</span></div>
+          <div class="ln"><span class="eq">(ii) 21mn ÷ 7n</span></div>
+          <div class="ln ans"><span class="eq">(ii) 3m</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>4. (Ex 1.2 Q4) Remove the brackets and simplify 5(3x − 2) − 2(x − 1)</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">15x − 10 − 2x + 2</span><span class="why">−2 × (−1) = +2</span></div>
+          <div class="ln ans"><span class="eq">13x − 8</span><span class="why">collect</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>5. (Ex 1.2 Q19) Find the product (2x + 4)(2x² − x − 3)</summary>
+        <div class="rv-model">
+          <table class="mgrid"><tr><th></th><th>2x²</th><th>−x</th><th>−3</th></tr><tr><th>2x</th><td>4x³</td><td>−2x²</td><td>−6x</td></tr><tr><th>+4</th><td>8x²</td><td>−4x</td><td>−12</td></tr></table>
+          <div class="work"><div class="ln"><span class="eq">4x³ − 2x² + 8x² − 6x − 4x − 12</span><span class="why">six boxes</span></div>
+          <div class="ln ans"><span class="eq">4x³ + 6x² − 10x − 12</span><span class="why">collect</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>6. (Ex 1.3 Q9) If x = 2, y = −3 and z = 1, evaluate x² − 3xy + 2z</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(2)² − 3(2)(−3) + 2(1)</span><span class="why">substitute in brackets</span></div>
+          <div class="ln"><span class="eq">4 + 18 + 2</span><span class="why">−3 × 2 × −3 = +18</span></div>
+          <div class="ln ans"><span class="eq">24</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>7. (Ex 1.3 Q11) The area of a trapezium is A = ½(a + b)h. Find A when a = 9 cm, b = 16 cm, h = 10 cm.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">A = ½(9 + 16)(10)</span><span class="why">substitute</span></div>
+          <div class="ln"><span class="eq">A = ½ × 25 × 10</span></div>
+          <div class="ln ans"><span class="eq">A = 125 cm²</span><span class="why">units!</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>8. (Ex 1.4 Q24) Solve 5(x − 2) − 3x = 3(x − 5)</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">5x − 10 − 3x = 3x − 15</span><span class="why">remove brackets</span></div>
+          <div class="ln"><span class="eq">2x − 10 = 3x − 15</span><span class="why">collect</span></div>
+          <div class="ln"><span class="eq">−10 = x − 15</span><span class="why">− 2x each side</span></div>
+          <div class="ln ans"><span class="eq">x = 5</span><span class="why">+ 15 · check: 0 = 0 ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>9. (Ex 1.5 Q4) Ann is 3 years older than Helen. Twice the sum of their ages is 50. How old is Ann?</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">Helen = h, Ann = h + 3</span><span class="why">let h = Helen’s age</span></div>
+          <div class="ln"><span class="eq">2(h + h + 3) = 50</span></div>
+          <div class="ln"><span class="eq">4h + 6 = 50 → 4h = 44 → h = 11</span></div>
+          <div class="ln ans"><span class="eq">Ann = 14 years old</span><span class="why">h + 3 · check: 2(25) = 50 ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>10. (Ex 1.5 Q5) A triangle has sides x, (2x + 1) and 3x. (i) Write the perimeter. (ii) Find x if the perimeter is 55.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) P = x + (2x + 1) + 3x</span></div>
+          <div class="ln ans"><span class="eq">(i) P = 6x + 1</span></div>
+          <div class="ln"><span class="eq">(ii) 6x + 1 = 55 → 6x = 54</span></div>
+          <div class="ln ans"><span class="eq">(ii) x = 9</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>11. (Ex 1.6 Q13) Divide x³ + 3x² + 5x + 3 by (x + 1)</summary>
+        <div class="rv-model">
+          <table class="mgrid"><tr><th></th><th>x²</th><th>2x</th><th>3</th></tr><tr><th>x</th><td>x³</td><td>2x²</td><td>3x</td></tr><tr><th>+1</th><td>x²</td><td>2x</td><td>3</td></tr></table>
+          <div class="work"><div class="ln"><span class="eq">x³ ÷ x = x²</span><span class="why">top; x² × 1 = x² in the grid</span></div>
+          <div class="ln"><span class="eq">3x² − x² = 2x² → 2x² ÷ x = 2x</span><span class="why">top; 2x × 1 = 2x in the grid</span></div>
+          <div class="ln"><span class="eq">5x − 2x = 3x → 3x ÷ x = 3</span><span class="why">top; 3 × 1 = 3 ✓ matches</span></div>
+          <div class="ln ans"><span class="eq">x² + 2x + 3</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>12. (Ex 1.7 Q5) If x ∈ ℤ, list the values of x for x ≥ −2 and x ≤ 1.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">from −2 (included) up to 1 (included)</span></div>
+          <div class="ln ans"><span class="eq">−2, −1, 0, 1</span><span class="why">integers only</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>13. (Ex 1.7 Q15) Graph −5 ≤ x &lt; 3, x ∈ ℝ on the number line.</summary>
+        <div class="rv-model">
+          <div class="rv-numline" data-min="-6" data-max="4" data-line="-5:3" data-ends="co" data-label="-5 ≤ x < 3, x in R"></div>
+          <div class="work"><div class="ln"><span class="eq">−5: ≤ → closed ●</span><span class="why">included</span></div>
+          <div class="ln"><span class="eq">3: &lt; → open ○</span><span class="why">not included</span></div>
+          <div class="ln ans"><span class="eq">heavy line between</span><span class="why">ℝ = line, not dots</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>14. (Ex 1.8 Q15) Solve 5 − 2x ≥ −7, x ∈ ℝ, and graph it.</summary>
+        <div class="rv-model">
+          <div class="work"><div class="ln"><span class="eq">−2x ≥ −12</span><span class="why">− 5 each side</span></div>
+          <div class="ln ans"><span class="eq">x ≤ 6</span><span class="why">÷ (−2) → reverse the sign</span></div></div>
+          <div class="rv-numline" data-min="0" data-max="8" data-line=":6" data-ends="c" data-label="x ≤ 6, x in R"></div></div></details>
+
+      <details class="rv-qa"><summary>15. (Ex 1.8 Q20) The number of cars, c, per hour on a toll road: (i) between 350 and 500 at peak; (ii) between 120 and 200 inclusive mid-day; (iii) at night about one-tenth of mid-day. Write an inequality for each.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) 350 &lt; c &lt; 500</span><span class="why">“between” → strict &lt;</span></div>
+          <div class="ln"><span class="eq">(ii) 120 ≤ c ≤ 200</span><span class="why">“inclusive” → ≤</span></div>
+          <div class="ln ans"><span class="eq">(iii) 12 ≤ c ≤ 20</span><span class="why">120 ÷ 10 and 200 ÷ 10</span></div></div></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>1.1 Simplify</td><td>Add/subtract <strong>like terms</strong> only (same letters + powers)</td><td>x ≠ x². The sign goes with the term after it</td></tr>
+        <tr><td>1.2 Brackets</td><td>a(b + c) = ab + ac · a² × a³ = a⁵ · grid for (…)(…)</td><td>A minus outside changes <em>every</em> sign inside</td></tr>
+        <tr><td>1.3 Evaluate</td><td>Substitute in brackets → powers → × ÷ → + −</td><td>(−2)² = +4. Write units on area answers</td></tr>
+        <tr><td>1.4 Equations</td><td>Same to both sides: brackets → collect x → divide</td><td>Show each step; check by substituting back</td></tr>
+        <tr><td>1.5 Word problems</td><td>“Let x = …” → equation → solve → answer in words</td><td>Consecutive: x, x+1, x+2 · ages: x−6, x+12</td></tr>
+        <tr><td>1.6 Division</td><td>Array method; missing power → 0x²</td><td>Multiply back to check the answer</td></tr>
+        <tr><td>1.7 Number line</td><td>ℕ, ℤ = dots · ℝ = heavy line · ● included · ○ not</td><td>ℕ starts at 1. −3 ≤ x &lt; 2 is a combined inequality</td></tr>
+        <tr><td>1.8 Inequalities</td><td>Solve like an equation; × or ÷ by a <strong>negative</strong> reverses the sign</td><td>Graph in the set asked for (ℕ, ℤ or ℝ)</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Maths Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

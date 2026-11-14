@@ -27,7 +27,7 @@ Sidebar link + `id` for each; every section heading uses `.section-heading` with
 | 11 | **Revision tracker** | Spaced repetition: Day 0,1,3,7,14,30 | `.rv-tracker` |
 
 Subjects with no calculations (history, english, french, irish, classics) replace "Practice problems" with
-short-answer / source-based / essay-plan questions. Maths and science keep numeric worked problems with units.
+short-answer / source-based / essay-plan questions. Maths and science keep numeric worked problems with units (maths: also follow §6).
 
 ## 3. Writing the notes
 - **Source of truth:** content must come from the student's textbook/notes/syllabus for that chapter. Never invent facts, dates, quotes or formulae; if unsure, leave a `TODO:` comment and tell the user.
@@ -77,10 +77,33 @@ Quality bar for the question sets:
 - Interactive state lives in `localStorage` under `rv:<page path>:…`; never require a server or login.
 - Accessible: real `<button>`s for actions, sufficient contrast, don't rely on colour alone (✓/✗ icons accompany right/wrong).
 
-## 6. Done checklist
+## 6. Maths chapters (extra rules – reference: `maths/year-2/ch1.html`)
+Maths keeps sections 1–11 above, but the notes and question sets follow these rules.
+
+**Plan first**
+- Before writing, list the chapter's sub-concepts (one per textbook section, plus special cases such as "negative squared" or "missing power").
+- Give **each question exactly one distinct sub-concept**, across the quiz *and* the practice questions together. No two questions may test the same idea in the same way (two-step equation, x on both sides and brackets are three different ideas; two more two-step equations are not).
+- Keep the plan as an HTML comment at the top of the chapter: sub-concept → quiz # / practice # (+ textbook exercise ref). Every textbook section must appear at least once.
+
+**Worked steps must be quick to grab and remember**
+- Every skill gets a **method card** (`.method`): 3–5 numbered steps, each a short imperative ("Subtract the smaller x-term").
+- Every worked example uses `.work`: one operation per line, a 2–5 word reason on the right (`.why`, e.g. "add 5 both sides"), the final answer highlighted (`.ln.ans`). Aim for ≤ 5 lines; don't skip a step that loses marks.
+- Add a `.mnemonic` or one-line rule where one exists, and a `.exam-trap` for the commonest lost mark (sign errors, forgetting units, flipping an inequality).
+- Grids / arrays: `table.mgrid`. Number lines: `<div class="rv-numline" …>` (attributes documented in `assets/revision.js`). Formulae in `.formula`.
+
+**Content and answers**
+- Questions come from the textbook exercises (cite "Ex 1.4 Q24"). Work every answer out yourself *and* compare with the book's answer key; if they differ, flag it, don't guess.
+- Use real symbols: − × ÷ ≤ ≥ ∈ ℕ ℤ ℝ, `<sup>`/² ³ for powers. No images of equations.
+- Final answers carry units (cm², €, years) and answer the question asked (find *Ann's* age, not just x).
+- Numbers in quiz distractors should be the result of a real mistake (wrong sign, forgot to divide, didn't flip), and the explanation says which.
+- Counts for maths: 10–14 quiz questions, 10–15 practice questions, 20–25 flashcards.
+- Don't put `rv-numline` inside flashcards or quiz options (those are re-rendered by JS); use it in notes and practice answers.
+
+## 7. Done checklist
 - [ ] Sections 1–11 present, sidebar links work, ids match
 - [ ] All facts traced to the source material
 - [ ] Mind map, flashcards, cloze, quiz all render and respond (open the page and click through)
 - [ ] Every key term appears in glossary, a flashcard and a question
 - [ ] Chapter card added to the year's `index.html`; back-links resolve
 - [ ] README "Chapters" list updated if it lists the chapter
+- [ ] Maths only: question plan comment present; each question has a distinct sub-concept; every model answer matches the textbook key

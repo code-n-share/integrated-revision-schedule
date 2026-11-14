@@ -89,3 +89,7 @@ details.rv-qa summary { cursor: pointer; font-weight: 600; font-size: 14px; padd
 details.rv-qa summary:hover { background: var(--rv-accent-light); }
 details.rv-qa .rv-model { padding: 12px 18px 16px; border-top: 1px solid var(--rv-border); font-size: 14px; }
 details.rv-qa .rv-model::before { content: "Model answer: "; font-weight: 700; color: var(--rv-ok); }
+
+/* Number line (maths) – drawn by revision.js from data- attributes */
+.rv-numline svg { display: block; width: 100%; max-width: 460px; margin: 6px auto; }
+.rv-numline text { font: 600 11px 'DM Sans', sans-serif; fill: #1A1A2E; }
