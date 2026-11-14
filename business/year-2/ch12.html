@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Revision – Ch 12 Protecting the Consumer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #E8630A; --accent-light: #FFF0E6;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: var(--text); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: var(--text); font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .sub-heading { font: 700 16px 'Sora', sans-serif; margin: 22px 0 8px; color: #A84000; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    .formula { margin: 14px 0; padding: 14px 18px; background: #F1F8E9; border: 1.5px solid #8BC34A; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .answer { display: inline-block; margin-top: 6px; padding: 4px 12px; background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 8px; font-weight: 700; }
+    .todo { margin: 14px 0; padding: 10px 14px; background: #FFF8E1; border: 1.5px dashed #F5A623; border-radius: 10px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+    .chapter-nav-bar a { color: #A84000; font-weight: 600; text-decoration: none; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+    .flow span { padding: 6px 12px; border-radius: 100px; background: var(--accent-light); border: 1.5px solid var(--accent); font-size: 13px; font-weight: 600; }
+    .flow i { font-style: normal; color: var(--muted); }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Business Revision</div><div class="book-title">Year 2 · Chapter 12</div></div>
+    <a href="index.html">&larr; Business Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#consumer">The Wise Consumer</a>
+    <a href="#responsibilities">Consumer Responsibilities</a>
+    <a href="#goods-services">Sale of Goods Act, Redress &amp; Guarantees</a>
+    <a href="#protection-act">Consumer Protection Act 2007</a>
+    <a href="#rights-act">Consumer Rights Act 2022 &amp; Online Shopping</a>
+    <a href="#agencies">Consumer Agencies</a>
+    <a href="#letter">Letter of Complaint</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 12 · Consumer Protection</div>
+      <h1>🛒 <span>Protecting the Consumer</span></h1>
+      <p class="chapter-meta">Business Studies · Year 2 · Exam Revision · Source: your handwritten notes</p>
+      <div><span class="goal-tag">✔ Compare value with unit pricing</span><span class="goal-tag">✔ Know consumer responsibilities and law</span><span class="goal-tag">✔ Explain redress, guarantees and online rights</span><span class="goal-tag">✔ Match agencies to problems</span><span class="goal-tag">✔ Write a letter of complaint</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about Protecting the Consumer, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+<ul><li>Protecting the Consumer
+  <ul>
+    <li>Wise consumer<ul><li>Eight questions</li><li>Unit pricing</li><li>Responsibilities</li></ul></li>
+    <li>Consumer law<ul><li>Sale of Goods 1980</li><li>Protection Act 2007</li><li>Rights Act 2022</li></ul></li>
+    <li>Redress<ul><li>Repair</li><li>Replacement</li><li>Refund</li></ul></li>
+    <li>Guarantees<ul><li>Guarantee</li><li>Extended warranty</li></ul></li>
+    <li>Online shopping<ul><li>Benefits</li><li>Challenges</li></ul></li>
+    <li>Agencies<ul><li>CCPC</li><li>Small claims</li><li>Ombudsman</li><li>ECC Ireland</li></ul></li>
+    <li>Letter of complaint</li>
+  </ul>
+</li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Consumer</strong></td><td>A person who buys goods or services for their own use.</td></tr>
+          <tr><td><strong>Unit pricing</strong></td><td>Price ÷ quantity, to compare value for money between different pack sizes.</td></tr>
+          <tr><td><strong>False economy</strong></td><td>Buying something cheap that costs you more in the long run (one of the wise-consumer questions).</td></tr>
+          <tr><td><strong>Merchantable quality</strong></td><td>Goods must be of a standard fit to be sold (not faulty or damaged).</td></tr>
+          <tr><td><strong>Redress</strong></td><td>A solution to a consumer issue: repair, replacement or refund.</td></tr>
+          <tr><td><strong>Repair</strong></td><td>The item is fixed free of charge; the repair must be permanent.</td></tr>
+          <tr><td><strong>Replacement</strong></td><td>You get the same or an alternative product that is free from damage or faults.</td></tr>
+          <tr><td><strong>Refund</strong></td><td>You get the cost of the item back, in cash or paid back to your debit/credit card.</td></tr>
+          <tr><td><strong>Guarantee</strong></td><td>A promise by the manufacturer or company to sort out problems with a product/service within a specific, fixed period. Usually free and doesn't take away your legal rights.</td></tr>
+          <tr><td><strong>Extended warranty</strong></td><td>Like an insurance policy: you pay a premium for the manufacturer/retailer to extend the guarantee for longer.</td></tr>
+          <tr><td><strong>Misleading claim</strong></td><td>A false claim about the business, its goods, services or prices.</td></tr>
+          <tr><td><strong>Misleading practice</strong></td><td>False or untrue information used to deceive the consumer.</td></tr>
+          <tr><td><strong>Aggressive practice</strong></td><td>Harassment, physical force or influence used to force someone into buying a product.</td></tr>
+          <tr><td><strong>Prohibited / banned practices</strong></td><td>A list of 32 practices that are illegal under the Consumer Protection Act 2007.</td></tr>
+          <tr><td><strong>Distance selling</strong></td><td>Buying online, over the phone or by mail order (covered by the EU Consumer Rights Directive).</td></tr>
+          <tr><td><strong>Cooling-off period</strong></td><td>The 14 days in which you can return an item bought at a distance because you changed your mind.</td></tr>
+          <tr><td><strong>CCPC</strong></td><td>Competition and Consumer Protection Commission: statutory body that informs, educates, researches and enforces consumer law.</td></tr>
+          <tr><td><strong>Small claims procedure</strong></td><td>A quick, cheap, easy way to resolve a complaint without hiring a solicitor (max claim €2,000; fee €25).</td></tr>
+          <tr><td><strong>Ombudsman</strong></td><td>Independent, impartial, free service that investigates complaints about public bodies.</td></tr>
+          <tr><td><strong>European Consumer Centre (Ireland)</strong></td><td>Supports consumers with a problem with a supplier in another EU member state.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="consumer">🛒 The Wise Consumer</div>
+      <div class="key-term"><strong>Consumer:</strong> a person who buys <strong>goods</strong> or <strong>services</strong> for their <strong>own use</strong>.
+        <div class="tip">💡 If you buy it to use yourself (not to resell), you're the consumer.</div></div>
+      <div class="sub-heading">The wise consumer asks…</div>
+      <ul>
+        <li>Do I really need it? · Can I afford it? · Is it safe?</li>
+        <li>Is this the best price? · Is it a false economy?</li>
+        <li>Where does it come from? · How was the good produced? · Are there any hidden charges?</li>
+      </ul>
+      <div class="sub-heading">Unit pricing – which is better value?</div>
+      <div class="formula">Unit price = Price ÷ Quantity</div>
+      <div class="example-box"><div class="example-header">📘 Worked example (from your notes)</div><div class="example-body">
+        (a) 9-pack of Brand A cans costs €5.00 → €5.00 ÷ 9 = <strong>56c per can</strong><br>
+        (b) 16-pack of Brand B cans costs €8.00 → €8.00 ÷ 16 = <strong>50c per can</strong><br>
+        <span class="answer">16-pack of Brand B is better value for money</span></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> picking the cheaper <em>total</em> price. Always divide to get the price <em>per unit</em> and choose the lowest.</div>
+
+      <div class="section-heading" id="responsibilities">✅ Consumer Responsibilities</div>
+      <div class="key-term"><strong>Consumer responsibilities</strong> (the five main ones):
+        <ol>
+          <li>Behave wisely when buying goods or services.</li>
+          <li>Avoid impulse buying and false economies.</li>
+          <li>Shop around for the best value for money.</li>
+          <li>Consider the environmental and ethical impact of the products you consume.</li>
+          <li>Know your legal rights.</li>
+        </ol></div>
+      <p>Also listed in your notes (marked "not important"): use products carefully and in accordance with the manufacturer's instructions; dispose of packaging responsibly, recycling when possible; keep receipts as proof of purchase.</p>
+      <div class="mnemonic">🧩 <strong>Remember it (memory aid):</strong> <em>Wise · Impulse-free · Shop around · Ethical · Rights</em> = <strong>W-I-S-E-R</strong>.</div>
+
+      <div class="section-heading" id="goods-services">📜 Sale of Goods Act, Redress &amp; Guarantees</div>
+      <div class="key-term"><strong>Sale of Goods and Supply of Services Act (1980)</strong> – what the law says you must get:
+        <div class="tip">💡 Think "does it work, is it what they said, and was the job done properly?"</div></div>
+      <table><thead><tr><th>Goods must…</th><th>Services must be…</th></tr></thead><tbody>
+        <tr><td>• Be of <strong>merchantable quality</strong><br>• Be <strong>fit for the purpose</strong> intended<br>• Be <strong>as described</strong><br>• <strong>Match the sample</strong> shown</td>
+        <td>• Provided by someone with the necessary <strong>skills and qualifications</strong><br>• Provided with necessary <strong>care and attention</strong><br>• Carried out with goods or materials of <strong>merchantable quality</strong></td></tr>
+      </tbody></table>
+      <div class="sub-heading">Redress – solutions to issues</div>
+      <table><thead><tr><th>Redress</th><th>What it means</th></tr></thead><tbody>
+        <tr><td><strong>1. Repair</strong></td><td>The item may be fixed free of charge. The repair must be permanent.</td></tr>
+        <tr><td><strong>2. Replacement</strong></td><td>You can have the same or an alternative product that is free from damage or faults.</td></tr>
+        <tr><td><strong>3. Refund</strong></td><td>You receive the cost of the item back, in cash or as money paid back to your debit or credit card.</td></tr>
+      </tbody></table>
+      <div class="sub-heading">Guarantees and warranties</div>
+      <div class="key-term"><strong>Guarantee:</strong> a promise by the manufacturer or company that it will sort out any problems with a product or service within a specific, fixed period of time. It is usually <strong>free</strong> and doesn't take away any of your legal rights as a consumer.</div>
+      <div class="key-term"><strong>Extended warranty:</strong> like an insurance policy, for which you must pay a <strong>premium</strong>. For an extra fee, the manufacturer or retailer will extend the guarantee for a longer period.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying a guarantee removes your legal rights – it <em>doesn't</em>. And a guarantee is usually free, an extended warranty is paid for.</div>
+
+      <div class="section-heading" id="protection-act">⚖️ Consumer Protection Act 2007</div>
+      <div class="key-term"><strong>Consumer Protection Act 2007:</strong> protects consumers in relation to <strong>misleading claims</strong> about goods, services and prices. It does this by making it <strong>illegal</strong> for retailers to act in certain ways.
+        <div class="tip">💡 In plain English: businesses must tell the truth about what they sell.</div></div>
+      <div class="sub-heading">Misleading claims</div>
+      <table><thead><tr><th>About…</th><th>Must be truthful</th></tr></thead><tbody>
+        <tr><td><strong>Goods</strong></td><td>Performance of a product, the ingredients it contains and the weight of the item.</td></tr>
+        <tr><td><strong>Services</strong></td><td>The time, place and effect of a service.</td></tr>
+        <tr><td><strong>Prices</strong></td><td>Recommended retail prices (RRP), previous prices and actual prices.</td></tr>
+      </tbody></table>
+      <div class="sub-heading">Misleading practices</div>
+      <p>The Act protects consumers against unfair practices <strong>whether they buy locally or from a business within the EU</strong>.</p>
+      <ul>
+        <li><strong>Misleading:</strong> false or untrue information is used to deceive the consumer (making false claims).</li>
+        <li><strong>Aggressive:</strong> harassment, physical force or influence are used to force someone into buying a product.</li>
+        <li><strong>Prohibited / banned:</strong> a list of <strong>32</strong> banned practices, e.g. telling a customer they have won a prize then demanding payment to redeem it; claiming a business is closing down when it's not.</li>
+      </ul>
+
+      <div class="section-heading" id="rights-act">💻 Consumer Rights Act 2022 &amp; Online Shopping</div>
+      <div class="key-term"><strong>Consumer Rights Act 2022 – distance (online) selling:</strong> when you buy from a retailer located anywhere in the EU you are protected by the <strong>EU Consumer Rights Directive</strong>. It protects you when buying online, over the phone or by mail order, but only for purchases from businesses <strong>located in the EU</strong>.</div>
+      <div class="sub-heading">When you buy goods and services online you have the right to…</div>
+      <ul>
+        <li>Clear and accurate information before you buy.</li>
+        <li>A refund if your goods are not delivered.</li>
+        <li>Return faulty goods.</li>
+        <li>Return the item because you have <strong>changed your mind</strong> (<strong>14-day cooling-off period</strong>).</li>
+        <li>Cancel a service.</li>
+        <li>Cancel digital purchases.</li>
+      </ul>
+      <div class="sub-heading">Online shopping – benefits and challenges</div>
+      <table><thead><tr><th>Benefits (advantages)</th><th>Challenges (disadvantages)</th></tr></thead><tbody>
+        <tr><td>• <strong>Convenience</strong> – 24 hours a day, 365 days a year<br>• <strong>Greater variety</strong> of goods available<br>• No crowds or pressure from sales staff<br>• Cheaper than having a high-street store (for the business)<br>• Can reach a <strong>global audience</strong></td>
+        <td>• Increased risk of <strong>fraud</strong><br>• You can't touch or try on the goods<br>• Returning goods can be more difficult<br>• Environmental impact<br>• Competition from other businesses</td></tr>
+      </tbody></table>
+      <div class="todo">TODO (check your notes): your online shopping table also lists "online consumers can return goods if they change their mind" under <em>Challenges</em>. That is actually a consumer <em>right</em> (14-day cooling-off) so it is left out of this table – confirm with your textbook.</div>
+
+      <div class="section-heading" id="agencies">🏛️ Consumer Agencies</div>
+      <table><thead><tr><th>Agency</th><th>Role</th></tr></thead><tbody>
+        <tr><td><strong>CCPC</strong><br>(Competition and Consumer Protection Commission)</td><td>Statutory organisation that provides information and education to consumers about their personal finance and consumer rights; conducts research into consumer matters; represents consumers' interests by advising government on possible changes to consumer law; <strong>enforces</strong> consumer protection law in Ireland.</td></tr>
+        <tr><td><strong>Small claims procedure</strong></td><td>A quick, cheap and easy way to resolve a complaint about a faulty good or poor work by a service provider <strong>without hiring a solicitor</strong>. Maximum claim <strong>€2,000</strong>; application fee <strong>€25</strong>.</td></tr>
+        <tr><td><strong>Office of the Ombudsman</strong></td><td>Investigates complaints from people who feel they have been unfairly treated by a <strong>public body</strong> (government departments, local authorities, HSE, etc.). Independent, impartial and free.</td></tr>
+        <tr><td><strong>European Consumer Centre (Ireland)</strong></td><td>Supports consumers who have a problem with a supplier of goods or services in <strong>another EU member state</strong>. Free information, advice and assistance on consumer rights in the EU.</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> sending a complaint about a <em>shop</em> to the Ombudsman. The Ombudsman deals with <em>public bodies</em>; a faulty good from a trader goes to the small claims procedure (up to €2,000) or CCPC for information.</div>
+
+      <div class="section-heading" id="letter">✉️ Letter of Complaint</div>
+      <div class="key-term"><strong>Writing a letter of complaint – 3 steps:</strong>
+        <ol><li>Describe the details of the issue.</li><li>Give the details of the complaint and show how the situation <strong>breaches consumer law</strong>.</li><li>Explain what <strong>redress</strong> you want.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Model letter (from your notes: Patricia Cooney, misleading claim)</div><div class="example-body">
+        73 Ballyjamesduff Road, Virginia, Co. Cavan<br>12 January 2025<br><br>
+        Ciara O'Riordan, Snow Holidays Ltd, 44 Farnham Street, Co. Cavan<br><br>
+        <strong>Re: Misleading Claim – Holiday Brochure</strong><br><br>
+        Dear Ms O'Riordan,<br><br>
+        I booked a ski holiday to Italy, for me and my husband, costing €1,400, from 2nd to 9th January. The holiday brochure on your website said the ski slopes were a 5-minute walk from my chalet. When I arrived I discovered the nearest ski slope was a 30-minute bus journey away. This is a breach of the <strong>Consumer Protection Act 2007</strong>, as this was a misleading claim. Therefore, I would like a <strong>partial refund</strong> for the inconvenience caused.<br><br>
+        Yours sincerely,<br>Patricia Cooney</div></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>Issue → Law broken → Redress wanted.</strong></div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Define a consumer</div><div class="a">A person who buys goods or services for their own use.</div></div>
+        <div class="rv-card"><div class="q">Unit price formula</div><div class="a">Price ÷ Quantity (e.g. €5.00 ÷ 9 cans = 56c).</div></div>
+        <div class="rv-card"><div class="q">Name three questions a wise consumer asks</div><div class="a">e.g. Do I need it? Can I afford it? Is it safe? Best price? False economy? Hidden charges?</div></div>
+        <div class="rv-card"><div class="q">List the five main consumer responsibilities</div><div class="a">Behave wisely; avoid impulse buying/false economies; shop around; consider environmental & ethical impact; know legal rights.</div></div>
+        <div class="rv-card"><div class="q">4 things goods must be under the 1980 Act</div><div class="a">Merchantable quality, fit for purpose, as described, match the sample.</div></div>
+        <div class="rv-card"><div class="q">3 things a service must be under the 1980 Act</div><div class="a">Provided with skill/qualifications, care and attention, and with merchantable materials.</div></div>
+        <div class="rv-card"><div class="q">Three types of redress</div><div class="a">Repair, replacement, refund.</div></div>
+        <div class="rv-card"><div class="q">Define guarantee</div><div class="a">A promise by the manufacturer to sort out problems within a fixed period; usually free; keeps your legal rights.</div></div>
+        <div class="rv-card"><div class="q">What is an extended warranty?</div><div class="a">Paid-for (premium) extension of the guarantee, like insurance.</div></div>
+        <div class="rv-card"><div class="q">What does the Consumer Protection Act 2007 protect against?</div><div class="a">Misleading claims about goods, services and prices, and unfair practices.</div></div>
+        <div class="rv-card"><div class="q">Misleading vs aggressive practice</div><div class="a">Misleading = false information to deceive. Aggressive = harassment/force/influence to make you buy.</div></div>
+        <div class="rv-card"><div class="q">How many prohibited practices are banned?</div><div class="a">32 (e.g. saying you've won a prize then demanding payment).</div></div>
+        <div class="rv-card"><div class="q">Which EU law covers online buying?</div><div class="a">EU Consumer Rights Directive (Consumer Rights Act 2022).</div></div>
+        <div class="rv-card"><div class="q">Length of the online cooling-off period</div><div class="a">14 days to return an item because you changed your mind.</div></div>
+        <div class="rv-card"><div class="q">Two benefits and two challenges of online shopping</div><div class="a">Benefits: convenience, variety. Challenges: fraud, can't try goods on.</div></div>
+        <div class="rv-card"><div class="q">What does the CCPC do?</div><div class="a">Informs/educates consumers, researches, advises government and enforces consumer protection law.</div></div>
+        <div class="rv-card"><div class="q">Small claims procedure: max claim and fee?</div><div class="a">Maximum €2,000; fee €25; no solicitor needed.</div></div>
+        <div class="rv-card"><div class="q">Who does the Ombudsman investigate?</div><div class="a">Complaints about public bodies (government departments, local authorities, HSE).</div></div>
+        <div class="rv-card"><div class="q">Role of the European Consumer Centre (Ireland)</div><div class="a">Helps consumers with a problem with a supplier in another EU member state.</div></div>
+        <div class="rv-card"><div class="q">3 steps to a letter of complaint</div><div class="a">Describe the issue; show how it breaches consumer law; state the redress you want.</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>A {{consumer}} is a person who buys goods or services for their own use.</p>
+        <p>To compare pack sizes, calculate the {{unit price|unit pricing}} = price ÷ quantity.</p>
+        <p>Goods must be of {{merchantable}} quality, fit for {{purpose}} and match the sample shown.</p>
+        <p>The three types of redress are {{repair}}, {{replacement}} and {{refund}}.</p>
+        <p>An {{extended warranty}} is like an insurance policy for which you pay a premium.</p>
+        <p>The Consumer Protection Act {{2007}} makes {{misleading}} claims about goods, services and prices illegal.</p>
+        <p>A list of {{32}} practices is prohibited / banned under the Consumer Protection Act.</p>
+        <p>When buying online from the EU you have a {{14}}-day cooling-off period.</p>
+        <p>The small claims procedure has a maximum claim of €{{2,000|2000}} and a fee of €{{25}}.</p>
+        <p>The {{Ombudsman}} investigates complaints about public bodies such as the HSE.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>Which is better value: a 9-pack of cans for €5.00 or a 16-pack for €8.00?</p><ol><li>The 9-pack (56c per can)</li><li>The 16-pack (50c per can)</li><li>They are the same</li><li>The 9-pack because it costs less in total</li></ol><div class="explain">€8.00 ÷ 16 = 50c per can, cheaper than €5.00 ÷ 9 = 56c. Always compare unit prices, not totals.</div></div>
+        <div class="rv-q" data-answer="b"><p>Under the Sale of Goods and Supply of Services Act 1980, goods must be…</p><ol><li>Cheap and attractive</li><li>Of merchantable quality, fit for purpose, as described, and match the sample</li><li>Made in Ireland</li><li>Covered by a guarantee</li></ol><div class="explain">These are the four requirements for goods. A guarantee is optional and is not part of the Act.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which of these is NOT a form of redress?</p><ol><li>Repair</li><li>Replacement</li><li>Refund</li><li>Rebranding</li></ol><div class="explain">Redress = repair, replacement or refund.</div></div>
+        <div class="rv-q" data-answer="a"><p>What is the difference between a guarantee and an extended warranty?</p><ol><li>A guarantee is usually free; an extended warranty is paid for with a premium</li><li>A guarantee removes your legal rights; a warranty does not</li><li>There is no difference</li><li>A warranty is free; a guarantee costs money</li></ol><div class="explain">A guarantee is usually free and doesn't take away legal rights. An extended warranty is like insurance and you pay a premium.</div></div>
+        <div class="rv-q" data-answer="a"><p>A brochure says a hotel is "a 5-minute walk from the beach" but it is a 30-minute bus ride. Which law was broken?</p><ol><li>Consumer Protection Act 2007</li><li>Sale of Goods Act 1980 only</li><li>Consumer Rights Act 2022</li><li>No law</li></ol><div class="explain">This is a misleading claim (about the place of a service), covered by the Consumer Protection Act 2007.</div></div>
+        <div class="rv-q" data-answer="b"><p>A caller says you've "won a prize" but you must pay a fee to claim it. This is…</p><ol><li>A permitted promotion</li><li>A prohibited / banned practice</li><li>A guarantee</li><li>An extended warranty</li></ol><div class="explain">It is one of the 32 banned practices under the Consumer Protection Act 2007.</div></div>
+        <div class="rv-q" data-answer="c"><p>You buy a jacket online from a retailer in France and change your mind. How long do you have to return it?</p><ol><li>No right to return</li><li>7 days</li><li>14 days</li><li>30 days</li></ol><div class="explain">EU Consumer Rights Directive: 14-day cooling-off period for distance purchases from EU businesses.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is a CHALLENGE of online shopping?</p><ol><li>Available 24 hours a day</li><li>Greater variety of goods</li><li>Increased risk of fraud</li><li>No pressure from sales staff</li></ol><div class="explain">Fraud risk, not being able to try goods on, and harder returns are challenges. The others are benefits.</div></div>
+        <div class="rv-q" data-answer="a"><p>A faulty washing machine is worth €1,200. Which route lets you claim without a solicitor, for a €25 fee?</p><ol><li>Small claims procedure</li><li>Ombudsman</li><li>European Consumer Centre</li><li>Court of Appeal</li></ol><div class="explain">The small claims procedure (max €2,000, €25 fee, no solicitor). The Ombudsman only handles public bodies.</div></div>
+        <div class="rv-q" data-answer="b"><p>Your complaint is about a decision of a local authority. Who investigates?</p><ol><li>CCPC</li><li>Office of the Ombudsman</li><li>Small claims court</li><li>Enterprise Ireland</li></ol><div class="explain">The Ombudsman investigates complaints about public bodies such as government departments, local authorities and the HSE.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <details class="rv-qa"><summary>Which is better value for money: a 6-pack of yoghurts for €3.00 or a 10-pack for €4.50? Show your workings.</summary><div class="rv-model">6-pack: €3.00 ÷ 6 = 50c each. 10-pack: €4.50 ÷ 10 = 45c each. <strong>The 10-pack is better value</strong> (5c cheaper per yoghurt).</div></details>
+      <details class="rv-qa"><summary>Outline <strong>three</strong> responsibilities of a consumer.</summary><div class="rv-model">Any three of: behave wisely when buying; avoid impulse buying and false economies; shop around for the best value for money; consider the environmental and ethical impact of products; know your legal rights.</div></details>
+      <details class="rv-qa"><summary>Explain the difference between <em>repair</em>, <em>replacement</em> and <em>refund</em>.</summary><div class="rv-model">Repair: the item is fixed free of charge and the repair must be permanent. Replacement: you get the same or an alternative product that is free from damage or faults. Refund: you get the cost of the item back, in cash or back to your debit/credit card.</div></details>
+      <details class="rv-qa"><summary>Explain what the Consumer Protection Act 2007 protects consumers from and give two examples of prohibited practices.</summary><div class="rv-model">It protects consumers from misleading claims about goods, services and prices (e.g. performance, ingredients, weight; time/place/effect of a service; RRP and previous prices) and from misleading and aggressive practices, whether buying locally or from an EU business. There are 32 banned practices, e.g. telling a customer they've won a prize and demanding payment to redeem it, or claiming a business is closing down when it isn't.</div></details>
+      <details class="rv-qa"><summary>Discuss the benefits and challenges of online shopping for the consumer.</summary><div class="rv-model">Benefits: convenient (24 hours, 365 days), greater variety, no crowds or sales pressure. Challenges: increased risk of fraud, can't touch or try on goods, returning goods can be more difficult, environmental impact. Rights online: clear information, refund if not delivered, return faulty goods, 14-day cooling-off.</div></details>
+      <details class="rv-qa"><summary>Write a letter of complaint: you bought a pair of headphones advertised as "waterproof" from an Irish retailer but they stopped working in the rain. Outline the structure and key content.</summary><div class="rv-model">Use your address and date, the retailer's name and address, a "Re:" line, "Dear Sir/Madam". Paragraph 1: describe the issue (what you bought, when, price, what happened). Paragraph 2: show it breaches consumer law – goods not as described / misleading claim (Sale of Goods and Supply of Services Act 1980; Consumer Protection Act 2007). Paragraph 3: state the redress you want (refund or replacement). Close with "Yours faithfully" (or "sincerely" if you named the person) and your name.</div></details>
+      <details class="rv-qa"><summary>Name and describe <strong>two</strong> agencies that help consumers.</summary><div class="rv-model">CCPC: statutory body that informs/educates consumers, researches, advises government and enforces consumer protection law. Small claims procedure: quick, cheap way to resolve a complaint without a solicitor (max €2,000, €25 fee). Also: Ombudsman (public bodies, free, impartial) and European Consumer Centre (Ireland) (cross-border EU problems).</div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead>
+        <tbody>
+          <tr><td>Unit pricing</td><td>Price ÷ quantity; lowest wins.</td><td>Show the division and name the winner.</td></tr>
+          <tr><td>Responsibilities</td><td>Behave wisely · avoid impulse/false economy · shop around · ethical impact · know rights</td><td>Learn the 5 main ones.</td></tr>
+          <tr><td>Sale of Goods Act 1980</td><td>Goods: merchantable, fit for purpose, as described, match sample. Services: skill, care, merchantable materials.</td><td>Match the point to the scenario.</td></tr>
+          <tr><td>Redress</td><td>Repair · replacement · refund</td><td>Pick the one asked for in the letter.</td></tr>
+          <tr><td>Guarantee v warranty</td><td>Guarantee usually free; extended warranty = premium.</td><td>Guarantee never removes legal rights.</td></tr>
+          <tr><td>Consumer Protection Act 2007</td><td>Misleading claims (goods/services/prices); misleading + aggressive practices; 32 banned.</td><td>Quote the Act in complaints.</td></tr>
+          <tr><td>Consumer Rights Act 2022</td><td>Online/phone/mail from EU business; 14-day cooling-off.</td><td>Only EU businesses.</td></tr>
+          <tr><td>Agencies</td><td>CCPC · Small claims (€2,000/€25) · Ombudsman (public bodies) · ECC Ireland (EU)</td><td>Match agency to the problem.</td></tr>
+          <tr><td>Letter of complaint</td><td>Issue → law breached → redress wanted.</td><td>Layout marks: address, date, Re: line.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Business Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

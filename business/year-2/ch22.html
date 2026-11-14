@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Revision – Ch 22 The Marketing Mix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #E8630A; --accent-light: #FFF0E6;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: var(--text); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: var(--text); font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .sub-heading { font: 700 16px 'Sora', sans-serif; margin: 22px 0 8px; color: #A84000; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    .formula { margin: 14px 0; padding: 14px 18px; background: #F1F8E9; border: 1.5px solid #8BC34A; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .answer { display: inline-block; margin-top: 6px; padding: 4px 12px; background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 8px; font-weight: 700; }
+    .todo { margin: 14px 0; padding: 10px 14px; background: #FFF8E1; border: 1.5px dashed #F5A623; border-radius: 10px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+    .chapter-nav-bar a { color: #A84000; font-weight: 600; text-decoration: none; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+    .flow span { padding: 6px 12px; border-radius: 100px; background: var(--accent-light); border: 1.5px solid var(--accent); font-size: 13px; font-weight: 600; }
+    .flow i { font-style: normal; color: var(--muted); }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Business Revision</div><div class="book-title">Year 2 · Chapter 22</div></div>
+    <a href="index.html">&larr; Business Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#markets">Segmentation, Target &amp; Niche Markets</a>
+    <a href="#place">Place</a>
+    <a href="#price">Price</a>
+    <a href="#product">Product</a>
+    <a href="#promotion">Promotion</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 22 · Marketing</div>
+      <h1>📢 <span>The Marketing Mix</span></h1>
+      <p class="chapter-meta">Business Studies · Year 2 · Exam Revision · Source: your handwritten notes</p>
+      <div><span class="goal-tag">✔ Define segmentation, target and niche markets</span><span class="goal-tag">✔ Explain the 4 Ps</span><span class="goal-tag">✔ Match pricing strategies to situations</span><span class="goal-tag">✔ Describe the product life cycle</span><span class="goal-tag">✔ Explain AIDA and types of advertising</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about The Marketing Mix, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+<ul><li>The Marketing Mix
+  <ul>
+    <li>Markets<ul><li>Segmentation</li><li>Target market</li><li>Niche market</li></ul></li>
+    <li>Place<ul><li>Channels of distribution</li></ul></li>
+    <li>Price<ul><li>Factors</li><li>Six strategies</li></ul></li>
+    <li>Product<ul><li>Life cycle</li><li>Branding &amp; USP</li><li>Packaging</li></ul></li>
+    <li>Promotion<ul><li>Promotion mix</li><li>AIDA</li><li>Advertising types</li></ul></li>
+  </ul>
+</li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Market segmentation</strong></td><td>Dividing the overall market into several sections or parts, to promote slightly different products to different groups of consumers.</td></tr>
+          <tr><td><strong>Target market</strong></td><td>The group of people whom a business aims to sell its products or services to; based on any criteria (age, gender, location, income level, product usage, lifestyle…).</td></tr>
+          <tr><td><strong>Niche market</strong></td><td>A small, specialised segment of a larger market for a particular product or service (e.g. folding bicycles).</td></tr>
+          <tr><td><strong>Marketing mix</strong></td><td>A combination of four elements (the 4 Ps) that help a business market its products to its target market and maximise profits.</td></tr>
+          <tr><td><strong>Place</strong></td><td>Where customers will buy the product and the channel of distribution used to get the product to this location.</td></tr>
+          <tr><td><strong>Channel of distribution</strong></td><td>The way in which the product gets from the manufacturer to the customer.</td></tr>
+          <tr><td><strong>Price</strong></td><td>The amount of money a seller charges a customer for a product or service.</td></tr>
+          <tr><td><strong>Cost-plus pricing</strong></td><td>Calculate how much it costs to produce a product, then add a % mark-up to make a profit.</td></tr>
+          <tr><td><strong>Competitive pricing</strong></td><td>Set a price similar to rival products (e.g. Ryanair, Aer Lingus).</td></tr>
+          <tr><td><strong>Premium pricing</strong></td><td>Charge a permanently high price to convey an image of exclusivity or quality (e.g. luxury cars and clothes).</td></tr>
+          <tr><td><strong>Penetration pricing</strong></td><td>Charge a low price when a product is new to the market to get consumers interested; the price may rise later.</td></tr>
+          <tr><td><strong>Peak load pricing</strong></td><td>Charge higher prices during periods of high demand and lower when demand falls (e.g. flights and holidays).</td></tr>
+          <tr><td><strong>Psychological pricing</strong></td><td>Set a price slightly below a round number so consumers see it as cheaper (e.g. €99 v €100).</td></tr>
+          <tr><td><strong>Product</strong></td><td>An actual item (physical good or service) provided to meet consumers' needs.</td></tr>
+          <tr><td><strong>Product life cycle</strong></td><td>The different stages a product goes through from the time it was launched to being taken off the market.</td></tr>
+          <tr><td><strong>Brand</strong></td><td>A name, symbol, design or other feature that makes a product easy to recognise and distinguishes it from competing products.</td></tr>
+          <tr><td><strong>Brand loyalty</strong></td><td>Customers keep buying a brand's upgrades or new products because they know and trust it.</td></tr>
+          <tr><td><strong>Own-label brand</strong></td><td>Brand usually developed by a retailer (e.g. Tesco Finest, Dunnes Stores Simply Better).</td></tr>
+          <tr><td><strong>USP (unique selling point)</strong></td><td>Something that makes a product different from its competitors.</td></tr>
+          <tr><td><strong>Packaging</strong></td><td>More than a container: it also helps to develop product identity.</td></tr>
+          <tr><td><strong>Promotion</strong></td><td>Making customers aware of the product/brand in order to increase sales and create brand loyalty.</td></tr>
+          <tr><td><strong>Promotion mix</strong></td><td>A combination of promotional activities used to communicate with existing and potential customers.</td></tr>
+          <tr><td><strong>AIDA</strong></td><td>Attention, Interest, Desire, Action: the model advertisements follow.</td></tr>
+          <tr><td><strong>Advertising Standards Authority (ASA)</strong></td><td>Ensures all marketing communications are legal, decent, honest and truthful.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="markets">🎯 Segmentation, Target &amp; Niche Markets</div>
+      <div class="key-term"><strong>Market segmentation:</strong> dividing the overall market into several sections or parts with the aim of promoting <strong>slightly different products to different groups</strong> of consumers.</div>
+      <div class="key-term"><strong>Target market:</strong> the <strong>group of people</strong> whom a business aims to sell its products or services to. It can be based on any type of criteria, e.g. age, gender, location, income level, product usage, lifestyle.</div>
+      <div class="key-term"><strong>Niche market:</strong> a <strong>small, specialised segment</strong> of a larger market for a particular product or service.
+        <div class="tip">💡 e.g. folding bicycles: lots of people like/need/want bikes, but only a small part of that market wants to actually use a folding bike.</div></div>
+      <div class="key-term"><strong>Marketing mix:</strong> a combination of <strong>four elements</strong> that help a business market its products to its target market and maximise profits – the <strong>4 Ps</strong>: <strong>Product, Price, Place, Promotion</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up <em>target market</em> (the group a business aims at) and <em>niche market</em> (a small specialised segment of a bigger market).</div>
+
+      <div class="section-heading" id="place">📍 Place</div>
+      <div class="key-term"><strong>Place:</strong> refers to <strong>where customers will buy the product</strong> and the <strong>channel of distribution</strong> used to get the product to this location. <strong>Channels of distribution</strong> = the way in which the product gets from the manufacturer to the customer.</div>
+      <div class="flow"><span>1 Manufacturer</span><i>→</i><span>Wholesaler</span><i>→</i><span>Retailer</span><i>→</i><span>Consumer</span></div>
+      <div class="flow"><span>2 Manufacturer</span><i>→</i><span>Retailer</span><i>→</i><span>Consumer</span></div>
+      <div class="flow"><span>3 Manufacturer</span><i>→</i><span>Wholesaler</span><i>→</i><span>Consumer</span></div>
+      <div class="flow"><span>4 Manufacturer</span><i>→</i><span>Consumer</span></div>
+      <p>The channel of distribution used depends on: the <strong>product itself</strong>, <strong>legal requirement</strong> and <strong>product mass</strong> (as written in your notes).</p>
+      <div class="tip">💡 Fewer middlemen = shorter chain (channel 4 is direct, e.g. selling straight to the customer).</div>
+      <div class="todo">TODO: your notes list "product mass" as a factor without explaining it. Check the textbook for the exact wording and examples.</div>
+
+      <div class="section-heading" id="price">🏷️ Price</div>
+      <div class="key-term"><strong>Price:</strong> the amount of money a seller charges a customer for a product or service.</div>
+      <div class="sub-heading">Factors to think about when setting a price</div>
+      <ul>
+        <li>Price charged for comparative (similar) products</li>
+        <li>Cost of making the product</li>
+        <li>Target market</li>
+        <li>Amount of profit the business wants to make</li>
+        <li>Where the product is in its life cycle</li>
+        <li>Also consider <strong>supply and demand</strong></li>
+      </ul>
+      <div class="sub-heading">Pricing strategies</div>
+      <table><thead><tr><th>Strategy</th><th>What it means</th><th>Example</th></tr></thead><tbody>
+        <tr><td><strong>1. Cost-plus</strong></td><td>Calculate how much it costs to produce a product, then add a % mark-up to make a profit.</td><td>Cost €40 + 25% mark-up = €50</td></tr>
+        <tr><td><strong>2. Competitive</strong></td><td>Set a price similar to rival products.</td><td>Ryanair, Aer Lingus</td></tr>
+        <tr><td><strong>3. Premium</strong></td><td>Charge a permanently high price to convey an image of exclusivity or quality.</td><td>Luxury cars and clothes</td></tr>
+        <tr><td><strong>4. Penetration</strong></td><td>Charge a low price when a product is new to the market to get consumers interested. The price may rise later.</td><td>New product launch</td></tr>
+        <tr><td><strong>5. Peak load</strong></td><td>Charge higher prices during periods of high demand and lower the price when demand falls.</td><td>Flights and holidays</td></tr>
+        <tr><td><strong>6. Psychological</strong></td><td>Set a price slightly below a round number, in the belief consumers will see it as cheaper; it's in the mind of the consumer.</td><td>€99 v €100</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it (memory aid):</strong> <em>"Cats Chase Pink Pigs Playing Pianos"</em> → <strong>C</strong>ost-plus · <strong>C</strong>ompetitive · <strong>P</strong>remium · <strong>P</strong>enetration · <strong>P</strong>eak load · <strong>P</strong>sychological.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up <em>premium</em> (permanently high, to suggest quality) with <em>peak load</em> (high only at busy times) and <em>penetration</em> (low at first, may rise later).</div>
+
+      <div class="section-heading" id="product">📦 Product</div>
+      <div class="key-term"><strong>Product:</strong> an actual item (either a physical good or a service) provided to meet consumers' needs. The product element (product mix) includes <strong>design</strong>, <strong>product life cycle</strong>, <strong>branding</strong> and <strong>unique selling point (USP)</strong>.
+        <div class="tip">💡 A well-designed product is useful, attractive, long-lasting, easy to use, and should be sustainable.</div></div>
+      <div class="sub-heading">Product life cycle</div>
+      <p>The different stages a product goes through from the time it was launched to being taken off the market.</p>
+      <svg viewBox="0 0 680 270" width="100%" role="img" aria-label="Product life cycle: sales against time through introduction, growth, maturity, saturation and decline" style="background:#fff;border:1.5px solid #E5E7EB;border-radius:14px;margin:10px 0">
+        <line x1="50" y1="215" x2="660" y2="215" stroke="#1A1A2E" stroke-width="2"/><line x1="50" y1="20" x2="50" y2="215" stroke="#1A1A2E" stroke-width="2"/>
+        <text x="12" y="118" font-size="13" font-weight="700" transform="rotate(-90 20 118)">Sales</text><text x="620" y="236" font-size="13" font-weight="700">Time</text>
+        <g stroke="#9CA3AF" stroke-dasharray="4 4"><line x1="170" y1="25" x2="170" y2="215"/><line x1="290" y1="25" x2="290" y2="215"/><line x1="410" y1="25" x2="410" y2="215"/><line x1="530" y1="25" x2="530" y2="215"/></g>
+        <path d="M50 208 C100 208 130 200 170 185 C230 160 270 125 330 90 C390 60 430 48 470 48 C520 50 560 105 650 205" fill="none" stroke="#E8630A" stroke-width="4"/>
+        <g font-size="12" font-weight="700" text-anchor="middle"><text x="110" y="238">1 Introduction</text><text x="230" y="238">2 Growth</text><text x="350" y="238">3 Maturity</text><text x="470" y="238">4 Saturation</text><text x="590" y="238">5 Decline</text></g>
+        <text x="500" y="35" font-size="12" fill="#6B7280">sales revenue</text></svg>
+      <table><thead><tr><th>Stage</th><th>What happens to sales</th></tr></thead><tbody>
+        <tr><td><strong>1 Introduction</strong></td><td>New product is launched; sales are <strong>slow</strong> until consumers are familiar with it.</td></tr>
+        <tr><td><strong>2 Growth</strong></td><td>Sales <strong>rapidly increase</strong> as more people learn about it.</td></tr>
+        <tr><td><strong>3 Maturity</strong></td><td>Sales increase at a slower pace and may start to level off, often when competitors enter the market.</td></tr>
+        <tr><td><strong>4 Saturation</strong></td><td>Sales <strong>reach their peak</strong>, because most consumers already have the product or because of competitors in the market.</td></tr>
+        <tr><td><strong>5 Decline</strong></td><td>Sales fall due to a change in taste or fashion or the introduction of a new product. Eventually the product is withdrawn from the market.</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it (from your notes):</strong> <em>"I Get M &amp; S Donuts"</em> → <strong>I</strong>ntroduction · <strong>G</strong>rowth · <strong>M</strong>aturity · <strong>S</strong>aturation · <strong>D</strong>ecline.</div>
+
+      <div class="sub-heading">Branding</div>
+      <div class="key-term"><strong>Brand:</strong> a name, symbol, design or other feature that makes a product easy to recognise and distinguishes it from competing products.</div>
+      <ul>
+        <li><strong>Advantages:</strong> consumers know and trust the brand; products are easy to recognise; encourages customers to buy upgrades or new products (<strong>brand loyalty</strong>); higher prices can be charged as consumers associate them with better quality.</li>
+        <li><strong>Own-label brands:</strong> usually developed by a retailer, such as Tesco Finest or Dunnes Stores Simply Better.</li>
+      </ul>
+      <div class="sub-heading">Unique selling point (USP)</div>
+      <div class="key-term"><strong>USP:</strong> something that makes a product different from its competitors.
+        <div class="tip">💡 Examples from your notes: McDonald's = fast food &amp; low prices · Head &amp; Shoulders = dandruff protection · TikTok = user-generated content.</div></div>
+      <div class="sub-heading">Packaging</div>
+      <p>Packaging isn't only a container for the product but can also help to develop product identity. <strong>Functions:</strong> protection · presentation · providing information · supporting brand identity.</p>
+      <div class="mnemonic">🧩 <strong>Remember it (memory aid):</strong> packaging does <strong>PPPI</strong>: <strong>P</strong>rotect, <strong>P</strong>resent, <strong>P</strong>rovide information, support brand <strong>I</strong>dentity.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying sales peak at <em>maturity</em>. Sales <em>level off</em> at maturity and <em>peak</em> at saturation.</div>
+
+      <div class="section-heading" id="promotion">📢 Promotion</div>
+      <div class="key-term"><strong>Promotion:</strong> making customers <strong>aware</strong> of the product/brand in order to <strong>increase sales</strong> and create <strong>brand loyalty</strong>.</div>
+      <p><strong>Businesses use promotion to:</strong> launch a new product or service · increase sales of existing products or services · improve the image of a business.</p>
+      <div class="key-term"><strong>Promotion mix:</strong> a combination of promotional activities that a business uses to communicate with existing and potential customers.
+        <ul>
+          <li>Advertising · Sales promotion · Public relations · Sponsorship · Product placement</li>
+          <li>Personal selling · Social media · Merchandising · Celebrity endorsement / influencers</li>
+        </ul></div>
+      <div class="sub-heading">Advertising and the AIDA model</div>
+      <table><thead><tr><th>Letter</th><th>Stage</th></tr></thead><tbody>
+        <tr><td><strong>A</strong></td><td>Attract attention</td></tr>
+        <tr><td><strong>I</strong></td><td>Capture the interest of the consumer</td></tr>
+        <tr><td><strong>D</strong></td><td>Stimulate desire for the product</td></tr>
+        <tr><td><strong>A</strong></td><td>Lead to action (purchase of the product)</td></tr>
+      </tbody></table>
+      <div class="sub-heading">Types of advertising</div>
+      <table><thead><tr><th>Type</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><strong>1. Informative</strong></td><td>Provides information about a product or service to the general public.</td></tr>
+        <tr><td><strong>2. Persuasive</strong></td><td>Convinces/persuades people that they need a product or service.</td></tr>
+        <tr><td><strong>3. Competitive</strong></td><td>Used to convince people that one product is better than another.</td></tr>
+        <tr><td><strong>4. Reminder</strong></td><td>Reminds customers that a product is still available and value for money.</td></tr>
+        <tr><td><strong>5. Generic</strong></td><td>When firms in an industry work together to persuade people to buy a particular type of product rather than a specific brand.</td></tr>
+      </tbody></table>
+      <div class="key-term"><strong>Advertising Standards Authority (ASA):</strong> ensures that all marketing communications are <strong>legal, decent, honest and truthful</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> confusing <em>competitive</em> advertising (one brand v another) with <em>generic</em> advertising (the whole industry promotes a type of product, not a brand).</div>
+      <div class="todo">TODO: your notes name the other promotion-mix activities (sales promotion, public relations, product placement, merchandising, etc.) but don't define them. Add definitions from your textbook.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Define market segmentation</div><div class="a">Dividing the overall market into sections to promote slightly different products to different groups.</div></div>
+        <div class="rv-card"><div class="q">Define target market</div><div class="a">The group of people a business aims to sell its products or services to.</div></div>
+        <div class="rv-card"><div class="q">Define niche market (with example)</div><div class="a">A small, specialised segment of a larger market, e.g. folding bicycles.</div></div>
+        <div class="rv-card"><div class="q">What are the 4 Ps?</div><div class="a">Product, Price, Place, Promotion.</div></div>
+        <div class="rv-card"><div class="q">Define marketing mix</div><div class="a">Combination of four elements that help a business market to its target market and maximise profits.</div></div>
+        <div class="rv-card"><div class="q">Define place</div><div class="a">Where customers will buy the product and the channel of distribution used to get it there.</div></div>
+        <div class="rv-card"><div class="q">Channels of distribution (4 routes)</div><div class="a">Manufacturer→wholesaler→retailer→consumer; →retailer→consumer; →wholesaler→consumer; →consumer.</div></div>
+        <div class="rv-card"><div class="q">Define price</div><div class="a">The amount of money a seller charges a customer for a product or service.</div></div>
+        <div class="rv-card"><div class="q">Name 3 factors when setting a price</div><div class="a">Comparative prices, cost of making it, target market, desired profit, life cycle stage (also supply and demand).</div></div>
+        <div class="rv-card"><div class="q">Cost-plus pricing</div><div class="a">Production cost + a % mark-up to make a profit.</div></div>
+        <div class="rv-card"><div class="q">Competitive pricing</div><div class="a">A price similar to rival products (Ryanair, Aer Lingus).</div></div>
+        <div class="rv-card"><div class="q">Premium pricing</div><div class="a">Permanently high price to convey exclusivity/quality (luxury cars, clothes).</div></div>
+        <div class="rv-card"><div class="q">Penetration pricing</div><div class="a">Low price on a new product to get consumers interested; may rise later.</div></div>
+        <div class="rv-card"><div class="q">Peak load pricing</div><div class="a">Higher prices in high demand, lower when demand falls (flights, holidays).</div></div>
+        <div class="rv-card"><div class="q">Psychological pricing</div><div class="a">Price just below a round number, e.g. €99 v €100.</div></div>
+        <div class="rv-card"><div class="q">Define product</div><div class="a">An actual item (physical good or service) provided to meet consumers' needs.</div></div>
+        <div class="rv-card"><div class="q">Product mix includes…</div><div class="a">Design, product life cycle, branding, USP.</div></div>
+        <div class="rv-card"><div class="q">Five stages of the product life cycle</div><div class="a">Introduction, growth, maturity, saturation, decline.</div></div>
+        <div class="rv-card"><div class="q">What happens to sales at saturation?</div><div class="a">They reach their peak (most consumers have it or competitors are in the market).</div></div>
+        <div class="rv-card"><div class="q">Define brand</div><div class="a">A name, symbol, design or other feature that makes a product easy to recognise and distinguishes it from competitors.</div></div>
+        <div class="rv-card"><div class="q">Two advantages of branding</div><div class="a">Consumers trust and recognise it; brand loyalty; higher prices can be charged.</div></div>
+        <div class="rv-card"><div class="q">What is an own-label brand?</div><div class="a">A brand developed by a retailer, e.g. Tesco Finest, Dunnes Stores Simply Better.</div></div>
+        <div class="rv-card"><div class="q">Define USP</div><div class="a">Unique selling point: something that makes a product different from its competitors.</div></div>
+        <div class="rv-card"><div class="q">Four functions of packaging</div><div class="a">Protection, presentation, providing information, supporting brand identity.</div></div>
+        <div class="rv-card"><div class="q">Define promotion</div><div class="a">Making customers aware of the product/brand to increase sales and create brand loyalty.</div></div>
+        <div class="rv-card"><div class="q">What does AIDA stand for?</div><div class="a">Attention, Interest, Desire, Action.</div></div>
+        <div class="rv-card"><div class="q">Name the 5 types of advertising</div><div class="a">Informative, persuasive, competitive, reminder, generic.</div></div>
+        <div class="rv-card"><div class="q">Role of the ASA</div><div class="a">Ensures marketing communications are legal, decent, honest and truthful.</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>{{Market segmentation}} involves dividing the overall market into several sections or parts.</p>
+        <p>A {{niche market}} is a small, specialised segment of a larger market, such as folding bicycles.</p>
+        <p>The four elements of the marketing mix are product, {{price}}, {{place}} and {{promotion}}.</p>
+        <p>The way a product gets from the manufacturer to the customer is the channel of {{distribution}}.</p>
+        <p>{{Penetration}} pricing sets a low price when a product is new to the market; the price may rise later.</p>
+        <p>{{Psychological}} pricing sets a price slightly below a round number, e.g. €99.</p>
+        <p>The five stages of the product life cycle are introduction, growth, {{maturity}}, {{saturation}} and {{decline}}.</p>
+        <p>A {{brand}} is a name, symbol or design that makes a product easy to recognise and distinguishes it from competitors.</p>
+        <p>A {{unique selling point|USP}} is something that makes a product different from its competitors.</p>
+        <p>The AIDA model stands for attention, {{interest}}, {{desire}} and {{action}}.</p>
+        <p>The {{Advertising Standards Authority|ASA}} ensures that marketing communications are legal, decent, honest and truthful.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>Which is NOT one of the 4 Ps of the marketing mix?</p><ol><li>Product</li><li>Promotion</li><li>Profit</li><li>Place</li></ol><div class="explain">The 4 Ps are Product, Price, Place and Promotion. Profit is the aim, not an element of the mix.</div></div>
+        <div class="rv-q" data-answer="b"><p>Folding bicycles are aimed at a small, specialised part of the bicycle market. This is a…</p><ol><li>Target market</li><li>Niche market</li><li>Mass market</li><li>Channel of distribution</li></ol><div class="explain">A niche market is a small specialised segment of a larger market.</div></div>
+        <div class="rv-q" data-answer="b"><p>Manufacturer → Consumer is…</p><ol><li>The longest channel of distribution</li><li>A direct channel of distribution</li><li>Promotion</li><li>Market segmentation</li></ol><div class="explain">With no middlemen, goods go straight from manufacturer to consumer.</div></div>
+        <div class="rv-q" data-answer="b"><p>A new brand of crisps is sold very cheaply at launch and the price rises later. This is…</p><ol><li>Premium pricing</li><li>Penetration pricing</li><li>Peak load pricing</li><li>Cost-plus pricing</li></ol><div class="explain">Penetration pricing: a low price when a product is new to get consumers interested; it may rise later.</div></div>
+        <div class="rv-q" data-answer="c"><p>A flight costs more during school holidays than on a quiet weekday. This is…</p><ol><li>Psychological pricing</li><li>Competitive pricing</li><li>Peak load pricing</li><li>Premium pricing</li></ol><div class="explain">Peak load pricing: higher prices when demand is high, lower when demand falls (flights, holidays).</div></div>
+        <div class="rv-q" data-answer="b"><p>A jumper is priced at €49.99 instead of €50. This is…</p><ol><li>Cost-plus pricing</li><li>Psychological pricing</li><li>Penetration pricing</li><li>Premium pricing</li></ol><div class="explain">Pricing just below a round number so it feels cheaper is psychological pricing.</div></div>
+        <div class="rv-q" data-answer="d"><p>In which stage of the product life cycle do sales reach their peak?</p><ol><li>Introduction</li><li>Growth</li><li>Maturity</li><li>Saturation</li></ol><div class="explain">Sales peak at saturation. At maturity they increase more slowly and level off.</div></div>
+        <div class="rv-q" data-answer="b"><p>"I Get M & S Donuts" helps you remember…</p><ol><li>The 4 Ps</li><li>The stages of the product life cycle</li><li>The types of advertising</li><li>The channels of distribution</li></ol><div class="explain">Introduction, Growth, Maturity, Saturation, Decline.</div></div>
+        <div class="rv-q" data-answer="b"><p>Tesco Finest is an example of…</p><ol><li>A generic brand</li><li>An own-label brand</li><li>A niche market</li><li>A channel of distribution</li></ol><div class="explain">Own-label brands are usually developed by a retailer, e.g. Tesco Finest or Dunnes Stores Simply Better.</div></div>
+        <div class="rv-q" data-answer="a"><p>"Head & Shoulders = dandruff protection" is an example of a…</p><ol><li>USP</li><li>Penetration price</li><li>Channel of distribution</li><li>Product life cycle stage</li></ol><div class="explain">A unique selling point is something that makes a product different from competitors.</div></div>
+        <div class="rv-q" data-answer="c"><p>In AIDA, what does the "D" stand for?</p><ol><li>Delivery</li><li>Demand</li><li>Desire</li><li>Decline</li></ol><div class="explain">Attention, Interest, Desire, Action.</div></div>
+        <div class="rv-q" data-answer="b"><p>The dairy industry runs an advert encouraging people to drink more milk (no brand named). This is…</p><ol><li>Competitive advertising</li><li>Generic advertising</li><li>Reminder advertising</li><li>Informative advertising</li></ol><div class="explain">Generic advertising: firms in an industry work together to persuade people to buy a type of product rather than a specific brand.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <details class="rv-qa"><summary>Define <em>market segmentation</em>, <em>target market</em> and <em>niche market</em>.</summary><div class="rv-model">Market segmentation: dividing the overall market into several sections to promote slightly different products to different groups of consumers. Target market: the group of people a business aims to sell its products or services to (based on e.g. age, gender, location, income, lifestyle). Niche market: a small, specialised segment of a larger market (e.g. folding bicycles).</div></details>
+      <details class="rv-qa"><summary>Name the four elements of the marketing mix and explain what the marketing mix is for.</summary><div class="rv-model">Product, Price, Place and Promotion (the 4 Ps). It is a combination of four elements that help a business market its products to its target market and maximise profits.</div></details>
+      <details class="rv-qa"><summary>Describe the four channels of distribution and name <strong>three</strong> things that affect the channel chosen.</summary><div class="rv-model">Manufacturer → wholesaler → retailer → consumer; manufacturer → retailer → consumer; manufacturer → wholesaler → consumer; manufacturer → consumer. The channel used depends on the product itself, legal requirement and product mass (as in your notes).</div></details>
+      <details class="rv-qa"><summary>A firm's product costs €60 to make and it adds a 30% mark-up. (a) Name the pricing strategy. (b) Calculate the selling price. (c) Name and explain two other pricing strategies.</summary><div class="rv-model">(a) Cost-plus pricing. (b) €60 × 1.30 = <strong>€78</strong>. (c) Any two: competitive (price similar to rivals); premium (permanently high to convey quality); penetration (low at launch, may rise); peak load (higher at busy times); psychological (just below a round number).</div></details>
+      <details class="rv-qa"><summary>Describe the five stages of the product life cycle and what happens to sales in each.</summary><div class="rv-model">Introduction: new product launched, slow sales until consumers are familiar. Growth: sales rapidly increase. Maturity: sales increase more slowly and may level off, often as competitors enter. Saturation: sales reach their peak (most consumers have it or competitors in the market). Decline: sales fall due to changing taste/fashion or a new product; eventually withdrawn from the market.</div></details>
+      <details class="rv-qa"><summary>Explain what a brand is and outline <strong>three</strong> advantages of branding to a business. Define USP.</summary><div class="rv-model">A brand is a name, symbol, design or other feature that makes a product easy to recognise and distinguishes it from competing products. Advantages: consumers know and trust the brand; products are easy to recognise; encourages brand loyalty (customers buy upgrades/new products); higher prices can be charged as consumers associate the brand with better quality. A USP is something that makes a product different from its competitors.</div></details>
+      <details class="rv-qa"><summary>Outline the functions of packaging.</summary><div class="rv-model">Protection, presentation, providing information and supporting brand identity.</div></details>
+      <details class="rv-qa"><summary>Explain the AIDA model and describe <strong>three</strong> types of advertising.</summary><div class="rv-model">AIDA: attract Attention, capture Interest, stimulate Desire, lead to Action (purchase). Types: informative (gives information to the public); persuasive (convinces people they need it); competitive (convinces people one product is better than another); reminder (reminds customers it is still available and value for money); generic (firms in an industry work together to promote a type of product rather than a brand). The ASA ensures advertising is legal, decent, honest and truthful.</div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead>
+        <tbody>
+          <tr><td>Markets</td><td>Segmentation · target market · niche market</td><td>Give an example for each.</td></tr>
+          <tr><td>4 Ps</td><td>Product · Price · Place · Promotion</td><td>Always name all four.</td></tr>
+          <tr><td>Place</td><td>4 channels of distribution (via wholesaler and/or retailer, or direct)</td><td>Draw arrows manufacturer → consumer.</td></tr>
+          <tr><td>Price</td><td>6 strategies: cost-plus, competitive, premium, penetration, peak load, psychological</td><td>Link each to its example.</td></tr>
+          <tr><td>Product life cycle</td><td>Introduction · growth · maturity · saturation · decline</td><td>Sales peak at saturation.</td></tr>
+          <tr><td>Branding / USP</td><td>Brand: recognition, trust, loyalty, higher prices. USP: what makes it different.</td><td>Use real examples (Tesco Finest, TikTok).</td></tr>
+          <tr><td>Packaging</td><td>Protection · presentation · information · brand identity</td><td>4 functions = 4 marks.</td></tr>
+          <tr><td>Promotion</td><td>Aware → increase sales + brand loyalty. AIDA. 5 types of advertising. ASA.</td><td>Match advert to its type.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Business Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

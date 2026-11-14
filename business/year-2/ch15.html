@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Revision – Ch 15 The Skills, Characteristics and Role of the Entrepreneur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #E8630A; --accent-light: #FFF0E6;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: var(--text); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: var(--text); font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .sub-heading { font: 700 16px 'Sora', sans-serif; margin: 22px 0 8px; color: #A84000; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    .formula { margin: 14px 0; padding: 14px 18px; background: #F1F8E9; border: 1.5px solid #8BC34A; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .answer { display: inline-block; margin-top: 6px; padding: 4px 12px; background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 8px; font-weight: 700; }
+    .todo { margin: 14px 0; padding: 10px 14px; background: #FFF8E1; border: 1.5px dashed #F5A623; border-radius: 10px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+    .chapter-nav-bar a { color: #A84000; font-weight: 600; text-decoration: none; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+    .flow span { padding: 6px 12px; border-radius: 100px; background: var(--accent-light); border: 1.5px solid var(--accent); font-size: 13px; font-weight: 600; }
+    .flow i { font-style: normal; color: var(--muted); }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Business Revision</div><div class="book-title">Year 2 · Chapter 15</div></div>
+    <a href="index.html">&larr; Business Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#enterprise">Enterprise</a>
+    <a href="#entrepreneur">The Entrepreneur</a>
+    <a href="#risks">Risks and Rewards</a>
+    <a href="#role">Role of the Entrepreneur</a>
+    <a href="#sources">Sources of New Product Ideas</a>
+    <a href="#process">Product Development Process</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 15 · Strand Two · Enterprise</div>
+      <h1>🧑‍💼 <span>The Skills, Characteristics and Role of the Entrepreneur</span></h1>
+      <p class="chapter-meta">Business Studies · Year 2 · Exam Revision · Source: your handwritten notes</p>
+      <div><span class="goal-tag">✔ Define enterprise, entrepreneur, intrapreneur</span><span class="goal-tag">✔ Distinguish characteristics and skills</span><span class="goal-tag">✔ Weigh risks and rewards</span><span class="goal-tag">✔ Describe the entrepreneur's role</span><span class="goal-tag">✔ Sources of ideas and the 7-step process</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about The Skills, Characteristics and Role of the Entrepreneur, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+<ul><li>The Entrepreneur
+  <ul>
+    <li>Enterprise<ul><li>Home</li><li>School</li><li>Community</li><li>Public service</li></ul></li>
+    <li>Entrepreneur<ul><li>Characteristics</li><li>Skills</li><li>Intrapreneur</li></ul></li>
+    <li>Risks &amp; rewards</li>
+    <li>Role<ul><li>Organisations</li><li>Economy</li><li>Society</li></ul></li>
+    <li>Sources of ideas<ul><li>Internal</li><li>External</li></ul></li>
+    <li>Product development<ul><li>Seven steps</li></ul></li>
+  </ul>
+</li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Enterprise</strong></td><td>Any attempt to start or do something new: turning ideas into actions using creativity and a willingness to try new things.</td></tr>
+          <tr><td><strong>Entrepreneur</strong></td><td>A person who takes the initiative as well as the personal and financial risk involved in setting up an organisation (e.g. Ben Dunne – Dunnes Stores).</td></tr>
+          <tr><td><strong>Intrapreneur</strong></td><td>Someone who is enterprising within an existing business.</td></tr>
+          <tr><td><strong>Profit</strong></td><td>The reward an entrepreneur tries to make for their efforts.</td></tr>
+          <tr><td><strong>Enterprise culture</strong></td><td>A culture of enterprise and self-help in society.</td></tr>
+          <tr><td><strong>Sponsorship</strong></td><td>Sponsoring community-based organisations, including clubs and charities.</td></tr>
+          <tr><td><strong>Brainstorming</strong></td><td>People coming together and thinking of new ideas.</td></tr>
+          <tr><td><strong>Sales personnel</strong></td><td>Salespeople in touch with customers: a valuable source of information about customer needs and wants.</td></tr>
+          <tr><td><strong>Intrapreneurship (as a source of ideas)</strong></td><td>Employers encourage employees to think of new ideas, rewarding good ones with a bonus.</td></tr>
+          <tr><td><strong>R&amp;D department</strong></td><td>Dedicated research and development staff who may discover a new product or improve an existing one.</td></tr>
+          <tr><td><strong>Competitors (as a source of ideas)</strong></td><td>Watching what competitors do, being mindful of copyright and patent law; copied ideas are "me too" products.</td></tr>
+          <tr><td><strong>Import substitution</strong></td><td>Replacing imports with goods and services produced in Ireland.</td></tr>
+          <tr><td><strong>Market research</strong></td><td>Used to identify gaps in the market and find market trends.</td></tr>
+          <tr><td><strong>Product development process</strong></td><td>The 7 steps from idea generation to product launch.</td></tr>
+          <tr><td><strong>Feasibility study</strong></td><td>Checking whether you will be able to afford the idea.</td></tr>
+          <tr><td><strong>Prototype</strong></td><td>A sample of the idea.</td></tr>
+          <tr><td><strong>Test marketing</strong></td><td>Testing the product in the market before full launch.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="enterprise">💡 Enterprise</div>
+      <div class="key-term"><strong>Enterprise:</strong> any attempt to <strong>start or do something new</strong>. It is about turning ideas into actions, using creativity and a willingness to try new things.
+        <div class="tip">💡 Enterprise isn't only business – it's "having a go" with a new idea.</div></div>
+      <table><thead><tr><th>Where</th><th>Examples of enterprise</th></tr></thead><tbody>
+        <tr><td><strong>At home / personal life</strong></td><td>Learning a new skill (e.g. a musical instrument); DIY projects; selling unwanted items.</td></tr>
+        <tr><td><strong>In school</strong></td><td>Student enterprise or mini-company; organising events or trips.</td></tr>
+        <tr><td><strong>In the community</strong></td><td>Setting up sports or youth clubs; meals on wheels for the elderly or Neighbourhood Watch groups.</td></tr>
+        <tr><td><strong>In public service</strong></td><td>Online services and portals such as Revenue Online; initiatives by local councils to help set up small businesses.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="entrepreneur">🧑‍💼 The Entrepreneur</div>
+      <div class="key-term"><strong>Entrepreneur:</strong> a person who takes the <strong>initiative</strong> as well as the <strong>personal and financial risk</strong> involved in setting up an organisation. They try to make a <strong>profit</strong> as a reward for their efforts and put ideas into practice and action. <em>Example: Ben Dunne – Dunnes Stores.</em>
+        <div class="tip">💡 The one who says "I'll do it" – and puts their own money and name on the line.</div></div>
+      <table><thead><tr><th>Characteristics (what they are like)</th><th>Skills (what they can do)</th></tr></thead><tbody>
+        <tr><td>• Realistic risk-takers<br>• Innovative<br>• Proactive<br>• Flexible<br>• Self-confident<br>• Decisive<br>• Determined / resilient</td>
+        <td>• Ability to identify opportunities<br>• Planning and goal setting<br>• Time management<br>• Ability to manage money<br>• Human relations skills<br>• Ability to assess and manage risks</td></tr>
+      </tbody></table>
+      <div class="key-term"><strong>Intrapreneur:</strong> someone who is enterprising <strong>within an existing business</strong>. <em>Example: a regional manager at McDonald's came up with the Happy Meal gimmick to promote a new meal for kids.</em>
+        <div class="tip">💡 Entrepreneur = starts their own business; <strong>intra</strong>preneur = innovates <em>inside</em> someone else's.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up characteristics and skills. Characteristics are personality traits (innovative, determined); skills are things you can learn to do (planning, time management).</div>
+
+      <div class="section-heading" id="risks">⚖️ Risks and Rewards</div>
+      <table><thead><tr><th>Rewards of being an entrepreneur / self-employed</th><th>Risks</th></tr></thead><tbody>
+        <tr><td>• You're your <strong>own boss</strong> and make all the decisions<br>• You can <strong>keep all the profit</strong><br>• You can work <strong>flexible hours</strong> and make flexible opening hours for customers<br>• Great sense of satisfaction if your business succeeds</td>
+        <td>• You may <strong>lose all the money</strong> you invested – your own money or personal assets<br>• You'll need to <strong>work long hours</strong> and oversee all aspects of the business<br>• Difficult to take time away<br>• <strong>Income isn't guaranteed</strong><br>• Reputation and credit rating may suffer if the business fails</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> "flexible hours" is a <em>reward</em>, but "long hours" is a <em>risk</em>. Say which one you're discussing and give the reason.</div>
+
+      <div class="section-heading" id="role">🌍 Role of the Entrepreneur</div>
+      <table><thead><tr><th>Role in…</th><th>What the entrepreneur does</th></tr></thead><tbody>
+        <tr><td><strong>Organisations</strong></td><td>Generate ideas · take risks · provide vision and motivation · provide leadership and management · create long-term plans · raise finance</td></tr>
+        <tr><td><strong>The economy</strong></td><td>Make use of resources · provide goods and services · create jobs and wealth · provide training and develop skills · raise standards of living · <strong>taxation</strong> (contribute to national income) · <strong>foreign trade</strong> (exporting goods and services)</td></tr>
+        <tr><td><strong>Society</strong></td><td>Provide services (e.g. clubs and charities) · develop infrastructure and amenities (e.g. improved transport, recreation or childcare services) · increase standard of living · create a culture of <strong>enterprise</strong> and self-help · <strong>sponsorship</strong> of community-based organisations including clubs and charities</td></tr>
+      </tbody></table>
+      <div class="todo">TODO: the bottom of your "Role of the Entrepreneur" page is cut off in the scan (organisations column after "Raises finance", and the society line "Increased standard of living… more →"). Check your original notes for anything missing.</div>
+
+      <div class="section-heading" id="sources">🔎 Sources of New Product Ideas</div>
+      <div class="key-term"><strong>Sources of new product ideas</strong> for existing businesses: <strong>internal</strong> (from inside the business) and <strong>external</strong> (from outside).</div>
+      <table><thead><tr><th>Internal</th><th>External</th></tr></thead><tbody>
+        <tr><td><strong>Brainstorming:</strong> people coming together and thinking of new ideas.<br><br>
+          <strong>Sales personnel:</strong> feedback from salespeople who are in touch with customers is a valuable source of information about customer needs and wants.<br><br>
+          <strong>Intrapreneurship:</strong> employers may encourage employees to think of new ideas, rewarding good ones with a bonus.<br><br>
+          <strong>R&amp;D department:</strong> dedicated research and development staff may discover a new product or improve an existing one.</td>
+        <td><strong>Competitors:</strong> see what competitors are doing, while being mindful of copyright or patent law (you cannot copy an idea that is protected). Copies are known as "me too" products.<br><br>
+          <strong>Import substitution:</strong> an opportunity to create a business by replacing imports with goods and services produced in Ireland.<br><br>
+          <strong>Customer complaints or feedback:</strong> could result in changes to, or further developments of, existing products or services.<br><br>
+          <strong>Market research:</strong> identify gaps in the market and find market trends.</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> putting <em>sales personnel</em> under external. They are <em>employees</em>, so they are an internal source (even though they hear from customers).</div>
+
+      <div class="section-heading" id="process">🪜 Product Development Process</div>
+      <div class="key-term"><strong>The product development process – 7 steps:</strong></div>
+      <div class="flow"><span>1 Idea generation</span><i>→</i><span>2 Product screening</span><i>→</i><span>3 Concept development</span><i>→</i><span>4 Feasibility study</span><i>→</i><span>5 Prototype development</span><i>→</i><span>6 Test marketing</span><i>→</i><span>7 Product launch</span></div>
+      <table><thead><tr><th>#</th><th>Step</th><th>Meaning</th></tr></thead><tbody>
+        <tr><td>1</td><td><strong>Idea generation</strong></td><td>Coming up with ideas</td></tr>
+        <tr><td>2</td><td><strong>Product screening</strong></td><td>Get rid of the bad ideas (filter)</td></tr>
+        <tr><td>3</td><td><strong>Concept development</strong></td><td>Develop the idea you choose</td></tr>
+        <tr><td>4</td><td><strong>Feasibility study</strong></td><td>Will you be able to afford the idea?</td></tr>
+        <tr><td>5</td><td><strong>Prototype development</strong></td><td>Making a sample of the idea</td></tr>
+        <tr><td>6</td><td><strong>Test marketing</strong></td><td>Testing it in the market</td></tr>
+        <tr><td>7</td><td><strong>Product launch</strong></td><td>Launching the idea to people</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it (from your notes):</strong> <em>"I guess people should come down for some pizza dinner, tomorrow morning please leave"</em> → <strong>I</strong>dea · <strong>P</strong>roduct screening · <strong>C</strong>oncept · <strong>F</strong>easibility · <strong>P</strong>rototype · <strong>T</strong>est marketing · <strong>L</strong>aunch.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Define enterprise</div><div class="a">Any attempt to start or do something new.</div></div>
+        <div class="rv-card"><div class="q">Define entrepreneur</div><div class="a">A person who takes the initiative and the personal and financial risk of setting up an organisation.</div></div>
+        <div class="rv-card"><div class="q">Name an example of an entrepreneur</div><div class="a">Ben Dunne – Dunnes Stores.</div></div>
+        <div class="rv-card"><div class="q">Define intrapreneur</div><div class="a">Someone who is enterprising within an existing business.</div></div>
+        <div class="rv-card"><div class="q">Example of an intrapreneur</div><div class="a">A McDonald's regional manager who came up with the Happy Meal.</div></div>
+        <div class="rv-card"><div class="q">Name 3 characteristics of an entrepreneur</div><div class="a">e.g. realistic risk-taker, innovative, proactive, flexible, self-confident, decisive, determined/resilient.</div></div>
+        <div class="rv-card"><div class="q">Name 3 skills of an entrepreneur</div><div class="a">e.g. identify opportunities, planning/goal setting, time management, money management, human relations, assess/manage risks.</div></div>
+        <div class="rv-card"><div class="q">Name 3 rewards of being an entrepreneur</div><div class="a">Own boss; keep the profit; flexible hours; satisfaction if it succeeds.</div></div>
+        <div class="rv-card"><div class="q">Name 3 risks of being an entrepreneur</div><div class="a">May lose money invested; long hours; hard to take time away; income not guaranteed; reputation/credit rating.</div></div>
+        <div class="rv-card"><div class="q">Role of an entrepreneur in the economy</div><div class="a">Use resources, provide goods and services, create jobs and wealth, training, raise living standards, taxation, foreign trade.</div></div>
+        <div class="rv-card"><div class="q">Role of an entrepreneur in society</div><div class="a">Provide services, develop infrastructure/amenities, raise living standards, enterprise culture, sponsorship.</div></div>
+        <div class="rv-card"><div class="q">Internal sources of new product ideas</div><div class="a">Brainstorming, sales personnel, intrapreneurship, R&amp;D department.</div></div>
+        <div class="rv-card"><div class="q">External sources of new product ideas</div><div class="a">Competitors, import substitution, customer complaints/feedback, market research.</div></div>
+        <div class="rv-card"><div class="q">What is brainstorming?</div><div class="a">People coming together and thinking of new ideas.</div></div>
+        <div class="rv-card"><div class="q">What is import substitution?</div><div class="a">Replacing imports with goods and services produced in Ireland.</div></div>
+        <div class="rv-card"><div class="q">What is a "me too" product?</div><div class="a">A copy of a competitor's product (careful: copyright and patent law protect ideas).</div></div>
+        <div class="rv-card"><div class="q">Use of market research for new ideas</div><div class="a">Identify gaps in the market and find market trends.</div></div>
+        <div class="rv-card"><div class="q">List the 7 steps of product development</div><div class="a">Idea generation, product screening, concept development, feasibility study, prototype development, test marketing, product launch.</div></div>
+        <div class="rv-card"><div class="q">What happens in a feasibility study?</div><div class="a">You check whether you will be able to afford the idea.</div></div>
+        <div class="rv-card"><div class="q">What is test marketing?</div><div class="a">Testing the product in the market before launch.</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>{{Enterprise}} is any attempt to start or do something new.</p>
+        <p>An {{entrepreneur}} takes the initiative as well as the personal and financial {{risk}} of setting up an organisation.</p>
+        <p>An {{intrapreneur}} is someone who is enterprising within an existing business.</p>
+        <p>Salespeople, brainstorming and the R&amp;D department are {{internal}} sources of new product ideas.</p>
+        <p>Replacing imports with goods and services produced in Ireland is called {{import substitution}}.</p>
+        <p>{{Market research}} is used to identify gaps in the market and find market trends.</p>
+        <p>In the product development process, product {{screening}} gets rid of the bad ideas.</p>
+        <p>A {{feasibility study}} checks whether you will be able to afford the idea.</p>
+        <p>A {{prototype}} is a sample of the idea.</p>
+        <p>Entrepreneurs contribute to national income through {{taxation|tax}} and {{foreign trade|exporting}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>Which of these best defines an entrepreneur?</p><ol><li>A person who works for a large company</li><li>A person who takes initiative and the personal and financial risk of setting up an organisation</li><li>A person who only lends money</li><li>A government official</li></ol><div class="explain">An entrepreneur takes the initiative and the risk (personal and financial) of setting up an organisation.</div></div>
+        <div class="rv-q" data-answer="b"><p>A manager at McDonald's invents the Happy Meal. She is a/an…</p><ol><li>Entrepreneur</li><li>Intrapreneur</li><li>Consumer</li><li>Competitor</li></ol><div class="explain">An intrapreneur is enterprising within an existing business.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is a SKILL (not a characteristic) of an entrepreneur?</p><ol><li>Innovative</li><li>Resilient</li><li>Time management</li><li>Proactive</li></ol><div class="explain">Time management is a learned skill. Innovative, resilient and proactive are characteristics.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which is a RISK of being self-employed?</p><ol><li>Being your own boss</li><li>Keeping all the profit</li><li>Flexible hours</li><li>Income is not guaranteed</li></ol><div class="explain">Income isn't guaranteed. The other three are rewards.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which is an INTERNAL source of new product ideas?</p><ol><li>Competitors</li><li>Market research</li><li>Import substitution</li><li>Research and development department</li></ol><div class="explain">R&D staff are inside the business. Competitors, market research and import substitution are external.</div></div>
+        <div class="rv-q" data-answer="a"><p>A business starts producing in Ireland a good that was previously imported. This is…</p><ol><li>Import substitution</li><li>A prototype</li><li>Test marketing</li><li>Intrapreneurship</li></ol><div class="explain">Import substitution = replacing imports with goods and services produced in Ireland.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which step in the product development process checks whether the business can afford the idea?</p><ol><li>Product screening</li><li>Feasibility study</li><li>Prototype development</li><li>Test marketing</li></ol><div class="explain">The feasibility study asks "will you be able to afford the idea?" Screening just filters out bad ideas.</div></div>
+        <div class="rv-q" data-answer="a"><p>What is the correct order of the first four steps of product development?</p><ol><li>Idea generation, product screening, concept development, feasibility study</li><li>Idea generation, concept development, product screening, feasibility study</li><li>Product screening, idea generation, feasibility study, concept development</li><li>Feasibility study, idea generation, product screening, concept development</li></ol><div class="explain">I → P → C → F: Idea generation, Product screening, Concept development, Feasibility study.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is an example of an entrepreneur's role in SOCIETY?</p><ol><li>Paying taxes</li><li>Exporting goods</li><li>Sponsoring clubs and charities</li><li>Raising finance for the firm</li></ol><div class="explain">Sponsorship of community organisations is a role in society. Taxation and exports relate to the economy; raising finance to the organisation.</div></div>
+        <div class="rv-q" data-answer="a"><p>Copying a competitor's product idea gives you a…</p><ol><li>"Me too" product (watch copyright and patent law)</li><li>Prototype</li><li>Brand new patent</li><li>Test market</li></ol><div class="explain">Ideas copied from competitors are "me too" products, but you cannot copy an idea that is protected by copyright or patent.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <details class="rv-qa"><summary>Define <em>enterprise</em>, <em>entrepreneur</em> and <em>intrapreneur</em>. Give an example of each.</summary><div class="rv-model">Enterprise: any attempt to start or do something new (e.g. a student mini-company). Entrepreneur: a person who takes the initiative and the personal and financial risk of setting up an organisation (e.g. Ben Dunne – Dunnes Stores). Intrapreneur: someone who is enterprising within an existing business (e.g. a McDonald's regional manager who created the Happy Meal).</div></details>
+      <details class="rv-qa"><summary>Outline <strong>three</strong> characteristics and <strong>three</strong> skills of a successful entrepreneur.</summary><div class="rv-model">Characteristics (any 3): realistic risk-taker, innovative, proactive, flexible, self-confident, decisive, determined/resilient. Skills (any 3): identify opportunities, planning and goal setting, time management, manage money, human relations, assess and manage risks.</div></details>
+      <details class="rv-qa"><summary>Discuss the rewards and risks of being self-employed.</summary><div class="rv-model">Rewards: own boss and make all the decisions; keep all the profit; flexible hours; satisfaction if the business succeeds. Risks: may lose all the money invested (including personal assets); long hours; difficult to take time away; income isn't guaranteed; reputation and credit rating may suffer if the business fails.</div></details>
+      <details class="rv-qa"><summary>Explain the role of the entrepreneur in the economy and in society.</summary><div class="rv-model">Economy: makes use of resources, provides goods and services, creates jobs and wealth, provides training and develops skills, raises the standard of living, contributes to national income through taxation and through foreign trade (exports). Society: provides services such as clubs and charities, develops infrastructure and amenities (e.g. transport, childcare), raises the standard of living, creates a culture of enterprise and self-help, and sponsors community organisations.</div></details>
+      <details class="rv-qa"><summary>Describe <strong>two</strong> internal and <strong>two</strong> external sources of new product ideas.</summary><div class="rv-model">Internal: brainstorming (people thinking of ideas together); sales personnel (feedback about customer needs); intrapreneurship (employees rewarded with a bonus for ideas); R&amp;D department. External: competitors (without breaching copyright/patent law); import substitution; customer complaints or feedback; market research (gaps and trends). Choose any two of each and explain them.</div></details>
+      <details class="rv-qa"><summary>List and explain the steps in the product development process.</summary><div class="rv-model">1 Idea generation – coming up with ideas; 2 Product screening – filter out bad ideas; 3 Concept development – develop the chosen idea; 4 Feasibility study – can you afford it?; 5 Prototype development – make a sample; 6 Test marketing – test it in the market; 7 Product launch – launch it to people.</div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead>
+        <tbody>
+          <tr><td>Enterprise</td><td>Any attempt to start or do something new.</td><td>Give examples from home, school, community, public service.</td></tr>
+          <tr><td>Entrepreneur</td><td>Takes initiative + personal and financial risk.</td><td>Example: Ben Dunne – Dunnes Stores.</td></tr>
+          <tr><td>Intrapreneur</td><td>Enterprising within an existing business.</td><td>Entrepreneur = own; intrapreneur = inside.</td></tr>
+          <tr><td>Characteristics v skills</td><td>Traits (innovative…) v learned abilities (planning…).</td><td>Don't mix them up.</td></tr>
+          <tr><td>Risks & rewards</td><td>Own boss / keep profit / flexible v lose money / long hours / no guaranteed income.</td><td>Balance both sides.</td></tr>
+          <tr><td>Role</td><td>Organisations, economy (jobs, tax, exports), society (services, sponsorship).</td><td>Name the area first.</td></tr>
+          <tr><td>Idea sources</td><td>Internal: brainstorming, sales, intrapreneurship, R&amp;D. External: competitors, import substitution, feedback, market research.</td><td>Say internal or external.</td></tr>
+          <tr><td>Product development</td><td>7 steps: idea → screening → concept → feasibility → prototype → test marketing → launch</td><td>Use the pizza-dinner sentence.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Business Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

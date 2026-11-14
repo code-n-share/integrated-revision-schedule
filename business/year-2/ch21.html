@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Revision – Ch 21 Market Research</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #E8630A; --accent-light: #FFF0E6;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: var(--text); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: var(--text); font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .sub-heading { font: 700 16px 'Sora', sans-serif; margin: 22px 0 8px; color: #A84000; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    .formula { margin: 14px 0; padding: 14px 18px; background: #F1F8E9; border: 1.5px solid #8BC34A; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .answer { display: inline-block; margin-top: 6px; padding: 4px 12px; background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 8px; font-weight: 700; }
+    .todo { margin: 14px 0; padding: 10px 14px; background: #FFF8E1; border: 1.5px dashed #F5A623; border-radius: 10px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+    .chapter-nav-bar a { color: #A84000; font-weight: 600; text-decoration: none; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+    .flow span { padding: 6px 12px; border-radius: 100px; background: var(--accent-light); border: 1.5px solid var(--accent); font-size: 13px; font-weight: 600; }
+    .flow i { font-style: normal; color: var(--muted); }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Business Revision</div><div class="book-title">Year 2 · Chapter 21</div></div>
+    <a href="index.html">&larr; Business Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#marketing">Marketing and Market Research</a>
+    <a href="#types">Types of Market Research</a>
+    <a href="#field">Field Research and Surveys</a>
+    <a href="#desk">Desk Research</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 21 · Marketing</div>
+      <h1>📊 <span>Market Research</span></h1>
+      <p class="chapter-meta">Business Studies · Year 2 · Exam Revision · Source: your handwritten notes</p>
+      <div><span class="goal-tag">✔ Define marketing and market research</span><span class="goal-tag">✔ List benefits of research</span><span class="goal-tag">✔ Distinguish field and desk research</span><span class="goal-tag">✔ Weigh up desk research</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about Market Research, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+<ul><li>Market Research
+  <ul>
+    <li>Marketing<ul><li>Wants &amp; needs</li><li>Profit</li></ul></li>
+    <li>Benefits<ul><li>Customers</li><li>Competitors</li><li>Prices</li></ul></li>
+    <li>Field research<ul><li>Primary</li><li>Surveys</li><li>Focus groups</li><li>Observation</li></ul></li>
+    <li>Desk research<ul><li>Secondary</li><li>Internal</li><li>External</li></ul></li>
+  </ul>
+</li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Marketing</strong></td><td>The process of identifying and satisfying customer wants and needs while making a profit.</td></tr>
+          <tr><td><strong>Market research</strong></td><td>Gathering, recording and analysing information about consumer preferences for a good or service in order to make informed decisions about a potential market.</td></tr>
+          <tr><td><strong>Field research</strong></td><td>Going out to the marketplace to gather information first-hand for a specific purpose.</td></tr>
+          <tr><td><strong>Primary research</strong></td><td>Another name for field research: carried out by making direct contact with potential and existing customers.</td></tr>
+          <tr><td><strong>Survey</strong></td><td>A set of questions asked to customers; questions should be clear and not leading.</td></tr>
+          <tr><td><strong>Closed question</strong></td><td>A yes/no question.</td></tr>
+          <tr><td><strong>Multiple choice question</strong></td><td>Gives a list of answers to choose from (your notes: "allowed several answers").</td></tr>
+          <tr><td><strong>Open-ended question</strong></td><td>Lets the customer say what they like rather than being confined to a specific answer.</td></tr>
+          <tr><td><strong>Focus group</strong></td><td>A type of field research (listed in your notes; definition not given).</td></tr>
+          <tr><td><strong>Observation</strong></td><td>A type of field research (listed in your notes; definition not given).</td></tr>
+          <tr><td><strong>Desk research</strong></td><td>Looking at and analysing information that has already been gathered for another purpose or from another source.</td></tr>
+          <tr><td><strong>Secondary research</strong></td><td>Another name for desk research; can be internal or external.</td></tr>
+          <tr><td><strong>Central Statistics Office (CSO)</strong></td><td>Source of desk research: information on the population of towns and cities including age, gender, marital status, etc.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="marketing">📣 Marketing and Market Research</div>
+      <div class="key-term"><strong>Marketing:</strong> the process of <strong>identifying and satisfying customer wants and needs while making a profit</strong>.
+        <div class="tip">💡 Find out what people want, give it to them, and still make money.</div></div>
+      <div class="key-term"><strong>Market research:</strong> <strong>gathering, recording and analysing</strong> information about consumer preferences for a good or service in order to make <strong>informed decisions</strong> about a potential market.
+        <div class="tip">💡 Asking before you launch, so you don't guess.</div></div>
+      <div class="sub-heading">Benefits of conducting market research</div>
+      <ul>
+        <li>Information about customer needs and wants</li>
+        <li>Information on competitors</li>
+        <li>Customer reactions to changes to existing products or services</li>
+        <li>The best prices to charge customers</li>
+        <li>Customer reactions to products being promoted</li>
+      </ul>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> defining market research as just "asking customers questions". The definition has three verbs – <em>gathering, recording and analysing</em> – and a purpose: <em>informed decisions</em>.</div>
+
+      <div class="section-heading" id="types">🔀 Types of Market Research</div>
+      <div class="key-term"><strong>Two types of market research:</strong> <strong>field research</strong> (primary) and <strong>desk research</strong> (secondary).</div>
+      <div class="flow"><span>Market research</span><i>→</i><span>Field (primary): surveys · focus group · observation</span><i>|</i><span>Desk (secondary): internal · external</span></div>
+      <table><thead><tr><th>Field research (primary)</th><th>Desk research (secondary)</th></tr></thead><tbody>
+        <tr><td>Going out to the marketplace to gather information <strong>first-hand</strong> for a <strong>specific purpose</strong>.<br>Carried out by making <strong>direct contact</strong> with potential and existing customers.<br><em>e.g. surveys, focus groups, observation</em></td>
+        <td>Looking at and analysing information that has <strong>already been gathered</strong> for another purpose or from another source.<br>Can be <strong>internal</strong> or <strong>external</strong>.</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>F</strong>ield = <strong>F</strong>irst-hand (<strong>P</strong>rimary). <strong>D</strong>esk = <strong>D</strong>one before (<strong>S</strong>econdary).</div>
+
+      <div class="section-heading" id="field">🧑‍🤝‍🧑 Field Research and Surveys</div>
+      <div class="key-term"><strong>Surveys:</strong> questions should be <strong>clear</strong> and should <strong>not be leading</strong>.</div>
+      <table><thead><tr><th>Question type</th><th>Description (from your notes)</th></tr></thead><tbody>
+        <tr><td><strong>Closed</strong></td><td>Yes/no question</td></tr>
+        <tr><td><strong>Multiple choice</strong></td><td>Allowed several answers</td></tr>
+        <tr><td><strong>Open-ended</strong></td><td>Allows the customer to say what they like rather than being confined to a specific answer</td></tr>
+      </tbody></table>
+      <div class="tip">💡 A <em>leading</em> question pushes the answer, e.g. "Don't you agree our new flavour is delicious?" – that's what to avoid.</div>
+      <div class="todo">TODO (gap in your notes): focus groups and observation are named as field research but not defined, and the advantages/disadvantages of field research aren't covered. Add them from your textbook before the exam.</div>
+
+      <div class="section-heading" id="desk">🖥️ Desk Research</div>
+      <div class="key-term"><strong>Desk research (secondary research):</strong> looking at and analysing information that has <strong>already been gathered</strong> for another purpose or from another source. It can be <strong>internal</strong> or <strong>external</strong>.</div>
+      <table><thead><tr><th>Example source</th><th>What it tells you</th></tr></thead><tbody>
+        <tr><td><strong>Business sales reports</strong></td><td>Helps identify the most and least successful products</td></tr>
+        <tr><td><strong>Newspapers and magazines</strong></td><td>Information about competitors or consumers</td></tr>
+        <tr><td><strong>The internet</strong></td><td>Checks competitor products and prices; finds information about market size and trends</td></tr>
+        <tr><td><strong>Central Statistics Office</strong></td><td>Information on the population of towns and cities including age, gender, marital status, etc.</td></tr>
+      </tbody></table>
+      <div class="sub-heading">Desk research – advantages and disadvantages</div>
+      <table><thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead><tbody>
+        <tr><td>• Easy to obtain, as it uses information that's already available<br>• Quick to gather<br>• Cheaper than field research, as it doesn't need trained interviewers</td>
+        <td>• The information isn't gathered for the business's specific needs, so it may not be as useful or relevant as primary research<br>• Information may be outdated<br>• Researcher may have to read lots of information to find what they need</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> calling sales reports "external". A business's own sales reports are <em>internal</em> desk research (inside the business); newspapers, the internet and the CSO come from <em>outside</em>.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Define marketing</div><div class="a">The process of identifying and satisfying customer wants and needs while making a profit.</div></div>
+        <div class="rv-card"><div class="q">Define market research</div><div class="a">Gathering, recording and analysing information about consumer preferences to make informed decisions about a potential market.</div></div>
+        <div class="rv-card"><div class="q">Name 3 benefits of market research</div><div class="a">Customer needs/wants; competitor info; reactions to changes; best prices; reactions to promotion.</div></div>
+        <div class="rv-card"><div class="q">Two types of market research</div><div class="a">Field (primary) and desk (secondary).</div></div>
+        <div class="rv-card"><div class="q">Define field research</div><div class="a">Going out to the marketplace to gather information first-hand for a specific purpose.</div></div>
+        <div class="rv-card"><div class="q">Another name for field research</div><div class="a">Primary research (direct contact with potential and existing customers).</div></div>
+        <div class="rv-card"><div class="q">Examples of field research</div><div class="a">Surveys, focus groups, observation.</div></div>
+        <div class="rv-card"><div class="q">Define desk research</div><div class="a">Analysing information that has already been gathered for another purpose or from another source.</div></div>
+        <div class="rv-card"><div class="q">Another name for desk research</div><div class="a">Secondary research (can be internal or external).</div></div>
+        <div class="rv-card"><div class="q">Two rules for survey questions</div><div class="a">Clear and not leading.</div></div>
+        <div class="rv-card"><div class="q">Closed question</div><div class="a">A yes/no question.</div></div>
+        <div class="rv-card"><div class="q">Open-ended question</div><div class="a">Lets the customer say what they like rather than confining them to a specific answer.</div></div>
+        <div class="rv-card"><div class="q">Name 3 sources of desk research</div><div class="a">Business sales reports, newspapers and magazines, the internet, the Central Statistics Office.</div></div>
+        <div class="rv-card"><div class="q">What do sales reports show?</div><div class="a">The most and least successful products.</div></div>
+        <div class="rv-card"><div class="q">What does the CSO provide?</div><div class="a">Population information on towns and cities: age, gender, marital status, etc.</div></div>
+        <div class="rv-card"><div class="q">Advantages of desk research</div><div class="a">Easy to obtain, quick to gather, cheaper than field research (no trained interviewers).</div></div>
+        <div class="rv-card"><div class="q">Disadvantages of desk research</div><div class="a">May not be relevant to specific needs, may be outdated, lots to read through.</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>{{Marketing}} is the process of identifying and satisfying customer wants and needs while making a profit.</p>
+        <p>{{Market research}} is gathering, recording and analysing information about consumer preferences to make informed {{decisions}}.</p>
+        <p>{{Field}} research is also known as {{primary}} research.</p>
+        <p>{{Desk}} research is also known as {{secondary}} research and can be internal or external.</p>
+        <p>Survey questions should be clear and should not be {{leading}}.</p>
+        <p>A {{closed}} question is a yes/no question; an {{open-ended|open ended|open}} question lets the customer say what they like.</p>
+        <p>Desk research is {{cheaper}} than field research because it doesn't need trained {{interviewers}}.</p>
+        <p>The {{Central Statistics Office|CSO}} provides information on population including age, gender and marital status.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>Which statement best defines market research?</p><ol><li>Selling goods at a profit</li><li>Gathering, recording and analysing information about consumer preferences to make informed decisions</li><li>Advertising a new product</li><li>Setting the price of a product</li></ol><div class="explain">Market research gathers, records and analyses information on consumer preferences to support informed decisions about a potential market.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which is a benefit of market research?</p><ol><li>It guarantees profit</li><li>It tells the business the best prices to charge customers</li><li>It replaces the need for advertising</li><li>It removes competitors</li></ol><div class="explain">Benefits include information on customers' needs and wants, competitors, reactions to changes, best prices and reactions to promotion. Nothing guarantees profit.</div></div>
+        <div class="rv-q" data-answer="c"><p>A business conducts a survey of its customers. This is…</p><ol><li>Desk research</li><li>Secondary research</li><li>Field research</li><li>Internal research</li></ol><div class="explain">Going out to gather first-hand information (surveys, focus groups, observation) is field/primary research.</div></div>
+        <div class="rv-q" data-answer="d"><p>A company reads last year's industry report to learn about market trends. This is…</p><ol><li>Field research</li><li>Primary research</li><li>Observation</li><li>Desk research</li></ol><div class="explain">Information already gathered by someone else is desk (secondary) research.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which is a "yes/no" survey question?</p><ol><li>Open-ended</li><li>Closed</li><li>Leading</li><li>Multiple response</li></ol><div class="explain">Closed questions have a yes/no answer. Open-ended questions let customers say what they like.</div></div>
+        <div class="rv-q" data-answer="b"><p>Why should survey questions NOT be leading?</p><ol><li>They take too long</li><li>They push the customer towards an answer, making results unreliable</li><li>They cost more</li><li>They need trained interviewers</li></ol><div class="explain">Leading questions steer the answer; questions should be clear and not leading.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is an advantage of desk research?</p><ol><li>It is gathered for the business's exact needs</li><li>It is always up to date</li><li>It is quick to gather and cheaper than field research</li><li>It involves direct contact with customers</li></ol><div class="explain">Desk research is easy, quick and cheaper (no trained interviewers). Its drawbacks: may be irrelevant or outdated.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which is a disadvantage of desk research?</p><ol><li>It is expensive</li><li>The information may be outdated</li><li>It needs trained interviewers</li><li>It is slow to obtain</li></ol><div class="explain">Information may be outdated (and may not match the business's specific needs). The others are false for desk research.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which of these is an example of desk research?</p><ol><li>Observing shoppers in a store</li><li>Running a focus group</li><li>Using Central Statistics Office population data</li><li>Asking customers to fill in a questionnaire</li></ol><div class="explain">CSO data was gathered by someone else already, so it is desk research. The other three are field research.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <details class="rv-qa"><summary>Define <em>marketing</em> and <em>market research</em>.</summary><div class="rv-model">Marketing: the process of identifying and satisfying customer wants and needs while making a profit. Market research: gathering, recording and analysing information about consumer preferences for a good or service in order to make informed decisions about a potential market.</div></details>
+      <details class="rv-qa"><summary>Outline <strong>three</strong> benefits to a business of conducting market research.</summary><div class="rv-model">Any three: information on customers' needs and wants; information on competitors; customer reactions to changes to existing products or services; the best prices to charge; customer reactions to products being promoted.</div></details>
+      <details class="rv-qa"><summary>Distinguish between field research and desk research, giving examples of each.</summary><div class="rv-model">Field (primary) research: going out to the marketplace to get information first-hand for a specific purpose, by direct contact with potential and existing customers – e.g. surveys, focus groups, observation. Desk (secondary) research: using information already gathered for another purpose or from another source, internal or external – e.g. sales reports, newspapers and magazines, the internet, Central Statistics Office.</div></details>
+      <details class="rv-qa"><summary>Describe the three types of survey question and give a rule for writing good questions.</summary><div class="rv-model">Closed: yes/no. Multiple choice: allows several answers (as in your notes). Open-ended: customer says what they like rather than being confined to a specific answer. Questions should be clear and not leading.</div></details>
+      <details class="rv-qa"><summary>Discuss the advantages and disadvantages of desk research.</summary><div class="rv-model">Advantages: easy to obtain (information already exists); quick to gather; cheaper than field research (no trained interviewers). Disadvantages: not gathered for the business's specific needs so may be less useful or relevant than primary research; information may be outdated; researcher may have to read lots of information to find what they need.</div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead>
+        <tbody>
+          <tr><td>Marketing</td><td>Identify and satisfy customer wants and needs while making a profit.</td><td>Quote "while making a profit".</td></tr>
+          <tr><td>Market research</td><td>Gather, record, analyse information → informed decisions.</td><td>Three verbs for full marks.</td></tr>
+          <tr><td>Field = primary</td><td>First-hand, specific purpose, direct contact. Surveys, focus groups, observation.</td><td>Learn all three examples.</td></tr>
+          <tr><td>Desk = secondary</td><td>Already gathered; internal or external. Sales reports, newspapers, internet, CSO.</td><td>Sort internal v external.</td></tr>
+          <tr><td>Surveys</td><td>Clear, not leading. Closed (yes/no) · multiple choice · open-ended.</td><td>Give an example question.</td></tr>
+          <tr><td>Desk pros/cons</td><td>Easy, quick, cheaper v may be irrelevant, outdated, lots to read.</td><td>Give 2 + 2 for 4 marks.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Business Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

@@ -62,3 +62,9 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Science Year 1 – Chapter 29 – Energy (Physical World)
 - [x] Science Year 1 – Chapter 35 – The Origin of the Universe (Earth & Space)
 - [x] Science Year 1 – Chapter 39 – Energy Sources and Future Needs (Earth & Space)
+- [x] Business Year 2 – Chapter 9 – Insurance
+- [x] Business Year 2 – Chapter 12 – Protecting the Consumer
+- [x] Business Year 2 – Chapter 15 – The Skills, Characteristics and Role of the Entrepreneur
+- [x] Business Year 2 – Chapter 16 – Types of Enterprise
+- [x] Business Year 2 – Chapter 21 – Market Research
+- [x] Business Year 2 – Chapter 22 – The Marketing Mix
