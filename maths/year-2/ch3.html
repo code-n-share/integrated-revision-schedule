@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!--
+  QUESTION PLAN (CONTENT_RULES §6 – maths): one distinct sub-concept per question, quiz + practice combined.
+  Source: Text & Tests 2 (Higher Level) Ch 3, pp.38-61; answers cross-checked with the book's answer key (pp.587-588).
+  Not used: Ex 3.1 Q13(iii) – the printed question is hard to read and the key omits -1, so it was left out rather than guessed.
+
+  Sub-concept                                            Quiz   Practice (book ref)
+  3.1  union                                             Q1     –
+  3.1  intersection                                      Q2     –   (Test yourself 3 Q1)
+  3.1  complement of a union                             Q3     –   (Test yourself 3 Q1(ii))
+  3.1  cardinal number of a union                       Q4     –   (Ex 3.1 Q4)
+  3.1  rule for generating a set                         Q5     –   (Ex 3.1 Q14)
+  3.1  N, Z, Q, R: Q ∩ (N ∪ Z)                           Q6     –   (Ex 3.1 Q11)
+  3.1  equation from a union count                       Q7     –   (Ex 3.1 Q15)
+  3.1  subset: if B ⊂ A then A ∩ B = B                   Q9     –   (Investigation B p.44)
+  3.1  two-set Venn from words (neither / both)          –      P1  (Ex 3.1 Q9)
+  3.1  two-set Venn with x                               –      P2  (Ex 3.1 Q12)
+  3.1  greatest / least values (cardinals)               –      P3  (Ex 3.1 Q17)
+  3.1  cardinals incl. complement                        –      P4  (Test yourself 3 Q3)
+  3.2  set difference A \ B                              Q8     –   (Ex 3.2 Q1)
+  3.2  difference is not commutative                     –      P5  (Ex 3.2 Q4)
+  3.2  U \ (A ∪ B), U \ (A ∩ B) counts                   –      P6  (Ex 3.2 Q5)
+  3.2  describe sets in words                            –      P7  (Ex 3.2 Q7)
+  3.2  number-set differences Z \ N, R \ Q               –      P8  (Ex 3.2 Q8)
+  3.3  name a region in words                            Q10    –
+  3.3  list elements of a 3-set region                   –      P9  (book Example 1 p.47)
+  3.3  union distributes over intersection               –      P10 (Ex 3.3 Q10)
+  3.2  U \ A = A'                                        Q12    –
+  3.3  difference is not associative                     –      P11 (Ex 3.3 Q11)
+  3.3  name properties of + − × ÷                        –      P12 (Ex 3.3 Q9)
+  3.4  fill a 3-set Venn: centre first                   Q11    –
+  3.4  3-set problem with numbers                        –      P13 (Ex 3.4 Q5)
+  3.4  3-set problem with x                              –      P14 (Ex 3.4 Q6)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Revision – Sets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: #B79CF0; }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+
+    /* ── Maths kit (see CONTENT_RULES §6) ── */
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 600; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 10px 16px; margin: 12px 0; text-align: center; }
+    .method { background: #fff; border: 1.5px solid var(--accent); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .method-title { background: var(--accent); color: #fff; font: 700 14px 'Sora', sans-serif; padding: 8px 16px; }
+    .method ol { margin: 10px 16px 10px 38px; }
+    .work { font-family: 'JetBrains Mono', monospace; font-size: 14px; margin: 8px 0; }
+    .work .ln { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 4px 0; border-bottom: 1px dashed var(--border); flex-wrap: wrap; }
+    .work .why { font: 500 12.5px 'DM Sans', sans-serif; color: #1565C0; text-align: right; margin-left: auto; }
+    .work .ans .eq { background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 6px; padding: 0 8px; font-weight: 600; }
+    .work + .work { margin-top: 14px; }
+    table.mgrid { width: auto; margin: 10px 0; }
+    table.mgrid td, table.mgrid th { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 6px 14px; }
+    table.mgrid th { background: var(--accent-light); }
+    .rv-model .work { margin-top: 6px; }
+    /* rows of Venn diagrams with a caption under each */
+    .venn-row { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 10px 0; }
+    .venn-row > div { flex: 1 1 210px; min-width: 0; }
+    .vcap { text-align: center; font-size: 13px; color: var(--muted); }
+    .vcap strong { color: var(--text); }
+    .setsvg { display: block; width: 100%; max-width: 420px; margin: 8px auto; }
+    .setsvg text { font: 600 12px 'DM Sans', sans-serif; fill: #1A1A2E; }
+
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Maths Revision</div><div class="book-title">Text &amp; Tests 2 · Sets</div></div>
+    <a href="index.html">&larr; Maths Year 2</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#terminology">3.1 Sets Terminology</a>
+    <a href="#difference">3.2 Set Difference</a>
+    <a href="#three">3.3 Venn: Three Sets</a>
+    <a href="#problems">3.4 Three-Set Problems</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 3 · Sets</div>
+      <h1>⭕ <span>Sets</span></h1>
+      <p class="chapter-meta">Text &amp; Tests 2 (Higher Level) · Junior Cycle Maths Revision</p>
+      <div>
+        <span class="goal-tag">✔ Use ∪ ∩ ′ ⊂ # and rules for sets</span>
+        <span class="goal-tag">✔ Place ℕ, ℤ, ℚ, ℝ in a Venn diagram</span>
+        <span class="goal-tag">✔ Find the set difference A \ B</span>
+        <span class="goal-tag">✔ Commutative &amp; associative tests</span>
+        <span class="goal-tag">✔ Draw and use 3-set Venn diagrams</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write everything you remember about sets – union, intersection, Venn diagrams, number sets – then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Sets
+          <ul>
+            <li>Terminology<ul><li>∪ ∩ ⊂ ′</li><li>Cardinal number #</li></ul></li>
+            <li>Number sets<ul><li>ℕ ℤ ℚ ℝ</li><li>Rules for sets</li></ul></li>
+            <li>Set difference<ul><li>A \ B</li></ul></li>
+            <li>Properties<ul><li>Commutative</li><li>Associative</li></ul></li>
+            <li>Three-set Venn<ul><li>Eight regions</li><li>Centre first</li><li>Use x</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Set</strong></td><td>A collection of things (elements), written in curly brackets { }</td></tr>
+          <tr><td><strong>Equal sets</strong></td><td>Sets with exactly the same elements, in any order</td></tr>
+          <tr><td><strong>Union (A ∪ B)</strong></td><td>Everything that is in A <em>or</em> B (or both), with no repeats</td></tr>
+          <tr><td><strong>Intersection (A ∩ B)</strong></td><td>Only what is in A <em>and</em> B – the overlap</td></tr>
+          <tr><td><strong>Subset (B ⊂ A)</strong></td><td>Every element of B is also in A</td></tr>
+          <tr><td><strong>Universal set (U)</strong></td><td>The set everything under discussion comes from. Drawn as a rectangle</td></tr>
+          <tr><td><strong>Complement (A′)</strong></td><td>Everything in U that is <em>not</em> in A</td></tr>
+          <tr><td><strong>Cardinal number (#A)</strong></td><td>How many elements are in A</td></tr>
+          <tr><td><strong>Rule for generating a set</strong></td><td>A formula that lists a large set: {x | −8 ≤ x ≤ 8, x ∈ ℤ}</td></tr>
+          <tr><td><strong>ℕ ℤ ℚ ℝ</strong></td><td>Natural (1, 2, 3 …) · Integers (… −1, 0, 1 …) · Rational (fractions a/b, b ≠ 0) · Real (every number on the line)</td></tr>
+          <tr><td><strong>Set difference (A \ B)</strong></td><td>The elements of A that are <em>not</em> in B (“A less B”)</td></tr>
+          <tr><td><strong>Commutative</strong></td><td>Order doesn’t matter: a ∗ b = b ∗ a</td></tr>
+          <tr><td><strong>Associative</strong></td><td>Grouping doesn’t matter: (a ∗ b) ∗ c = a ∗ (b ∗ c)</td></tr>
+        </tbody></table>
+
+      <!-- ───────── 3.1 ───────── -->
+      <div class="section-heading" id="terminology">🔤 3.1 Revision of Sets Terminology</div>
+      <div class="key-term"><strong>Equal sets</strong> contain exactly the same elements: A = {2, 4, 6, 8} and B = {4, 6, 8, 2} are equal.
+        <div class="tip">💡 A set is a bag of marbles: the order they sit in doesn’t change the bag.</div></div>
+      <div class="venn-row">
+        <div><div class="rv-venn" data-sets="2" data-shade="a,ab,b" data-label="Venn diagram of A union B"></div><p class="vcap"><strong>A ∪ B</strong> – in A <em>or</em> B</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="ab" data-label="Venn diagram of A intersection B"></div><p class="vcap"><strong>A ∩ B</strong> – in A <em>and</em> B</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="b,o" data-u="U" data-label="Venn diagram of A complement"></div><p class="vcap"><strong>A′</strong> – in U but not in A</p></div>
+      </div>
+      <table><thead><tr><th>Idea</th><th>Symbol</th><th>Example: A = {1, 2, 3, 4}, B = {3, 4, 5, 6}</th></tr></thead><tbody>
+        <tr><td>Union</td><td>A ∪ B</td><td>{1, 2, 3, 4, 5, 6} – write 3 and 4 once only</td></tr>
+        <tr><td>Intersection</td><td>A ∩ B</td><td>{3, 4}</td></tr>
+        <tr><td>Subset</td><td>B ⊂ A</td><td>A = {1, 2, 3, 4, 5}, B = {3, 5} → B ⊂ A</td></tr>
+        <tr><td>Complement</td><td>A′</td><td>U = {1 … 10}, A = {2, 3, 5, 7} → A′ = {1, 4, 6, 8, 9, 10}</td></tr>
+        <tr><td>Cardinal number</td><td>#A</td><td>#A = 4 · #(A ∩ B) = 2 · #(A ∪ B) = 6</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> ∪ looks like a <em>U</em>nion “cup” that holds everything; ∩ is an arch you pass <em>through</em> – only the middle (<em>inter</em>section) gets in.</div>
+      <div class="formula">#(A ∪ B) = #A + #B − #(A ∩ B)</div>
+      <p style="font-size:14px">We subtract the overlap because it was counted twice.</p>
+      <div class="example-box"><div class="example-header">📘 30 pupils: 17 study German, 16 Spanish, 5 both. How many study neither?</div><div class="example-body">
+        <div class="rv-venn" data-sets="2" data-names="German,Spanish" data-nums="a:12;ab:5;b:11;o:2" data-u="U = 30" data-label="Venn diagram: 12 German only, 5 both, 11 Spanish only, 2 neither"></div>
+        <div class="work">
+          <div class="ln"><span class="eq">Both = 5 (fill the overlap first)</span><span class="why">start in the middle</span></div>
+          <div class="ln"><span class="eq">German only = 17 − 5 = 12 · Spanish only = 16 − 5 = 11</span><span class="why">subtract the overlap</span></div>
+          <div class="ln ans"><span class="eq">Neither = 30 − (12 + 5 + 11) = 2</span><span class="why">U − everything inside</span></div>
+        </div></div></div>
+
+      <div class="key-term"><strong>Rules for generating sets:</strong> when a set is big, a rule describes it. {x | −8 ≤ x ≤ 8, x ∈ ℤ} reads “x such that x is an integer from −8 to 8”. Put each allowed x into the formula in front.
+        <div class="tip">💡 Plug in every allowed value of x, one at a time. Strict signs (&lt;) drop the end value.</div></div>
+      <div class="example-box"><div class="example-header">📘 List C = {2x + 1 | −3 &lt; x &lt; 2, x ∈ ℤ}</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">x = −2, −1, 0, 1</span><span class="why">&lt; so −3 and 2 are out</span></div>
+          <div class="ln ans"><span class="eq">C = {−3, −1, 1, 3}</span><span class="why">2(−2) + 1 = −3 … 2(1) + 1 = 3</span></div>
+        </div></div></div>
+
+      <table><thead><tr><th>Set</th><th>Name</th><th>Meaning</th></tr></thead><tbody>
+        <tr><td><strong>ℕ</strong></td><td>Natural numbers</td><td>{1, 2, 3, 4 …}</td></tr>
+        <tr><td><strong>ℤ</strong></td><td>Integers</td><td>{… −3, −2, −1, 0, 1, 2, 3 …}</td></tr>
+        <tr><td><strong>ℚ</strong></td><td>Rational numbers</td><td>Fractions a/b where a, b ∈ ℤ and b ≠ 0</td></tr>
+        <tr><td><strong>ℝ</strong></td><td>Real numbers</td><td>Every number on the number line</td></tr>
+      </table>
+      <svg class="setsvg" viewBox="0 0 300 170" role="img" aria-label="Nested sets: N inside Z inside Q inside R">
+        <ellipse cx="150" cy="85" rx="142" ry="76" fill="#DCEBFA" stroke="#1A1A2E"/>
+        <ellipse cx="150" cy="85" rx="104" ry="58" fill="#FDE3E3" stroke="#1A1A2E"/>
+        <ellipse cx="150" cy="85" rx="70" ry="40" fill="#E3F3E1" stroke="#1A1A2E"/>
+        <ellipse cx="150" cy="85" rx="38" ry="22" fill="#fff" stroke="#1A1A2E"/>
+        <text x="150" y="22" text-anchor="middle">ℝ</text><text x="150" y="40" text-anchor="middle">ℚ</text><text x="150" y="58" text-anchor="middle">ℤ</text><text x="150" y="78" text-anchor="middle">ℕ</text>
+        <text x="150" y="98" text-anchor="middle">5</text><text x="96" y="92" text-anchor="middle">−3</text><text x="204" y="92" text-anchor="middle">0</text>
+        <text x="236" y="92" text-anchor="middle">½</text><text x="62" y="92" text-anchor="middle">−¾</text><text x="272" y="92" text-anchor="middle">√2</text><text x="28" y="92" text-anchor="middle">π</text>
+      </svg>
+      <p style="font-size:13px;color:var(--muted);text-align:center">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ – each set sits inside the next. 0 is in ℤ but <em>not</em> ℕ.</p>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> listing an element twice in A ∪ B, and putting 0 in ℕ. Also, A′ is relative to U – always say what U is.</div>
+
+      <!-- ───────── 3.2 ───────── -->
+      <div class="section-heading" id="difference">➖ 3.2 Set Difference</div>
+      <div class="key-term"><strong>Set difference:</strong> A \ B (“A less B”) is the set of elements of A which are <strong>not</strong> in B.
+        <div class="tip">💡 Start with A, then cross out anything that is also in B.</div></div>
+      <div class="venn-row">
+        <div><div class="rv-venn" data-sets="2" data-shade="a" data-label="Venn diagram of A less B"></div><p class="vcap"><strong>A \ B</strong> – A only</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="b" data-label="Venn diagram of B less A"></div><p class="vcap"><strong>B \ A</strong> – B only</p></div>
+      </div>
+      <div class="example-box"><div class="example-header">📘 A = {a, b, c, d, e, f, g}, B = {e, f, g, h, i}. Find (i) A \ B (ii) B \ A (iii) (A ∪ B) \ (A ∩ B)</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">(i) A \ B = {a, b, c, d}</span><span class="why">remove e, f, g</span></div>
+          <div class="ln"><span class="eq">(ii) B \ A = {h, i}</span><span class="why">remove e, f, g</span></div>
+          <div class="ln"><span class="eq">A ∪ B = {a, b, c, d, e, f, g, h, i}, A ∩ B = {e, f, g}</span><span class="why">do the brackets first</span></div>
+          <div class="ln ans"><span class="eq">(iii) {a, b, c, d, h, i}</span></div>
+        </div></div></div>
+      <div class="key-term"><strong>Commutative property:</strong> an operation is commutative if the order doesn’t matter: 3 + 4 = 4 + 3 and 3 × 4 = 4 × 3. But 6 − 2 ≠ 2 − 6, so subtraction is <strong>not</strong> commutative.
+        <div class="tip">💡 Putting on socks then shoes ≠ shoes then socks. Some things depend on order; some don’t.</div></div>
+      <p style="font-size:14px">Union and intersection are commutative: A ∪ B = B ∪ A and A ∩ B = B ∩ A. <strong>Set difference is not commutative:</strong> with A = {2, 3, 4, 5} and B = {4, 5, 6, 7}, A \ B = {2, 3} but B \ A = {6, 7}.</p>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> writing A \ B when you mean B \ A. The set <em>before</em> the \ is the one you keep. And U \ A is just A′.</div>
+
+      <!-- ───────── 3.3 ───────── -->
+      <div class="section-heading" id="three">🔵 3.3 Venn Diagrams Involving Three Sets</div>
+      <div class="key-term">Three overlapping circles in a universal set make <strong>eight regions</strong> (counting the outside). Each region has its own description.
+        <div class="tip">💡 Every region is a yes/no code: is it in A? in B? in C? The centre is “yes, yes, yes”; the outside is “no, no, no”.</div></div>
+      <div class="rv-venn" data-sets="3" data-nums="a:5;ab:4;b:7;ac:2;abc:1;bc:6;c:3;o:8" data-u="U" data-label="Three-set Venn diagram with regions numbered 1 to 8"></div>
+      <table><thead><tr><th>Region</th><th>Set notation</th><th>In words</th></tr></thead><tbody>
+        <tr><td>1 (centre)</td><td>A ∩ B ∩ C</td><td>in all three</td></tr>
+        <tr><td>2</td><td>(A ∩ C) \ B</td><td>in A and C but not B</td></tr>
+        <tr><td>3</td><td>C \ (A ∪ B)</td><td>in C only</td></tr>
+        <tr><td>4</td><td>(A ∩ B) \ C</td><td>in A and B but not C</td></tr>
+        <tr><td>5</td><td>A \ (B ∪ C)</td><td>in A only</td></tr>
+        <tr><td>6</td><td>(B ∩ C) \ A</td><td>in B and C but not A</td></tr>
+        <tr><td>7</td><td>B \ (A ∪ C)</td><td>in B only</td></tr>
+        <tr><td>8 (outside)</td><td>(A ∪ B ∪ C)′</td><td>in none of the sets</td></tr>
+      </tbody></table>
+      <div class="example-box"><div class="example-header">📘 U = {1 … 12}, A = {2, 4, 6, 8, 10}, B = {3, 4, 5, 6}, C = {5, 6, 7, 8}. List (i) A ∩ B ∩ C (ii) (A ∩ B) \ C (iii) B \ (A ∩ B ∩ C)</div><div class="example-body">
+        <div class="rv-venn" data-sets="3" data-nums="a:2, 10;b:3;c:7;ab:4;ac:8;bc:5;abc:6;o:1, 9, 11, 12" data-u="U" data-label="Three-set Venn diagram with the elements of A, B and C placed in regions"></div>
+        <div class="work">
+          <div class="ln"><span class="eq">Place elements: 6 is in A, B and C → centre</span><span class="why">find the centre first</span></div>
+          <div class="ln"><span class="eq">(i) A ∩ B ∩ C = {6}</span></div>
+          <div class="ln"><span class="eq">(ii) A ∩ B = {4, 6} → remove C’s 6 → {4}</span></div>
+          <div class="ln ans"><span class="eq">(iii) B \ {6} = {3, 4, 5}</span></div>
+        </div></div></div>
+
+      <div class="key-term"><strong>Associative property:</strong> an operation (∗) is associative if (a ∗ b) ∗ c = a ∗ (b ∗ c). For example (2 + 3) + 4 = 2 + (3 + 4), so addition is associative. But (12 ÷ 6) ÷ 2 = 1 and 12 ÷ (6 ÷ 2) = 4, so division is <strong>not</strong>.</div>
+      <table><thead><tr><th>Operation</th><th>Commutative?</th><th>Associative?</th><th>Test</th></tr></thead><tbody>
+        <tr><td>+  ·  ×</td><td>✓ yes</td><td>✓ yes</td><td>3 + 4 = 4 + 3 · (2 + 3) + 4 = 2 + (3 + 4)</td></tr>
+        <tr><td>−</td><td>✗ no</td><td>✗ no</td><td>6 − 2 ≠ 2 − 6 · (11 − 12) − 13 ≠ 11 − (12 − 13)</td></tr>
+        <tr><td>÷</td><td>✗ no</td><td>✗ no</td><td>3 ÷ 4 ≠ 4 ÷ 3 · (12 ÷ 6) ÷ 2 ≠ 12 ÷ (6 ÷ 2)</td></tr>
+        <tr><td>∪  ·  ∩</td><td>✓ yes</td><td>✓ yes</td><td>A ∪ B = B ∪ A · (A ∩ B) ∩ C = A ∩ (B ∩ C)</td></tr>
+        <tr><td>\</td><td>✗ no</td><td>✗ no</td><td>A \ B ≠ B \ A · (A \ B) \ C ≠ A \ (B \ C)</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> union and intersection behave like + and ×; set difference behaves like − and ÷ (order and grouping matter).</div>
+      <div class="example-box"><div class="example-header">📘 Is A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)? Shade both sides on a Venn diagram.</div><div class="example-body">
+        <div class="venn-row">
+          <div><div class="rv-venn" data-sets="3" data-shade="a,ab,ac,abc,bc" data-label="A union (B intersection C)"></div><p class="vcap"><strong>A ∪ (B ∩ C)</strong></p></div>
+          <div><div class="rv-venn" data-sets="3" data-shade="a,ab,ac,abc,bc" data-label="(A union B) intersection (A union C)"></div><p class="vcap"><strong>(A ∪ B) ∩ (A ∪ C)</strong></p></div>
+        </div>
+        <div class="work"><div class="ln ans"><span class="eq">Same shading → they are equal (true)</span><span class="why">shade each side, then compare</span></div></div>
+        <div class="venn-row">
+          <div><div class="rv-venn" data-sets="3" data-shade="a" data-label="A less (B union C)"></div><p class="vcap"><strong>A \ (B ∪ C)</strong></p></div>
+          <div><div class="rv-venn" data-sets="3" data-shade="a,ab,ac" data-label="(A less B) union (A less C)"></div><p class="vcap"><strong>(A \ B) ∪ (A \ C)</strong></p></div>
+        </div>
+        <div class="work"><div class="ln ans"><span class="eq">Different shading → A \ (B ∪ C) ≠ (A \ B) ∪ (A \ C) (false)</span></div></div>
+      </div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> “prove” a property with one example. To show a property is <em>not</em> true, one example is enough; to show it <em>is</em> true, compare both sides carefully (or shade a Venn diagram).</div>
+
+      <!-- ───────── 3.4 ───────── -->
+      <div class="section-heading" id="problems">🧮 3.4 Solving Problems Using Three Sets</div>
+      <div class="method"><div class="method-title">🔧 Method: three-set word problem</div>
+        <ol><li>Draw three circles in a box. Label A, B, C and give U.</li><li>Fill the <strong>centre</strong> (all three) first. If it isn’t given, call it <strong>x</strong>.</li><li>Pair regions = pair total − centre.</li><li>“Only” regions = set total − the centre and its two pair regions.</li><li>Outside = U − everything inside. If x is used, add all regions and set equal to U.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 100 students: S = sweets (41), D = soft drinks, C = crisps (31). 6 bought all three; 14 crisps &amp; drink; 12 sweets &amp; drink; 15 crisps &amp; sweets; 23 drink only. Find: none, sweets only, two items only, one item only.</div><div class="example-body">
+        <div class="rv-venn" data-sets="3" data-names="S,D,C" data-nums="a:20;ab:6;b:23;ac:9;abc:6;bc:8;c:8;o:20" data-u="U = 100" data-label="Venn diagram of sweets, drinks and crisps"></div>
+        <div class="work">
+          <div class="ln"><span class="eq">All three = 6</span><span class="why">centre first</span></div>
+          <div class="ln"><span class="eq">C∩D only = 14 − 6 = 8 · S∩D only = 12 − 6 = 6 · C∩S only = 15 − 6 = 9</span><span class="why">pair − centre</span></div>
+          <div class="ln"><span class="eq">S only = 41 − (6 + 6 + 9) = 20 · C only = 31 − (6 + 8 + 9) = 8</span><span class="why">total − the rest</span></div>
+          <div class="ln"><span class="eq">None = 100 − (20 + 6 + 23 + 9 + 6 + 8 + 8) = 100 − 80 = 20</span><span class="why">U − inside</span></div>
+          <div class="ln ans"><span class="eq">none 20 · sweets only 20 · two only 6 + 9 + 8 = 23 · one only 20 + 23 + 8 = 51</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 86 students all take at least one language: French 57, German 42, Spanish 31; 25 take French &amp; German, 17 French &amp; Spanish, 5 German &amp; Spanish. How many take all three?</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">All three = x</span><span class="why">not given → let x</span></div>
+          <div class="ln"><span class="eq">F∩G only = 25 − x · F∩S only = 17 − x · G∩S only = 5 − x</span><span class="why">pair − x</span></div>
+          <div class="ln"><span class="eq">F only = 15 + x · G only = 12 + x · S only = 9 + x</span><span class="why">total − pairs − x</span></div>
+          <div class="ln"><span class="eq">(15 + x) + (12 + x) + (9 + x) + (25 − x) + (17 − x) + (5 − x) + x = 86</span><span class="why">all regions = U</span></div>
+          <div class="ln"><span class="eq">83 + x = 86</span><span class="why">the x terms add to +x</span></div>
+          <div class="ln ans"><span class="eq">x = 3 students</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting to subtract the centre when a pair total is given, and forgetting the outside region (“none of these”). Check that all eight regions add up to #U.</div>
+
+      <!-- ───────── Practice tools ───────── -->
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">When are two sets equal?</div><div class="a">When they contain exactly the same elements, in any order</div></div>
+        <div class="rv-card"><div class="q">What is the union A ∪ B?</div><div class="a">All elements in A or B (or both), each written once</div></div>
+        <div class="rv-card"><div class="q">What is the intersection A ∩ B?</div><div class="a">Only the elements in both A and B</div></div>
+        <div class="rv-card"><div class="q">What does B ⊂ A mean?</div><div class="a">B is a subset of A – every element of B is in A</div></div>
+        <div class="rv-card"><div class="q">If B ⊂ A, what are A ∪ B and A ∩ B?</div><div class="a">A ∪ B = A and A ∩ B = B</div></div>
+        <div class="rv-card"><div class="q">What is the universal set U?</div><div class="a">The set all the elements being considered come from – drawn as a rectangle</div></div>
+        <div class="rv-card"><div class="q">What is the complement A′?</div><div class="a">All the elements of U that are not in A</div></div>
+        <div class="rv-card"><div class="q">What is a cardinal number #A?</div><div class="a">The number of elements in A</div></div>
+        <div class="rv-card"><div class="q">Formula for #(A ∪ B)?</div><div class="a">#A + #B − #(A ∩ B)</div></div>
+        <div class="rv-card"><div class="q">What does {x | −8 ≤ x ≤ 8, x ∈ ℤ} mean?</div><div class="a">The integers from −8 to 8 – “x such that …”</div></div>
+        <div class="rv-card"><div class="q">What is ℕ?</div><div class="a">Natural numbers: 1, 2, 3, 4 …</div></div>
+        <div class="rv-card"><div class="q">What is ℤ?</div><div class="a">Integers: … −2, −1, 0, 1, 2 …</div></div>
+        <div class="rv-card"><div class="q">What is ℚ?</div><div class="a">Rational numbers: fractions a/b with a, b ∈ ℤ and b ≠ 0</div></div>
+        <div class="rv-card"><div class="q">What is ℝ?</div><div class="a">Real numbers: every number on the number line</div></div>
+        <div class="rv-card"><div class="q">How do ℕ, ℤ, ℚ, ℝ fit together?</div><div class="a">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</div></div>
+        <div class="rv-card"><div class="q">What is A \ B?</div><div class="a">The elements of A that are not in B (“A less B”)</div></div>
+        <div class="rv-card"><div class="q">Is A \ B = B \ A?</div><div class="a">Not in general – set difference is not commutative</div></div>
+        <div class="rv-card"><div class="q">U \ A equals which set?</div><div class="a">A′, the complement of A</div></div>
+        <div class="rv-card"><div class="q">What does commutative mean?</div><div class="a">Order doesn’t matter: a ∗ b = b ∗ a</div></div>
+        <div class="rv-card"><div class="q">What does associative mean?</div><div class="a">Grouping doesn’t matter: (a ∗ b) ∗ c = a ∗ (b ∗ c)</div></div>
+        <div class="rv-card"><div class="q">Which set operations are commutative and associative?</div><div class="a">Union ∪ and intersection ∩. Set difference \ is neither</div></div>
+        <div class="rv-card"><div class="q">How many regions in a 3-set Venn diagram?</div><div class="a">Eight (including the outside)</div></div>
+        <div class="rv-card"><div class="q">What set is the centre of a 3-set Venn diagram?</div><div class="a">A ∩ B ∩ C</div></div>
+        <div class="rv-card"><div class="q">First step in a three-set problem?</div><div class="a">Fill A ∩ B ∩ C; if it isn’t given, let it be x</div></div>
+        <div class="rv-card"><div class="q">A pair total is given: how do you find its “only” region?</div><div class="a">Pair total − the centre</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The {{union}} A ∪ B contains the elements in A {{or}} B, written without {{repeats|repeating|repeated elements}}.</p>
+        <p>The {{intersection}} A ∩ B contains only the elements in A {{and}} B.</p>
+        <p>The {{universal}} set U is shown as a {{rectangle}}, and the {{complement|complement set}} A′ is everything in U that is not in A.</p>
+        <p>The {{cardinal}} number #A is the number of {{elements}} in A.</p>
+        <p>#(A ∪ B) = #A + #B − #({{A ∩ B|A∩B}}).</p>
+        <p>ℕ is the {{natural}} numbers, ℤ the {{integers}}, ℚ the {{rational}} numbers and ℝ the {{real}} numbers.</p>
+        <p>A \ B is the set of elements of A which are {{not}} in B.</p>
+        <p>An operation is {{commutative}} if a ∗ b = b ∗ a, and {{associative}} if (a ∗ b) ∗ c = a ∗ (b ∗ c).</p>
+        <p>Union and intersection are commutative and associative, but set {{difference}} is not.</p>
+        <p>In a three-set problem fill in the {{centre|middle}} region first; if it is unknown call it {{x}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>A = {1, 2, 3, 4} and B = {3, 4, 5, 6}. What is A ∪ B?</p><ol><li>{3, 4}</li><li>{1, 2, 5, 6}</li><li>{1, 2, 3, 4, 5, 6}</li><li>{1, 2, 3, 3, 4, 4, 5, 6}</li></ol><div class="explain">Union = everything in A or B. Write each element once, so 3 and 4 appear once. {3, 4} is the intersection; {1, 2, 5, 6} is what is in only one set.</div></div>
+        <div class="rv-q" data-answer="b"><p>A = {1, 3, 5, 7} and B = {5, 7, 8, 9}. What is A ∩ B?</p><ol><li>{1, 3, 5, 7, 8, 9}</li><li>{5, 7}</li><li>{1, 3, 8, 9}</li><li>{5, 7, 8, 9}</li></ol><div class="explain">Intersection = only the elements in both sets: 5 and 7. The first option is the union; the third is what is in only one set.</div></div>
+        <div class="rv-q" data-answer="a"><p>U = {1, 2, … 10}, A = {1, 3, 5, 7} and B = {5, 7, 8, 9}. Find (A ∪ B)′.</p><ol><li>{2, 4, 6, 10}</li><li>{1, 3, 5, 7, 8, 9}</li><li>{2, 4, 6}</li><li>{5, 7}</li></ol><div class="explain">A ∪ B = {1, 3, 5, 7, 8, 9}. The complement is everything in U that is not in it: {2, 4, 6, 10}. The second option forgets the complement; the third misses 10.</div></div>
+        <div class="rv-q" data-answer="b"><p>#A = 15, #B = 14 and #(A ∩ B) = 7. Find #(A ∪ B).</p><ol><li>29</li><li>22</li><li>36</li><li>7</li></ol><div class="explain">#(A ∪ B) = 15 + 14 − 7 = 22. 29 forgets to subtract the overlap; 36 adds it instead.</div></div>
+        <div class="rv-q" data-answer="b"><p>List B = {2x | −3 &lt; x &lt; 4, x ∈ ℤ}.</p><ol><li>{−2, −1, 0, 1, 2, 3}</li><li>{−4, −2, 0, 2, 4, 6}</li><li>{−6, −4, −2, 0, 2, 4, 6, 8}</li><li>{−4, −2, 0, 2, 4, 6, 8}</li></ol><div class="explain">x = −2, −1, 0, 1, 2, 3 (the strict &lt; drops −3 and 4). Double each: −4 … 6. Option 1 forgot to double; options 3 and 4 included an end value.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which set equals ℚ ∩ (ℕ ∪ ℤ)?</p><ol><li>ℕ</li><li>ℤ</li><li>ℚ</li><li>ℝ</li></ol><div class="explain">ℕ ∪ ℤ = ℤ (ℕ sits inside ℤ). Then ℚ ∩ ℤ = ℤ, because every integer is a rational number.</div></div>
+        <div class="rv-q" data-answer="c"><p>32 pupils all study French (F) or German (G): 24 French, 18 German. #(F ∩ G) = x. Find x.</p><ol><li>8</li><li>42</li><li>10</li><li>14</li></ol><div class="explain">24 + 18 − x = 32 → 42 − x = 32 → x = 10. (8 = 32 − 24; 42 is just 24 + 18; 14 = 32 − 18.)</div></div>
+        <div class="rv-q" data-answer="c"><p>A = {1, 2, 3, 4, 5, 6, 7, 8} and B = {3, 6, 9, 10}. What is A \ B?</p><ol><li>{9, 10}</li><li>{3, 6}</li><li>{1, 2, 4, 5, 7, 8}</li><li>{1, 2, 4, 5, 7, 8, 9, 10}</li></ol><div class="explain">A \ B = elements of A that are not in B: remove 3 and 6. {9, 10} is B \ A; {3, 6} is A ∩ B; the last one is both differences together.</div></div>
+        <div class="rv-q" data-answer="b"><p>A = {1, 2, 3, 4, 5} and B = {3, 5}, so B ⊂ A. What is A ∩ B?</p><ol><li>A</li><li>B</li><li>{ } (empty)</li><li>A \ B</li></ol><div class="explain">If B ⊂ A, everything in B is already in A, so the overlap is all of B: A ∩ B = B (and A ∪ B = A).</div></div>
+        <div class="rv-q" data-answer="a"><p>Which set describes “in A and B but not in C”?</p><ol><li>(A ∩ B) \ C</li><li>A ∩ B ∩ C</li><li>(A ∪ B) \ C</li><li>A \ (B ∪ C)</li></ol><div class="explain">A ∩ B = in both; then \ C removes anything in C. A ∩ B ∩ C is the centre; (A ∪ B) \ C includes things in only A or only B; A \ (B ∪ C) is A only.</div></div>
+        <div class="rv-q" data-answer="a"><p>What do you fill in first when solving a three-set problem?</p><ol><li>The centre, A ∩ B ∩ C</li><li>The “only” regions</li><li>The region outside the circles</li><li>The total of each circle</li></ol><div class="explain">The centre is part of every pair and every circle total. Start there, subtract it to get the pair regions, then the “only” regions, and last the outside.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which set is the same as U \ A?</p><ol><li>A′</li><li>A \ U</li><li>A ∩ U</li><li>A ∪ U</li></ol><div class="explain">U \ A = everything in U that is not in A, which is the complement A′. A \ U is empty (nothing in A is outside U); A ∩ U = A; A ∪ U = U.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="font-size:14px;color:var(--muted)">Try each one on paper first, then click to check. The book exercise number is shown so you can find more like it.</p>
+
+      <details class="rv-qa"><summary>1. (Ex 3.1 Q9) In a class of 32 girls, 16 play hockey and 12 play tennis. 10 play neither. Draw a Venn diagram. How many play both? How many play hockey but not tennis?</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="2" data-names="Hockey,Tennis" data-nums="a:10;ab:6;b:6;o:10" data-u="U = 32" data-label="Venn diagram: 10 hockey only, 6 both, 6 tennis only, 10 neither"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">#(H ∪ T) = 32 − 10 = 22</span><span class="why">not “neither”</span></div>
+          <div class="ln ans"><span class="eq">Both = 16 + 12 − 22 = 6</span><span class="why">add, minus the union</span></div>
+          <div class="ln ans"><span class="eq">Hockey only = 16 − 6 = 10</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>2. (Ex 3.1 Q12) 30 students: 3 want both French (A) and Spanish (B); 6 want neither; twice as many want French as Spanish. Let x = the number who want Spanish only. Complete the Venn diagram.</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="2" data-names="French,Spanish" data-nums="a:15;ab:3;b:6;o:6" data-u="U = 30" data-label="Venn diagram: 15 French only, 3 both, 6 Spanish only, 6 neither"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">Spanish total = x + 3 · French total = 2(x + 3)</span><span class="why">twice as many</span></div>
+          <div class="ln"><span class="eq">French only = 2(x + 3) − 3 = 2x + 3</span></div>
+          <div class="ln"><span class="eq">(2x + 3) + 3 + x + 6 = 30 → 3x + 12 = 30</span><span class="why">all regions = U</span></div>
+          <div class="ln ans"><span class="eq">x = 6 → French only 15</span><span class="why">check: 18 = 2 × 9 ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>3. (Ex 3.1 Q17) #A = 24, #B = 16 and #(A ∪ B)′ = 6. Find (i) the greatest #(A ∩ B) (ii) the greatest #U (iii) the least #U.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) Biggest overlap: B inside A</span><span class="why">B ⊂ A</span></div>
+          <div class="ln ans"><span class="eq">(i) 16</span></div>
+          <div class="ln"><span class="eq">(ii) No overlap: 24 + 16 + 6</span><span class="why">A ∩ B empty</span></div>
+          <div class="ln ans"><span class="eq">(ii) 46</span></div>
+          <div class="ln"><span class="eq">(iii) B ⊂ A, so A ∪ B = 24: 24 + 6</span><span class="why">biggest overlap</span></div>
+          <div class="ln ans"><span class="eq">(iii) 30</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>4. (Test yourself 3 Q3) #U = 50, #X = 28, #Y = 34 and #(X ∪ Y) = 43. Find (i) #(X ∩ Y) (ii) #(X \ Y) (iii) #(X ∪ Y)′ (iv) #X′</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="2" data-names="X,Y" data-nums="a:9;ab:19;b:15;o:7" data-u="U = 50" data-label="Venn diagram: 9 X only, 19 both, 15 Y only, 7 outside"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">(i) 28 + 34 − 43 = 19</span><span class="why">#(X∩Y)</span></div>
+          <div class="ln"><span class="eq">(ii) 28 − 19 = 9</span><span class="why">X only</span></div>
+          <div class="ln"><span class="eq">(iii) 50 − 43 = 7</span><span class="why">outside both</span></div>
+          <div class="ln ans"><span class="eq">(iv) 50 − 28 = 22</span><span class="why">Y only + outside = 15 + 7 ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>5. (Ex 3.2 Q4) X = {2, 4, 6, 8, 10, 12} and Y = {3, 6, 9, 12, 15}. Find X \ Y and Y \ X. Is X \ Y = Y \ X? What does it show?</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">X ∩ Y = {6, 12}</span><span class="why">remove these from each</span></div>
+          <div class="ln"><span class="eq">X \ Y = {2, 4, 8, 10}</span></div>
+          <div class="ln"><span class="eq">Y \ X = {3, 9, 15}</span></div>
+          <div class="ln ans"><span class="eq">Not equal → set difference is not commutative</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>6. (Ex 3.2 Q5) U = {a, b, c, d, e, f, g, h, i}, A = {d, f, g, e, i}, B = {b, e, h, i}. Find (i) #(A \ B) (ii) #(U \ A) (iii) #[U \ (A ∪ B)] (iv) #[U \ (A ∩ B)]</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) A \ B = {d, f, g} → 3</span><span class="why">remove e, i</span></div>
+          <div class="ln"><span class="eq">(ii) U \ A = {a, b, c, h} → 4</span></div>
+          <div class="ln"><span class="eq">(iii) A ∪ B = {b, d, e, f, g, h, i} → U \ it = {a, c} → 2</span><span class="why">brackets first</span></div>
+          <div class="ln ans"><span class="eq">(iv) A ∩ B = {e, i} → 9 − 2 = 7</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>7. (Ex 3.2 Q7) U = all the people who live in Newtown, A = car owners in Newtown, B = retired people in Newtown. Describe in words: (i) A \ B (ii) B \ A (iii) A ∩ B</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) A \ B</span><span class="why">car owners, not retired</span></div>
+          <div class="ln ans"><span class="eq">Car owners in Newtown who are not retired</span></div>
+          <div class="ln"><span class="eq">(ii) B \ A</span></div>
+          <div class="ln ans"><span class="eq">Retired people in Newtown who do not own a car</span></div>
+          <div class="ln"><span class="eq">(iii) A ∩ B</span></div>
+          <div class="ln ans"><span class="eq">Car-owning, retired people who live in Newtown</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>8. (Ex 3.2 Q8) Describe in words (a) ℤ \ ℕ (b) ℝ \ ℚ. Where does 0 go in the nested diagram?</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(a) integers that are not natural</span><span class="why">ℕ starts at 1</span></div>
+          <div class="ln ans"><span class="eq">(a) negative whole numbers and zero</span></div>
+          <div class="ln"><span class="eq">(b) real numbers that are not rational</span></div>
+          <div class="ln ans"><span class="eq">(b) irrational numbers (e.g. √2, π)</span></div>
+          <div class="ln ans"><span class="eq">0 goes in ℤ \ ℕ</span><span class="why">it is an integer, not natural</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>9. (Book Example 1, p.47) U = {1 … 12}, A = {2, 4, 6, 8, 10}, B = {3, 4, 5, 6}, C = {5, 6, 7, 8}. List (i) A ∩ B ∩ C (ii) (A ∩ B) \ C (iii) B \ (A ∩ B ∩ C)</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="3" data-nums="a:2, 10;b:3;c:7;ab:4;ac:8;bc:5;abc:6;o:1, 9, 11, 12" data-u="U" data-label="Three-set Venn diagram of the elements"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">(i) in all three: 6</span><span class="why">centre</span></div>
+          <div class="ln ans"><span class="eq">(i) {6}</span></div>
+          <div class="ln"><span class="eq">(ii) A ∩ B = {4, 6}; take away C’s 6</span></div>
+          <div class="ln ans"><span class="eq">(ii) {4}</span></div>
+          <div class="ln"><span class="eq">(iii) B = {3, 4, 5, 6}; take away 6</span></div>
+          <div class="ln ans"><span class="eq">(iii) {3, 4, 5}</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>10. (Ex 3.3 Q10) A = {0, 2, 4, 6, 8, 10}, B = {1, 2, 3, 4, 5}, C = {3, 4, 5, 6, 7}. Show that A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C).</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">B ∩ C = {3, 4, 5}</span><span class="why">left side first</span></div>
+          <div class="ln"><span class="eq">A ∪ (B ∩ C) = {0, 2, 3, 4, 5, 6, 8, 10}</span></div>
+          <div class="ln"><span class="eq">A ∪ B = {0, 1, 2, 3, 4, 5, 6, 8, 10} · A ∪ C = {0, 2, 3, 4, 5, 6, 7, 8, 10}</span><span class="why">right side</span></div>
+          <div class="ln ans"><span class="eq">Intersection = {0, 2, 3, 4, 5, 6, 8, 10} ✓ equal</span><span class="why">union distributes over ∩</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>11. (Ex 3.3 Q11) With the sets in Q10, show that (A \ B) \ C ≠ A \ (B \ C). What property does this illustrate?</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">A \ B = {0, 6, 8, 10} → (A \ B) \ C = {0, 8, 10}</span><span class="why">remove 6</span></div>
+          <div class="ln"><span class="eq">B \ C = {1, 2} → A \ (B \ C) = {0, 4, 6, 8, 10}</span><span class="why">remove 2</span></div>
+          <div class="ln ans"><span class="eq">Not equal → set difference is not associative</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>12. (Ex 3.3 Q9) Name the property shown: (i) (3 × 4) × 5 = 3 × (4 × 5) (ii) 6 − 4 ≠ 4 − 6 (iii) (24 ÷ 6) ÷ 2 ≠ 24 ÷ (6 ÷ 2)</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln ans"><span class="eq">(i) Multiplication is associative</span><span class="why">grouping doesn’t matter</span></div>
+          <div class="ln"><span class="eq">6 − 4 = 2 but 4 − 6 = −2</span></div>
+          <div class="ln ans"><span class="eq">(ii) Subtraction is not commutative</span></div>
+          <div class="ln"><span class="eq">(24 ÷ 6) ÷ 2 = 2 but 24 ÷ (6 ÷ 2) = 8</span></div>
+          <div class="ln ans"><span class="eq">(iii) Division is not associative</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>13. (Ex 3.4 Q5) 100 people were asked which papers they bought: Times (A) 32, Independent (B) 48, Mail (C) 35. 12 bought Independent &amp; Times, 11 Times &amp; Mail, 13 Independent &amp; Mail, 5 bought all three. How many bought (i) none (ii) Times only (iii) Independent &amp; Mail but not Times (iv) exactly two papers?</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="3" data-names="Times,Indep.,Mail" data-nums="a:14;ab:7;b:28;ac:6;abc:5;bc:8;c:16;o:16" data-u="U = 100" data-label="Venn diagram of the three newspapers"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">Centre = 5 · Times∩Indep only = 12 − 5 = 7 · Times∩Mail only = 11 − 5 = 6 · Indep∩Mail only = 13 − 5 = 8</span><span class="why">centre, then pairs</span></div>
+          <div class="ln"><span class="eq">Times only = 32 − (7 + 6 + 5) = 14 · Indep only = 48 − (7 + 8 + 5) = 28 · Mail only = 35 − (6 + 8 + 5) = 16</span><span class="why">“only” regions</span></div>
+          <div class="ln"><span class="eq">Inside = 14 + 28 + 16 + 7 + 6 + 8 + 5 = 84</span></div>
+          <div class="ln ans"><span class="eq">(i) 16 (ii) 14 (iii) 8 (iv) 7 + 6 + 8 = 21</span><span class="why">none = 100 − 84</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>14. (Ex 3.4 Q6) 54 students each study one or more of A, B, C. 6 study B &amp; C; 5 study A &amp; C; 3 times as many study A &amp; B as study all 3; 20 study B altogether; 17 study C only; 14 study A only. Draw a Venn diagram using x for all three, and find x.</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="3" data-nums="a:14;ab:4;b:10;ac:3;abc:2;bc:4;c:17;o:0" data-u="U = 54" data-label="Venn diagram: x = 2 study all three"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">All three = x · B∩C only = 6 − x · A∩C only = 5 − x · A∩B only = 3x − x = 2x</span><span class="why">pair − centre</span></div>
+          <div class="ln"><span class="eq">B only = 20 − (2x + x + 6 − x) = 14 − 2x</span><span class="why">B total − the rest of B</span></div>
+          <div class="ln"><span class="eq">14 + 17 + (14 − 2x) + 2x + (5 − x) + (6 − x) + x = 54</span><span class="why">all regions = U</span></div>
+          <div class="ln"><span class="eq">56 − x = 54</span></div>
+          <div class="ln ans"><span class="eq">x = 2</span><span class="why">check: 14+17+10+4+3+4+2 = 54 ✓</span></div></div></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>3.1 Terminology</td><td>∪ = or · ∩ = and · A′ = not in A · #A = how many</td><td>Write repeated elements once in a union. State what U is</td></tr>
+        <tr><td>3.1 Counting</td><td>#(A ∪ B) = #A + #B − #(A ∩ B)</td><td>Fill the overlap first, then subtract it from each circle</td></tr>
+        <tr><td>3.1 Number sets</td><td>ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ · ℕ starts at 1</td><td>0 is in ℤ \ ℕ. Plug every allowed x into a rule</td></tr>
+        <tr><td>3.2 Set difference</td><td>A \ B = in A, not in B · U \ A = A′</td><td>Order matters: A \ B ≠ B \ A</td></tr>
+        <tr><td>3.2/3.3 Properties</td><td>∪ and ∩ are commutative and associative; \ is neither</td><td>One counter-example disproves a property</td></tr>
+        <tr><td>3.3 Three sets</td><td>Eight regions; centre is A ∩ B ∩ C</td><td>Shade each side of an identity and compare</td></tr>
+        <tr><td>3.4 Problems</td><td>Centre → pairs → “only” → outside</td><td>Not given? Let the centre be x; regions add to #U</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Maths Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

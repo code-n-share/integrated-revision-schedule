@@ -204,8 +204,39 @@
     root.innerHTML = s + '</svg>';
   }
 
+  /* ── Venn diagram (maths) ── <div class="rv-venn" data-sets="3" data-shade="ab,abc" data-nums="a:14;ab:7;o:16" data-u="U = 100" data-names="S,D,C" data-label="…"></div>
+     data-sets = 2 or 3 circles (A, B, C). A region code lists the sets a point is in: a, b, ab, abc, ac … ("o" = outside every circle; in a 3-set diagram "a" = A only).
+     data-shade = regions to colour in (comma list). data-nums = text written in regions, entries split by ";" (code:text). data-names = circle labels. data-u = text for the universal-set box. */
+  function venn(root, n) {
+    var d = root.dataset, three = d.sets === '3', W = 300, H = three ? 240 : 170, R = 62, id = 'rvv' + n;
+    var C = three ? [[112, 92], [188, 92], [150, 152]] : [[108, 88], [192, 88]];
+    var P = three ? { a: [80, 72], b: [220, 72], c: [150, 198], ab: [150, 62], ac: [113, 140], bc: [187, 140], abc: [150, 113], o: [272, 226] }
+                  : { a: [82, 92], ab: [150, 92], b: [218, 92], o: [274, 150] };
+    var L = three ? [[52, 30, 'start'], [248, 30, 'end'], [218, 214, 'start']] : [[14, 20, 'start'], [286, 20, 'end']];
+    var names = (d.names || 'A,B,C').split(','), set = 'abc';
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (d.label || 'Venn diagram') + '"><defs>';
+    C.forEach(function (c, i) {
+      s += '<clipPath id="' + id + set[i] + '"><circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + R + '"/></clipPath>' +
+        '<clipPath id="' + id + 'x' + set[i] + '"><path clip-rule="evenodd" d="M0 0H' + W + 'V' + H + 'H0Z M' + (c[0] - R) + ' ' + c[1] + 'a' + R + ' ' + R + ' 0 1 0 ' + 2 * R + ' 0a' + R + ' ' + R + ' 0 1 0 ' + (-2 * R) + ' 0Z"/></clipPath>';
+    });
+    s += '</defs><rect x="3" y="3" width="' + (W - 6) + '" height="' + (H - 6) + '" rx="6" fill="#fff" stroke="#1A1A2E" stroke-width="1.5"/>';
+    (d.shade ? d.shade.split(',') : []).forEach(function (code) {
+      var open = '', close = '';
+      C.forEach(function (c, i) { open += '<g clip-path="url(#' + id + (code.indexOf(set[i]) >= 0 ? '' : 'x') + set[i] + ')">'; close += '</g>'; });
+      s += open + '<rect class="vs" x="3" y="3" width="' + (W - 6) + '" height="' + (H - 6) + '"/>' + close;
+    });
+    C.forEach(function (c) { s += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + R + '" fill="none" stroke="#1A1A2E" stroke-width="1.5"/>'; });
+    L.forEach(function (l, i) { s += '<text class="vl" x="' + l[0] + '" y="' + l[1] + '" text-anchor="' + l[2] + '">' + (names[i] || set[i].toUpperCase()) + '</text>'; });
+    if (d.u) s += '<text class="vl" x="12" y="' + (H - 12) + '">' + d.u + '</text>';
+    (d.nums ? d.nums.split(';') : []).forEach(function (e) {
+      var k = e.split(':'), code = k[0].trim(), p = P[code], out = code === 'o'; // outside text hugs the right edge so longer lists fit
+      if (p) s += '<text class="vn" x="' + (out ? W - 12 : p[0]) + '" y="' + (p[1] + 5) + '" text-anchor="' + (out ? 'end' : 'middle') + '">' + k.slice(1).join(':') + '</text>';
+    });
+    root.innerHTML = s + '</svg>';
+  }
+
   function init() {
-    var map = { '.rv-flash': flashcards, '.rv-quiz': quiz, '.rv-cloze': cloze, '.rv-tracker': tracker, 'details.rv-dump': dump, '.rv-mindmap': mindmap, '.rv-numline': numline };
+    var map = { '.rv-flash': flashcards, '.rv-quiz': quiz, '.rv-cloze': cloze, '.rv-tracker': tracker, 'details.rv-dump': dump, '.rv-mindmap': mindmap, '.rv-numline': numline, '.rv-venn': venn };
     Object.keys(map).forEach(function (sel) { $$(sel).forEach(function (r, i) { map[sel](r, i); }); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

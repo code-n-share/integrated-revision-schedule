@@ -93,3 +93,9 @@ details.rv-qa .rv-model::before { content: "Model answer: "; font-weight: 700; c
 /* Number line (maths) – drawn by revision.js from data- attributes */
 .rv-numline svg { display: block; width: 100%; max-width: 460px; margin: 6px auto; }
 .rv-numline text { font: 600 11px 'DM Sans', sans-serif; fill: #1A1A2E; }
+
+/* Venn diagram (maths) – drawn by revision.js from data- attributes */
+.rv-venn svg { display: block; width: 100%; max-width: 340px; margin: 8px auto; }
+.rv-venn .vs { fill: var(--rv-accent); fill-opacity: .3; }
+.rv-venn .vl { font: 700 13px 'DM Sans', sans-serif; fill: #1A1A2E; }
+.rv-venn .vn { font: 700 14px 'JetBrains Mono', monospace; fill: #1A1A2E; }

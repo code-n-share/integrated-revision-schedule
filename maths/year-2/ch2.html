@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!--
+  QUESTION PLAN (CONTENT_RULES §6 – maths): one distinct sub-concept per question, quiz + practice combined.
+  Source: Text & Tests 2 (Higher Level) Ch 2, pp.24-37 (textbook pages 24-37); answers cross-checked with the book's answer key (p.586).
+
+  Sub-concept                                            Quiz   Practice (book ref)
+  2.1  HCF of algebraic terms                            Q1     –
+  2.1  minus sign: take out a negative HCF               Q2     –
+  2.1  3 terms, HCF with two letters                     –      P1  (Ex 2.1 Q16)
+  2.2  common bracket                                    Q3     –
+  2.2  common bracket with invisible 1 (-(x-2y))         –      P2  (Ex 2.2 Q5)
+  2.2  four terms, all plus (pairs)                      Q4     –
+  2.2  four terms, negative second pair                  –      P3  (Ex 2.2 Q15)
+  2.2  re-order terms before grouping                    –      P4  (Ex 2.2, book Example 2 p.28)
+  2.3  recognise a difference of two squares             Q5     –
+  2.3  DOTS with coefficients (4x^2 - y^2)               Q6     –
+  2.3  DOTS shortcut for arithmetic (96^2 - 4^2)         Q7     –
+  2.3  DOTS, two letters (36x^2 - 49y^2)                 –      P5  (Ex 2.3 Q8)
+  2.3  DOTS with a squared product ((xy)^2 - 4)          –      P6  (Ex 2.3 Q12)
+  2.3  HCF first, then DOTS                              –      P7  (Ex 2.3 Q22(i))
+  2.3  expand-simplify, then factorise                   –      P8  (Ex 2.3 Q23)
+  2.4  quadratic, middle negative / last positive        Q8     –
+  2.4  split the middle term: choose the number pair     Q9     –
+  2.4  a > 1, middle negative / last positive            Q10    –
+  2.4  last term negative (a = 1)                        –      P9  (Ex 2.4 Q25)
+  2.4  a > 1, last term negative                         –      P10 (Ex 2.4 Q31)
+  2.5  quadratic over linear -> cancel                   Q11    –
+  2.5  (5 - x) / (x - 5) = -1                            Q12    –
+  2.5  cancel factors, never terms                       Q13    –
+  2.5  linear over quadratic (answer 1 on top)           –      P11 (Ex 2.5 Q6)
+  2.5  DOTS on top, HCF on bottom                        –      P12 (Ex 2.5 Q13)
+  2.5  quadratic over DOTS                               –      P13 (Test yourself 2 Q6)
+  2.4/Ch1  cubic: one factor given -> array division     –      P14 (Assignment p.37 Q1)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Revision – Factors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: #B79CF0; }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+
+    /* ── Maths kit (see CONTENT_RULES §6) ── */
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 600; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 10px 16px; margin: 12px 0; text-align: center; }
+    .method { background: #fff; border: 1.5px solid var(--accent); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .method-title { background: var(--accent); color: #fff; font: 700 14px 'Sora', sans-serif; padding: 8px 16px; }
+    .method ol { margin: 10px 16px 10px 38px; }
+    .work { font-family: 'JetBrains Mono', monospace; font-size: 14px; margin: 8px 0; }
+    .work .ln { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 4px 0; border-bottom: 1px dashed var(--border); flex-wrap: wrap; }
+    .work .why { font: 500 12.5px 'DM Sans', sans-serif; color: #1565C0; text-align: right; margin-left: auto; }
+    .work .ans .eq { background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 6px; padding: 0 8px; font-weight: 600; }
+    .work + .work { margin-top: 14px; }
+    table.mgrid { width: auto; margin: 10px 0; }
+    table.mgrid td, table.mgrid th { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 6px 14px; }
+    table.mgrid th { background: var(--accent-light); }
+    .rv-model .work { margin-top: 6px; }
+    /* fractions: <span class="frac"><span>top</span><span>bottom</span></span> */
+    .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 3px; line-height: 1.25; }
+    .frac > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 4px 1px; }
+    .frac > span:last-child { padding: 1px 4px 0; }
+
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Maths Revision</div><div class="book-title">Text &amp; Tests 2 · Factors</div></div>
+    <a href="index.html">&larr; Maths Year 2</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#common">2.1 Common Factors</a>
+    <a href="#grouping">2.2 Grouping Terms</a>
+    <a href="#dots">2.3 Difference of Two Squares</a>
+    <a href="#quadratics">2.4 Quadratic Expressions</a>
+    <a href="#fractions">2.5 Algebraic Fractions</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 2 · Algebra</div>
+      <h1>🧩 <span>Factors</span></h1>
+      <p class="chapter-meta">Text &amp; Tests 2 (Higher Level) · Junior Cycle Maths Revision</p>
+      <div>
+        <span class="goal-tag">✔ Factorise with the HCF</span>
+        <span class="goal-tag">✔ Factorise by grouping terms</span>
+        <span class="goal-tag">✔ Difference of two squares (DOTS)</span>
+        <span class="goal-tag">✔ Factorise quadratic expressions</span>
+        <span class="goal-tag">✔ Simplify algebraic fractions</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write everything you remember about factorising – HCF, grouping, x² − y², quadratics, fractions – then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Factors
+          <ul>
+            <li>Common factor<ul><li>Find the HCF</li><li>Check by expanding</li></ul></li>
+            <li>Grouping<ul><li>Pairs of terms</li><li>Common bracket</li></ul></li>
+            <li>DOTS<ul><li>x² − y²</li><li>HCF first</li></ul></li>
+            <li>Quadratics<ul><li>a = 1</li><li>a &gt; 1 grid</li></ul></li>
+            <li>Fractions<ul><li>Factorise</li><li>Cancel factors</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Factor</strong></td><td>A number or expression that divides exactly into another. 9 and 5 are factors of 45</td></tr>
+          <tr><td><strong>Common factor</strong></td><td>A factor that two or more terms share</td></tr>
+          <tr><td><strong>HCF (Highest Common Factor)</strong></td><td>The biggest factor they all share: numbers’ HCF × the letters they share. HCF of 6xy and 12x is 6x</td></tr>
+          <tr><td><strong>Factorise</strong></td><td>Write an expression as a product (brackets multiplied). The opposite of expanding</td></tr>
+          <tr><td><strong>Factorise fully</strong></td><td>Keep going until nothing more can be taken out – include numbers <em>and</em> letters</td></tr>
+          <tr><td><strong>Grouping</strong></td><td>Splitting a four-term expression into two pairs, factorising each pair, then taking out the common bracket</td></tr>
+          <tr><td><strong>Perfect square</strong></td><td>A number or term you get by squaring: 1, 4, 9, 16, 25 … · 4x² = (2x)²</td></tr>
+          <tr><td><strong>Difference of two squares (DOTS)</strong></td><td>One perfect square <em>minus</em> another: x² − y² = (x + y)(x − y)</td></tr>
+          <tr><td><strong>Quadratic expression</strong></td><td>ax² + bx + c where a, b, c are numbers; the highest power of x is 2</td></tr>
+          <tr><td><strong>Quadratic trinomial</strong></td><td>A quadratic expression has 3 terms (tri = three)</td></tr>
+          <tr><td><strong>Algebraic fraction</strong></td><td>A fraction with algebra on the top and/or bottom. Simplify = factorise, then cancel common factors</td></tr>
+        </tbody></table>
+
+      <!-- ───────── 2.1 ───────── -->
+      <div class="section-heading" id="common">🔑 2.1 Factorising with Common Factors</div>
+      <div class="key-term"><strong>Factors</strong> divide exactly into a number: 9 and 5 are factors of 45. The <strong>HCF</strong> is the biggest factor two terms share.
+        <div class="tip">💡 Factorising is “un-expanding”: pull the shared piece out of the front and leave the rest in brackets.</div></div>
+      <table><thead><tr><th>Find the HCF of</th><th>Numbers</th><th>Letters</th><th>HCF</th></tr></thead><tbody>
+        <tr><td>24 and 36</td><td>12</td><td>–</td><td><strong>12</strong></td></tr>
+        <tr><td>6xy and 12x</td><td>6</td><td>x</td><td><strong>6x</strong></td></tr>
+        <tr><td>5a²b and 15ab</td><td>5</td><td>ab</td><td><strong>5ab</strong></td></tr>
+      </tbody></table>
+      <div class="method"><div class="method-title">🔧 Method: factorise with the HCF</div>
+        <ol><li>Find the HCF of every term. Write it outside the bracket.</li><li>Divide each term by it. Write the answers inside.</li><li>Check: expand the bracket. You must get the original back.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Factorise 6a²b − 8ab² + 4ab</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">HCF = 2ab</span><span class="why">numbers 2 · letters a, b</span></div>
+          <div class="ln"><span class="eq">6a²b ÷ 2ab = 3a · 8ab² ÷ 2ab = 4b · 4ab ÷ 2ab = 2</span><span class="why">divide each term</span></div>
+          <div class="ln ans"><span class="eq">2ab(3a − 4b + 2)</span><span class="why">check: expand ✓</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Factorise −3ax − 6ay (negative first term)</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">HCF = −3a</span><span class="why">take out the minus too</span></div>
+          <div class="ln ans"><span class="eq">−3a(x + 2y)</span><span class="why">−3ax ÷ −3a = x · −6ay ÷ −3a = +2y</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> if a whole term <em>is</em> the HCF, <strong>1</strong> is left behind, not 0: 3ab + 3a = 3a(b + <strong>1</strong>). And “factorise fully” means include all the number <em>and</em> letter factors.</div>
+
+      <!-- ───────── 2.2 ───────── -->
+      <div class="section-heading" id="grouping">🔗 2.2 Factorising by Grouping Terms</div>
+      <div class="key-term"><strong>Grouping:</strong> a four-term expression with no overall common factor can be split into two <strong>pairs</strong>. Factorise each pair; the brackets must now be the <strong>same</strong>, so take that bracket out.
+        <div class="tip">💡 Like pairing socks first, then bundling the pairs: two small jobs, then one big one.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: grouping</div>
+        <ol><li>Split into two pairs (re-order the terms if you need to).</li><li>Take the HCF out of each pair.</li><li>Both brackets match? Take the common bracket out front.</li><li>Check by expanding.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Factorise 2ab + 2ac + 3bx + 3cx</div><div class="example-body">
+        <table class="mgrid"><tr><th></th><th>b</th><th>+c</th></tr><tr><th>2a</th><td>2ab</td><td>+2ac</td></tr><tr><th>+3x</th><td>+3bx</td><td>+3cx</td></tr></table>
+        <div class="work">
+          <div class="ln"><span class="eq">2a(b + c) + 3x(b + c)</span><span class="why">HCF of each pair</span></div>
+          <div class="ln ans"><span class="eq">(b + c)(2a + 3x)</span><span class="why">common bracket out</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Factorise 3ax − bx − 3ay + by</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">x(3a − b) − y(3a − b)</span><span class="why">second pair: take out −y</span></div>
+          <div class="ln ans"><span class="eq">(3a − b)(x − y)</span><span class="why">−3ay + by = −y(3a − b)</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Re-order first: factorise 6x² + 2a − 3ax − 4x</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">6x² − 3ax − 4x + 2a</span><span class="why">re-order so pairs share a factor</span></div>
+          <div class="ln"><span class="eq">3x(2x − a) − 2(2x − a)</span><span class="why">−4x + 2a = −2(2x − a)</span></div>
+          <div class="ln ans"><span class="eq">(2x − a)(3x − 2)</span></div>
+        </div></div></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <em>“Pair, pull, bracket.”</em> Pair the terms, pull out each HCF, bracket the match.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> brackets that <em>nearly</em> match, like (3a − b) and (b − 3a). Take out a <strong>minus</strong> from the pair to make them identical. Also, a pair like −(x − 2y) has an invisible 1: 2a(x − 2y) − (x − 2y) = (x − 2y)(2a − <strong>1</strong>).</div>
+
+      <!-- ───────── 2.3 ───────── -->
+      <div class="section-heading" id="dots">🟦 2.3 Difference of Two Squares</div>
+      <div class="key-term"><strong>Perfect squares</strong> come from squaring: 1, 4, 9, 16, 25 … and in algebra 4x² = (2x)², 9y² = (3y)². An expression of the form <strong>one square − another square</strong> is the <strong>difference of two squares (DOTS)</strong>.
+        <div class="tip">💡 In (x + y)(x − y) the middle terms +xy and −xy cancel, which leaves only x² − y².</div></div>
+      <div class="formula">x² − y² = (x + y)(x − y)</div>
+      <p style="font-size:14px">In words: (first)² − (second)² = (first + second)(first − second)</p>
+      <div class="method"><div class="method-title">🔧 Method: DOTS</div>
+        <ol><li>Take out any common factor first.</li><li>Square-root each term: 9x² → 3x, 4 → 2.</li><li>Write (first + second)(first − second).</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Factorise (i) 25a² − 81b² (ii) 12x² − 75y²</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">(i) (5a)² − (9b)²</span><span class="why">square roots</span></div>
+          <div class="ln ans"><span class="eq">(5a + 9b)(5a − 9b)</span></div>
+          <div class="ln"><span class="eq">(ii) 3(4x² − 25y²)</span><span class="why">HCF 3 first</span></div>
+          <div class="ln ans"><span class="eq">3(2x + 5y)(2x − 5y)</span><span class="why">(2x)² − (5y)²</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Shortcut: work out 51² − 49² without a calculator</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">(51 − 49)(51 + 49)</span><span class="why">DOTS backwards</span></div>
+          <div class="ln ans"><span class="eq">2 × 100 = 200</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> DOTS needs a <strong>minus</strong>: x² + 9 (a <em>sum</em>) can’t be factorised this way. And always look for an HCF first: 3x² − 27y² → take out 3 to get 3(x + 3y)(x − 3y).</div>
+
+      <!-- ───────── 2.4 ───────── -->
+      <div class="section-heading" id="quadratics">📐 2.4 Factorising Quadratic Expressions</div>
+      <div class="key-term"><strong>Quadratic expression:</strong> ax² + bx + c where a, b, c are numbers. The highest power of x is 2. With 3 terms it is a <strong>quadratic trinomial</strong>. Factorising is the array method <em>in reverse</em>: (x + 5)(x + 2) = x² + 7x + 10.
+        <div class="tip">💡 You are finding the two brackets that were multiplied to make it.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: x² + bx + c (when a = 1)</div>
+        <ol><li>Find two numbers that <strong>multiply</strong> to c and <strong>add</strong> to b.</li><li>Write (x + first)(x + second), with their signs.</li><li>Check: expand.</li></ol></div>
+      <table><thead><tr><th>Last term (c)</th><th>Middle term (b)</th><th>Brackets</th><th>Example</th></tr></thead><tbody>
+        <tr><td>positive</td><td>positive</td><td>(x + p)(x + q)</td><td>x² + 7x + 10 = (x + 5)(x + 2)</td></tr>
+        <tr><td>positive</td><td>negative</td><td>(x − p)(x − q)</td><td>x² − 8x + 15 = (x − 3)(x − 5)</td></tr>
+        <tr><td>negative</td><td>either</td><td>(x + p)(x − q), different signs</td><td>x² − 4x − 12 = (x − 6)(x + 2)</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <em>multiply to the end, add to the middle.</em> When the last term is negative, the <strong>bigger</strong> number takes the sign of the middle term.</div>
+
+      <div class="method"><div class="method-title">🔧 Method: ax² + bx + c (when a &gt; 1) – split the middle term</div>
+        <ol><li>Multiply a × c.</li><li>List the pairs that make a × c. Pick the pair that <strong>adds to b</strong> (mind the signs).</li><li>Split the middle term using that pair.</li><li>Group in pairs (Section 2.2) and take out the common bracket.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Factorise 3x² + 10x + 8</div><div class="example-body">
+        <table class="mgrid"><tr><th>3 × 8 = 24</th><th>sum</th></tr><tr><td>1 × 24</td><td>25</td></tr><tr><td>2 × 12</td><td>14</td></tr><tr><td>3 × 8</td><td>11</td></tr><tr><td><strong>4 × 6</strong></td><td><strong>10 ✓</strong></td></tr></table>
+        <div class="work">
+          <div class="ln"><span class="eq">3x² + 4x + 6x + 8</span><span class="why">split 10x = 4x + 6x</span></div>
+          <div class="ln"><span class="eq">x(3x + 4) + 2(3x + 4)</span><span class="why">group in pairs</span></div>
+          <div class="ln ans"><span class="eq">(3x + 4)(x + 2)</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Factorise 8x² + 10x − 3 (last term negative)</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">8 × (−3) = −24 → +12 and −2</span><span class="why">multiply to −24, add to +10</span></div>
+          <div class="ln"><span class="eq">8x² + 12x − 2x − 3</span><span class="why">split the middle</span></div>
+          <div class="ln"><span class="eq">4x(2x + 3) − 1(2x + 3)</span><span class="why">−2x − 3 = −1(2x + 3)</span></div>
+          <div class="ln ans"><span class="eq">(2x + 3)(4x − 1)</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> picking a pair that multiplies right but adds wrong. Test both: product = a × c, <strong>sum = b</strong>. Always expand your answer to check the middle term.</div>
+
+      <!-- ───────── 2.5 ───────── -->
+      <div class="section-heading" id="fractions">➗ 2.5 Using Factors to Simplify Algebraic Fractions</div>
+      <div class="key-term"><strong>Simplify a fraction</strong> by dividing the top and bottom by a common factor: <span class="frac"><span>10</span><span>15</span></span> = <span class="frac"><span>2</span><span>3</span></span>. In algebra, <strong>factorise</strong> top and bottom first, then cancel the common <strong>factors</strong>.
+        <div class="tip">💡 You can only cancel things that are <em>multiplied</em>, never things that are <em>added</em>.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: simplify an algebraic fraction</div>
+        <ol><li>Factorise the top.</li><li>Factorise the bottom.</li><li>Cancel each matching factor (bracket) top and bottom.</li><li>Write what is left. If everything cancels on top, a <strong>1</strong> is left.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Simplify <span class="frac"><span>3x² − 5x − 2</span><span>x − 2</span></span></div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">(3x + 1)(x − 2) ÷ (x − 2)</span><span class="why">factorise the top</span></div>
+          <div class="ln ans"><span class="eq">3x + 1</span><span class="why">cancel (x − 2)</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Simplify <span class="frac"><span>x² − 4</span><span>x + 2</span></span></div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">(x + 2)(x − 2) ÷ (x + 2)</span><span class="why">DOTS on top</span></div>
+          <div class="ln ans"><span class="eq">x − 2</span><span class="why">cancel (x + 2)</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> cancelling terms, not factors: <span class="frac"><span>x + 6</span><span>6</span></span> is <strong>not</strong> x + 1. Also <span class="frac"><span>5 − x</span><span>x − 5</span></span> = <strong>−1</strong> (the top is −1 × the bottom), not 1.</div>
+
+      <!-- ───────── Practice tools ───────── -->
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What is a factor?</div><div class="a">A number or expression that divides exactly into another. 9 and 5 are factors of 45</div></div>
+        <div class="rv-card"><div class="q">What is the HCF?</div><div class="a">The Highest Common Factor – the biggest factor all the terms share</div></div>
+        <div class="rv-card"><div class="q">HCF of 6xy and 12x?</div><div class="a">6x – numbers’ HCF (6) × the shared letter (x)</div></div>
+        <div class="rv-card"><div class="q">Three steps to factorise with an HCF?</div><div class="a">Find the HCF → divide each term by it → check by expanding</div></div>
+        <div class="rv-card"><div class="q">Factorise −3ax − 6ay</div><div class="a">−3a(x + 2y)</div></div>
+        <div class="rv-card"><div class="q">Factorise 3ab + 3a</div><div class="a">3a(b + 1) – a whole term that is the HCF leaves 1</div></div>
+        <div class="rv-card"><div class="q">When do you factorise by grouping?</div><div class="a">Four terms with no overall common factor</div></div>
+        <div class="rv-card"><div class="q">Steps for grouping?</div><div class="a">Pair the terms → HCF of each pair → take out the common bracket</div></div>
+        <div class="rv-card"><div class="q">Factorise 2a(x + y) + 3(x + y)</div><div class="a">(x + y)(2a + 3)</div></div>
+        <div class="rv-card"><div class="q">Factorise 2a(x − 2y) − (x − 2y)</div><div class="a">(x − 2y)(2a − 1) – the invisible 1</div></div>
+        <div class="rv-card"><div class="q">Pair −3ay + by: what do you take out?</div><div class="a">−y, giving −y(3a − b) so the brackets match</div></div>
+        <div class="rv-card"><div class="q">What are perfect squares?</div><div class="a">Squares of whole numbers: 1, 4, 9, 16, 25 … (and terms like 4x² = (2x)²)</div></div>
+        <div class="rv-card"><div class="q">Formula for DOTS?</div><div class="a">x² − y² = (x + y)(x − y)</div></div>
+        <div class="rv-card"><div class="q">Factorise 9x² − 4</div><div class="a">(3x + 2)(3x − 2)</div></div>
+        <div class="rv-card"><div class="q">Does x² + 9 factorise by DOTS?</div><div class="a">No – DOTS needs a minus between the squares</div></div>
+        <div class="rv-card"><div class="q">What must you do first in 12x² − 75y²?</div><div class="a">Take out the HCF 3: 3(4x² − 25y²), then DOTS</div></div>
+        <div class="rv-card"><div class="q">Use DOTS to work out 51² − 49²</div><div class="a">(51 − 49)(51 + 49) = 2 × 100 = 200</div></div>
+        <div class="rv-card"><div class="q">What is a quadratic trinomial?</div><div class="a">ax² + bx + c – highest power 2, three terms</div></div>
+        <div class="rv-card"><div class="q">x² + bx + c: what pair of numbers do you need?</div><div class="a">Multiply to c and add to b</div></div>
+        <div class="rv-card"><div class="q">x² − 8x + 15: sign pattern of the brackets?</div><div class="a">Last term +, middle −: both minus → (x − 3)(x − 5)</div></div>
+        <div class="rv-card"><div class="q">Last term negative: what do the brackets look like?</div><div class="a">One + and one −. The bigger number takes the sign of the middle term</div></div>
+        <div class="rv-card"><div class="q">Method for ax² + bx + c when a &gt; 1?</div><div class="a">Multiply a × c → pair that adds to b → split middle term → group</div></div>
+        <div class="rv-card"><div class="q">How do you simplify an algebraic fraction?</div><div class="a">Factorise top and bottom, then cancel common factors</div></div>
+        <div class="rv-card"><div class="q">Is (x + 6) ÷ 6 equal to x + 1?</div><div class="a">No – you can only cancel factors (multiplied), never terms (added)</div></div>
+        <div class="rv-card"><div class="q">(5 − x) ÷ (x − 5) = ?</div><div class="a">−1</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The {{highest common factor|HCF}} of 6xy and 12x is {{6x}}.</p>
+        <p>To check a factorisation, {{expand|multiply out|multiply}} the brackets and compare with the original.</p>
+        <p>To factorise four terms by {{grouping}}, take the HCF out of each {{pair}}, then take out the common {{bracket}}.</p>
+        <p>x² − y² = (x + y)({{x − y|x-y}}), which is the difference of two {{squares}}.</p>
+        <p>Always take out the {{HCF|highest common factor|common factor}} before looking for a difference of two squares.</p>
+        <p>An expression ax² + bx + c is a {{quadratic}} expression, because the highest power of x is {{2|two}}.</p>
+        <p>To factorise 3x² + 10x + 8, find two numbers that multiply to {{24}} and add to {{10}}.</p>
+        <p>If the last term of a quadratic is {{negative}}, the two brackets have {{different|opposite}} signs.</p>
+        <p>To simplify an algebraic fraction, {{factorise}} the top and bottom, then cancel common {{factors}}.</p>
+        <p>(5 − x) ÷ (x − 5) = {{−1|-1}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="a"><p>What is the HCF of 3xy and 12x²?</p><ol><li>3x</li><li>12x</li><li>3xy</li><li>36x²y</li></ol><div class="explain">Numbers: HCF of 3 and 12 is 3. Letters both terms share: x (only one has y). So 3x. (12x takes the bigger number; 3xy includes y, which 12x² doesn’t have.)</div></div>
+        <div class="rv-q" data-answer="b"><p>Factorise −3ax − 6ay.</p><ol><li>−3a(x − 2y)</li><li>−3a(x + 2y)</li><li>3a(x + 2y)</li><li>−3a(x + 2)</li></ol><div class="explain">Take out −3a: −3ax ÷ −3a = x and −6ay ÷ −3a = +2y. Expanding −3a(x + 2y) gives back −3ax − 6ay. Option 3 gives +3ax + 6ay; option 4 loses the y.</div></div>
+        <div class="rv-q" data-answer="c"><p>Factorise 2a(x + y) + 3(x + y).</p><ol><li>(x + y)(2a − 3)</li><li>6a(x + y)</li><li>(x + y)(2a + 3)</li><li>(2a + 3)(x − y)</li></ol><div class="explain">(x + y) is common to both parts, so take it out: (x + y)(2a + 3). Don’t multiply the 2a and 3 together.</div></div>
+        <div class="rv-q" data-answer="a"><p>Factorise ab + 5b + 3a + 15.</p><ol><li>(a + 5)(b + 3)</li><li>(a + 3)(b + 5)</li><li>(a + 5)(b − 3)</li><li>(a − 5)(b − 3)</li></ol><div class="explain">b(a + 5) + 3(a + 5) = (a + 5)(b + 3). Expand (a + 3)(b + 5) = ab + 5a + 3b + 15 – the middle terms are swapped, so it is wrong.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which expression is a <strong>difference of two squares</strong>?</p><ol><li>x² + 16</li><li>4x² − 9</li><li>x² − 6x</li><li>2x² − 9</li></ol><div class="explain">4x² = (2x)² and 9 = 3², with a minus between: (2x)² − 3². x² + 16 is a <em>sum</em>; x² − 6x has no square second term; 2x² is not a perfect square.</div></div>
+        <div class="rv-q" data-answer="c"><p>Factorise 4x² − y².</p><ol><li>(4x + y)(4x − y)</li><li>(2x − y)²</li><li>(2x + y)(2x − y)</li><li>(2x + y)²</li></ol><div class="explain">√(4x²) = 2x, not 4x. So (2x + y)(2x − y). The middle terms +2xy and −2xy cancel – squared brackets would not.</div></div>
+        <div class="rv-q" data-answer="b"><p>Use DOTS to work out 96² − 4².</p><ol><li>9212</li><li>9200</li><li>92</li><li>9232</li></ol><div class="explain">(96 − 4)(96 + 4) = 92 × 100 = 9200. (9212 treats 4² as 4; 92 forgets the sum factor.)</div></div>
+        <div class="rv-q" data-answer="a"><p>Factorise x² − 7x + 12.</p><ol><li>(x − 3)(x − 4)</li><li>(x + 3)(x + 4)</li><li>(x − 2)(x − 6)</li><li>(x − 3)(x + 4)</li></ol><div class="explain">Pair: multiply to +12, add to −7 → −3 and −4. (x + 3)(x + 4) has the wrong signs (sum +7); (x − 2)(x − 6) multiplies to 12 but adds to −8.</div></div>
+        <div class="rv-q" data-answer="c"><p>To factorise 6x² + 7x − 5, which pair splits the middle term?</p><ol><li>−10 and 3</li><li>6 and −5</li><li>10 and −3</li><li>15 and −2</li></ol><div class="explain">a × c = 6 × (−5) = −30. We need a pair that multiplies to −30 and <em>adds to +7</em>: 10 and −3. (−10, 3 add to −7; 6, −5 add to 1; 15, −2 add to 13.) Then 6x² + 10x − 3x − 5 = (3x + 5)(2x − 1).</div></div>
+        <div class="rv-q" data-answer="a"><p>Factorise 2x² − 7x + 3.</p><ol><li>(2x − 1)(x − 3)</li><li>(2x + 1)(x + 3)</li><li>(2x − 3)(x − 1)</li><li>(2x − 1)(x + 3)</li></ol><div class="explain">a × c = 6; pair that adds to −7: −1 and −6. 2x² − 6x − x + 3 = 2x(x − 3) − 1(x − 3) = (2x − 1)(x − 3). Option 3 expands to 2x² − 5x + 3, option 4 to 2x² + 5x − 3.</div></div>
+        <div class="rv-q" data-answer="a"><p>Simplify (x² + 8x + 7) ÷ (x + 1).</p><ol><li>x + 7</li><li>x + 8</li><li>8x + 7</li><li>x² + 8x + 6</li></ol><div class="explain">Top = (x + 7)(x + 1), so cancel (x + 1) and keep x + 7. Don’t cancel single letters or numbers inside the sum.</div></div>
+        <div class="rv-q" data-answer="b"><p>Simplify (5 − x) ÷ (x − 5).</p><ol><li>1</li><li>−1</li><li>0</li><li>x</li></ol><div class="explain">5 − x = −(x − 5), so the fraction is −1 × (x − 5) ÷ (x − 5) = −1.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which simplification is correct?</p><ol><li>(x + 6) ÷ 6 = x + 1</li><li>(3x + 6) ÷ 3 = x + 2</li><li>(x² − 9) ÷ (x − 3) = x − 3</li><li>(5x + 10) ÷ 5 = x + 10</li></ol><div class="explain">Factorise first: 3x + 6 = 3(x + 2), so ÷ 3 leaves x + 2. Option 1 cancels the 6 from only one term; option 3 should be x + 3; option 4 forgot to divide the 10 by 5.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="font-size:14px;color:var(--muted)">Try each one on paper first, then click to check. The book exercise number is shown so you can find more like it.</p>
+
+      <details class="rv-qa"><summary>1. (Ex 2.1 Q16) Factorise fully 2a²b − 4ab² + 12abc</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">HCF = 2ab</span><span class="why">numbers 2 · letters a, b</span></div>
+          <div class="ln"><span class="eq">2a²b ÷ 2ab = a · 4ab² ÷ 2ab = 2b · 12abc ÷ 2ab = 6c</span><span class="why">divide each term</span></div>
+          <div class="ln ans"><span class="eq">2ab(a − 2b + 6c)</span><span class="why">check: expand ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>2. (Ex 2.2 Q5) Factorise 2a(x − 2y) − (x − 2y)</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">2a(x − 2y) − 1(x − 2y)</span><span class="why">invisible 1 in front</span></div>
+          <div class="ln ans"><span class="eq">(x − 2y)(2a − 1)</span><span class="why">common bracket out</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>3. (Ex 2.2 Q15) Factorise 8ax + 4ay − 6bx − 3by</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">4a(2x + y) − 3b(2x + y)</span><span class="why">second pair: take out −3b</span></div>
+          <div class="ln ans"><span class="eq">(2x + y)(4a − 3b)</span><span class="why">check: expand ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>4. (Ex 2.2, book Example 2) Factorise 6x² + 2a − 3ax − 4x (re-order first)</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">6x² − 3ax − 4x + 2a</span><span class="why">re-order the terms</span></div>
+          <div class="ln"><span class="eq">3x(2x − a) − 2(2x − a)</span><span class="why">−4x + 2a = −2(2x − a)</span></div>
+          <div class="ln ans"><span class="eq">(2x − a)(3x − 2)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>5. (Ex 2.3 Q8) Factorise 36x² − 49y²</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(6x)² − (7y)²</span><span class="why">36 = 6² · 49 = 7²</span></div>
+          <div class="ln ans"><span class="eq">(6x + 7y)(6x − 7y)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>6. (Ex 2.3 Q12) Factorise (xy)² − 4</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(xy)² − 2²</span><span class="why">first = xy · second = 2</span></div>
+          <div class="ln ans"><span class="eq">(xy + 2)(xy − 2)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>7. (Ex 2.3 Q22(i)) Take out the highest common factor, then factorise 3x² − 27y²</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">3(x² − 9y²)</span><span class="why">HCF = 3</span></div>
+          <div class="ln ans"><span class="eq">3(x + 3y)(x − 3y)</span><span class="why">DOTS: x² − (3y)²</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>8. (Ex 2.3 Q23) Simplify (3x + b)(6x − 2b) − (2y + b)(4y − 2b), then factorise fully</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">18x² − 6bx + 6bx − 2b²</span><span class="why">first product</span></div>
+          <div class="ln"><span class="eq">− (8y² − 4by + 4by − 2b²)</span><span class="why">second product, minus outside</span></div>
+          <div class="ln"><span class="eq">18x² − 2b² − 8y² + 2b² = 18x² − 8y²</span><span class="why">b² terms cancel</span></div>
+          <div class="ln ans"><span class="eq">2(3x + 2y)(3x − 2y)</span><span class="why">HCF 2, then DOTS</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>9. (Ex 2.4 Q25) Factorise x² − 4x − 12</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">multiply to −12, add to −4: −6 and +2</span><span class="why">bigger number is negative</span></div>
+          <div class="ln ans"><span class="eq">(x − 6)(x + 2)</span><span class="why">check: x² + 2x − 6x − 12 ✓</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>10. (Ex 2.4 Q31) Factorise 12x² − 11x − 5</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">12 × (−5) = −60 → −15 and +4</span><span class="why">multiply to −60, add to −11</span></div>
+          <div class="ln"><span class="eq">12x² − 15x + 4x − 5</span><span class="why">split the middle</span></div>
+          <div class="ln"><span class="eq">3x(4x − 5) + 1(4x − 5)</span><span class="why">group in pairs</span></div>
+          <div class="ln ans"><span class="eq">(4x − 5)(3x + 1)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>11. (Ex 2.5 Q6) Simplify <span class="frac"><span>x − 4</span><span>x² − 6x + 8</span></span></summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">bottom = (x − 2)(x − 4)</span><span class="why">multiply to 8, add to −6</span></div>
+          <div class="ln"><span class="eq">(x − 4) ÷ [(x − 2)(x − 4)]</span><span class="why">cancel (x − 4)</span></div>
+          <div class="ln ans"><span class="eq">1 ÷ (x − 2)</span><span class="why">top left with 1, not 0</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>12. (Ex 2.5 Q13) Simplify <span class="frac"><span>a² − 16</span><span>3a − 12</span></span></summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">top = (a + 4)(a − 4)</span><span class="why">DOTS</span></div>
+          <div class="ln"><span class="eq">bottom = 3(a − 4)</span><span class="why">HCF 3</span></div>
+          <div class="ln ans"><span class="eq">(a + 4) ÷ 3</span><span class="why">cancel (a − 4)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>13. (Test yourself 2 Q6) Factorise fully and simplify <span class="frac"><span>6x² − 11x − 10</span><span>4x² − 25</span></span></summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">top: 6 × (−10) = −60 → −15, +4</span><span class="why">6x² − 15x + 4x − 10</span></div>
+          <div class="ln"><span class="eq">top = (2x − 5)(3x + 2)</span><span class="why">3x(2x − 5) + 2(2x − 5)</span></div>
+          <div class="ln"><span class="eq">bottom = (2x − 5)(2x + 5)</span><span class="why">DOTS</span></div>
+          <div class="ln ans"><span class="eq">(3x + 2) ÷ (2x + 5)</span><span class="why">cancel (2x − 5)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>14. (Assignment p.37 Q1) Find all the factors of x³ − x² − 5x − 3, given that one factor is (x − 3).</summary>
+        <div class="rv-model">
+          <table class="mgrid"><tr><th></th><th>x²</th><th>+2x</th><th>+1</th></tr><tr><th>x</th><td>x³</td><td>+2x²</td><td>+x</td></tr><tr><th>−3</th><td>−3x²</td><td>−6x</td><td>−3</td></tr></table>
+          <div class="work">
+          <div class="ln"><span class="eq">x³ − x² − 5x − 3 = (x − 3)(x² + 2x + 1)</span><span class="why">array division (Ch 1)</span></div>
+          <div class="ln"><span class="eq">x² + 2x + 1 = (x + 1)(x + 1)</span><span class="why">multiply to 1, add to 2</span></div>
+          <div class="ln ans"><span class="eq">(x − 3)(x + 1)(x + 1)</span><span class="why">check: −3x² + 2x² = −x² ✓</span></div></div>
+          <p style="font-size:13px;color:var(--muted);margin-top:6px">Assignment answers aren’t in the book’s key; this one was worked out and checked by expanding.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>2.1 Common factor</td><td>HCF out front, divide each term, expand to check</td><td>If a term equals the HCF, 1 is left. “Fully” = numbers <em>and</em> letters</td></tr>
+        <tr><td>2.2 Grouping</td><td>Pair → HCF of each pair → common bracket</td><td>Take out −(…) so brackets match. Re-order if stuck</td></tr>
+        <tr><td>2.3 DOTS</td><td>x² − y² = (x + y)(x − y)</td><td>HCF first. Needs a minus. Use for quick arithmetic (51² − 49²)</td></tr>
+        <tr><td>2.4 Quadratics (a = 1)</td><td>Pair multiplies to c, adds to b</td><td>Signs: c negative → one + one −; bigger number takes b’s sign</td></tr>
+        <tr><td>2.4 Quadratics (a &gt; 1)</td><td>a × c → pair adding to b → split middle → group</td><td>Expand to check the middle term</td></tr>
+        <tr><td>2.5 Fractions</td><td>Factorise top and bottom, cancel factors</td><td>Never cancel terms. (5 − x) ÷ (x − 5) = −1</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Maths Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
