@@ -74,3 +74,4 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Maths Year 2 – Chapter 1 – Algebra 1
 - [x] Maths Year 2 – Chapter 2 – Factors
 - [x] Maths Year 2 – Chapter 3 – Sets
+- [x] Maths Year 2 – Chapter 9 – Probability

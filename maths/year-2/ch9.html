@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!--
+  QUESTION PLAN (CONTENT_RULES §6 – maths): one distinct sub-concept per question, quiz + practice combined.
+  Source: Text & Tests 2 (Higher Level) Ch 9, pp.198-234 (screen recording of the chapter); answers worked out and
+  cross-checked with the book's answer key (pp.594-596).
+  Not used: Test yourself 9 Q16 (Nick's traffic lights) – the two probabilities are unreadable in the recording, so the
+            question was left out rather than guessed. Exercises that depend on pictures that could not be read
+            (Ex 9.2 Q3, Q5, Q6; Ex 9.3 Q1, Q2, Q4) were also skipped.
+  Ex 9.6 Q7 note: "8 had been to Boston and San Francisco" includes the 7 who visited all three (matches the key diagram).
+
+  Sub-concept                                               Quiz   Practice (book ref)
+  9.1  FPC with two stages (multiply)                       Q1     –   (Ex 9.1 Q1)
+  9.1  FPC with three stages                                –      P1  (Ex 9.1 Q6)
+  9.1  complete and read a two-way table                    –      P2  (Ex 9.1 Q11)
+  9.1  list outcomes with a tree diagram                    –      P3  (Ex 9.1 Q10)
+  9.2  decimal / fraction / percentage of a probability     Q2     –   (Investigation p.207)
+  9.2  meaning of a probability (75% = 3 times in 4)        Q3     –   (Test yourself 9 Q9)
+  9.2  order events on the probability scale                Q6     –   (Ex 9.2 Q4(i))
+  9.2  choose the chance word for each event                –      P4  (Ex 9.2 Q2(i))
+  9.3  P(E) = favourable ÷ possible                         Q4     –   (book Example 1 p.207)
+  9.3  P(A or B) by adding favourable outcomes              Q5     –   (book Example 1(v))
+  9.3  P(not E) = 1 − P(E)                                  Q7     –   (Ex 9.3 Q9(iii))
+  9.3  probability from a table of a restricted group       –      P5  (Ex 9.3 Q16)
+  9.4  read a probability from the two-dice grid            Q8     –   (Ex 9.4 Q7(i))
+  9.4  matching pair on a sample-space grid                 –      P6  (Ex 9.4 Q5(iv))
+  9.4  sample space for three coins; "at least one"         –      P7  (Ex 9.4 Q6)
+  9.5  relative frequency = successes ÷ trials              Q9     –   (Ex 9.5 Q4)
+  9.5  more trials = more reliable                          Q10    –   (Ex 9.5 Q5(iii))
+  9.5  relative frequency needs the total of the table      –      P8  (Ex 9.5 Q6)
+  9.5  is a die fair or biased?                             –      P9  (Ex 9.5 Q10)
+  9.5  expected frequency = probability × trials            –      P10 (Test yourself 9 Q14)
+  9.5  probabilities add to 1 (find the missing one)        –      P11 (Test yourself 9 Q10)
+  9.6  P(A or B) from a Venn – don't count the overlap twice Q11    –   (Ex 9.6 Q1(iv))
+  9.6  build a two-set Venn from words                      –      P12 (Ex 9.6 Q4)
+  9.6  three-set Venn probability                           –      P13 (Test yourself 9 Q18)
+  9.7  tree diagram: multiply along a branch                Q12    –   (Ex 9.7 Q9(i))
+  9.7  tree diagram: same colour = add two paths            –      P14 (Ex 9.7 Q3(ii))
+  9.7  tree diagram: "exactly one" = either order           –      P15 (Ex 9.7 Q7(ii)(b))
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Revision – Probability</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: #B79CF0; }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+
+    /* ── Maths kit (see CONTENT_RULES §6) ── */
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 600; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 10px 16px; margin: 12px 0; text-align: center; }
+    .method { background: #fff; border: 1.5px solid var(--accent); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .method-title { background: var(--accent); color: #fff; font: 700 14px 'Sora', sans-serif; padding: 8px 16px; }
+    .method ol { margin: 10px 16px 10px 38px; }
+    .work { font-family: 'JetBrains Mono', monospace; font-size: 14px; margin: 8px 0; }
+    .work .ln { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 4px 0; border-bottom: 1px dashed var(--border); flex-wrap: wrap; }
+    .work .why { font: 500 12.5px 'DM Sans', sans-serif; color: #1565C0; text-align: right; margin-left: auto; }
+    .work .ans .eq { background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 6px; padding: 0 8px; font-weight: 600; }
+    .work + .work { margin-top: 14px; }
+    table.mgrid { width: auto; margin: 10px 0; }
+    table.mgrid td, table.mgrid th { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 6px 14px; }
+    table.mgrid th { background: var(--accent-light); }
+    table.mgrid td.hl { background: #E8F5E9; font-weight: 700; }
+    .rv-model .work { margin-top: 6px; }
+    .venn-row { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 10px 0; }
+    .venn-row > div { flex: 1 1 210px; min-width: 0; }
+    .vcap { text-align: center; font-size: 13px; color: var(--muted); }
+    .vcap strong { color: var(--text); }
+    /* Probability-specific diagrams */
+    .probsvg { display: block; width: 100%; max-width: 560px; margin: 10px auto; }
+    .probsvg text { font: 600 12px 'DM Sans', sans-serif; fill: #1A1A2E; }
+    .probsvg .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .probsvg .p { fill: #6C3FC5; font-weight: 700; }
+
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Maths Revision</div><div class="book-title">Text &amp; Tests 2 · Probability</div></div>
+    <a href="index.html">&larr; Maths Year 2</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#outcomes">9.1 Listing Outcomes</a>
+    <a href="#scale">9.2 Probability Scale</a>
+    <a href="#equal">9.3 Equally Likely Outcomes</a>
+    <a href="#twoevents">9.4 Two Events</a>
+    <a href="#experiments">9.5 Experiments</a>
+    <a href="#vennprob">9.6 Venn Diagrams</a>
+    <a href="#trees">9.7 Probability Trees</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 9 · Probability</div>
+      <h1>🎲 <span>Probability</span></h1>
+      <p class="chapter-meta">Text &amp; Tests 2 (Higher Level) · Junior Cycle Maths Revision</p>
+      <div>
+        <span class="goal-tag">✔ List outcomes: counting, tables, trees</span>
+        <span class="goal-tag">✔ Use P(E) and the probability scale</span>
+        <span class="goal-tag">✔ Estimate from experiments</span>
+        <span class="goal-tag">✔ Answer questions from Venn diagrams</span>
+        <span class="goal-tag">✔ Multiply and add on tree diagrams</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write everything you remember about probability – outcomes, the 0 to 1 scale, P(E), experiments, Venn diagrams, tree diagrams – then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Probability
+          <ul>
+            <li>Listing outcomes<ul><li>Counting principle</li><li>Two-way table</li><li>Tree diagram</li></ul></li>
+            <li>Probability scale<ul><li>0 impossible</li><li>1 certain</li></ul></li>
+            <li>P(E) formula<ul><li>Favourable ÷ possible</li><li>All add to 1</li></ul></li>
+            <li>Experiments<ul><li>Relative frequency</li><li>Expected frequency</li></ul></li>
+            <li>Venn diagrams<ul><li>Region ÷ total</li></ul></li>
+            <li>Probability trees<ul><li>Multiply along</li><li>Add between</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Outcome</strong></td><td>One possible result of an experiment (a 4 on a die, a head on a coin)</td></tr>
+          <tr><td><strong>Trial</strong></td><td>One go at the experiment, e.g. throwing a die once</td></tr>
+          <tr><td><strong>Sample space</strong></td><td>The list of <em>all</em> possible outcomes</td></tr>
+          <tr><td><strong>Event (favourable outcome)</strong></td><td>The result we want, e.g. “an even number” = 2, 4, 6</td></tr>
+          <tr><td><strong>Fundamental Principle of Counting</strong></td><td>m choices followed by n choices gives m × n outcomes</td></tr>
+          <tr><td><strong>Two-way table / tree diagram</strong></td><td>Organised ways to show every outcome of two or more events</td></tr>
+          <tr><td><strong>Probability scale</strong></td><td>A line from 0 (impossible) to 1 (certain) showing how likely an event is</td></tr>
+          <tr><td><strong>Equally likely</strong></td><td>Outcomes with the same chance of happening</td></tr>
+          <tr><td><strong>P(E)</strong></td><td>The probability of event E: favourable outcomes ÷ possible outcomes</td></tr>
+          <tr><td><strong>Relative frequency (experimental probability)</strong></td><td>Successful trials ÷ total trials: an <em>estimate</em> of the true probability</td></tr>
+          <tr><td><strong>Expected frequency</strong></td><td>How many times you expect an event: probability × number of trials</td></tr>
+          <tr><td><strong>Fair / biased</strong></td><td>Fair: all outcomes equally likely. Biased: they are not</td></tr>
+          <tr><td><strong>Probability tree</strong></td><td>A tree diagram with the probability written on every branch</td></tr>
+        </tbody></table>
+
+      <!-- ───────── 9.1 ───────── -->
+      <div class="section-heading" id="outcomes">🔢 9.1 Revision of Listing Outcomes</div>
+      <div class="key-term"><strong>Outcomes</strong> are the possible results of an event. A spinner with 8 numbers has 8 outcomes; if we only care about colour there are 3.
+        <div class="tip">💡 An outcome is one “line” in the menu of everything that could happen.</div></div>
+      <div class="key-term"><strong>Fundamental Principle of Counting:</strong> if one event has <strong>m</strong> possible outcomes and a second event has <strong>n</strong>, the two events together have <strong>m × n</strong> possible outcomes. It extends to any number of events.
+        <div class="tip">💡 A menu with 3 starters and 4 mains: pick a starter, then for each one pick a main – that is 3 lots of 4.</div></div>
+      <div class="formula">outcomes = m × n   (or m × n × p × …)</div>
+      <p style="font-size:14px">Book examples: an 8-sector spinner and a coin: 8 × 2 = <strong>16</strong>. A boy with 5 shirts, 3 ties and 4 jackets: 5 × 3 × 4 = <strong>60</strong> choices.</p>
+      <div class="method"><div class="method-title">🔧 Method: count outcomes of several events</div>
+        <ol><li>Write the number of choices for each stage.</li><li>Multiply the numbers.</li><li>Need the actual list? Draw a tree or two-way table.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 A school offers 3 modern languages, 2 science subjects and 2 business subjects. Pick one from each set. How many choices?</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">3 languages, 2 sciences, 2 business</span><span class="why">choices at each stage</span></div>
+          <div class="ln ans"><span class="eq">3 × 2 × 2 = 12 outcomes</span><span class="why">multiply</span></div>
+        </div></div></div>
+      <p style="font-size:14px"><strong>Two-way tables</strong> show the outcomes of two events in an organised grid (rows × columns, so 4 numbers × 3 colours = 12). They are also used to show data with row and column <strong>totals</strong>. <strong>Tree diagrams</strong> list every outcome at the end of a branch; the number of branch ends is the number of outcomes.</p>
+      <div class="method"><div class="method-title">🔧 Method: complete a two-way table</div>
+        <ol><li>Find a row or column with only one blank.</li><li>Fill it using total − the known numbers.</li><li>Repeat until full.</li><li>Check: row totals and column totals both add up to the grand total.</li></ol></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> <em>adding</em> the number of choices instead of multiplying (3 starters and 4 mains is 12 meals, not 7).</div>
+
+      <!-- ───────── 9.2 ───────── -->
+      <div class="section-heading" id="scale">📏 9.2 Chance and the Probability Scale</div>
+      <div class="key-term"><strong>Probability</strong> measures how likely an event is, using numbers from <strong>0</strong> to <strong>1</strong>. An event that is <strong>certain</strong> has probability <strong>1</strong>; one that <strong>cannot happen</strong> has probability <strong>0</strong>. Every other probability is greater than 0 and less than 1. The more likely an event, the closer its probability is to 1.
+        <div class="tip">💡 It is a fuel gauge: empty (0) means no chance, full (1) means it will definitely happen, half is a 50–50 flip.</div></div>
+      <svg class="probsvg" viewBox="0 0 560 120" role="img" aria-label="Probability scale from 0 impossible to 1 certain">
+        <line x1="30" y1="55" x2="530" y2="55" stroke="#1A1A2E" stroke-width="2"/>
+        <g stroke="#1A1A2E" stroke-width="2"><line x1="30" y1="46" x2="30" y2="64"/><line x1="155" y1="49" x2="155" y2="61"/><line x1="280" y1="46" x2="280" y2="64"/><line x1="405" y1="49" x2="405" y2="61"/><line x1="530" y1="46" x2="530" y2="64"/></g>
+        <g text-anchor="middle"><text x="30" y="36" class="mono">0</text><text x="280" y="36" class="mono">½</text><text x="530" y="36" class="mono">1</text>
+          <text x="30" y="86">Impossible</text><text x="155" y="86">Unlikely</text><text x="280" y="86">Even chance</text><text x="405" y="86">Likely</text><text x="530" y="86">Certain</text></g>
+      </svg>
+      <table><thead><tr><th>Word</th><th>Probability</th><th>Book example</th></tr></thead><tbody>
+        <tr><td>Impossible</td><td>0</td><td>Getting a 7 on a normal die</td></tr>
+        <tr><td>Even chance</td><td>½ (50–50)</td><td>The next person you meet is male</td></tr>
+        <tr><td>Certain</td><td>1</td><td>The sun will rise tomorrow</td></tr>
+      </tbody></table>
+      <table><thead><tr><th>Probability</th><th>What it means</th></tr></thead><tbody>
+        <tr><td>0</td><td>The event cannot happen</td></tr>
+        <tr><td>0.5</td><td>A “50–50 chance” of happening</td></tr>
+        <tr><td>75%</td><td>Occurs three times out of four, i.e. it is likely</td></tr>
+        <tr><td>1</td><td>The event will definitely happen</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>I U E L C</strong> – “<em>I Understand Every Last Chance</em>”: Impossible, Unlikely, Even chance, Likely, Certain (0 → 1).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> a probability can never be bigger than 1 or negative. If you get 5/4 or −0.2, you have gone wrong.</div>
+
+      <!-- ───────── 9.3 ───────── -->
+      <div class="section-heading" id="equal">🎯 9.3 Probability and Equally Likely Outcomes</div>
+      <div class="key-term"><strong>Trial:</strong> the act of doing the experiment (throwing a die). The <strong>outcomes</strong> are the possible results (1, 2, 3, 4, 5, 6). The list of all outcomes is the <strong>sample space</strong>. The result you want is the <strong>event</strong> (or <strong>favourable outcome</strong>): “an even number” is 2, 4, 6.
+        <div class="tip">💡 The sample space is the whole pizza; the event is the slices you want.</div></div>
+      <div class="key-term"><strong>Equally likely:</strong> two events are equally likely if they have the same chance of happening. For equally likely outcomes the probability of event E is given by:
+        <div class="formula">P(E) = number of favourable outcomes ÷ number of possible outcomes</div>
+        <div class="tip">💡 “How many ways can I win” over “how many ways can anything happen”.</div></div>
+      <div class="method"><div class="method-title">🔧 Method: find P(E)</div>
+        <ol><li>Count <strong>all</strong> the possible outcomes (the bottom).</li><li>Count the favourable outcomes (the top).</li><li>Write top ÷ bottom as a fraction.</li><li>Simplify it.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Tiles spell P A R A L L E L O G R A M (13 tiles). One is picked at random. Find (i) P(an A) (ii) P(an O) (iii) P(A or L) (iv) P(A or O)</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">13 tiles: A × 3, L × 3, O × 1</span><span class="why">count first</span></div>
+          <div class="ln"><span class="eq">(i) P(A) = 3/13</span><span class="why">3 As of 13</span></div>
+          <div class="ln"><span class="eq">(ii) P(O) = 1/13</span></div>
+          <div class="ln"><span class="eq">(iii) P(A or L) = (3 + 3)/13 = 6/13</span><span class="why">add the favourable</span></div>
+          <div class="ln ans"><span class="eq">(iv) P(A or O) = (3 + 1)/13 = 4/13</span></div>
+        </div></div></div>
+      <p style="font-size:14px">Spinner with 5 equal sections (1 green, 2 yellow): P(green) = 1/5 and P(yellow) = 2/5.</p>
+      <div class="key-term"><strong>All probabilities add to 1.</strong> Every outcome is covered, so P(E) + P(not E) = 1, i.e. <strong>P(not E) = 1 − P(E)</strong>. (The book’s own reason: “every disc is either even or odd, i.e. every outcome is covered”.)
+        <div class="tip">💡 You are either in the room or not in the room – the two chances fill 100%.</div></div>
+      <table><thead><tr><th>Fraction</th><th>Decimal</th><th>Percentage</th></tr></thead><tbody>
+        <tr><td>1/4</td><td>0.25</td><td>25%</td></tr>
+        <tr><td>3/10</td><td>0.3</td><td>30%</td></tr>
+        <tr><td>3/5</td><td>0.6</td><td>60%</td></tr>
+        <tr><td>3/4</td><td>0.75</td><td>75%</td></tr>
+      </tbody></table>
+      <p style="font-size:14px">Fraction → decimal: divide top by bottom. Decimal → %: × 100.</p>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> using “favourable ÷ <em>unfavourable</em>” (3/10 instead of 3/13). The bottom is <em>all</em> the outcomes, including the favourable ones.</div>
+
+      <!-- ───────── 9.4 ───────── -->
+      <div class="section-heading" id="twoevents">🪙 9.4 Two Events – Sample Spaces, Trees and Two-Way Tables</div>
+      <div class="key-term">When two events happen (a coin tossed <em>and</em> a die thrown) the sample space is all the pairs: H1, H2 … H6, T1 … T6 – <strong>12 outcomes</strong>. Draw it as a <strong>tree diagram</strong> or a <strong>two-way table</strong>.
+        <div class="tip">💡 It is a menu: every “first choice” paired with every “second choice”.</div></div>
+      <p style="font-size:14px">Book examples from the 12 outcomes: P(H, 6) = 1/12. P(head and an even number) = {H2, H4, H6} = 3/12 = <strong>1/4</strong>.</p>
+      <p style="font-size:14px"><strong>Two dice</strong> have 6 × 6 = <strong>36</strong> outcomes. The grid shows the <em>sum</em> of the two dice:</p>
+      <table class="mgrid"><thead><tr><th>+</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead><tbody>
+        <tr><th>1</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td class="hl">7</td></tr>
+        <tr><th>2</th><td>3</td><td>4</td><td>5</td><td>6</td><td class="hl">7</td><td>8</td></tr>
+        <tr><th>3</th><td>4</td><td>5</td><td>6</td><td class="hl">7</td><td>8</td><td>9</td></tr>
+        <tr><th>4</th><td>5</td><td>6</td><td class="hl">7</td><td>8</td><td>9</td><td>10</td></tr>
+        <tr><th>5</th><td>6</td><td class="hl">7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+        <tr><th>6</th><td class="hl">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+      </tbody></table>
+      <div class="method"><div class="method-title">🔧 Method: probability from a sample-space grid</div>
+        <ol><li>Draw the grid (or tree) and count the <strong>total</strong> outcomes (36 for two dice).</li><li>Circle the cells that match the event.</li><li>Probability = circled ÷ total. Simplify.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 Two dice are thrown and the scores added. Find P(total = 7), P(4 or less), P(11 or more), P(multiple of 5).</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">Total 7: six cells → 6/36</span><span class="why">the diagonal</span></div>
+          <div class="ln"><span class="eq">P(7) = 6/36 = 1/6</span></div>
+          <div class="ln"><span class="eq">4 or less: 2 (1) + 3 (2) + 4 (3) = 6 → 6/36 = 1/6</span><span class="why">count each total</span></div>
+          <div class="ln"><span class="eq">11 or more: 11 (2) + 12 (1) = 3 → 3/36 = 1/12</span></div>
+          <div class="ln ans"><span class="eq">Multiple of 5: 5 (4) + 10 (3) = 7 → 7/36</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> treating the 11 possible totals (2 to 12) as equally likely. They are not – a 7 can happen 6 ways, a 2 only 1 way. Use the 36 outcomes.</div>
+
+      <!-- ───────── 9.5 ───────── -->
+      <div class="section-heading" id="experiments">🔬 9.5 Estimating Probabilities from Experiments</div>
+      <div class="key-term">Real events are not always equally likely, so we run an <strong>experiment</strong> or <strong>survey</strong> to estimate the probability. The number of successes ÷ the number of trials is the <strong>relative frequency</strong> (or <strong>experimental probability</strong>). It gives an <strong>estimate</strong> of the true probability.
+        <div class="formula">Relative frequency = number of successful trials ÷ total number of trials</div>
+        <div class="tip">💡 It is a batting average: hits out of goes. After more goes, the average is a better picture of the player.</div></div>
+      <div class="key-term"><strong>More trials, better estimate.</strong> As the number of trials increases, the relative frequency gets closer to the true (theoretical) probability.</div>
+      <p style="font-size:14px">John tossed a coin and recorded heads ÷ tosses: 10 → 0.6, 20 → 0.55, 100 → 0.53, 200 → 0.54, 400 → 0.485, 500 → 0.484, 1000 → 0.49. The value settles close to 0.5, so he concluded the coin was <strong>not biased</strong>.</p>
+      <div class="example-box"><div class="example-header">📘 Derek counts cars passing the school gate: White 24, Red 32, Black 14, Blue 16, Green 10, Other 4. Find (i) the number surveyed (ii) relative frequency of blue (iii) of red as a decimal (iv) estimate P(next car is green)</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">(i) 24 + 32 + 14 + 16 + 10 + 4 = 100 cars</span><span class="why">add the frequencies</span></div>
+          <div class="ln"><span class="eq">(ii) blue = 16/100 = 4/25</span></div>
+          <div class="ln"><span class="eq">(iii) red = 32/100 = 0.32</span></div>
+          <div class="ln ans"><span class="eq">(iv) P(green) ≈ 10/100 = 1/10</span><span class="why">more cars → more reliable</span></div>
+        </div></div></div>
+      <div class="key-term"><strong>Expected frequency:</strong> how many times you expect an event to happen in a number of trials.
+        <div class="formula">expected frequency = probability × number of trials</div>
+        <div class="tip">💡 A bag with 3 blue of 8 discs: on average 3 blue in every 8 picks – so in 400 picks, 3/8 × 400 = 150.</div></div>
+      <div class="example-box"><div class="example-header">📘 A biased spinner has P(1) = 0.35, P(2) = 0.1, P(3) = 0.25, P(4) = 0.15 and a section 5. (i) Find P(5) (ii) Which number is most likely? (iii) Spun 200 times, how many 3s?</div><div class="example-body">
+        <div class="work">
+          <div class="ln"><span class="eq">x + 0.35 + 0.1 + 0.25 + 0.15 = 1</span><span class="why">all add to 1</span></div>
+          <div class="ln ans"><span class="eq">(i) P(5) = 0.15</span><span class="why">x + 0.85 = 1</span></div>
+          <div class="ln ans"><span class="eq">(ii) 1 (0.35 is the biggest)</span></div>
+          <div class="ln"><span class="eq">(iii) 0.25 × 200</span><span class="why">probability × trials</span></div>
+          <div class="ln ans"><span class="eq">= 50 threes</span></div>
+        </div></div></div>
+      <div class="method"><div class="method-title">🔧 Method: is a die fair?</div>
+        <ol><li>Work out the expected count: trials ÷ 6.</li><li>Compare each face with it.</li><li>Close to the expected count everywhere → fair.</li><li>One face far away → biased.</li></ol></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> thinking the expected frequency is exactly what will happen. It is the <em>average</em> over many trials; real results vary (the book: “similar results – yes, identical results – no”).</div>
+
+      <!-- ───────── 9.6 ───────── -->
+      <div class="section-heading" id="vennprob">⭕ 9.6 Probability Using Venn Diagrams</div>
+      <div class="key-term">When the information is in a <strong>Venn diagram</strong>, the probability of an event is the number in the matching region ÷ the <strong>total in U</strong> (every number in the diagram, including outside the circles).
+        <div class="tip">💡 Think of U as the whole class lined up; the probability is how many in your region of the line.</div></div>
+      <div class="venn-row">
+        <div><div class="rv-venn" data-sets="2" data-shade="ab" data-label="A intersection B"></div><p class="vcap"><strong>A ∩ B</strong> – both</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="a,ab,b" data-label="A union B"></div><p class="vcap"><strong>A ∪ B</strong> – A or B</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="a,ab" data-label="A"></div><p class="vcap"><strong>A</strong> – all of A</p></div>
+      </div>
+      <div class="venn-row">
+        <div><div class="rv-venn" data-sets="2" data-shade="b" data-label="B less A"></div><p class="vcap"><strong>B \ A</strong> – B only</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="o" data-label="complement of A union B"></div><p class="vcap"><strong>(A ∪ B)′</strong> – neither</p></div>
+        <div><div class="rv-venn" data-sets="2" data-shade="a,o" data-label="complement of B"></div><p class="vcap"><strong>B′</strong> – not in B</p></div>
+      </div>
+      <div class="method"><div class="method-title">🔧 Method: probability from a Venn diagram</div>
+        <ol><li>Add <strong>every</strong> number, including outside, to get the total in U.</li><li>Shade the region the question asks for.</li><li>Add the numbers in the shaded region.</li><li>Region ÷ total; simplify.</li></ol></div>
+      <div class="example-box"><div class="example-header">📘 A club has 130 members. Football only 40, both games 10, tennis only 35, neither 45. Find the probability a member plays (i) both (ii) tennis but not football (iii) neither (iv) football or tennis</div><div class="example-body">
+        <div class="rv-venn" data-sets="2" data-names="Football,Tennis" data-nums="a:40;ab:10;b:35;o:45" data-u="U = 130" data-label="Venn diagram: 40 football only, 10 both, 35 tennis only, 45 neither"></div>
+        <div class="work">
+          <div class="ln"><span class="eq">Total = 40 + 10 + 35 + 45 = 130</span><span class="why">U first</span></div>
+          <div class="ln"><span class="eq">(i) 10/130 = 1/13</span></div>
+          <div class="ln"><span class="eq">(ii) 35/130 = 7/26</span></div>
+          <div class="ln"><span class="eq">(iii) 45/130 = 9/26</span></div>
+          <div class="ln ans"><span class="eq">(iv) (40 + 10 + 35)/130 = 85/130 = 17/26</span><span class="why">all of both circles</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📘 Three sets: sports played by 25 second-year students (N = netball, B = basketball, S = soccer). Find P(all three), P(netball), P(not soccer), P(two games only).</div><div class="example-body">
+        <div class="rv-venn" data-sets="3" data-names="N,B,S" data-nums="a:6;b:2;c:3;ab:4;ac:2;bc:1;abc:1;o:6" data-u="U = 25" data-label="Three-set Venn diagram of netball, basketball and soccer"></div>
+        <div class="work">
+          <div class="ln"><span class="eq">Total = 6 + 2 + 1 + 4 + 3 + 1 + 2 + 6 = 25</span><span class="why">check</span></div>
+          <div class="ln"><span class="eq">P(all three) = 1/25</span><span class="why">the centre</span></div>
+          <div class="ln"><span class="eq">P(netball) = (6 + 2 + 1 + 4)/25 = 13/25</span><span class="why">whole N circle</span></div>
+          <div class="ln"><span class="eq">P(not soccer) = (6 + 4 + 2 + 6)/25 = 18/25</span><span class="why">outside the S circle</span></div>
+          <div class="ln ans"><span class="eq">P(two games only) = (2 + 4 + 1)/25 = 7/25</span><span class="why">three pair regions</span></div>
+        </div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> dividing by the total in <em>one circle</em> (or leaving out the “neither” number) instead of the total in <strong>U</strong>. And when asked for “A or B”, count the overlap <em>once</em>.</div>
+
+      <!-- ───────── 9.7 ───────── -->
+      <div class="section-heading" id="trees">🌳 9.7 Tree Diagrams – Probability of Multiple Events</div>
+      <div class="key-term">A <strong>probability tree diagram</strong> shows the outcomes of two or more events. The branches show every outcome of each event, and the <strong>probability is written on each branch</strong>. The probability of an extended branch is found by <strong>multiplying</strong> the separate probabilities along it.
+        <div class="tip">💡 A route-planner: the chance of the whole journey is the chance of leg 1 <em>and</em> leg 2 together – so multiply.</div></div>
+      <p style="font-size:14px">Three children: each is a boy or a girl with probability ½, giving 8 outcomes, each with probability ½ × ½ × ½ = 1/8. P(3 boys) = P(B and B and B) = 1/8. The three families with <em>one</em> girl are BBG, BGB and GBB, so P(one girl) = P(BBG <strong>or</strong> BGB <strong>or</strong> GBB) = 1/8 + 1/8 + 1/8 = <strong>3/8</strong>.</p>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>Along the branches ×, between the branches +.</strong> “And” (one path) → multiply. “Or” (more than one path) → add.</div>
+      <div class="example-box"><div class="example-header">📘 Spinner A: red 1/4, blue 3/4. Spinner B: red 3/5, blue 2/5. Both are spun. Find (i) P(A red, B red) (ii) P(both the same colour)</div><div class="example-body">
+        <svg class="probsvg" viewBox="0 0 520 240" role="img" aria-label="Probability tree for two spinners">
+          <g stroke="#1A1A2E" stroke-width="1.5" fill="none">
+            <path d="M20 120 L170 62"/><path d="M20 120 L170 178"/>
+            <path d="M170 62 L330 28"/><path d="M170 62 L330 96"/><path d="M170 178 L330 144"/><path d="M170 178 L330 212"/>
+          </g>
+          <g text-anchor="middle"><text x="64" y="78" class="p">1/4</text><text x="64" y="176" class="p">3/4</text>
+            <text x="244" y="34" class="p">3/5</text><text x="244" y="92" class="p">2/5</text><text x="244" y="150" class="p">3/5</text><text x="244" y="208" class="p">2/5</text></g>
+          <g text-anchor="end"><text x="166" y="50">A red</text><text x="166" y="200">A blue</text></g>
+          <g><text x="336" y="32">B red   → 1/4 × 3/5 = 3/20</text><text x="336" y="100">B blue → 1/4 × 2/5 = 2/20</text><text x="336" y="148">B red   → 3/4 × 3/5 = 9/20</text><text x="336" y="216">B blue → 3/4 × 2/5 = 6/20</text></g>
+        </svg>
+        <div class="work">
+          <div class="ln"><span class="eq">(i) P(A red, B red) = 1/4 × 3/5 = 3/20</span><span class="why">multiply along</span></div>
+          <div class="ln"><span class="eq">(ii) Same colour = (A red, B red) or (A blue, B blue)</span><span class="why">two paths</span></div>
+          <div class="ln ans"><span class="eq">= 3/20 + 6/20 = 9/20</span><span class="why">add the paths</span></div>
+          <div class="ln"><span class="eq">Check: 3/20 + 2/20 + 9/20 + 6/20 = 1</span><span class="why">branch ends add to 1</span></div>
+        </div></div></div>
+      <div class="method"><div class="method-title">🔧 Method: tree-diagram probability</div>
+        <ol><li>Draw a branch for each outcome of the first event, then of the second.</li><li>Write the probability on every branch (those leaving one point add to 1).</li><li>Find the path(s) the question wants.</li><li><strong>Multiply</strong> along each path; <strong>add</strong> the paths.</li><li>Check all the branch ends add to 1.</li></ol></div>
+      <p style="font-size:14px">Trees are especially useful when the events do <em>not</em> have an equal chance of happening, as in the spinner example.</p>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> adding along a branch instead of multiplying, or forgetting a second path (for “one of each” there are two: red-then-blue <em>and</em> blue-then-red).</div>
+
+      <!-- ───────── Practice tools ───────── -->
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What is an outcome?</div><div class="a">One possible result of an experiment, e.g. a 4 when a die is thrown</div></div>
+        <div class="rv-card"><div class="q">What is a trial?</div><div class="a">One go at an experiment, e.g. throwing a die once</div></div>
+        <div class="rv-card"><div class="q">What is the sample space?</div><div class="a">The list of all possible outcomes</div></div>
+        <div class="rv-card"><div class="q">What is an event (favourable outcome)?</div><div class="a">The result we want, e.g. “an even number” on a die: 2, 4, 6</div></div>
+        <div class="rv-card"><div class="q">State the Fundamental Principle of Counting</div><div class="a">If one event has m outcomes and a second has n, together they have m × n outcomes</div></div>
+        <div class="rv-card"><div class="q">5 shirts, 3 ties, 4 jackets: how many choices?</div><div class="a">5 × 3 × 4 = 60</div></div>
+        <div class="rv-card"><div class="q">What does a tree diagram show?</div><div class="a">Every possible outcome, one at the end of each branch</div></div>
+        <div class="rv-card"><div class="q">Probability of an impossible event?</div><div class="a">0</div></div>
+        <div class="rv-card"><div class="q">Probability of a certain event?</div><div class="a">1</div></div>
+        <div class="rv-card"><div class="q">Put in order: certain, unlikely, impossible, likely, even chance</div><div class="a">Impossible, unlikely, even chance, likely, certain (0 → 1)</div></div>
+        <div class="rv-card"><div class="q">What does “equally likely” mean?</div><div class="a">The outcomes have the same chance of happening</div></div>
+        <div class="rv-card"><div class="q">Formula for P(E) with equally likely outcomes?</div><div class="a">Number of favourable outcomes ÷ number of possible outcomes</div></div>
+        <div class="rv-card"><div class="q">What do all the probabilities of an experiment add up to?</div><div class="a">1</div></div>
+        <div class="rv-card"><div class="q">How do you find P(not E)?</div><div class="a">1 − P(E)</div></div>
+        <div class="rv-card"><div class="q">Probability 75% means what?</div><div class="a">It happens three times out of four – likely</div></div>
+        <div class="rv-card"><div class="q">How many outcomes when two dice are thrown?</div><div class="a">36 (6 × 6)</div></div>
+        <div class="rv-card"><div class="q">What is relative frequency?</div><div class="a">Number of successful trials ÷ total number of trials (experimental probability)</div></div>
+        <div class="rv-card"><div class="q">What happens to relative frequency as trials increase?</div><div class="a">It gets closer to the true (theoretical) probability</div></div>
+        <div class="rv-card"><div class="q">Formula for expected frequency?</div><div class="a">Probability × number of trials</div></div>
+        <div class="rv-card"><div class="q">Fair or biased? How do the outcomes differ?</div><div class="a">Fair: all outcomes equally likely. Biased: they are not</div></div>
+        <div class="rv-card"><div class="q">Probability from a Venn diagram?</div><div class="a">Number in the region ÷ total number in U</div></div>
+        <div class="rv-card"><div class="q">How do you get P(A or B) from a Venn diagram?</div><div class="a">Add A only, both and B only (count the overlap once), then ÷ the total in U</div></div>
+        <div class="rv-card"><div class="q">What do you do with probabilities along a branch?</div><div class="a">Multiply them (this is “and”)</div></div>
+        <div class="rv-card"><div class="q">What do you do with the probabilities of different paths?</div><div class="a">Add them (this is “or”)</div></div>
+        <div class="rv-card"><div class="q">Probabilities leaving one point on a tree add to what?</div><div class="a">1 (and so do all the branch ends)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>An {{outcome}} is a possible result; the list of all the possible outcomes is the {{sample space}}.</p>
+        <p>The Fundamental Principle of Counting: if one event has m outcomes and a second has n, the two events have {{m × n|m x n|m times n}} outcomes.</p>
+        <p>An {{impossible}} event has probability {{0}}; a {{certain}} event has probability {{1}}.</p>
+        <p>For equally likely outcomes, P(E) = number of {{favourable}} outcomes ÷ number of {{possible}} outcomes.</p>
+        <p>The probabilities of all the possible outcomes add up to {{1}}, so P(not E) = {{1}} − P(E).</p>
+        <p>Relative frequency = number of {{successful}} trials ÷ total number of {{trials}}.</p>
+        <p>As the number of trials {{increases|goes up|gets bigger}}, the relative frequency gets {{closer}} to the true probability.</p>
+        <p>Expected frequency = {{probability}} × number of {{trials}}.</p>
+        <p>In a Venn diagram, divide the number in the region by the total in the {{universal|universal set|U}} set.</p>
+        <p>On a probability tree, {{multiply}} along the branches and {{add}} the different paths.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>An “early-bird” menu has 3 starters and 4 main courses. How many different 2-course meals can you have?</p><ol><li>7</li><li>12</li><li>34</li><li>81</li></ol><div class="explain">Fundamental Principle of Counting: 3 × 4 = 12. 7 adds the choices instead of multiplying; 81 is 3<sup>4</sup>; 34 just writes the numbers side by side.</div></div>
+        <div class="rv-q" data-answer="b"><p>An event has probability 3/10. Which is the same value?</p><ol><li>0.03</li><li>0.3</li><li>3%</li><li>0.7</li></ol><div class="explain">3/10 = 3 ÷ 10 = 0.3 = 30%. 0.03 puts the decimal point in the wrong place; 3% is only 3/100; 0.7 is 1 − 0.3 = P(not the event).</div></div>
+        <div class="rv-q" data-answer="c"><p>An event has a probability of 75%. What does this mean?</p><ol><li>It cannot happen</li><li>It has a 50–50 chance</li><li>It happens three times out of four, so it is likely</li><li>It will definitely happen</li></ol><div class="explain">75% = 3/4: three times out of four. 0 means it cannot happen, 0.5 is a 50–50 chance, and 1 means certain.</div></div>
+        <div class="rv-q" data-answer="b"><p>One of the 13 tiles P A R A L L E L O G R A M is picked at random. What is P(an L)?</p><ol><li>1/13</li><li>3/13</li><li>3/10</li><li>10/13</li></ol><div class="explain">There are 3 Ls among 13 tiles: 3/13. 1/13 counted just one L; 3/10 divides by the number of tiles that are <em>not</em> L; 10/13 is P(not L).</div></div>
+        <div class="rv-q" data-answer="a"><p>For the same 13 tiles, what is P(an A or an O)?</p><ol><li>4/13</li><li>3/13</li><li>2/13</li><li>3/169</li></ol><div class="explain">3 As + 1 O = 4 favourable out of 13: 4/13. 3/13 forgets the O; 2/13 comes from 4/26 (adding the totals as well); 3/169 multiplies, which is for “and” on a tree, not “or”.</div></div>
+        <div class="rv-q" data-answer="a"><p>A die is thrown. Order these from least likely to most likely: (a) the number is even, (b) the number is larger than 4, (c) the number is less than 6.</p><ol><li>(b), (a), (c)</li><li>(a), (b), (c)</li><li>(c), (a), (b)</li><li>(a), (c), (b)</li></ol><div class="explain">P(b) = 2/6 = 1/3 (5, 6); P(a) = 3/6 = 1/2; P(c) = 5/6. So b is least likely, then a, then c. Option 3 is the order from <em>most</em> likely.</div></div>
+        <div class="rv-q" data-answer="b"><p>A box holds 12 green, 6 blue and 8 white marbles. A marble is picked at random. What is P(not green)?</p><ol><li>6/13</li><li>7/13</li><li>10/13</li><li>4/13</li></ol><div class="explain">26 marbles; not green = 6 + 8 = 14, so 14/26 = 7/13 (or 1 − 6/13). 6/13 is P(green); 10/13 is P(green or white); 4/13 is P(white).</div></div>
+        <div class="rv-q" data-answer="b"><p>Two dice are thrown and the scores added. What is P(a total of 9)?</p><ol><li>1/36</li><li>1/9</li><li>1/4</li><li>1/11</li></ol><div class="explain">A 9 can be (3,6), (4,5), (5,4), (6,3): 4 of the 36 outcomes, so 4/36 = 1/9. 1/36 counts just one way; 1/4 is 9/36; 1/11 pretends the 11 totals are equally likely.</div></div>
+        <div class="rv-q" data-answer="b"><p>50 cars pass the school gate and 15 of them are red. What is the estimated probability that the next car is red?</p><ol><li>3/7</li><li>3/10</li><li>7/10</li><li>1/15</li></ol><div class="explain">Relative frequency = 15/50 = 3/10. 3/7 divides red by the 35 non-red cars; 7/10 is P(not red).</div></div>
+        <div class="rv-q" data-answer="c"><p>Jane tests a drawing pin 20 times (10 “point up”). Nicky tests it 100 times (75 “point up”). Whose result is likely to be more reliable?</p><ol><li>Jane’s, because 1/2 is a simpler fraction</li><li>They are equally reliable</li><li>Nicky’s, because he did more trials</li><li>Neither, relative frequency is never reliable</li></ol><div class="explain">The more trials, the closer the relative frequency is to the true probability. 100 trials beat 20.</div></div>
+        <div class="rv-q" data-answer="a"><p>In a street of 82 houses, 14 have only a cat, 12 have a cat and a dog, 26 have only a dog and 30 have neither. A house is picked at random. What is P(a cat or a dog)?</p><ol><li>26/41</li><li>32/41</li><li>20/41</li><li>15/41</li></ol><div class="explain">Cat or dog = 14 + 12 + 26 = 52 out of 82 = 26/41. 32/41 counts the 12 twice (64/82); 20/41 is only one pet (40/82); 15/41 is neither (30/82).</div></div>
+        <div class="rv-q" data-answer="d"><p>Bag A has 2 red beads and 1 white bead. Bag B has 1 red bead and 2 white beads. One bead is taken from each bag. What is P(both red)?</p><ol><li>1</li><li>1/3</li><li>4/9</li><li>2/9</li></ol><div class="explain">Multiply along the branch: 2/3 × 1/3 = 2/9. 1 comes from adding 2/3 + 1/3; 4/9 is P(both the same colour) = 2/9 + 2/9; 1/3 is just bag B’s red.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="font-size:14px;color:var(--muted)">Try each one on paper first, then click to check. The book exercise number is shown so you can find more like it.</p>
+
+      <details class="rv-qa"><summary>1. (Ex 9.1 Q6) A car maker offers models Saloon, Estate or Hatchback; colours silver, black or red; styles Standard, Deluxe or Premium. How many different choices does a buyer have?</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">3 models × 3 colours × 3 styles</span><span class="why">one factor per stage</span></div>
+          <div class="ln ans"><span class="eq">= 27 different choices</span><span class="why">multiply</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>2. (Ex 9.1 Q11) The sport preferences of 2nd years: Boys: swimming 12. Girls: swimming 16, football 11, girls total 40. Column totals: tennis 22, football 36. Complete the table; how many students are there? Which sport is least popular? What fraction prefer tennis? What percentage of the girls prefer swimming?</summary>
+        <div class="rv-model">
+          <table class="mgrid"><thead><tr><th></th><th>Swimming</th><th>Tennis</th><th>Football</th><th>Total</th></tr></thead><tbody>
+            <tr><th>Boys</th><td>12</td><td class="hl">9</td><td class="hl">25</td><td class="hl">46</td></tr>
+            <tr><th>Girls</th><td>16</td><td class="hl">13</td><td>11</td><td>40</td></tr>
+            <tr><th>Total</th><td class="hl">28</td><td>22</td><td>36</td><td class="hl">86</td></tr></tbody></table>
+          <div class="work">
+          <div class="ln"><span class="eq">Girls tennis = 40 − 16 − 11 = 13</span><span class="why">row total</span></div>
+          <div class="ln"><span class="eq">Boys tennis = 22 − 13 = 9 · Boys football = 36 − 11 = 25</span><span class="why">column totals</span></div>
+          <div class="ln"><span class="eq">Boys total = 12 + 9 + 25 = 46 · Swimming total = 12 + 16 = 28</span></div>
+          <div class="ln"><span class="eq">Total students = 46 + 40 = 86 (check: 28 + 22 + 36 = 86 ✓)</span></div>
+          <div class="ln"><span class="eq">Least popular: tennis (22)</span></div>
+          <div class="ln"><span class="eq">Fraction tennis = 22/86 = 11/43</span></div>
+          <div class="ln ans"><span class="eq">Girls swimming = 16/40 = 40%</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>3. (Ex 9.1 Q10) The 5 class prefects Eimear (E), Samantha (S), Mia (M), Paul (P) and Neil (N) supervise in the morning or afternoon. A boy and a girl must supervise together. Use a tree diagram to list the combinations.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">Stage 1: a.m. or p.m. · Stage 2: boy P or N · Stage 3: girl E, S or M</span><span class="why">draw the tree</span></div>
+          <div class="ln"><span class="eq">a.m.: P-E, P-S, P-M, N-E, N-S, N-M</span></div>
+          <div class="ln"><span class="eq">p.m.: P-E, P-S, P-M, N-E, N-S, N-M</span></div>
+          <div class="ln ans"><span class="eq">2 × 2 × 3 = 12 combinations</span><span class="why">count = multiply</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>4. (Ex 9.2 Q2(i)) A die is thrown. Choose impossible, unlikely, even chance, likely or certain for each event: (1) a 6 is thrown; (2) a number less than 4; (3) a number greater than 3; (4) a zero; (5) a number less than 7.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(1) P(6) = 1/6</span><span class="why">close to 0</span></div>
+          <div class="ln ans"><span class="eq">Unlikely</span></div>
+          <div class="ln"><span class="eq">(2) {1, 2, 3} = 3/6 · (3) {4, 5, 6} = 3/6</span></div>
+          <div class="ln ans"><span class="eq">Even chance (both)</span></div>
+          <div class="ln ans"><span class="eq">(4) Impossible (no 0 on a die)</span></div>
+          <div class="ln ans"><span class="eq">(5) Certain (all of 1–6 are below 7)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>5. (Ex 9.3 Q16) At summer camp 50 children named their favourite game. Girls: tennis 15, basketball 10, volleyball 5. Boys: tennis 6, basketball 12, volleyball 2. (i) Find the probability that the child chosen was a girl who named tennis. (ii) If a girl is chosen, find the probability that she named volleyball.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">(i) 15 girls named tennis out of 50 children</span><span class="why">whole group is 50</span></div>
+          <div class="ln ans"><span class="eq">(i) 15/50 = 3/10</span></div>
+          <div class="ln"><span class="eq">(ii) Girls total = 15 + 10 + 5 = 30</span><span class="why">new group: girls only</span></div>
+          <div class="ln ans"><span class="eq">(ii) 5/30 = 1/6</span><span class="why">divide by 30, not 50</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>6. (Ex 9.4 Q5) The ace, king, queen and jack of clubs and the ace, king, queen and jack of diamonds are in two piles. A card is taken from each pile (16 outcomes in the sample-space grid). Find the probability that the two cards make a matching pair.</summary>
+        <div class="rv-model">
+          <table class="mgrid"><thead><tr><th>Club \ Diamond</th><th>A</th><th>K</th><th>Q</th><th>J</th></tr></thead><tbody>
+            <tr><th>A</th><td class="hl">AA</td><td>AK</td><td>AQ</td><td>AJ</td></tr>
+            <tr><th>K</th><td>KA</td><td class="hl">KK</td><td>KQ</td><td>KJ</td></tr>
+            <tr><th>Q</th><td>QA</td><td>QK</td><td class="hl">QQ</td><td>QJ</td></tr>
+            <tr><th>J</th><td>JA</td><td>JK</td><td>JQ</td><td class="hl">JJ</td></tr></tbody></table>
+          <div class="work">
+          <div class="ln"><span class="eq">Total outcomes = 4 × 4 = 16</span></div>
+          <div class="ln"><span class="eq">Matching pairs: AA, KK, QQ, JJ = 4</span><span class="why">the diagonal</span></div>
+          <div class="ln ans"><span class="eq">P(match) = 4/16 = 1/4</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>7. (Ex 9.4 Q6) Three fair coins are tossed. List the sample space, then find the probability of at least one head.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">HHH, HHT, HTH, THH, TTT, TTH, THT, HTT</span><span class="why">2 × 2 × 2 = 8</span></div>
+          <div class="ln"><span class="eq">P(no heads) = P(TTT) = 1/8</span><span class="why">easier route</span></div>
+          <div class="ln ans"><span class="eq">P(at least one head) = 1 − 1/8 = 7/8</span><span class="why">1 − P(none)</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>8. (Ex 9.5 Q6) Ciara counted the colours of vehicles passing her home: Red 6, Black 10, Silver 24, Green 4, White 12, Other 8. Estimate the probability that the next vehicle is (i) silver (ii) not black.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">Total = 6 + 10 + 24 + 4 + 12 + 8 = 64</span><span class="why">add every frequency first</span></div>
+          <div class="ln ans"><span class="eq">(i) silver = 24/64 = 3/8</span></div>
+          <div class="ln"><span class="eq">Not black = 64 − 10 = 54</span></div>
+          <div class="ln ans"><span class="eq">(ii) 54/64 = 27/32</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>9. (Ex 9.5 Q10) Olivia, Ben and Joe each rolled a different die 360 times. Counts for 1 to 6: Olivia 27, 69, 78, 43, 76, 67; Ben 58, 62, 63, 57, 56, 64; Joe 141, 52, 56, 53, 53, 5. Only one die was fair: whose? Whose die is most biased? Explain.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">Expected for a fair die = 360 ÷ 6 = 60 of each</span><span class="why">compare to 60</span></div>
+          <div class="ln ans"><span class="eq">Ben’s die is fair: every count is between 56 and 64</span><span class="why">relatively even spread</span></div>
+          <div class="ln"><span class="eq">Olivia: 27 to 78 – quite uneven</span></div>
+          <div class="ln"><span class="eq">Joe: 141 ones but only 5 sixes</span><span class="why">far from 60</span></div>
+          <div class="ln ans"><span class="eq">Joe’s die is most biased; relative frequency of a 6 = 5/360 = 1/72</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>10. (Test yourself 9 Q14) The probability that a biased die lands on 3 is 0.4. Mark rolls it 200 times. Estimate how many times it lands on 3.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">expected frequency = probability × trials</span></div>
+          <div class="ln"><span class="eq">0.4 × 200</span></div>
+          <div class="ln ans"><span class="eq">= 80 times</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>11. (Test yourself 9 Q10) A biased die has probabilities P(1) = 0.1, P(2) = 0.1, P(3) = ?, P(4) = 0.2, P(5) = 0.3, P(6) = 0.1. Find (i) P(3) (ii) P(even number).</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">0.1 + 0.1 + 0.2 + 0.3 + 0.1 = 0.8</span><span class="why">add the known ones</span></div>
+          <div class="ln ans"><span class="eq">(i) P(3) = 1 − 0.8 = 0.2</span><span class="why">all add to 1</span></div>
+          <div class="ln"><span class="eq">(ii) even = 2, 4, 6 → 0.1 + 0.2 + 0.1</span></div>
+          <div class="ln ans"><span class="eq">= 0.4</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>12. (Ex 9.6 Q4) In a class of 28, 25 wore a blazer or a tie or both. 7 wore a blazer with no tie and 8 wore a blazer and a tie. (i) Show this in a Venn diagram. (ii) Find P(tie but not a blazer). (iii) Find P(neither a tie nor a blazer).</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="2" data-names="Blazer,Tie" data-nums="a:7;ab:8;b:10;o:3" data-u="U = 28" data-label="Venn diagram: 7 blazer only, 8 both, 10 tie only, 3 neither"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">Both = 8 · Blazer only = 7</span><span class="why">given</span></div>
+          <div class="ln"><span class="eq">Tie only = 25 − (7 + 8) = 10</span><span class="why">25 wore something</span></div>
+          <div class="ln"><span class="eq">Neither = 28 − 25 = 3</span><span class="why">U − inside</span></div>
+          <div class="ln"><span class="eq">(ii) 10/28 = 5/14</span></div>
+          <div class="ln ans"><span class="eq">(iii) 3/28</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>13. (Test yourself 9 Q18) 5th years: 13 studied German (G), 20 Spanish (S), 25 French (F). 1 studied all three, 3 studied G and S, 3 studied G and F, 3 studied S and F, and 10 studied none. Draw the Venn diagram, find how many answered, then P(French only) and P(French or Spanish).</summary>
+        <div class="rv-model">
+          <div class="rv-venn" data-sets="3" data-names="G,S,F" data-nums="a:8;b:15;c:20;ab:2;ac:2;bc:2;abc:1;o:10" data-u="U = 60" data-label="Three-set Venn diagram of German, Spanish and French"></div>
+          <div class="work">
+          <div class="ln"><span class="eq">Centre = 1 · each pair only = 3 − 1 = 2</span><span class="why">centre, then pairs</span></div>
+          <div class="ln"><span class="eq">G only = 13 − (2 + 2 + 1) = 8 · S only = 20 − 5 = 15 · F only = 25 − 5 = 20</span><span class="why">“only” regions</span></div>
+          <div class="ln"><span class="eq">Inside = 8 + 15 + 20 + 2 + 2 + 2 + 1 = 50 → U = 50 + 10 = 60</span></div>
+          <div class="ln"><span class="eq">P(French only) = 20/60 = 1/3</span></div>
+          <div class="ln ans"><span class="eq">P(F or S) = (20 + 2 + 1 + 2 + 15 + 2)/60 = 42/60 = 7/10</span><span class="why">everything in F or S</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>14. (Ex 9.7 Q3) Paula has a die with 5 red faces and 1 green face. She rolls it twice. Use a tree diagram to find the probability that the die shows the same colour each time.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">P(red) = 5/6 · P(green) = 1/6 on each roll</span><span class="why">label the branches</span></div>
+          <div class="ln"><span class="eq">P(red, red) = 5/6 × 5/6 = 25/36</span><span class="why">multiply along</span></div>
+          <div class="ln"><span class="eq">P(green, green) = 1/6 × 1/6 = 1/36</span></div>
+          <div class="ln ans"><span class="eq">Same colour = 25/36 + 1/36 = 26/36 = 13/18</span><span class="why">add the two paths</span></div></div></div></details>
+
+      <details class="rv-qa"><summary>15. (Ex 9.7 Q7) Silvia throws an ordinary die twice. Using a tree diagram with “six” and “not six”, find the probability that she gets exactly one six.</summary>
+        <div class="rv-model"><div class="work">
+          <div class="ln"><span class="eq">P(six) = 1/6 · P(not six) = 5/6</span></div>
+          <div class="ln"><span class="eq">six then not six = 1/6 × 5/6 = 5/36</span><span class="why">path 1</span></div>
+          <div class="ln"><span class="eq">not six then six = 5/6 × 1/6 = 5/36</span><span class="why">path 2 – don’t forget</span></div>
+          <div class="ln ans"><span class="eq">5/36 + 5/36 = 10/36 = 5/18</span><span class="why">add the paths</span></div></div></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>9.1 Counting</td><td>m × n (× p …) outcomes</td><td>Multiply, never add. Tree or two-way table to list</td></tr>
+        <tr><td>9.2 Scale</td><td>0 impossible · ½ even chance · 1 certain</td><td>A probability is never below 0 or above 1</td></tr>
+        <tr><td>9.3 P(E)</td><td>Favourable ÷ possible · P(not E) = 1 − P(E)</td><td>Simplify the fraction; the bottom is <em>all</em> outcomes</td></tr>
+        <tr><td>9.4 Two events</td><td>Two dice = 36 outcomes; coin + die = 12</td><td>Draw the grid and count; don’t use the 11 totals</td></tr>
+        <tr><td>9.5 Relative frequency</td><td>Successes ÷ total trials</td><td>Add the table first. More trials = more reliable</td></tr>
+        <tr><td>9.5 Expected frequency</td><td>Probability × number of trials</td><td>An average, not a guarantee. All probabilities add to 1</td></tr>
+        <tr><td>9.6 Venn</td><td>Region ÷ total in U</td><td>Include “neither”. Count the overlap once for “or”</td></tr>
+        <tr><td>9.7 Trees</td><td>Multiply along · add between paths</td><td>Branch ends add to 1; “one of each” has two paths</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Maths Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
