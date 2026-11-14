@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Revision – The Personal Essay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: #C9B6FF; }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">English Revision</div><div class="book-title">Personal Essay</div></div>
+    <a href="index.html">&larr; English Year 2</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#structure">Basic Structure</a>
+    <a href="#features">Features &amp; Language</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 1 · Writing</div>
+      <h1>✍️ <span>The Personal Essay</span></h1>
+      <p class="chapter-meta">English Year 2 · Class notes (04/09/26)</p>
+      <div><span class="goal-tag">✔ Plan the 5-step structure</span><span class="goal-tag">✔ List the 7 features</span><span class="goal-tag">✔ Use honest, descriptive, personal language</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you remember about the structure and features of a personal essay, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Personal Essay
+          <ul>
+            <li>Structure<ul><li>Open: anecdote</li><li>Reflect</li><li>Continue / new anecdotes</li><li>Conclude</li><li>Refer back</li></ul></li>
+            <li>Features<ul><li>First person</li><li>Memories / events</li><li>Thoughts &amp; feelings</li><li>Narrative, in sequence</li><li>Informative, reflective</li></ul></li>
+            <li>Language<ul><li>Honest</li><li>Descriptive</li><li>Personal</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Personal essay</strong></td><td>An essay in the first person about your own memories or events, reflecting on your thoughts, feelings and emotions.</td></tr>
+          <tr><td><strong>Anecdote</strong></td><td>A short story about something that happened. It is used to open the essay.</td></tr>
+          <tr><td><strong>Observation</strong></td><td>Something you noticed. This is the other way to open the essay.</td></tr>
+          <tr><td><strong>Reflect</strong></td><td>Think about what an event means and its implications, not just what happened.</td></tr>
+          <tr><td><strong>First person</strong></td><td>Writing as "I".</td></tr>
+          <tr><td><strong>Narrative style</strong></td><td>Telling events as a story, in sequence.</td></tr>
+          <tr><td><strong>Conclusion</strong></td><td>What has changed and what you learned. It refers back to the opening.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="structure">🏗️ Basic Structure of a Personal Essay</div>
+      <div class="key-term"><strong>Personal essay structure:</strong> open with an anecdote or observation, reflect on it, keep reflecting (or add new anecdotes), draw conclusions, then refer back to the opening.
+        <div class="tip">💡 It is like telling a friend a story, then explaining why it stuck with you, and ending by going back to where you started.</div></div>
+      <ol>
+        <li><strong>Open</strong> with an anecdote or observation (1–2 paragraphs).</li>
+        <li><strong>Reflect</strong> on the anecdote and its implications. Depending on the topic, get a bit broader (1–2 paragraphs).</li>
+        <li><strong>Continue reflecting</strong> or bring in new anecdotes to reflect on.</li>
+        <li><strong>Draw conclusions</strong>: what has changed, what you learned.</li>
+        <li><strong>Refer back</strong> to the opening. Address it now that you have reflected.</li>
+      </ol>
+      <div class="mnemonic">🧩 <strong>Remember it: O-R-C-C-R</strong> – <em>Open, Reflect, Continue, Conclude, Return</em> (to the start).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> only telling the story. The reflection (what it means, what you learned) is the heart of the essay, and the ending must go back to the opening.</div>
+
+      <div class="section-heading" id="features">🔎 Features and Language</div>
+      <table><thead><tr><th>Features</th><th>Language</th></tr></thead>
+        <tbody><tr>
+          <td><ul><li>Written in first person</li><li>Deals with memories or events</li><li>Describes thoughts, feelings and emotions</li><li>Narrative style of writing</li><li>Events told in sequence</li><li>Informative and detailed</li><li>Reflective</li></ul></td>
+          <td><ul><li>Honest</li><li>Descriptive</li><li>Personal</li></ul></td>
+        </tr></tbody></table>
+      <div class="example-box"><div class="example-header">📘 Link to The Outsiders</div><div class="example-body">Ponyboy's essay at the end of the novel is about boys who don't get heard enough, inspired by Johnny's words (see Chapter 12 in the next chapter). <!-- TODO: notes only mention this; no further personal-essay link given. -->
+      </div></div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">How should a personal essay open?</div><div class="a">With an anecdote or observation (1–2 paragraphs)</div></div>
+        <div class="rv-card"><div class="q">What do you do after the opening?</div><div class="a">Reflect on the anecdote and its implications; depending on the topic, get a bit broader</div></div>
+        <div class="rv-card"><div class="q">How can you continue after the first reflection?</div><div class="a">Keep reflecting, or bring in new anecdotes to reflect on</div></div>
+        <div class="rv-card"><div class="q">What goes in the conclusion?</div><div class="a">What has changed and what you learned</div></div>
+        <div class="rv-card"><div class="q">How should the essay end?</div><div class="a">Refer back to the opening and address it now that you have reflected</div></div>
+        <div class="rv-card"><div class="q">Which person is a personal essay written in?</div><div class="a">First person</div></div>
+        <div class="rv-card"><div class="q">What does a personal essay describe?</div><div class="a">Thoughts, feelings and emotions</div></div>
+        <div class="rv-card"><div class="q">What writing style does a personal essay use?</div><div class="a">Narrative style, with events told in sequence</div></div>
+        <div class="rv-card"><div class="q">Name the three language qualities of a personal essay.</div><div class="a">Honest, descriptive, personal</div></div>
+        <div class="rv-card"><div class="q">Name all seven features of a personal essay.</div><div class="a">First person; memories/events; thoughts, feelings, emotions; narrative style; events in sequence; informative and detailed; reflective</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>A personal essay opens with an {{anecdote|observation}}.</p>
+        <p>After the opening, you {{reflect}} on the anecdote and its {{implications}}.</p>
+        <p>In the conclusion you say what has {{changed}} and what you {{learned}}.</p>
+        <p>The ending should refer back to the {{opening}}.</p>
+        <p>A personal essay is written in the {{first}} person and in {{narrative}} style.</p>
+        <p>The language of a personal essay is {{honest}}, descriptive and {{personal}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>Which is the best way to open a personal essay?</p><ol><li>A summary of the whole essay</li><li>A list of your hobbies</li><li>An anecdote or observation</li><li>A quotation from a famous author</li></ol><div class="explain">The notes say to open with an anecdote or observation (1–2 paragraphs). A summary gives away the essay and a quote isn't personal.</div></div>
+        <div class="rv-q" data-answer="b"><p>What should you do straight after the opening anecdote?</p><ol><li>Draw your conclusions</li><li>Reflect on it and its implications</li><li>Start a new essay topic</li><li>Retell the same story</li></ol><div class="explain">Reflection comes straight after the opening. Conclusions come later.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which is NOT a feature of a personal essay?</p><ol><li>Written in first person</li><li>Events told in sequence</li><li>Reflective</li><li>Written in third person, with no feelings</li></ol><div class="explain">A personal essay is in first person and describes thoughts, feelings and emotions.</div></div>
+        <div class="rv-q" data-answer="a"><p>How should the essay end?</p><ol><li>By referring back to the opening</li><li>By introducing a brand new anecdote</li><li>By repeating the title</li><li>By asking the reader a question</li></ol><div class="explain">The last step is to refer back to the opening now that you have reflected.</div></div>
+        <div class="rv-q" data-answer="c"><p>What belongs in the conclusion?</p><ol><li>The plot of the story again</li><li>Only descriptions of places</li><li>What has changed and what you learned</li><li>A list of features</li></ol><div class="explain">Conclusions answer "what's changed, what did I learn?".</div></div>
+        <div class="rv-q" data-answer="b"><p>Which set describes the language of a personal essay?</p><ol><li>Formal, technical, distant</li><li>Honest, descriptive, personal</li><li>Persuasive, aggressive, short</li><li>Humorous, vague, impersonal</li></ol><div class="explain">Honest, descriptive and personal are the three qualities in the notes.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <details class="rv-qa"><summary>Outline the basic structure of a personal essay. (5 marks)</summary><div class="rv-model"><ol><li>Open with an anecdote or observation (1–2 paragraphs).</li><li>Reflect on the anecdote and its implications; get a bit broader depending on the topic (1–2 paragraphs).</li><li>Continue reflecting or bring in new anecdotes to reflect on.</li><li>Draw conclusions: what has changed and what you learned.</li><li>Refer back to the opening and address it now that you have reflected.</li></ol></div></details>
+      <details class="rv-qa"><summary>List the features of a personal essay. (4 marks)</summary><div class="rv-model">Any four or more: first person; deals with memories or events; describes thoughts, feelings and emotions; narrative style; events told in sequence; informative and detailed; reflective.</div></details>
+      <details class="rv-qa"><summary>Describe the language you should use in a personal essay and say why. (3 marks)</summary><div class="rv-model">Honest, descriptive and personal. The essay is about your own memories, thoughts and feelings, so honest and personal language makes it believable, and descriptive language lets the reader see and feel what you did. <!-- TODO: the "why" is inferred from the three words in the notes; check with your teacher. --></div></details>
+      <details class="rv-qa"><summary>Plan a personal essay (headings only) on a time something changed how you think. (5 marks)</summary><div class="rv-model">Open: one anecdote of the moment. Reflect: what it meant and its implications, then a little broader. Continue: a second anecdote or further reflection. Conclude: what changed and what you learned. Refer back: return to the opening anecdote and see it differently.</div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead>
+        <tbody>
+          <tr><td>Opening</td><td>Anecdote or observation (1–2 paras)</td><td>Start with something real and specific.</td></tr>
+          <tr><td>Reflection</td><td>Think about the anecdote's implications; go broader</td><td>Don't just retell; explain what it means.</td></tr>
+          <tr><td>Middle</td><td>Keep reflecting or add new anecdotes</td><td>Each anecdote needs its own reflection.</td></tr>
+          <tr><td>Conclusion</td><td>What changed, what you learned</td><td>Be explicit about the change.</td></tr>
+          <tr><td>Ending</td><td>Refer back to the opening</td><td>Answer the opening now that you've reflected.</td></tr>
+          <tr><td>Features</td><td>First person, memories, feelings, narrative, sequence, informative, reflective</td><td>Name at least four with examples.</td></tr>
+          <tr><td>Language</td><td>Honest, descriptive, personal</td><td>Use "I" and sensory detail.</td></tr>
+        </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; English Year 2</a> &nbsp;·&nbsp; <a href="ch2.html">Next: The Outsiders – Plot &amp; Quotes &rarr;</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
