@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Revision – Motion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #2E7D32; --accent-light: #E8F5E9; --accent-bright: #66BB6A;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Science Revision</div><div class="book-title">Elements of Science · Unit 4 Physical World</div></div>
+    <a href="index.html">&larr; Science Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Motion</a>
+    <a href="#topic-2">Speed</a>
+    <a href="#topic-3">Velocity</a>
+    <a href="#topic-4">Acceleration</a>
+    <a href="#topic-5">Distance-time graphs</a>
+    <a href="#topic-6">Velocity-time graphs</a>
+    <a href="#topic-7">Investigating motion</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 27 · Unit 4 – Physical World</div>
+      <h1>🏃 <span>Motion</span></h1>
+      <p class="chapter-meta">Elements of Science, pp. 262–273 · Junior Cycle Science Revision</p>
+      <div><span class="goal-tag">✔ Calculate speed and velocity</span><span class="goal-tag">✔ Explain the difference between speed and velocity</span><span class="goal-tag">✔ Draw, analyse and interpret distance-time graphs</span><span class="goal-tag">✔ Draw, analyse and interpret velocity-time graphs</span><span class="goal-tag">✔ Calculate acceleration</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the topic of motion (speed, velocity and acceleration), then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <style>
+        .formula { font-family: 'JetBrains Mono', monospace; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 15px; font-weight: 600; }
+        .formula small { display: block; font-weight: 400; font-size: 12px; color: var(--muted); margin-top: 2px; }
+        .work { font-family: 'JetBrains Mono', monospace; font-size: 13.5px; margin: 8px 0; }
+        .work .ln { display: flex; justify-content: space-between; gap: 12px; padding: 3px 8px; border-bottom: 1px dashed var(--border); }
+        .work .why { font-family: 'DM Sans', sans-serif; color: var(--muted); font-size: 12.5px; }
+        .work .ans { background: #FFF8E1; font-weight: 700; border-radius: 6px; }
+      </style>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Motion
+          <ul>
+            <li>Types of motion
+              <ul><li>Linear (straight line)</li><li>Circular</li><li>Changing direction</li></ul></li>
+            <li>Speed
+              <ul><li>distance ÷ time</li><li>Unit m/s</li></ul></li>
+            <li>Velocity
+              <ul><li>Speed + direction</li></ul></li>
+            <li>Acceleration
+              <ul><li>Change in velocity ÷ time</li><li>Unit m/s²</li></ul></li>
+            <li>Distance-time graph
+              <ul><li>Slope = speed</li><li>Flat = stopped</li></ul></li>
+            <li>Velocity-time graph
+              <ul><li>Slope = acceleration</li><li>Flat = constant velocity</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Motion</strong></td><td>When an object moves, it is said to be in motion.</td></tr>
+        <tr><td><strong>Linear motion</strong></td><td>Movement in a straight line. “Linear” means arranged in a straight line, so it plots as a straight line on a graph.</td></tr>
+        <tr><td><strong>Speed</strong></td><td>How fast an object in motion travels from one position to another: distance ÷ time (m/s).</td></tr>
+        <tr><td><strong>Velocity</strong></td><td>The speed of an object in motion <em>and</em> the direction it travels in.</td></tr>
+        <tr><td><strong>Acceleration</strong></td><td>The rate at which the velocity of an object changes: change in velocity ÷ time taken (m/s²).</td></tr>
+        <tr><td><strong>Distance-time graph</strong></td><td>A graph with distance on the y-axis and time on the x-axis; used to calculate an object’s speed.</td></tr>
+        <tr><td><strong>Velocity-time graph</strong></td><td>A graph with velocity on the y-axis and time on the x-axis; used to calculate an object’s acceleration.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🎢 Motion</div>
+      <div class="key-term">When an object moves, it is said to be in <strong>motion</strong>. Movement in a straight line is called <strong>linear</strong> motion.</div>
+      <table><thead><tr><th>Type of motion</th><th>Example</th></tr></thead><tbody>
+        <tr><td>Moving in a <strong>straight line</strong> (linear)</td><td>A car on a road</td></tr>
+        <tr><td>Moving in a <strong>circle</strong></td><td>A Ferris wheel</td></tr>
+        <tr><td><strong>Changing direction</strong></td><td>A rollercoaster</td></tr>
+      </tbody></table>
+      <div class="tip">💡 “Linear” = “line”. If you plot linear motion at constant speed on a graph you always get a straight (linear) line.</div>
+
+      <div class="section-heading" id="topic-2">🏃 Speed</div>
+      <div class="key-term"><strong>Speed</strong> describes how fast an object in motion travels from one position to another. The speed of an object is the distance it travels divided by the time taken.</div>
+      <div class="formula">speed (m/s) = distance (m) ÷ time (s)<small>Unit of speed in science: m/s (metres per second)</small></div>
+      <div class="tip">💡 A speedometer-style way to think of it: speed tells you “how many metres per second”. 5 m/s means 5 metres every second.</div>
+      <div class="mnemonic">🧩 <strong>Remember it – the formula triangle:</strong> put <strong>distance</strong> on top and <strong>speed × time</strong> on the bottom. Cover the quantity you want and use what you can still see:
+        <div class="formula" style="background:#fff">distance = speed × time<small>time = distance ÷ speed</small></div></div>
+<div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:12px 0"><svg viewBox="0 0 260 190" role="img" aria-label="Formula triangle: distance on top, speed and time below" style="max-width:260px;width:100%"><polygon points="130,8 10,182 250,182" fill="#E8F5E9" stroke="#2E7D32" stroke-width="3"/><line x1="49" y1="125" x2="211" y2="125" stroke="#2E7D32" stroke-width="3"/><text x="130" y="108" text-anchor="middle" font-size="17" font-weight="700" fill="#1A1A2E">distance</text><text x="90" y="160" text-anchor="middle" font-size="17" font-weight="700" fill="#1A1A2E">speed</text><text x="130" y="160" text-anchor="middle" font-size="24" font-weight="700" fill="#1A1A2E">×</text><text x="172" y="160" text-anchor="middle" font-size="17" font-weight="700" fill="#1A1A2E">time</text></svg><div><ul style="margin:0;padding-left:18px"><li>Cover <strong>distance</strong> → speed × time</li><li>Cover <strong>speed</strong> → distance ÷ time</li><li>Cover <strong>time</strong> → distance ÷ speed</li></ul></div></div>
+      <table><thead><tr><th>Event</th><th>Speed (m/s)</th></tr></thead><tbody>
+        <tr><td>Walking</td><td>1.5</td></tr><tr><td>Sprinting</td><td>8</td></tr><tr><td>Car at national speed limit</td><td>27.7</td></tr>
+        <tr><td>Passenger plane</td><td>250</td></tr><tr><td>Speed of sound</td><td>330</td></tr><tr><td>Earth moving around the Sun</td><td>30 000</td></tr><tr><td>Speed of light in a vacuum</td><td>300 000 000</td></tr>
+      </tbody></table>
+      <div class="tip">🔎 <strong>Eureka:</strong> the speed of light is the fastest thing in the universe. Light takes 1.3 s to travel from the Moon to Earth, a distance of nearly 390 000 km.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake: units.</strong> Speed in everyday life is given in km/h (the national speed limit on primary roads is 100 km/h, just less than 28 m/s). If a question gives km or hours, <strong>convert to metres (m) and seconds (s) before calculating speed</strong>. Minutes → × 60 to get seconds.</div>
+      <div class="example-box"><div class="example-header">📝 Worked example: a train at a constant 30 m/s</div><div class="example-body">
+        <p><strong>(a)</strong> How long does it take to travel 2.1 km?</p>
+        <div class="work">
+          <div class="ln"><span>2.1 km = 2100 m</span><span class="why">convert units</span></div>
+          <div class="ln"><span>time = distance ÷ speed = 2100 ÷ 30</span><span class="why">rearrange</span></div>
+          <div class="ln ans"><span>time = 70 s (1 minute 10 seconds)</span><span class="why">answer</span></div>
+        </div>
+        <p><strong>(b)</strong> How far does it travel in 10 minutes?</p>
+        <div class="work">
+          <div class="ln"><span>10 minutes = 10 × 60 = 600 s</span><span class="why">convert units</span></div>
+          <div class="ln"><span>distance = speed × time = 30 × 600</span><span class="why">rearrange</span></div>
+          <div class="ln ans"><span>distance = 18 000 m (18 km)</span><span class="why">answer</span></div>
+        </div></div></div>
+
+      <div class="example-box"><div class="example-header">📝 Extra practice (not from the textbook): converting km/h</div><div class="example-body">
+        <p>The book says to convert km → m and hours → s before calculating. Dividing by 3.6 does both at once.</p>
+        <p><strong>(a)</strong> A car travels at 72 km/h. What is its speed in m/s?</p>
+        <div class="work">
+          <div class="ln"><span>72 km = 72 000 m; 1 h = 3600 s</span><span class="why">convert units</span></div>
+          <div class="ln"><span>72 000 ÷ 3600</span><span class="why">m ÷ s</span></div>
+          <div class="ln ans"><span>speed = 20 m/s</span><span class="why">answer</span></div>
+        </div>
+        <p><strong>(b)</strong> At that speed, how far does it travel in 30 s?</p>
+        <div class="work">
+          <div class="ln"><span>distance = speed × time = 20 × 30</span><span class="why">formula</span></div>
+          <div class="ln ans"><span>distance = 600 m</span><span class="why">answer</span></div>
+        </div>
+        <div class="tip">💡 km/h → m/s: <strong>÷ 3.6</strong>. m/s → km/h: <strong>× 3.6</strong> (e.g. 25 m/s = 90 km/h).</div></div></div>
+
+      <div class="section-heading" id="topic-3">🧭 Velocity</div>
+      <div class="key-term"><strong>Velocity</strong> describes the speed of an object in motion <em>and the direction it travels in</em>. For example, a car travelling at a speed of 20 m/s east has a velocity of 20 m/s east.</div>
+      <div class="formula">velocity = distance (m) ÷ time (s), plus a direction<small>Same unit as speed (m/s), but always state the direction</small></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>velocity = speed + direction</strong>. Speed says “how fast?”; velocity says “how fast <em>and which way?</em>”.</div>
+<svg viewBox="0 0 460 150" role="img" aria-label="A car with speed 20 m/s and the same car with velocity 20 m/s east" style="max-width:460px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#C62828"/></marker></defs><text x="115" y="22" text-anchor="middle" font-size="13" font-weight="700">SPEED: how fast only</text><text x="345" y="22" text-anchor="middle" font-size="13" font-weight="700">VELOCITY: how fast + direction</text><line x1="230" y1="8" x2="230" y2="142" stroke="#E5E7EB"/><rect x="70" y="62" width="90" height="26" rx="8" fill="#90A4AE"/><rect x="88" y="44" width="48" height="22" rx="6" fill="#B0BEC5"/><circle cx="90" cy="90" r="9" fill="#333"/><circle cx="140" cy="90" r="9" fill="#333"/><rect x="300" y="62" width="90" height="26" rx="8" fill="#90A4AE"/><rect x="318" y="44" width="48" height="22" rx="6" fill="#B0BEC5"/><circle cx="320" cy="90" r="9" fill="#333"/><circle cx="370" cy="90" r="9" fill="#333"/><text x="115" y="130" text-anchor="middle" font-size="14" font-weight="600">20 m/s</text><line x1="300" y1="110" x2="400" y2="110" stroke="#C62828" stroke-width="3" marker-end="url(#ah)"/><text x="345" y="140" text-anchor="middle" font-size="14" font-weight="600">20 m/s east</text><g font-size="11" font-weight="700" fill="#1A1A2E"><text x="426" y="48" text-anchor="middle">N</text><text x="426" y="88" text-anchor="middle">S</text><text x="404" y="71" text-anchor="middle">W</text><text x="449" y="71" text-anchor="middle">E</text><line x1="426" y1="52" x2="426" y2="80" stroke="#555"/><line x1="412" y1="66" x2="440" y2="66" stroke="#555"/></g></svg>
+      <div class="example-box"><div class="example-header">📝 Worked example: the cyclist</div><div class="example-body">
+        <p>A cyclist lives 3 km north of his school. It takes him 5 minutes to travel there. What is his velocity?</p>
+        <div class="work">
+          <div class="ln"><span>velocity = 3000 m ÷ (5 × 60 s)</span><span class="why">convert units</span></div>
+          <div class="ln"><span>velocity = 3000 m ÷ 300 s</span><span class="why">divide</span></div>
+          <div class="ln ans"><span>velocity = 10 m/s south</span><span class="why">add direction</span></div>
+        </div>
+        <p style="font-size:14px">As the cyclist lives north of his school, he must travel <em>south</em> to get there.</p></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> leaving out the direction. A velocity answer needs a number, the unit <em>and</em> a direction (e.g. 80 m/s to the left).</div>
+
+      <div class="section-heading" id="topic-4">🚗 Acceleration</div>
+      <div class="key-term"><strong>Acceleration</strong> is the rate at which the velocity of an object changes. It is the difference between the initial and final velocity: final velocity minus initial velocity.
+        <div class="tip">💡 An object speeding up <em>or</em> slowing down is accelerating. The accelerator pedal makes a car increase in velocity every second; the brake pedal makes it decrease in velocity every second.</div></div>
+      <div class="formula">acceleration (m/s²) = change in velocity (m/s) ÷ time taken (s)<small>change in velocity = final velocity − initial velocity · Unit: m/s² (metres per second squared)</small></div>
+      <div class="example-box"><div class="example-header">📝 Worked example 1: speeding up</div><div class="example-body">
+        <p>A car is moving at 10 m/s and changes its velocity to 20 m/s in 5 s. Calculate its acceleration.</p>
+        <div class="work">
+          <div class="ln"><span>change in velocity = 20 − 10 = 10 m/s</span><span class="why">final − initial</span></div>
+          <div class="ln"><span>acceleration = 10 ÷ 5</span><span class="why">÷ time</span></div>
+          <div class="ln ans"><span>acceleration = 2 m/s²</span><span class="why">answer</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📝 Worked example 2: slowing down</div><div class="example-body">
+        <p>A motorbike is travelling at 24 m/s, then brakes to a stop in 3 s. Calculate its acceleration.</p>
+        <div class="work">
+          <div class="ln"><span>change in velocity = 0 − 24 = −24 m/s</span><span class="why">final − initial</span></div>
+          <div class="ln"><span>acceleration = −24 ÷ 3</span><span class="why">÷ time</span></div>
+          <div class="ln ans"><span>acceleration = −8 m/s²</span><span class="why">negative = slowing</span></div>
+        </div>
+        <p style="font-size:14px">The motorbike has a <strong>negative acceleration</strong> because it slowed down, i.e. its velocity decreased.</p></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> doing initial − final. Always <strong>final minus initial</strong>, so slowing down gives a negative answer. Also: the unit is m/s², not m/s.</div>
+
+      <div class="section-heading" id="topic-5">📈 Distance-time graphs</div>
+      <div class="key-term">A <strong>distance-time graph</strong> can be used to calculate an object’s speed. It shows <strong>distance on the y-axis</strong> and <strong>time on the x-axis</strong>.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:14px 0"><figure style="margin:0"><svg viewBox="0 0 300 210" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:300px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="172" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="185" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="105.5" y1="172" x2="105.5" y2="24" stroke="#DDE6EE"/><text x="105.5" y="185" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="165.0" y1="172" x2="165.0" y2="24" stroke="#DDE6EE"/><text x="165.0" y="185" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="224.5" y1="172" x2="224.5" y2="24" stroke="#DDE6EE"/><text x="224.5" y="185" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="284.0" y1="172" x2="284.0" y2="24" stroke="#DDE6EE"/><text x="284.0" y="185" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="46" y1="172.0" x2="284" y2="172.0" stroke="#DDE6EE"/><text x="41" y="175.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="135.0" x2="284" y2="135.0" stroke="#DDE6EE"/><text x="41" y="138.0" text-anchor="end" font-size="10" fill="#555">1</text><line x1="46" y1="98.0" x2="284" y2="98.0" stroke="#DDE6EE"/><text x="41" y="101.0" text-anchor="end" font-size="10" fill="#555">2</text><line x1="46" y1="61.0" x2="284" y2="61.0" stroke="#DDE6EE"/><text x="41" y="64.0" text-anchor="end" font-size="10" fill="#555">3</text><line x1="46" y1="24.0" x2="284" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="172" x2="284" y2="172" stroke="#333"/><line x1="46" y1="172" x2="46" y2="24" stroke="#333"/><text x="165.0" y="204" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 98.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,172.0 284.0,24.0"/><circle cx="46.0" cy="172.0" r="3.5" fill="#1A1A2E"/><text x="52.0" y="166.0" font-size="12" font-weight="700"></text><circle cx="284.0" cy="24.0" r="3.5" fill="#1A1A2E"/><text x="290.0" y="18.0" font-size="12" font-weight="700"></text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Straight line sloping up = <strong>constant speed</strong></figcaption></figure><figure style="margin:0"><svg viewBox="0 0 300 210" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:300px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="172" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="185" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="105.5" y1="172" x2="105.5" y2="24" stroke="#DDE6EE"/><text x="105.5" y="185" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="165.0" y1="172" x2="165.0" y2="24" stroke="#DDE6EE"/><text x="165.0" y="185" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="224.5" y1="172" x2="224.5" y2="24" stroke="#DDE6EE"/><text x="224.5" y="185" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="284.0" y1="172" x2="284.0" y2="24" stroke="#DDE6EE"/><text x="284.0" y="185" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="46" y1="172.0" x2="284" y2="172.0" stroke="#DDE6EE"/><text x="41" y="175.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="135.0" x2="284" y2="135.0" stroke="#DDE6EE"/><text x="41" y="138.0" text-anchor="end" font-size="10" fill="#555">1</text><line x1="46" y1="98.0" x2="284" y2="98.0" stroke="#DDE6EE"/><text x="41" y="101.0" text-anchor="end" font-size="10" fill="#555">2</text><line x1="46" y1="61.0" x2="284" y2="61.0" stroke="#DDE6EE"/><text x="41" y="64.0" text-anchor="end" font-size="10" fill="#555">3</text><line x1="46" y1="24.0" x2="284" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="172" x2="284" y2="172" stroke="#333"/><line x1="46" y1="172" x2="46" y2="24" stroke="#333"/><text x="165.0" y="204" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 98.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#C62828" stroke-width="2.5" points="46.0,172.0 284.0,24.0"/><polyline fill="none" stroke="#1976D2" stroke-width="2.5" points="46.0,172.0 284.0,98.0"/></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Less steep (blue) = <strong>slower</strong>; steeper (red) = faster</figcaption></figure><figure style="margin:0"><svg viewBox="0 0 300 210" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:300px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="172" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="185" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="105.5" y1="172" x2="105.5" y2="24" stroke="#DDE6EE"/><text x="105.5" y="185" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="165.0" y1="172" x2="165.0" y2="24" stroke="#DDE6EE"/><text x="165.0" y="185" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="224.5" y1="172" x2="224.5" y2="24" stroke="#DDE6EE"/><text x="224.5" y="185" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="284.0" y1="172" x2="284.0" y2="24" stroke="#DDE6EE"/><text x="284.0" y="185" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="46" y1="172.0" x2="284" y2="172.0" stroke="#DDE6EE"/><text x="41" y="175.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="135.0" x2="284" y2="135.0" stroke="#DDE6EE"/><text x="41" y="138.0" text-anchor="end" font-size="10" fill="#555">1</text><line x1="46" y1="98.0" x2="284" y2="98.0" stroke="#DDE6EE"/><text x="41" y="101.0" text-anchor="end" font-size="10" fill="#555">2</text><line x1="46" y1="61.0" x2="284" y2="61.0" stroke="#DDE6EE"/><text x="41" y="64.0" text-anchor="end" font-size="10" fill="#555">3</text><line x1="46" y1="24.0" x2="284" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="172" x2="284" y2="172" stroke="#333"/><line x1="46" y1="172" x2="46" y2="24" stroke="#333"/><text x="165.0" y="204" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 98.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,172.0 105.5,162.8 165.0,135.0 224.5,88.8 284.0,24.0"/></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Curve getting steeper = <strong>speeding up</strong></figcaption></figure><figure style="margin:0"><svg viewBox="0 0 300 210" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:300px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="172" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="185" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="105.5" y1="172" x2="105.5" y2="24" stroke="#DDE6EE"/><text x="105.5" y="185" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="165.0" y1="172" x2="165.0" y2="24" stroke="#DDE6EE"/><text x="165.0" y="185" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="224.5" y1="172" x2="224.5" y2="24" stroke="#DDE6EE"/><text x="224.5" y="185" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="284.0" y1="172" x2="284.0" y2="24" stroke="#DDE6EE"/><text x="284.0" y="185" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="46" y1="172.0" x2="284" y2="172.0" stroke="#DDE6EE"/><text x="41" y="175.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="135.0" x2="284" y2="135.0" stroke="#DDE6EE"/><text x="41" y="138.0" text-anchor="end" font-size="10" fill="#555">1</text><line x1="46" y1="98.0" x2="284" y2="98.0" stroke="#DDE6EE"/><text x="41" y="101.0" text-anchor="end" font-size="10" fill="#555">2</text><line x1="46" y1="61.0" x2="284" y2="61.0" stroke="#DDE6EE"/><text x="41" y="64.0" text-anchor="end" font-size="10" fill="#555">3</text><line x1="46" y1="24.0" x2="284" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="172" x2="284" y2="172" stroke="#333"/><line x1="46" y1="172" x2="46" y2="24" stroke="#333"/><text x="165.0" y="204" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 98.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,172.0 165.0,98.0 284.0,98.0"/></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Horizontal line = <strong>stopped</strong> (speed 0)</figcaption></figure></div>
+      <table><thead><tr><th>Shape of line</th><th>What it means</th></tr></thead><tbody>
+        <tr><td><strong>Straight line sloping upwards</strong></td><td>Constant speed. To find it, take any point and divide the distance value by the time value.</td></tr>
+        <tr><td><strong>Straight line, less steep</strong></td><td>Moving more slowly at a constant speed.</td></tr>
+        <tr><td><strong>Curved line getting steeper</strong></td><td>Speed is changing: the object is getting faster. Take any two points and divide the distance values by the time values.</td></tr>
+        <tr><td><strong>Horizontal line</strong></td><td>The object has stopped (speed 0 m/s).</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> on a distance-time graph, <strong>steeper = faster</strong>, <strong>flat = stopped</strong>.</div>
+      <div class="example-box"><div class="example-header">📝 Worked examples from the textbook</div><div class="example-body">
+        <ul>
+          <li><strong>Fig 27.6, point C:</strong> distance = 8 m, time = 4 s → speed = 8 ÷ 4 = <strong>2 m/s</strong>.</li>
+          <li><strong>Fig 27.7, point G:</strong> distance = 10 m, time = 10 s → speed = 10 ÷ 10 = <strong>1 m/s</strong> (less steep, so slower).</li>
+          <li><strong>Fig 27.8 (curve):</strong> at H, 2 m in 1 s = 2 m/s; at I, 6 m in 2 s = 3 m/s. The speed has <strong>increased from 2 m/s to 3 m/s</strong>.</li>
+          <li><strong>Fig 27.9:</strong> K to M the object moves at a constant 1 m/s; from M to O the speed is 0 m/s, so it has come to a stop.</li>
+          <li><strong>Fig 27.10:</strong> line A reaches 16 m in 4 s → <strong>4 m/s</strong>; line B reaches 24 m in 4 s → <strong>6 m/s</strong>. B is steeper, so B is moving faster.</li>
+        </ul></div></div>
+      <figure style="margin:0"><svg viewBox="0 0 380 250" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:380px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="212" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="225" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="125.5" y1="212" x2="125.5" y2="24" stroke="#DDE6EE"/><text x="125.5" y="225" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="205.0" y1="212" x2="205.0" y2="24" stroke="#DDE6EE"/><text x="205.0" y="225" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="284.5" y1="212" x2="284.5" y2="24" stroke="#DDE6EE"/><text x="284.5" y="225" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="364.0" y1="212" x2="364.0" y2="24" stroke="#DDE6EE"/><text x="364.0" y="225" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="46" y1="212.0" x2="364" y2="212.0" stroke="#DDE6EE"/><text x="41" y="215.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="180.7" x2="364" y2="180.7" stroke="#DDE6EE"/><text x="41" y="183.7" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="149.3" x2="364" y2="149.3" stroke="#DDE6EE"/><text x="41" y="152.3" text-anchor="end" font-size="10" fill="#555">8</text><line x1="46" y1="118.0" x2="364" y2="118.0" stroke="#DDE6EE"/><text x="41" y="121.0" text-anchor="end" font-size="10" fill="#555">12</text><line x1="46" y1="86.7" x2="364" y2="86.7" stroke="#DDE6EE"/><text x="41" y="89.7" text-anchor="end" font-size="10" fill="#555">16</text><line x1="46" y1="55.3" x2="364" y2="55.3" stroke="#DDE6EE"/><text x="41" y="58.3" text-anchor="end" font-size="10" fill="#555">20</text><line x1="46" y1="24.0" x2="364" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">24</text><line x1="46" y1="212" x2="364" y2="212" stroke="#333"/><line x1="46" y1="212" x2="46" y2="24" stroke="#333"/><text x="205.0" y="244" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 118.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#1976D2" stroke-width="2.5" points="46.0,212.0 364.0,86.7"/><polyline fill="none" stroke="#C62828" stroke-width="2.5" points="46.0,212.0 364.0,24.0"/><circle cx="364.0" cy="86.7" r="3.5" fill="#1A1A2E"/><text x="370.0" y="80.7" font-size="12" font-weight="700">A</text><circle cx="364.0" cy="24.0" r="3.5" fill="#1A1A2E"/><text x="370.0" y="18.0" font-size="12" font-weight="700">B</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Fig 27.10: A = 16 ÷ 4 = 4 m/s; B = 24 ÷ 4 = 6 m/s (B is steeper, so faster)</figcaption></figure>
+      <div class="example-box"><div class="example-header">📝 Extra practice (not from the textbook): speed from a graph</div><div class="example-body">
+        <p>The straight line below passes through P (2 s, 6 m) and Q (5 s, 15 m). Find the speed.</p>
+        <figure style="margin:0"><svg viewBox="0 0 380 250" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:380px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="212" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="225" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="99.0" y1="212" x2="99.0" y2="24" stroke="#DDE6EE"/><text x="99.0" y="225" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="152.0" y1="212" x2="152.0" y2="24" stroke="#DDE6EE"/><text x="152.0" y="225" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="205.0" y1="212" x2="205.0" y2="24" stroke="#DDE6EE"/><text x="205.0" y="225" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="258.0" y1="212" x2="258.0" y2="24" stroke="#DDE6EE"/><text x="258.0" y="225" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="311.0" y1="212" x2="311.0" y2="24" stroke="#DDE6EE"/><text x="311.0" y="225" text-anchor="middle" font-size="10" fill="#555">5</text><line x1="364.0" y1="212" x2="364.0" y2="24" stroke="#DDE6EE"/><text x="364.0" y="225" text-anchor="middle" font-size="10" fill="#555">6</text><line x1="46" y1="212.0" x2="364" y2="212.0" stroke="#DDE6EE"/><text x="41" y="215.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="180.7" x2="364" y2="180.7" stroke="#DDE6EE"/><text x="41" y="183.7" text-anchor="end" font-size="10" fill="#555">3</text><line x1="46" y1="149.3" x2="364" y2="149.3" stroke="#DDE6EE"/><text x="41" y="152.3" text-anchor="end" font-size="10" fill="#555">6</text><line x1="46" y1="118.0" x2="364" y2="118.0" stroke="#DDE6EE"/><text x="41" y="121.0" text-anchor="end" font-size="10" fill="#555">9</text><line x1="46" y1="86.7" x2="364" y2="86.7" stroke="#DDE6EE"/><text x="41" y="89.7" text-anchor="end" font-size="10" fill="#555">12</text><line x1="46" y1="55.3" x2="364" y2="55.3" stroke="#DDE6EE"/><text x="41" y="58.3" text-anchor="end" font-size="10" fill="#555">15</text><line x1="46" y1="24.0" x2="364" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">18</text><line x1="46" y1="212" x2="364" y2="212" stroke="#333"/><line x1="46" y1="212" x2="46" y2="24" stroke="#333"/><text x="205.0" y="244" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 118.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,212.0 364.0,24.0"/><circle cx="152.0" cy="149.3" r="3.5" fill="#1A1A2E"/><text x="158.0" y="143.3" font-size="12" font-weight="700">P</text><circle cx="311.0" cy="55.3" r="3.5" fill="#1A1A2E"/><text x="317.0" y="49.3" font-size="12" font-weight="700">Q</text><line x1="152.0" y1="149.3" x2="311.0" y2="149.3" stroke="#C62828" stroke-width="2" stroke-dasharray="5 3"/><line x1="311.0" y1="149.3" x2="311.0" y2="55.3" stroke="#1976D2" stroke-width="2" stroke-dasharray="5 3"/><text x="231.5" y="163.3" text-anchor="middle" font-size="11" font-weight="700" fill="#C62828">across = 3 s</text><text x="316.0" y="102.3" font-size="11" font-weight="700" fill="#1976D2">up = 9 m</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Slope triangle: speed = up ÷ across = 9 ÷ 3 = 3 m/s</figcaption></figure>
+        <div class="work">
+          <div class="ln"><span>distance change = 15 − 6 = 9 m</span><span class="why">up</span></div>
+          <div class="ln"><span>time taken = 5 − 2 = 3 s</span><span class="why">across</span></div>
+          <div class="ln ans"><span>speed = 9 ÷ 3 = 3 m/s</span><span class="why">up ÷ across</span></div>
+        </div></div></div>
+      <div class="example-box"><div class="example-header">📝 Extra practice (not from the textbook): a journey in stages</div><div class="example-body">
+        <p>A student runs 60 m away from the start in 20 s (P→Q), stops for 10 s (Q→R), then runs back to the start in 30 s (R→S). Find the speed in each stage and the average speed for the whole journey.</p>
+        <figure style="margin:0"><svg viewBox="0 0 380 250" role="img" aria-label="Distance (m) against Time (s) graph" style="max-width:380px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="212" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="225" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="99.0" y1="212" x2="99.0" y2="24" stroke="#DDE6EE"/><text x="99.0" y="225" text-anchor="middle" font-size="10" fill="#555">10</text><line x1="152.0" y1="212" x2="152.0" y2="24" stroke="#DDE6EE"/><text x="152.0" y="225" text-anchor="middle" font-size="10" fill="#555">20</text><line x1="205.0" y1="212" x2="205.0" y2="24" stroke="#DDE6EE"/><text x="205.0" y="225" text-anchor="middle" font-size="10" fill="#555">30</text><line x1="258.0" y1="212" x2="258.0" y2="24" stroke="#DDE6EE"/><text x="258.0" y="225" text-anchor="middle" font-size="10" fill="#555">40</text><line x1="311.0" y1="212" x2="311.0" y2="24" stroke="#DDE6EE"/><text x="311.0" y="225" text-anchor="middle" font-size="10" fill="#555">50</text><line x1="364.0" y1="212" x2="364.0" y2="24" stroke="#DDE6EE"/><text x="364.0" y="225" text-anchor="middle" font-size="10" fill="#555">60</text><line x1="46" y1="212.0" x2="364" y2="212.0" stroke="#DDE6EE"/><text x="41" y="215.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="180.7" x2="364" y2="180.7" stroke="#DDE6EE"/><text x="41" y="183.7" text-anchor="end" font-size="10" fill="#555">10</text><line x1="46" y1="149.3" x2="364" y2="149.3" stroke="#DDE6EE"/><text x="41" y="152.3" text-anchor="end" font-size="10" fill="#555">20</text><line x1="46" y1="118.0" x2="364" y2="118.0" stroke="#DDE6EE"/><text x="41" y="121.0" text-anchor="end" font-size="10" fill="#555">30</text><line x1="46" y1="86.7" x2="364" y2="86.7" stroke="#DDE6EE"/><text x="41" y="89.7" text-anchor="end" font-size="10" fill="#555">40</text><line x1="46" y1="55.3" x2="364" y2="55.3" stroke="#DDE6EE"/><text x="41" y="58.3" text-anchor="end" font-size="10" fill="#555">50</text><line x1="46" y1="24.0" x2="364" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">60</text><line x1="46" y1="212" x2="364" y2="212" stroke="#333"/><line x1="46" y1="212" x2="46" y2="24" stroke="#333"/><text x="205.0" y="244" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 118.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Distance (m)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,212.0 152.0,24.0 205.0,24.0 364.0,212.0"/><circle cx="46.0" cy="212.0" r="3.5" fill="#1A1A2E"/><text x="52.0" y="206.0" font-size="12" font-weight="700">P</text><circle cx="152.0" cy="24.0" r="3.5" fill="#1A1A2E"/><text x="158.0" y="18.0" font-size="12" font-weight="700">Q</text><circle cx="205.0" cy="24.0" r="3.5" fill="#1A1A2E"/><text x="211.0" y="18.0" font-size="12" font-weight="700">R</text><circle cx="364.0" cy="212.0" r="3.5" fill="#1A1A2E"/><text x="370.0" y="206.0" font-size="12" font-weight="700">S</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Extra practice: a run out, a stop, and a run back</figcaption></figure>
+        <div class="work">
+          <div class="ln"><span>P→Q: 60 ÷ 20 = 3 m/s</span><span class="why">steep, away</span></div>
+          <div class="ln"><span>Q→R: 0 ÷ 10 = 0 m/s</span><span class="why">horizontal = stopped</span></div>
+          <div class="ln"><span>R→S: 60 ÷ 30 = 2 m/s</span><span class="why">back to start</span></div>
+          <div class="ln ans"><span>whole journey: (60 + 60) ÷ 60 s = 2 m/s</span><span class="why">total distance ÷ total time</span></div>
+        </div>
+        <p style="font-size:14px">R→S is less steep than P→Q, so the run back was slower. The total distance run is 120 m, even though the student ends up where they started.</p></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying a horizontal line on a distance-time graph means “constant speed”. It means the object has <strong>stopped</strong>: the distance isn’t changing.</div>
+
+      <div class="section-heading" id="topic-6">📉 Velocity-time graphs</div>
+      <div class="key-term">A <strong>velocity-time graph</strong> can be used to calculate an object’s acceleration. It looks similar to a distance-time graph, except it shows <strong>velocity on the y-axis</strong>. To calculate acceleration between two points, divide the <strong>change in velocity</strong> by the <strong>time taken</strong>.</div>
+      <figure style="margin:0"><svg viewBox="0 0 380 250" role="img" aria-label="Velocity (m/s) against Time (s) graph" style="max-width:380px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="212" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="225" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="70.5" y1="212" x2="70.5" y2="24" stroke="#DDE6EE"/><text x="70.5" y="225" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="94.9" y1="212" x2="94.9" y2="24" stroke="#DDE6EE"/><text x="94.9" y="225" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="119.4" y1="212" x2="119.4" y2="24" stroke="#DDE6EE"/><text x="119.4" y="225" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="143.8" y1="212" x2="143.8" y2="24" stroke="#DDE6EE"/><text x="143.8" y="225" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="168.3" y1="212" x2="168.3" y2="24" stroke="#DDE6EE"/><text x="168.3" y="225" text-anchor="middle" font-size="10" fill="#555">5</text><line x1="192.8" y1="212" x2="192.8" y2="24" stroke="#DDE6EE"/><text x="192.8" y="225" text-anchor="middle" font-size="10" fill="#555">6</text><line x1="217.2" y1="212" x2="217.2" y2="24" stroke="#DDE6EE"/><text x="217.2" y="225" text-anchor="middle" font-size="10" fill="#555">7</text><line x1="241.7" y1="212" x2="241.7" y2="24" stroke="#DDE6EE"/><text x="241.7" y="225" text-anchor="middle" font-size="10" fill="#555">8</text><line x1="266.2" y1="212" x2="266.2" y2="24" stroke="#DDE6EE"/><text x="266.2" y="225" text-anchor="middle" font-size="10" fill="#555">9</text><line x1="290.6" y1="212" x2="290.6" y2="24" stroke="#DDE6EE"/><text x="290.6" y="225" text-anchor="middle" font-size="10" fill="#555">10</text><line x1="315.1" y1="212" x2="315.1" y2="24" stroke="#DDE6EE"/><text x="315.1" y="225" text-anchor="middle" font-size="10" fill="#555">11</text><line x1="339.5" y1="212" x2="339.5" y2="24" stroke="#DDE6EE"/><text x="339.5" y="225" text-anchor="middle" font-size="10" fill="#555">12</text><line x1="364.0" y1="212" x2="364.0" y2="24" stroke="#DDE6EE"/><text x="364.0" y="225" text-anchor="middle" font-size="10" fill="#555">13</text><line x1="46" y1="212.0" x2="364" y2="212.0" stroke="#DDE6EE"/><text x="41" y="215.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="188.5" x2="364" y2="188.5" stroke="#DDE6EE"/><text x="41" y="191.5" text-anchor="end" font-size="10" fill="#555">1</text><line x1="46" y1="165.0" x2="364" y2="165.0" stroke="#DDE6EE"/><text x="41" y="168.0" text-anchor="end" font-size="10" fill="#555">2</text><line x1="46" y1="141.5" x2="364" y2="141.5" stroke="#DDE6EE"/><text x="41" y="144.5" text-anchor="end" font-size="10" fill="#555">3</text><line x1="46" y1="118.0" x2="364" y2="118.0" stroke="#DDE6EE"/><text x="41" y="121.0" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="94.5" x2="364" y2="94.5" stroke="#DDE6EE"/><text x="41" y="97.5" text-anchor="end" font-size="10" fill="#555">5</text><line x1="46" y1="71.0" x2="364" y2="71.0" stroke="#DDE6EE"/><text x="41" y="74.0" text-anchor="end" font-size="10" fill="#555">6</text><line x1="46" y1="47.5" x2="364" y2="47.5" stroke="#DDE6EE"/><text x="41" y="50.5" text-anchor="end" font-size="10" fill="#555">7</text><line x1="46" y1="24.0" x2="364" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">8</text><line x1="46" y1="212" x2="364" y2="212" stroke="#333"/><line x1="46" y1="212" x2="46" y2="24" stroke="#333"/><text x="205.0" y="244" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 118.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Velocity (m/s)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,212.0 143.8,118.0 217.2,118.0 241.7,47.5 339.5,212.0"/><circle cx="46.0" cy="212.0" r="3.5" fill="#1A1A2E"/><text x="52.0" y="206.0" font-size="12" font-weight="700">A</text><circle cx="143.8" cy="118.0" r="3.5" fill="#1A1A2E"/><text x="149.8" y="112.0" font-size="12" font-weight="700">B</text><circle cx="217.2" cy="118.0" r="3.5" fill="#1A1A2E"/><text x="223.2" y="112.0" font-size="12" font-weight="700">C</text><circle cx="241.7" cy="47.5" r="3.5" fill="#1A1A2E"/><text x="247.7" y="41.5" font-size="12" font-weight="700">D</text><circle cx="339.5" cy="212.0" r="3.5" fill="#1A1A2E"/><text x="345.5" y="206.0" font-size="12" font-weight="700">E</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Velocity-time graph (textbook Fig 27.15)</figcaption></figure>
+      <table><thead><tr><th>Shape of line</th><th>What it means</th><th>Example from the graph above</th></tr></thead><tbody>
+        <tr><td><strong>Straight line sloping up</strong></td><td>Constant positive acceleration; speeding up</td><td>A→B: 4 m/s in 4 s = <strong>1 m/s²</strong></td></tr>
+        <tr><td><strong>Horizontal line</strong></td><td>Acceleration is zero; velocity is constant</td><td>B→C: 0 m/s in 3 s = <strong>0 m/s²</strong></td></tr>
+        <tr><td><strong>Steeper slope</strong></td><td>Greater acceleration</td><td>C→D: 3 m/s in 1 s = <strong>3 m/s²</strong></td></tr>
+        <tr><td><strong>Straight line sloping down</strong></td><td>Constant negative acceleration; slowing down</td><td>D→E: −7 m/s in 5 s = <strong>−1.4 m/s²</strong></td></tr>
+      </tbody></table>
+      <div class="example-box"><div class="example-header">📝 Extra practice (not from the textbook): acceleration from a graph</div><div class="example-body">
+        <p>Find the acceleration in each stage of the graph.</p>
+        <figure style="margin:0"><svg viewBox="0 0 380 250" role="img" aria-label="Velocity (m/s) against Time (s) graph" style="max-width:380px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="46.0" y1="212" x2="46.0" y2="24" stroke="#DDE6EE"/><text x="46.0" y="225" text-anchor="middle" font-size="10" fill="#555">0</text><line x1="72.5" y1="212" x2="72.5" y2="24" stroke="#DDE6EE"/><text x="72.5" y="225" text-anchor="middle" font-size="10" fill="#555">1</text><line x1="99.0" y1="212" x2="99.0" y2="24" stroke="#DDE6EE"/><text x="99.0" y="225" text-anchor="middle" font-size="10" fill="#555">2</text><line x1="125.5" y1="212" x2="125.5" y2="24" stroke="#DDE6EE"/><text x="125.5" y="225" text-anchor="middle" font-size="10" fill="#555">3</text><line x1="152.0" y1="212" x2="152.0" y2="24" stroke="#DDE6EE"/><text x="152.0" y="225" text-anchor="middle" font-size="10" fill="#555">4</text><line x1="178.5" y1="212" x2="178.5" y2="24" stroke="#DDE6EE"/><text x="178.5" y="225" text-anchor="middle" font-size="10" fill="#555">5</text><line x1="205.0" y1="212" x2="205.0" y2="24" stroke="#DDE6EE"/><text x="205.0" y="225" text-anchor="middle" font-size="10" fill="#555">6</text><line x1="231.5" y1="212" x2="231.5" y2="24" stroke="#DDE6EE"/><text x="231.5" y="225" text-anchor="middle" font-size="10" fill="#555">7</text><line x1="258.0" y1="212" x2="258.0" y2="24" stroke="#DDE6EE"/><text x="258.0" y="225" text-anchor="middle" font-size="10" fill="#555">8</text><line x1="284.5" y1="212" x2="284.5" y2="24" stroke="#DDE6EE"/><text x="284.5" y="225" text-anchor="middle" font-size="10" fill="#555">9</text><line x1="311.0" y1="212" x2="311.0" y2="24" stroke="#DDE6EE"/><text x="311.0" y="225" text-anchor="middle" font-size="10" fill="#555">10</text><line x1="337.5" y1="212" x2="337.5" y2="24" stroke="#DDE6EE"/><text x="337.5" y="225" text-anchor="middle" font-size="10" fill="#555">11</text><line x1="364.0" y1="212" x2="364.0" y2="24" stroke="#DDE6EE"/><text x="364.0" y="225" text-anchor="middle" font-size="10" fill="#555">12</text><line x1="46" y1="212.0" x2="364" y2="212.0" stroke="#DDE6EE"/><text x="41" y="215.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="46" y1="180.7" x2="364" y2="180.7" stroke="#DDE6EE"/><text x="41" y="183.7" text-anchor="end" font-size="10" fill="#555">2</text><line x1="46" y1="149.3" x2="364" y2="149.3" stroke="#DDE6EE"/><text x="41" y="152.3" text-anchor="end" font-size="10" fill="#555">4</text><line x1="46" y1="118.0" x2="364" y2="118.0" stroke="#DDE6EE"/><text x="41" y="121.0" text-anchor="end" font-size="10" fill="#555">6</text><line x1="46" y1="86.7" x2="364" y2="86.7" stroke="#DDE6EE"/><text x="41" y="89.7" text-anchor="end" font-size="10" fill="#555">8</text><line x1="46" y1="55.3" x2="364" y2="55.3" stroke="#DDE6EE"/><text x="41" y="58.3" text-anchor="end" font-size="10" fill="#555">10</text><line x1="46" y1="24.0" x2="364" y2="24.0" stroke="#DDE6EE"/><text x="41" y="27.0" text-anchor="end" font-size="10" fill="#555">12</text><line x1="46" y1="212" x2="364" y2="212" stroke="#333"/><line x1="46" y1="212" x2="46" y2="24" stroke="#333"/><text x="205.0" y="244" text-anchor="middle" font-size="11" font-weight="600">Time (s)</text><text transform="translate(11 118.0) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600">Velocity (m/s)</text><polyline fill="none" stroke="#2E7D32" stroke-width="2.5" points="46.0,180.7 152.0,55.3 231.5,55.3 337.5,180.7"/><circle cx="46.0" cy="180.7" r="3.5" fill="#1A1A2E"/><text x="52.0" y="174.7" font-size="12" font-weight="700">P</text><circle cx="152.0" cy="55.3" r="3.5" fill="#1A1A2E"/><text x="158.0" y="49.3" font-size="12" font-weight="700">Q</text><circle cx="231.5" cy="55.3" r="3.5" fill="#1A1A2E"/><text x="237.5" y="49.3" font-size="12" font-weight="700">R</text><circle cx="337.5" cy="180.7" r="3.5" fill="#1A1A2E"/><text x="343.5" y="174.7" font-size="12" font-weight="700">S</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Extra practice: speeding up, constant velocity, slowing down</figcaption></figure>
+        <div class="work">
+          <div class="ln"><span>P→Q: (10 − 2) ÷ 4 = 8 ÷ 4 = 2 m/s²</span><span class="why">sloping up</span></div>
+          <div class="ln"><span>Q→R: (10 − 10) ÷ 3 = 0 m/s²</span><span class="why">horizontal</span></div>
+          <div class="ln ans"><span>R→S: (2 − 10) ÷ 4 = −8 ÷ 4 = −2 m/s²</span><span class="why">negative = slowing</span></div>
+        </div></div></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> on a velocity-time graph, <strong>slope = acceleration</strong>, <strong>flat = constant velocity</strong>, <strong>down = slowing</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake: mixing up the two graphs.</strong> A flat line on a <em>distance</em>-time graph = stopped. A flat line on a <em>velocity</em>-time graph = moving at constant velocity (acceleration 0). Always check the y-axis label first.</div>
+
+      <div class="section-heading" id="topic-7">🔬 Investigating motion</div>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 27.1: How can we measure the speed of an object?</div><div class="example-body">
+        <p><strong>Equipment:</strong> trundle wheel, tape (or chalk), stopwatch. <strong>Safety:</strong> make sure the area is clear; wear appropriate clothing and shoes; do not run too fast.</p>
+        <ol>
+          <li>Use a trundle wheel to mark out a straight line. Place tape (or a chalk mark) every 5 m, up to 35 m in total.</li>
+          <li>One student walks along the line while another records their time with a stopwatch at each 5 m mark, until the end of the line.</li>
+          <li>Record the distance and time in a table. Use the total distance and time to calculate the average speed.</li>
+          <li>Repeat with different students moving at different speeds and record in the table.</li>
+          <li>Compare each student’s overall average speed to their speeds at each marking.</li>
+          <li>Draw a distance-time graph to represent the data.</li>
+          <li>Compare the slope of each student’s graph to their average speed.</li>
+        </ol></div></div>
+      <figure style="margin:0"><svg viewBox="0 0 460 130" role="img" aria-label="Investigation 27.1 set-up: a 35 m line marked every 5 m" style="max-width:460px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="30" y1="80" x2="430" y2="80" stroke="#333" stroke-width="3"/><line x1="30.0" y1="72" x2="30.0" y2="88" stroke="#333" stroke-width="2"/><text x="30.0" y="104" text-anchor="middle" font-size="11">Start</text><line x1="87.1" y1="72" x2="87.1" y2="88" stroke="#333" stroke-width="2"/><text x="87.1" y="104" text-anchor="middle" font-size="11">5</text><line x1="144.2" y1="72" x2="144.2" y2="88" stroke="#333" stroke-width="2"/><text x="144.2" y="104" text-anchor="middle" font-size="11">10</text><line x1="201.3" y1="72" x2="201.3" y2="88" stroke="#333" stroke-width="2"/><text x="201.3" y="104" text-anchor="middle" font-size="11">15</text><line x1="258.4" y1="72" x2="258.4" y2="88" stroke="#333" stroke-width="2"/><text x="258.4" y="104" text-anchor="middle" font-size="11">20</text><line x1="315.5" y1="72" x2="315.5" y2="88" stroke="#333" stroke-width="2"/><text x="315.5" y="104" text-anchor="middle" font-size="11">25</text><line x1="372.6" y1="72" x2="372.6" y2="88" stroke="#333" stroke-width="2"/><text x="372.6" y="104" text-anchor="middle" font-size="11">30</text><line x1="429.7" y1="72" x2="429.7" y2="88" stroke="#333" stroke-width="2"/><text x="429.7" y="104" text-anchor="middle" font-size="11">35</text><circle cx="38" cy="38" r="7" fill="#2E7D32"/><line x1="38" y1="45" x2="38" y2="66" stroke="#2E7D32" stroke-width="3"/><text x="52" y="42" font-size="11">student walks</text><circle cx="258" cy="38" r="7" fill="#1976D2"/><line x1="258" y1="45" x2="258" y2="66" stroke="#1976D2" stroke-width="3"/><text x="272" y="42" font-size="11">timer (stopwatch)</text><text x="230" y="124" text-anchor="middle" font-size="11" font-weight="600">Distance (m): tape or chalk every 5 m</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Investigation 27.1 set-up (tape every 5 m, up to 35 m)</figcaption></figure>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 27.2: How can we measure the acceleration of an object?</div><div class="example-body">
+        <p><strong>Equipment:</strong> track, books, protractor, motion sensor, data logger, laptop, trolley.</p>
+        <ol>
+          <li>Place one side of the track on a stack of books. Use the protractor to raise it to an angle of 10° from horizontal.</li>
+          <li>Connect the motion sensor to the data logger and laptop. Place the motion sensor at the top of the track facing downwards.</li>
+          <li>Hold the trolley at the top of the track and start recording with the sensor.</li>
+          <li>Release the trolley until it reaches the end of the track (have a student ready to catch it).</li>
+          <li>Record the speed at the start and end, and the time taken, in a table.</li>
+          <li>Repeat, raising the track another 5° each time until you reach 35°, using the protractor to measure the angle.</li>
+          <li>Compare the speed changes and accelerations calculated for each angle.</li>
+          <li>Draw a graph of speed against time for each angle (velocity on the y-axis in m/s, time on the x-axis in s).</li>
+        </ol>
+        <div class="tip">💡 Measuring the start and end speed and the time lets you use acceleration = change in velocity ÷ time.</div></div></div>
+      <figure style="margin:0"><svg viewBox="0 0 460 220" role="img" aria-label="Investigation 27.2 set-up: trolley on a track raised on books with a motion sensor and laptop" style="max-width:460px;width:100%;background:#fff;border:1px solid #E5E7EB;border-radius:10px"><line x1="10" y1="200" x2="450" y2="200" stroke="#333" stroke-width="2"/><rect x="100" y="172" width="90" height="28" fill="#C62828"/><rect x="104" y="146" width="84" height="26" fill="#1976D2"/><rect x="108" y="124" width="78" height="22" fill="#F9A825"/><line x1="108" y1="118" x2="430" y2="200" stroke="#8D6E63" stroke-width="7"/><g transform="rotate(14 118 112)"><rect x="104" y="104" width="30" height="14" fill="#3F51B5"/></g><text x="96" y="94" font-size="11" font-weight="600">Motion sensor</text><g transform="rotate(14 290 150)"><rect x="272" y="136" width="38" height="16" fill="#E69F3A"/><circle cx="280" cy="155" r="5" fill="#222"/><circle cx="302" cy="155" r="5" fill="#222"/></g><text x="290" y="125" text-anchor="middle" font-size="11" font-weight="600">Trolley</text><rect x="8" y="132" width="62" height="42" fill="#fff" stroke="#333" stroke-width="2"/><text x="39" y="157" text-anchor="middle" font-size="11" font-weight="600">Laptop</text><path d="M70 150 C 80 130, 95 120, 108 116" fill="none" stroke="#555" stroke-width="1.5"/><text x="145" y="214" text-anchor="middle" font-size="11" font-weight="600">Books</text><path d="M360 200 A70 70 0 0 1 362.1 183.1" fill="none" stroke="#C62828" stroke-width="2.5"/><text x="334" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="#C62828">angle</text><text x="250" y="196" text-anchor="middle" font-size="11">Track</text></svg><figcaption style="font-size:13px;color:var(--muted);margin-top:4px">Investigation 27.2 set-up: raise the track 10°, 15° … 35° (change only the angle)</figcaption></figure>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> in Investigation 27.2 only the <em>angle</em> of the track changes. Keep the same trolley and track so the comparison is fair.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What is motion?</div><div class="a">When an object moves, it is said to be in motion</div></div>
+        <div class="rv-card"><div class="q">What is linear motion?</div><div class="a">Movement in a straight line</div></div>
+        <div class="rv-card"><div class="q">Three types of motion with an example of each</div><div class="a">Straight line (car); circle (Ferris wheel); changing direction (rollercoaster)</div></div>
+        <div class="rv-card"><div class="q">Define speed</div><div class="a">How fast an object in motion travels from one position to another</div></div>
+        <div class="rv-card"><div class="q">Formula for speed</div><div class="a">speed = distance ÷ time</div></div>
+        <div class="rv-card"><div class="q">Unit of speed in science</div><div class="a">m/s (metres per second)</div></div>
+        <div class="rv-card"><div class="q">Formula for distance</div><div class="a">distance = speed × time</div></div>
+        <div class="rv-card"><div class="q">Formula for time</div><div class="a">time = distance ÷ speed</div></div>
+        <div class="rv-card"><div class="q">Before using speed formula, km and hours must become…</div><div class="a">metres (m) and seconds (s)</div></div>
+        <div class="rv-card"><div class="q">Define velocity</div><div class="a">The speed of an object in motion and the direction it travels in</div></div>
+        <div class="rv-card"><div class="q">Speed v velocity: the difference</div><div class="a">Velocity includes direction; speed does not</div></div>
+        <div class="rv-card"><div class="q">Define acceleration</div><div class="a">The rate at which the velocity of an object changes</div></div>
+        <div class="rv-card"><div class="q">Formula for acceleration</div><div class="a">acceleration = change in velocity ÷ time taken</div></div>
+        <div class="rv-card"><div class="q">Change in velocity =</div><div class="a">Final velocity − initial velocity</div></div>
+        <div class="rv-card"><div class="q">Unit of acceleration</div><div class="a">m/s² (metres per second squared)</div></div>
+        <div class="rv-card"><div class="q">What does a negative acceleration mean?</div><div class="a">The object is slowing down (its velocity decreased)</div></div>
+        <div class="rv-card"><div class="q">What does a distance-time graph show?</div><div class="a">Distance on the y-axis, time on the x-axis; used to find speed</div></div>
+        <div class="rv-card"><div class="q">Distance-time graph: straight sloping line</div><div class="a">Constant speed</div></div>
+        <div class="rv-card"><div class="q">Distance-time graph: horizontal line</div><div class="a">The object has stopped (speed 0)</div></div>
+        <div class="rv-card"><div class="q">Distance-time graph: curve getting steeper</div><div class="a">Speed is increasing (getting faster)</div></div>
+        <div class="rv-card"><div class="q">What does a velocity-time graph show?</div><div class="a">Velocity on the y-axis, time on the x-axis; used to find acceleration</div></div>
+        <div class="rv-card"><div class="q">Velocity-time graph: horizontal line</div><div class="a">Constant velocity; acceleration is zero</div></div>
+        <div class="rv-card"><div class="q">Velocity-time graph: line sloping downwards</div><div class="a">Constant negative acceleration; slowing down</div></div>
+        <div class="rv-card"><div class="q">Velocity-time graph: steeper slope means…</div><div class="a">Greater acceleration</div></div>
+        <div class="rv-card"><div class="q">Equipment to measure speed in Investigation 27.1</div><div class="a">Trundle wheel, tape (or chalk), stopwatch</div></div>
+        <div class="rv-card"><div class="q">Convert 72 km/h to m/s</div><div class="a">÷ 3.6 → 20 m/s (72 000 m ÷ 3600 s)</div></div>
+        <div class="rv-card"><div class="q">Convert 25 m/s to km/h</div><div class="a">× 3.6 → 90 km/h</div></div>
+        <div class="rv-card"><div class="q">How do you find speed from a straight line on a distance-time graph?</div><div class="a">Take two points: change in distance ÷ change in time (up ÷ across)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>When an object moves, it is said to be in {{motion}}. Movement in a straight line is called {{linear}} motion.</p>
+        <p>{{Speed}} describes how fast an object in motion travels from one position to another.</p>
+        <p>Speed is the {{distance}} an object travels divided by the {{time}} taken, and its unit is {{m/s}}.</p>
+        <p>{{Velocity}} describes the speed of an object in motion and the {{direction}} it travels in.</p>
+        <p>{{Acceleration}} is the rate at which the {{velocity}} of an object changes.</p>
+        <p>The unit of acceleration is {{m/s²}}.</p>
+        <p>A {{distance-time}} graph can be used to calculate an object’s speed; a {{velocity-time}} graph can be used to calculate an object’s acceleration.</p>
+        <p>A {{horizontal}} line on a distance-time graph shows the object has stopped.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>What is the unit of speed in science?</p><ol><li>km/h</li><li>m/s²</li><li>m/s</li><li>m</li></ol><div class="explain">Speed is measured in m/s (metres per second). m/s² is the unit of acceleration; km/h is used in everyday life but must be converted for calculations.</div></div>
+        <div class="rv-q" data-answer="b"><p>What is the difference between speed and velocity?</p><ol><li>Velocity is slower than speed</li><li>Velocity includes the direction of travel; speed does not</li><li>Speed includes the direction of travel; velocity does not</li><li>Speed is measured in m/s and velocity in m/s²</li></ol><div class="explain">Velocity is speed in a given direction (e.g. 20 m/s east). Both are measured in m/s.</div></div>
+        <div class="rv-q" data-answer="a"><p>A train moves at a constant 30 m/s. How far does it travel in 10 minutes?</p><ol><li>18 000 m</li><li>300 m</li><li>3 m</li><li>180 m</li></ol><div class="explain">Convert first: 10 min = 600 s. Distance = 30 × 600 = 18 000 m. 300 m comes from using 10 instead of 600 s; 3 m from dividing 30 by 10.</div></div>
+        <div class="rv-q" data-answer="d"><p>A train moves at a constant 30 m/s. How long does it take to travel 2.1 km?</p><ol><li>0.07 s</li><li>63 000 s</li><li>14.3 s</li><li>70 s</li></ol><div class="explain">2.1 km = 2100 m. Time = 2100 ÷ 30 = 70 s. 0.07 s comes from forgetting to convert km to m; 63 000 s from multiplying instead of dividing.</div></div>
+        <div class="rv-q" data-answer="b"><p>A car’s velocity changes from 10 m/s to 20 m/s in 5 s. What is its acceleration?</p><ol><li>6 m/s²</li><li>2 m/s²</li><li>10 m/s²</li><li>50 m/s²</li></ol><div class="explain">Change in velocity = 20 − 10 = 10 m/s; 10 ÷ 5 = 2 m/s². 6 m/s² comes from adding the velocities (30 ÷ 5); 50 from multiplying 10 × 5.</div></div>
+        <div class="rv-q" data-answer="c"><p>A motorbike travelling at 24 m/s brakes to a stop in 3 s. What is its acceleration?</p><ol><li>8 m/s²</li><li>−72 m/s²</li><li>−8 m/s²</li><li>0 m/s²</li></ol><div class="explain">Change in velocity = 0 − 24 = −24 m/s; −24 ÷ 3 = −8 m/s². The negative sign shows it is slowing down. +8 forgets the sign.</div></div>
+        <div class="rv-q" data-answer="a"><p>What does a horizontal line on a distance-time graph show?</p><ol><li>The object has stopped</li><li>The object is moving at constant speed</li><li>The object is speeding up</li><li>The object is moving at constant acceleration</li></ol><div class="explain">A horizontal line means the distance is not changing, so the object has stopped (speed 0 m/s).</div></div>
+        <div class="rv-q" data-answer="d"><p>A distance-time graph is a curved line that gets steeper. What does this show?</p><ol><li>The object is stopped</li><li>The object is moving at a constant speed</li><li>The object is slowing down</li><li>The object is speeding up</li></ol><div class="explain">A curved line getting steeper means the speed is changing: the object is getting faster (e.g. 2 m/s then 3 m/s).</div></div>
+        <div class="rv-q" data-answer="b"><p>What does a horizontal line on a velocity-time graph show?</p><ol><li>The object has stopped</li><li>Constant velocity and zero acceleration</li><li>Constant positive acceleration</li><li>Constant negative acceleration</li></ol><div class="explain">A horizontal line on a velocity-time graph means the velocity is constant, so the acceleration is 0 m/s². (A horizontal line on a <em>distance</em>-time graph is the one that means “stopped”.)</div></div>
+        <div class="rv-q" data-answer="c"><p>What does a straight line sloping downwards on a velocity-time graph show?</p><ol><li>The object is moving at constant speed</li><li>The object is moving backwards at a constant speed</li><li>Constant negative acceleration: the object is slowing down</li><li>Zero acceleration</li></ol><div class="explain">Downward slope = velocity decreasing = negative acceleration (e.g. −1.4 m/s² from D to E).</div></div>
+        <div class="rv-q" data-answer="a"><p>A cyclist travels 2000 m in 6 minutes. Which gives the correct average speed?</p><ol><li>2000 ÷ 360 = 5.6 m/s</li><li>2000 ÷ 6 = 333 m/s</li><li>2000 × 6 = 12 000 m/s</li><li>6 ÷ 2000 = 0.003 m/s</li></ol><div class="explain">Convert 6 minutes to 360 s first, then divide distance by time: ≈ 5.6 m/s. 333 forgets to convert minutes; the others invert or multiply.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Questions are from the textbook (Test tube, Figure it out, Summary questions and past papers). Click a question to reveal a model answer that I worked out from the textbook method. Check them against the book’s answer key.</p>
+      <details class="rv-qa"><summary>1. Copy and complete: When an object moves, it is said to be in ______. Movement in a straight line is called ______ motion. The ______ of an object is the distance it travels divided by the time taken. Velocity describes the speed of an object in motion and the ______ it travels in. The rate at which the velocity of an object changes is called ______. (Summary Q1)</summary><div class="rv-model">
+        <p><strong>motion, linear, speed, direction, acceleration</strong></p></div></details>
+      <details class="rv-qa"><summary>2. Usain Bolt ran 100 m in 9.58 s. Calculate his average speed. (Test tube Q1a) [2 marks]</summary><div class="rv-model">
+        <div class="work"><div class="ln"><span>speed = distance ÷ time = 100 ÷ 9.58</span><span class="why">formula</span></div><div class="ln ans"><span>speed ≈ 10.4 m/s</span><span class="why">answer</span></div></div></div></details>
+      <details class="rv-qa"><summary>3. A Dobermann can maintain a speed of over 50 km/h. Calculate how long it would take to run 100 m. (Test tube Q2a) [3 marks]</summary><div class="rv-model">
+        <div class="work"><div class="ln"><span>50 km/h = 50 000 m ÷ 3600 s ≈ 13.9 m/s</span><span class="why">convert to m/s</span></div><div class="ln"><span>time = 100 ÷ 13.9</span><span class="why">distance ÷ speed</span></div><div class="ln ans"><span>time ≈ 7.2 s</span><span class="why">answer</span></div></div></div></details>
+      <details class="rv-qa"><summary>4. A vehicle on a motorway travels 1900 m in 60 s. Calculate (a) its average speed in m/s (b) how far it would travel at this speed in 2 minutes (c) how long it would take to travel 2 km. (Figure it out p.263)</summary><div class="rv-model">
+        <p>(a) 1900 ÷ 60 ≈ <strong>31.7 m/s</strong></p>
+        <p>(b) 2 minutes = 120 s; 31.7 × 120 = <strong>3800 m</strong> (exactly 1900 × 2)</p>
+        <p>(c) 2 km = 2000 m; 2000 ÷ 31.7 ≈ <strong>63 s</strong></p></div></details>
+      <details class="rv-qa"><summary>5. A tennis ball is hit to the left and travels 40 m in 0.5 s. Calculate its average velocity. (Figure it out p.266 Q1)</summary><div class="rv-model">
+        <p>velocity = 40 ÷ 0.5 = <strong>80 m/s to the left</strong>.</p></div></details>
+      <details class="rv-qa"><summary>6. A student leaves home at 8.20 a.m. and travels 4.2 km to school by bicycle, arriving at 8.55 a.m. They walk 400 m while in school and cycle home the same way in the evening. Calculate (a) the speed of their journey in the morning (b) the total distance travelled during the day. (Summary Q3) [4 marks]</summary><div class="rv-model">
+        <p>(a) Time = 8.20 to 8.55 = 35 min = 2100 s; distance = 4200 m; speed = 4200 ÷ 2100 = <strong>2 m/s</strong>.</p>
+        <p>(b) 4.2 km (to school) + 0.4 km (walking in school) + 4.2 km (home) = <strong>8.8 km</strong> (8800 m).</p>
+        <p style="color:var(--muted)">(b) assumes the 400 m walk counts as part of the day’s total distance; check with the book’s key.</p></div></details>
+      <details class="rv-qa"><summary>7. A motorbike leaves town A at 11.00 a.m. and arrives in town B at 12.30 p.m. Town B is 120 km west of town A. Calculate the average velocity of the motorbike. (Summary Q4) [3 marks]</summary><div class="rv-model">
+        <p>Time = 1.5 h = 5400 s; distance = 120 km = 120 000 m. Velocity = 120 000 ÷ 5400 ≈ <strong>22.2 m/s west</strong> (= 80 km/h west).</p></div></details>
+      <details class="rv-qa"><summary>8. A stone drops off a building and hits the ground 6 seconds later with a velocity of 55 m/s. Calculate the acceleration of the stone. (Summary Q5) [3 marks]</summary><div class="rv-model">
+        <p>The stone starts at rest, so the change in velocity = 55 − 0 = 55 m/s. Acceleration = 55 ÷ 6 ≈ <strong>9.2 m/s²</strong> (downwards).</p></div></details>
+      <details class="rv-qa"><summary>9. (a) A car moves from rest to a velocity of 25 m/s in 10 s. Calculate its acceleration. (b) An airplane brakes as soon as it lands and slows from 80 m/s to 20 m/s in 15 s. Calculate its acceleration. (Figure it out p.269)</summary><div class="rv-model">
+        <p>(a) (25 − 0) ÷ 10 = <strong>2.5 m/s²</strong></p>
+        <p>(b) (20 − 80) ÷ 15 = −60 ÷ 15 = <strong>−4 m/s²</strong> (negative because it is slowing down)</p></div></details>
+      <details class="rv-qa"><summary>10. Draw a distance-time graph for: time 0, 10, 20, 25, 30 s; distance 0, 12, 24, 30, 36 m. Then calculate the average speed at any point. (Summary Q6) [4 marks]</summary><div class="rv-model">
+        <p>Plot time (s) on the x-axis and distance (m) on the y-axis and join the points: they form a <strong>straight line</strong>.</p>
+        <p>Speed = distance ÷ time = 12 ÷ 10 = 24 ÷ 20 = 30 ÷ 25 = 36 ÷ 30 = <strong>1.2 m/s</strong> (the same at every point, so constant speed).</p></div></details>
+      <details class="rv-qa"><summary>11. The graph in Fig 27.17 shows a cyclist’s journey (A at about 100 m, B and C at about 240 m, D at about 480 m, E and F at about 540 m, G at 0 m at 120 s). Describe what happened between (a) A and B (b) B and C (c) C and D (d) D and E (e) E and F (f) F and G. (Summary Q8) [6 marks]</summary><div class="rv-model">
+        <ul><li>(a) A–B: moving away at a constant speed (straight sloping line).</li>
+        <li>(b) B–C: stopped (horizontal line).</li>
+        <li>(c) C–D: moving away again at a faster constant speed (steeper line).</li>
+        <li>(d) D–E: moving away more slowly (less steep) at a constant speed.</li>
+        <li>(e) E–F: stopped (horizontal line).</li>
+        <li>(f) F–G: distance decreases, so the cyclist is travelling back towards the start at a constant speed, reaching it at G.</li></ul>
+        <p style="color:var(--muted)">Values are read by eye from the graph; the shapes are what the marks are for.</p></div></details>
+      <details class="rv-qa"><summary>12. A jogger’s run is shown in Fig 27.19 (A at 0 m; B at about 1200 s and 2500 m; C at about 1500 s and 2500 m; D at about 2300 s and 0 m). (a) How could the jogger have measured distance and time? (b) Calculate the average speed from A to B. (c) Calculate the average speed from C to D. (d) Why is the average speed different in the first and last sections? (e) Why is B to C horizontal? (Summary Q10) [7 marks]</summary><div class="rv-model">
+        <p>(a) Distance: a trundle wheel, or a GPS watch/phone app. Time: a stopwatch.</p>
+        <p>(b) 2500 m ÷ 1200 s ≈ <strong>2.1 m/s</strong></p>
+        <p>(c) 2500 m ÷ about 800 s ≈ <strong>3.1 m/s</strong> (the line is steeper on the way back, so it is faster)</p>
+        <p>(d) The slopes are different, so the jogger ran at different speeds: slower on the first section, faster on the last (e.g. tiring, hills, or speeding up to finish).</p>
+        <p>(e) The distance did not change, so the jogger had <strong>stopped</strong> (for about 300 s).</p>
+        <!-- TODO: Fig 27.19 values (esp. D ≈ 2300 s) are read by eye; the textbook doesn't say why speeds differ - check class notes / answer key. -->
+        <p style="color:var(--muted)">Graph readings are approximate and (d) is a reasoned suggestion; check the book’s key.</p></div></details>
+      <details class="rv-qa"><summary>13. Fig 27.20 shows an airplane’s velocity after take-off (a straight line from 0 m/s at 0 s to 170 m/s at 17 s). (a) Calculate the time to reach 100 m/s. (b) What is its velocity 12 s after starting to accelerate? (c) Calculate its acceleration. (d) How do you know the acceleration is constant? (Summary Q11) [6 marks]</summary><div class="rv-model">
+        <p>(a) <strong>10 s</strong> (read from the graph)</p>
+        <p>(b) <strong>120 m/s</strong></p>
+        <p>(c) acceleration = 170 ÷ 17 = <strong>10 m/s²</strong> (also 100 ÷ 10 = 10 m/s²)</p>
+        <p>(d) The graph is a <strong>straight sloping line</strong>: the velocity increases by the same amount (10 m/s) every second.</p></div></details>
+      <details class="rv-qa"><summary>14. Final Examination 2019, Q7 (Fig 27.21): a cyclist’s distance-time graph. A to B is a sloping line to 100 m at 40 s; B to C is horizontal from 40 s to 60 s; C to D slopes up more steeply to about 220 m at 80 s; D to E slopes down to 0 m at 120 s. (a) Name an instrument to measure the time. (b) Calculate the average speed from A to B. (c) Describe the motion between B and C. (d) The speed from A to B was less than from C to D: what evidence is there? (e) Describe what the cyclist did at D. [7 marks]</summary><div class="rv-model">
+        <p>(a) A <strong>stopwatch</strong> (stop clock).</p>
+        <p>(b) 100 m ÷ 40 s = <strong>2.5 m/s</strong></p>
+        <p>(c) The cyclist was <strong>stopped</strong>: the distance did not change for 20 s.</p>
+        <p>(d) The line from C to D is <strong>steeper</strong> than the line from A to B (more distance in less time).</p>
+        <p>(e) At D the cyclist <strong>turned round</strong> and went back towards the start (distance then decreases back to 0).</p></div></details>
+      <details class="rv-qa"><summary>15. Final Examination 2022, Q7 (Fig 27.22): a trolley’s distance is 1.2 m after 8 s along a horizontal track. (a) Calculate the average speed, with the unit. A second investigation uses a sloped track (Fig 27.23). (b) Write a suitable hypothesis. (c) Describe one thing the student should have done to allow a fair comparison. (d) On the graph, sketch the expected result for your hypothesis. [6 marks]</summary><div class="rv-model">
+        <p>(a) 1.2 ÷ 8 = <strong>0.15 m/s</strong></p>
+        <p>(b) “The trolley will travel faster (greater speed) on the sloped track than on the horizontal track.”</p>
+        <p>(c) Use the <strong>same trolley</strong> (same mass) and the <strong>same distance</strong>, timing in the same way, so that only the slope changes.</p>
+        <p>(d) Draw a straight line that is <strong>steeper</strong> than the original line (reaches more distance in the same time).</p>
+        <p style="color:var(--muted)">(b)–(d) are written from the investigation set-up; the book’s marking scheme may word them differently.</p></div></details>
+      <details class="rv-qa"><summary>16. Extra practice (not from the textbook). (a) Convert 90 km/h to m/s. (b) A student runs 60 m in 20 s, stops for 10 s, then runs 60 m back in 30 s. State the speed in each stage and the average speed for the whole journey. [5 marks]</summary><div class="rv-model">
+        <p>(a) 90 ÷ 3.6 = <strong>25 m/s</strong> (90 000 m ÷ 3600 s).</p>
+        <p>(b) Out: 60 ÷ 20 = <strong>3 m/s</strong>. Stopped: <strong>0 m/s</strong>. Back: 60 ÷ 30 = <strong>2 m/s</strong>. Whole journey: total distance 120 m ÷ total time 60 s = <strong>2 m/s</strong>.</p></div></details>
+      <details class="rv-qa"><summary>17. Extra practice (not from the textbook). A velocity-time graph passes through (0 s, 2 m/s), (4 s, 10 m/s), (7 s, 10 m/s) and (11 s, 2 m/s). Calculate the acceleration in each stage and describe the motion. [6 marks]</summary><div class="rv-model">
+        <p>0–4 s: (10 − 2) ÷ 4 = <strong>2 m/s²</strong> (speeding up).</p>
+        <p>4–7 s: <strong>0 m/s²</strong> (constant velocity of 10 m/s).</p>
+        <p>7–11 s: (2 − 10) ÷ 4 = <strong>−2 m/s²</strong> (slowing down).</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Speed</td><td>speed = distance ÷ time (m/s)</td><td>Convert km → m and minutes/hours → s first.</td></tr>
+        <tr><td>Distance / time</td><td>distance = speed × time; time = distance ÷ speed</td><td>Use the formula triangle; show the substitution.</td></tr>
+        <tr><td>Velocity</td><td>Speed and direction (e.g. 20 m/s east)</td><td>Always give a direction.</td></tr>
+        <tr><td>Acceleration</td><td>(final velocity − initial velocity) ÷ time (m/s²)</td><td>Slowing down = negative; unit m/s².</td></tr>
+        <tr><td>Distance-time graph</td><td>Slope = speed; steeper = faster; horizontal = stopped; curve getting steeper = speeding up</td><td>Pick two points and divide distance by time.</td></tr>
+        <tr><td>Velocity-time graph</td><td>Slope = acceleration; horizontal = constant velocity; down = slowing</td><td>Check the y-axis label before reading.</td></tr>
+        <tr><td>Investigation 27.1</td><td>Trundle wheel, tape every 5 m, stopwatch → average speed; draw distance-time graph</td><td>Safety: clear area, sensible shoes, don’t run too fast.</td></tr>
+        <tr><td>Investigation 27.2</td><td>Trolley on track, change angle 10°–35°, motion sensor and data logger → acceleration</td><td>Change only the angle; keep everything else the same.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Science Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
