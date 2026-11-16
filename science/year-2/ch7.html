@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Revision – The Circulatory System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #2E7D32; --accent-light: #E8F5E9; --accent-bright: #66BB6A;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Science Revision</div><div class="book-title">Elements of Science · Unit 2 Biological World</div></div>
+    <a href="index.html">&larr; Science Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">What the circulatory system does</a>
+    <a href="#topic-2">Blood</a>
+    <a href="#topic-3">Blood vessels</a>
+    <a href="#topic-4">The heart</a>
+    <a href="#topic-5">How the heart pumps blood</a>
+    <a href="#topic-6">Heartbeat and pulse</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 7 · Unit 2 – Biological World</div>
+      <h1>❤️ <span>The Circulatory System</span></h1>
+      <p class="chapter-meta">Elements of Science, pp. 57–65 · Junior Cycle Science Revision</p>
+      <div><span class="goal-tag">✔ Outline the functions of the circulatory system</span><span class="goal-tag">✔ Describe the roles of plasma and the three types of blood cells</span><span class="goal-tag">✔ Identify and explain the roles of the elements of the circulatory system</span><span class="goal-tag">✔ Describe how blood flows around the body</span><span class="goal-tag">✔ Measure your pulse</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the circulatory system, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Circulatory system
+          <ul>
+            <li>3 functions
+              <ul><li>Transport</li><li>Protect</li><li>Regulate temperature</li></ul></li>
+            <li>Blood
+              <ul><li>Plasma</li><li>Red blood cells</li><li>White blood cells</li><li>Platelets</li></ul></li>
+            <li>Blood vessels
+              <ul><li>Arteries</li><li>Veins</li><li>Capillaries</li></ul></li>
+            <li>Heart
+              <ul><li>4 chambers</li><li>Septum + valves</li><li>Double pump</li></ul></li>
+            <li>Blood flow
+              <ul><li>Right atrium start</li><li>Lungs oxygenate</li><li>Aorta to body</li></ul></li>
+            <li>Pulse
+              <ul><li>Wave in artery</li><li>60–100 per minute</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Plasma</strong></td><td>Light yellow liquid, largely water, that carries dissolved substances, waste and heat around the body.</td></tr>
+        <tr><td><strong>Red blood cells</strong></td><td>Transport oxygen to cells so respiration can take place.</td></tr>
+        <tr><td><strong>Haemoglobin</strong></td><td>Red pigment in red blood cells; contains iron and picks up oxygen for transport.</td></tr>
+        <tr><td><strong>White blood cells</strong></td><td>Protect the body from disease by fighting harmful micro-organisms or making antibodies.</td></tr>
+        <tr><td><strong>Antibodies</strong></td><td>Made by white blood cells; kill harmful micro-organisms.</td></tr>
+        <tr><td><strong>Platelets</strong></td><td>Tiny fragments of larger cells that help blood to clot.</td></tr>
+        <tr><td><strong>Arteries</strong></td><td>Blood vessels that carry blood away from the heart; thick muscle walls.</td></tr>
+        <tr><td><strong>Veins</strong></td><td>Blood vessels that carry blood to the heart; thinner walls and valves.</td></tr>
+        <tr><td><strong>Valves</strong></td><td>Prevent the backflow of blood (in veins and between heart chambers).</td></tr>
+        <tr><td><strong>Capillaries</strong></td><td>Very small blood vessels that link arteries and veins; walls one cell thick.</td></tr>
+        <tr><td><strong>Oxygenated blood</strong></td><td>Blood with high levels of oxygen and low levels of carbon dioxide.</td></tr>
+        <tr><td><strong>Deoxygenated blood</strong></td><td>Blood with low levels of oxygen and high levels of carbon dioxide.</td></tr>
+        <tr><td><strong>Cardiac muscle</strong></td><td>Very strong muscle of the heart that can continuously pump blood.</td></tr>
+        <tr><td><strong>Septum</strong></td><td>Wall that separates the heart into a left side and a right side.</td></tr>
+        <tr><td><strong>Chambers</strong></td><td>The four spaces of the heart: two atria (upper) and two ventricles (lower).</td></tr>
+        <tr><td><strong>Atria</strong></td><td>The upper chambers of the heart (left and right atrium).</td></tr>
+        <tr><td><strong>Ventricles</strong></td><td>The lower chambers of the heart (left and right ventricle).</td></tr>
+        <tr><td><strong>Vena cava</strong></td><td>Largest vein; brings deoxygenated blood back to the right atrium (plural: venae cavae).</td></tr>
+        <tr><td><strong>Pulmonary artery</strong></td><td>Takes deoxygenated blood from the right ventricle to the lungs.</td></tr>
+        <tr><td><strong>Pulmonary vein</strong></td><td>Brings oxygenated blood from the lungs to the left atrium.</td></tr>
+        <tr><td><strong>Aorta</strong></td><td>Major artery that takes oxygenated blood from the left ventricle to the body.</td></tr>
+        <tr><td><strong>Pulse</strong></td><td>A wave of vibration through an artery when blood is forced out of the heart.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🔁 What the circulatory system does</div>
+      <div class="key-term">The circulatory system has <strong>three main functions</strong>:
+        <ol><li>To <strong>transport</strong> the substances needed for energy and growth to the body’s cells and remove waste</li>
+        <li>To <strong>protect</strong> the body against disease</li>
+        <li>To help <strong>regulate</strong> body temperature</li></ol>
+        <p>It is made up of: <strong>blood</strong>, <strong>blood vessels</strong> and <strong>the heart</strong>.</p>
+        <div class="tip">💡 Think of a delivery network: the blood is the lorries, the vessels are the roads and the heart is the engine room that keeps them moving.</div></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>T-P-R</strong> – <em>Transport, Protect, Regulate</em>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting the temperature job. The human body must stay at around 37 °C and the movement of heat around the circulatory system helps with this.</div>
+
+      <div class="section-heading" id="topic-2">🩸 Blood</div>
+      <div class="key-term">Blood is a <strong>tissue</strong> made up of four components: <strong>plasma</strong>, <strong>red blood cells</strong>, <strong>white blood cells</strong> and <strong>platelets</strong>. In a blood sample (Fig 7.1): plasma is 55%, red blood cells 44%, white blood cells and platelets 1%.</div>
+      <table><thead><tr><th>Component</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><strong>Plasma</strong></td><td>A light yellow liquid, largely made up of water. <strong>Dissolved substances, including oxygen and glucose, are carried around the body in plasma.</strong> It also carries waste products, such as carbon dioxide and urea, away from the cells. Plasma transfers heat around the body.</td></tr>
+        <tr><td><strong>Red blood cells</strong></td><td>Transport <strong>oxygen</strong> to cells so that respiration can take place. They contain a red pigment called <strong>haemoglobin</strong>, which contains iron and picks up oxygen for transport.</td></tr>
+        <tr><td><strong>White blood cells</strong></td><td><strong>Protect the body from disease</strong>. They fight harmful micro-organisms (e.g. viruses and bacteria), or produce <strong>antibodies</strong> that kill them.</td></tr>
+        <tr><td><strong>Platelets</strong></td><td><strong>Tiny fragments of larger cells.</strong> Help blood to <strong>clot</strong>: prevent blood loss and heal wounds, maintain blood pressure, and keep out micro-organisms that may cause disease.</td></tr>
+      </tbody></table>
+      <div class="tip">💡 Plasma is the river; red cells are the oxygen boats; white cells are the police; platelets are the repair crew that plug leaks.</div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>R</strong>ed = <strong>R</strong>ides oxygen; <strong>W</strong>hite = <strong>W</strong>ards off disease; <strong>P</strong>latelets = <strong>P</strong>lug wounds (clot).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying blood is red because of all its cells. Blood contains both red and white cells but is red in appearance because of the red pigment <em>haemoglobin</em> in the red blood cells.</div>
+
+      <div class="section-heading" id="topic-3">🛣️ Blood vessels</div>
+      <p>Blood flows from and returns to the heart through the blood vessels. There are <strong>three types</strong>.</p>
+      <table><thead><tr><th></th><th>Arteries</th><th>Veins</th><th>Capillaries</th></tr></thead><tbody>
+        <tr><td><strong>Direction</strong></td><td>Carry blood <strong>away from</strong> the heart</td><td>Carry blood <strong>to</strong> the heart</td><td>Link arteries and veins</td></tr>
+        <tr><td><strong>Walls</strong></td><td>Thick muscle walls to withstand the high pressure of blood pumped out of the heart</td><td>Thinner walls than arteries</td><td>Only one cell thick, with lots of pores</td></tr>
+        <tr><td><strong>Other</strong></td><td>Usually carry <strong>oxygenated</strong> blood (high oxygen, low carbon dioxide)</td><td>Lower blood pressure, so they have <strong>valves</strong> to prevent backflow. Usually carry <strong>deoxygenated</strong> blood (low oxygen, high carbon dioxide)</td><td>Pores let molecules such as oxygen and carbon dioxide pass in and out of the surrounding cells</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>A</strong>rteries = <strong>A</strong>way from the heart. Veins = <strong>V</strong>isit (come back to) the heart.</div>
+      <div class="example-box"><div class="example-header">🎯 Concentrate!</div><div class="example-body">In diagrams, oxygenated blood is shown as <strong style="color:#C62828">red</strong> and deoxygenated blood as <strong style="color:#1976D2">blue</strong>. In reality blood with less oxygen is still red, just not quite as bright as blood with more oxygen.</div></div>
+      <div class="tip">💡 The pulmonary artery and pulmonary vein are the exceptions to “arteries carry oxygenated blood” – see the heart topic.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> “arteries carry oxygenated blood, veins deoxygenated” is only <em>usually</em> true. The defining rule is direction: arteries <em>away</em> from the heart, veins <em>to</em> it.</div>
+
+      <div class="section-heading" id="topic-4">🫀 The heart</div>
+      <ul>
+        <li>The heart acts as a <strong>pump</strong> to drive blood all over the body. It is in the upper chest, between the lungs, and is protected by the ribcage.</li>
+        <li>It is made of very strong <strong>cardiac muscle</strong> that can continuously pump blood.</li>
+        <li>It is a <strong>double pump</strong>, separated into a left side and a right side by the <strong>septum</strong>.</li>
+        <li>There are four <strong>chambers</strong>: the upper chambers are the left and right <strong>atria</strong>, the lower chambers are the left and right <strong>ventricles</strong>. Atria and ventricles are separated by <strong>valves</strong>.</li>
+      </ul>
+      <table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+        <tr><td><strong>Septum</strong></td><td>Separates the heart into a left side and right side</td></tr>
+        <tr><td><strong>Atrium</strong></td><td>The upper chamber</td></tr>
+        <tr><td><strong>Ventricle</strong></td><td>The lower chamber</td></tr>
+        <tr><td><strong>Valve</strong></td><td>Prevents blood flowing backwards in the heart</td></tr>
+        <tr><td><strong>Vena cava</strong></td><td>Brings deoxygenated blood back to the heart</td></tr>
+        <tr><td><strong>Aorta</strong></td><td>Major artery taking oxygenated blood away from the heart</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>A</strong>tria = <strong>A</strong>bove (the upper chambers); <strong>V</strong>entricles = the lower chambers (V points down).</div>
+      <div class="tip">💡 A double pump is two pumps side by side in one heart: the right side sends blood to the lungs, the left side sends it to the body.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing atria and ventricles. Upper = atria, lower = ventricles.</div>
+      <div class="tip">🔎 <strong>Eureka:</strong> Ibn al-Nafis (1213–1288), an Arab physician born in Syria, was the first to describe the blood vessels in the heart and how blood flows between the heart and the lungs (pulmonary circulation).</div>
+
+      <div class="section-heading" id="topic-5">➡️ How the heart pumps blood</div>
+      <p>One complete cycle through the body has <strong>eight stages</strong>:</p>
+      <ol>
+        <li>Deoxygenated blood enters the <strong>right atrium</strong> through the <strong>vena cava</strong>.</li>
+        <li>Blood is pumped from the right atrium through a valve into the <strong>right ventricle</strong>.</li>
+        <li>The right ventricle contracts and forces blood through a different valve into the <strong>pulmonary artery</strong>.</li>
+        <li>The pulmonary artery delivers blood to the <strong>lungs</strong>: carbon dioxide is lost and oxygen is taken into the blood.</li>
+        <li>The <strong>pulmonary vein</strong> brings oxygenated blood back to the <strong>left atrium</strong>.</li>
+        <li>Blood is pumped from the left atrium through a valve into the <strong>left ventricle</strong>.</li>
+        <li>The left ventricle contracts and forces blood through a different valve into the <strong>aorta</strong>, which delivers it to all cells and organs through other arteries.</li>
+        <li>Exchange of molecules occurs at the <strong>capillaries</strong>. Capillaries join to form veins; the largest veins, the <strong>venae cavae</strong>, return to the right atrium. One cycle complete.</li>
+      </ol>
+      <div class="flow"><span class="box blue">Vena cava</span><span class="arr">→</span><span class="box blue">Right atrium</span><span class="arr">→</span><span class="box blue">Right ventricle</span><span class="arr">→</span><span class="box blue">Pulmonary artery</span><span class="arr">→</span><span class="box">Lungs (capillaries)</span><span class="arr">→</span><span class="box red">Pulmonary vein</span><span class="arr">→</span><span class="box red">Left atrium</span><span class="arr">→</span><span class="box red">Left ventricle</span><span class="arr">→</span><span class="box red">Aorta</span><span class="arr">→</span><span class="box">Body (capillaries)</span><span class="arr">→</span><span class="box blue">Vena cava</span></div>
+      <p style="color:var(--muted)">Blue = deoxygenated, red = oxygenated.</p>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> right side = deoxygenated blood to the lungs; left side = oxygenated blood to the body. Order of the chambers: <strong>RA → RV → lungs → LA → LV → body</strong>.</div>
+      <div class="example-box"><div class="example-header">🎯 Concentrate!</div><div class="example-body">The <strong>pulmonary artery</strong> is the <em>only</em> artery that carries <em>deoxygenated</em> blood. The <strong>pulmonary vein</strong> is the <em>only</em> vein that carries <em>oxygenated</em> blood.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> sending oxygenated blood to the lungs. Blood goes <em>to</em> the lungs deoxygenated and comes <em>back</em> oxygenated.</div>
+
+      <div class="section-heading" id="topic-6">💓 Heartbeat and pulse</div>
+      <div class="key-term"><strong>Heartbeat:</strong> doctors listen with a stethoscope. The <em>lub-dub</em> sound is made when the valves in the heart close after blood passes through. The normal adult heart rate at rest is between <strong>60 and 100 beats per minute</strong>.</div>
+      <div class="key-term"><strong>Pulse:</strong> a wave of vibration that passes through an artery when blood is forced out of the heart. It can be felt at an artery close to the skin, such as at the wrist. The <strong>pulse rate and heart rate are the same</strong>, so the pulse tells us if the heart is beating at a normal rate.
+        <div class="tip">💡 Feel your wrist: each “tap” is one heartbeat sending a wave along the artery.</div></div>
+      <p>A person’s <strong>age, sex, physical fitness, diet and stress</strong> affect their heart rate. A balanced diet, exercise and rest are very important for a healthy heart.</p>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 7.1: How does exercise affect pulse rate?</div><div class="example-body">
+        <p><strong>Equipment:</strong> timer; pulse rate monitor (optional). <strong>Safety:</strong> be medically fit to exercise first.</p>
+        <ol>
+          <li>Work in pairs. Student A finds their pulse on the wrist; student B times and records.</li>
+          <li>A rests for 2 minutes. Then A counts pulses while B times <strong>30 seconds</strong>; B records. Repeat twice more.</li>
+          <li>Calculate A’s <strong>average resting pulse rate</strong> (pulses per minute).</li>
+          <li>Repeat after low–moderate exercise (brisk walk, 2 minutes) and moderate–high exercise (jog or run at about a three-quarter pace, 2 minutes).</li>
+          <li>Swap roles and repeat. Plot the data on a suitable chart or graph.</li>
+        </ol></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> counting for 30 seconds but forgetting that the rate is per <em>minute</em> (double it). The investigation repeats the count three times and averages them.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Three main functions of the circulatory system</div><div class="a">Transport (substances and waste), protect against disease, help regulate body temperature</div></div>
+        <div class="rv-card"><div class="q">What is the circulatory system made up of?</div><div class="a">Blood, blood vessels and the heart</div></div>
+        <div class="rv-card"><div class="q">Four components of blood</div><div class="a">Plasma, red blood cells, white blood cells, platelets</div></div>
+        <div class="rv-card"><div class="q">What is plasma?</div><div class="a">Light yellow liquid, largely water; carries oxygen, glucose, waste and heat</div></div>
+        <div class="rv-card"><div class="q">Function of red blood cells</div><div class="a">Transport oxygen to cells so respiration can take place</div></div>
+        <div class="rv-card"><div class="q">What is haemoglobin?</div><div class="a">Red pigment in red blood cells; contains iron and picks up oxygen</div></div>
+        <div class="rv-card"><div class="q">Function of white blood cells</div><div class="a">Protect the body from disease: fight micro-organisms or produce antibodies</div></div>
+        <div class="rv-card"><div class="q">What are antibodies?</div><div class="a">Made by white blood cells; they kill harmful micro-organisms</div></div>
+        <div class="rv-card"><div class="q">What are platelets and what do they do?</div><div class="a">Tiny fragments of larger cells; help blood clot</div></div>
+        <div class="rv-card"><div class="q">Arteries: direction and wall</div><div class="a">Carry blood away from the heart; thick muscle walls (high pressure)</div></div>
+        <div class="rv-card"><div class="q">Veins: direction and special feature</div><div class="a">Carry blood to the heart; thinner walls and valves (lower pressure)</div></div>
+        <div class="rv-card"><div class="q">Why do veins have valves?</div><div class="a">Blood pressure is lower, so valves prevent backflow of blood</div></div>
+        <div class="rv-card"><div class="q">What are capillaries?</div><div class="a">Very small vessels linking arteries and veins; walls one cell thick with pores</div></div>
+        <div class="rv-card"><div class="q">What is cardiac muscle?</div><div class="a">Very strong heart muscle that can continuously pump blood</div></div>
+        <div class="rv-card"><div class="q">What does the septum do?</div><div class="a">Separates the heart into a left side and a right side (double pump)</div></div>
+        <div class="rv-card"><div class="q">Name the four chambers of the heart</div><div class="a">Left and right atria (upper); left and right ventricles (lower)</div></div>
+        <div class="rv-card"><div class="q">What separates the atria from the ventricles?</div><div class="a">Valves</div></div>
+        <div class="rv-card"><div class="q">Vena cava: what does it do?</div><div class="a">Brings deoxygenated blood back to the right atrium</div></div>
+        <div class="rv-card"><div class="q">Pulmonary artery: where to, and what blood?</div><div class="a">Right ventricle → lungs; deoxygenated (only artery that does this)</div></div>
+        <div class="rv-card"><div class="q">Pulmonary vein: where to, and what blood?</div><div class="a">Lungs → left atrium; oxygenated (only vein that does this)</div></div>
+        <div class="rv-card"><div class="q">Aorta: what does it do?</div><div class="a">Major artery taking oxygenated blood from the left ventricle to the body</div></div>
+        <div class="rv-card"><div class="q">What is the pulse?</div><div class="a">A wave of vibration through an artery when blood is forced out of the heart</div></div>
+        <div class="rv-card"><div class="q">Normal adult resting heart rate</div><div class="a">60 to 100 beats per minute</div></div>
+        <div class="rv-card"><div class="q">What makes the “lub-dub” sound?</div><div class="a">The valves in the heart closing after blood passes through</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The circulatory system transports substances, {{protects}} the body against disease and helps regulate body {{temperature}}.</p>
+        <p>{{Plasma}} is a light yellow liquid, largely made up of {{water}}.</p>
+        <p>Red blood cells contain a red pigment called {{haemoglobin}}, which contains {{iron}} and picks up oxygen.</p>
+        <p>White blood cells can produce {{antibodies}} that kill harmful micro-organisms; {{platelets}} help blood to clot.</p>
+        <p>{{Arteries}} carry blood away from the heart and have thick muscle walls; {{veins}} carry blood to the heart and have valves.</p>
+        <p>{{Capillaries}} are very small blood vessels whose walls are only one cell thick.</p>
+        <p>The heart is a double pump separated into left and right sides by the {{septum}}; the upper chambers are the {{atria}} and the lower chambers are the {{ventricles}}.</p>
+        <p>The {{pulmonary artery}} is the only artery that carries deoxygenated blood; the {{pulmonary vein}} is the only vein that carries oxygenated blood.</p>
+        <p>The {{pulse}} is a wave of vibration that passes through an {{artery}} when blood is forced out of the heart.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="d"><p>Which of these is NOT one of the three main functions of the circulatory system?</p><ol><li>Transporting substances and removing waste</li><li>Protecting the body against disease</li><li>Helping regulate body temperature</li><li>Breaking food down into smaller pieces</li></ol><div class="explain">Breaking food down is digestion. The circulatory system transports, protects and helps regulate temperature.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which component of blood is a light yellow liquid, largely water, that carries dissolved oxygen and glucose?</p><ol><li>Platelets</li><li>Plasma</li><li>Red blood cells</li><li>White blood cells</li></ol><div class="explain">Plasma carries dissolved substances (oxygen, glucose), waste (carbon dioxide, urea) and heat. The cells and platelets are solid components.</div></div>
+        <div class="rv-q" data-answer="c"><p>What is haemoglobin?</p><ol><li>An antibody made by white blood cells</li><li>A fragment of a larger cell that helps clotting</li><li>A red pigment in red blood cells that contains iron and picks up oxygen</li><li>The liquid part of blood</li></ol><div class="explain">Haemoglobin is the iron-containing red pigment in red blood cells that picks up oxygen for transport.</div></div>
+        <div class="rv-q" data-answer="a"><p>What do white blood cells do?</p><ol><li>Protect the body by fighting micro-organisms or producing antibodies</li><li>Carry oxygen around the body</li><li>Help blood to clot</li><li>Carry waste such as urea away from cells</li></ol><div class="explain">White blood cells fight disease. Oxygen is carried by red blood cells, clotting is by platelets and waste is carried by plasma.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which blood component helps blood to clot and heal wounds?</p><ol><li>Haemoglobin</li><li>Platelets</li><li>Plasma</li><li>Antibodies</li></ol><div class="explain">Platelets are tiny fragments of larger cells that help blood clot, preventing blood loss and healing wounds.</div></div>
+        <div class="rv-q" data-answer="d"><p>Why do arteries have thick muscle walls?</p><ol><li>To allow oxygen to pass through into cells</li><li>To prevent the backflow of blood</li><li>To store blood between heartbeats</li><li>To withstand the high pressure of blood pumped out of the heart</li></ol><div class="explain">Arteries carry blood away from the heart at high pressure. Preventing backflow is the job of valves in veins; allowing molecules to pass is the job of thin capillary walls.</div></div>
+        <div class="rv-q" data-answer="a"><p>Why do veins have valves?</p><ol><li>Blood pressure in veins is lower than in arteries, so valves prevent backflow</li><li>Blood pressure in veins is very high</li><li>To let oxygen pass into surrounding cells</li><li>To make the walls thicker</li></ol><div class="explain">Pressure in veins is lower than in arteries, so valves stop the blood flowing backwards.</div></div>
+        <div class="rv-q" data-answer="c"><p>Why can oxygen and carbon dioxide pass in and out of capillaries?</p><ol><li>Their walls are thick and muscular</li><li>They contain valves</li><li>Their walls are only one cell thick and have lots of pores</li><li>They carry blood away from the heart</li></ol><div class="explain">Capillary walls are one cell thick with lots of pores, so molecules pass between the blood and the surrounding cells.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which are the lower chambers of the heart?</p><ol><li>The atria</li><li>The ventricles</li><li>The septa</li><li>The venae cavae</li></ol><div class="explain">Upper chambers = atria; lower chambers = ventricles. The septum is the wall between the left and right sides.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which statement about the pulmonary artery is correct?</p><ol><li>It carries oxygenated blood from the lungs to the left atrium</li><li>It brings deoxygenated blood back to the right atrium</li><li>It takes oxygenated blood from the left ventricle to the body</li><li>It is the only artery that carries deoxygenated blood, taking it to the lungs</li></ol><div class="explain">The pulmonary artery takes deoxygenated blood from the right ventricle to the lungs. Option 1 is the pulmonary vein, option 2 the vena cava, option 3 the aorta.</div></div>
+        <div class="rv-q" data-answer="a"><p>What is the pulse?</p><ol><li>A wave of vibration through an artery when blood is forced out of the heart</li><li>The sound of the valves closing</li><li>The flow of blood through the veins</li><li>The number of red blood cells per minute</li></ol><div class="explain">The pulse is the wave through an artery. The “lub-dub” sound is made by the valves closing.</div></div>
+        <div class="rv-q" data-answer="c"><p>What is the normal heart rate for an adult at rest?</p><ol><li>20–40 beats per minute</li><li>40–60 beats per minute</li><li>60–100 beats per minute</li><li>100–140 beats per minute</li></ol><div class="explain">The normal adult resting heart rate is between 60 and 100 beats per minute.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Questions are from the textbook (Summary questions and past papers). Click a question to reveal a model answer written from the textbook text.</p>
+      <details class="rv-qa"><summary>1. Explain the role of plasma in the blood. (Summary Q3)</summary><div class="rv-model">
+        <ul><li>Plasma is a light yellow liquid, largely water.</li>
+        <li>It carries dissolved substances such as oxygen and glucose around the body.</li>
+        <li>It carries waste products (carbon dioxide and urea) away from the cells.</li>
+        <li>It transfers heat around the body.</li></ul></div></details>
+      <details class="rv-qa"><summary>2. Outline two features of each type of blood vessel (artery, vein, capillary) and give one reason arteries have thick walls, veins have valves and capillaries have thin walls. (Summary Q4–5) [6 marks]</summary><div class="rv-model">
+        <ul><li><strong>Artery:</strong> carries blood away from the heart; thick muscle walls <em>to withstand the high pressure of blood pumped out of the heart</em>. Usually oxygenated.</li>
+        <li><strong>Vein:</strong> carries blood to the heart; thinner walls; <em>valves prevent the backflow of blood because pressure is lower than in arteries</em>. Usually deoxygenated.</li>
+        <li><strong>Capillary:</strong> very small, links arteries and veins; walls one cell thick with lots of pores, <em>so molecules such as oxygen and carbon dioxide can pass in and out of surrounding cells</em>.</li></ul></div></details>
+      <details class="rv-qa"><summary>3. Match each structure with its description: 1 Septum, 2 Vena cava, 3 Valve, 4 Atrium, 5 Aorta, 6 Ventricle; (a) prevents blood flowing backwards in the heart (b) the major artery taking oxygenated blood away from the heart (c) the lower chamber (d) separates the heart into left and right sides (e) brings deoxygenated blood back to the heart (f) the upper chamber. (Summary Q9)</summary><div class="rv-model">
+        <p><strong>1 → d, 2 → e, 3 → a, 4 → f, 5 → b, 6 → c</strong></p></div></details>
+      <details class="rv-qa"><summary>4. Put the stages of the cycle of blood in order 1–8, starting at the right atrium. Stages: forced through a valve into the pulmonary artery; deoxygenated as it travels through capillaries, veins and venae cavae back to the right atrium; delivered to the lungs where it is oxygenated; forced through a valve into the aorta; oxygenated blood delivered to the left atrium by the pulmonary vein; pumped through a valve into the left ventricle; deoxygenated blood enters the right atrium; pumped through a valve into the right ventricle. (Summary Q10)</summary><div class="rv-model">
+        <ol><li>Deoxygenated blood enters the right atrium.</li>
+        <li>Blood is pumped through a valve into the right ventricle.</li>
+        <li>Blood is forced through a valve into the pulmonary artery.</li>
+        <li>Blood is delivered to the lungs, where it is oxygenated.</li>
+        <li>Oxygenated blood is delivered to the left atrium by the pulmonary vein.</li>
+        <li>Blood is pumped through a valve into the left ventricle.</li>
+        <li>Blood is forced through a valve into the aorta.</li>
+        <li>Blood is deoxygenated as it travels through capillaries, veins and venae cavae back to the right atrium.</li></ol></div></details>
+      <details class="rv-qa"><summary>5. Final Examination 2019, Q5 and Q12 (Fig 7.12). (a) The function of red blood cells is to: fight infection / clot blood / carry oxygen. (b) The chamber of the heart marked X pumps blood around the body and generates a pulse. Name chamber X. (c) Explain why some tubes connected to the heart are coloured red and some blue.</summary><div class="rv-model">
+        <p>(a) <strong>Carry oxygen.</strong></p>
+        <p>(b) <strong>Left ventricle</strong> – it contracts and forces blood through the aorta to the body.</p>
+        <p>(c) Red shows <strong>oxygenated</strong> blood and blue shows <strong>deoxygenated</strong> blood (in reality, blood with less oxygen is still red, but not quite as bright).</p>
+        <p style="color:var(--muted)">Diagram not reproduced: X is the chamber on the lower left of the heart (the left ventricle).</p></div></details>
+      <details class="rv-qa"><summary>6. Final Examination 2022, Q10 (Fig 7.13). Location A is where blood travels around the lungs; B is where it travels around the body tissues; C is the large red vessel leaving the left ventricle; D is the blue vessel entering the right atrium. (a) True or false: the blood in vessel C is deoxygenated; the organs at location A are part of the respiratory system; carbon dioxide leaves the blood at location B; vessel D is a vein. (b) Vessel C has thicker walls than vessel D. Explain why.</summary><div class="rv-model">
+        <p>(a) C is deoxygenated: <strong>False</strong> (C is the aorta, carrying oxygenated blood). Organs at A are part of the respiratory system: <strong>True</strong> (the lungs). Carbon dioxide leaves the blood at B: <strong>False</strong> (at the body tissues, carbon dioxide <em>enters</em> the blood; it leaves at the lungs). Vessel D is a vein: <strong>True</strong> (carries blood to the heart).</p>
+        <p>(b) C is an artery and carries blood pumped out of the heart at high pressure, so it needs thick muscle walls; D is a vein with lower pressure, so thinner walls.</p>
+        <p style="color:var(--muted)">Answers are read from Fig 7.13 using the labels described in the question; check against the diagram in the textbook.</p></div></details>
+      <details class="rv-qa"><summary>7. Explain why the pulse rate is the same as the heart rate. How do you measure the pulse and what is a normal resting rate? (Summary Q6; Experiment 7.1)</summary><div class="rv-model">
+        <p>The pulse is a wave of vibration that passes through an artery each time blood is forced out of the heart, so there is one pulse for each heartbeat – the pulse rate and heart rate are the same.</p>
+        <p>Measure: find the pulse at the wrist, count for 30 seconds (with a timer), repeat and average, and convert to beats per minute. A normal adult resting rate is 60–100 beats per minute.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Functions</td><td>Transport, protect, regulate temperature</td><td>Three marks – don’t forget temperature.</td></tr>
+        <tr><td>Plasma</td><td>Light yellow liquid, mostly water; carries oxygen, glucose, waste, heat (55% of blood)</td><td>Say what it carries <em>and</em> which way (waste away from cells).</td></tr>
+        <tr><td>Red blood cells</td><td>Carry oxygen; contain haemoglobin (iron)</td><td>Blood is red because of haemoglobin.</td></tr>
+        <tr><td>White blood cells</td><td>Fight micro-organisms or make antibodies</td><td>Name both methods.</td></tr>
+        <tr><td>Platelets</td><td>Fragments of larger cells; help clotting</td><td>Not “cells”: fragments.</td></tr>
+        <tr><td>Arteries</td><td>Away from heart; thick muscle walls; usually oxygenated</td><td>Link thick walls to high pressure.</td></tr>
+        <tr><td>Veins</td><td>To heart; thinner walls; valves; usually deoxygenated</td><td>Valves because pressure is lower.</td></tr>
+        <tr><td>Capillaries</td><td>Link arteries and veins; walls one cell thick, pores</td><td>Exchange of oxygen and carbon dioxide happens here.</td></tr>
+        <tr><td>Heart</td><td>Cardiac muscle double pump; septum; atria (upper), ventricles (lower); valves</td><td>Upper = atria, lower = ventricles.</td></tr>
+        <tr><td>Blood flow</td><td>Vena cava → RA → RV → pulmonary artery → lungs → pulmonary vein → LA → LV → aorta → body</td><td>Pulmonary artery/vein are the exceptions to oxygenated/deoxygenated rule.</td></tr>
+        <tr><td>Pulse</td><td>Wave through an artery; same as heart rate; 60–100 bpm at rest</td><td>Count for 30 s, ×2 for per minute.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Science Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

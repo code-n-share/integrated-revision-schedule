@@ -9,6 +9,11 @@ Apply these every time a chapter is added (or an existing one is upgraded). Star
 - Chapter pages link back with `index.html` (same folder) and to the site root with `../../index.html`.
 - Shared assets: `../../assets/revision.css` and `../../assets/revision.js`. Never use absolute `/…` paths (GitHub Pages serves from a sub-path).
 
+**Optional shortcut:** `tools/build_science.py` (Science only; each subject gets its own `build_<subject>.py`) writes the page shell (CSS, sidebar, hero, brain dump, tracker, scripts) around a
+body fragment you write, so you only author sections 3–10 (usage in its docstring; reference: Science Year 2). The site stays
+plain static HTML: the generated file is the source of truth, so edit it directly afterwards. If you change
+`templates/chapter-template.html`, mirror the change in the script's shell.
+
 ## 2. Required sections, in this order
 Sidebar link + `id` for each; every section heading uses `.section-heading` with an emoji icon.
 

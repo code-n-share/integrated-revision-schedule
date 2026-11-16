@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Revision – The Digestive System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #2E7D32; --accent-light: #E8F5E9; --accent-bright: #66BB6A;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Science Revision</div><div class="book-title">Elements of Science · Unit 2 Biological World</div></div>
+    <a href="index.html">&larr; Science Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">The five stages of nutrition</a>
+    <a href="#topic-2">The mouth</a>
+    <a href="#topic-3">Oesophagus and stomach</a>
+    <a href="#topic-4">Small intestine</a>
+    <a href="#topic-5">Pancreas, liver and large intestine</a>
+    <a href="#topic-6">Experiment 6.1: amylase and starch</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 6 · Unit 2 – Biological World</div>
+      <h1>🍽️ <span>The Digestive System</span></h1>
+      <p class="chapter-meta">Elements of Science, pp. 51–56 · Junior Cycle Science Revision</p>
+      <div><span class="goal-tag">✔ Outline the stages of human nutrition</span><span class="goal-tag">✔ Identify and explain the roles of the organs of the digestive system</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the digestive system, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Digestive system
+          <ul>
+            <li>5 stages
+              <ul><li>Ingestion</li><li>Digestion</li><li>Absorption</li><li>Assimilation</li><li>Egestion</li></ul></li>
+            <li>Types of digestion
+              <ul><li>Physical</li><li>Chemical (enzymes)</li></ul></li>
+            <li>Mouth to stomach
+              <ul><li>Teeth + saliva</li><li>Oesophagus (peristalsis)</li><li>Stomach (acid)</li></ul></li>
+            <li>Small intestine
+              <ul><li>Maltase</li><li>Villi</li></ul></li>
+            <li>Helper organs
+              <ul><li>Pancreas (enzymes)</li><li>Liver (bile)</li></ul></li>
+            <li>Large intestine
+              <ul><li>Reabsorbs water</li><li>Faeces</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Digestion</strong></td><td>Breaking food down into smaller pieces / simpler chemicals (physical and chemical).</td></tr>
+        <tr><td><strong>Ingestion</strong></td><td>Food is taken into the mouth.</td></tr>
+        <tr><td><strong>Absorption</strong></td><td>Digested food is passed into the blood and carried to cells.</td></tr>
+        <tr><td><strong>Assimilation</strong></td><td>Digested food is used by the body for energy and to build new cells.</td></tr>
+        <tr><td><strong>Egestion</strong></td><td>Undigested food is released as waste.</td></tr>
+        <tr><td><strong>Physical digestion</strong></td><td>Food broken into smaller pieces by the teeth, tongue and churning of the stomach muscles.</td></tr>
+        <tr><td><strong>Chemical digestion</strong></td><td>Food broken down further by digestive enzymes and other digestive juices.</td></tr>
+        <tr><td><strong>Enzyme</strong></td><td>A protein that speeds up the rate of chemical reactions in cells and is not used up in the process.</td></tr>
+        <tr><td><strong>Amylase</strong></td><td>Enzyme in saliva that breaks starch down into maltose.</td></tr>
+        <tr><td><strong>Maltose</strong></td><td>The sugar that starch is broken down into by amylase.</td></tr>
+        <tr><td><strong>Maltase</strong></td><td>Enzyme in the small intestine that breaks maltose down into glucose.</td></tr>
+        <tr><td><strong>Glucose</strong></td><td>The smaller sugar that completes the breakdown of food into a form the blood and cells can absorb.</td></tr>
+        <tr><td><strong>Oesophagus</strong></td><td>The food pipe; pushes swallowed food along by peristalsis.</td></tr>
+        <tr><td><strong>Peristalsis</strong></td><td>Wave-like movement of muscles that pushes food along the oesophagus.</td></tr>
+        <tr><td><strong>Stomach</strong></td><td>Expandable muscular bag that physically churns and temporarily stores food.</td></tr>
+        <tr><td><strong>Small intestine</strong></td><td>Where digestion is completed and nutrients are absorbed into the bloodstream.</td></tr>
+        <tr><td><strong>Villi</strong></td><td>Tiny projections covering the small intestine; give a large surface area for absorption.</td></tr>
+        <tr><td><strong>Pancreas</strong></td><td>Makes the digestive enzymes that pass into the small intestine.</td></tr>
+        <tr><td><strong>Liver</strong></td><td>Largest internal organ; breaks down harmful substances, keeps body temperature at 37 °C, makes bile.</td></tr>
+        <tr><td><strong>Bile</strong></td><td>Made by the liver; passes into the small intestine and helps digest fats.</td></tr>
+        <tr><td><strong>Large intestine</strong></td><td>Long tube-like organ that reabsorbs water and prepares waste for egestion.</td></tr>
+        <tr><td><strong>Faeces</strong></td><td>Undigested food and waste matter; stored in the rectum and passed out through the anus.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🔄 The five stages of human nutrition</div>
+      <div class="key-term"><strong>The digestive system</strong> allows the body to access nutrients from food, which are needed for energy and growth. There are <strong>five stages</strong> of human nutrition.
+        <div class="tip">💡 Think of food as a parcel: take it in, unwrap it, deliver it, use it, bin the packaging.</div></div>
+      <div class="flow"><span class="box">1 Ingestion</span><span class="arr">→</span><span class="box">2 Digestion</span><span class="arr">→</span><span class="box">3 Absorption</span><span class="arr">→</span><span class="box">4 Assimilation</span><span class="arr">→</span><span class="box">5 Egestion</span></div>
+      <table><thead><tr><th>Stage</th><th>What happens</th></tr></thead><tbody>
+        <tr><td><strong>1. Ingestion</strong></td><td>Food is taken into the mouth</td></tr>
+        <tr><td><strong>2. Digestion</strong></td><td>Food is broken down</td></tr>
+        <tr><td><strong>3. Absorption</strong></td><td>Digested food is passed into the blood and carried to cells</td></tr>
+        <tr><td><strong>4. Assimilation</strong></td><td>Digested food is used by the body for energy and to build new cells</td></tr>
+        <tr><td><strong>5. Egestion</strong></td><td>Undigested food is released as waste</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>I</strong>n, <strong>D</strong>own, <strong>A</strong>cross, <strong>A</strong>dd, <strong>E</strong>xit – <em>Ingestion, Digestion, Absorption, Assimilation, Egestion</em> (in the order food travels).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up <em>absorption</em> (digested food goes <em>into the blood</em>) and <em>assimilation</em> (cells <em>use</em> it). Also: <em>egestion</em> is undigested food leaving – not waste made by cells.</div>
+
+      <div class="key-term"><strong>Two types of digestion:</strong>
+        <ul>
+          <li><strong>Physical digestion:</strong> food is broken down into smaller pieces by the teeth, tongue and churning action of the muscles in the stomach.</li>
+          <li><strong>Chemical digestion:</strong> food is broken down further by digestive enzymes and other digestive juices in the stomach.</li>
+        </ul>
+        <div class="tip">💡 Physical = chopping the vegetables. Chemical = the cooking that changes what they are made of.</div></div>
+      <div class="key-term"><strong>Enzyme:</strong> a <strong>protein</strong> that speeds up the rate of chemical reactions in cells and is <strong>not used up</strong> in the process. In the digestive system, enzymes break down the chemicals in food into simpler forms so they are small enough to be used by the body.
+        <div class="tip">💡 An enzyme is like a pair of scissors: it cuts lots of strings and is still a pair of scissors at the end.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying an enzyme is “used up”. It speeds up the reaction and is <em>not</em> used up.</div>
+
+      <div class="section-heading" id="topic-2">👄 The mouth</div>
+      <ul>
+        <li>Food is <strong>ingested</strong> through the mouth.</li>
+        <li>The teeth <strong>physically</strong> digest food; the enzymes in saliva <strong>chemically</strong> digest it.</li>
+        <li>Food is then swallowed.</li>
+      </ul>
+      <table><thead><tr><th>Type of tooth</th><th>Description</th><th>Function</th></tr></thead><tbody>
+        <tr><td><strong>Incisors</strong></td><td>Narrow, sharp teeth at the front of the mouth, similar to chisels</td><td>Biting, cutting and slicing food</td></tr>
+        <tr><td><strong>Canines</strong></td><td>Pointed teeth, often called ‘eye teeth’</td><td>Grasping and tearing food</td></tr>
+        <tr><td><strong>Premolars</strong></td><td>Large, rounded teeth</td><td>Crushing and grinding food</td></tr>
+        <tr><td><strong>Molars</strong></td><td>Largest teeth, found at the back of the mouth</td><td>Crushing and grinding food</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> front to back = <strong>I</strong>ncisors (cut) → <strong>C</strong>anines (tear) → <strong>P</strong>remolars + <strong>M</strong>olars (crush and grind). Premolars and molars share the same job.</div>
+      <div class="key-term"><strong>Saliva and amylase:</strong> salivary glands secrete saliva onto the food. Saliva softens the food. The enzyme <strong>amylase</strong> in the saliva chemically digests <strong>starch</strong> by breaking it down into the sugar <strong>maltose</strong>.
+        <div class="tip">💡 Chew a piece of bread for a while: the starch is already starting to be broken down into sugar in your mouth.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying the mouth only does physical digestion. Saliva’s amylase means chemical digestion starts in the mouth.</div>
+
+      <div class="section-heading" id="topic-3">⬇️ Oesophagus and stomach</div>
+      <div class="key-term"><strong>Oesophagus (food pipe):</strong> swallowed food is pushed along by a wave-like movement of muscles called <strong>peristalsis</strong>. This continues the <em>physical</em> digestion of food.
+        <div class="tip">💡 Squeezing toothpaste from the bottom of the tube: a squeeze moving along pushes the paste forward.</div></div>
+      <div class="example-box"><div class="example-header">🎯 Concentrate!</div><div class="example-body">Fibre in the diet is important for peristalsis and good digestive health.</div></div>
+      <div class="key-term"><strong>Stomach:</strong> an <strong>expandable muscular bag</strong> that <strong>physically churns</strong> and <strong>temporarily stores</strong> food.
+        <ul>
+          <li>It releases juices that continue the <em>chemical</em> digestion of food.</li>
+          <li><strong>Hydrochloric acid</strong> in the stomach chemically digests food and <strong>kills bacteria</strong> in food.</li>
+        </ul>
+        <div class="tip">💡 The stomach is a stretchy, muscly blender with a built-in cleaning acid.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting the stomach does <em>both</em> kinds of digestion: churning (physical) and acid + juices (chemical).</div>
+
+      <div class="section-heading" id="topic-4">🌀 Small intestine</div>
+      <ul>
+        <li>Food from the stomach enters the small intestine.</li>
+        <li>The enzyme <strong>maltase</strong> breaks down <strong>maltose</strong> into a smaller sugar called <strong>glucose</strong>. This completes the breakdown of food into a form that can be absorbed into the bloodstream and cells.</li>
+        <li>The small intestine is densely covered in <strong>villi</strong>. The villi provide an <strong>increased surface area</strong> to allow the nutrients from fully digested food to be absorbed into the bloodstream.</li>
+      </ul>
+      <div class="flow"><span class="box">Starch</span><span class="arr">—amylase (mouth)→</span><span class="box">Maltose</span><span class="arr">—maltase (small intestine)→</span><span class="box">Glucose</span></div>
+      <div class="tip">💡 Villi are like the loops of a towel: lots of tiny folds mean far more surface to soak things up.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> writing “villi absorb food” without the reason. The mark is for <em>increased surface area</em>.</div>
+
+      <div class="section-heading" id="topic-5">🧪 Pancreas, liver and large intestine</div>
+      <table><thead><tr><th>Organ</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><strong>Pancreas</strong></td><td>Where the digestive enzymes that pass into the small intestine are produced.</td></tr>
+        <tr><td><strong>Liver</strong></td><td>Largest internal organ in the body. Breaks down harmful substances such as alcohol and keeps body temperature at 37 °C. Produces <strong>bile</strong>, which passes into the small intestine where it helps digest fats.</td></tr>
+        <tr><td><strong>Large intestine</strong></td><td>A long, tube-like organ. Its <strong>major function is to reabsorb water</strong> from fully digested food into the blood. It also prepares undigested food and waste matter for egestion as <strong>faeces</strong>, which are temporarily stored in the <strong>rectum</strong> before being passed out through the <strong>anus</strong>.</td></tr>
+      </tbody></table>
+      <div class="tip">💡 Food never travels <em>through</em> the pancreas or liver. They are helpers: they make the chemicals (enzymes, bile) that are sent to the small intestine.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying food passes through the liver or pancreas, or that the large intestine digests food. It reabsorbs <em>water</em>.</div>
+
+      <div class="section-heading" id="topic-6">🔬 Experiment 6.1: Does amylase break down starch?</div>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 6.1</div><div class="example-body">
+        <p><strong>Equipment:</strong> water bath, thermometer, beakers, starch solution, pH 7 buffer solution, amylase solution, water, 2 test tubes, test tube rack, 3 droppers, white dropping plate, iodine solution. <strong>Safety:</strong> be careful when using the heated water bath.</p>
+        <ol>
+          <li>Set up a <strong>37 °C</strong> water bath. Warm beakers of starch, pH 7 buffer, amylase and water in it for 5 minutes.</li>
+          <li>Label two test tubes “Water” and “Amylase”.</li>
+          <li>Add 2 cm³ starch solution and 1 cm³ pH 7 buffer to <em>both</em> tubes.</li>
+          <li>Add 2 cm³ water to the “Water” tube and 2 cm³ amylase to the “Amylase” tube.</li>
+          <li>Swirl, then stand both tubes in the 37 °C water bath for 15 minutes.</li>
+          <li>With separate droppers, put a drop from each tube on a labelled white dropping plate and add one drop of <strong>iodine</strong> to each. Record observations.</li>
+        </ol>
+        <div class="tip">💡 The “Water” tube is the comparison (control): it is the same in every way except there is no amylase. 37 °C is human body temperature.</div>
+        <!-- TODO: the textbook pages in the recording do not state the expected result. Fig 6.4 shows one brown and one dark spot on the dropping plate; confirm with class notes (iodine goes blue-black with starch). -->
+      </div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting why there are two tubes. One has water instead of amylase so you can compare and show it is the <em>amylase</em> that makes the difference.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Name the five stages of human nutrition in order</div><div class="a">Ingestion, digestion, absorption, assimilation, egestion</div></div>
+        <div class="rv-card"><div class="q">What is ingestion?</div><div class="a">Food is taken into the mouth</div></div>
+        <div class="rv-card"><div class="q">What is absorption?</div><div class="a">Digested food is passed into the blood and carried to cells</div></div>
+        <div class="rv-card"><div class="q">What is assimilation?</div><div class="a">Digested food is used by the body for energy and to build new cells</div></div>
+        <div class="rv-card"><div class="q">What is egestion?</div><div class="a">Undigested food is released as waste</div></div>
+        <div class="rv-card"><div class="q">Physical digestion</div><div class="a">Food broken into smaller pieces by the teeth, tongue and churning of the stomach muscles</div></div>
+        <div class="rv-card"><div class="q">Chemical digestion</div><div class="a">Food broken down further by digestive enzymes and other digestive juices</div></div>
+        <div class="rv-card"><div class="q">Define an enzyme</div><div class="a">A protein that speeds up chemical reactions in cells and is not used up</div></div>
+        <div class="rv-card"><div class="q">What does amylase do?</div><div class="a">Breaks down starch into the sugar maltose (in saliva)</div></div>
+        <div class="rv-card"><div class="q">What does maltase do?</div><div class="a">Breaks down maltose into glucose (in the small intestine)</div></div>
+        <div class="rv-card"><div class="q">Function of incisors</div><div class="a">Biting, cutting and slicing food</div></div>
+        <div class="rv-card"><div class="q">Function of canines</div><div class="a">Grasping and tearing food</div></div>
+        <div class="rv-card"><div class="q">Function of premolars and molars</div><div class="a">Crushing and grinding food</div></div>
+        <div class="rv-card"><div class="q">What is peristalsis?</div><div class="a">Wave-like movement of muscles that pushes food along the oesophagus</div></div>
+        <div class="rv-card"><div class="q">Two jobs of the stomach</div><div class="a">Physically churns and temporarily stores food; acid and juices chemically digest it</div></div>
+        <div class="rv-card"><div class="q">Why is there hydrochloric acid in the stomach?</div><div class="a">Chemically digests food and kills bacteria in food</div></div>
+        <div class="rv-card"><div class="q">What are villi and why are they useful?</div><div class="a">Covering of the small intestine; increase surface area for absorption of nutrients into the blood</div></div>
+        <div class="rv-card"><div class="q">What does the pancreas do?</div><div class="a">Produces digestive enzymes that pass into the small intestine</div></div>
+        <div class="rv-card"><div class="q">What does the liver produce, and what does it do?</div><div class="a">Bile – passes into the small intestine and helps digest fats</div></div>
+        <div class="rv-card"><div class="q">Name the largest internal organ</div><div class="a">The liver</div></div>
+        <div class="rv-card"><div class="q">Major function of the large intestine</div><div class="a">Reabsorb water from fully digested food into the blood</div></div>
+        <div class="rv-card"><div class="q">Where are faeces stored before leaving the body?</div><div class="a">The rectum, then out through the anus</div></div>
+        <div class="rv-card"><div class="q">Why is iodine used in Experiment 6.1?</div><div class="a">To test for starch in the samples taken from the “Water” and “Amylase” tubes</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The five stages of human nutrition are {{ingestion}}, digestion, absorption, {{assimilation}} and egestion.</p>
+        <p>{{Physical}} digestion breaks food into smaller pieces; {{chemical}} digestion uses digestive enzymes and other juices.</p>
+        <p>An enzyme is a {{protein}} that speeds up the rate of chemical reactions and is not {{used up}} in the process.</p>
+        <p>The enzyme {{amylase}} in saliva breaks starch down into the sugar {{maltose}}.</p>
+        <p>Swallowed food is pushed along the oesophagus by a wave-like movement of muscles called {{peristalsis}}.</p>
+        <p>The stomach is an expandable {{muscular}} bag that physically churns and temporarily {{stores}} food.</p>
+        <p>The small intestine is densely covered in {{villi}}, which provide an increased {{surface area}} for absorption.</p>
+        <p>The major function of the large intestine is to reabsorb {{water}}; waste leaves as {{faeces}} after being stored in the rectum.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>Digested food passes into the blood and is carried to cells. Which stage of nutrition is this?</p><ol><li>Ingestion</li><li>Assimilation</li><li>Absorption</li><li>Egestion</li></ol><div class="explain">Absorption is digested food passing into the blood. Assimilation is the next stage – the cells <em>using</em> the food for energy and to build new cells.</div></div>
+        <div class="rv-q" data-answer="a"><p>Churning of food by the muscles of the stomach is an example of…</p><ol><li>physical digestion</li><li>chemical digestion</li><li>absorption</li><li>egestion</li></ol><div class="explain">Breaking food into smaller pieces by teeth, tongue and the stomach muscles is physical digestion. Chemical digestion needs enzymes and juices.</div></div>
+        <div class="rv-q" data-answer="d"><p>What does the enzyme amylase in saliva break starch down into?</p><ol><li>Glucose</li><li>Bile</li><li>Amylose</li><li>Maltose</li></ol><div class="explain">Amylase breaks starch into maltose. It is maltase, later in the small intestine, that turns maltose into glucose.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which enzyme completes the breakdown of food in the small intestine by making glucose?</p><ol><li>Amylase</li><li>Maltase</li><li>Hydrochloric acid</li><li>Bile</li></ol><div class="explain">Maltase breaks maltose down into glucose. Amylase acts earlier (in the mouth) on starch.</div></div>
+        <div class="rv-q" data-answer="c"><p>What is the job of the villi in the small intestine?</p><ol><li>Make bile to digest fats</li><li>Squeeze food along by peristalsis</li><li>Increase the surface area for absorption of nutrients</li><li>Kill bacteria in food</li></ol><div class="explain">Villi increase the surface area so nutrients from fully digested food can be absorbed into the bloodstream.</div></div>
+        <div class="rv-q" data-answer="a"><p>Why is hydrochloric acid found in the stomach?</p><ol><li>It chemically digests food and kills bacteria in food</li><li>It reabsorbs water into the blood</li><li>It pushes food along the oesophagus</li><li>It makes bile for fat digestion</li></ol><div class="explain">Hydrochloric acid does two jobs: chemical digestion and killing bacteria.</div></div>
+        <div class="rv-q" data-answer="d"><p>What is peristalsis?</p><ol><li>The breakdown of starch by saliva</li><li>The absorption of water in the large intestine</li><li>The churning of food in the stomach</li><li>A wave-like movement of muscles that pushes food along the oesophagus</li></ol><div class="explain">Peristalsis is the wave-like muscle movement along the oesophagus. Churning belongs to the stomach.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which type of tooth is used for grasping and tearing food?</p><ol><li>Incisor</li><li>Canine</li><li>Premolar</li><li>Molar</li></ol><div class="explain">Canines are pointed ‘eye teeth’ for grasping and tearing. Incisors cut and slice; premolars and molars crush and grind.</div></div>
+        <div class="rv-q" data-answer="c"><p>What is the major function of the large intestine?</p><ol><li>To produce digestive enzymes</li><li>To complete the breakdown of maltose</li><li>To reabsorb water from fully digested food into the blood</li><li>To store food temporarily and churn it</li></ol><div class="explain">The large intestine reabsorbs water and prepares waste for egestion as faeces. The pancreas makes enzymes; the small intestine finishes digestion; the stomach stores and churns.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which statement about bile is correct?</p><ol><li>It is made by the pancreas and digests starch</li><li>It is made by the liver and helps digest fats in the small intestine</li><li>It is made by the stomach and kills bacteria</li><li>It is made by the small intestine and absorbs water</li></ol><div class="explain">The liver produces bile, which passes into the small intestine to help digest fats. The pancreas makes digestive enzymes.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which statement about an enzyme is correct?</p><ol><li>It is a protein that speeds up reactions and is not used up</li><li>It is a sugar that is used up in the reaction</li><li>It is a protein that is used up to make glucose</li><li>It is an acid that kills bacteria</li></ol><div class="explain">An enzyme is a protein that speeds up the rate of a reaction and is not used up in the process.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Questions are from the textbook (Summary questions, Test Tube and past papers). Click a question to reveal a model answer written from the textbook text.</p>
+      <details class="rv-qa"><summary>1. Explain the difference between physical and chemical digestion. (Summary Q3)</summary><div class="rv-model">
+        <ul><li><strong>Physical digestion:</strong> food is broken down into smaller pieces by the teeth, tongue and churning action of the muscles in the stomach.</li>
+        <li><strong>Chemical digestion:</strong> food is broken down further by digestive enzymes and other digestive juices (e.g. amylase in saliva, acid in the stomach).</li></ul></div></details>
+      <details class="rv-qa"><summary>2. Complete the table: function of each type of tooth. (Summary Q4)</summary><div class="rv-model">
+        <table><thead><tr><th>Type of tooth</th><th>Description</th><th>Function</th></tr></thead><tbody>
+          <tr><td>Incisor</td><td>Narrow, sharp teeth at the front of the mouth, similar to chisels</td><td><strong>Biting, cutting and slicing food</strong></td></tr>
+          <tr><td>Canine</td><td>Pointed teeth, often called ‘eye teeth’</td><td><strong>Grasping and tearing food</strong></td></tr>
+          <tr><td>Premolar</td><td><strong>Large, rounded teeth</strong></td><td>Crushing and grinding food</td></tr>
+          <tr><td>Molar</td><td><strong>Largest teeth, found at the back of the mouth</strong></td><td>Crushing and grinding food</td></tr>
+        </tbody></table></div></details>
+      <details class="rv-qa"><summary>3. Complete the table for the enzymes amylase and maltase. (Summary Q6)</summary><div class="rv-model">
+        <table><thead><tr><th>Enzyme</th><th>Where it acts</th><th>Breaks down</th><th>Broken into</th></tr></thead><tbody>
+          <tr><td>Amylase</td><td><strong>Mouth (in saliva)</strong></td><td>Starch</td><td><strong>Maltose</strong></td></tr>
+          <tr><td>Maltase</td><td>Small intestine</td><td><strong>Maltose</strong></td><td>Glucose</td></tr>
+        </tbody></table></div></details>
+      <details class="rv-qa"><summary>4. Distinguish between the roles of the small intestine and the large intestine. (Summary Q7) [4 marks]</summary><div class="rv-model">
+        <ul><li><strong>Small intestine:</strong> completes digestion (maltase breaks maltose into glucose); villi give a large surface area so nutrients are absorbed into the bloodstream.</li>
+        <li><strong>Large intestine:</strong> reabsorbs water from fully digested food into the blood; prepares undigested food and waste for egestion as faeces (stored in the rectum, passed out through the anus).</li></ul></div></details>
+      <details class="rv-qa"><summary>5. Food does not pass through the pancreas or liver, yet they play an important role in digestion. Explain the function of each. List three functions of the liver. (Test Tube Q7; Summary Q8)</summary><div class="rv-model">
+        <ul><li><strong>Pancreas:</strong> produces the digestive enzymes that pass into the small intestine.</li>
+        <li><strong>Liver:</strong> produces bile, which passes into the small intestine and helps digest fats.</li></ul>
+        <p><strong>Three liver functions:</strong> (1) breaks down harmful substances such as alcohol; (2) keeps body temperature at 37 °C; (3) produces bile.</p></div></details>
+      <details class="rv-qa"><summary>6. Final Examination 2022, Q14 (Fig 6.7). (a) Identify structure X (between mouth and stomach). (b) Name the part of the digestive system that: absorbs water from fully digested matter; secretes hydrochloric acid to kill bacteria; absorbs fully digested food into the bloodstream.</summary><div class="rv-model">
+        <p>(a) X is the <strong>oesophagus</strong> (food pipe).</p>
+        <table><thead><tr><th>Function</th><th>Part of digestive system</th></tr></thead><tbody>
+          <tr><td>Absorbs water from fully digested matter</td><td><strong>Large intestine</strong></td></tr>
+          <tr><td>Secretes hydrochloric acid to kill bacteria in food</td><td><strong>Stomach</strong></td></tr>
+          <tr><td>Absorbs fully digested food into the bloodstream</td><td><strong>Small intestine</strong></td></tr>
+        </tbody></table>
+        <p style="color:var(--muted)">Diagram not reproduced: X is read from the position shown in Fig 6.7 (between mouth and stomach).</p></div></details>
+      <details class="rv-qa"><summary>7. Describe how you would investigate whether amylase breaks down starch. (Experiment 6.1)</summary><div class="rv-model">
+        <ol><li>Set up a 37 °C water bath (body temperature); warm the starch, pH 7 buffer, amylase and water in it for 5 minutes.</li>
+        <li>Label two test tubes “Water” and “Amylase”; add starch solution and pH 7 buffer to both.</li>
+        <li>Add water to one tube and amylase to the other; swirl and leave both in the water bath for 15 minutes.</li>
+        <li>Take a drop from each tube onto a white dropping plate (separate droppers) and add one drop of iodine to each.</li>
+        <li>Record observations and compare the two tubes – the “Water” tube is the comparison.</li></ol></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Five stages</td><td>Ingestion → digestion → absorption → assimilation → egestion</td><td>Absorption = into the blood; assimilation = cells use it.</td></tr>
+        <tr><td>Types of digestion</td><td>Physical: smaller pieces (teeth, tongue, stomach churning). Chemical: enzymes and juices.</td><td>The stomach does both.</td></tr>
+        <tr><td>Enzyme</td><td>Protein that speeds up chemical reactions and is not used up</td><td>Never say “used up”.</td></tr>
+        <tr><td>Mouth</td><td>Teeth (incisor, canine, premolar, molar); amylase turns starch into maltose</td><td>Match tooth to function: cut / tear / crush + grind.</td></tr>
+        <tr><td>Oesophagus</td><td>Peristalsis pushes food along</td><td>Name the term, not just “squeezing”.</td></tr>
+        <tr><td>Stomach</td><td>Muscular bag that churns and stores; hydrochloric acid digests and kills bacteria</td><td>Two jobs of the acid.</td></tr>
+        <tr><td>Small intestine</td><td>Maltase: maltose → glucose; villi = large surface area for absorption</td><td>“Increased surface area” earns the mark.</td></tr>
+        <tr><td>Pancreas / liver</td><td>Pancreas makes enzymes; liver makes bile (fats), breaks down harmful substances, keeps 37 °C</td><td>Food does not pass through them.</td></tr>
+        <tr><td>Large intestine</td><td>Reabsorbs water; faeces stored in rectum, leave via anus</td><td>It does not digest food.</td></tr>
+        <tr><td>Experiment 6.1</td><td>Amylase + starch at 37 °C; test with iodine; “Water” tube is the comparison</td><td>Explain why there are two tubes.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Science Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

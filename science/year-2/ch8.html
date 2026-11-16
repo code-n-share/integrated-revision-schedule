@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Revision – The Respiratory System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #2E7D32; --accent-light: #E8F5E9; --accent-bright: #66BB6A;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Science Revision</div><div class="book-title">Elements of Science · Unit 2 Biological World</div></div>
+    <a href="index.html">&larr; Science Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Breathing basics</a>
+    <a href="#topic-2">Structures of the respiratory system</a>
+    <a href="#topic-3">Gas exchange and diffusion</a>
+    <a href="#topic-4">Inhaled air and exhaled air</a>
+    <a href="#topic-5">Breathing: diaphragm and intercostal muscles</a>
+    <a href="#topic-6">How the body’s systems work together</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 8 · Unit 2 – Biological World</div>
+      <h1>🫁 <span>The Respiratory System</span></h1>
+      <p class="chapter-meta">Elements of Science, pp. 66–75 · Junior Cycle Science Revision</p>
+      <div><span class="goal-tag">✔ Explain the roles of the organs in the breathing system</span><span class="goal-tag">✔ Understand how gases pass between the lungs and blood</span><span class="goal-tag">✔ Describe how breathing takes place</span><span class="goal-tag">✔ Test for carbon dioxide in inhaled and exhaled air</span><span class="goal-tag">✔ Recognise how the body’s systems work together</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the respiratory system, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Respiratory system
+          <ul>
+            <li>Breathing
+              <ul><li>Inhalation (in)</li><li>Exhalation (out)</li></ul></li>
+            <li>Air route
+              <ul><li>Nose / mouth</li><li>Trachea</li><li>Bronchi</li><li>Bronchioles</li><li>Alveoli</li></ul></li>
+            <li>Gas exchange
+              <ul><li>Diffusion</li><li>Alveoli + capillaries</li></ul></li>
+            <li>Breathing muscles
+              <ul><li>Diaphragm</li><li>Intercostal muscles</li></ul></li>
+            <li>Inhaled v exhaled air
+              <ul><li>Oxygen 21 → 16</li><li>CO₂ 0.04 → 4</li></ul></li>
+            <li>Systems together
+              <ul><li>Digestive + circulatory</li><li>Digestive + respiratory</li><li>Circulatory + respiratory</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Inhalation</strong></td><td>Breathing in.</td></tr>
+        <tr><td><strong>Exhalation</strong></td><td>Breathing out.</td></tr>
+        <tr><td><strong>Respiratory system</strong></td><td>The system responsible for breathing (often called “the breathing system”).</td></tr>
+        <tr><td><strong>Epiglottis</strong></td><td>Flap of tissue that stops food going down the “wrong way” into the trachea.</td></tr>
+        <tr><td><strong>Trachea</strong></td><td>The windpipe; made from c-shaped rings of cartilage that keep it open; air flows through it to the bronchus.</td></tr>
+        <tr><td><strong>Bronchus</strong></td><td>One of the two tubes (bronchi) the trachea divides into, one for each lung.</td></tr>
+        <tr><td><strong>Lungs</strong></td><td>Two large, spongy, elastic organs in the chest cavity; expand on inhalation and contract on exhalation.</td></tr>
+        <tr><td><strong>Bronchioles</strong></td><td>Increasingly narrow tubes that each bronchus divides into.</td></tr>
+        <tr><td><strong>Alveolus</strong></td><td>Tiny air sac at the tip of each bronchiole where gases are exchanged between air and blood (plural: alveoli).</td></tr>
+        <tr><td><strong>Diffusion</strong></td><td>Movement of a gas from an area of high concentration to an area of low concentration.</td></tr>
+        <tr><td><strong>Diaphragm</strong></td><td>Large sheet of muscle below the lungs; contracts and flattens to bring air in, relaxes to force air out.</td></tr>
+        <tr><td><strong>Intercostal muscles</strong></td><td>Muscles between the ribs that move the ribs during inhalation and exhalation.</td></tr>
+        <tr><td><strong>Pharynx</strong></td><td>The throat: the opening for both the digestive and respiratory systems.</td></tr>
+        <tr><td><strong>Mucus</strong></td><td>Sticky substance made in the nose that traps dust and micro-organisms.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🌬️ Breathing basics</div>
+      <div class="key-term">The <strong>respiratory system</strong> is the system responsible for breathing. Breathing <em>in</em> is called <strong>inhalation</strong>. Breathing <em>out</em> is called <strong>exhalation</strong>.
+        <p>It has <strong>two main functions</strong>: (1) to take in <strong>oxygen</strong> from the atmosphere; (2) to give out <strong>carbon dioxide and water vapour</strong> to the atmosphere.</p>
+        <div class="tip">💡 In = <strong>in</strong>halation (oxygen in). Out = <strong>ex</strong>halation (ex = exit, carbon dioxide and water vapour out).</div></div>
+      <div class="example-box"><div class="example-header">🎯 Concentrate!</div><div class="example-body">Don’t confuse the respiratory system with <strong>respiration</strong>, which is the way energy is released from food. To tell them apart, the respiratory system is often called “the breathing system”.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> writing “respiration” when the question is about breathing. Breathing = respiratory system; respiration = releasing energy from food.</div>
+
+      <div class="section-heading" id="topic-2">🧭 Structures of the respiratory system</div>
+      <p>Follow the air from the outside in:</p>
+      <div class="flow"><span class="box">Mouth / nose</span><span class="arr">→</span><span class="box">Pharynx + epiglottis</span><span class="arr">→</span><span class="box">Trachea</span><span class="arr">→</span><span class="box">2 Bronchi</span><span class="arr">→</span><span class="box">Bronchioles</span><span class="arr">→</span><span class="box">Alveoli</span></div>
+      <table><thead><tr><th>Structure</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><strong>Mouth and nose</strong></td><td>Air enters through the mouth and nose. Air entering through the nose is <strong>warmed and moistened</strong> so gases are easier to exchange between lungs and blood. <strong>Hairs and mucus</strong> in the nose clean the air by removing dust and micro-organisms (bacteria).</td></tr>
+        <tr><td><strong>Epiglottis</strong></td><td>A flap of tissue that stops food going down the “wrong way” and entering the trachea.</td></tr>
+        <tr><td><strong>Trachea</strong></td><td>Commonly known as the <strong>windpipe</strong>. Made from <strong>c-shaped rings of cartilage that keep it open</strong>. Allows air to flow to the bronchus.</td></tr>
+        <tr><td><strong>Bronchus</strong></td><td>The trachea divides into <strong>two bronchi</strong>, one for each lung, allowing air to flow into and out of the lungs.</td></tr>
+        <tr><td><strong>Lungs</strong></td><td>Two large, <strong>spongy, elastic</strong> organs in the chest cavity. They expand easily during inhalation and contract back to normal size during exhalation.</td></tr>
+        <tr><td><strong>Bronchioles</strong></td><td>Each bronchus divides into increasingly narrow tubes in the lungs.</td></tr>
+        <tr><td><strong>Alveolus (alveoli)</strong></td><td>At the tip of each bronchiole is a <strong>tiny air sac</strong>. There are <strong>millions</strong> in the lungs (about 300 million in each lung). This is where gases are exchanged between blood and air.</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> the airway is an upside-down tree: <strong>trachea</strong> (trunk) → <strong>bronchi</strong> (big branches) → <strong>bronchioles</strong> (twigs) → <strong>alveoli</strong> (leaves).</div>
+      <div class="tip">💡 The c-shaped cartilage rings work like the rings in a vacuum-cleaner hose: they stop the tube squashing flat.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up the trachea (one tube, the windpipe) with the oesophagus (food pipe) – the epiglottis keeps food out of the trachea.</div>
+
+      <div class="section-heading" id="topic-3">🔄 Gas exchange and diffusion</div>
+      <div class="key-term"><strong>Diffusion</strong> allows each gas to move from an area where it is in <strong>high concentration</strong> to an area where it is in <strong>low concentration</strong>. The walls of the alveoli and capillaries are <strong>very thin (one cell thick)</strong>, which allows the gases to pass through easily.
+        <div class="tip">💡 Like the smell of toast spreading from the kitchen: it drifts from where there is lots of it to where there is little.</div></div>
+      <ul>
+        <li>The alveoli are surrounded by <strong>capillaries</strong> that carry blood.</li>
+        <li><strong>Oxygen</strong> moves from the alveoli → to the capillaries (into the blood).</li>
+        <li><strong>Carbon dioxide and water</strong> move from the capillaries → to the alveoli (and are breathed out).</li>
+      </ul>
+      <div class="flow"><span class="box blue">Air in alveolus: oxygen</span><span class="arr">→ diffuses into →</span><span class="box red">Blood in capillary</span></div>
+      <div class="flow"><span class="box blue">Blood in capillary: CO₂ + water</span><span class="arr">→ diffuses into →</span><span class="box">Air in alveolus</span></div>
+      <div class="tip">🔎 <strong>Eureka:</strong> there are approximately 300 million alveoli in each lung, providing a large surface area for gas exchange.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying the lungs “make” oxygen or that oxygen is “breathed into the blood”. Oxygen <em>diffuses</em> from the alveoli into the capillaries because there is more of it in the alveoli.</div>
+
+      <div class="section-heading" id="topic-4">⚖️ Inhaled air and exhaled air</div>
+      <p>The composition of inhaled and exhaled air is different, due to the exchange of gases at the alveoli.</p>
+      <table><thead><tr><th></th><th>Inhaled air (%)</th><th>Exhaled air (%)</th></tr></thead><tbody>
+        <tr><td><strong>Oxygen</strong></td><td>21</td><td>16</td></tr>
+        <tr><td><strong>Carbon dioxide</strong></td><td>0.04</td><td>4</td></tr>
+        <tr><td><strong>Water vapour</strong></td><td>Variable</td><td>Variable but more than inhaled air</td></tr>
+        <tr><td><strong>Nitrogen</strong></td><td>78</td><td>78</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> exhaled air has <strong>less oxygen</strong> (21 → 16), <strong>more carbon dioxide</strong> (0.04 → 4), <strong>more water vapour</strong>, and the <strong>same nitrogen</strong> (78).</div>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 8.1: How can we test for carbon dioxide in inhaled and exhaled air?</div><div class="example-body">
+        <p><strong>Equipment:</strong> droppers, limewater, 2 test tubes, plastic straws, two-holed rubber bungs. <strong>Safety:</strong> do not drink the limewater.</p>
+        <ol>
+          <li>Use a dropper to put equal volumes of limewater into the two test tubes.</li>
+          <li>Fit straws into the rubber bungs and the bungs into both tubes (Fig 8.5).</li>
+          <li>Observe and record how clear or milky the limewater is in both tubes.</li>
+          <li><strong>Breathe in through straw A</strong> and <strong>breathe out through straw B</strong> for 3 minutes.</li>
+          <li>Observe and record how clear or milky the limewater is in both tubes again.</li>
+        </ol>
+        <!-- TODO: the textbook pages in the recording do not state the expected result. Standard result: limewater turns milky with carbon dioxide, so the exhaled-air tube (B) changes more. Confirm with class notes. -->
+        <div class="tip">💡 Limewater is a test liquid: the milkier it goes, the more carbon dioxide has passed through it. Comparing tube A and tube B compares inhaled and exhaled air.</div></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up the straws. You breathe <em>in</em> through A (so air from the room is drawn through the limewater) and <em>out</em> through B (so your exhaled air is bubbled through it).</div>
+
+      <div class="section-heading" id="topic-5">💪 Breathing: diaphragm and intercostal muscles</div>
+      <div class="key-term">The <strong>diaphragm</strong> is a large sheet of muscle below the lungs, at the bottom of the ribcage.
+        <ul><li><strong>Inhalation:</strong> the diaphragm <strong>contracts and flattens</strong> to bring air into the lungs.</li>
+        <li><strong>Exhalation:</strong> it <strong>relaxes and returns to its dome shape</strong> to force air out of the lungs.</li></ul>
+        The <strong>intercostal muscles</strong> move the ribs during inhalation and exhalation.</div>
+      <table><thead><tr><th></th><th>Inhalation (breathing in)</th><th>Exhalation (breathing out)</th></tr></thead><tbody>
+        <tr><td><strong>Diaphragm</strong></td><td>Contracts and flattens</td><td>Relaxes, returns to dome shape</td></tr>
+        <tr><td><strong>Lungs</strong></td><td>Expand; air is drawn in from the atmosphere</td><td>Contract back to normal size; air is pushed out to the atmosphere</td></tr>
+      </tbody></table>
+      <div class="tip">💡 Flat when you take air in, dome when you push it out – like a trampoline pulling flat as air rushes in.</div>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 8.2: How can we model the chest, lungs and diaphragm?</div><div class="example-body">
+        <p><strong>Equipment:</strong> 2-litre plastic bottle, balloons, scissors, elastic bands. <strong>Safety:</strong> be careful when using scissors.</p>
+        <ul><li><strong>Plastic bottle</strong> (top two-thirds, base cut off) = the <strong>chest</strong></li>
+        <li><strong>Balloon through the neck of the bottle</strong> = the <strong>lung</strong></li>
+        <li><strong>Cut balloon stretched over the open bottom</strong> = the <strong>diaphragm</strong></li></ul>
+        <p>Pinch the diaphragm balloon at the bottom and pull it down 1 cm at a time (1–5 cm), observing and recording how much the “lung” balloon inflates.</p></div></div>
+      <div class="example-box"><div class="example-header">🔬 Experimental Investigation 8.3: What happens to our breathing rate when we exercise?</div><div class="example-body">
+        <p><strong>Equipment:</strong> timer. <strong>Safety:</strong> make sure you are medically fit to exercise.</p>
+        <ol><li>In pairs: A is active, B records and times.</li>
+        <li>A rests for 2 minutes, then counts breaths for <strong>30 seconds</strong>; B records. Repeat twice more and calculate A’s average resting breathing rate (breaths per minute).</li>
+        <li>Repeat after low–moderate exercise (brisk walk, 2 minutes) and moderate–high exercise (jog/run, about three-quarter pace, 2 minutes).</li>
+        <li>Swap roles and plot the data on a suitable chart or graph.</li></ol></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying the diaphragm “relaxes” during inhalation. It is the opposite: contracts and flattens to breathe in, relaxes to breathe out.</div>
+
+      <div class="section-heading" id="topic-6">🤝 How the body’s systems work together</div>
+      <p>The digestive, circulatory and respiratory systems work together to carry out tasks that no one system could do on its own. This makes the human body very well organised.</p>
+      <table><thead><tr><th>Systems</th><th>How they work together</th></tr></thead><tbody>
+        <tr><td><strong>Digestive + circulatory</strong></td><td>Food is broken down into forms that can be absorbed into the bloodstream (e.g. starch → maltose → glucose). Capillaries in the small intestine absorb the nutrients into the blood. The blood delivers the nutrients to all the cells for energy and growth.</td></tr>
+        <tr><td><strong>Digestive + respiratory</strong></td><td>The <strong>pharynx</strong> (throat) is the opening for both: food enters the oesophagus and air enters the trachea. The <strong>epiglottis</strong> stops food going down the wrong way and blocking the trachea. <strong>Mucus</strong> in the nose traps dust and micro-organisms; micro-organisms in swallowed mucus are killed by the acid in the stomach.</td></tr>
+        <tr><td><strong>Circulatory + respiratory</strong></td><td>The pulmonary artery takes deoxygenated blood to the lungs. Diffusion allows the exchange of oxygen and carbon dioxide at the alveoli. Capillaries containing oxygenated blood join to form the pulmonary vein, which carries oxygenated blood to the left atrium of the heart.</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> describing one system only. “Work together” answers need a link between two systems (e.g. blood vessels collecting oxygen at the alveoli).</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What is inhalation?</div><div class="a">Breathing in</div></div>
+        <div class="rv-card"><div class="q">What is exhalation?</div><div class="a">Breathing out</div></div>
+        <div class="rv-card"><div class="q">Two main functions of the respiratory system</div><div class="a">Take in oxygen; give out carbon dioxide and water vapour</div></div>
+        <div class="rv-card"><div class="q">Respiratory system vs respiration</div><div class="a">Respiratory system = breathing system; respiration = how energy is released from food</div></div>
+        <div class="rv-card"><div class="q">How does the nose prepare air?</div><div class="a">Warms and moistens it; hairs and mucus remove dust and micro-organisms</div></div>
+        <div class="rv-card"><div class="q">What is the epiglottis?</div><div class="a">Flap of tissue that stops food entering the trachea</div></div>
+        <div class="rv-card"><div class="q">What is the trachea?</div><div class="a">The windpipe; kept open by c-shaped rings of cartilage</div></div>
+        <div class="rv-card"><div class="q">What are the bronchi?</div><div class="a">The two tubes the trachea divides into, one for each lung</div></div>
+        <div class="rv-card"><div class="q">Describe the lungs</div><div class="a">Two large, spongy, elastic organs in the chest cavity</div></div>
+        <div class="rv-card"><div class="q">What are bronchioles?</div><div class="a">Increasingly narrow tubes that each bronchus divides into</div></div>
+        <div class="rv-card"><div class="q">What is an alveolus?</div><div class="a">A tiny air sac at the tip of a bronchiole where gases are exchanged</div></div>
+        <div class="rv-card"><div class="q">How many alveoli in each lung?</div><div class="a">About 300 million – a large surface area for gas exchange</div></div>
+        <div class="rv-card"><div class="q">Define diffusion</div><div class="a">Movement of a gas from an area of high concentration to low concentration</div></div>
+        <div class="rv-card"><div class="q">Why do gases pass easily through alveoli and capillary walls?</div><div class="a">The walls are very thin (one cell thick)</div></div>
+        <div class="rv-card"><div class="q">Which way does oxygen move at the alveolus?</div><div class="a">From the alveoli to the capillaries (into the blood)</div></div>
+        <div class="rv-card"><div class="q">Which way do carbon dioxide and water move at the alveolus?</div><div class="a">From the capillaries to the alveoli</div></div>
+        <div class="rv-card"><div class="q">Oxygen in inhaled vs exhaled air</div><div class="a">21% inhaled, 16% exhaled</div></div>
+        <div class="rv-card"><div class="q">Carbon dioxide in inhaled vs exhaled air</div><div class="a">0.04% inhaled, 4% exhaled</div></div>
+        <div class="rv-card"><div class="q">Nitrogen in inhaled vs exhaled air</div><div class="a">78% in both (no change)</div></div>
+        <div class="rv-card"><div class="q">What does the diaphragm do when we breathe in?</div><div class="a">Contracts and flattens to bring air into the lungs</div></div>
+        <div class="rv-card"><div class="q">What does the diaphragm do when we breathe out?</div><div class="a">Relaxes and returns to its dome shape to force air out</div></div>
+        <div class="rv-card"><div class="q">What do the intercostal muscles do?</div><div class="a">Move the ribs during inhalation and exhalation</div></div>
+        <div class="rv-card"><div class="q">What is the pharynx?</div><div class="a">The throat – opening for both the digestive and respiratory systems</div></div>
+        <div class="rv-card"><div class="q">Why is limewater used in Experiment 8.1?</div><div class="a">To test for carbon dioxide in inhaled and exhaled air (observe how clear or milky it is)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>Breathing in is called {{inhalation}} and breathing out is called {{exhalation}}.</p>
+        <p>The respiratory system takes in {{oxygen}} from the atmosphere and gives out {{carbon dioxide}} and water vapour.</p>
+        <p>The {{epiglottis}} is a flap of tissue that stops food entering the {{trachea}}, which is commonly known as the windpipe.</p>
+        <p>The trachea divides into two {{bronchi}}, which divide into narrow tubes called {{bronchioles}}.</p>
+        <p>At the tip of each bronchiole is a tiny air sac called an {{alveolus}}, where the exchange of gases between blood and air takes place.</p>
+        <p>{{Diffusion}} allows each gas to move from an area of high concentration to an area of {{low}} concentration.</p>
+        <p>During inhalation the {{diaphragm}} contracts and flattens; the {{intercostal muscles}} move the ribs.</p>
+        <p>Exhaled air has {{less}} oxygen and {{more}} carbon dioxide than inhaled air, but the same amount of nitrogen.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>What is the term for breathing out?</p><ol><li>Inhalation</li><li>Exhalation</li><li>Respiration</li><li>Diffusion</li></ol><div class="explain">Exhalation is breathing out; inhalation is breathing in. Respiration is how energy is released from food – a different thing.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which of these are the two main functions of the respiratory system?</p><ol><li>Take in carbon dioxide; give out oxygen</li><li>Take in food; give out waste</li><li>Take in oxygen; give out carbon dioxide and water vapour</li><li>Pump blood; clot blood</li></ol><div class="explain">The respiratory system takes in oxygen and gives out carbon dioxide and water vapour. Option 1 reverses the gases.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which statement is correct?</p><ol><li>Respiration is the way energy is released from food</li><li>Respiration is another word for breathing</li><li>The respiratory system releases energy from food</li><li>Respiration is the movement of air into the lungs</li></ol><div class="explain">Don’t confuse the respiratory (breathing) system with respiration, which is how energy is released from food.</div></div>
+        <div class="rv-q" data-answer="d"><p>What does the epiglottis do?</p><ol><li>Warms and moistens the air</li><li>Divides the trachea into two bronchi</li><li>Exchanges gases with the blood</li><li>Stops food going down the “wrong way” into the trachea</li></ol><div class="explain">The epiglottis is a flap of tissue that prevents food entering the trachea.</div></div>
+        <div class="rv-q" data-answer="c"><p>What keeps the trachea open?</p><ol><li>The diaphragm</li><li>Mucus</li><li>C-shaped rings of cartilage</li><li>The intercostal muscles</li></ol><div class="explain">The trachea (windpipe) is made from c-shaped rings of cartilage that keep it open.</div></div>
+        <div class="rv-q" data-answer="b"><p>Where does the exchange of gases between blood and air take place?</p><ol><li>The bronchi</li><li>The alveoli</li><li>The trachea</li><li>The diaphragm</li></ol><div class="explain">Gas exchange happens at the alveoli – tiny air sacs surrounded by capillaries. The bronchi and trachea only carry air.</div></div>
+        <div class="rv-q" data-answer="d"><p>What is diffusion?</p><ol><li>The movement of gas from low concentration to high concentration</li><li>The movement of ribs during breathing</li><li>The breakdown of food into glucose</li><li>The movement of a gas from an area of high concentration to an area of low concentration</li></ol><div class="explain">Gases diffuse from high concentration to low concentration. Option 1 reverses it.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which statement about inhaled and exhaled air is correct?</p><ol><li>Exhaled air has less oxygen (16%) and more carbon dioxide (4%) than inhaled air</li><li>Exhaled air has more oxygen than inhaled air</li><li>Exhaled air has less nitrogen than inhaled air</li><li>Inhaled air has more carbon dioxide than exhaled air</li></ol><div class="explain">Oxygen falls from 21% to 16%; carbon dioxide rises from 0.04% to 4%; nitrogen stays at 78%.</div></div>
+        <div class="rv-q" data-answer="c"><p>What happens to the diaphragm when we breathe in?</p><ol><li>It relaxes and returns to its dome shape</li><li>It stays still while the ribs move</li><li>It contracts and flattens</li><li>It divides into two bronchi</li></ol><div class="explain">On inhalation the diaphragm contracts and flattens to bring air in. It relaxes and domes when we breathe out.</div></div>
+        <div class="rv-q" data-answer="b"><p>What do hairs and mucus in the nose do?</p><ol><li>Exchange oxygen with the blood</li><li>Clean the air by removing dust and micro-organisms</li><li>Pump air into the lungs</li><li>Stop food entering the trachea</li></ol><div class="explain">Hairs and mucus trap dust and micro-organisms. Stopping food entering the trachea is the epiglottis’s job.</div></div>
+        <div class="rv-q" data-answer="a"><p>How does the circulatory system work with the respiratory system?</p><ol><li>The pulmonary artery takes deoxygenated blood to the lungs; the pulmonary vein returns oxygenated blood to the heart</li><li>The aorta takes air to the alveoli</li><li>Bile takes oxygen from the alveoli</li><li>The pulmonary vein takes deoxygenated blood to the lungs</li></ol><div class="explain">The pulmonary artery carries deoxygenated blood <em>to</em> the lungs; the pulmonary vein carries oxygenated blood <em>to</em> the left atrium.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Questions are from the textbook (Summary questions and past papers). Click a question to reveal a model answer written from the textbook text.</p>
+      <details class="rv-qa"><summary>1. Copy and complete: During inhalation, the lungs ______. Air is drawn ______ from the atmosphere. During exhalation, the lungs ______. Air is pushed ______ to the atmosphere. (Summary Q1)</summary><div class="rv-model">
+        <p>During inhalation, the lungs <strong>expand</strong>. Air is drawn <strong>in</strong> from the atmosphere. During exhalation, the lungs <strong>contract</strong> (back to normal size). Air is pushed <strong>out</strong> to the atmosphere.</p></div></details>
+      <details class="rv-qa"><summary>2. Match each part of the respiratory system with a function: 1 Nose, 2 Trachea, 3 Bronchus, 4 Pharynx, 5 Intercostal muscles, 6 Ribcage, 7 Lungs, 8 Diaphragm; (a) allow air to flow into and out of lungs (b) opening for respiratory and digestive systems (c) supply oxygen to cells (d) protects the heart and lungs (e) removes dust and micro-organisms (f) contracts and relaxes to move air in and out of lungs (g) move the ribs (h) allows air to flow to the bronchus. (Summary Q4)</summary><div class="rv-model">
+        <p><strong>1 → e, 2 → h, 3 → a, 4 → b, 5 → g, 6 → d, 7 → c, 8 → f</strong></p></div></details>
+      <details class="rv-qa"><summary>3. Fig 8.10 shows a model of the respiratory system (bell jar with a pink balloon at the bottom, a Y-shaped tube and two yellow balloons inside). Identify the part represented by: (a) the yellow balloons (b) the Y-shaped tube (c) the bell jar (d) the pink balloon. (Summary Q5; Experiment 8.2)</summary><div class="rv-model">
+        <p>(a) the <strong>lungs</strong> (b) the <strong>trachea and bronchi</strong> (the airway to the lungs) (c) the <strong>chest</strong> (chest cavity / ribcage) (d) the <strong>diaphragm</strong>.</p>
+        <p style="color:var(--muted)">Based on the model in Experiment 8.2 (bottle = chest, balloon = lung, cut balloon = diaphragm); check (b) against your class notes.</p></div></details>
+      <details class="rv-qa"><summary>4. (a) Explain the term “diffusion”. (b) Give one example of diffusion in the respiratory system, identifying the gas and location. (c) Outline two ways alveoli are suited to their job. (Summary Q6–7) [5 marks]</summary><div class="rv-model">
+        <p>(a) Diffusion is the movement of a gas from an area of high concentration to an area of low concentration.</p>
+        <p>(b) Oxygen moves from the alveoli (high concentration) into the capillaries (low concentration). <em>Or:</em> carbon dioxide moves from the capillaries into the alveoli.</p>
+        <p>(c) There are millions of alveoli (about 300 million per lung), giving a large surface area for gas exchange; the walls of the alveoli and the capillaries around them are very thin (one cell thick), so gases pass through easily.</p></div></details>
+      <details class="rv-qa"><summary>5. The percentage of carbon dioxide in a person’s exhaled air at rest is 4.1%, after low–moderate activity 6.8%, and after moderate–high activity 9.3%. (a) What trend can you see? (b) Explain why there is more carbon dioxide in exhaled air than inhaled air. (Summary Q8)</summary><div class="rv-model">
+        <p>(a) The percentage of carbon dioxide in exhaled air <strong>increases</strong> as the level of physical activity increases (4.1% → 6.8% → 9.3%).</p>
+        <p>(b) Gases are exchanged at the alveoli: carbon dioxide moves by diffusion from the capillaries into the alveoli and is breathed out, so exhaled air (4%) has more carbon dioxide than inhaled air (0.04%).</p>
+        <!-- TODO: the textbook pages in the recording do not explain *why* exercise increases carbon dioxide; add from class notes. -->
+        <p style="color:var(--muted)">The textbook pages we have don’t give the reason for the trend – add it from your class notes.</p></div></details>
+      <details class="rv-qa"><summary>6. Final Examination 2019, Q9 (Fig 8.11). A points to the nose/mouth region, B points to the tube leading to the lungs, C points to a lung. (a) Match words (Lung, Trachea, Liver, Oesophagus, Mouth) to the letters. (b) Describe what happens in the respiratory system when a person breathes in.</summary><div class="rv-model">
+        <p>(a) <strong>A = Mouth, B = Trachea, C = Lung.</strong></p>
+        <p>(b) Air enters through the mouth (and nose); the diaphragm contracts and flattens and the intercostal muscles move the ribs; air passes down the trachea and bronchi into the lungs, which expand; oxygen diffuses from the alveoli into the capillaries.</p>
+        <p style="color:var(--muted)">Letters are read from the position of the arrows in Fig 8.11; check against the diagram.</p></div></details>
+      <details class="rv-qa"><summary>7. Sample Paper 2018, Q4 (Fig 8.12). Choose from: Heart, Veins, Small intestine, Stomach, Lungs. “When we breathe we draw air into our ______, where the oxygen is passed into our blood. After we swallow food, it is first stored in our ______ for a few hours, where some digestion occurs. Then it travels to our ______, where further digestion happens and glucose and other nutrients are absorbed into our blood. Blood is pumped around the body by our ______. The blood travels through arteries and capillaries to all the cells, then back through our ______.”</summary><div class="rv-model">
+        <p><strong>lungs, stomach, small intestine, heart, veins</strong></p></div></details>
+      <details class="rv-qa"><summary>8. Give one example of how the following systems work together: (a) circulatory and respiratory (b) respiratory and digestive (c) digestive and circulatory. (Summary Q9)</summary><div class="rv-model">
+        <ul><li>(a) The pulmonary artery takes deoxygenated blood to the lungs, where oxygen and carbon dioxide are exchanged by diffusion at the alveoli; the pulmonary vein returns oxygenated blood to the left atrium.</li>
+        <li>(b) The pharynx is the opening for both systems; the epiglottis stops food blocking the trachea. <em>Or:</em> mucus traps micro-organisms, which are killed by stomach acid when swallowed.</li>
+        <li>(c) Food is broken down (starch → maltose → glucose); capillaries in the small intestine absorb the nutrients into the blood, which delivers them to all cells for energy and growth.</li></ul></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Breathing terms</td><td>Inhalation = in; exhalation = out</td><td>Respiration ≠ breathing.</td></tr>
+        <tr><td>Functions</td><td>Take in oxygen; give out carbon dioxide and water vapour</td><td>Two functions = two marks.</td></tr>
+        <tr><td>Nose / epiglottis</td><td>Nose warms, moistens and cleans air (hairs, mucus); epiglottis stops food entering trachea</td><td>List three things the nose does.</td></tr>
+        <tr><td>Airway order</td><td>Trachea → 2 bronchi → bronchioles → alveoli</td><td>Trachea has c-shaped cartilage rings.</td></tr>
+        <tr><td>Alveoli</td><td>Tiny air sacs; ~300 million per lung; thin walls (one cell), surrounded by capillaries</td><td>Large surface area + thin walls.</td></tr>
+        <tr><td>Diffusion</td><td>High concentration → low concentration</td><td>Say which gas, from where to where.</td></tr>
+        <tr><td>Inhaled v exhaled air</td><td>O₂ 21 → 16; CO₂ 0.04 → 4; N₂ 78 → 78; more water vapour</td><td>Learn the four numbers.</td></tr>
+        <tr><td>Breathing muscles</td><td>Diaphragm contracts and flattens (in), relaxes to a dome (out); intercostals move ribs</td><td>Don’t reverse in and out.</td></tr>
+        <tr><td>Experiment 8.1</td><td>Limewater in two tubes; breathe in through A, out through B; compare milkiness</td><td>Describe the set-up and what you compare.</td></tr>
+        <tr><td>Systems together</td><td>Digestive + circulatory (absorption); digestive + respiratory (pharynx, epiglottis, mucus); circulatory + respiratory (pulmonary vessels, alveoli)</td><td>Link <em>two</em> systems in the answer.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Science Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

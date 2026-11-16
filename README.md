@@ -14,6 +14,8 @@ A clean, fast-loading static revision website for exam preparation across all su
 │   └── revision.js             ← Shared interactive behaviour (progress saved in localStorage)
 ├── templates/
 │   └── chapter-template.html   ← Copy this to start a new chapter
+├── tools/
+│   └── build_science.py        ← Optional: wraps a Science chapter body in the page shell (see CONTENT_RULES.md)
 ├── <subject>/                  ← business, classics, english, french, geography,
 │   │                             history, irish, maths, science
 │   ├── index.html          ← Year picker (Year 1 / Year 2)
@@ -75,3 +77,6 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Maths Year 2 – Chapter 2 – Factors
 - [x] Maths Year 2 – Chapter 3 – Sets
 - [x] Maths Year 2 – Chapter 9 – Probability
+- [x] Science Year 2 – Chapter 6 – The Digestive System (Biological World)
+- [x] Science Year 2 – Chapter 7 – The Circulatory System (Biological World)
+- [x] Science Year 2 – Chapter 8 – The Respiratory System (Biological World)
