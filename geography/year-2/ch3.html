@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Revision – Industry in Ireland: Case Studies &amp; MNCs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF; --accent-bright: #B79BF5;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Geography Revision</div><div class="book-title">Geography · Year 2 · Industry</div></div>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Case study: Aughinish Alumina</a>
+    <a href="#topic-2">Case study: Apple</a>
+    <a href="#topic-3">MNCs and Google</a>
+    <a href="#topic-4">Industry and conflict</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 3 · Economic Activities</div>
+      <h1>🌐 <span>Industry in Ireland: Case Studies &amp; MNCs</span></h1>
+      <p class="chapter-meta">Year 2 class notes, class notes pp. 7–10, 12–13 · Junior Cycle Geography Revision</p>
+      <div><span class="goal-tag">✔ Describe Aughinish Alumina (heavy)</span><span class="goal-tag">✔ Describe Apple, Cork (light)</span><span class="goal-tag">✔ Explain MNCs, FDI and Google</span><span class="goal-tag">✔ Discuss industry v environment conflict</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the industry in Ireland, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: class notes PDF pp. 7–10, 12–13 (Case Study 1 Aughinish Alumina, Case Study 2 Apple, MNCs, MNCs in Ireland: Google, Industry + Conflict). Chapter numbering is sequential for Year 2 – TODO: match to textbook if wanted.
+           TODO(notes): p.7 says bauxite comes from "Republic of New Guinea" – check the country against the textbook.
+           TODO(notes): p.10 marks "globalisation*" with an asterisk but the definition isn't in the pages given – add the textbook definition. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Industry in Ireland
+          <ul>
+            <li>Aughinish Alumina
+              <ul><li>Heavy industry</li><li>Bauxite → alumina</li><li>Shannon estuary</li></ul></li>
+            <li>Apple, Cork
+              <ul><li>Light industry</li><li>Low tax, EU, port</li><li>Skilled graduates</li></ul></li>
+            <li>MNCs
+              <ul><li>HQ + branches</li><li>FDI</li><li>Globalisation</li></ul></li>
+            <li>Google
+              <ul><li>2003: 100 jobs</li><li>Now 2,500 jobs</li></ul></li>
+            <li>Conflict
+              <ul><li>Poolbeg incinerator</li><li>Pros v cons</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Estuary</strong></td><td>Where a river meets the sea (e.g. the Shannon estuary).</td></tr>
+        <tr><td><strong>Bauxite</strong></td><td>The raw material for Aughinish: a bulky, heavy metal ore, shipped to the deep-water port.</td></tr>
+        <tr><td><strong>Alumina</strong></td><td>A semi-finished product: a white powder used to make aluminium. Exported by ship to aluminium smelters in the UK.</td></tr>
+        <tr><td><strong>Heavy industry</strong></td><td>Bulky, heavy raw materials and products (case study: Aughinish Alumina).</td></tr>
+        <tr><td><strong>Light industry</strong></td><td>Small, lightweight products (case study: Apple).</td></tr>
+        <tr><td><strong>Multinational corporation (MNC)</strong></td><td>A corporation making its products in <strong>many different countries</strong>.</td></tr>
+        <tr><td><strong>Headquarters</strong></td><td>The main base of an MNC in one country; it manages the branches.</td></tr>
+        <tr><td><strong>Branches</strong></td><td>The MNC’s factories/offices in other countries, managed from the headquarters.</td></tr>
+        <tr><td><strong>Globalisation</strong></td><td>Makes it easier to buy and sell across the world. <!-- TODO: add the textbook definition --></td></tr>
+        <tr><td><strong>Foreign direct investment (FDI)</strong></td><td>When MNCs locate a base in Ireland. Downside: if the MNC leaves, there are job losses.</td></tr>
+        <tr><td><strong>Incinerator</strong></td><td>A plant that burns waste.</td></tr>
+        <tr><td><strong>Carcinogenic</strong></td><td>Cancer-causing (a substance that can cause cancer).</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">⚙️ Case Study 1: Aughinish Alumina (Heavy Industry)</div>
+      <div class="key-term"><strong>RUSAL Aughinish Alumina</strong> is a factory on <strong>Aughinish Island</strong> in the <strong>Shannon estuary</strong> (where the river meets the sea). RUSAL is the world’s largest aluminium provider.
+        <div class="tip">💡 It’s a “halfway” factory: it turns heavy rock (bauxite) into a white powder (alumina), which other factories turn into aluminium.</div></div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 330" role="img" aria-label="Aughinish supply chain: bauxite shipped to the deep-water port at Aughinish Island, made into alumina powder, then shipped to aluminium smelters in the UK">
+          <defs><marker id="arA" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#1976D2"/></marker></defs>
+          <rect x="10" y="30" width="190" height="130" rx="12" fill="#FFF3E8" stroke="#8D6E63" stroke-width="2.5"/>
+          <text class="h m" x="105" y="58" style="fill:#6D4C41">RAW MATERIAL</text><text class="m" x="105" y="84">Bauxite</text><text class="s m" x="105" y="104">Bulky, heavy metal</text><text class="s m" x="105" y="122">From Republic of New Guinea*</text><text class="s m" x="105" y="146">⛏️</text>
+          <rect x="270" y="10" width="240" height="190" rx="12" fill="#EDE7FF" stroke="#6C3FC5" stroke-width="2.5"/>
+          <text class="h m" x="390" y="36" style="fill:#4A2A8F">AUGHINISH ISLAND</text><text class="s m" x="390" y="52">Shannon estuary · deep-water port</text>
+          <text class="s" x="296" y="78" style="font-weight:700">Inputs:</text><text class="s" x="350" y="78">bauxite, caustic soda</text>
+          <text class="s" x="296" y="104" style="font-weight:700">Process:</text><text class="s" x="355" y="104">crushed, mixed, heated</text>
+          <text class="s" x="296" y="130" style="font-weight:700">Outputs:</text><text class="s" x="355" y="130">alumina powder, waste</text>
+          <text class="s m" x="390" y="160">Can store large quantities of bauxite</text><text class="s m" x="390" y="182">Began 1983 · 1.9 million tonnes a year</text>
+          <rect x="580" y="30" width="170" height="130" rx="12" fill="#E6F4ED" stroke="#2E8B57" stroke-width="2.5"/>
+          <text class="h m" x="665" y="58" style="fill:#2E7D32">MARKET</text><text class="m" x="665" y="84">Aluminium smelters</text><text class="s m" x="665" y="104">in the UK</text><text class="s m" x="665" y="124">(Ireland is in the EU:</text><text class="s m" x="665" y="140">easy to ship to Europe)</text>
+          <line x1="204" y1="95" x2="266" y2="95" stroke="#1976D2" stroke-width="4" marker-end="url(#arA)"/><text class="s m" x="239" y="80" style="fill:#1976D2;font-weight:700">🚢 ship</text>
+          <line x1="514" y1="95" x2="576" y2="95" stroke="#1976D2" stroke-width="4" marker-end="url(#arA)"/><text class="s m" x="542" y="80" style="fill:#1976D2;font-weight:700">🚢 ship</text>
+          <rect x="10" y="222" width="740" height="88" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+          <text class="s" x="28" y="248" style="font-weight:700">Labour:</text><text class="s" x="90" y="248">450 people from nearby towns, e.g. Foynes, Askeaton</text>
+          <text class="s" x="28" y="274" style="font-weight:700">Transport:</text><text class="s" x="105" y="274">port at Aughinish; the N69 road links to Shannon Airport</text>
+          <text class="s" x="28" y="298" style="font-weight:700">Product:</text><text class="s" x="95" y="298">alumina is a semi-finished product: a white powder used to make aluminium</text>
+        </svg>
+        <figcaption>*The notes say “Republic of New Guinea”: check the country against your textbook.</figcaption>
+      </figure>
+      <table><thead><tr><th>Location factor</th><th>How it applies to Aughinish</th></tr></thead><tbody>
+        <tr><td>Raw materials</td><td>Bauxite is bulky and heavy: shipped straight to the <strong>deep-water port at Aughinish</strong>; the island can store large quantities.</td></tr>
+        <tr><td>Transport</td><td>Port at Aughinish; the <strong>N69</strong> road links to Shannon Airport.</td></tr>
+        <tr><td>Market</td><td><strong>European market</strong>: Ireland is an EU country, so alumina can be easily shipped to European smelters (in the UK).</td></tr>
+        <tr><td>Labour</td><td><strong>450 people</strong> from nearby towns, e.g. Foynes and Askeaton.</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Aughinish makes aluminium. It makes <strong>alumina</strong> (a semi-finished white powder) which is exported to be made into <strong>aluminium</strong> elsewhere.</div>
+
+      <div class="section-heading" id="topic-2">💻 Case Study 2: Apple, Cork (Light Industry)</div>
+      <div class="key-term"><strong>Apple Computers Ltd</strong> is a <strong>light industry</strong> in <strong>Holyhill, Cork</strong>. It produces <strong>information technology (IT) products</strong>, e.g. computers, iPods and iPhones, for the world market, and employs <strong>6,000 workers</strong> in the Cork City area.
+        <p>It came to Cork in the <strong>1980s</strong> and has grown due to increasing demand. It is their <strong>operational headquarters for Europe, the Middle East and Asia</strong>.</p></div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 360" role="img" aria-label="Five reasons Apple located in Cork: low corporation tax, free movement of goods in the EU, Port of Cork and Cork Airport, universities supplying skilled graduates, and growing demand">
+          <rect x="300" y="140" width="160" height="70" rx="14" fill="#1A1A2E"/><text class="h w m" x="380" y="170"> Apple, Cork</text><text class="s m" x="380" y="192" style="fill:#E5E7EB">Light industry</text>
+          <g stroke-width="2.5" stroke-dasharray="5 4" fill="none"><line x1="300" y1="160" x2="205" y2="82" stroke="#6C3FC5"/><line x1="460" y1="160" x2="555" y2="82" stroke="#1976D2"/><line x1="300" y1="190" x2="205" y2="268" stroke="#2E8B57"/><line x1="460" y1="190" x2="555" y2="268" stroke="#E65100"/><line x1="380" y1="210" x2="380" y2="290" stroke="#C2185B"/></g>
+          <rect x="20" y="40" width="190" height="86" rx="12" fill="#fff" stroke="#6C3FC5" stroke-width="2.5"/><text class="m" x="115" y="66" style="fill:#6C3FC5">Low corporation tax</text><text class="s m" x="115" y="88">Ireland’s rate is 12.5%</text><text class="s m" x="115" y="106">encouraged Apple to locate here</text>
+          <rect x="550" y="40" width="190" height="86" rx="12" fill="#fff" stroke="#1976D2" stroke-width="2.5"/><text class="m" x="645" y="66" style="fill:#1976D2">EU country</text><text class="s m" x="645" y="88">Free movement of goods</text><text class="s m" x="645" y="106">(Ireland is in the EU)</text>
+          <rect x="20" y="224" width="190" height="86" rx="12" fill="#fff" stroke="#2E8B57" stroke-width="2.5"/><text class="m" x="115" y="250" style="fill:#2E7D32">Transport</text><text class="s m" x="115" y="268">Close to Port of Cork and</text><text class="s m" x="115" y="283">Cork Airport: goods shipped</text><text class="s m" x="115" y="298">worldwide at low cost</text>
+          <rect x="550" y="224" width="190" height="86" rx="12" fill="#fff" stroke="#E65100" stroke-width="2.5"/><text class="m" x="645" y="250" style="fill:#E65100">Skilled labour</text><text class="s m" x="645" y="272">University College Cork and</text><text class="s m" x="645" y="290">Cork Institute of Technology</text>
+          <rect x="285" y="290" width="190" height="56" rx="12" fill="#fff" stroke="#C2185B" stroke-width="2.5"/><text class="m" x="380" y="314" style="fill:#C2185B">Growing demand</text><text class="s m" x="380" y="333">grown since the 1980s</text>
+        </svg>
+      </figure>
+      <table><thead><tr><th>Inputs</th><th>Processes</th><th>Outputs</th></tr></thead><tbody>
+        <tr><td>Capital, labour</td><td>Soldering, packaging</td><td>Computers, waste</td></tr>
+      </tbody></table>
+      <table><thead><tr><th></th><th>Aughinish Alumina</th><th>Apple</th></tr></thead><tbody>
+        <tr><td><strong>Type</strong></td><td>Heavy industry</td><td>Light industry</td></tr>
+        <tr><td><strong>Place</strong></td><td>Aughinish Island, Shannon estuary</td><td>Holyhill, Cork</td></tr>
+        <tr><td><strong>Product</strong></td><td>Alumina (semi-finished powder)</td><td>Computers, iPods, iPhones</td></tr>
+        <tr><td><strong>Workers</strong></td><td>450</td><td>6,000</td></tr>
+        <tr><td><strong>Main location pull</strong></td><td>Deep-water port for bulky bauxite; EU market</td><td>Low tax (12.5%), EU, port/airport, skilled graduates</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-3">🌐 Multinational Corporations (MNCs) and Google</div>
+      <div class="key-term"><strong>MNCs</strong> are corporations making their products in <strong>many different countries</strong>. The <strong>headquarters</strong> are in one country and manage <strong>branches</strong> in other countries. Because of <strong>globalisation</strong> it’s easier to buy and sell across the world.
+        <div class="tip">💡 Think of a school with one head office and branch classrooms in many towns: the head office makes the big decisions.</div></div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 260" role="img" aria-label="An MNC has its headquarters in one country, which manages branches in other countries including Ireland">
+          <defs><marker id="arP" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#6C3FC5"/></marker></defs>
+          <rect x="280" y="20" width="200" height="70" rx="14" fill="#6C3FC5"/><text class="h w m" x="380" y="48">HEADQUARTERS</text><text class="s m" x="380" y="70" style="fill:#EDE7FF">in ONE country · manages branches</text>
+          <g stroke="#6C3FC5" stroke-width="3" fill="none"><line x1="320" y1="92" x2="130" y2="152" marker-end="url(#arP)"/><line x1="380" y1="92" x2="380" y2="152" marker-end="url(#arP)"/><line x1="440" y1="92" x2="630" y2="152" marker-end="url(#arP)"/></g>
+          <rect x="30" y="156" width="200" height="64" rx="12" fill="#EDE7FF" stroke="#6C3FC5" stroke-width="2"/><text class="m" x="130" y="184">Branch</text><text class="s m" x="130" y="204">Country B</text>
+          <rect x="280" y="156" width="200" height="64" rx="12" fill="#E6F4ED" stroke="#2E8B57" stroke-width="2.5"/><text class="m" x="380" y="184" style="fill:#2E7D32">Branch in IRELAND 🇮🇪</text><text class="s m" x="380" y="204">= foreign direct investment (FDI)</text>
+          <rect x="530" y="156" width="200" height="64" rx="12" fill="#EDE7FF" stroke="#6C3FC5" stroke-width="2"/><text class="m" x="630" y="184">Branch</text><text class="s m" x="630" y="204">Country C</text>
+          <text class="s m" x="380" y="246">Products are made in many different countries</text>
+        </svg>
+      </figure>
+      <p><strong>Google in Ireland</strong>: set up in Ireland in <strong>2003</strong>, providing <strong>100 jobs</strong>; it now employs <strong>2,500 people</strong>. <strong>1 in 5 people</strong> are now employed by an MNC.</p>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 130" role="img" aria-label="Google jobs in Ireland grew from 100 in 2003 to 2,500 now">
+          <text class="s" x="20" y="34" style="font-weight:700">2003</text><rect x="70" y="18" width="24" height="24" rx="4" fill="#6C3FC5"/><text x="102" y="36">100 jobs</text>
+          <text class="s" x="20" y="88" style="font-weight:700">Now</text><rect x="70" y="72" width="600" height="24" rx="4" fill="#2E8B57"/><text class="w" x="80" y="90">2,500 jobs</text>
+          <text class="s" x="70" y="118">Bar lengths drawn to scale: 25 times more jobs</text>
+        </svg>
+      </figure>
+      <p><strong>Reasons why MNCs such as Google locate in Ireland:</strong></p>
+      <ul>
+        <li>Ireland is an <strong>EU country</strong></li>
+        <li>Access to <strong>markets and labour force</strong></li>
+        <li>A <strong>highly educated workforce</strong></li>
+        <li><strong>English</strong> is the language of business</li>
+        <li><strong>Corporation tax is low</strong> (12.5%)</li>
+      </ul>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>E-M-E-E-T</strong> = <strong>E</strong>U, <strong>M</strong>arkets &amp; labour, <strong>E</strong>ducated workforce, <strong>E</strong>nglish language, low <strong>T</strong>ax.</div>
+      <p>MNCs locating a base in Ireland is called <strong>foreign direct investment (FDI)</strong>. <strong>Downside:</strong> if an MNC leaves, it causes <strong>job losses</strong>.</p>
+
+      <div class="section-heading" id="topic-4">⚔️ Industry and Conflict</div>
+      <div class="key-term">There can be <strong>conflict between factory owners and residents</strong>: <strong>gas and smoke emissions</strong> could harm health and the environment. Example: <strong>incinerators in Poolbeg, Co. Dublin</strong>. <strong>Incinerators burn waste.</strong></div>
+      <div class="twocol">
+        <div class="pos"><h4>✅ Positives</h4>
+          <ul><li>Save space on <strong>landfills</strong></li><li>Provide <strong>electricity</strong></li><li><strong>Jobs</strong> created to build and maintain it</li></ul></div>
+        <div class="neg"><h4>❌ Negatives</h4>
+          <ul><li>An <strong>easy option</strong>, so recycling may not be tried</li><li>Complaints that fumes are <strong>carcinogenic</strong> (cancer-causing)</li><li>Smoke can contribute to <strong>smog, acid rain and greenhouse gases</strong></li></ul></div>
+      </div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> giving only one side. For a “discuss” question give <strong>positives and negatives</strong>, and name the example (Poolbeg incinerator).</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Where is Aughinish Alumina located?</div><div class="a">Aughinish Island in the Shannon estuary</div></div>
+        <div class="rv-card"><div class="q">What is an estuary?</div><div class="a">Where a river meets the sea</div></div>
+        <div class="rv-card"><div class="q">What is alumina?</div><div class="a">A semi-finished white powder used to make aluminium</div></div>
+        <div class="rv-card"><div class="q">What is the raw material at Aughinish?</div><div class="a">Bauxite (a bulky, heavy metal)</div></div>
+        <div class="rv-card"><div class="q">Where is alumina exported to?</div><div class="a">Aluminium smelters in the UK, by ship</div></div>
+        <div class="rv-card"><div class="q">When did Aughinish start production, and how much per year?</div><div class="a">1983; 1.9 million tonnes of alumina per year</div></div>
+        <div class="rv-card"><div class="q">Aughinish: inputs, processes, outputs?</div><div class="a">Bauxite, caustic soda → crushed, mixed, heated → alumina powder, waste</div></div>
+        <div class="rv-card"><div class="q">How many people work at Aughinish, and from where?</div><div class="a">450, from nearby towns e.g. Foynes, Askeaton</div></div>
+        <div class="rv-card"><div class="q">Transport links at Aughinish?</div><div class="a">Port at Aughinish; N69 road links to Shannon Airport</div></div>
+        <div class="rv-card"><div class="q">Where is Apple’s Irish base?</div><div class="a">Holyhill, Cork (light industry)</div></div>
+        <div class="rv-card"><div class="q">What does Apple produce in Cork?</div><div class="a">IT products: computers, iPods, iPhones, for the world market</div></div>
+        <div class="rv-card"><div class="q">How many people does Apple employ in Cork?</div><div class="a">6,000 in the Cork City area</div></div>
+        <div class="rv-card"><div class="q">Give 3 reasons Apple located in Cork</div><div class="a">12.5% corporation tax; free movement of goods (EU); port, airport and skilled graduates (UCC, CIT)</div></div>
+        <div class="rv-card"><div class="q">Apple: inputs, processes, outputs?</div><div class="a">Capital, labour → soldering, packaging → computers, waste</div></div>
+        <div class="rv-card"><div class="q">What is an MNC?</div><div class="a">A corporation making its products in many different countries</div></div>
+        <div class="rv-card"><div class="q">What do an MNC’s headquarters do?</div><div class="a">Based in one country; manages branches in other countries</div></div>
+        <div class="rv-card"><div class="q">What makes it easier to buy and sell across the world?</div><div class="a">Globalisation</div></div>
+        <div class="rv-card"><div class="q">Google’s jobs in Ireland: 2003 v now?</div><div class="a">100 jobs in 2003; 2,500 people now</div></div>
+        <div class="rv-card"><div class="q">Give 5 reasons MNCs locate in Ireland</div><div class="a">EU country; markets &amp; labour force; educated workforce; English language; low tax (12.5%)</div></div>
+        <div class="rv-card"><div class="q">What is foreign direct investment (FDI)?</div><div class="a">MNCs locating a base in Ireland</div></div>
+        <div class="rv-card"><div class="q">What is the downside of FDI?</div><div class="a">If the MNC leaves, there are job losses</div></div>
+        <div class="rv-card"><div class="q">Where was the incinerator conflict?</div><div class="a">Poolbeg, Co. Dublin</div></div>
+        <div class="rv-card"><div class="q">Give 3 positives of incinerators</div><div class="a">Save landfill space; provide electricity; jobs to build and maintain</div></div>
+        <div class="rv-card"><div class="q">Give 3 negatives of incinerators</div><div class="a">Easy option so recycling may not be tried; carcinogenic fumes; smog, acid rain, greenhouse gases</div></div>
+        <div class="rv-card"><div class="q">What does carcinogenic mean?</div><div class="a">Cancer-causing</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>Aughinish Alumina is a {{heavy}} industry on Aughinish Island in the Shannon {{estuary}}, where the river meets the sea.</p>
+        <p>The factory uses {{bauxite}} to produce {{alumina}}, a semi-finished white powder used to make aluminium.</p>
+        <p>Alumina is exported by ship to aluminium {{smelters}} in the UK.</p>
+        <p>Apple in {{Holyhill}}, Cork is a {{light}} industry employing 6,000 workers; Ireland’s low corporation tax of {{12.5%}} encouraged it to locate here.</p>
+        <p>Apple benefits from the free {{movement of goods}} because Ireland is an EU country.</p>
+        <p>An {{MNC}} makes its products in many different countries; the {{headquarters}} are in one country and manage {{branches}} in other countries.</p>
+        <p>MNCs locating a base in Ireland is called {{foreign direct investment}} (FDI).</p>
+        <p>An {{incinerator}} burns waste; positives include saving space on {{landfills}} and providing {{electricity}}.</p>
+        <p>Fumes from incinerators are said to be {{carcinogenic}}, meaning cancer-causing.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>What does Aughinish Alumina produce?</p><ol><li>Aluminium</li><li>Bauxite</li><li>Alumina powder</li><li>Caustic soda</li></ol><div class="explain">Aughinish turns bauxite into alumina, a semi-finished powder. Smelters elsewhere make aluminium.</div></div>
+        <div class="rv-q" data-answer="a"><p>Why is Aughinish classed as a heavy industry?</p><ol><li>Its raw material and products are bulky and heavy</li><li>It employs many people</li><li>It makes electronics</li><li>It is in a city</li></ol><div class="explain">Heavy industry = bulky, heavy raw materials and products.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which road links Aughinish to Shannon Airport?</p><ol><li>M50</li><li>N69</li><li>N7</li><li>M1</li></ol><div class="explain">The N69 links Aughinish to Shannon Airport.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which is a reason Apple located in Cork?</p><ol><li>Cheap coal for energy</li><li>Bulky raw materials nearby</li><li>High corporation tax</li><li>Skilled graduates from UCC and CIT</li></ol><div class="explain">Apple benefits from skilled graduates, 12.5% (low) corporation tax, EU free movement and the port and airport.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is an <strong>output</strong> at Apple?</p><ol><li>Soldering</li><li>Capital</li><li>Computers</li><li>Packaging</li></ol><div class="explain">Computers and waste are outputs; capital and labour are inputs; soldering and packaging are processes.</div></div>
+        <div class="rv-q" data-answer="a"><p>What is an MNC?</p><ol><li>A corporation making products in many different countries</li><li>A company that only sells in one country</li><li>A government agency</li><li>A type of industrial estate</li></ol><div class="explain">MNC = multinational corporation: HQ in one country, branches in others.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which is NOT a reason MNCs such as Google locate in Ireland?</p><ol><li>English is the language of business</li><li>A highly educated workforce</li><li>Low corporation tax (12.5%)</li><li>Bulky raw materials found locally</li></ol><div class="explain">The reasons are EU membership, markets and labour, educated workforce, English and low tax.</div></div>
+        <div class="rv-q" data-answer="b"><p>What is the main downside of foreign direct investment?</p><ol><li>Higher taxes</li><li>Job losses if the MNC leaves</li><li>Fewer markets</li><li>Less electricity</li></ol><div class="explain">If an MNC leaves Ireland, it causes job losses.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is a <strong>negative</strong> of incinerators?</p><ol><li>They save space on landfills</li><li>They provide electricity</li><li>Fumes may be carcinogenic</li><li>They create jobs</li></ol><div class="explain">The other three are positives. Negatives: easy option so recycling may not be tried; carcinogenic fumes; smog, acid rain and greenhouse gases.</div></div>
+        <div class="rv-q" data-answer="a"><p>Google began in Ireland in 2003 with 100 jobs. Roughly how many does it employ now?</p><ol><li>2,500</li><li>250</li><li>6,000</li><li>450</li></ol><div class="explain">2,500 people. (6,000 is Apple; 450 is Aughinish.)</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Case study: Aughinish Alumina. Describe its inputs, processes and outputs.</summary><div class="rv-model">
+        <p><strong>Inputs:</strong> bauxite and caustic soda. <strong>Processes:</strong> bauxite is crushed, mixed and heated. <strong>Outputs:</strong> alumina powder and waste.</p></div></details>
+      <details class="rv-qa"><summary>2. Explain why Aughinish Alumina is located on Aughinish Island.</summary><div class="rv-model">
+        <p>Bauxite is a <strong>bulky, heavy</strong> raw material, shipped to the <strong>deep-water port at Aughinish</strong>, and the island can <strong>store large quantities</strong> of it. Ireland is in the <strong>EU</strong>, so alumina can be easily shipped to <strong>European smelters</strong>. Transport includes the port and the <strong>N69</strong> road to Shannon Airport, and <strong>450 workers</strong> come from nearby towns such as Foynes and Askeaton.</p></div></details>
+      <details class="rv-qa"><summary>3. Case study: Apple. Give three reasons why it located in Cork.</summary><div class="rv-model">
+        <p><strong>Low corporation tax</strong> of 12.5%. <strong>Free movement of goods</strong>, since Ireland is an EU country. <strong>Close to Port of Cork and Cork Airport</strong>, so goods can be shipped worldwide at low cost. Also close to <strong>UCC and CIT</strong>, which supply skilled graduates.</p></div></details>
+      <details class="rv-qa"><summary>4. What is an MNC? Use a named example in Ireland.</summary><div class="rv-model">
+        <p>A <strong>multinational corporation</strong> makes its products in <strong>many different countries</strong>. Its <strong>headquarters</strong> are in one country and manage <strong>branches</strong> in other countries. Example: <strong>Google</strong>, set up in Ireland in 2003 with 100 jobs and now employing 2,500 people.</p></div></details>
+      <details class="rv-qa"><summary>5. Explain why MNCs locate in Ireland, and one downside of this.</summary><div class="rv-model">
+        <p>Ireland is an <strong>EU country</strong> with access to <strong>markets and a labour force</strong>, a <strong>highly educated workforce</strong>, <strong>English</strong> as the language of business and a <strong>low corporation tax (12.5%)</strong>. This is <strong>foreign direct investment (FDI)</strong>. <strong>Downside:</strong> if the MNC leaves, there are <strong>job losses</strong>.</p></div></details>
+      <details class="rv-qa"><summary>6. Discuss the conflict that can arise over an incinerator, e.g. Poolbeg, Co. Dublin.</summary><div class="rv-model">
+        <p>Conflict between <strong>factory owners and residents</strong>: gas and smoke emissions could harm health and the environment. <strong>Positives:</strong> saves space on landfills, provides electricity, creates jobs to build and maintain it. <strong>Negatives:</strong> an easy option so recycling may not be tried; complaints that fumes are carcinogenic; smoke can contribute to smog, acid rain and greenhouse gases.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Aughinish Alumina</td><td>Heavy industry; Shannon estuary; bauxite → alumina; 1983; 1.9 million t/yr; 450 workers; N69</td><td>Alumina ≠ aluminium.</td></tr>
+        <tr><td>Aughinish IPO</td><td>Bauxite + caustic soda → crushed, mixed, heated → alumina powder + waste</td><td>Include waste.</td></tr>
+        <tr><td>Apple, Cork</td><td>Light industry; Holyhill; 6,000 workers; 1980s; 12.5% tax; EU; port + airport; UCC and CIT</td><td>Give 3 linked reasons.</td></tr>
+        <tr><td>Apple IPO</td><td>Capital, labour → soldering, packaging → computers + waste</td><td>Learn both IPOs.</td></tr>
+        <tr><td>MNC</td><td>Makes products in many countries; HQ in one country manages branches</td><td>Use Google as the example.</td></tr>
+        <tr><td>Why Ireland?</td><td>EU; markets &amp; labour; educated workforce; English; 12.5% tax</td><td>Learn all five reasons.</td></tr>
+        <tr><td>FDI</td><td>MNCs locating a base in Ireland; downside: job losses if they leave</td><td>Give a pro AND a con.</td></tr>
+        <tr><td>Incinerators</td><td>Burn waste (Poolbeg): + landfill space, electricity, jobs; − easy option, carcinogenic fumes, smog/acid rain/greenhouse gases</td><td>Both sides.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Geography Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

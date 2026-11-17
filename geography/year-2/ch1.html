@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Revision – Slopes &amp; Aerial Photographs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF; --accent-bright: #B79BF5;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Geography Revision</div><div class="book-title">Geography · Year 2 · Skills</div></div>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Types of slopes</a>
+    <a href="#topic-2">Types of aerial photographs</a>
+    <a href="#topic-3">Describing location on a photo</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 1 · Geographical Skills</div>
+      <h1>⛰️ <span>Slopes &amp; Aerial Photographs</span></h1>
+      <p class="chapter-meta">Year 2 class notes, class notes pp. 1–3 · Junior Cycle Geography Revision</p>
+      <div><span class="goal-tag">✔ Name and describe the 4 types of slope</span><span class="goal-tag">✔ Link contour spacing to steepness</span><span class="goal-tag">✔ Tell vertical from oblique photos</span><span class="goal-tag">✔ Give location on both types of photo</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the types of slope and aerial photographs, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: class notes PDF pp. 1–3 (Types of Slopes, Types of Aerial Photos). Chapter numbering is sequential for Year 2 – TODO: match to textbook chapter numbers/pages if wanted. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Slopes &amp; aerial photos
+          <ul>
+            <li>Types of slope
+              <ul><li>Even</li><li>Concave</li><li>Convex</li><li>Compound (stepped)</li></ul></li>
+            <li>Aerial photos
+              <ul><li>Vertical</li><li>Oblique</li></ul></li>
+            <li>Vertical photo
+              <ul><li>Looks straight down</li><li>Use N, NE, E, SE…</li></ul></li>
+            <li>Oblique photo
+              <ul><li>Looks at an angle</li><li>Left / centre / right</li><li>Fore / middle / background</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Contour line</strong></td><td>A line on a map joining places of the <em>same height</em>. The numbers (10, 20, 30…) are heights. <!-- general knowledge, not written in the class notes --></td></tr>
+        <tr><td><strong>Even slope</strong></td><td>A slope that is the same steepness all the way up; the contour lines are evenly spaced out.</td></tr>
+        <tr><td><strong>Concave slope</strong></td><td>Contour lines spaced out at the base and <strong>closer together as they near the peak</strong>. Gentle at first, then steep.</td></tr>
+        <tr><td><strong>Convex slope</strong></td><td>Contour lines <strong>closer together at the base</strong> and more spread out as they near the peak. Steep at first, then gentle near the top.</td></tr>
+        <tr><td><strong>Compound slope</strong></td><td>Contour lines are sometimes spaced out and sometimes close together: steep in places and not steep in others. Also called a <strong>stepped slope</strong>.</td></tr>
+        <tr><td><strong>Aerial photograph</strong></td><td>A photograph taken from the air (the notes show it taken from a helicopter).</td></tr>
+        <tr><td><strong>Vertical aerial photo</strong></td><td>Taken from directly above, looking straight down at the ground. Location is described with the compass points (NW, North, NE…).</td></tr>
+        <tr><td><strong>Oblique aerial photo</strong></td><td>Taken from the air at an angle (looking slantways). Location is described with left / centre / right and foreground / middle ground / background.</td></tr>
+        <tr><td><strong>Foreground</strong></td><td>The part of an oblique photo <em>nearest</em> the camera (bottom of the photo).</td></tr>
+        <tr><td><strong>Background</strong></td><td>The part of an oblique photo <em>furthest</em> from the camera (top of the photo).</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">⛰️ Types of Slopes</div>
+      <div class="key-term">A slope's shape is shown on a map by its <strong>contour lines</strong>. <strong>Close together = steep. Spread out = gentle.</strong> There are four types: <strong>even, concave, compound and convex</strong>.
+        <div class="tip">💡 Think of contours as a staircase seen from above: tightly packed stairs = a steep climb; wide-spaced stairs = an easy walk.</div></div>
+      <figure class="fig">
+<svg class="dg" viewBox="0 0 760 545" role="img" aria-label="Four slope types shown as a side-view profile with the contour lines below it: even, concave, compound and convex">
+<g transform="translate(10,10)">
+<rect x="0" y="0" width="360" height="258" rx="12" fill="#fff" stroke="#1976D2" stroke-width="2"/>
+<rect x="0" y="0" width="360" height="30" rx="12" fill="#1976D2"/><rect x="0" y="16" width="360" height="14" fill="#1976D2"/>
+<text class="h w m" x="180" y="21">Even slope</text>
+<polygon points="30,125 30.0,125.0 33.0,124.1 36.0,123.2 39.0,122.3 42.0,121.4 45.0,120.5 48.0,119.6 51.0,118.7 54.0,117.8 57.0,116.9 60.0,116.0 63.0,115.1 66.0,114.2 69.0,113.3 72.0,112.4 75.0,111.5 78.0,110.6 81.0,109.7 84.0,108.8 87.0,107.9 90.0,107.0 93.0,106.1 96.0,105.2 99.0,104.3 102.0,103.4 105.0,102.5 108.0,101.6 111.0,100.7 114.0,99.8 117.0,98.9 120.0,98.0 123.0,97.1 126.0,96.2 129.0,95.3 132.0,94.4 135.0,93.5 138.0,92.6 141.0,91.7 144.0,90.8 147.0,89.9 150.0,89.0 153.0,88.1 156.0,87.2 159.0,86.3 162.0,85.4 165.0,84.5 168.0,83.6 171.0,82.7 174.0,81.8 177.0,80.9 180.0,80.0 183.0,79.1 186.0,78.2 189.0,77.3 192.0,76.4 195.0,75.5 198.0,74.6 201.0,73.7 204.0,72.8 207.0,71.9 210.0,71.0 213.0,70.1 216.0,69.2 219.0,68.3 222.0,67.4 225.0,66.5 228.0,65.6 231.0,64.7 234.0,63.8 237.0,62.9 240.0,62.0 243.0,61.1 246.0,60.2 249.0,59.3 252.0,58.4 255.0,57.5 258.0,56.6 261.0,55.7 264.0,54.8 267.0,53.9 270.0,53.0 273.0,52.1 276.0,51.2 279.0,50.3 282.0,49.4 285.0,48.5 288.0,47.6 291.0,46.7 294.0,45.8 297.0,44.9 300.0,44.0 303.0,43.1 306.0,42.2 309.0,41.3 312.0,40.4 315.0,39.5 318.0,38.6 321.0,37.7 324.0,36.8 327.0,35.9 330.0,35.0 330,125" fill="#E3F0FF" stroke="none"/>
+<polyline points="30.0,125.0 33.0,124.1 36.0,123.2 39.0,122.3 42.0,121.4 45.0,120.5 48.0,119.6 51.0,118.7 54.0,117.8 57.0,116.9 60.0,116.0 63.0,115.1 66.0,114.2 69.0,113.3 72.0,112.4 75.0,111.5 78.0,110.6 81.0,109.7 84.0,108.8 87.0,107.9 90.0,107.0 93.0,106.1 96.0,105.2 99.0,104.3 102.0,103.4 105.0,102.5 108.0,101.6 111.0,100.7 114.0,99.8 117.0,98.9 120.0,98.0 123.0,97.1 126.0,96.2 129.0,95.3 132.0,94.4 135.0,93.5 138.0,92.6 141.0,91.7 144.0,90.8 147.0,89.9 150.0,89.0 153.0,88.1 156.0,87.2 159.0,86.3 162.0,85.4 165.0,84.5 168.0,83.6 171.0,82.7 174.0,81.8 177.0,80.9 180.0,80.0 183.0,79.1 186.0,78.2 189.0,77.3 192.0,76.4 195.0,75.5 198.0,74.6 201.0,73.7 204.0,72.8 207.0,71.9 210.0,71.0 213.0,70.1 216.0,69.2 219.0,68.3 222.0,67.4 225.0,66.5 228.0,65.6 231.0,64.7 234.0,63.8 237.0,62.9 240.0,62.0 243.0,61.1 246.0,60.2 249.0,59.3 252.0,58.4 255.0,57.5 258.0,56.6 261.0,55.7 264.0,54.8 267.0,53.9 270.0,53.0 273.0,52.1 276.0,51.2 279.0,50.3 282.0,49.4 285.0,48.5 288.0,47.6 291.0,46.7 294.0,45.8 297.0,44.9 300.0,44.0 303.0,43.1 306.0,42.2 309.0,41.3 312.0,40.4 315.0,39.5 318.0,38.6 321.0,37.7 324.0,36.8 327.0,35.9 330.0,35.0" fill="none" stroke="#1976D2" stroke-width="3"/>
+<line x1="30" y1="125" x2="330" y2="125" stroke="#374151" stroke-width="1.5"/>
+<rect x="30" y="164" width="300" height="36" fill="#F9FAFB" stroke="#374151" stroke-width="1"/>
+<line x1="72.9" y1="112.1" x2="72.9" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="72.9" cy="112.1" r="3" fill="#1976D2"/>
+<line x1="72.9" y1="164" x2="72.9" y2="200" stroke="#1976D2" stroke-width="2"/>
+<text class="s m" x="72.9" y="140">10</text>
+<line x1="115.7" y1="99.3" x2="115.7" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="115.7" cy="99.3" r="3" fill="#1976D2"/>
+<line x1="115.7" y1="164" x2="115.7" y2="200" stroke="#1976D2" stroke-width="2"/>
+<text class="s m" x="115.7" y="140">20</text>
+<line x1="158.6" y1="86.4" x2="158.6" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="158.6" cy="86.4" r="3" fill="#1976D2"/>
+<line x1="158.6" y1="164" x2="158.6" y2="200" stroke="#1976D2" stroke-width="2"/>
+<text class="s m" x="158.6" y="140">30</text>
+<line x1="201.4" y1="73.6" x2="201.4" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="201.4" cy="73.6" r="3" fill="#1976D2"/>
+<line x1="201.4" y1="164" x2="201.4" y2="200" stroke="#1976D2" stroke-width="2"/>
+<text class="s m" x="201.4" y="140">40</text>
+<line x1="244.3" y1="60.7" x2="244.3" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="244.3" cy="60.7" r="3" fill="#1976D2"/>
+<line x1="244.3" y1="164" x2="244.3" y2="200" stroke="#1976D2" stroke-width="2"/>
+<text class="s m" x="244.3" y="140">50</text>
+<line x1="287.1" y1="47.9" x2="287.1" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="287.1" cy="47.9" r="3" fill="#1976D2"/>
+<line x1="287.1" y1="164" x2="287.1" y2="200" stroke="#1976D2" stroke-width="2"/>
+<text class="s m" x="287.1" y="140">60</text>
+<text class="s" x="30" y="215">Low ground</text><text class="s" x="330" y="215" text-anchor="end">High ground (peak 70 m)</text>
+<text class="s" x="30" y="46">Side view (profile)</text>
+<text class="s" x="30" y="159">View from above (contour lines)</text>
+<text class="m" x="180" y="235" fill="#1976D2" style="fill:#1976D2">Contours evenly spaced</text>
+<text class="s m" x="180" y="250">Same steepness all the way up</text>
+</g>
+<g transform="translate(390,10)">
+<rect x="0" y="0" width="360" height="258" rx="12" fill="#fff" stroke="#2E8B57" stroke-width="2"/>
+<rect x="0" y="0" width="360" height="30" rx="12" fill="#2E8B57"/><rect x="0" y="16" width="360" height="14" fill="#2E8B57"/>
+<text class="h w m" x="180" y="21">Concave slope</text>
+<polygon points="30,125 30.0,125.0 33.0,125.0 36.0,125.0 39.0,124.9 42.0,124.9 45.0,124.8 48.0,124.7 51.0,124.6 54.0,124.4 57.0,124.3 60.0,124.1 63.0,123.9 66.0,123.7 69.0,123.5 72.0,123.2 75.0,123.0 78.0,122.7 81.0,122.4 84.0,122.1 87.0,121.8 90.0,121.4 93.0,121.0 96.0,120.6 99.0,120.2 102.0,119.8 105.0,119.4 108.0,118.9 111.0,118.4 114.0,117.9 117.0,117.4 120.0,116.9 123.0,116.4 126.0,115.8 129.0,115.2 132.0,114.6 135.0,114.0 138.0,113.3 141.0,112.7 144.0,112.0 147.0,111.3 150.0,110.6 153.0,109.9 156.0,109.1 159.0,108.4 162.0,107.6 165.0,106.8 168.0,106.0 171.0,105.1 174.0,104.3 177.0,103.4 180.0,102.5 183.0,101.6 186.0,100.7 189.0,99.7 192.0,98.8 195.0,97.8 198.0,96.8 201.0,95.8 204.0,94.7 207.0,93.7 210.0,92.6 213.0,91.5 216.0,90.4 219.0,89.3 222.0,88.1 225.0,87.0 228.0,85.8 231.0,84.6 234.0,83.4 237.0,82.2 240.0,80.9 243.0,79.6 246.0,78.3 249.0,77.0 252.0,75.7 255.0,74.4 258.0,73.0 261.0,71.6 264.0,70.2 267.0,68.8 270.0,67.4 273.0,66.0 276.0,64.5 279.0,63.0 282.0,61.5 285.0,60.0 288.0,58.4 291.0,56.9 294.0,55.3 297.0,53.7 300.0,52.1 303.0,50.5 306.0,48.8 309.0,47.2 312.0,45.5 315.0,43.8 318.0,42.1 321.0,40.3 324.0,38.6 327.0,36.8 330.0,35.0 330,125" fill="#E6F4ED" stroke="none"/>
+<polyline points="30.0,125.0 33.0,125.0 36.0,125.0 39.0,124.9 42.0,124.9 45.0,124.8 48.0,124.7 51.0,124.6 54.0,124.4 57.0,124.3 60.0,124.1 63.0,123.9 66.0,123.7 69.0,123.5 72.0,123.2 75.0,123.0 78.0,122.7 81.0,122.4 84.0,122.1 87.0,121.8 90.0,121.4 93.0,121.0 96.0,120.6 99.0,120.2 102.0,119.8 105.0,119.4 108.0,118.9 111.0,118.4 114.0,117.9 117.0,117.4 120.0,116.9 123.0,116.4 126.0,115.8 129.0,115.2 132.0,114.6 135.0,114.0 138.0,113.3 141.0,112.7 144.0,112.0 147.0,111.3 150.0,110.6 153.0,109.9 156.0,109.1 159.0,108.4 162.0,107.6 165.0,106.8 168.0,106.0 171.0,105.1 174.0,104.3 177.0,103.4 180.0,102.5 183.0,101.6 186.0,100.7 189.0,99.7 192.0,98.8 195.0,97.8 198.0,96.8 201.0,95.8 204.0,94.7 207.0,93.7 210.0,92.6 213.0,91.5 216.0,90.4 219.0,89.3 222.0,88.1 225.0,87.0 228.0,85.8 231.0,84.6 234.0,83.4 237.0,82.2 240.0,80.9 243.0,79.6 246.0,78.3 249.0,77.0 252.0,75.7 255.0,74.4 258.0,73.0 261.0,71.6 264.0,70.2 267.0,68.8 270.0,67.4 273.0,66.0 276.0,64.5 279.0,63.0 282.0,61.5 285.0,60.0 288.0,58.4 291.0,56.9 294.0,55.3 297.0,53.7 300.0,52.1 303.0,50.5 306.0,48.8 309.0,47.2 312.0,45.5 315.0,43.8 318.0,42.1 321.0,40.3 324.0,38.6 327.0,36.8 330.0,35.0" fill="none" stroke="#2E8B57" stroke-width="3"/>
+<line x1="30" y1="125" x2="330" y2="125" stroke="#374151" stroke-width="1.5"/>
+<rect x="30" y="164" width="300" height="36" fill="#F9FAFB" stroke="#374151" stroke-width="1"/>
+<line x1="143.4" y1="112.1" x2="143.4" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="143.4" cy="112.1" r="3" fill="#2E8B57"/>
+<line x1="143.4" y1="164" x2="143.4" y2="200" stroke="#2E8B57" stroke-width="2"/>
+<text class="s m" x="143.4" y="140">10</text>
+<line x1="190.4" y1="99.3" x2="190.4" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="190.4" cy="99.3" r="3" fill="#2E8B57"/>
+<line x1="190.4" y1="164" x2="190.4" y2="200" stroke="#2E8B57" stroke-width="2"/>
+<text class="s m" x="190.4" y="140">20</text>
+<line x1="226.4" y1="86.4" x2="226.4" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="226.4" cy="86.4" r="3" fill="#2E8B57"/>
+<line x1="226.4" y1="164" x2="226.4" y2="200" stroke="#2E8B57" stroke-width="2"/>
+<text class="s m" x="226.4" y="140">30</text>
+<line x1="256.8" y1="73.6" x2="256.8" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="256.8" cy="73.6" r="3" fill="#2E8B57"/>
+<line x1="256.8" y1="164" x2="256.8" y2="200" stroke="#2E8B57" stroke-width="2"/>
+<text class="s m" x="256.8" y="140">40</text>
+<line x1="283.5" y1="60.7" x2="283.5" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="283.5" cy="60.7" r="3" fill="#2E8B57"/>
+<line x1="283.5" y1="164" x2="283.5" y2="200" stroke="#2E8B57" stroke-width="2"/>
+<text class="s m" x="283.5" y="140">50</text>
+<line x1="307.7" y1="47.9" x2="307.7" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="307.7" cy="47.9" r="3" fill="#2E8B57"/>
+<line x1="307.7" y1="164" x2="307.7" y2="200" stroke="#2E8B57" stroke-width="2"/>
+<text class="s m" x="307.7" y="140">60</text>
+<text class="s" x="30" y="215">Low ground</text><text class="s" x="330" y="215" text-anchor="end">High ground (peak 70 m)</text>
+<text class="s" x="30" y="46">Side view (profile)</text>
+<text class="s" x="30" y="159">View from above (contour lines)</text>
+<text class="m" x="180" y="235" fill="#2E8B57" style="fill:#2E8B57">Close together near the peak</text>
+<text class="s m" x="180" y="250">Gentle at first, then steep</text>
+</g>
+<g transform="translate(10,278)">
+<rect x="0" y="0" width="360" height="258" rx="12" fill="#fff" stroke="#E65100" stroke-width="2"/>
+<rect x="0" y="0" width="360" height="30" rx="12" fill="#E65100"/><rect x="0" y="16" width="360" height="14" fill="#E65100"/>
+<text class="h w m" x="180" y="21">Compound slope</text>
+<polygon points="30,125 30.0,125.0 33.0,123.3 36.0,121.6 39.0,120.0 42.0,118.4 45.0,116.8 48.0,115.3 51.0,113.8 54.0,112.5 57.0,111.2 60.0,110.0 63.0,108.9 66.0,107.9 69.0,107.0 72.0,106.2 75.0,105.5 78.0,104.9 81.0,104.4 84.0,103.9 87.0,103.6 90.0,103.3 93.0,103.1 96.0,102.9 99.0,102.7 102.0,102.6 105.0,102.5 108.0,102.4 111.0,102.3 114.0,102.1 117.0,101.9 120.0,101.7 123.0,101.4 126.0,101.1 129.0,100.6 132.0,100.1 135.0,99.5 138.0,98.8 141.0,98.0 144.0,97.1 147.0,96.1 150.0,95.0 153.0,93.8 156.0,92.5 159.0,91.2 162.0,89.7 165.0,88.2 168.0,86.6 171.0,85.0 174.0,83.4 177.0,81.7 180.0,80.0 183.0,78.3 186.0,76.6 189.0,75.0 192.0,73.4 195.0,71.8 198.0,70.3 201.0,68.8 204.0,67.5 207.0,66.2 210.0,65.0 213.0,63.9 216.0,62.9 219.0,62.0 222.0,61.2 225.0,60.5 228.0,59.9 231.0,59.4 234.0,58.9 237.0,58.6 240.0,58.3 243.0,58.1 246.0,57.9 249.0,57.7 252.0,57.6 255.0,57.5 258.0,57.4 261.0,57.3 264.0,57.1 267.0,56.9 270.0,56.7 273.0,56.4 276.0,56.1 279.0,55.6 282.0,55.1 285.0,54.5 288.0,53.8 291.0,53.0 294.0,52.1 297.0,51.1 300.0,50.0 303.0,48.8 306.0,47.5 309.0,46.2 312.0,44.7 315.0,43.2 318.0,41.6 321.0,40.0 324.0,38.4 327.0,36.7 330.0,35.0 330,125" fill="#FFF0E5" stroke="none"/>
+<polyline points="30.0,125.0 33.0,123.3 36.0,121.6 39.0,120.0 42.0,118.4 45.0,116.8 48.0,115.3 51.0,113.8 54.0,112.5 57.0,111.2 60.0,110.0 63.0,108.9 66.0,107.9 69.0,107.0 72.0,106.2 75.0,105.5 78.0,104.9 81.0,104.4 84.0,103.9 87.0,103.6 90.0,103.3 93.0,103.1 96.0,102.9 99.0,102.7 102.0,102.6 105.0,102.5 108.0,102.4 111.0,102.3 114.0,102.1 117.0,101.9 120.0,101.7 123.0,101.4 126.0,101.1 129.0,100.6 132.0,100.1 135.0,99.5 138.0,98.8 141.0,98.0 144.0,97.1 147.0,96.1 150.0,95.0 153.0,93.8 156.0,92.5 159.0,91.2 162.0,89.7 165.0,88.2 168.0,86.6 171.0,85.0 174.0,83.4 177.0,81.7 180.0,80.0 183.0,78.3 186.0,76.6 189.0,75.0 192.0,73.4 195.0,71.8 198.0,70.3 201.0,68.8 204.0,67.5 207.0,66.2 210.0,65.0 213.0,63.9 216.0,62.9 219.0,62.0 222.0,61.2 225.0,60.5 228.0,59.9 231.0,59.4 234.0,58.9 237.0,58.6 240.0,58.3 243.0,58.1 246.0,57.9 249.0,57.7 252.0,57.6 255.0,57.5 258.0,57.4 261.0,57.3 264.0,57.1 267.0,56.9 270.0,56.7 273.0,56.4 276.0,56.1 279.0,55.6 282.0,55.1 285.0,54.5 288.0,53.8 291.0,53.0 294.0,52.1 297.0,51.1 300.0,50.0 303.0,48.8 306.0,47.5 309.0,46.2 312.0,44.7 315.0,43.2 318.0,41.6 321.0,40.0 324.0,38.4 327.0,36.7 330.0,35.0" fill="none" stroke="#E65100" stroke-width="3"/>
+<line x1="30" y1="125" x2="330" y2="125" stroke="#374151" stroke-width="1.5"/>
+<rect x="30" y="164" width="300" height="36" fill="#F9FAFB" stroke="#374151" stroke-width="1"/>
+<line x1="54.8" y1="112.1" x2="54.8" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="54.8" cy="112.1" r="3" fill="#E65100"/>
+<line x1="54.8" y1="164" x2="54.8" y2="200" stroke="#E65100" stroke-width="2"/>
+<text class="s m" x="54.8" y="140">10</text>
+<line x1="135.9" y1="99.3" x2="135.9" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="135.9" cy="99.3" r="3" fill="#E65100"/>
+<line x1="135.9" y1="164" x2="135.9" y2="200" stroke="#E65100" stroke-width="2"/>
+<text class="s m" x="135.9" y="140">20</text>
+<line x1="168.4" y1="86.4" x2="168.4" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="168.4" cy="86.4" r="3" fill="#E65100"/>
+<line x1="168.4" y1="164" x2="168.4" y2="200" stroke="#E65100" stroke-width="2"/>
+<text class="s m" x="168.4" y="140">30</text>
+<line x1="191.6" y1="73.6" x2="191.6" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="191.6" cy="73.6" r="3" fill="#E65100"/>
+<line x1="191.6" y1="164" x2="191.6" y2="200" stroke="#E65100" stroke-width="2"/>
+<text class="s m" x="191.6" y="140">40</text>
+<line x1="224.1" y1="60.7" x2="224.1" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="224.1" cy="60.7" r="3" fill="#E65100"/>
+<line x1="224.1" y1="164" x2="224.1" y2="200" stroke="#E65100" stroke-width="2"/>
+<text class="s m" x="224.1" y="140">50</text>
+<line x1="305.2" y1="47.9" x2="305.2" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="305.2" cy="47.9" r="3" fill="#E65100"/>
+<line x1="305.2" y1="164" x2="305.2" y2="200" stroke="#E65100" stroke-width="2"/>
+<text class="s m" x="305.2" y="140">60</text>
+<text class="s" x="30" y="215">Low ground</text><text class="s" x="330" y="215" text-anchor="end">High ground (peak 70 m)</text>
+<text class="s" x="30" y="46">Side view (profile)</text>
+<text class="s" x="30" y="159">View from above (contour lines)</text>
+<text class="m" x="180" y="235" fill="#E65100" style="fill:#E65100">Sometimes spaced out, sometimes close</text>
+<text class="s m" x="180" y="250">Steep in places, gentle in others (stepped)</text>
+</g>
+<g transform="translate(390,278)">
+<rect x="0" y="0" width="360" height="258" rx="12" fill="#fff" stroke="#6C3FC5" stroke-width="2"/>
+<rect x="0" y="0" width="360" height="30" rx="12" fill="#6C3FC5"/><rect x="0" y="16" width="360" height="14" fill="#6C3FC5"/>
+<text class="h w m" x="180" y="21">Convex slope</text>
+<polygon points="30,125 30.0,125.0 33.0,123.2 36.0,121.4 39.0,119.7 42.0,117.9 45.0,116.2 48.0,114.5 51.0,112.8 54.0,111.2 57.0,109.5 60.0,107.9 63.0,106.3 66.0,104.7 69.0,103.1 72.0,101.6 75.0,100.0 78.0,98.5 81.0,97.0 84.0,95.5 87.0,94.0 90.0,92.6 93.0,91.2 96.0,89.8 99.0,88.4 102.0,87.0 105.0,85.6 108.0,84.3 111.0,83.0 114.0,81.7 117.0,80.4 120.0,79.1 123.0,77.8 126.0,76.6 129.0,75.4 132.0,74.2 135.0,73.0 138.0,71.9 141.0,70.7 144.0,69.6 147.0,68.5 150.0,67.4 153.0,66.3 156.0,65.3 159.0,64.2 162.0,63.2 165.0,62.2 168.0,61.2 171.0,60.3 174.0,59.3 177.0,58.4 180.0,57.5 183.0,56.6 186.0,55.7 189.0,54.9 192.0,54.0 195.0,53.2 198.0,52.4 201.0,51.6 204.0,50.9 207.0,50.1 210.0,49.4 213.0,48.7 216.0,48.0 219.0,47.3 222.0,46.7 225.0,46.0 228.0,45.4 231.0,44.8 234.0,44.2 237.0,43.6 240.0,43.1 243.0,42.6 246.0,42.1 249.0,41.6 252.0,41.1 255.0,40.6 258.0,40.2 261.0,39.8 264.0,39.4 267.0,39.0 270.0,38.6 273.0,38.2 276.0,37.9 279.0,37.6 282.0,37.3 285.0,37.0 288.0,36.8 291.0,36.5 294.0,36.3 297.0,36.1 300.0,35.9 303.0,35.7 306.0,35.6 309.0,35.4 312.0,35.3 315.0,35.2 318.0,35.1 321.0,35.1 324.0,35.0 327.0,35.0 330.0,35.0 330,125" fill="#EDE7FF" stroke="none"/>
+<polyline points="30.0,125.0 33.0,123.2 36.0,121.4 39.0,119.7 42.0,117.9 45.0,116.2 48.0,114.5 51.0,112.8 54.0,111.2 57.0,109.5 60.0,107.9 63.0,106.3 66.0,104.7 69.0,103.1 72.0,101.6 75.0,100.0 78.0,98.5 81.0,97.0 84.0,95.5 87.0,94.0 90.0,92.6 93.0,91.2 96.0,89.8 99.0,88.4 102.0,87.0 105.0,85.6 108.0,84.3 111.0,83.0 114.0,81.7 117.0,80.4 120.0,79.1 123.0,77.8 126.0,76.6 129.0,75.4 132.0,74.2 135.0,73.0 138.0,71.9 141.0,70.7 144.0,69.6 147.0,68.5 150.0,67.4 153.0,66.3 156.0,65.3 159.0,64.2 162.0,63.2 165.0,62.2 168.0,61.2 171.0,60.3 174.0,59.3 177.0,58.4 180.0,57.5 183.0,56.6 186.0,55.7 189.0,54.9 192.0,54.0 195.0,53.2 198.0,52.4 201.0,51.6 204.0,50.9 207.0,50.1 210.0,49.4 213.0,48.7 216.0,48.0 219.0,47.3 222.0,46.7 225.0,46.0 228.0,45.4 231.0,44.8 234.0,44.2 237.0,43.6 240.0,43.1 243.0,42.6 246.0,42.1 249.0,41.6 252.0,41.1 255.0,40.6 258.0,40.2 261.0,39.8 264.0,39.4 267.0,39.0 270.0,38.6 273.0,38.2 276.0,37.9 279.0,37.6 282.0,37.3 285.0,37.0 288.0,36.8 291.0,36.5 294.0,36.3 297.0,36.1 300.0,35.9 303.0,35.7 306.0,35.6 309.0,35.4 312.0,35.3 315.0,35.2 318.0,35.1 321.0,35.1 324.0,35.0 327.0,35.0 330.0,35.0" fill="none" stroke="#6C3FC5" stroke-width="3"/>
+<line x1="30" y1="125" x2="330" y2="125" stroke="#374151" stroke-width="1.5"/>
+<rect x="30" y="164" width="300" height="36" fill="#F9FAFB" stroke="#374151" stroke-width="1"/>
+<line x1="52.3" y1="112.1" x2="52.3" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="52.3" cy="112.1" r="3" fill="#6C3FC5"/>
+<line x1="52.3" y1="164" x2="52.3" y2="200" stroke="#6C3FC5" stroke-width="2"/>
+<text class="s m" x="52.3" y="140">10</text>
+<line x1="76.5" y1="99.3" x2="76.5" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="76.5" cy="99.3" r="3" fill="#6C3FC5"/>
+<line x1="76.5" y1="164" x2="76.5" y2="200" stroke="#6C3FC5" stroke-width="2"/>
+<text class="s m" x="76.5" y="140">20</text>
+<line x1="103.2" y1="86.4" x2="103.2" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="103.2" cy="86.4" r="3" fill="#6C3FC5"/>
+<line x1="103.2" y1="164" x2="103.2" y2="200" stroke="#6C3FC5" stroke-width="2"/>
+<text class="s m" x="103.2" y="140">30</text>
+<line x1="133.6" y1="73.6" x2="133.6" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="133.6" cy="73.6" r="3" fill="#6C3FC5"/>
+<line x1="133.6" y1="164" x2="133.6" y2="200" stroke="#6C3FC5" stroke-width="2"/>
+<text class="s m" x="133.6" y="140">40</text>
+<line x1="169.6" y1="60.7" x2="169.6" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="169.6" cy="60.7" r="3" fill="#6C3FC5"/>
+<line x1="169.6" y1="164" x2="169.6" y2="200" stroke="#6C3FC5" stroke-width="2"/>
+<text class="s m" x="169.6" y="140">50</text>
+<line x1="216.6" y1="47.9" x2="216.6" y2="125" stroke="#6B7280" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="216.6" cy="47.9" r="3" fill="#6C3FC5"/>
+<line x1="216.6" y1="164" x2="216.6" y2="200" stroke="#6C3FC5" stroke-width="2"/>
+<text class="s m" x="216.6" y="140">60</text>
+<text class="s" x="30" y="215">Low ground</text><text class="s" x="330" y="215" text-anchor="end">High ground (peak 70 m)</text>
+<text class="s" x="30" y="46">Side view (profile)</text>
+<text class="s" x="30" y="159">View from above (contour lines)</text>
+<text class="m" x="180" y="235" fill="#6C3FC5" style="fill:#6C3FC5">Close together at the base</text>
+<text class="s m" x="180" y="250">Steep at first, then gentle near the top</text>
+</g>
+</svg>
+        <figcaption>Each slope is drawn in side view (top) with its contour lines seen from above (bottom). The contour lines sit directly below the point where the slope reaches 10 m, 20 m, 30 m… up to the 70 m peak.</figcaption>
+      </figure>
+      <table><thead><tr><th>Slope</th><th>Contour lines</th><th>Steepness</th></tr></thead><tbody>
+        <tr><td><strong>Even</strong></td><td>Evenly spaced out</td><td>The same all the way up</td></tr>
+        <tr><td><strong>Concave</strong></td><td>Spaced out at the base, <strong>closer together near the peak</strong></td><td>Gentle at first, then <strong>steep</strong></td></tr>
+        <tr><td><strong>Convex</strong></td><td><strong>Closer together at the base</strong>, more spread out near the peak</td><td><strong>Steep</strong> at first, then gentle near the top</td></tr>
+        <tr><td><strong>Compound (stepped)</strong></td><td>Sometimes spaced out, sometimes close together</td><td>Steep in places, not steep in others</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>CON-CAVE</strong> is like a <strong>cave / bowl</strong>: the ground dips in, so you start gentle and it gets steep at the top. <strong>CON-VEX</strong> is like a <strong>bulge / dome</strong>: steep at the start, rounding off gently at the top. Compound slopes come in <strong>steps</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up concave and convex. Always check <em>where the lines are close together</em>: near the <strong>peak</strong> = concave; near the <strong>base</strong> = convex.</div>
+
+      <div class="section-heading" id="topic-2">🚁 Types of Aerial Photographs</div>
+      <div class="key-term">There are two types of aerial photograph: <strong>vertical</strong> (the camera points straight down) and <strong>oblique</strong> (the camera points down at an angle).
+        <div class="tip">💡 Vertical = a bird looking <em>straight down</em> at a map. Oblique = the view from a plane window, looking out and down at the scene in front of you.</div></div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 300" role="img" aria-label="Two helicopters taking photographs. The vertical photo is taken looking straight down. The oblique photo is taken looking down at an angle.">
+          <defs>
+            <g id="heli"><ellipse cx="0" cy="0" rx="34" ry="14" fill="#90A4AE" stroke="#37474F" stroke-width="2"/><path d="M-12,-8 h14 v10 h-14 z" fill="#E3F2FD" stroke="#37474F" stroke-width="1.5"/><path d="M-34,-3 L-62,-12" stroke="#37474F" stroke-width="3" fill="none"/><line x1="-70" y1="-18" x2="-54" y2="-6" stroke="#37474F" stroke-width="2.5"/><line x1="0" y1="-14" x2="0" y2="-24" stroke="#37474F" stroke-width="2.5"/><line x1="-38" y1="-25" x2="38" y2="-25" stroke="#37474F" stroke-width="3" stroke-linecap="round"/><line x1="-24" y1="18" x2="24" y2="18" stroke="#37474F" stroke-width="2.5"/><line x1="-12" y1="14" x2="-12" y2="18" stroke="#37474F" stroke-width="2"/><line x1="12" y1="14" x2="12" y2="18" stroke="#37474F" stroke-width="2"/></g>
+            <marker id="arO" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#E65100"/></marker>
+            <marker id="arB" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#1976D2"/></marker>
+          </defs>
+          <rect x="10" y="10" width="360" height="280" rx="12" fill="#FFF8F1" stroke="#E65100" stroke-width="2"/>
+          <text class="h" x="30" y="38" style="fill:#E65100">1  Vertical</text>
+          <use href="#heli" x="190" y="85"/>
+          <line x1="190" y1="112" x2="190" y2="226" stroke="#E65100" stroke-width="4" marker-end="url(#arO)"/>
+          <line x1="70" y1="240" x2="310" y2="240" stroke="#2E8B57" stroke-width="6" stroke-linecap="round"/>
+          <text x="210" y="165" style="fill:#E65100">Looks straight down</text>
+          <text class="s m" x="190" y="266">Directly above the ground</text>
+          <rect x="390" y="10" width="360" height="280" rx="12" fill="#F0F7FF" stroke="#1976D2" stroke-width="2"/>
+          <text class="h" x="410" y="38" style="fill:#1976D2">2  Oblique</text>
+          <use href="#heli" x="620" y="85"/>
+          <line x1="612" y1="112" x2="470" y2="226" stroke="#1976D2" stroke-width="4" marker-end="url(#arB)"/>
+          <line x1="440" y1="240" x2="700" y2="240" stroke="#2E8B57" stroke-width="6" stroke-linecap="round"/>
+          <text x="568" y="175" style="fill:#1976D2">Looks at an angle</text>
+          <text class="s m" x="570" y="266">Slanted view across the ground</text>
+        </svg>
+        <figcaption>The arrow shows where the camera is pointing.</figcaption>
+      </figure>
+
+      <div class="section-heading" id="topic-3">🧭 Describing Location on an Aerial Photo</div>
+      <div class="key-term">Imagine the photo split into a <strong>3 × 3 grid</strong> (nine boxes). Name the box where the feature is, using the words for that type of photo.
+        <ul>
+          <li><strong>Vertical photo:</strong> compass points: NW, North, NE / West, Centre, East / SW, South, SE.</li>
+          <li><strong>Oblique photo:</strong> Left / Centre / Right + background, middle ground or foreground.</li>
+        </ul></div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 330" role="img" aria-label="Two 3 by 3 grids. Vertical photo grid: NW, North, NE, West, Centre, East, SW, South, SE. Oblique photo grid: left, centre and right in the background, middle ground and foreground.">
+          <text class="h" x="30" y="30" style="fill:#E65100">Vertical photo</text>
+          <g stroke="#374151" stroke-width="2" fill="#FFF8F1">
+            <rect x="60" y="50" width="100" height="75"/><rect x="160" y="50" width="100" height="75"/><rect x="260" y="50" width="100" height="75"/>
+            <rect x="60" y="125" width="100" height="75"/><rect x="160" y="125" width="100" height="75" fill="#FFE0CC"/><rect x="260" y="125" width="100" height="75"/>
+            <rect x="60" y="200" width="100" height="75"/><rect x="160" y="200" width="100" height="75"/><rect x="260" y="200" width="100" height="75"/>
+          </g>
+          <g class="m"><text x="110" y="92" class="m">NW</text><text x="210" y="92" class="m">North</text><text x="310" y="92" class="m">NE</text>
+          <text x="110" y="167" class="m">West</text><text x="210" y="167" class="m">Centre</text><text x="310" y="167" class="m">East</text>
+          <text x="110" y="242" class="m">SW</text><text x="210" y="242" class="m">South</text><text x="310" y="242" class="m">SE</text></g>
+          <line x1="30" y1="150" x2="30" y2="92" stroke="#E65100" stroke-width="3" marker-end="url(#arO)"/>
+          <text class="s" x="22" y="170">N</text>
+          <text class="s m" x="210" y="298">Uses compass directions</text>
+          <text class="h" x="410" y="30" style="fill:#1976D2">Oblique photo</text>
+          <g stroke="#374151" stroke-width="2" fill="#F0F7FF">
+            <rect x="440" y="50" width="100" height="75"/><rect x="540" y="50" width="100" height="75"/><rect x="640" y="50" width="100" height="75"/>
+            <rect x="440" y="125" width="100" height="75"/><rect x="540" y="125" width="100" height="75" fill="#D6E9FF"/><rect x="640" y="125" width="100" height="75"/>
+            <rect x="440" y="200" width="100" height="75"/><rect x="540" y="200" width="100" height="75"/><rect x="640" y="200" width="100" height="75"/>
+          </g>
+          <g class="s" style="font-size:12px;font-weight:600;fill:#1A1A2E">
+            <text class="m" x="490" y="84" style="font-size:12px;font-weight:600;fill:#1A1A2E">Left</text><text class="m" x="490" y="100" style="font-size:12px;font-weight:600;fill:#1A1A2E">background</text>
+            <text class="m" x="590" y="84" style="font-size:12px;font-weight:600;fill:#1A1A2E">Centre</text><text class="m" x="590" y="100" style="font-size:12px;font-weight:600;fill:#1A1A2E">background</text>
+            <text class="m" x="690" y="84" style="font-size:12px;font-weight:600;fill:#1A1A2E">Right</text><text class="m" x="690" y="100" style="font-size:12px;font-weight:600;fill:#1A1A2E">background</text>
+            <text class="m" x="490" y="159" style="font-size:12px;font-weight:600;fill:#1A1A2E">Left</text><text class="m" x="490" y="175" style="font-size:12px;font-weight:600;fill:#1A1A2E">middle ground</text>
+            <text class="m" x="590" y="159" style="font-size:12px;font-weight:600;fill:#1A1A2E">Centre</text><text class="m" x="590" y="175" style="font-size:12px;font-weight:600;fill:#1A1A2E">middle ground</text>
+            <text class="m" x="690" y="159" style="font-size:12px;font-weight:600;fill:#1A1A2E">Right</text><text class="m" x="690" y="175" style="font-size:12px;font-weight:600;fill:#1A1A2E">middle ground</text>
+            <text class="m" x="490" y="234" style="font-size:12px;font-weight:600;fill:#1A1A2E">Left</text><text class="m" x="490" y="250" style="font-size:12px;font-weight:600;fill:#1A1A2E">foreground</text>
+            <text class="m" x="590" y="234" style="font-size:12px;font-weight:600;fill:#1A1A2E">Centre</text><text class="m" x="590" y="250" style="font-size:12px;font-weight:600;fill:#1A1A2E">foreground</text>
+            <text class="m" x="690" y="234" style="font-size:12px;font-weight:600;fill:#1A1A2E">Right</text><text class="m" x="690" y="250" style="font-size:12px;font-weight:600;fill:#1A1A2E">foreground</text>
+          </g>
+          <text class="s" x="440" y="42">Far from camera ▲</text>
+          <text class="s" x="440" y="292">Near the camera ▼</text>
+          <text class="s m" x="590" y="312">Uses left / centre / right + distance</text>
+        </svg>
+        <figcaption>Top of an oblique photo = far away (background). Bottom = nearest the camera (foreground).</figcaption>
+      </figure>
+      <div class="example-box"><div class="example-header">📌 Worked example</div><div class="example-body">
+        <p>A church is in the top-right corner of a <strong>vertical</strong> photo → it is in the <strong>NE</strong>.</p>
+        <p>A lake is in the bottom-left corner of an <strong>oblique</strong> photo → it is in the <strong>left foreground</strong>.</p></div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> using compass directions (NE, SW) on an <strong>oblique</strong> photo, or "foreground" on a <strong>vertical</strong> one. Match the words to the photo type. Also: the <em>foreground</em> is at the <strong>bottom</strong> and the <em>background</em> at the <strong>top</strong>.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What shows the shape of a slope on a map?</div><div class="a">Contour lines</div></div>
+        <div class="rv-card"><div class="q">What do closely spaced contour lines show?</div><div class="a">A steep slope</div></div>
+        <div class="rv-card"><div class="q">What do widely spaced contour lines show?</div><div class="a">A gentle slope</div></div>
+        <div class="rv-card"><div class="q">Name the four types of slope</div><div class="a">Even, concave, compound, convex</div></div>
+        <div class="rv-card"><div class="q">Describe the contour lines of an even slope</div><div class="a">Evenly spaced out</div></div>
+        <div class="rv-card"><div class="q">Describe a concave slope</div><div class="a">Lines spaced out at the base, closer together near the peak: gentle at first, then steep</div></div>
+        <div class="rv-card"><div class="q">Describe a convex slope</div><div class="a">Lines close together at the base, more spread out near the peak: steep at first, then gentle</div></div>
+        <div class="rv-card"><div class="q">Describe a compound slope</div><div class="a">Lines sometimes spaced out, sometimes close together: steep in places, not in others</div></div>
+        <div class="rv-card"><div class="q">Another name for a compound slope?</div><div class="a">A stepped slope</div></div>
+        <div class="rv-card"><div class="q">Where are concave contours close together?</div><div class="a">Near the peak</div></div>
+        <div class="rv-card"><div class="q">Where are convex contours close together?</div><div class="a">At the base</div></div>
+        <div class="rv-card"><div class="q">What are the two types of aerial photo?</div><div class="a">Vertical and oblique</div></div>
+        <div class="rv-card"><div class="q">How is a vertical aerial photo taken?</div><div class="a">From directly above, looking straight down</div></div>
+        <div class="rv-card"><div class="q">How is an oblique aerial photo taken?</div><div class="a">From the air, looking down at an angle</div></div>
+        <div class="rv-card"><div class="q">How do you give location on a vertical photo?</div><div class="a">Compass points: NW, North, NE, West, Centre, East, SW, South, SE</div></div>
+        <div class="rv-card"><div class="q">How do you give location on an oblique photo?</div><div class="a">Left/centre/right + foreground, middle ground or background</div></div>
+        <div class="rv-card"><div class="q">Where is the foreground of an oblique photo?</div><div class="a">The bottom: the part nearest the camera</div></div>
+        <div class="rv-card"><div class="q">Where is the background of an oblique photo?</div><div class="a">The top: the part furthest from the camera</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>On a map, slope shape is shown using {{contour lines}}.</p>
+        <p>An {{even}} slope has contour lines that are evenly spaced out.</p>
+        <p>A {{concave}} slope has contour lines spaced out at the base and getting {{closer together}} as they near the peak; it is gentle at first and then gets {{steep}}.</p>
+        <p>A {{convex}} slope has contour lines closer together at the {{base}} and more spread out near the peak; it is steep at first and then gets gentle.</p>
+        <p>A {{compound}} slope is also called a {{stepped}} slope.</p>
+        <p>A {{vertical}} aerial photo is taken looking straight down; an {{oblique}} aerial photo is taken at an angle.</p>
+        <p>The top of an oblique photo is the {{background}} and the bottom is the {{foreground}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>Contour lines on a map are very close together. What does this show?</p><ol><li>A gentle slope</li><li>A steep slope</li><li>Flat land</li><li>The sea</li></ol><div class="explain">Close together = a short horizontal distance for each height gain = steep.</div></div>
+        <div class="rv-q" data-answer="c"><p>Contour lines are spaced out at the base and get closer together near the peak. Which slope is this?</p><ol><li>Convex</li><li>Even</li><li>Concave</li><li>Compound</li></ol><div class="explain">Concave: gentle first, then steep. Lines are close together near the <strong>peak</strong>.</div></div>
+        <div class="rv-q" data-answer="a"><p>A slope is steep at first and then gentle near the top. Which type is it?</p><ol><li>Convex</li><li>Concave</li><li>Even</li><li>Stepped</li></ol><div class="explain">Convex: contours are close together at the base and spread out near the peak.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which slope is also called a “stepped slope”?</p><ol><li>Even</li><li>Convex</li><li>Concave</li><li>Compound</li></ol><div class="explain">A compound slope has steep and gentle sections, like steps.</div></div>
+        <div class="rv-q" data-answer="b"><p>Evenly spaced contour lines show which type of slope?</p><ol><li>Convex</li><li>Even</li><li>Concave</li><li>Compound</li></ol><div class="explain">Same spacing = same steepness all the way up = even slope.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which aerial photo is taken looking straight down from above?</p><ol><li>Oblique</li><li>Horizontal</li><li>Vertical</li><li>Diagonal</li></ol><div class="explain">Vertical photos are taken from directly above. Oblique photos are taken at an angle.</div></div>
+        <div class="rv-q" data-answer="a"><p>A farm is in the top-left corner of a vertical aerial photo. Where is it?</p><ol><li>NW</li><li>Left background</li><li>North</li><li>West</li></ol><div class="explain">Vertical photos use compass points. Top-left = NW (the top-middle box would be North).</div></div>
+        <div class="rv-q" data-answer="d"><p>A road is in the bottom-right of an oblique aerial photo. Where is it?</p><ol><li>SE</li><li>Right background</li><li>Right middle ground</li><li>Right foreground</li></ol><div class="explain">Oblique photos use left/centre/right + foreground, middle ground, background. Bottom = foreground.</div></div>
+        <div class="rv-q" data-answer="b"><p>In an oblique photo, which part is furthest from the camera?</p><ol><li>Foreground</li><li>Background</li><li>Middle ground</li><li>Centre</li></ol><div class="explain">The background is at the top of the photo, furthest from the camera.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Name the four types of slope.</summary><div class="rv-model">
+        <p><strong>Even, concave, convex and compound</strong> (also called a stepped slope).</p></div></details>
+      <details class="rv-qa"><summary>2. Describe how the contour lines on a <strong>concave</strong> slope look, and what the slope is like.</summary><div class="rv-model">
+        <p>The contour lines are <strong>spaced out at the base</strong> and get <strong>closer together as they near the peak</strong>. The slope is <strong>gentle at first and then gets steep</strong>.</p></div></details>
+      <details class="rv-qa"><summary>3. Describe a <strong>convex</strong> slope and say how it differs from a concave slope.</summary><div class="rv-model">
+        <p>A convex slope has contour lines <strong>closer together at the base</strong> and more spread out near the peak: <strong>steep at first, then gentle</strong>.</p>
+        <p>A concave slope is the opposite: gentle at first, then steep, with lines close together near the <strong>peak</strong>.</p></div></details>
+      <details class="rv-qa"><summary>4. Draw a quick sketch of a <strong>compound</strong> slope with contour lines. Explain its shape.</summary><div class="rv-model">
+        <p>Sketch: a profile that goes up in steps (see the diagram above), with contour lines <strong>close together on the steep parts and spread out on the gentle parts</strong>.</p>
+        <p>The slope is steep in places and not steep in others, so it is also called a <strong>stepped slope</strong>.</p></div></details>
+      <details class="rv-qa"><summary>5. What is the difference between a vertical and an oblique aerial photograph?</summary><div class="rv-model">
+        <p>A <strong>vertical</strong> photo is taken from directly above, looking <strong>straight down</strong>. An <strong>oblique</strong> photo is taken from the air looking down at an <strong>angle</strong>.</p></div></details>
+      <details class="rv-qa"><summary>6. Describe two ways to give the location of a feature on an aerial photo. Give an example of each.</summary><div class="rv-model">
+        <p><strong>Vertical photo:</strong> use <strong>compass points</strong>, e.g. “the church is in the <strong>NE</strong>” (or North, East, Centre…).</p>
+        <p><strong>Oblique photo:</strong> use <strong>left / centre / right</strong> plus <strong>foreground / middle ground / background</strong>, e.g. “the lake is in the <strong>left foreground</strong>”.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Steep v gentle</td><td>Contours close together = steep; spread out = gentle</td><td>Say “closer together” and “spread out”.</td></tr>
+        <tr><td>Even slope</td><td>Evenly spaced contours</td><td>Same steepness throughout.</td></tr>
+        <tr><td>Concave slope</td><td>Spaced at base, closer near peak; gentle then steep</td><td>Lines close near the <strong>peak</strong>.</td></tr>
+        <tr><td>Convex slope</td><td>Close at base, spread near peak; steep then gentle</td><td>Lines close at the <strong>base</strong>.</td></tr>
+        <tr><td>Compound slope</td><td>Sometimes spaced out, sometimes close; stepped slope</td><td>Mention “steep in places, not in others”.</td></tr>
+        <tr><td>Vertical photo</td><td>Straight down; NW, North, NE, West, Centre, East, SW, South, SE</td><td>Compass points only.</td></tr>
+        <tr><td>Oblique photo</td><td>At an angle; left/centre/right + foreground/middle ground/background</td><td>Foreground = bottom, background = top.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Geography Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

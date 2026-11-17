@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Revision – Secondary Economic Activities</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF; --accent-bright: #B79BF5;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Geography Revision</div><div class="book-title">Geography · Year 2 · Industry</div></div>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">What are secondary activities?</a>
+    <a href="#topic-2">Location factors</a>
+    <a href="#topic-3">Types of industry</a>
+    <a href="#topic-4">Footloose industry &amp; estates</a>
+    <a href="#topic-5">Industrial inertia</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 2 · Economic Activities</div>
+      <h1>🏭 <span>Secondary Economic Activities</span></h1>
+      <p class="chapter-meta">Year 2 class notes, class notes pp. 4–6, 10–11 · Junior Cycle Geography Revision</p>
+      <div><span class="goal-tag">✔ Explain inputs, processes and outputs</span><span class="goal-tag">✔ Explain 9 factors affecting location</span><span class="goal-tag">✔ Compare heavy, light & footloose industry</span><span class="goal-tag">✔ Describe industrial estates and inertia</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the secondary economic activities, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: class notes PDF pp. 4–6, 10 (top), 11 (Secondary Economic Activities, Footloose Industry + Industrial Estates, Industrial Inertia). Chapter numbering is sequential for Year 2 – TODO: match to textbook if wanted. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Secondary activities
+          <ul>
+            <li>What they are
+              <ul><li>Make raw materials into products</li><li>Input → Process → Output</li></ul></li>
+            <li>Location factors
+              <ul><li>Raw materials, transport</li><li>Services, labour, market</li><li>Linkages, capital</li><li>Government, personal</li></ul></li>
+            <li>Types of industry
+              <ul><li>Heavy</li><li>Light</li><li>Footloose</li></ul></li>
+            <li>Industrial estates
+              <ul><li>Edge of urban areas</li><li>Cheap land, motorways</li></ul></li>
+            <li>Industrial inertia
+              <ul><li>Historical ties</li><li>Sheffield steel</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Primary economic activities</strong></td><td>The <strong>extraction of raw materials</strong>.</td></tr>
+        <tr><td><strong>Secondary economic activities</strong></td><td>Activities that <strong>take raw materials and manufacture a product</strong>.</td></tr>
+        <tr><td><strong>Inputs</strong></td><td>The raw materials / ingredients (and labour) used in a factory.</td></tr>
+        <tr><td><strong>Processes</strong></td><td>What happens to the inputs so they become products.</td></tr>
+        <tr><td><strong>Outputs</strong></td><td>The finished products (and waste) that come out of a factory.</td></tr>
+        <tr><td><strong>Skilled labour</strong></td><td>Work that requires third-level qualifications.</td></tr>
+        <tr><td><strong>Semi-skilled labour</strong></td><td>Workers who are trained on the job.</td></tr>
+        <tr><td><strong>Market</strong></td><td>Where the finished product is sold.</td></tr>
+        <tr><td><strong>Linkages</strong></td><td>When a company relies on products made by another company, so they may locate near each other (e.g. bakery near a flour mill).</td></tr>
+        <tr><td><strong>Capital</strong></td><td>Money to cover the cost of building, paying workers and transport. It comes from investors, banks or the government.</td></tr>
+        <tr><td><strong>IDA</strong></td><td>Industrial Development Authority: works to attract industry to Ireland.</td></tr>
+        <tr><td><strong>Corporation tax</strong></td><td>Tax paid by companies. Ireland’s rate is 12.5%.</td></tr>
+        <tr><td><strong>Heavy industry</strong></td><td>Industry whose raw materials and products are <strong>bulky and heavy</strong> (e.g. iron and steel making).</td></tr>
+        <tr><td><strong>Light industry</strong></td><td>Industry making <strong>small, lightweight products</strong> (e.g. electronics and healthcare products).</td></tr>
+        <tr><td><strong>Footloose industry</strong></td><td>Industry that is <strong>not tied to one place</strong>. Usually light industries that locate close to cities.</td></tr>
+        <tr><td><strong>Industrial estate</strong></td><td>A site at the <strong>edge of an urban area</strong> set aside for industries to use (e.g. Sandyford Business Park, Dublin).</td></tr>
+        <tr><td><strong>Industrial inertia</strong></td><td>When an industry <strong>doesn’t relocate even though it might make sense to</strong>, generally due to historical ties.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🏭 What Are Secondary Economic Activities?</div>
+      <div class="key-term"><strong>Primary</strong> economic activities are the <strong>extraction of raw materials</strong>. <strong>Secondary</strong> economic activities <strong>take raw materials and manufacture a product</strong>.
+        <div class="tip">💡 Primary = digging the potatoes out of the ground. Secondary = turning them into crisps in a factory.</div></div>
+      <p>Every factory can be described as a flowchart of <strong>Inputs → Processes → Outputs</strong>:</p>
+      <ol><li>Raw materials / ingredients are the <strong>inputs</strong> in any factory.</li><li>They are <strong>processed</strong> to become products.</li><li>Finished products are the <strong>outputs</strong>.</li></ol>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 250" role="img" aria-label="Flowchart for a crisp factory. Inputs: potatoes, flavouring, labour. Process: cutting, cooking. Outputs: crisps or waste.">
+          <defs><marker id="arG" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#374151"/></marker></defs>
+          <text class="h" x="20" y="28" style="fill:#6C3FC5">Example: a crisp factory</text>
+          <rect x="20" y="46" width="200" height="40" rx="10" fill="#1976D2"/><text class="h w m" x="120" y="72">1 INPUTS</text>
+          <rect x="280" y="46" width="200" height="40" rx="10" fill="#E65100"/><text class="h w m" x="380" y="72">2 PROCESSES</text>
+          <rect x="540" y="46" width="200" height="40" rx="10" fill="#2E8B57"/><text class="h w m" x="640" y="72">3 OUTPUTS</text>
+          <line x1="222" y1="66" x2="276" y2="66" stroke="#374151" stroke-width="3" marker-end="url(#arG)"/>
+          <line x1="482" y1="66" x2="536" y2="66" stroke="#374151" stroke-width="3" marker-end="url(#arG)"/>
+          <rect x="20" y="96" width="200" height="110" rx="10" fill="#E3F0FF" stroke="#1976D2" stroke-width="2"/>
+          <text class="m" x="120" y="128">🥔 Potatoes</text><text class="m" x="120" y="156">🧂 Flavouring</text><text class="m" x="120" y="184">👷 Labour (workers)</text>
+          <rect x="280" y="96" width="200" height="110" rx="10" fill="#FFF0E5" stroke="#E65100" stroke-width="2"/>
+          <text class="m" x="380" y="138">🔪 Cutting</text><text class="m" x="380" y="172">🍳 Cooking</text>
+          <rect x="540" y="96" width="200" height="110" rx="10" fill="#E6F4ED" stroke="#2E8B57" stroke-width="2"/>
+          <text class="m" x="640" y="138">🍿 Crisps</text><text class="m" x="640" y="172">🗑️ or waste</text>
+          <text class="s m" x="380" y="232">Raw materials go in, finished products come out.</text>
+        </svg>
+      </figure>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>I-P-O</strong>: <strong>I</strong>n (inputs), <strong>P</strong>rocess, <strong>O</strong>ut (outputs).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting that <strong>waste</strong> is also an output, and that <strong>labour</strong> (workers) is an input.</div>
+
+      <div class="section-heading" id="topic-2">📍 Factors Influencing the Location of Industry</div>
+      <div class="key-term">A factory needs to <strong>choose its location carefully</strong>. Different factors affect location, and depending on the product, <strong>some factors may be more important</strong> than others (e.g. if raw materials are bulky and hard to transport).
+        <div class="tip">💡 It’s like choosing where to open a shop: you weigh up cost, customers, helpers and rules, and one of them usually matters most.</div></div>
+      <figure class="fig">
+<svg class="dg" viewBox="0 0 760 440" role="img" aria-label="Nine factors that influence where a factory is located: raw materials, transport, services, labour, market, linkages, capital, government policy and personal preference">
+<line x1="380" y1="220" x2="380" y2="35" stroke="#8D6E63" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="609" y2="106" stroke="#1976D2" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="668" y2="201" stroke="#00897B" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="636" y2="307" stroke="#6C3FC5" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="516" y2="383" stroke="#E65100" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="244" y2="383" stroke="#C2185B" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="124" y2="307" stroke="#2E7D32" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="92" y2="201" stroke="#455A64" stroke-width="2.5" stroke-dasharray="5 4"/>
+<line x1="380" y1="220" x2="151" y2="106" stroke="#B26A00" stroke-width="2.5" stroke-dasharray="5 4"/>
+<rect x="318" y="186" width="124" height="68" rx="14" fill="#1A1A2E"/>
+<text class="h w m" x="380" y="216">🏭 FACTORY</text><text class="s m" x="380" y="236" style="fill:#E5E7EB">Where to locate?</text>
+<rect x="296" y="10" width="168" height="50" rx="10" fill="#fff" stroke="#8D6E63" stroke-width="2.5"/>
+<text class="m" x="380" y="30" style="fill:#8D6E63">Raw materials</text><text class="s m" x="380" y="49">Bulky/heavy → locate closer</text>
+<rect x="525" y="81" width="168" height="50" rx="10" fill="#fff" stroke="#1976D2" stroke-width="2.5"/>
+<text class="m" x="609" y="101" style="fill:#1976D2">Transport</text><text class="s m" x="609" y="120">Air, sea, road, rail links</text>
+<rect x="584" y="176" width="168" height="50" rx="10" fill="#fff" stroke="#00897B" stroke-width="2.5"/>
+<text class="m" x="668" y="196" style="fill:#00897B">Services</text><text class="s m" x="668" y="215">Water, electricity, broadband</text>
+<rect x="552" y="282" width="168" height="50" rx="10" fill="#fff" stroke="#6C3FC5" stroke-width="2.5"/>
+<text class="m" x="636" y="302" style="fill:#6C3FC5">Labour</text><text class="s m" x="636" y="321">Skilled / semi-skilled workers</text>
+<rect x="432" y="358" width="168" height="50" rx="10" fill="#fff" stroke="#E65100" stroke-width="2.5"/>
+<text class="m" x="516" y="378" style="fill:#E65100">Market</text><text class="s m" x="516" y="397">Near the target customers</text>
+<rect x="160" y="358" width="168" height="50" rx="10" fill="#fff" stroke="#C2185B" stroke-width="2.5"/>
+<text class="m" x="244" y="378" style="fill:#C2185B">Linkages</text><text class="s m" x="244" y="397">e.g. bakery near flour mill</text>
+<rect x="40" y="282" width="168" height="50" rx="10" fill="#fff" stroke="#2E7D32" stroke-width="2.5"/>
+<text class="m" x="124" y="302" style="fill:#2E7D32">Capital</text><text class="s m" x="124" y="321">Investors, banks, government</text>
+<rect x="8" y="176" width="168" height="50" rx="10" fill="#fff" stroke="#455A64" stroke-width="2.5"/>
+<text class="m" x="92" y="196" style="fill:#455A64">Government policy</text><text class="s m" x="92" y="215">IDA, loans, grants, 12.5% tax</text>
+<rect x="67" y="81" width="168" height="50" rx="10" fill="#fff" stroke="#B26A00" stroke-width="2.5"/>
+<text class="m" x="151" y="101" style="fill:#B26A00">Personal preference</text><text class="s m" x="151" y="120">e.g. own home town</text>
+</svg>
+        <figcaption>Nine location factors. Learn the label (bold) and the clue underneath it.</figcaption>
+      </figure>
+      <table><thead><tr><th>Factor</th><th>Explanation</th></tr></thead><tbody>
+        <tr><td><strong>Raw materials</strong></td><td>If they are <strong>bulky or heavy</strong>, the factory moves closer to them to <strong>cut transportation costs</strong>.</td></tr>
+        <tr><td><strong>Transport</strong></td><td>To receive materials and ship out products you need <strong>access to transport links</strong> by air, sea, road and rail.</td></tr>
+        <tr><td><strong>Services</strong></td><td>Water, electricity, WiFi and broadband need to be <strong>easily accessible</strong>.</td></tr>
+        <tr><td><strong>Labour</strong></td><td>Being close to towns/cities provides a <strong>workforce</strong>; universities provide a skilled workforce. <strong>Skilled</strong> = requires third-level qualifications. <strong>Semi-skilled</strong> = trained on the job.</td></tr>
+        <tr><td><strong>Market</strong></td><td>Where the finished product is sold; a factory might locate near its <strong>target market</strong>.</td></tr>
+        <tr><td><strong>Linkages</strong></td><td>Companies that rely on products made by another company may locate near each other, e.g. a <strong>bakery near a flour mill</strong>.</td></tr>
+        <tr><td><strong>Capital</strong></td><td>Money to cover the cost of building, paying workers and transport. From <strong>investors, banks or the government</strong>.</td></tr>
+        <tr><td><strong>Government policy</strong></td><td>The Irish government has agencies to help companies set up in Ireland or abroad: they <strong>give loans and grants</strong>; the <strong>IDA</strong> (Industrial Development Authority) works to <strong>attract industry</strong>; Ireland has a <strong>12.5% corporation tax</strong>.</td></tr>
+        <tr><td><strong>Personal preferences</strong></td><td>The person setting up the business may simply prefer to locate somewhere, e.g. <strong>starting a business in their home town</strong>.</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>R-T-S-L-M-L-C-G-P</strong> = <strong>R</strong>aw materials, <strong>T</strong>ransport, <strong>S</strong>ervices, <strong>L</strong>abour, <strong>M</strong>arket, <strong>L</strong>inkages, <strong>C</strong>apital, <strong>G</strong>overnment, <strong>P</strong>ersonal. Silly sentence: <em>“Really Tall Sheep Like Mixing Lovely Cold Green Peas.”</em></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> naming a factor without <strong>explaining it</strong>. Say <em>why</em> it matters: “Raw materials: bulky and heavy, so locating near them cuts transport costs.”</div>
+
+      <div class="section-heading" id="topic-3">⚖️ Types of Industry</div>
+      <table><thead><tr><th>Type</th><th>Products / materials</th><th>Example</th></tr></thead><tbody>
+        <tr><td><strong>Heavy industry</strong></td><td>Raw materials and products that are <strong>bulky and heavy</strong></td><td>Iron and steel making</td></tr>
+        <tr><td><strong>Light industry</strong></td><td><strong>Small, lightweight</strong> products</td><td>Electronics and healthcare products</td></tr>
+        <tr><td><strong>Footloose industry</strong></td><td>Industry that is <strong>not tied to one place</strong></td><td>Usually light industries that locate close to cities</td></tr>
+      </tbody></table>
+      <div class="tip">💡 Heavy = hard to carry, so the factory sits near the materials. Light = easy to carry, so it can sit almost anywhere (footloose = “loose feet”, free to move).</div>
+
+      <div class="section-heading" id="topic-4">🏢 Footloose Industry and Industrial Estates</div>
+      <div class="key-term"><strong>Footloose industries</strong> can locate anywhere. Previously, factories had to be near a <strong>source of coal for energy</strong>; now they are <strong>no longer tied down</strong>.<br>
+        <strong>Industrial estates</strong> are sites at the <strong>edge of urban areas</strong> to be used by industries. Example: <strong>Sandyford Business Park, Dublin</strong>.</div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 340" role="img" aria-label="Sketch of an industrial estate at the edge of a city beside a motorway, with five labelled benefits">
+          <rect x="10" y="10" width="740" height="320" rx="12" fill="#F4F7F2"/>
+          <path d="M10,10 H250 Q290,90 270,170 Q250,250 280,330 H10 Z" fill="#E5E7EB"/>
+          <g fill="#9CA3AF"><rect x="40" y="60" width="30" height="50"/><rect x="80" y="40" width="26" height="70"/><rect x="118" y="70" width="34" height="40"/><rect x="50" y="150" width="34" height="60"/><rect x="100" y="140" width="28" height="70"/><rect x="150" y="160" width="36" height="50"/><rect x="60" y="250" width="40" height="45"/><rect x="120" y="240" width="30" height="60"/></g>
+          <text class="h" x="40" y="30" style="fill:#4B5563">CITY (urban area)</text>
+          <rect x="296" y="10" width="26" height="320" fill="#6B7280"/><line x1="309" y1="10" x2="309" y2="330" stroke="#fff" stroke-width="2" stroke-dasharray="14 10"/>
+          <text class="s" x="330" y="26" style="font-weight:700">MOTORWAY</text>
+          <rect x="350" y="48" width="260" height="250" rx="10" fill="#EDE7FF" stroke="#6C3FC5" stroke-width="2.5" stroke-dasharray="7 4"/>
+          <text class="h" x="365" y="72" style="fill:#4A2A8F">INDUSTRIAL ESTATE</text>
+          <g fill="#6C3FC5"><rect x="372" y="92" width="64" height="40"/><rect x="450" y="92" width="64" height="40"/><rect x="528" y="92" width="64" height="40"/><rect x="372" y="150" width="64" height="40"/><rect x="450" y="150" width="64" height="40"/></g>
+          <rect x="528" y="150" width="64" height="40" fill="none" stroke="#6C3FC5" stroke-width="2" stroke-dasharray="4 3"/><text class="s m" x="560" y="174">room to</text><text class="s m" x="560" y="186">expand</text>
+          <text class="s" x="372" y="218">Factories (some supply semi-finished</text><text class="s" x="372" y="232">products to the others)</text>
+          <path d="M296,100 H350" stroke="#6C3FC5" stroke-width="3"/><path d="M296,190 H350" stroke="#6C3FC5" stroke-width="3"/>
+          <text class="s" x="372" y="262">Water · electricity · fast broadband</text>
+          <text class="s" x="372" y="280">supplied to the site</text>
+          <g class="s" style="font-size:13px"><text x="630" y="92" style="font-weight:700;fill:#1A1A2E">Why locate here?</text>
+          <text x="630" y="120" style="font-weight:500;fill:#1A1A2E">✔ Cheaper land</text>
+          <text x="630" y="144" style="font-weight:500;fill:#1A1A2E">✔ Space to expand</text>
+          <text x="630" y="168" style="font-weight:500;fill:#1A1A2E">✔ Services on site</text>
+          <text x="630" y="192" style="font-weight:500;fill:#1A1A2E">✔ Motorway access</text>
+          <text x="630" y="216" style="font-weight:500;fill:#1A1A2E">✔ Beside suppliers</text></g>
+          <text class="s" x="350" y="322">e.g. Sandyford Business Park, Dublin</text>
+        </svg>
+        <figcaption>An industrial estate sits at the edge of the city, next to a motorway.</figcaption>
+      </figure>
+      <ul>
+        <li><strong>Cheaper land</strong> and <strong>space to expand</strong></li>
+        <li><strong>Services</strong> like water, electricity and fast broadband</li>
+        <li><strong>Access to motorways</strong></li>
+        <li>Can locate <strong>beside factories that supply semi-finished products</strong></li>
+      </ul>
+
+      <div class="section-heading" id="topic-5">🕰️ Industrial Inertia</div>
+      <div class="key-term"><strong>Industrial inertia</strong> is when an industry <strong>doesn’t relocate, even though it might make sense to do so</strong>. It is generally due to <strong>historical ties</strong>.
+        <div class="tip">💡 Like staying at your old school’s sports club after you’ve moved house: the habits, equipment and friends are all still there.</div></div>
+      <p><strong>Example: Sheffield steel, England.</strong></p>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 270" role="img" aria-label="Sheffield steel: in the past steel was made near coal mines; now the coal mines have closed but the steel factories remain, using new energy sources and making new products such as surgical instruments">
+          <rect x="10" y="10" width="330" height="250" rx="12" fill="#F3F4F6" stroke="#6B7280" stroke-width="2"/>
+          <text class="h" x="30" y="40" style="fill:#374151">THEN</text>
+          <text x="30" y="72">⛏️ Coal mines provide energy</text><text x="30" y="100">🏭 Steel factories next to the coal</text><text x="30" y="128">🔩 Known for steel production</text>
+          <text class="s" x="30" y="170">Reason to be there: coal for energy.</text>
+          <line x1="345" y1="135" x2="415" y2="135" stroke="#374151" stroke-width="4" marker-end="url(#arG)"/>
+          <text class="s m" x="380" y="120">time</text>
+          <rect x="420" y="10" width="330" height="250" rx="12" fill="#F1F8F2" stroke="#2E8B57" stroke-width="2"/>
+          <text class="h" x="440" y="40" style="fill:#2E7D32">NOW</text>
+          <text x="440" y="72">❌ Coal mines have closed</text><text x="440" y="100">🏭 Steel factories remain</text>
+          <text x="440" y="128">🔄 Changed approach instead:</text>
+          <text class="s" x="460" y="152">• use new energy sources</text><text class="s" x="460" y="172">• produce new products, e.g. surgical instruments</text>
+          <text class="s" x="440" y="214" style="font-weight:700">= industrial inertia (they didn’t relocate)</text>
+        </svg>
+      </figure>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying inertia means “the factory closes down”. It means the industry <strong>stays where it is</strong> even though moving might make more sense.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What are primary economic activities?</div><div class="a">The extraction of raw materials</div></div>
+        <div class="rv-card"><div class="q">What are secondary economic activities?</div><div class="a">Taking raw materials and manufacturing a product</div></div>
+        <div class="rv-card"><div class="q">What are the three parts of the factory flowchart?</div><div class="a">Inputs → Processes → Outputs</div></div>
+        <div class="rv-card"><div class="q">Inputs, processes and outputs of a crisp factory?</div><div class="a">Potatoes, flavouring, labour → cutting, cooking → crisps or waste</div></div>
+        <div class="rv-card"><div class="q">Why would a factory with bulky raw materials locate near them?</div><div class="a">To cut transportation costs</div></div>
+        <div class="rv-card"><div class="q">Why do factories need transport links?</div><div class="a">To receive materials and ship out products (air, sea, road, rail)</div></div>
+        <div class="rv-card"><div class="q">Which services does a factory need?</div><div class="a">Water, electricity, WiFi and broadband</div></div>
+        <div class="rv-card"><div class="q">Define skilled labour</div><div class="a">Work that requires third-level qualifications</div></div>
+        <div class="rv-card"><div class="q">Define semi-skilled labour</div><div class="a">Workers trained on the job</div></div>
+        <div class="rv-card"><div class="q">What is the market (location factor)?</div><div class="a">Where the finished product is sold; factories may locate near the target market</div></div>
+        <div class="rv-card"><div class="q">What are linkages? Give an example.</div><div class="a">Relying on products made by another company, so locating near each other, e.g. bakery near flour mill</div></div>
+        <div class="rv-card"><div class="q">What is capital and where does it come from?</div><div class="a">Money for building, workers and transport; from investors, banks or the government</div></div>
+        <div class="rv-card"><div class="q">How does the Irish government help companies?</div><div class="a">Agencies give loans and grants; the IDA attracts industry; 12.5% corporation tax</div></div>
+        <div class="rv-card"><div class="q">What does IDA stand for?</div><div class="a">Industrial Development Authority</div></div>
+        <div class="rv-card"><div class="q">What is Ireland’s corporation tax rate?</div><div class="a">12.5%</div></div>
+        <div class="rv-card"><div class="q">Give an example of a personal-preference location</div><div class="a">Someone starting a business in their home town</div></div>
+        <div class="rv-card"><div class="q">Define heavy industry. Example?</div><div class="a">Bulky, heavy raw materials and products; e.g. iron and steel making</div></div>
+        <div class="rv-card"><div class="q">Define light industry. Examples?</div><div class="a">Small, lightweight products; e.g. electronics and healthcare products</div></div>
+        <div class="rv-card"><div class="q">Define footloose industry</div><div class="a">Industry not tied to one place; usually light industries close to cities</div></div>
+        <div class="rv-card"><div class="q">Why did factories previously have to be near coal?</div><div class="a">For energy. Footloose industries are no longer tied down like this</div></div>
+        <div class="rv-card"><div class="q">What is an industrial estate?</div><div class="a">A site at the edge of an urban area used by industries, e.g. Sandyford Business Park</div></div>
+        <div class="rv-card"><div class="q">Why locate on an industrial estate?</div><div class="a">Cheaper land, room to expand, services, motorways, nearby suppliers</div></div>
+        <div class="rv-card"><div class="q">Define industrial inertia</div><div class="a">An industry doesn’t relocate even though it might make sense to, due to historical ties</div></div>
+        <div class="rv-card"><div class="q">Industrial inertia example?</div><div class="a">Sheffield steel: coal mines closed, steel factories remain and make new products</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>Primary economic activities are the {{extraction}} of raw materials; secondary activities take raw materials and {{manufacture}} a product.</p>
+        <p>In a factory, raw materials are the {{inputs}}, they are {{processed}} to become products, and finished products are the {{outputs}}.</p>
+        <p>If raw materials are {{bulky}} and heavy, a factory may locate closer to them to cut {{transportation}} costs.</p>
+        <p>{{Skilled}} labour requires third-level qualifications; {{semi-skilled}} workers are trained on the job.</p>
+        <p>{{Linkages}} are when a company relies on products made by another company, e.g. a bakery near a flour mill.</p>
+        <p>The {{IDA}} works to attract industry to Ireland, which has a corporation tax of {{12.5%}}.</p>
+        <p>{{Heavy}} industry has bulky, heavy products; {{light}} industry has small, lightweight products.</p>
+        <p>A {{footloose}} industry is not tied to one place.</p>
+        <p>{{Industrial inertia}} is when an industry doesn’t relocate even though it might make sense to do so, generally due to {{historical ties}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>Which is a secondary economic activity?</p><ol><li>Mining bauxite</li><li>Farming potatoes</li><li>Making crisps in a factory</li><li>Fishing</li></ol><div class="explain">Secondary activities manufacture products from raw materials. Mining, farming and fishing extract raw materials (primary).</div></div>
+        <div class="rv-q" data-answer="b"><p>In a crisp factory, which of these is a <strong>process</strong>?</p><ol><li>Potatoes</li><li>Cooking</li><li>Crisps</li><li>Waste</li></ol><div class="explain">Cutting and cooking are processes. Potatoes are inputs; crisps and waste are outputs.</div></div>
+        <div class="rv-q" data-answer="a"><p>Why might a factory using bulky, heavy raw materials locate close to them?</p><ol><li>To cut transportation costs</li><li>To be near the market</li><li>To use the IDA</li><li>To find skilled labour</li></ol><div class="explain">Moving heavy materials is costly, so being close cuts transport costs.</div></div>
+        <div class="rv-q" data-answer="d"><p>A bakery locating near a flour mill is an example of which factor?</p><ol><li>Market</li><li>Capital</li><li>Services</li><li>Linkages</li></ol><div class="explain">The bakery relies on a product made by another company: linkages.</div></div>
+        <div class="rv-q" data-answer="b"><p>What is skilled labour?</p><ol><li>Workers trained on the job</li><li>Work that requires third-level qualifications</li><li>Unpaid workers</li><li>Workers in the market</li></ol><div class="explain">Semi-skilled labour is trained on the job; skilled needs third-level qualifications.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which body works to attract industry to Ireland?</p><ol><li>EU</li><li>HSE</li><li>IDA</li><li>RUSAL</li></ol><div class="explain">The IDA (Industrial Development Authority) attracts industry. Ireland’s corporation tax is 12.5%.</div></div>
+        <div class="rv-q" data-answer="a"><p>Iron and steel making is an example of…</p><ol><li>Heavy industry</li><li>Light industry</li><li>Footloose industry</li><li>Primary industry</li></ol><div class="explain">Its raw materials and products are bulky and heavy.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which statement best describes a footloose industry?</p><ol><li>It must be next to a coal mine</li><li>It is always heavy industry</li><li>It never moves</li><li>It is not tied to one place</li></ol><div class="explain">Footloose industries (usually light, near cities) are no longer tied to coal or raw materials.</div></div>
+        <div class="rv-q" data-answer="b"><p>Which is NOT a reason to locate on an industrial estate?</p><ol><li>Cheaper land</li><li>Close to the centre of the city</li><li>Access to motorways</li><li>Room to expand</li></ol><div class="explain">Industrial estates are at the <strong>edge</strong> of urban areas, not the centre.</div></div>
+        <div class="rv-q" data-answer="c"><p>Sheffield’s steel factories stayed after the coal mines closed. This is…</p><ol><li>Footloose industry</li><li>Linkages</li><li>Industrial inertia</li><li>Foreign direct investment</li></ol><div class="explain">Industrial inertia: the industry doesn’t relocate, due to historical ties.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Explain the difference between primary and secondary economic activities.</summary><div class="rv-model">
+        <p><strong>Primary</strong> activities are the <strong>extraction of raw materials</strong>. <strong>Secondary</strong> activities <strong>take raw materials and manufacture a product</strong>.</p></div></details>
+      <details class="rv-qa"><summary>2. Draw an inputs–processes–outputs flowchart for a named factory.</summary><div class="rv-model">
+        <p>Crisp factory: <strong>Inputs</strong> (potatoes, flavouring, labour) → <strong>Processes</strong> (cutting, cooking) → <strong>Outputs</strong> (crisps, or waste).</p></div></details>
+      <details class="rv-qa"><summary>3. Name and explain <strong>three</strong> factors that influence the location of a factory.</summary><div class="rv-model">
+        <p><strong>Raw materials:</strong> if bulky or heavy, the factory locates closer to them to cut transportation costs.</p>
+        <p><strong>Transport:</strong> access to air, sea, road and rail links to receive materials and ship out products.</p>
+        <p><strong>Labour:</strong> being close to towns/cities provides a workforce; universities provide skilled workers.</p>
+        <p>(Others: services, market, linkages, capital, government policy, personal preference.)</p></div></details>
+      <details class="rv-qa"><summary>4. How does the Irish government encourage industry to locate in Ireland?</summary><div class="rv-model">
+        <p>Government agencies help Irish companies set up in Ireland or abroad by giving <strong>loans and grants</strong>. The <strong>IDA</strong> works to <strong>attract industry</strong>, and Ireland has a low <strong>12.5% corporation tax</strong>.</p></div></details>
+      <details class="rv-qa"><summary>5. Distinguish between heavy, light and footloose industry, with an example of each.</summary><div class="rv-model">
+        <p><strong>Heavy:</strong> bulky, heavy raw materials and products, e.g. iron and steel making.</p>
+        <p><strong>Light:</strong> small, lightweight products, e.g. electronics and healthcare products.</p>
+        <p><strong>Footloose:</strong> not tied to one place; usually light industries that locate close to cities.</p></div></details>
+      <details class="rv-qa"><summary>6. Why do companies locate on industrial estates? Name an example.</summary><div class="rv-model">
+        <p>Sites at the edge of urban areas offer <strong>cheaper land</strong>, <strong>space to expand</strong>, <strong>services</strong> (water, electricity, fast broadband), <strong>access to motorways</strong>, and can be <strong>beside factories that supply semi-finished products</strong>. Example: <strong>Sandyford Business Park, Dublin</strong>.</p></div></details>
+      <details class="rv-qa"><summary>7. What is industrial inertia? Use an example.</summary><div class="rv-model">
+        <p>When an industry <strong>doesn’t relocate even though it might make sense to</strong>, generally due to <strong>historical ties</strong>. Example: <strong>Sheffield steel</strong>: the coal mines have closed but the steel factories remain; instead of relocating they changed approach, using new energy sources and producing new products such as surgical instruments.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Primary v secondary</td><td>Primary = extraction of raw materials; secondary = manufacture a product</td><td>Give an example of each.</td></tr>
+        <tr><td>IPO</td><td>Inputs → Processes → Outputs</td><td>Waste is an output; labour is an input.</td></tr>
+        <tr><td>Location factors</td><td>Raw materials, transport, services, labour, market, linkages, capital, government policy, personal preference</td><td>Name it, then explain why.</td></tr>
+        <tr><td>Government policy</td><td>Loans, grants, IDA, 12.5% corporation tax</td><td>Quote the 12.5%.</td></tr>
+        <tr><td>Heavy / light / footloose</td><td>Bulky &amp; heavy (steel) / small &amp; lightweight (electronics) / not tied to one place</td><td>Give the example.</td></tr>
+        <tr><td>Industrial estate</td><td>Edge of urban area; cheaper land, room to expand, services, motorways, suppliers nearby</td><td>e.g. Sandyford Business Park.</td></tr>
+        <tr><td>Industrial inertia</td><td>Industry doesn’t relocate, due to historical ties</td><td>Sheffield steel.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Geography Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

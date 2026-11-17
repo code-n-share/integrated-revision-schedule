@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Revision – Rivers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF; --accent-bright: #B79BF5;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Geography Revision</div><div class="book-title">Geography · Year 2 · Rivers</div></div>
+    <a href="index.html">&larr; Geography Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Course &amp; 3 stages</a>
+    <a href="#topic-2">River erosion</a>
+    <a href="#topic-3">Waterfalls</a>
+    <a href="#topic-4">Features still to add</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 4 · Physical Geography</div>
+      <h1>🏞️ <span>Rivers</span></h1>
+      <p class="chapter-meta">Year 2 class notes, class notes pp. 14–17 · Junior Cycle Geography Revision</p>
+      <div><span class="goal-tag">✔ Name the 3 stages of a river</span><span class="goal-tag">✔ Explain 4 erosion processes</span><span class="goal-tag">✔ Explain how a waterfall forms</span><span class="goal-tag">✔ Draw and label a waterfall</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the rivers, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: class notes PDF pp. 14–17 (Rivers: the 3 stages, River Erosion, Features of River Erosion: Waterfalls). Chapter numbering is sequential for Year 2 – TODO: match to textbook if wanted.
+           TODO(notes): the notes only NAME the features V-shaped valley, interlocking spurs, meanders, wide valleys, ox-bow lakes, flood plains, deltas and levees. No explanation of how they form is in the pages given, so none is written here. Add them (and river transport / deposition) when the notes arrive. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Rivers
+          <ul>
+            <li>Course of a river
+              <ul><li>Source to mouth</li></ul></li>
+            <li>3 stages
+              <ul><li>Youthful (upper)</li><li>Mature (middle)</li><li>Elderly (lower)</li></ul></li>
+            <li>Erosion processes
+              <ul><li>Hydraulic action</li><li>Abrasion</li><li>Attrition</li><li>Solution</li></ul></li>
+            <li>Waterfalls
+              <ul><li>Hard over soft rock</li><li>Plunge pool</li><li>Retreats upstream</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Course of a river</strong></td><td>The journey of a river from its <strong>source</strong> to its <strong>mouth</strong>.</td></tr>
+        <tr><td><strong>Youthful stage</strong></td><td>The <strong>upper course</strong>. Features: V-shaped valley, interlocking spurs, waterfalls.</td></tr>
+        <tr><td><strong>Mature stage</strong></td><td>The <strong>middle course</strong>. Features: meanders, wide valleys, ox-bow lakes, flood plains.</td></tr>
+        <tr><td><strong>Elderly stage</strong></td><td>The <strong>lower course</strong>. Features: ox-bow lakes, flood plains, deltas, levees.</td></tr>
+        <tr><td><strong>Hydraulic action</strong></td><td>The <strong>force of water</strong> hitting against the surface.</td></tr>
+        <tr><td><strong>Abrasion</strong></td><td><strong>Scraping or wearing away</strong> by the river load.</td></tr>
+        <tr><td><strong>Attrition</strong></td><td>The impact of the force against the rocks, <strong>rocks hitting each other</strong> and breaking each other down.</td></tr>
+        <tr><td><strong>Solution</strong></td><td><strong>Minerals are dissolved</strong> in the water and carried along.</td></tr>
+        <tr><td><strong>Waterfall</strong></td><td>Occurs where a river <strong>flows over a vertical slope</strong>. A feature of erosion (e.g. Powerscourt, Co. Wicklow).</td></tr>
+        <tr><td><strong>Plunge pool</strong></td><td>The pool at the base of a waterfall, formed by <strong>hydraulic action</strong> and the load swirling around, which wears away the base by <strong>abrasion</strong>.</td></tr>
+        <tr><td><strong>Undercut</strong></td><td>When the rock above the plunge pool is worn away underneath, until it collapses into the pool.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🏞️ The Course and the Three Stages of a River</div>
+      <div class="key-term">The journey of a river <strong>from its source to its mouth</strong> is called the <strong>course</strong> of the river. It has <strong>three stages</strong>: <strong>youthful</strong> (upper course), <strong>mature</strong> (middle course) and <strong>elderly</strong> (lower course).
+        <div class="tip">💡 A river ages like a person: young and energetic near the mountains, mature in the middle, slow and elderly as it reaches the sea.</div></div>
+      <figure class="fig">
+<svg class="dg" viewBox="0 0 760 500" role="img" aria-label="Long profile of a river from source to mouth split into youthful (upper course), mature (middle course) and elderly (lower course) stages, with the features of each stage">
+<rect x="30" y="10" width="240" height="330" fill="#FCE4EC" opacity=".7"/>
+<rect x="270" y="10" width="240" height="330" fill="#E6F4ED" opacity=".7"/>
+<rect x="510" y="10" width="220" height="330" fill="#EDE7FF" opacity=".7"/>
+<polygon points="30,340 30,65 40,77 50,88 60,99 70,110 80,119 90,129 100,137 110,146 120,154 130,161 140,168 150,175 160,181 170,188 180,193 190,199 200,204 210,209 220,214 230,218 240,222 250,226 260,230 270,234 280,237 290,240 300,243 310,246 320,249 330,252 340,254 350,256 360,259 370,261 380,263 390,265 400,266 410,268 420,270 430,271 440,273 450,274 460,276 470,277 480,278 490,279 500,280 510,281 520,282 530,283 540,284 550,285 560,286 570,286 580,287 590,288 600,288 610,289 620,289 630,290 640,291 650,291 660,291 670,292 680,292 690,293 700,293 710,293 720,294 730,294 730,340" fill="#D7C4A3"/>
+<polyline points="30,65 40,77 50,88 60,99 70,110 80,119 90,129 100,137 110,146 120,154 130,161 140,168 150,175 160,181 170,188 180,193 190,199 200,204 210,209 220,214 230,218 240,222 250,226 260,230 270,234 280,237 290,240 300,243 310,246 320,249 330,252 340,254 350,256 360,259 370,261 380,263 390,265 400,266 410,268 420,270 430,271 440,273 450,274 460,276 470,277 480,278 490,279 500,280 510,281 520,282 530,283 540,284 550,285 560,286 570,286 580,287 590,288 600,288 610,289 620,289 630,290 640,291 650,291 660,291 670,292 680,292 690,293 700,293 710,293 720,294 730,294" fill="none" stroke="#1E88E5" stroke-width="6" stroke-linecap="round"/>
+<rect x="730" y="290" width="25" height="50" fill="#7EC8F0"/><text class="s" x="700" y="283" style="font-weight:700">Mouth</text><text class="s" x="722" y="355">Sea</text>
+<circle cx="30" cy="65" r="7" fill="#1E88E5" stroke="#0D47A1" stroke-width="2"/><text class="s" x="44" y="58" style="font-weight:700">Source</text><text class="s" x="44" y="72">high ground</text>
+<g stroke="#6B7280" stroke-dasharray="5 4" stroke-width="1.5"><line x1="270" y1="34" x2="270" y2="480"/><line x1="510" y1="34" x2="510" y2="480"/></g>
+<text class="s m" x="380" y="26">← The course of the river: from its source to its mouth →</text>
+<rect x="38" y="366" width="224" height="32" rx="8" fill="#D81B60"/><text class="h w m" x="150.0" y="387" style="font-size:12.5px">1 YOUTHFUL STAGE</text>
+<text class="s m" x="150.0" y="416" style="font-weight:700;fill:#D81B60">(Upper course)</text>
+<text class="m" x="150.0" y="438" style="font-size:12.5px">• V-shaped valley</text>
+<text class="m" x="150.0" y="454" style="font-size:12.5px">• Interlocking spurs</text>
+<text class="m" x="150.0" y="470" style="font-size:12.5px">• Waterfalls</text>
+<rect x="278" y="366" width="224" height="32" rx="8" fill="#2E8B57"/><text class="h w m" x="390.0" y="387" style="font-size:12.5px">2 MATURE STAGE</text>
+<text class="s m" x="390.0" y="416" style="font-weight:700;fill:#2E8B57">(Middle course)</text>
+<text class="m" x="390.0" y="438" style="font-size:12.5px">• Meanders</text>
+<text class="m" x="390.0" y="454" style="font-size:12.5px">• Wide valleys</text>
+<text class="m" x="390.0" y="470" style="font-size:12.5px">• Ox-bow lakes</text>
+<text class="m" x="390.0" y="486" style="font-size:12.5px">• Flood plains</text>
+<rect x="518" y="366" width="204" height="32" rx="8" fill="#6C3FC5"/><text class="h w m" x="620.0" y="387" style="font-size:12.5px">3 ELDERLY STAGE</text>
+<text class="s m" x="620.0" y="416" style="font-weight:700;fill:#6C3FC5">(Lower course)</text>
+<text class="m" x="620.0" y="438" style="font-size:12.5px">• Ox-bow lakes</text>
+<text class="m" x="620.0" y="454" style="font-size:12.5px">• Flood plains</text>
+<text class="m" x="620.0" y="470" style="font-size:12.5px">• Deltas</text>
+<text class="m" x="620.0" y="486" style="font-size:12.5px">• Levees</text>
+</svg>
+        <figcaption>The river drops steeply near its source and flattens out towards the sea. Features listed are the ones named in your notes.</figcaption>
+      </figure>
+      <table><thead><tr><th>Stage</th><th>Also called</th><th>Features include</th></tr></thead><tbody>
+        <tr><td><strong>1 Youthful</strong></td><td>Upper course</td><td>V-shaped valley · interlocking spurs · waterfalls</td></tr>
+        <tr><td><strong>2 Mature</strong></td><td>Middle course</td><td>Meanders · wide valleys · ox-bow lakes · flood plains</td></tr>
+        <tr><td><strong>3 Elderly</strong></td><td>Lower course</td><td>Ox-bow lakes · flood plains · deltas · levees</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>Y-M-E</strong> = <strong>Y</strong>outhful, <strong>M</strong>ature, <strong>E</strong>lderly = <strong>U</strong>pper, <strong>M</strong>iddle, <strong>L</strong>ower. Waterfalls come near the <strong>start</strong>; deltas come at the <strong>end</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up the stage names and the course names. Youthful = <strong>upper</strong>, mature = <strong>middle</strong>, elderly = <strong>lower</strong>. Ox-bow lakes and flood plains appear in <strong>both</strong> the mature and elderly stages in your notes.</div>
+
+      <div class="section-heading" id="topic-2">🌊 River Erosion</div>
+      <div class="key-term">Rivers wear away (erode) their bed and banks in <strong>four ways</strong>: <strong>hydraulic action, abrasion, attrition and solution</strong>.</div>
+      <figure class="fig">
+<svg class="dg" viewBox="0 0 760 520" role="img" aria-label="Four processes of river erosion: hydraulic action, abrasion, attrition and solution">
+<defs><marker id="arE" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#1A1A2E"/></marker></defs>
+<g transform="translate(10,10)">
+<rect width="360" height="245" rx="12" fill="#fff" stroke="#1976D2" stroke-width="2"/>
+<rect width="360" height="32" rx="12" fill="#1976D2"/><rect y="18" width="360" height="14" fill="#1976D2"/>
+<text class="h w" x="14" y="22">1  Hydraulic action</text>
+<rect x="10" y="48" width="340" height="125" fill="#EFE6D8"/>
+<polygon points="40,48 320,48 272,140 88,140" fill="#8FD0F2" stroke="#6D4C41" stroke-width="3"/>
+<line x1="10" y1="48" x2="40" y2="48" stroke="#6D4C41" stroke-width="3"/><line x1="320" y1="48" x2="350" y2="48" stroke="#6D4C41" stroke-width="3"/>
+<path d="M110,100 Q200,80 285,98" fill="none" stroke="#0D47A1" stroke-width="3.5" marker-end="url(#arE)"/>
+<path d="M110,122 Q190,108 258,126" fill="none" stroke="#0D47A1" stroke-width="3.5" marker-end="url(#arE)"/>
+<circle cx="298" cy="86" r="3.5" fill="#6D4C41"/>
+<circle cx="306" cy="76" r="3.5" fill="#6D4C41"/>
+<circle cx="300" cy="66" r="3.5" fill="#6D4C41"/>
+<circle cx="310" cy="92" r="3.5" fill="#6D4C41"/>
+<text class="s m" x="180" y="66">Force of water hits the bank</text>
+<text class="m" x="180" y="198" style="fill:#1976D2">Hydraulic action</text>
+<text class="s m" x="180" y="216">The force of water hitting against the surface</text>
+</g>
+<g transform="translate(390,10)">
+<rect width="360" height="245" rx="12" fill="#fff" stroke="#E65100" stroke-width="2"/>
+<rect width="360" height="32" rx="12" fill="#E65100"/><rect y="18" width="360" height="14" fill="#E65100"/>
+<text class="h w" x="14" y="22">2  Abrasion</text>
+<rect x="10" y="48" width="340" height="125" fill="#EFE6D8"/>
+<polygon points="40,48 320,48 272,140 88,140" fill="#8FD0F2" stroke="#6D4C41" stroke-width="3"/>
+<line x1="10" y1="48" x2="40" y2="48" stroke="#6D4C41" stroke-width="3"/><line x1="320" y1="48" x2="350" y2="48" stroke="#6D4C41" stroke-width="3"/>
+<circle cx="120" cy="130" r="9" fill="#9E9E9E" stroke="#424242" stroke-width="1.5"/>
+<circle cx="160" cy="130" r="9" fill="#9E9E9E" stroke="#424242" stroke-width="1.5"/>
+<circle cx="200" cy="130" r="9" fill="#9E9E9E" stroke="#424242" stroke-width="1.5"/>
+<circle cx="240" cy="130" r="9" fill="#9E9E9E" stroke="#424242" stroke-width="1.5"/>
+<path d="M120,108 L200,108" stroke="#BF360C" stroke-width="3.5" marker-end="url(#arE)"/><path d="M160,92 L240,92" stroke="#BF360C" stroke-width="3.5" marker-end="url(#arE)"/>
+<text class="s m" x="180" y="66">Load scrapes the bed &amp; banks</text>
+<text class="m" x="180" y="198" style="fill:#E65100">Abrasion</text>
+<text class="s m" x="180" y="216">Scraping or wearing away by the river load</text>
+</g>
+<g transform="translate(10,265)">
+<rect width="360" height="245" rx="12" fill="#fff" stroke="#6C3FC5" stroke-width="2"/>
+<rect width="360" height="32" rx="12" fill="#6C3FC5"/><rect y="18" width="360" height="14" fill="#6C3FC5"/>
+<text class="h w" x="14" y="22">3  Attrition</text>
+<rect x="10" y="48" width="340" height="125" fill="#EFE6D8"/>
+<polygon points="40,48 320,48 272,140 88,140" fill="#8FD0F2" stroke="#6D4C41" stroke-width="3"/>
+<line x1="10" y1="48" x2="40" y2="48" stroke="#6D4C41" stroke-width="3"/><line x1="320" y1="48" x2="350" y2="48" stroke="#6D4C41" stroke-width="3"/>
+<circle cx="150" cy="118" r="15" fill="#9E9E9E" stroke="#424242" stroke-width="1.5"/><circle cx="212" cy="118" r="15" fill="#9E9E9E" stroke="#424242" stroke-width="1.5"/>
+<path d="M110,118 H132" stroke="#4A2A8F" stroke-width="3.5" marker-end="url(#arE)"/><path d="M252,118 H232" stroke="#4A2A8F" stroke-width="3.5" marker-end="url(#arE)"/>
+<circle cx="181" cy="100" r="3.5" fill="#757575"/>
+<circle cx="181" cy="135" r="3.5" fill="#757575"/>
+<circle cx="172" cy="127" r="3.5" fill="#757575"/>
+<text class="s m" x="180" y="72">Rocks collide and break down</text>
+<text class="m" x="180" y="198" style="fill:#6C3FC5">Attrition</text>
+<text class="s m" x="180" y="216">Rocks hitting each other break each other down</text>
+</g>
+<g transform="translate(390,265)">
+<rect width="360" height="245" rx="12" fill="#fff" stroke="#2E8B57" stroke-width="2"/>
+<rect width="360" height="32" rx="12" fill="#2E8B57"/><rect y="18" width="360" height="14" fill="#2E8B57"/>
+<text class="h w" x="14" y="22">4  Solution</text>
+<rect x="10" y="48" width="340" height="125" fill="#EFE6D8"/>
+<polygon points="40,48 320,48 272,140 88,140" fill="#8FD0F2" stroke="#6D4C41" stroke-width="3"/>
+<line x1="10" y1="48" x2="40" y2="48" stroke="#6D4C41" stroke-width="3"/><line x1="320" y1="48" x2="350" y2="48" stroke="#6D4C41" stroke-width="3"/>
+<circle cx="165" cy="115" r="2.5" fill="#1B5E20"/>
+<circle cx="244" cy="86" r="2.5" fill="#1B5E20"/>
+<circle cx="199" cy="116" r="2.5" fill="#1B5E20"/>
+<circle cx="226" cy="118" r="2.5" fill="#1B5E20"/>
+<circle cx="253" cy="82" r="2.5" fill="#1B5E20"/>
+<circle cx="108" cy="108" r="2.5" fill="#1B5E20"/>
+<circle cx="171" cy="113" r="2.5" fill="#1B5E20"/>
+<circle cx="164" cy="90" r="2.5" fill="#1B5E20"/>
+<circle cx="225" cy="112" r="2.5" fill="#1B5E20"/>
+<circle cx="245" cy="108" r="2.5" fill="#1B5E20"/>
+<circle cx="206" cy="118" r="2.5" fill="#1B5E20"/>
+<circle cx="143" cy="92" r="2.5" fill="#1B5E20"/>
+<circle cx="143" cy="111" r="2.5" fill="#1B5E20"/>
+<circle cx="204" cy="125" r="2.5" fill="#1B5E20"/>
+<circle cx="108" cy="120" r="2.5" fill="#1B5E20"/>
+<circle cx="121" cy="88" r="2.5" fill="#1B5E20"/>
+<circle cx="115" cy="97" r="2.5" fill="#1B5E20"/>
+<circle cx="112" cy="95" r="2.5" fill="#1B5E20"/>
+<circle cx="226" cy="116" r="2.5" fill="#1B5E20"/>
+<circle cx="204" cy="123" r="2.5" fill="#1B5E20"/>
+<circle cx="214" cy="103" r="2.5" fill="#1B5E20"/>
+<circle cx="252" cy="106" r="2.5" fill="#1B5E20"/>
+<circle cx="139" cy="101" r="2.5" fill="#1B5E20"/>
+<circle cx="129" cy="80" r="2.5" fill="#1B5E20"/>
+<circle cx="139" cy="109" r="2.5" fill="#1B5E20"/>
+<circle cx="160" cy="94" r="2.5" fill="#1B5E20"/>
+<path d="M120,138 H255" stroke="#1B5E20" stroke-width="3" marker-end="url(#arE)" opacity="0"/>
+<text class="s m" x="180" y="66">Dissolved minerals carried along</text>
+<text class="m" x="180" y="198" style="fill:#2E8B57">Solution</text>
+<text class="s m" x="180" y="216">Minerals are dissolved in the water and carried along</text>
+</g>
+</svg>
+        <figcaption>The four processes of river erosion.</figcaption>
+      </figure>
+      <table><thead><tr><th></th><th>Process</th><th>What happens</th></tr></thead><tbody>
+        <tr><td>1</td><td><strong>Hydraulic action</strong></td><td>The <strong>force of water</strong> hitting against the surface</td></tr>
+        <tr><td>2</td><td><strong>Abrasion</strong></td><td><strong>Scraping or wearing away</strong> by the river load</td></tr>
+        <tr><td>3</td><td><strong>Attrition</strong></td><td>The impact of the force against the rocks <strong>hitting each other</strong> breaks them down</td></tr>
+        <tr><td>4</td><td><strong>Solution</strong></td><td><strong>Minerals are dissolved</strong> in the water and carried along</td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>H-A-A-S</strong> = <strong>H</strong>ydraulic action, <strong>A</strong>brasion, <strong>A</strong>ttrition, <strong>S</strong>olution. <br><strong>Abrasion</strong> = the load <strong>A</strong>ttacks the bed and banks (<em>river against rock</em>). <strong>Attrition</strong> = the load <strong>A</strong>rgues with itself (<em>rock against rock</em>).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> mixing up abrasion and attrition. <strong>Abrasion</strong> = load scrapes the <em>river’s bed and banks</em>. <strong>Attrition</strong> = rocks in the load hit <em>each other</em> and break down.</div>
+
+      <div class="section-heading" id="topic-3">💦 Waterfalls: A Feature of River Erosion</div>
+      <div class="key-term">A <strong>waterfall</strong> occurs where a river <strong>flows over a vertical slope</strong>. It is a feature of <strong>erosion</strong>. Example: <strong>Powerscourt, Co. Wicklow</strong>.
+        <div class="tip">💡 It’s like a stair step in the river: the soft rock underneath wears away faster, leaving the hard rock sticking out above it.</div></div>
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 760 360" role="img" aria-label="Cross-section of a waterfall: river flows over hard rock on top of soft rock; hydraulic action, abrasion and attrition create a plunge pool at the base, undercutting the hard rock, which collapses so the waterfall retreats upstream">
+          <defs><marker id="arW" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M0,1 L14,7 L0,13 z" fill="#B71C1C"/></marker><marker id="arK" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,1 L12,6 L0,11 z" fill="#1A1A2E"/></marker></defs>
+          <polygon points="20,150 340,150 322,196 300,228 330,262 350,300 740,300 740,345 20,345" fill="#E8D5A8" stroke="#8D6E63" stroke-width="2"/>
+          <text class="m" x="150" y="268" style="fill:#6D4C41">SOFT ROCK</text><text class="s m" x="150" y="286" style="fill:#6D4C41">e.g. limestone (erodes faster)</text>
+          <polygon points="20,98 346,98 346,150 20,150" fill="#9AA0A6" stroke="#4B5563" stroke-width="2"/>
+          <text class="m" x="150" y="130" class="w" style="fill:#fff">HARD ROCK</text><text class="s m" x="150" y="146" style="fill:#F3F4F6">e.g. granite</text>
+          <path d="M20,92 H346 C372,92 378,150 370,214 L368,296 H740" fill="none" stroke="#1E88E5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <ellipse cx="410" cy="300" rx="62" ry="14" fill="#5BB5E8" stroke="#1E88E5" stroke-width="2"/>
+          <g fill="#757575" stroke="#424242"><circle cx="390" cy="305" r="5"/><circle cx="410" cy="309" r="5"/><circle cx="428" cy="304" r="5"/><circle cx="445" cy="308" r="4"/></g>
+          <text class="m" x="440" y="332" style="fill:#0D47A1">PLUNGE POOL</text>
+          <g stroke-dasharray="7 5" fill="none" stroke="#6B7280" stroke-width="2"><path d="M346,98 H560 V150 L640,300"/></g>
+          <text class="s" x="566" y="124">Where the waterfall used to be</text>
+          <line x1="552" y1="72" x2="364" y2="72" stroke="#B71C1C" stroke-width="3.5" marker-end="url(#arW)"/>
+          <text class="m" x="458" y="60" style="fill:#B71C1C">Retreats upstream (backwards)</text>
+                    <path d="M30,76 H100" stroke="#1E88E5" stroke-width="3" marker-end="url(#arK)"/><text class="s" x="30" y="68">River flows →</text>
+          <text class="m" x="432" y="196" style="fill:#0D47A1">WATERFALL</text><text class="s" x="432" y="212">vertical drop</text>
+          <line x1="430" y1="230" x2="384" y2="290" stroke="#1A1A2E" stroke-width="2.5" marker-end="url(#arK)"/>
+          <text class="s" x="437" y="248">① hydraulic action</text><text class="s" x="437" y="264">② abrasion, ③ attrition</text>
+          <text class="s" x="40" y="204" style="font-weight:700">Undercutting: soft rock</text><text class="s" x="40" y="220" style="font-weight:700">below is worn away →</text>
+          <path d="M210,214 H300" stroke="#1A1A2E" stroke-width="2" marker-end="url(#arK)"/>
+        </svg>
+        <figcaption>Side view of a waterfall. The river flows left to right; the dashed line shows where the waterfall used to be.</figcaption>
+      </figure>
+      <p><strong>How a waterfall forms:</strong></p>
+      <ol>
+        <li>The river flows over an area where <strong>hard rock</strong> (e.g. granite) lies on top of <strong>soft rock</strong> (e.g. limestone).</li>
+        <li>The river <strong>erodes the soft rock faster</strong>, so a <strong>vertical drop</strong> develops.</li>
+        <li>At the base, a <strong>plunge pool</strong> develops due to <strong>hydraulic action</strong>, along with the river’s load swirling around at the base, which wears away the base by <strong>abrasion</strong>.</li>
+        <li>The rock above the plunge pool is <strong>undercut</strong>. It eventually <strong>collapses into the plunge pool</strong> below.</li>
+        <li>The waterfall slowly <strong>erodes its way upstream</strong> (it “retreats backwards”).</li>
+      </ol>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>H-S-P-U-C</strong>: <strong>H</strong>ard over <strong>S</strong>oft → <strong>P</strong>lunge pool → <strong>U</strong>ndercut → <strong>C</strong>ollapse → retreat upstream.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> forgetting that the waterfall moves <strong>upstream</strong> (backwards), or leaving out the <strong>hard rock over soft rock</strong> that starts it. In a diagram, label hard rock, soft rock, plunge pool and the retreat.</div>
+
+      <div class="section-heading" id="topic-4">📝 Features Named in Your Notes (details still to add)</div>
+      <div class="key-term">Your notes <strong>name</strong> these features but do <strong>not</strong> yet explain how they form. Learn which stage they belong to now; add the explanations when you have the notes.</div>
+      <table><thead><tr><th>Feature</th><th>Stage</th><th>Explained in notes?</th></tr></thead><tbody>
+        <tr><td>V-shaped valley</td><td>Youthful</td><td>Not yet</td></tr>
+        <tr><td>Interlocking spurs</td><td>Youthful</td><td>Not yet</td></tr>
+        <tr><td><strong>Waterfalls</strong></td><td>Youthful</td><td><strong>Yes</strong>, see above (Powerscourt)</td></tr>
+        <tr><td>Meanders</td><td>Mature</td><td>Not yet</td></tr>
+        <tr><td>Wide valleys</td><td>Mature</td><td>Not yet</td></tr>
+        <tr><td>Ox-bow lakes</td><td>Mature and elderly</td><td>Not yet</td></tr>
+        <tr><td>Flood plains</td><td>Mature and elderly</td><td>Not yet</td></tr>
+        <tr><td>Deltas</td><td>Elderly</td><td>Not yet</td></tr>
+        <tr><td>Levees</td><td>Elderly</td><td>Not yet</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What is the course of a river?</div><div class="a">Its journey from source to mouth</div></div>
+        <div class="rv-card"><div class="q">Name the three stages of a river</div><div class="a">Youthful (upper), mature (middle), elderly (lower)</div></div>
+        <div class="rv-card"><div class="q">Features of the youthful stage?</div><div class="a">V-shaped valley, interlocking spurs, waterfalls</div></div>
+        <div class="rv-card"><div class="q">Features of the mature stage?</div><div class="a">Meanders, wide valleys, ox-bow lakes, flood plains</div></div>
+        <div class="rv-card"><div class="q">Features of the elderly stage?</div><div class="a">Ox-bow lakes, flood plains, deltas, levees</div></div>
+        <div class="rv-card"><div class="q">Another name for the youthful stage?</div><div class="a">The upper course</div></div>
+        <div class="rv-card"><div class="q">Another name for the elderly stage?</div><div class="a">The lower course</div></div>
+        <div class="rv-card"><div class="q">Name the four processes of river erosion</div><div class="a">Hydraulic action, abrasion, attrition, solution</div></div>
+        <div class="rv-card"><div class="q">Define hydraulic action</div><div class="a">The force of water hitting against the surface</div></div>
+        <div class="rv-card"><div class="q">Define abrasion</div><div class="a">Scraping or wearing away by the river load</div></div>
+        <div class="rv-card"><div class="q">Define attrition</div><div class="a">Rocks hitting each other break each other down</div></div>
+        <div class="rv-card"><div class="q">Define solution (erosion)</div><div class="a">Minerals are dissolved in the water and carried along</div></div>
+        <div class="rv-card"><div class="q">Where does a waterfall occur?</div><div class="a">Where a river flows over a vertical slope</div></div>
+        <div class="rv-card"><div class="q">Is a waterfall a feature of erosion or deposition?</div><div class="a">Erosion</div></div>
+        <div class="rv-card"><div class="q">Name an Irish waterfall</div><div class="a">Powerscourt, Co. Wicklow</div></div>
+        <div class="rv-card"><div class="q">What rock types are needed for a waterfall?</div><div class="a">Hard rock (e.g. granite) lying on top of soft rock (e.g. limestone)</div></div>
+        <div class="rv-card"><div class="q">What forms at the base of a waterfall?</div><div class="a">A plunge pool</div></div>
+        <div class="rv-card"><div class="q">How does the plunge pool form?</div><div class="a">Hydraulic action, plus the load swirling around wearing the base by abrasion</div></div>
+        <div class="rv-card"><div class="q">What happens to the rock above the plunge pool?</div><div class="a">It is undercut and eventually collapses into the pool</div></div>
+        <div class="rv-card"><div class="q">Which direction does a waterfall move over time?</div><div class="a">Upstream (it retreats backwards)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The journey of a river from its source to its mouth is called its {{course}}.</p>
+        <p>The three stages of a river are {{youthful}} (upper course), {{mature}} (middle course) and {{elderly}} (lower course).</p>
+        <p>{{Hydraulic action}} is the force of water hitting against the surface.</p>
+        <p>{{Abrasion}} is the scraping or wearing away by the river {{load}}.</p>
+        <p>In {{attrition}}, rocks hit each other and break each other down.</p>
+        <p>In {{solution}}, minerals are dissolved in the water and carried along.</p>
+        <p>A waterfall occurs where a river flows over a {{vertical}} slope; it is a feature of {{erosion}}.</p>
+        <p>A waterfall forms where {{hard}} rock such as granite lies on top of {{soft}} rock such as limestone.</p>
+        <p>At the base, a {{plunge pool}} forms; the rock above is {{undercut}} and collapses, so the waterfall erodes its way {{upstream}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>The journey of a river from its source to its mouth is called its…</p><ol><li>Channel</li><li>Course</li><li>Load</li><li>Basin</li></ol><div class="explain">The course of the river runs from source to mouth.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which stage is the “middle course”?</p><ol><li>Youthful</li><li>Elderly</li><li>Mature</li><li>Delta</li></ol><div class="explain">Youthful = upper; mature = middle; elderly = lower.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which feature belongs to the youthful stage?</p><ol><li>Waterfall</li><li>Delta</li><li>Levee</li><li>Meander</li></ol><div class="explain">Youthful: V-shaped valley, interlocking spurs, waterfalls. Deltas and levees are elderly; meanders are mature.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which erosion process is “the force of water hitting against the surface”?</p><ol><li>Abrasion</li><li>Attrition</li><li>Solution</li><li>Hydraulic action</li></ol><div class="explain">Hydraulic action is the force of the water itself.</div></div>
+        <div class="rv-q" data-answer="b"><p>Rocks in the river load hit each other and break down. This is…</p><ol><li>Abrasion</li><li>Attrition</li><li>Solution</li><li>Hydraulic action</li></ol><div class="explain">Attrition = rock against rock. Abrasion = load scraping the bed and banks.</div></div>
+        <div class="rv-q" data-answer="c"><p>Minerals dissolved in the water and carried along is called…</p><ol><li>Attrition</li><li>Abrasion</li><li>Solution</li><li>Hydraulic action</li></ol><div class="explain">Solution: minerals are dissolved in the water.</div></div>
+        <div class="rv-q" data-answer="a"><p>A waterfall forms where…</p><ol><li>Hard rock lies on top of soft rock</li><li>Soft rock lies on top of hard rock</li><li>The river meets the sea</li><li>The river bends sharply</li></ol><div class="explain">The soft rock below erodes faster, leaving a vertical drop.</div></div>
+        <div class="rv-q" data-answer="d"><p>What forms at the base of a waterfall?</p><ol><li>A levee</li><li>A delta</li><li>An ox-bow lake</li><li>A plunge pool</li></ol><div class="explain">Hydraulic action and the swirling load (abrasion) create the plunge pool.</div></div>
+        <div class="rv-q" data-answer="b"><p>Over time, a waterfall…</p><ol><li>Moves downstream</li><li>Retreats upstream</li><li>Stays in the same place</li><li>Disappears at once</li></ol><div class="explain">Undercut rock collapses into the plunge pool, so the waterfall erodes its way upstream.</div></div>
+        <div class="rv-q" data-answer="c"><p>Which is an Irish example of a waterfall?</p><ol><li>Aughinish</li><li>Poolbeg</li><li>Powerscourt, Co. Wicklow</li><li>Sandyford</li></ol><div class="explain">Powerscourt, Co. Wicklow is the waterfall example in your notes.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Name the three stages of a river and give two features of each.</summary><div class="rv-model">
+        <p><strong>Youthful (upper course):</strong> V-shaped valley, interlocking spurs, waterfalls.</p>
+        <p><strong>Mature (middle course):</strong> meanders, wide valleys, ox-bow lakes, flood plains.</p>
+        <p><strong>Elderly (lower course):</strong> ox-bow lakes, flood plains, deltas, levees.</p></div></details>
+      <details class="rv-qa"><summary>2. Name and explain the four processes of river erosion.</summary><div class="rv-model">
+        <p><strong>Hydraulic action:</strong> the force of water hitting against the surface. <strong>Abrasion:</strong> scraping or wearing away by the river load. <strong>Attrition:</strong> rocks hit each other and break each other down. <strong>Solution:</strong> minerals are dissolved in the water and carried along.</p></div></details>
+      <details class="rv-qa"><summary>3. Explain, with the aid of a labelled diagram, how a waterfall is formed.</summary><div class="rv-model">
+        <p>Diagram: label <strong>hard rock</strong> over <strong>soft rock</strong>, the <strong>vertical drop</strong>, the <strong>plunge pool</strong>, and an arrow showing the waterfall <strong>retreating upstream</strong>.</p>
+        <p>(1) The river flows over hard rock (e.g. granite) on top of soft rock (e.g. limestone). (2) The soft rock erodes faster, developing a vertical drop. (3) A plunge pool develops at the base by hydraulic action; the swirling load wears the base by abrasion. (4) The rock above is undercut and eventually collapses into the plunge pool. (5) The waterfall slowly erodes its way upstream.</p></div></details>
+      <details class="rv-qa"><summary>4. Name an example of a waterfall in Ireland and say what type of feature it is.</summary><div class="rv-model">
+        <p><strong>Powerscourt, Co. Wicklow</strong>: a feature of <strong>river erosion</strong>, where a river flows over a vertical slope.</p></div></details>
+      <details class="rv-qa"><summary>5. What is the difference between abrasion and attrition?</summary><div class="rv-model">
+        <p><strong>Abrasion</strong> is the scraping or wearing away of the bed and banks by the river load. <strong>Attrition</strong> is the rocks of the load hitting each other and breaking each other down.</p></div></details>
+      <details class="rv-qa"><summary>6. What is meant by the “course” of a river?</summary><div class="rv-model">
+        <p>The journey of a river <strong>from its source to its mouth</strong>, divided into the youthful (upper), mature (middle) and elderly (lower) stages.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Course</td><td>Source → mouth</td><td>Use the word “mouth”.</td></tr>
+        <tr><td>Stages</td><td>Youthful = upper, mature = middle, elderly = lower</td><td>Give both names.</td></tr>
+        <tr><td>Features by stage</td><td>Youthful: V-valley, interlocking spurs, waterfalls. Mature: meanders, wide valleys, ox-bows, flood plains. Elderly: ox-bows, flood plains, deltas, levees</td><td>Match feature to stage.</td></tr>
+        <tr><td>Erosion</td><td>Hydraulic action, abrasion, attrition, solution</td><td>Define all four in one line each.</td></tr>
+        <tr><td>Waterfall</td><td>Hard rock over soft rock → vertical drop → plunge pool → undercut → collapse → retreats upstream</td><td>Label a diagram; example Powerscourt.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Geography Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
