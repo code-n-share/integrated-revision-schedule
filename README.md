@@ -16,7 +16,8 @@ A clean, fast-loading static revision website for exam preparation across all su
 │   └── chapter-template.html   ← Copy this to start a new chapter
 ├── tools/
 │   ├── build_science.py        ← Optional: wraps a Science chapter body in the page shell (see CONTENT_RULES.md)
-│   └── build_geography.py      ← Same for Geography (adds figure/diagram styles)
+│   ├── build_geography.py      ← Same for Geography (adds figure/diagram styles)
+│   └── build_classics.py       ← Same for Classics
 ├── <subject>/                  ← business, classics, english, french, geography,
 │   │                             history, irish, maths, science
 │   ├── index.html          ← Year picker (Year 1 / Year 2)
@@ -74,6 +75,9 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] English Year 2 – Chapter 1 – The Personal Essay
 - [x] English Year 2 – Chapter 2 – The Outsiders: Plot & Key Quotes
 - [x] English Year 2 – Chapter 3 – The Outsiders: Characters & Key Scenes
+- [x] Classics Year 2 – Chapter 1 – The Iliad: Epic Form, Background, Characters & Gods
+- [x] Classics Year 2 – Chapter 2 – The Iliad Books 1–2: Plague, Quarrel & Hardship of War
+- [x] Classics Year 2 – Chapter 3 – The Iliad Books 4–11: The War Resumes
 - [x] Geography Year 2 – Chapter 1 – Slopes & Aerial Photographs
 - [x] Geography Year 2 – Chapter 2 – Secondary Economic Activities
 - [x] Geography Year 2 – Chapter 3 – Industry in Ireland: Case Studies & MNCs

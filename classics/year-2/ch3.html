@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classics Revision – The Iliad Books 4–11: The War Resumes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #00796B; --accent-light: #E0F2F1; --accent-bright: #4DB6AC;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #E8F5E9; border-left: 5px solid #2E7D32; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Classics Revision</div><div class="book-title">Classics · Year 2 · The Iliad</div></div>
+    <a href="index.html">&larr; Classics Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Book 4: The Truce is Broken</a>
+    <a href="#topic-2">Book 5: Diomedes</a>
+    <a href="#topic-3">Book 6: Hector &amp; Andromache</a>
+    <a href="#topic-4">Books 7 &amp; 8</a>
+    <a href="#topic-5">Book 9: The Embassy</a>
+    <a href="#topic-6">Books 10 &amp; 11</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 3 · Epic Poetry</div>
+      <h1>🛡️ <span>The Iliad Books 4–11: The War Resumes</span></h1>
+      <p class="chapter-meta">Year 2 class notes, notes pp. 9–13 · Junior Cycle Classical Studies Revision</p>
+      <div><span class="goal-tag">✔ Explain how the truce is broken</span><span class="goal-tag">✔ Describe Diomedes' triumph in Book 5</span><span class="goal-tag">✔ Retell Hector and Andromache's farewell</span><span class="goal-tag">✔ Outline Books 7–8 and the failed embassy in Book 9</span><span class="goal-tag">✔ Explain Books 10–11 and why Achilles sends Patroclus</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the Books 4 to 11 of the Iliad, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: handwritten class notes PDF (Classics.pdf) pp. 8–13: Books 4, 5, 6, 7 & 8, 9, 10, 11 (+ "KLEOS = GLORY").
+           Chapter numbering is sequential for Year 2 – TODO: match to textbook/teacher numbering if wanted.
+           TODO(notes): Book 3 (the duel of Paris and Menelaus) is NOT in the notes: Book 4 only says Menelaus won it fairly. Add Book 3 notes if the exam covers it.
+           TODO(notes): Book 11 notes end mid-sentence ("He sends his close companion Patroclus.") – the rest (what Patroclus is sent to do) is not in the notes, so it is not written here.
+           TODO(notes): "Kleos = glory" appears on its own at the end of the Book 4 page with no further explanation. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Iliad Books 4–11
+          <ul>
+            <li>Book 4
+              <ul><li>Athena tricks Pandarus</li><li>Truce broken</li></ul></li>
+            <li>Book 5
+              <ul><li>Diomedes' glory</li><li>Wounds Aphrodite, Ares</li></ul></li>
+            <li>Book 6
+              <ul><li>Hector in Troy</li><li>Andromache &amp; Astyanax</li></ul></li>
+            <li>Books 7–8
+              <ul><li>Hector v Ajax duel</li><li>Zeus bans gods</li></ul></li>
+            <li>Books 9–11
+              <ul><li>Embassy refused</li><li>Dolon &amp; Rhesus</li><li>Greek leaders wounded</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Truce</strong></td><td>A <strong>peace agreement</strong> between both sides after the duel of Paris and Menelaus.</td></tr>
+        <tr><td><strong>Kleos</strong></td><td>Greek word for <strong>glory</strong>.</td></tr>
+        <tr><td><strong>Pandarus</strong></td><td>Trojan archer <strong>tricked by Athena</strong> into shooting Menelaus and breaking the truce.</td></tr>
+        <tr><td><strong>Diomedes</strong></td><td>Greek hero of <strong>Book 5</strong>: given courage, strength and skill by Athena; wounds Aphrodite and Ares.</td></tr>
+        <tr><td><strong>Aeneas</strong></td><td>Trojan attacked by Diomedes; <strong>rescued by Apollo</strong>; Aphrodite's son.</td></tr>
+        <tr><td><strong>Hecuba</strong></td><td>Hector's mother; offers him wine, which he <strong>refuses</strong>.</td></tr>
+        <tr><td><strong>Andromache</strong></td><td>Hector's <strong>wife</strong>: begs him not to return to battle.</td></tr>
+        <tr><td><strong>Astyanax</strong></td><td>Hector's <strong>baby son</strong>, frightened by his father's helmet.</td></tr>
+        <tr><td><strong>Duel</strong></td><td>A one-to-one fight: <strong>Hector v Ajax</strong> in Book 7.</td></tr>
+        <tr><td><strong>Defensive wall</strong></td><td>Built by the Greeks <strong>around their ships</strong> for protection (Book 7).</td></tr>
+        <tr><td><strong>Embassy</strong></td><td>The mission of <strong>Odysseus, Ajax and Phoenix</strong> to persuade Achilles (Book 9).</td></tr>
+        <tr><td><strong>Rhesus</strong></td><td>Leader of Trojan allies whose <strong>famous horses</strong> are stolen (Book 10).</td></tr>
+        <tr><td><strong>Dolon</strong></td><td>Trojan spy <strong>captured, questioned and killed</strong> by Odysseus and Diomedes.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🏹 Book 4: The Truce is Broken</div>
+      <ul>
+        <li>After the <strong>duel between Paris and Menelaus</strong>, the war should have ended. <strong>Menelaus won fairly</strong> and should have got <strong>Helen</strong> back for the Greeks.</li>
+        <li>The <strong>gods disagree</strong>: <strong>Hera and Athena</strong> want Troy <strong>destroyed</strong>; <strong>Zeus</strong> considers <strong>ending the war</strong>.</li>
+      </ul>
+      <div class="flow">
+        <span class="box"><strong>Athena</strong> travels down and <strong>tricks Pandarus</strong></span><span class="arr">→</span>
+        <span class="box blue">Says he will <strong>gain glory</strong> by shooting Menelaus</span><span class="arr">→</span>
+        <span class="box red">Pandarus <strong>wounds Menelaus</strong>: <strong>truce broken</strong></span>
+      </div>
+      <ul>
+        <li>The <strong>Greeks are furious</strong>. <strong>Agamemnon</strong> fears his brother will die and worries the Greeks will be <strong>shamed</strong> if they go home without victory.</li>
+        <li><strong>Menelaus' wound is not serious</strong>. The truce is now over and <strong>both armies prepare for war again</strong>.</li>
+        <li>Agamemnon <strong>walks among the troops</strong>, <strong>praising brave soldiers</strong> and <strong>criticising weak soldiers</strong>.</li>
+        <li>At last the two armies advance and <strong>fighting begins again</strong>. The book ends with <strong>Greeks and Trojans clashing in a fierce battle</strong>.</li>
+      </ul>
+      <div class="key-term"><strong>KLEOS = GLORY.</strong> Heroes fight for glory; Athena uses Pandarus' desire for glory to trick him.
+        <div class="tip">💡 Kleos is the fame that makes a warrior's name live on after he dies.</div></div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying the Trojans or the Greeks broke the truce by a battle. It was <strong>one arrow</strong>: <strong>Pandarus</strong> (tricked by <strong>Athena</strong>) wounded <strong>Menelaus</strong>.</div>
+
+      <div class="section-heading" id="topic-2">🛡️ Book 5: Diomedes, Hero of the Greeks</div>
+      <ol>
+        <li><strong>Athena helps Diomedes</strong>: she gives him <strong>courage, strength and skill</strong> in battle, and the <strong>ability to recognise gods</strong> in battle.</li>
+        <li>Inspired by the goddess, he becomes the <strong>most dangerous warrior on the battlefield</strong>. He charges into the Trojan army and <strong>defeats many famous Trojan warriors</strong>. His bravery <strong>inspires the Greeks</strong> and <strong>terrifies the Trojans</strong>.</li>
+        <li>Diomedes attacks <strong>Aeneas</strong>. <strong>Aphrodite</strong> tries to protect her son and Diomedes <strong>wounds her hand with a spear</strong>. She <strong>flees to Olympus</strong> and the other gods <strong>mock her</strong> for entering the battlefield.</li>
+        <li><strong>Apollo rescues Aeneas</strong> and protects him from further harm.</li>
+        <li><strong>Ares joins the Trojans</strong>. <strong>Athena helps Diomedes guide his spear</strong> towards Ares.</li>
+        <li>Diomedes <strong>wounds the god of war</strong>. Ares <strong>retreats to Olympus</strong>, complaining to Zeus about his injury.</li>
+        <li>Diomedes has <strong>won great glory</strong> and proven himself <strong>one of the greatest Greek warriors in the war</strong>.</li>
+      </ol>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> Diomedes wounds <strong>two gods</strong>: <strong>Aphrodite</strong> (hand pierced by his spear) then <strong>Ares</strong> (god of war). <strong>Athena</strong> is his helper both times.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Diomedes fights alone. He is <strong>inspired and guided by Athena</strong>, and she gives him the ability to <strong>recognise the gods</strong>.</div>
+
+      <div class="section-heading" id="topic-3">💔 Book 6: Hector &amp; Andromache</div>
+      <div class="flow">
+        <span class="box">Trojans struggling → <strong>Hector returns to Troy</strong> to ask the women to <strong>pray to Athena</strong></span><span class="arr">→</span>
+        <span class="box"><strong>Hecuba</strong> offers wine; Hector <strong>refuses</strong> (must stay focused on duty)</span><span class="arr">→</span>
+        <span class="box red">Hector <strong>criticises Paris</strong> for avoiding his responsibilities; Paris agrees to return</span>
+      </div>
+      <ul>
+        <li><strong>Helen blames herself</strong> for the war and the suffering it has caused. <strong>Hector treats her kindly</strong> and doesn't place all the blame on her.</li>
+      </ul>
+      <div class="key-term"><strong>The most important scene of the book:</strong> Hector meets his wife <strong>Andromache</strong> and baby son <strong>Astyanax</strong> on the <strong>walls of Troy</strong>.</div>
+      <ul>
+        <li>Andromache <strong>begs him not to return to battle</strong>: she fears he'll be killed. She has <strong>already lost her father and brothers</strong> in the war.</li>
+        <li>Hector <strong>admits he fears for his family</strong> and believes <strong>Troy will one day fall</strong>, but says his <strong>duty as a warrior and defender of Troy</strong> is more important than his own safety.</li>
+        <li>When he tries to hold his son, the baby <strong>cries, frightened by Hector's helmet</strong>. Hector <strong>removes the helmet</strong>, laughs and lovingly holds his child.</li>
+        <li>He <strong>prays that Astyanax will grow up to be an even greater warrior than himself</strong>.</li>
+        <li>After saying goodbye, Hector <strong>returns to the battlefield</strong>, knowing he may <strong>never see them again</strong>.</li>
+      </ul>
+      <div class="tip">💡 This scene shows Hector as a <strong>loving family man</strong> as well as a <strong>warrior</strong>: duty versus family is the conflict.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Hector goes back to Troy to rest. He goes to ask the women to <strong>pray to Athena</strong>, and he <strong>refuses wine</strong> to stay focused on his duty.</div>
+
+      <div class="section-heading" id="topic-4">⚔️ Books 7 &amp; 8</div>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:6px 0 6px">Book 7</h3>
+      <ul>
+        <li>Hector <strong>challenges the Greeks to a duel</strong>. <strong>Ajax accepts</strong>.</li>
+        <li>The two heroes <strong>fight bravely and equally</strong>; neither can defeat the other.</li>
+        <li>When <strong>night falls</strong>, the duel ends and the warriors <strong>exchange gifts as a sign of respect</strong>.</li>
+        <li>Both sides <strong>collect their dead and hold funerals</strong>. The Greeks <strong>build a defensive wall around their ships</strong> for protection.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Book 8</h3>
+      <ul>
+        <li><strong>Zeus forbids the other gods</strong> from furthering the war.</li>
+        <li>Without help from the gods, the <strong>Greeks begin to lose</strong>.</li>
+        <li>By the end of the day the <strong>Trojans camp outside the Greek position</strong> and believe they are <strong>close to winning the war</strong>.</li>
+      </ul>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying someone wins the duel in Book 7. <strong>Hector and Ajax</strong> fight <strong>equally</strong>, it ends at night and they <strong>exchange gifts</strong>.</div>
+
+      <div class="section-heading" id="topic-5">🎁 Book 9: The Embassy to Achilles</div>
+      <ol>
+        <li>The Greeks are in <strong>serious trouble</strong> as the Trojans push them <strong>back towards their ships</strong>.</li>
+        <li><strong>Agamemnon admits he was wrong</strong> to insult Achilles and offers him <strong>valuable gifts</strong> if he returns to battle.</li>
+        <li><strong>Odysseus, Ajax and Phoenix</strong> are sent to persuade Achilles. They promise him <strong>wealth, honour and rewards</strong>.</li>
+        <li><strong>Achilles refuses.</strong> He is <strong>still angry with Agamemnon</strong> and believes <strong>no gift can repair the insult</strong> he has suffered.</li>
+      </ol>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> the three envoys = <strong>O-A-P</strong> (<strong>O</strong>dysseus, <strong>A</strong>jax, <strong>P</strong>hoenix): <strong>offers: wealth, honour, rewards</strong>. Answer: <strong>no</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Achilles refuses because the gifts are too small. He refuses because <strong>no gift can repair the insult</strong>.</div>
+
+      <div class="section-heading" id="topic-6">🌙 Books 10 &amp; 11</div>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:6px 0 6px">Book 10: the night mission</h3>
+      <ul>
+        <li>During the night both armies are <strong>nervous and unable to sleep</strong>. The Greeks decide to <strong>send spies into the Trojan camp</strong>.</li>
+        <li><strong>Odysseus and Diomedes volunteer</strong> for the dangerous mission.</li>
+        <li>On their journey they <strong>capture a Trojan spy, Dolon</strong>, who <strong>reveals important information</strong> about the Trojan army. After questioning him, they <strong>kill him</strong>.</li>
+        <li>They then <strong>attack a group of Trojan allies led by Rhesus</strong> and <strong>steal his famous horses</strong> before safely returning to the Greek camp.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Book 11: the tide turns</h3>
+      <ul>
+        <li>The Greeks <strong>fight back strongly</strong>. <strong>Agamemnon leads a fierce attack</strong> and kills many Trojan warriors, showing why he is the <strong>commander of the Greek army</strong>.</li>
+        <li>For a time it looks as if the Greeks might <strong>regain control</strong>, but <strong>the tide soon turns</strong>: one by one, important Greek warriors are <strong>wounded</strong>, including <strong>Agamemnon, Diomedes and Odysseus</strong>.</li>
+        <li>As the leaders are forced to leave the battlefield, the <strong>Trojans gain confidence</strong> and push the Greeks back again.</li>
+        <li>Meanwhile <strong>Achilles is still refusing to fight</strong>. From his camp he watches the Greeks suffer. He <strong>sends his close companion Patroclus</strong>.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Timeline: Books 4–11 at a glance</h3>
+      <table><thead><tr><th>Book</th><th>Key event</th></tr></thead><tbody>
+        <tr><td><strong>4</strong></td><td>Athena tricks Pandarus; Menelaus wounded; truce broken</td></tr>
+        <tr><td><strong>5</strong></td><td>Diomedes wounds Aphrodite and Ares</td></tr>
+        <tr><td><strong>6</strong></td><td>Hector's farewell to Andromache and Astyanax</td></tr>
+        <tr><td><strong>7</strong></td><td>Hector v Ajax duel; gifts; Greek wall</td></tr>
+        <tr><td><strong>8</strong></td><td>Zeus forbids gods; Greeks begin to lose; Trojans camp outside</td></tr>
+        <tr><td><strong>9</strong></td><td>Embassy to Achilles; he refuses</td></tr>
+        <tr><td><strong>10</strong></td><td>Dolon killed; Rhesus' horses stolen</td></tr>
+        <tr><td><strong>11</strong></td><td>Agamemnon's attack; Greek leaders wounded; Achilles sends Patroclus</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Dolon is a Greek spy. <strong>Dolon is a Trojan spy</strong>, captured by <strong>Odysseus and Diomedes</strong>, who then kill him.</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What does <em>kleos</em> mean?</div><div class="a">Glory</div></div>
+        <div class="rv-card"><div class="q">Why should the war have ended before Book 4?</div><div class="a">Menelaus won his duel with Paris fairly and should have got Helen back</div></div>
+        <div class="rv-card"><div class="q">Which gods want Troy destroyed in Book 4?</div><div class="a">Hera and Athena (Zeus considers ending the war)</div></div>
+        <div class="rv-card"><div class="q">How is the truce broken?</div><div class="a">Athena tricks Pandarus into shooting and wounding Menelaus</div></div>
+        <div class="rv-card"><div class="q">How does Athena persuade Pandarus?</div><div class="a">Tells him he'll gain glory by shooting Menelaus</div></div>
+        <div class="rv-card"><div class="q">How does Agamemnon rally the troops in Book 4?</div><div class="a">Praises brave soldiers, criticises weak ones</div></div>
+        <div class="rv-card"><div class="q">Which hero is the focus of Book 5?</div><div class="a">Diomedes</div></div>
+        <div class="rv-card"><div class="q">What does Athena give Diomedes?</div><div class="a">Courage, strength, skill and the ability to recognise gods</div></div>
+        <div class="rv-card"><div class="q">Whom does Diomedes wound first among the gods?</div><div class="a">Aphrodite (her hand, with a spear), while protecting Aeneas</div></div>
+        <div class="rv-card"><div class="q">Who rescues Aeneas?</div><div class="a">Apollo</div></div>
+        <div class="rv-card"><div class="q">How does Book 5 end for Ares?</div><div class="a">Diomedes wounds him; he retreats to Olympus complaining to Zeus</div></div>
+        <div class="rv-card"><div class="q">Why does Hector return to Troy in Book 6?</div><div class="a">To ask the women to pray to Athena</div></div>
+        <div class="rv-card"><div class="q">Why does Hector refuse Hecuba's wine?</div><div class="a">He must stay focused on his duty</div></div>
+        <div class="rv-card"><div class="q">How does Hector treat Paris in Book 6?</div><div class="a">Criticises him for avoiding responsibilities; Paris agrees to return to battle</div></div>
+        <div class="rv-card"><div class="q">How does Hector treat Helen?</div><div class="a">Kindly; doesn't put all the blame on her</div></div>
+        <div class="rv-card"><div class="q">Where do Hector and Andromache meet?</div><div class="a">On the walls of Troy, with baby Astyanax</div></div>
+        <div class="rv-card"><div class="q">Why does Andromache beg Hector not to fight?</div><div class="a">She has lost her father and brothers and fears losing him</div></div>
+        <div class="rv-card"><div class="q">Why does Astyanax cry?</div><div class="a">He is frightened by Hector's helmet</div></div>
+        <div class="rv-card"><div class="q">What does Hector pray for Astyanax?</div><div class="a">That he will grow up an even greater warrior than himself</div></div>
+        <div class="rv-card"><div class="q">Who fights in the Book 7 duel and what is the result?</div><div class="a">Hector v Ajax: equal; ends at night; gifts exchanged</div></div>
+        <div class="rv-card"><div class="q">What do the Greeks build in Book 7?</div><div class="a">A defensive wall around their ships</div></div>
+        <div class="rv-card"><div class="q">What does Zeus forbid in Book 8?</div><div class="a">The other gods helping in the war</div></div>
+        <div class="rv-card"><div class="q">Who is sent to persuade Achilles in Book 9?</div><div class="a">Odysseus, Ajax and Phoenix</div></div>
+        <div class="rv-card"><div class="q">Why does Achilles refuse Agamemnon's gifts?</div><div class="a">Still angry; no gift can repair the insult</div></div>
+        <div class="rv-card"><div class="q">Who volunteers for the spy mission in Book 10?</div><div class="a">Odysseus and Diomedes</div></div>
+        <div class="rv-card"><div class="q">What happens to Dolon?</div><div class="a">Captured, gives information, then killed</div></div>
+        <div class="rv-card"><div class="q">What do the Greeks steal from Rhesus?</div><div class="a">His famous horses</div></div>
+        <div class="rv-card"><div class="q">Which Greek leaders are wounded in Book 11?</div><div class="a">Agamemnon, Diomedes and Odysseus</div></div>
+        <div class="rv-card"><div class="q">Whom does Achilles send in Book 11?</div><div class="a">His close companion Patroclus</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>In Book 4 Athena tricks {{Pandarus}} into wounding {{Menelaus}}, so the {{truce}} is broken.</p>
+        <p>{{Kleos}} is the Greek word for {{glory}}.</p>
+        <p>In Book 5, Athena gives {{Diomedes}} courage, strength and skill, and he wounds {{Aphrodite}} and {{Ares}}.</p>
+        <p>In Book 6 Hector refuses wine from his mother {{Hecuba}} because he must stay focused on his {{duty}}.</p>
+        <p>Hector's baby son {{Astyanax}} cries because he is frightened by Hector's {{helmet}}.</p>
+        <p>In Book 7 Hector fights a duel with {{Ajax}}; neither can win, and at night they exchange {{gifts}}.</p>
+        <p>In Book 8 {{Zeus}} forbids the other gods from helping, and the {{Greeks}} begin to lose.</p>
+        <p>In Book 9 {{Odysseus}}, Ajax and {{Phoenix}} fail to persuade Achilles to fight again.</p>
+        <p>In Book 10 Odysseus and Diomedes capture the Trojan spy {{Dolon}} and steal the horses of {{Rhesus}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>Who tricks Pandarus into breaking the truce?</p><ol><li>Hera</li><li>Aphrodite</li><li>Athena</li><li>Apollo</li></ol><div class="explain">Athena travels down and convinces Pandarus he will gain glory (kleos) if he shoots Menelaus.</div></div>
+        <div class="rv-q" data-answer="b"><p>What does <em>kleos</em> mean?</p><ol><li>Revenge</li><li>Glory</li><li>Wealth</li><li>Peace</li></ol><div class="explain">“KLEOS = GLORY”.</div></div>
+        <div class="rv-q" data-answer="a"><p>How does Agamemnon react to Menelaus being wounded?</p><ol><li>He fears his brother will die and that the Greeks will be shamed if they go home without victory</li><li>He orders the Greeks to sail home</li><li>He blames Athena</li><li>He asks Achilles to fight</li></ol><div class="explain">Menelaus' wound is not serious; the truce is over and both armies prepare for war again.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which gods does Diomedes wound in Book 5?</p><ol><li>Apollo and Athena</li><li>Hera and Ares</li><li>Zeus and Aphrodite</li><li>Aphrodite and Ares</li></ol><div class="explain">He wounds Aphrodite's hand (protecting Aeneas) and, guided by Athena, Ares, the god of war.</div></div>
+        <div class="rv-q" data-answer="c"><p>Why does Hector go back to Troy in Book 6?</p><ol><li>To rest and recover</li><li>To bring Helen back to the Greeks</li><li>To ask the women of the city to pray to Athena</li><li>To fetch his son for battle</li></ol><div class="explain">The Trojans are struggling, so Hector asks the women to pray to Athena for help.</div></div>
+        <div class="rv-q" data-answer="b"><p>Why does Hector go back to battle even though Andromache begs him not to?</p><ol><li>He wants glory above everything</li><li>His duty as warrior and defender of Troy is more important than his safety</li><li>Paris orders him to</li><li>He thinks Troy cannot lose</li></ol><div class="explain">He admits he fears for his family and believes Troy will one day fall, but says duty comes first.</div></div>
+        <div class="rv-q" data-answer="d"><p>What is the result of the duel between Hector and Ajax?</p><ol><li>Hector kills Ajax</li><li>Ajax kills Hector</li><li>Ajax surrenders</li><li>Neither wins; the duel ends at night and they exchange gifts</li></ol><div class="explain">They fought bravely and equally; the gifts are a sign of respect.</div></div>
+        <div class="rv-q" data-answer="a"><p>What happens in Book 8 after Zeus forbids the gods to help?</p><ol><li>The Greeks begin to lose and the Trojans camp outside the Greek position</li><li>The Trojans retreat into Troy</li><li>The war ends</li><li>Achilles returns to battle</li></ol><div class="explain">Without divine help the Greeks lose; the Trojans believe they are close to winning the war.</div></div>
+        <div class="rv-q" data-answer="c"><p>Who goes on the embassy to Achilles in Book 9?</p><ol><li>Nestor, Diomedes, Patroclus</li><li>Agamemnon, Menelaus, Odysseus</li><li>Odysseus, Ajax and Phoenix</li><li>Hector, Paris, Priam</li></ol><div class="explain">They offer wealth, honour and rewards; Achilles refuses.</div></div>
+        <div class="rv-q" data-answer="b"><p>Why does Achilles refuse Agamemnon's gifts?</p><ol><li>They are too small</li><li>He is still angry and believes no gift can repair the insult</li><li>He fears Hector</li><li>Thetis forbids it</li></ol><div class="explain">Agamemnon admitted he was wrong, but Achilles believes no gift can repair the insult he suffered.</div></div>
+        <div class="rv-q" data-answer="a"><p>Who is Dolon?</p><ol><li>A Trojan spy captured and killed by Odysseus and Diomedes</li><li>A Greek spy sent into Troy</li><li>The leader of the Trojan allies</li><li>Achilles' companion</li></ol><div class="explain">Dolon reveals information about the Trojan army and is then killed. Rhesus is the allied leader whose horses are stolen.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which Greek leaders are wounded in Book 11?</p><ol><li>Achilles, Ajax and Nestor</li><li>Menelaus, Patroclus and Phoenix</li><li>Ajax, Diomedes and Hector</li><li>Agamemnon, Diomedes and Odysseus</li></ol><div class="explain">As the leaders leave the battlefield the Trojans gain confidence and push the Greeks back.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Explain how the truce is broken in Book 4. (6 marks)</summary><div class="rv-model">
+        <p>After the duel between Paris and Menelaus the war should have ended, as Menelaus won fairly and should have got Helen back. But the gods disagree: Hera and Athena want Troy destroyed while Zeus considers ending the war. Athena travels down and tricks Pandarus, convincing him he will gain glory (kleos) if he shoots Menelaus. Pandarus wounds Menelaus, breaking the truce on both sides. The Greeks are furious, but Menelaus' wound is not serious, and both armies prepare for war again.</p></div></details>
+      <details class="rv-qa"><summary>2. Why is Diomedes “the hero of the Greeks” in Book 5? (8 marks)</summary><div class="rv-model">
+        <ul>
+          <li>Athena gives him courage, strength and skill, and the ability to recognise gods.</li>
+          <li>He becomes the most dangerous warrior on the battlefield and defeats many famous Trojan warriors.</li>
+          <li>His bravery inspires the Greeks and terrifies the Trojans.</li>
+          <li>He wounds Aphrodite's hand with a spear while she protects Aeneas; Apollo rescues Aeneas.</li>
+          <li>Guided by Athena he wounds Ares, who retreats to Olympus.</li>
+          <li>He has won great glory and proven himself one of the greatest Greek warriors.</li>
+        </ul></div></details>
+      <details class="rv-qa"><summary>3. Describe the meeting of Hector, Andromache and Astyanax in Book 6. What does it show about Hector? (10 marks)</summary><div class="rv-model">
+        <p>They meet on the walls of Troy. Andromache begs him not to return to battle as she has already lost her father and brothers. Hector admits he fears for his family and believes Troy will one day fall, but says his duty as a warrior and defender is more important than his safety. His baby son cries, frightened by the helmet; Hector removes it, laughs and lovingly holds him, then prays that Astyanax will grow to be an even greater warrior. He returns to battle knowing he may never see them again.</p>
+        <p><strong>Shows:</strong> Hector is both a loving husband and father and a dutiful warrior; he puts duty first.</p></div></details>
+      <details class="rv-qa"><summary>4. How does Hector treat Paris and Helen in Book 6? Say what this shows about Hector. (5 marks)</summary><div class="rv-model">
+        <p>Hector criticises Paris for staying at home and avoiding his responsibilities while Trojan soldiers die; Paris agrees to return to battle. Helen blames herself for the war; Hector treats her kindly and does not put all the blame on her. This shows Hector's sense of duty and his fairness and kindness.</p></div></details>
+      <details class="rv-qa"><summary>5. Describe the duel between Hector and Ajax in Book 7 and what follows it. (6 marks)</summary><div class="rv-model">
+        <p>Hector challenges the Greeks to a duel and Ajax accepts. They fight bravely and equally and neither can win. When night falls the duel ends and they exchange gifts as a sign of respect. Both sides collect their dead and hold funerals, and the Greeks build a defensive wall around their ships.</p></div></details>
+      <details class="rv-qa"><summary>6. Why do the Greeks begin to lose in Book 8, and what does this lead to in Book 9? (6 marks)</summary><div class="rv-model">
+        <p>Zeus forbids the other gods from furthering the war. Without help from the gods the Greeks begin to lose and the Trojans camp outside the Greek position, believing they are close to winning. In Book 9 the Greeks are in serious trouble, pushed back to their ships. Agamemnon admits he was wrong to insult Achilles and offers gifts; Odysseus, Ajax and Phoenix promise Achilles wealth, honour and rewards, but he refuses because no gift can repair the insult.</p></div></details>
+      <details class="rv-qa"><summary>7. Outline what happens in Books 10 and 11. (8 marks)</summary><div class="rv-model">
+        <p><strong>Book 10:</strong> both armies are nervous at night. Odysseus and Diomedes volunteer to spy on the Trojans. They capture the Trojan spy Dolon, who reveals information, then kill him. They attack Trojan allies led by Rhesus, steal his famous horses and return safely.</p>
+        <p><strong>Book 11:</strong> the Greeks fight back and Agamemnon leads a fierce attack. Then the tide turns: Agamemnon, Diomedes and Odysseus are wounded, and the Trojans push the Greeks back. Achilles is still refusing to fight, watches the Greeks suffer and sends his close companion Patroclus.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>Book 4</td><td>Athena tricks Pandarus (glory) → Menelaus wounded → truce broken</td><td>Name Athena, Pandarus, Menelaus.</td></tr>
+        <tr><td>Kleos</td><td>Glory</td><td>Link to Pandarus and Diomedes.</td></tr>
+        <tr><td>Book 5</td><td>Diomedes inspired by Athena; wounds Aphrodite and Ares</td><td>Give 3 things Athena gives him.</td></tr>
+        <tr><td>Book 6</td><td>Hector: prays to Athena, refuses wine, scolds Paris, kind to Helen, farewell to Andromache and Astyanax</td><td>Duty v family.</td></tr>
+        <tr><td>Book 7</td><td>Hector v Ajax equal; gifts exchanged; wall around ships</td><td>Sign of respect.</td></tr>
+        <tr><td>Book 8</td><td>Zeus forbids gods; Greeks lose; Trojans camp outside</td><td>No gods = Greeks lose.</td></tr>
+        <tr><td>Book 9</td><td>Odysseus, Ajax, Phoenix offer wealth, honour, rewards; Achilles refuses</td><td>“No gift can repair the insult”.</td></tr>
+        <tr><td>Book 10</td><td>Odysseus + Diomedes: Dolon killed, Rhesus' horses stolen</td><td>Dolon is a Trojan spy.</td></tr>
+        <tr><td>Book 11</td><td>Agamemnon's attack; Agamemnon, Diomedes, Odysseus wounded; Achilles sends Patroclus</td><td>The tide turns.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Classics Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

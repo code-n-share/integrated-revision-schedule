@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classics Revision – The Iliad: Epic Form, Background, Characters & Gods</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #00796B; --accent-light: #E0F2F1; --accent-bright: #4DB6AC;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #E8F5E9; border-left: 5px solid #2E7D32; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Classics Revision</div><div class="book-title">Classics · Year 2 · The Iliad</div></div>
+    <a href="index.html">&larr; Classics Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Epic Form &amp; Homeric Style</a>
+    <a href="#topic-2">Introduction &amp; Background</a>
+    <a href="#topic-3">Characters</a>
+    <a href="#topic-4">The Gods</a>
+    <a href="#topic-5">Prologue: Cause of the War</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 1 · Epic Poetry</div>
+      <h1>🏛️ <span>The Iliad: Epic Form, Background, Characters & Gods</span></h1>
+      <p class="chapter-meta">Year 2 class notes, notes pp. 1–6 · Junior Cycle Classical Studies Revision</p>
+      <div><span class="goal-tag">✔ Explain in medias res, epithets and formal speeches</span><span class="goal-tag">✔ Outline the Trojan War background</span><span class="goal-tag">✔ Match characters to their roles</span><span class="goal-tag">✔ Know which gods back Greeks or Trojans</span><span class="goal-tag">✔ Tell the story of the cause of the war</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the Iliad, the Trojan War, its characters and gods, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: handwritten class notes PDF (Classics.pdf) pp. 1–4 (The Iliad: epic form, introduction, background, Trojan War, characters, gods, prologue, cause of war, landing at Troy).
+           Chapter numbering is sequential for Year 2 – TODO: match to textbook/teacher numbering if wanted.
+           TODO(notes): spellings normalised from the handwriting (Calchas, Teiresias, Briseis, Pandarus, Patroclus). Notes list Teiresias as "blind prophet" only; his side is not given. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>The Iliad
+          <ul>
+            <li>Epic form
+              <ul><li>In medias res</li><li>Homeric epithets</li><li>Formal speeches</li></ul></li>
+            <li>Background
+              <ul><li>Dactylic hexameter</li><li>10th year of war</li><li>Achilles' rage</li></ul></li>
+            <li>Characters
+              <ul><li>Greeks (Achaeans)</li><li>Trojans</li><li>Women</li></ul></li>
+            <li>Gods
+              <ul><li>Pro-Greek</li><li>Pro-Trojan</li><li>Neutral</li></ul></li>
+            <li>Cause of war
+              <ul><li>Golden apple</li><li>Paris' choice</li><li>Helen taken</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Epic</strong></td><td>A long poem about heroes and great events. The Iliad is an <strong>ancient Greek epic poem</strong>.</td></tr>
+        <tr><td><strong>In medias res</strong></td><td>Latin for <strong>“in the middle of things”</strong>. The Iliad starts in the middle of the story.</td></tr>
+        <tr><td><strong>Epithet</strong></td><td>A descriptive phrase attached to a name, often a <strong>compound adjective</strong>, e.g. “brilliant Achilles”.</td></tr>
+        <tr><td><strong>Formal speech</strong></td><td>A <strong>lengthy, formal speech</strong>: a typical element of the Homeric epic form.</td></tr>
+        <tr><td><strong>Dactylic hexameter</strong></td><td>The verse form the Iliad is <strong>written in</strong>.</td></tr>
+        <tr><td><strong>Iliad</strong></td><td>Means <strong>“a poem about Ilium”</strong> (Ilium = another name for Troy).</td></tr>
+        <tr><td><strong>Achilleid</strong></td><td>Another possible title: the poem's main focus is <strong>Achilles and his rage</strong>.</td></tr>
+        <tr><td><strong>Trojan War</strong></td><td>The war between the <strong>Greeks and Trojans</strong> over Troy, the greatest conflict in Greek mythology. The Iliad covers the 10th and final year.</td></tr>
+        <tr><td><strong>Troy</strong></td><td>City on <strong>Asia Minor (Turkey)</strong>, ruled by King Priam and Queen Hecuba.</td></tr>
+        <tr><td><strong>Achaeans</strong></td><td>Another name for the <strong>Greeks</strong>.</td></tr>
+        <tr><td><strong>Cassandra</strong></td><td>Priam's daughter who has the <strong>gift of prophecy</strong> (given by Apollo).</td></tr>
+        <tr><td><strong>Eris</strong></td><td>Goddess of <strong>discord</strong>; the one god not invited to the wedding of Peleus and Thetis.</td></tr>
+        <tr><td><strong>Protesilaus</strong></td><td>Suitor of Helen; the <strong>first casualty</strong> of the war, killed by Hector. His name means “first to be slain”.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">✍️ Epic Form &amp; Homeric Style</div>
+      <div class="key-term">The Iliad <strong>starts <em>in medias res</em></strong>: “<strong>in the middle of things</strong>”. The poem does not begin at the start of the war.
+        <div class="tip">💡 Like pressing play on a film halfway through: you meet the story already in progress.</div></div>
+      <div class="key-term"><strong>Homeric epithets</strong> are <strong>often compound adjectives</strong>. They came about as a result of <strong>composing and listening to oral poetry</strong>.
+        <ul>
+          <li>Examples: <strong>“brilliant Achilles”</strong>, <strong>“Hector breaker of horses”</strong>.</li>
+          <li>They let the poet describe a character or object <strong>quickly and economically</strong>, in terms the audience would recognise.</li>
+          <li>The <strong>repetition of familiar expressions</strong> also helped the audience <strong>follow the narrative</strong>.</li>
+        </ul>
+        <div class="tip">💡 Like a nickname that sticks: say “Hector breaker of horses” and everyone instantly knows who and what he is.</div></div>
+      <div class="key-term">The <strong>lengthy, formal speech</strong> is another typical element of the Homeric <strong>epic form</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> explaining an epithet as just “a describing word”. For full marks say it is often a <strong>compound adjective</strong>, give an <strong>example</strong> and say <strong>why</strong> it was used (oral poetry; quick and economical; repetition helps the audience follow).</div>
+
+      <div class="section-heading" id="topic-2">📜 Introduction &amp; Background</div>
+      <div class="key-term">The <strong>Iliad</strong> is an <strong>ancient Greek epic poem written in dactylic hexameter</strong>. It narrates <strong>an episode of the Trojan War</strong>, fought between the <strong>Greeks and the Trojans</strong>. It centres on the <strong>battles and events during the weeks of quarrel</strong> between <strong>King Agamemnon</strong> and the <strong>warrior Achilles</strong>.</div>
+      <ul>
+        <li>“Iliad” is a word that means <strong>“a poem about Ilium”</strong> (another name for Troy).</li>
+        <li>The poem could be called the <strong>Achilleid</strong>: its primary focus is <strong>Achilles and his rage</strong>.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">The Trojan War</h3>
+      <ul>
+        <li>The Iliad takes place in the <strong>10th and final year</strong> of the Trojan War, the <strong>greatest conflict in Greek mythology</strong>.</li>
+        <li>The war was fought between the <strong>Greeks and Trojans</strong>, upon the city of <strong>Troy on Asia Minor (Turkey)</strong>.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Background in the Trojan War: Hecuba's dream</h3>
+      <div class="flow">
+        <span class="box">Troy ruled by <strong>King Priam &amp; Queen Hecuba</strong></span><span class="arr">→</span>
+        <span class="box">Hecuba <strong>dreams while pregnant</strong>: she gives birth to a <strong>flaming torch</strong></span><span class="arr">→</span>
+        <span class="box blue"><strong>Cassandra</strong> (gift of prophecy) interprets it</span><span class="arr">→</span>
+        <span class="box red">The new-born son (<strong>Paris</strong>) must be killed or he will lead to the <strong>destruction of Troy</strong></span>
+      </div>
+      <div class="tip">💡 The flaming torch is a warning in picture form: fire = Troy burning.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying the Iliad tells the <em>whole</em> Trojan War. It covers only the <strong>10th (final) year</strong>, and mainly the <strong>quarrel of Agamemnon and Achilles</strong>.</div>
+
+      <div class="section-heading" id="topic-3">👥 Characters</div>
+      <p>Learn each name with its <strong>one-line role</strong>. Exams reward a correct role and, where you can, a link to the story.</p>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Greeks (Achaeans)</h3>
+      <table><thead><tr><th>Character</th><th>Who he is (from your notes)</th></tr></thead><tbody>
+        <tr><td><strong>Agamemnon</strong></td><td>King of <strong>Mycenae</strong>, <strong>leader of the Greeks</strong></td></tr>
+        <tr><td><strong>Achilles</strong></td><td>Leader of the <strong>Myrmidons</strong>, <strong>half-divine hero</strong></td></tr>
+        <tr><td><strong>Odysseus</strong></td><td>King of <strong>Ithaca</strong>, the <strong>wiliest</strong> Greek commander; hero of the <strong>Odyssey</strong></td></tr>
+        <tr><td><strong>Ajax the Greatest</strong></td><td>Son of <strong>Telamon</strong>; with Diomedes, he is <strong>2nd to Achilles in martial prowess</strong></td></tr>
+        <tr><td><strong>Menelaus</strong></td><td>King of <strong>Sparta</strong>, <strong>brother of Agamemnon</strong></td></tr>
+        <tr><td><strong>Neoptolemus</strong></td><td><strong>Son of Achilles</strong>; kills King Priam</td></tr>
+        <tr><td><strong>Diomedes</strong></td><td>Son of <strong>Tydeus</strong>, King of <strong>Argos</strong></td></tr>
+        <tr><td><strong>Ajax the Lesser</strong></td><td>Son of <strong>Oileus</strong>; often partner of Ajax the Greater</td></tr>
+        <tr><td><strong>Patroclus</strong></td><td>Achilles' <strong>closest companion</strong></td></tr>
+        <tr><td><strong>Nestor</strong></td><td>King of <strong>Pylos</strong>, <strong>trusted adviser</strong> to Agamemnon</td></tr>
+        <tr><td><strong>Antilochus</strong></td><td>Son of Nestor</td></tr>
+        <tr><td><strong>Philoctetes</strong></td><td>Arms bearer of <strong>Hercules</strong></td></tr>
+        <tr><td><strong>Calchas</strong></td><td><strong>Prophet</strong> of Mycenae</td></tr>
+        <tr><td><strong>Teiresias</strong></td><td><strong>Blind prophet</strong> (notes do not say which side)</td></tr>
+      </tbody></table>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Trojans and their allies</h3>
+      <table><thead><tr><th>Character</th><th>Who he is (from your notes)</th></tr></thead><tbody>
+        <tr><td><strong>Hector</strong></td><td>Son of Priam; <strong>foremost Trojan warrior</strong> (best warrior)</td></tr>
+        <tr><td><strong>Aeneas</strong></td><td>Son of <strong>Anchises and Aphrodite</strong></td></tr>
+        <tr><td><strong>Paris</strong></td><td>Helen's <strong>lover-abductor</strong></td></tr>
+        <tr><td><strong>Deiphobus</strong></td><td>Brother of Hector and Paris</td></tr>
+        <tr><td><strong>Priam</strong></td><td><strong>King of Troy</strong> (aged)</td></tr>
+        <tr><td><strong>Polydamas</strong></td><td><strong>Prudent</strong> commander whose advice is ignored: <strong>Hector's foil</strong></td></tr>
+        <tr><td><strong>Agenor</strong></td><td>Trojan warrior, son of Antenor; <strong>attempts to fight Achilles</strong></td></tr>
+        <tr><td><strong>Sarpedon</strong></td><td><strong>Son of Zeus</strong>; killed by Patroclus</td></tr>
+        <tr><td><strong>Glaucus</strong></td><td>Friend of Sarpedon and <strong>co-leader of the Lycians</strong></td></tr>
+        <tr><td><strong>Euphorbus</strong></td><td><strong>First Trojan warrior to wound Patroclus</strong></td></tr>
+        <tr><td><strong>Dolon</strong></td><td><strong>Spy</strong> upon the Greek camp</td></tr>
+        <tr><td><strong>Antenor</strong></td><td>King Priam's adviser, who <strong>argues for returning Helen</strong> and ending the war</td></tr>
+        <tr><td><strong>Polydorus</strong></td><td>Son of Priam and Laothoe</td></tr>
+        <tr><td><strong>Pandarus</strong></td><td><strong>Famous archer</strong>, son of Lycaon</td></tr>
+      </tbody></table>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Women</h3>
+      <table><thead><tr><th>Character</th><th>Who she is (from your notes)</th></tr></thead><tbody>
+        <tr><td><strong>Helen</strong></td><td><strong>Abducted by Paris</strong>: the <strong>cause of the war</strong></td></tr>
+        <tr><td><strong>Andromache</strong></td><td><strong>Hector's wife</strong>, mother of <strong>Astyanax</strong></td></tr>
+        <tr><td><strong>Cassandra</strong></td><td><strong>Priam's daughter</strong>, courted by Apollo, who bestows her <strong>gift of prophecy</strong></td></tr>
+        <tr><td><strong>Briseis</strong></td><td>Trojan woman captured by the Greeks: <strong>Achilles' prize</strong> of the Trojan War</td></tr>
+        <tr><td><strong>Chryseis</strong></td><td>Daughter of <strong>Chryses</strong>, Trojan <strong>priest of Apollo</strong></td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>Two kings, two brothers.</strong> Greeks: <strong>Agamemnon</strong> (Mycenae) and his brother <strong>Menelaus</strong> (Sparta). Trojans: <strong>Priam</strong>'s sons <strong>Hector, Paris, Deiphobus</strong>. <strong>Prizes:</strong> Agamemnon got <strong>Chryseis</strong>, Achilles got <strong>Briseis</strong>.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistakes:</strong> mixing the two <strong>Ajaxes</strong> (Greatest = son of Telamon; Lesser = son of Oileus); mixing <strong>Chryseis</strong> (Apollo's priest's daughter) with <strong>Briseis</strong> (Achilles' prize); mixing <strong>Antenor</strong> (Trojan adviser) with <strong>Agenor</strong> (his son).</div>
+
+      <div class="section-heading" id="topic-4">⚡ The Gods</div>
+      <div class="key-term">The gods take sides in the war. Learn who backs <strong>Achaeans (Greeks)</strong>, who backs <strong>Trojans</strong> and who stays <strong>neutral</strong>.</div>
+      <div class="twocol">
+        <div class="pos"><h4>Support the Achaeans (Greeks)</h4><ul><li><strong>Hera</strong></li><li><strong>Athena</strong></li><li><strong>Iris</strong></li></ul></div>
+        <div class="neg"><h4>Support the Trojans</h4><ul><li><strong>Artemis</strong></li><li><strong>Apollo</strong></li><li><strong>Aphrodite</strong></li><li><strong>Ares</strong></li></ul></div>
+      </div>
+      <table><thead><tr><th>Neutral gods</th></tr></thead><tbody>
+        <tr><td><strong>Zeus</strong> · <strong>Hades</strong> · <strong>Hermes</strong> · <strong>Poseidon</strong> · <strong>Hephaestus</strong></td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> Greek helpers = <strong>H-A-I</strong> (<strong>H</strong>era, <strong>A</strong>thena, <strong>I</strong>ris): say “<strong>Hi</strong>, Achaeans!”. Trojan helpers = Artemis, Apollo, Aphrodite, Ares: <strong>all start with A</strong> and none is Athena.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> putting <strong>Zeus</strong> on a side. In your notes Zeus is <strong>neutral</strong>. (He does help Thetis, see Chapter 2.)</div>
+
+      <div class="section-heading" id="topic-5">🍎 Prologue: Cause of the War</div>
+      <div class="key-term">The <strong>prologue</strong> explains how the war began: a <strong>golden apple</strong> thrown by <strong>Eris</strong>, and a choice made by <strong>Paris</strong>.</div>
+      <ol>
+        <li>A <strong>wedding banquet</strong> for <strong>Peleus and Thetis</strong>. <strong>All Olympian gods are invited except Eris</strong>, goddess of discord.</li>
+        <li>Eris <strong>vows revenge and strife</strong> for the insult. She throws a <strong>golden apple</strong> inscribed <strong>“For the fairest”</strong>.</li>
+        <li>The apple <strong>lands in Paris's hands</strong>. Three goddesses make him an offer:
+          <ul>
+            <li><strong>Hera:</strong> “I promise to make you <strong>king of Europe and Asia</strong>.”</li>
+            <li><strong>Athena:</strong> “You will <strong>lead the Trojans against the Greeks and win</strong>.”</li>
+            <li><strong>Aphrodite:</strong> “You will get the <strong>prettiest woman on Earth</strong>.”</li>
+          </ul></li>
+        <li>Paris <strong>chooses Aphrodite</strong>, who <strong>gives him Helen</strong>. Paris <strong>leaves his wife</strong>.</li>
+      </ol>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Cause of the war</h3>
+      <div class="flow">
+        <span class="box">Paris goes to <strong>Sparta as an ally</strong></span><span class="arr">→</span>
+        <span class="box blue"><strong>Menelaus and Helen welcome him</strong></span><span class="arr">→</span>
+        <span class="box red">Paris <strong>breaks his trust</strong> and <strong>snatches Helen</strong> with the help of <strong>Aphrodite</strong></span>
+      </div>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Landing at Troy</h3>
+      <ul><li><strong>Protesilaus</strong> was a suitor of Helen, <strong>fulfilling his vow</strong>, and was the <strong>first casualty of the war</strong>, killed by <strong>Hector</strong>. His name means “<strong>first to be slain</strong>”.</li></ul>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> the three offers = <strong>H</strong>era <strong>Power</strong> (king), <strong>A</strong>thena <strong>Victory</strong> (war), <strong>A</strong>phrodite <strong>Love</strong> (Helen). Paris picked <strong>love</strong>, and that started a ten-year war.</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Paris <em>won</em> Helen in a contest. He <strong>chose Aphrodite</strong> as fairest; she <strong>gave</strong> him Helen. And he <strong>broke Menelaus' trust</strong> (a guest who repays hospitality by taking the host's wife).</div>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">What does <em>in medias res</em> mean?</div><div class="a">“In the middle of things”: the Iliad starts mid-story</div></div>
+        <div class="rv-card"><div class="q">What is a Homeric epithet?</div><div class="a">A descriptive phrase, often a compound adjective (e.g. “brilliant Achilles”)</div></div>
+        <div class="rv-card"><div class="q">Two examples of Homeric epithets?</div><div class="a">“Brilliant Achilles”; “Hector breaker of horses”</div></div>
+        <div class="rv-card"><div class="q">Why did Homer use epithets?</div><div class="a">Quick, economical description; repetition helped the audience follow the narrative</div></div>
+        <div class="rv-card"><div class="q">Where did epithets come from?</div><div class="a">Composing and listening to oral poetry</div></div>
+        <div class="rv-card"><div class="q">Which verse form is the Iliad in?</div><div class="a">Dactylic hexameter</div></div>
+        <div class="rv-card"><div class="q">What does “Iliad” mean?</div><div class="a">“A poem about Ilium” (Troy)</div></div>
+        <div class="rv-card"><div class="q">Why could the Iliad be called the Achilleid?</div><div class="a">Its main focus is Achilles and his rage</div></div>
+        <div class="rv-card"><div class="q">Which year of the Trojan War does the Iliad cover?</div><div class="a">The 10th and final year</div></div>
+        <div class="rv-card"><div class="q">Who rules Troy?</div><div class="a">King Priam and Queen Hecuba</div></div>
+        <div class="rv-card"><div class="q">What did Hecuba's dream warn?</div><div class="a">Her flaming-torch son (Paris) would destroy Troy unless killed</div></div>
+        <div class="rv-card"><div class="q">Who interpreted Hecuba's dream?</div><div class="a">Cassandra, Priam's daughter with the gift of prophecy</div></div>
+        <div class="rv-card"><div class="q">Agamemnon: who is he?</div><div class="a">King of Mycenae, leader of the Greeks</div></div>
+        <div class="rv-card"><div class="q">Achilles: who is he?</div><div class="a">Leader of the Myrmidons, half-divine hero</div></div>
+        <div class="rv-card"><div class="q">Which Greek is “the wiliest”?</div><div class="a">Odysseus, king of Ithaca</div></div>
+        <div class="rv-card"><div class="q">Who is the foremost Trojan warrior?</div><div class="a">Hector, son of Priam</div></div>
+        <div class="rv-card"><div class="q">Who is Nestor?</div><div class="a">King of Pylos, trusted adviser to Agamemnon</div></div>
+        <div class="rv-card"><div class="q">Who is Patroclus?</div><div class="a">Achilles' closest companion</div></div>
+        <div class="rv-card"><div class="q">Who is Pandarus?</div><div class="a">A famous Trojan archer, son of Lycaon</div></div>
+        <div class="rv-card"><div class="q">Briseis vs Chryseis?</div><div class="a">Briseis = Achilles' prize; Chryseis = daughter of Apollo's priest Chryses</div></div>
+        <div class="rv-card"><div class="q">Which gods support the Greeks?</div><div class="a">Hera, Athena, Iris</div></div>
+        <div class="rv-card"><div class="q">Which gods support the Trojans?</div><div class="a">Artemis, Apollo, Aphrodite, Ares</div></div>
+        <div class="rv-card"><div class="q">Who was not invited to the wedding of Peleus and Thetis?</div><div class="a">Eris, goddess of discord</div></div>
+        <div class="rv-card"><div class="q">What was written on the golden apple?</div><div class="a">“For the fairest”</div></div>
+        <div class="rv-card"><div class="q">What did each goddess promise Paris?</div><div class="a">Hera: king of Europe &amp; Asia. Athena: win the war. Aphrodite: prettiest woman</div></div>
+        <div class="rv-card"><div class="q">Who was the first casualty of the war?</div><div class="a">Protesilaus, killed by Hector (“first to be slain”)</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>The Iliad starts <em>{{in medias res}}</em>, which means “in the {{middle}} of things”.</p>
+        <p>Homeric epithets are often {{compound adjectives}}, such as “brilliant {{Achilles}}” and “Hector breaker of {{horses}}”.</p>
+        <p>Epithets allowed the poet to describe a character {{quickly}} and {{economically}}, and repetition helped the audience follow the {{narrative}}.</p>
+        <p>The Iliad is an ancient Greek epic poem written in {{dactylic hexameter}}.</p>
+        <p>“Iliad” means “a poem about {{Ilium}}”, another name for {{Troy}}.</p>
+        <p>The Iliad takes place in the {{10th|tenth}} and final year of the {{Trojan War}}.</p>
+        <p>The golden apple was thrown by {{Eris}}, goddess of {{discord}}, and inscribed “For the {{fairest}}”.</p>
+        <p>Paris chose {{Aphrodite}}, who gave him {{Helen}}.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="c"><p>What does <em>in medias res</em> mean?</p><ol><li>At the end of the story</li><li>In the name of the gods</li><li>In the middle of things</li><li>In the beginning</li></ol><div class="explain">It is Latin for “in the middle of things”: the Iliad starts partway through the war, not at the beginning.</div></div>
+        <div class="rv-q" data-answer="b"><p>“Hector breaker of horses” is an example of a…</p><ol><li>Simile</li><li>Homeric epithet</li><li>Formal speech</li><li>Catalogue</li></ol><div class="explain">Epithets are descriptive phrases, often compound adjectives, attached to a name.</div></div>
+        <div class="rv-q" data-answer="d"><p>Why were epithets useful to an oral poet and his audience?</p><ol><li>They made the poem shorter</li><li>They hid the identity of characters</li><li>They explained the causes of the war</li><li>They described characters quickly and economically, and repetition helped listeners follow the story</li></ol><div class="explain">Both reasons come from your notes: quick, economical description and familiar repeated expressions.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which year of the Trojan War does the Iliad cover?</p><ol><li>The 10th and final year</li><li>The 1st year</li><li>The whole ten years</li><li>The year after Troy fell</li></ol><div class="explain">The Iliad takes place in the 10th and final year, centred on a few weeks of the quarrel between Agamemnon and Achilles.</div></div>
+        <div class="rv-q" data-answer="c"><p>Why could the Iliad also be called the “Achilleid”?</p><ol><li>Achilles wrote it</li><li>It is set in Achilles' home city</li><li>Its primary focus is Achilles and his rage</li><li>It tells Achilles' whole life story</li></ol><div class="explain">“Achilleid” = poem about Achilles; the Iliad focuses on his rage, not his whole life.</div></div>
+        <div class="rv-q" data-answer="b"><p>Who is Antenor?</p><ol><li>The Trojan spy upon the Greek camp</li><li>King Priam's adviser who argues for returning Helen</li><li>The Greek king of Pylos</li><li>A famous Trojan archer</li></ol><div class="explain">Dolon is the spy, Nestor is king of Pylos, Pandarus is the archer. Antenor wants Helen returned to end the war.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which group of gods supports the Trojans?</p><ol><li>Hera, Athena, Iris</li><li>Zeus, Hades, Hermes</li><li>Poseidon, Hephaestus, Hera</li><li>Artemis, Apollo, Aphrodite, Ares</li></ol><div class="explain">Hera, Athena and Iris back the Achaeans; Zeus, Hades, Hermes, Poseidon and Hephaestus are neutral.</div></div>
+        <div class="rv-q" data-answer="a"><p>Why was Eris not invited to the wedding of Peleus and Thetis?</p><ol><li>She is the goddess of discord (and she took revenge by throwing the golden apple)</li><li>She was the bride's enemy in the Trojan War</li><li>She supported the Greeks</li><li>She was a mortal</li></ol><div class="explain">All Olympian gods were invited except Eris, goddess of discord; she vowed revenge and strife for the insult.</div></div>
+        <div class="rv-q" data-answer="c"><p>What did Aphrodite promise Paris?</p><ol><li>To make him king of Europe and Asia</li><li>That he would lead the Trojans to victory</li><li>The prettiest woman on Earth</li><li>The golden apple</li></ol><div class="explain">Hera promised kingship, Athena victory, Aphrodite the prettiest woman: Helen.</div></div>
+        <div class="rv-q" data-answer="b"><p>Who was the first casualty of the Trojan War?</p><ol><li>Patroclus, killed by Hector</li><li>Protesilaus, killed by Hector</li><li>Sarpedon, killed by Patroclus</li><li>Dolon, killed by Odysseus</li></ol><div class="explain">Protesilaus (“first to be slain”) fulfilled his vow as a suitor of Helen and was killed by Hector.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Explain what is meant by “in medias res” and say how it applies to the Iliad. (3 marks)</summary><div class="rv-model">
+        <p><em>In medias res</em> means “in the middle of things”. The Iliad does not begin at the start of the Trojan War: it starts in the 10th and final year, during the weeks of quarrel between Agamemnon and Achilles.</p></div></details>
+      <details class="rv-qa"><summary>2. What is a Homeric epithet? Give two examples and explain why Homer used them. (6 marks)</summary><div class="rv-model">
+        <p>An epithet is a descriptive phrase attached to a name, often a compound adjective. It came about from composing and listening to oral poetry.</p>
+        <p>Examples: “brilliant Achilles”; “Hector breaker of horses”.</p>
+        <p>Why: they let the poet describe a character or object quickly and economically in terms the audience would recognise, and the repetition of familiar expressions helped the audience follow the narrative.</p></div></details>
+      <details class="rv-qa"><summary>3. Outline the background of the Iliad: what the poem is, which war it is about and which part of the war it covers. (5 marks)</summary><div class="rv-model">
+        <p>The Iliad is an ancient Greek epic poem written in dactylic hexameter. “Iliad” means “a poem about Ilium” (Troy). It narrates an episode of the Trojan War between the Greeks and the Trojans, the greatest conflict in Greek mythology, on the city of Troy in Asia Minor (Turkey). It takes place in the 10th and final year and centres on the weeks of quarrel between King Agamemnon and the warrior Achilles. It could be called the Achilleid because its focus is Achilles and his rage.</p></div></details>
+      <details class="rv-qa"><summary>4. Describe how the Trojan War began. (Prologue and cause of the war) (8 marks)</summary><div class="rv-model">
+        <ul>
+          <li>At the wedding banquet of Peleus and Thetis all the Olympian gods were invited except Eris, goddess of discord.</li>
+          <li>She vowed revenge and strife for the insult and threw a golden apple inscribed “For the fairest”.</li>
+          <li>It landed in Paris's hands. Hera promised to make him king of Europe and Asia; Athena promised he would lead the Trojans against the Greeks and win; Aphrodite promised the prettiest woman on Earth.</li>
+          <li>Paris chose Aphrodite, who gave him Helen, and he left his wife.</li>
+          <li>Paris went to Sparta as an ally; Menelaus and Helen welcomed him; he broke his trust and snatched Helen with the help of Aphrodite.</li>
+        </ul></div></details>
+      <details class="rv-qa"><summary>5. Name the gods who support the Greeks, the gods who support the Trojans and three neutral gods. (4 marks)</summary><div class="rv-model">
+        <p><strong>Greeks (Achaeans):</strong> Hera, Athena, Iris. <strong>Trojans:</strong> Artemis, Apollo, Aphrodite, Ares. <strong>Neutral (any three):</strong> Zeus, Hades, Hermes, Poseidon, Hephaestus.</p></div></details>
+      <details class="rv-qa"><summary>6. Choose any four characters from the Greek side and any four from the Trojan side. For each say who they are. (8 marks)</summary><div class="rv-model">
+        <p><strong>Greek (examples):</strong> Agamemnon: king of Mycenae and leader of the Greeks. Achilles: leader of the Myrmidons, half-divine hero. Odysseus: king of Ithaca, the wiliest commander. Nestor: king of Pylos, Agamemnon's trusted adviser.</p>
+        <p><strong>Trojan (examples):</strong> Hector: son of Priam and foremost Trojan warrior. Priam: aged king of Troy. Paris: Helen's lover-abductor. Pandarus: famous archer, son of Lycaon.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>In medias res</td><td>“In the middle of things”</td><td>Link it to the 10th year / the quarrel.</td></tr>
+        <tr><td>Epithets</td><td>Often compound adjectives from oral poetry; quick, economical, repeated</td><td>Always give an example.</td></tr>
+        <tr><td>Epic form</td><td>Dactylic hexameter; lengthy formal speeches</td><td>Name both features.</td></tr>
+        <tr><td>Iliad / Achilleid</td><td>Poem about Ilium; focus on Achilles and his rage</td><td>Say “10th and final year”.</td></tr>
+        <tr><td>Hecuba's dream</td><td>Flaming torch; Cassandra says kill the baby (Paris) or Troy is destroyed</td><td>Name Cassandra and her gift of prophecy.</td></tr>
+        <tr><td>Characters</td><td>Agamemnon (Mycenae), Achilles (Myrmidons), Odysseus (Ithaca), Hector (Troy's best), Priam (king)</td><td>One-line role per name.</td></tr>
+        <tr><td>Gods</td><td>Greeks: Hera, Athena, Iris. Trojans: Artemis, Apollo, Aphrodite, Ares. Neutral: Zeus, Hades, Hermes, Poseidon, Hephaestus</td><td>Zeus is neutral.</td></tr>
+        <tr><td>Cause of war</td><td>Eris' apple → Paris picks Aphrodite → Helen taken from Sparta</td><td>Tell it in order, 4–5 steps.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Classics Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>

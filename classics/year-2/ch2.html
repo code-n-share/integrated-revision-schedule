@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classics Revision – The Iliad Books 1–2: The Plague, the Quarrel & Hardship of War</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #00796B; --accent-light: #E0F2F1; --accent-bright: #4DB6AC;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #E8F5E9; border-left: 5px solid #2E7D32; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Classics Revision</div><div class="book-title">Classics · Year 2 · The Iliad</div></div>
+    <a href="index.html">&larr; Classics Home</a>
+    <a href="#brain-dump">Brain Dump</a>
+    <a href="#mindmap">Mind Map</a>
+    <a href="#keyterms">Key Terms</a>
+    <a href="#topic-1">Book 1: The Plague</a>
+    <a href="#topic-2">Book 1: Achilles v Agamemnon</a>
+    <a href="#topic-3">Book 2: The Deceptive Dream</a>
+    <a href="#topic-4">Book 2: Testing the Army</a>
+    <a href="#topic-5">Social Hierarchy &amp; Nestor</a>
+    <a href="#topic-6">Preparing for Battle</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#cloze">Fill the Gaps</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Questions</a>
+    <a href="#summary">Exam Summary</a>
+    <a href="#tracker">Revision Tracker</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">Chapter 2 · Epic Poetry</div>
+      <h1>🏹 <span>The Iliad Books 1–2: The Plague, the Quarrel & Hardship of War</span></h1>
+      <p class="chapter-meta">Year 2 class notes, notes pp. 5–8 · Junior Cycle Classical Studies Revision</p>
+      <div><span class="goal-tag">✔ Tell the plague and the quarrel in order</span><span class="goal-tag">✔ Explain what Thetis and Zeus agree</span><span class="goal-tag">✔ Explain why Book 2's dream is important</span><span class="goal-tag">✔ Describe Thersites and social hierarchy</span><span class="goal-tag">✔ Explain the epic similes and the Catalogue of Ships</span></div>
+    </div>
+
+    <div class="content">
+      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
+      <details class="rv-dump">
+        <summary>Write down everything you already remember about the quarrel of Agamemnon and Achilles and Book 2, then read on and fill the gaps</summary>
+        <textarea placeholder="Type here – saved on this device only"></textarea>
+      </details>
+
+      <!-- Source: handwritten class notes PDF (Classics.pdf) pp. 5–8: Landing at Troy, The Plague (book 1), Achilles vs Agamemnon (book 1), "Chapter 1 Summary", Book 2 (theme: hardship of the war), Athena intervenes, Thersites, Social Hierarchy, Nestor's advice, Preparing for Battle, Catalogue of Ships.
+           Chapter numbering is sequential for Year 2 – TODO: match to textbook/teacher numbering if wanted.
+           TODO(notes): (1) notes say "Zeus believes + thinks victory's near" after the dream; this almost certainly means AGAMEMNON believes the dream, so it is written that way here – check. (2) Plague section says Chryses' "daughters" were kidnapped; the summary names only Chryseis – written as Chryseis. (3) Notes say "2 ½ of Book 2 contains famous Catalogue of Ships" – the fraction is unclear, so no fraction is given here. (4) Book 3 (duel of Paris and Menelaus) is NOT in the notes; it is only referred to in the Book 4 notes. -->
+      <div class="section-heading" id="mindmap">🗺️ Chapter Mind Map</div>
+      <div class="rv-mindmap">
+        <ul><li>Iliad Books 1–2
+          <ul>
+            <li>Book 1 plague
+              <ul><li>Chryses prays</li><li>Apollo's arrows</li></ul></li>
+            <li>Quarrel
+              <ul><li>Chryseis for Briseis</li><li>Achilles withdraws</li><li>Thetis asks Zeus</li></ul></li>
+            <li>Book 2 deception
+              <ul><li>Dream as Nestor</li><li>Army tested</li><li>Athena intervenes</li></ul></li>
+            <li>Social hierarchy
+              <ul><li>Thersites</li><li>Nestor's advice</li></ul></li>
+            <li>Battle prep
+              <ul><li>Epic similes</li><li>Catalogue of Ships</li></ul></li>
+          </ul>
+        </li></ul>
+      </div>
+
+      <div class="section-heading" id="keyterms">📖 Key Terms at a Glance</div>
+      <table><thead><tr><th>Term</th><th>Meaning (plain English)</th></tr></thead><tbody>
+        <tr><td><strong>Plague</strong></td><td>Deadly sickness sent on the Greek camp by <strong>Apollo's arrows</strong> after his priest's prayer.</td></tr>
+        <tr><td><strong>Chryses</strong></td><td><strong>Apollo's priest</strong>; his daughter <strong>Chryseis</strong> was taken by the Greeks.</td></tr>
+        <tr><td><strong>Chryseis</strong></td><td>The priest's daughter, Agamemnon's prize; <strong>returned</strong> to end the plague.</td></tr>
+        <tr><td><strong>Briseis</strong></td><td>Achilles' prize, which <strong>Agamemnon takes</strong> in exchange.</td></tr>
+        <tr><td><strong>Myrmidons</strong></td><td>Achilles' troops, <strong>the best warriors</strong>, whom he recalls to camp.</td></tr>
+        <tr><td><strong>Thetis</strong></td><td>Achilles' <strong>mother</strong>; she asks Zeus to help the Trojans.</td></tr>
+        <tr><td><strong>Unbreakable vow</strong></td><td>Zeus <strong>bows his head</strong> to agree to Thetis' request.</td></tr>
+        <tr><td><strong>Deceptive dream</strong></td><td>Dream sent by <strong>Zeus</strong> to Agamemnon in the <strong>form of Nestor</strong>, telling him to attack at once.</td></tr>
+        <tr><td><strong>Divine intervention</strong></td><td>Gods <strong>directly interfere</strong> with human affairs.</td></tr>
+        <tr><td><strong>Testing the army</strong></td><td>Agamemnon tests the <strong>morale</strong> of his troops by telling them to sail home.</td></tr>
+        <tr><td><strong>Thersites</strong></td><td>A <strong>common soldier</strong> who criticises Agamemnon's greed, pride and treatment of Achilles.</td></tr>
+        <tr><td><strong>Social hierarchy</strong></td><td>The ranking of society: <strong>gods, kings, nobles, common warriors</strong>.</td></tr>
+        <tr><td><strong>Epic simile</strong></td><td>A long comparison, e.g. soldiers compared to <strong>bees, birds and fire</strong>.</td></tr>
+        <tr><td><strong>Catalogue of Ships</strong></td><td>A <strong>long list of all the Greek forces</strong> in Book 2.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="topic-1">🏹 Book 1: The Plague</div>
+      <div class="flow">
+        <span class="box">Greeks have <strong>stolen women</strong> from Troy and nearby. <strong>Agamemnon</strong> takes <strong>Chryseis</strong></span><span class="arr">→</span>
+        <span class="box"><strong>Chryses</strong>, priest of <strong>Apollo</strong>, <strong>prays for revenge</strong></span><span class="arr">→</span>
+        <span class="box red"><strong>Apollo shoots deadly arrows of plague</strong> into the Greek camp</span>
+      </div>
+      <ul>
+        <li>The Greeks and Trojans had been <strong>fighting for almost 9 years</strong>.</li>
+        <li>The Greeks stole <strong>all the women</strong> from strongholds in and near Troy.</li>
+        <li><strong>Agamemnon</strong> took <strong>Chryseis</strong> and <strong>Achilles</strong> took <strong>Briseis</strong>.</li>
+        <li>Chryseis is the <strong>daughter of Apollo's priest</strong>. The priest prayed to Apollo, and Apollo <strong>sent the plague to the Greek camp</strong>.</li>
+      </ul>
+      <div class="tip">💡 Insult a priest and you insult his god: Apollo punishes the whole army for one man's greed.</div>
+
+      <div class="section-heading" id="topic-2">⚔️ Book 1: Achilles v Agamemnon</div>
+      <ol>
+        <li>The people <strong>beg Agamemnon to give Chryseis back</strong>. He agrees <strong>only if he gets Achilles' prize (Briseis)</strong>.</li>
+        <li><strong>Achilles</strong> feels <strong>incredibly dishonoured</strong> and <strong>stops fighting</strong> for the Greeks. (<strong>Athena calms him down</strong>.)</li>
+        <li>Agamemnon <strong>gives Chryseis back and takes Briseis</strong>.</li>
+        <li>Achilles <strong>recalls his troops, the Myrmidons</strong> (the best warriors), back to camp.</li>
+        <li>Achilles asks his mother <strong>Thetis</strong> to ask <strong>Zeus</strong> to <strong>take the Trojans' side</strong> and make the Greeks feel they will <strong>never win without him</strong>.</li>
+        <li>Thetis listens and does so <strong>when Zeus returns</strong>. Zeus agrees and <strong>bows his head</strong> (an <strong>unbreakable vow</strong>).</li>
+        <li><strong>Hera</strong> sees this and gets <strong>very mad at Zeus</strong>. They argue. <strong>Hephaestus</strong> calms them down and asks them to take a drink.</li>
+      </ol>
+      <div class="key-term"><strong>The quarrel</strong> is the heart of the poem: Agamemnon takes Achilles' prize, Achilles feels <strong>dishonoured</strong>, withdraws himself and the Myrmidons, and asks the gods to make the Greeks lose without him.
+        <div class="tip">💡 Like the best player taking his ball and going home: the whole team suffers.</div></div>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>Swap:</strong> Agamemnon gives back <strong>Chryseis</strong> (priest's daughter) and takes <strong>Briseis</strong> (Achilles' prize). <strong>C</strong>hryseis goes back, <strong>B</strong>riseis is <strong>B</strong>orrowed (taken).</div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Achilles left because of the plague or because he was afraid. He withdrew because he felt <strong>dishonoured</strong> when Agamemnon <strong>took his prize, Briseis</strong>.</div>
+
+      <div class="section-heading" id="topic-3">💭 Book 2: The Deceptive Dream</div>
+      <div class="key-term"><strong>Theme of Book 2: hardship of the war.</strong> <strong>Zeus sends a deceptive dream</strong> to Agamemnon.</div>
+      <ul>
+        <li>The dream takes the <strong>form of Nestor</strong> and tells Agamemnon that the <strong>gods support the Greeks</strong> and he should <strong>launch an immediate attack on Troy</strong>.</li>
+        <li>Agamemnon believes it and thinks victory is near.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Why is this important?</h3>
+      <table><thead><tr><th>Point</th><th>Meaning</th></tr></thead><tbody>
+        <tr><td><strong>Zeus fulfils his promise to Thetis</strong></td><td>He is making the Greeks suffer, as Achilles asked.</td></tr>
+        <tr><td><strong>Gods directly interfere with human affairs</strong></td><td>Divine intervention drives the plot.</td></tr>
+        <tr><td><strong>Humans can't tell if divine messages are truthful</strong></td><td>A message from the gods may be a trick.</td></tr>
+      </tbody></table>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying the dream was really from Nestor or told the truth. It only <strong>looks like Nestor</strong>; it is <strong>deceptive</strong> and sent by <strong>Zeus</strong>.</div>
+
+      <div class="section-heading" id="topic-4">🧪 Book 2: Testing the Army</div>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:6px 0 6px">Agamemnon tests the army</h3>
+      <ul>
+        <li>Agamemnon decides to <strong>test the army's morale</strong> before they leave.</li>
+        <li>He tells them they should <strong>give up and sail home</strong> (“Troy can't be conquered”).</li>
+        <li>He <strong>expects them to retaliate</strong> and tell him he's wrong, but instead they <strong>run to the ships happily</strong>.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Athena intervenes</h3>
+      <ul>
+        <li>Seeing the Greeks rush for their ships, <strong>Hera</strong> worries that <strong>Troy will win</strong> and <strong>sends Athena</strong> to stop them.</li>
+        <li>Athena finds <strong>Odysseus</strong> and tells him to <strong>restore order</strong>. He <strong>immediately obeys</strong>.</li>
+      </ul>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Thersites challenges authority</h3>
+      <ul>
+        <li>A <strong>common soldier named Thersites</strong> stands up and criticises Agamemnon.</li>
+        <li>He accuses Agamemnon of <strong>greed</strong>, <strong>pride</strong>, <strong>taking prizes from others</strong> and <strong>mistreating Achilles</strong>.</li>
+      </ul>
+      <div class="flow">
+        <span class="box">Agamemnon <strong>tests morale</strong></span><span class="arr">→</span>
+        <span class="box red">Troops <strong>run to the ships</strong></span><span class="arr">→</span>
+        <span class="box blue">Hera → <strong>Athena</strong> → <strong>Odysseus</strong> restores order</span><span class="arr">→</span>
+        <span class="box"><strong>Thersites</strong> criticises Agamemnon</span>
+      </div>
+      <div class="exam-trap">⚠️ <strong>Common mistake:</strong> saying Agamemnon really wanted to go home. It was a <strong>test of morale</strong>; it backfired when the soldiers ran for the ships.</div>
+
+      <div class="section-heading" id="topic-5">👑 Social Hierarchy &amp; Nestor's Advice</div>
+      <div class="key-term"><strong>Theme: social hierarchy.</strong> Society in the Iliad is ranked, from top to bottom:
+        <ol><li><strong>Gods</strong></li><li><strong>Kings</strong></li><li><strong>Nobles</strong></li><li><strong>Common warriors</strong></li></ol>
+        <div class="tip">💡 Thersites is a <strong>common soldier</strong> speaking against a <strong>king</strong>: he is challenging the hierarchy.</div></div>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Nestor's advice</h3>
+      <p>Nestor reminds the Greeks that:</p>
+      <ul>
+        <li>They have <strong>sworn an oath</strong>.</li>
+        <li>They <strong>must continue fighting</strong>.</li>
+        <li>They should <strong>organise themselves properly for battle</strong>.</li>
+      </ul>
+
+      <div class="section-heading" id="topic-6">🔥 Preparing for Battle: Similes &amp; the Catalogue</div>
+      <p>The Greeks prepare for war. Homer uses a series of famous <strong>epic similes</strong>:</p>
+      <table><thead><tr><th>Comparison</th><th>Quotation / image</th><th>Effect</th></tr></thead><tbody>
+        <tr><td><strong>Bees</strong></td><td>“As warriors gather together, they are like swarms of bees leaving their hive.”</td><td>Emphasises <strong>numbers and organisation</strong></td></tr>
+        <tr><td><strong>Birds</strong></td><td>Soldiers compared to flocks of birds</td><td>Highlights <strong>scale, noise and energy</strong></td></tr>
+        <tr><td><strong>Fire</strong></td><td>“The army shines like a forest fire spreading across a mountainside.”</td><td>Creates an image of <strong>power, destruction and fear</strong></td></tr>
+      </tbody></table>
+      <div class="mnemonic">🧩 <strong>Remember it:</strong> <strong>B-B-F</strong> = <strong>B</strong>ees (numbers and organisation), <strong>B</strong>irds (scale, noise, energy), <strong>F</strong>ire (power, destruction, fear).</div>
+      <h3 style="font:700 16px 'Sora',sans-serif;margin:18px 0 6px">Catalogue of Ships</h3>
+      <div class="key-term">Part of Book 2 contains the famous <strong>Catalogue of Ships</strong>: a <strong>long list of all the Greek forces</strong>. <strong>Agamemnon provides the largest and most powerful force</strong>.</div>
+      <p><strong>Why Homer included it:</strong></p>
+      <ul>
+        <li>To show the <strong>enormous scale of the expedition</strong>.</li>
+        <li>To celebrate a sense of <strong>national pride</strong>.</li>
+        <li>It gives the poem <strong>historical significance</strong>.</li>
+      </ul>
+
+      <div class="section-heading" id="flashcards">🃏 Flashcards</div>
+      <div class="rv-flash">
+        <div class="rv-card"><div class="q">Why did Apollo send the plague?</div><div class="a">His priest Chryses prayed for revenge after his daughter was taken</div></div>
+        <div class="rv-card"><div class="q">Who is Chryseis?</div><div class="a">Daughter of Chryses, Apollo's priest; Agamemnon's prize</div></div>
+        <div class="rv-card"><div class="q">Whose prize was Briseis?</div><div class="a">Achilles'</div></div>
+        <div class="rv-card"><div class="q">What did Agamemnon demand for returning Chryseis?</div><div class="a">Achilles' prize, Briseis</div></div>
+        <div class="rv-card"><div class="q">How did Achilles react to losing Briseis?</div><div class="a">Felt dishonoured and stopped fighting</div></div>
+        <div class="rv-card"><div class="q">Who are the Myrmidons?</div><div class="a">Achilles' troops, the best warriors; he recalled them to camp</div></div>
+        <div class="rv-card"><div class="q">Who is Thetis?</div><div class="a">Achilles' mother</div></div>
+        <div class="rv-card"><div class="q">What did Achilles ask Thetis to do?</div><div class="a">Ask Zeus to take the Trojans' side so the Greeks need him</div></div>
+        <div class="rv-card"><div class="q">How did Zeus show an unbreakable vow?</div><div class="a">He bowed his head</div></div>
+        <div class="rv-card"><div class="q">How does Hera react to Zeus's promise?</div><div class="a">Very mad; they argue; Hephaestus calms them down</div></div>
+        <div class="rv-card"><div class="q">Theme of Book 2?</div><div class="a">The hardship of the war</div></div>
+        <div class="rv-card"><div class="q">Whose form does the deceptive dream take?</div><div class="a">Nestor's</div></div>
+        <div class="rv-card"><div class="q">What does the dream tell Agamemnon?</div><div class="a">Gods support Greeks; attack Troy immediately</div></div>
+        <div class="rv-card"><div class="q">Three reasons the dream is important?</div><div class="a">Zeus keeps promise to Thetis; gods interfere; humans can't tell if divine messages are true</div></div>
+        <div class="rv-card"><div class="q">How does Agamemnon test the army's morale?</div><div class="a">Tells them to give up and sail home</div></div>
+        <div class="rv-card"><div class="q">How do the troops react to the test?</div><div class="a">They run happily to the ships</div></div>
+        <div class="rv-card"><div class="q">Who sends Athena to stop the Greeks, and who does she find?</div><div class="a">Hera; Athena finds Odysseus, who restores order</div></div>
+        <div class="rv-card"><div class="q">Who is Thersites?</div><div class="a">Common soldier who criticises Agamemnon</div></div>
+        <div class="rv-card"><div class="q">What does Thersites accuse Agamemnon of?</div><div class="a">Greed, pride, taking others' prizes, mistreating Achilles</div></div>
+        <div class="rv-card"><div class="q">Social hierarchy, top to bottom?</div><div class="a">Gods, kings, nobles, common warriors</div></div>
+        <div class="rv-card"><div class="q">Nestor's advice to the Greeks?</div><div class="a">They swore an oath; keep fighting; organise for battle</div></div>
+        <div class="rv-card"><div class="q">What do the bee similes show?</div><div class="a">Numbers and organisation</div></div>
+        <div class="rv-card"><div class="q">What do the bird similes show?</div><div class="a">Scale, noise and energy</div></div>
+        <div class="rv-card"><div class="q">What does the forest-fire simile create?</div><div class="a">An image of power, destruction and fear</div></div>
+        <div class="rv-card"><div class="q">What is the Catalogue of Ships?</div><div class="a">A long list of all the Greek forces in Book 2</div></div>
+        <div class="rv-card"><div class="q">Why did Homer include the Catalogue of Ships?</div><div class="a">Shows scale of expedition, national pride, historical significance</div></div>
+      </div>
+
+      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
+      <div class="rv-cloze">
+        <p>Apollo shot deadly arrows of {{plague}} into the Greek camp after his priest {{Chryses}} prayed for revenge.</p>
+        <p>Agamemnon agreed to return {{Chryseis}} only if he received Achilles' prize, {{Briseis}}.</p>
+        <p>Achilles recalled his troops, the {{Myrmidons}}, the best warriors, back to camp.</p>
+        <p>Achilles asked his mother {{Thetis}} to ask {{Zeus}} to take the Trojans' side.</p>
+        <p>In Book 2 Zeus sends a {{deceptive dream}} to Agamemnon in the form of {{Nestor}}.</p>
+        <p>Agamemnon decides to test the army's {{morale}} by telling them to sail {{home}}.</p>
+        <p>{{Thersites}}, a common soldier, accuses Agamemnon of greed, pride and mistreating {{Achilles}}.</p>
+        <p>The social hierarchy runs: gods, {{kings}}, nobles, {{common warriors}}.</p>
+        <p>The Catalogue of Ships is a long list of all the {{Greek}} forces, and {{Agamemnon}} provides the largest.</p>
+      </div>
+
+      <div class="section-heading" id="quiz">❓ Quick Quiz</div>
+      <div class="rv-quiz">
+        <div class="rv-q" data-answer="b"><p>Why did Apollo send a plague on the Greek camp?</p><ol><li>Achilles insulted Apollo</li><li>His priest Chryses prayed for revenge after his daughter was taken</li><li>The Greeks refused to fight</li><li>Hera asked him to</li></ol><div class="explain">Chryses, Apollo's priest, prayed for revenge, and Apollo shot plague arrows into the Greek camp.</div></div>
+        <div class="rv-q" data-answer="c"><p>Why did Achilles stop fighting?</p><ol><li>He caught the plague</li><li>Athena told him to</li><li>Agamemnon took his prize Briseis and he felt dishonoured</li><li>He believed Troy could not be conquered</li></ol><div class="explain">Agamemnon returned Chryseis but took Briseis, leaving Achilles feeling incredibly dishonoured. (Athena actually calms him down.)</div></div>
+        <div class="rv-q" data-answer="a"><p>Who are the Myrmidons?</p><ol><li>Achilles' troops, the best warriors</li><li>Agamemnon's guards</li><li>Trojan allies</li><li>Priests of Apollo</li></ol><div class="explain">Achilles recalled the Myrmidons, the best warriors, back to camp.</div></div>
+        <div class="rv-q" data-answer="d"><p>What did Achilles ask Thetis to do?</p><ol><li>Heal the plague</li><li>Persuade Agamemnon to return Briseis</li><li>Ask Hera to help the Greeks</li><li>Ask Zeus to take the Trojans' side so the Greeks would never win without him</li></ol><div class="explain">Achilles wanted the Greeks to feel they could never win without him.</div></div>
+        <div class="rv-q" data-answer="c"><p>Who calms Zeus and Hera after their argument?</p><ol><li>Athena</li><li>Thetis</li><li>Hephaestus</li><li>Apollo</li></ol><div class="explain">Hephaestus calms them down and asks them to take a drink.</div></div>
+        <div class="rv-q" data-answer="b"><p>In whose form does Zeus's deceptive dream appear to Agamemnon?</p><ol><li>Achilles</li><li>Nestor</li><li>Odysseus</li><li>Thetis</li></ol><div class="explain">The dream takes the form of Nestor and tells Agamemnon the gods support the Greeks and he should attack at once.</div></div>
+        <div class="rv-q" data-answer="a"><p>Which is a reason the dream is important?</p><ol><li>Humans cannot tell whether divine messages are truthful</li><li>It proves Agamemnon is a poor leader</li><li>It ends the war</li><li>It shows Zeus is neutral</li></ol><div class="explain">The dream shows gods directly interfering and Zeus fulfilling his promise to Thetis; humans can't tell if the message is true.</div></div>
+        <div class="rv-q" data-answer="d"><p>What was Agamemnon's reason for telling the army to sail home?</p><ol><li>He wanted to end the war</li><li>He had lost faith in the gods</li><li>Hera ordered him to</li><li>To test the army's morale</li></ol><div class="explain">He expected the troops to protest and say he was wrong; instead they ran happily to the ships.</div></div>
+        <div class="rv-q" data-answer="c"><p>Who restores order after the troops rush to the ships?</p><ol><li>Nestor, sent by Zeus</li><li>Thersites</li><li>Odysseus, after Athena (sent by Hera) tells him to</li><li>Achilles</li></ol><div class="explain">Hera worries Troy will win and sends Athena, who tells Odysseus to restore order; he obeys at once.</div></div>
+        <div class="rv-q" data-answer="b"><p>What does the Thersites episode show about the social hierarchy?</p><ol><li>Kings and common soldiers are equal</li><li>A common warrior dares to challenge a king</li><li>Gods rule over kings</li><li>Nobles obey common soldiers</li></ol><div class="explain">Thersites is a common soldier criticising Agamemnon (a king) for greed, pride and mistreating Achilles.</div></div>
+        <div class="rv-q" data-answer="a"><p>What does the bee simile emphasise?</p><ol><li>Numbers and organisation</li><li>Power and destruction</li><li>Noise and energy</li><li>Fear and hunger</li></ol><div class="explain">Bees leaving a hive = numbers and organisation. Birds = scale, noise, energy. Fire = power, destruction, fear.</div></div>
+        <div class="rv-q" data-answer="d"><p>Which is a reason Homer included the Catalogue of Ships?</p><ol><li>To list the Trojan dead</li><li>To introduce the gods</li><li>To explain the cause of the war</li><li>To show the enormous scale of the expedition and celebrate national pride</li></ol><div class="explain">It lists all the Greek forces, shows scale, celebrates national pride and gives the poem historical significance.</div></div>
+      </div>
+
+      <div class="section-heading" id="practice">✏️ Practice Questions</div>
+      <p style="color:var(--muted)">Written from your class notes. Click a question to reveal a model answer.</p>
+      <details class="rv-qa"><summary>1. Explain how the plague began and how it led to the quarrel between Agamemnon and Achilles. (8 marks)</summary><div class="rv-model">
+        <ul>
+          <li>Agamemnon took Chryseis, daughter of Chryses, priest of Apollo. The priest prayed to Apollo for revenge.</li>
+          <li>Apollo shot deadly arrows of plague into the Greek camp.</li>
+          <li>The people begged Agamemnon to give Chryseis back; he agreed only if he got Achilles' prize, Briseis.</li>
+          <li>Achilles felt incredibly dishonoured and stopped fighting. Agamemnon returned Chryseis and took Briseis.</li>
+        </ul></div></details>
+      <details class="rv-qa"><summary>2. What did Achilles do after Agamemnon took Briseis? Explain what he asked Thetis and what Zeus did. (6 marks)</summary><div class="rv-model">
+        <p>Achilles recalled his troops, the Myrmidons, to camp and stopped fighting. He asked his mother Thetis to ask Zeus to take the Trojans' side and make the Greeks feel they would never win without him. Thetis did so when Zeus returned. Zeus agreed and bowed his head (an unbreakable vow). Hera saw this, got very mad and argued with Zeus; Hephaestus calmed them down and asked them to take a drink.</p></div></details>
+      <details class="rv-qa"><summary>3. Describe the deceptive dream in Book 2 and explain why it is important. (6 marks)</summary><div class="rv-model">
+        <p>Zeus sends a deceptive dream to Agamemnon. It takes the form of Nestor and tells him the gods support the Greeks and he should launch an immediate attack on Troy.</p>
+        <p>Importance: (1) Zeus is fulfilling his promise to Thetis; (2) it shows gods directly interfering in human affairs; (3) humans cannot tell whether divine messages are truthful.</p></div></details>
+      <details class="rv-qa"><summary>4. How does Agamemnon test the army, what goes wrong and how is order restored? (6 marks)</summary><div class="rv-model">
+        <p>Agamemnon tests the army's morale by saying they should give up and sail home (“Troy can't be conquered”). He expects them to protest, but instead they run happily to the ships. Hera is worried that Troy will win and sends Athena, who finds Odysseus and tells him to restore order. He obeys immediately.</p></div></details>
+      <details class="rv-qa"><summary>5. Who is Thersites and what does his speech show about the Greek army and its social hierarchy? (6 marks)</summary><div class="rv-model">
+        <p>Thersites is a common soldier who stands up and criticises Agamemnon, accusing him of greed, pride, taking prizes from others and mistreating Achilles.</p>
+        <p>The hierarchy is gods, kings, nobles, common warriors. A common warrior speaking out against a king challenges that hierarchy and shows there is resentment of Agamemnon in the army.</p></div></details>
+      <details class="rv-qa"><summary>6. Choose one epic simile from Book 2. Quote or describe it and say what effect it creates. (4 marks)</summary><div class="rv-model">
+        <p><strong>Bees:</strong> “As warriors gather together, they are like swarms of bees leaving their hive.” It emphasises numbers and organisation.</p>
+        <p><strong>Fire:</strong> “The army shines like a forest fire spreading across a mountainside.” It creates an image of power, destruction and fear. (Birds highlight scale, noise and energy.)</p></div></details>
+      <details class="rv-qa"><summary>7. What is the Catalogue of Ships and why did Homer include it? (4 marks)</summary><div class="rv-model">
+        <p>It is a long list of all the Greek forces in Book 2; Agamemnon provides the largest and most powerful. Homer included it to show the enormous scale of the expedition, to celebrate a sense of national pride and to give the poem historical significance.</p></div></details>
+
+      <div class="section-heading" id="summary">📋 Exam Quick-Reference Summary</div>
+      <table><thead><tr><th>Topic</th><th>Key rule / definition</th><th>Exam tip</th></tr></thead><tbody>
+        <tr><td>The plague</td><td>Chryses (Apollo's priest) prays → Apollo's plague arrows</td><td>Name Apollo and Chryses.</td></tr>
+        <tr><td>The quarrel</td><td>Chryseis returned; Agamemnon takes Briseis; Achilles dishonoured, withdraws with Myrmidons</td><td>Use the word “dishonoured”.</td></tr>
+        <tr><td>Thetis and Zeus</td><td>Achilles asks Thetis → Zeus to favour Trojans; Zeus bows head (unbreakable vow)</td><td>Hera argues; Hephaestus calms.</td></tr>
+        <tr><td>Deceptive dream</td><td>Zeus sends dream as Nestor: attack now</td><td>Give all 3 reasons it matters.</td></tr>
+        <tr><td>Testing the army</td><td>Agamemnon says sail home; troops run to ships; Hera → Athena → Odysseus restores order</td><td>It was a test, not a real order.</td></tr>
+        <tr><td>Thersites / hierarchy</td><td>Common soldier criticises king; gods, kings, nobles, common warriors</td><td>List his 4 accusations.</td></tr>
+        <tr><td>Nestor</td><td>Oath sworn; keep fighting; organise for battle</td><td>3 points.</td></tr>
+        <tr><td>Similes</td><td>Bees = numbers/organisation; birds = scale/noise/energy; fire = power/destruction/fear</td><td>Quote and give the effect.</td></tr>
+        <tr><td>Catalogue of Ships</td><td>Long list of Greek forces; scale, national pride, historical significance</td><td>Say Agamemnon's force is largest.</td></tr>
+      </tbody></table>
+
+      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
+      <div class="rv-tracker"></div>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Classics Home</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    // Highlight active sidebar link while scrolling
+    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+    addEventListener('scroll', function () {
+      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+    });
+  </script>
+</body>
+</html>
