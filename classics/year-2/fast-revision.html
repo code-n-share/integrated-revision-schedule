@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classics Revision – Year 2 Fast Revision</title>
+  <!-- Fast revision page: follows CONTENT_RULES.md §8 (not the 11-section chapter layout).
+       Content is condensed from ch1, ch2, ch3 in this folder; nothing new is added here.
+       Generated once from a script; this file is now the source of truth, so edit it directly. -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #00796B; --accent-light: #E0F2F1; --accent-bright: #4DB6AC;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #E8F5E9; border-left: 5px solid #2E7D32; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  
+    .section-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .fr-time { margin-left: auto; font: 600 13px 'DM Sans', sans-serif; background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+    .fr-chapter h3 { font: 700 15px 'Sora', sans-serif; margin: 18px 0 4px; }
+    .fr-sub { font: 400 13px 'DM Sans', sans-serif; color: var(--muted); }
+    table.terms td:first-child { width: 32%; }
+    table.terms.hide td:last-child { color: transparent; background: var(--accent-light); }
+    table.mini { max-width: 560px; }
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 12px 16px; margin: 12px 0; line-height: 1.9; }
+    .exam-trap ul { margin-bottom: 0; }
+    .qc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin: 8px 0; }
+    details.qc { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+    details.qc summary { list-style: none; font-weight: 600; font-size: 14px; }
+    details.qc summary::-webkit-details-marker { display: none; }
+    details.qc summary::after { content: ' 👆 tap'; font-weight: 400; font-size: 12px; color: var(--muted); }
+    details.qc[open] { border-color: var(--accent); background: var(--accent-light); }
+    details.qc[open] summary::after { content: ''; }
+    details.qc .qa { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--accent); font-size: 14px; }
+    details.qc .qa::before { content: '✓ '; color: var(--accent); font-weight: 700; }
+    .qc-bar { margin: 4px 0 0; }
+    .qc-bar button { font: 600 13px 'DM Sans', sans-serif; background: #fff; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Classics Revision</div><div class="book-title">Year 2 · Fast Revision</div></div>
+    <a href="index.html">&larr; Classics Year 2</a>
+    <a href="#ch1">🏛️ Ch 1 Iliad: Background, Characters &amp; Gods</a>
+    <a href="#ch2">🏹 Ch 2 Iliad Books 1–2: Plague, Quarrel &amp; Hardship</a>
+    <a href="#ch3">⚔️ Ch 3 Iliad Books 4–11: War Resumes</a>
+    <a href="#final">🏁 Final quiz</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">⚡ Fast Revision · Year 2 Classics</div>
+      <h1>⚡ <span>All of Year 2 in 42 minutes</span></h1>
+      <p class="chapter-meta">The Iliad · Ch 1, 2 &amp; 3 · only the key terms, characters and events that win marks</p>
+      <div><span class="goal-tag">✔ ~38 key terms</span><span class="goal-tag">✔ Who's who: Greeks, Trojans &amp; gods</span><span class="goal-tag">✔ Book-by-book story</span><span class="goal-tag">✔ 15 quick-check questions + 12-question quiz</span></div>
+    </div>
+
+    <div class="content">
+
+      <section class="fr-chapter" id="ch1">
+        <div class="section-heading">🏛️ Ch 1 · The Iliad: Background, Characters &amp; Gods <span class="fr-time">⏱ 12 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Epic</b></td><td>A long poem about heroes and great events; the Iliad is an ancient Greek epic.</td></tr><tr><td><b>Dactylic hexameter</b></td><td>The verse form the Iliad is written in.</td></tr><tr><td><b>In medias res</b></td><td>Latin for “in the middle of things”: the Iliad starts in the middle of the story.</td></tr><tr><td><b>Epithet</b></td><td>A descriptive phrase attached to a name, often a compound adjective, e.g. “brilliant Achilles”.</td></tr><tr><td><b>Formal speech</b></td><td>A lengthy, formal speech: a typical element of the Homeric epic form.</td></tr><tr><td><b>Iliad</b></td><td>“A poem about Ilium” (Ilium = Troy).</td></tr><tr><td><b>Achilleid</b></td><td>Another possible title: the poem&#x27;s main focus is Achilles and his rage.</td></tr><tr><td><b>Trojan War</b></td><td>Greeks v Trojans over Troy; the Iliad covers only the 10th and final year.</td></tr><tr><td><b>Achaeans</b></td><td>Another name for the Greeks.</td></tr><tr><td><b>Cassandra</b></td><td>Priam&#x27;s daughter with the gift of prophecy (given by Apollo).</td></tr><tr><td><b>Eris</b></td><td>Goddess of discord; the one god not invited to the wedding of Peleus and Thetis.</td></tr><tr><td><b>Protesilaus</b></td><td>Suitor of Helen; first casualty of the war, killed by Hector (“first to be slain”).</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <p><b>Cause of the war</b></p>
+<div class="flow"><span class="box">Eris not invited to Peleus &amp; Thetis' wedding</span><span class="arr">→</span><span class="box">Golden apple “For the fairest”</span><span class="arr">→</span><span class="box">Paris picks Aphrodite</span><span class="arr">→</span><span class="box">She gives him Helen</span><span class="arr">→</span><span class="box">Paris takes Helen from Sparta</span></div>
+<div class="mnemonic"><b>🧩 The three offers:</b> Hera = <b>power</b> (king of Europe and Asia) · Athena = <b>victory</b> (win the war) · Aphrodite = <b>love</b> (Helen). Paris picked love.</div>
+<p><b>Hecuba's dream:</b> she gives birth to a flaming torch → Cassandra: kill the baby (Paris) or Troy will be destroyed.</p>
+<table class="mini"><tr><th>Greeks</th><th>Trojans</th></tr>
+<tr><td><b>Agamemnon</b>: king of Mycenae, leader of the Greeks</td><td><b>Priam</b>: aged king of Troy (queen: Hecuba)</td></tr>
+<tr><td><b>Achilles</b>: leader of the Myrmidons, half-divine hero</td><td><b>Hector</b>: son of Priam, best Trojan warrior</td></tr>
+<tr><td><b>Menelaus</b>: king of Sparta, Agamemnon's brother</td><td><b>Paris</b>: Helen's lover-abductor</td></tr>
+<tr><td><b>Odysseus</b>: king of Ithaca, wiliest commander</td><td><b>Aeneas</b>: son of Anchises and Aphrodite</td></tr>
+<tr><td><b>Nestor</b>: king of Pylos, trusted adviser</td><td><b>Andromache</b>: Hector's wife, mother of Astyanax</td></tr>
+<tr><td><b>Patroclus</b>: Achilles' closest companion</td><td><b>Helen</b>: abducted by Paris, the cause of the war</td></tr></table>
+<table class="mini"><tr><th>Gods helping Greeks</th><th>Gods helping Trojans</th><th>Neutral</th></tr>
+<tr><td>Hera, Athena, Iris (“<b>H-A-I</b>, Achaeans!”)</td><td>Artemis, Apollo, Aphrodite, Ares (all <b>A</b>, not Athena)</td><td>Zeus, Hades, Hermes, Poseidon, Hephaestus</td></tr></table>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Epithet: say <b>compound adjective</b> + example + why (oral poetry; quick; repetition helps the audience).</li><li>The Iliad covers only the <b>10th year</b>, mainly the quarrel of Agamemnon and Achilles.</li><li>Chryseis = Apollo's priest's daughter; Briseis = Achilles' prize. Zeus is <b>neutral</b>.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>What does “in medias res” mean?</summary><div class="qa">“In the middle of things”: the story starts in the 10th year</div></details><details class="qc"><summary>Give two features of the epic form</summary><div class="qa">Dactylic hexameter; lengthy formal speeches (also epithets)</div></details><details class="qc"><summary>What did each goddess offer Paris?</summary><div class="qa">Hera: power (king). Athena: victory. Aphrodite: Helen (love)</div></details><details class="qc"><summary>Who interpreted Hecuba&#x27;s dream, and what did she say?</summary><div class="qa">Cassandra: kill the baby (Paris) or Troy will be destroyed</div></details><details class="qc"><summary>Name the gods who help the Greeks</summary><div class="qa">Hera, Athena, Iris</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+      <section class="fr-chapter" id="ch2">
+        <div class="section-heading">🏹 Ch 2 · The Iliad Books 1–2: Plague, Quarrel &amp; Hardship <span class="fr-time">⏱ 12 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Plague</b></td><td>Deadly sickness sent on the Greek camp by Apollo&#x27;s arrows after his priest&#x27;s prayer.</td></tr><tr><td><b>Chryses</b></td><td>Apollo&#x27;s priest; his daughter Chryseis was taken by the Greeks.</td></tr><tr><td><b>Chryseis</b></td><td>The priest&#x27;s daughter, Agamemnon&#x27;s prize; returned to end the plague.</td></tr><tr><td><b>Briseis</b></td><td>Achilles&#x27; prize, which Agamemnon takes in exchange.</td></tr><tr><td><b>Myrmidons</b></td><td>Achilles&#x27; troops, the best warriors, whom he recalls to camp.</td></tr><tr><td><b>Thetis</b></td><td>Achilles&#x27; mother; she asks Zeus to help the Trojans.</td></tr><tr><td><b>Unbreakable vow</b></td><td>Zeus bows his head to agree to Thetis&#x27; request.</td></tr><tr><td><b>Deceptive dream</b></td><td>Sent by Zeus to Agamemnon in the form of Nestor: attack at once.</td></tr><tr><td><b>Divine intervention</b></td><td>Gods directly interfere with human affairs.</td></tr><tr><td><b>Testing the army</b></td><td>Agamemnon tests his troops&#x27; morale by telling them to sail home.</td></tr><tr><td><b>Thersites</b></td><td>Common soldier who criticises Agamemnon&#x27;s greed, pride and treatment of Achilles.</td></tr><tr><td><b>Epic simile</b></td><td>A long comparison, e.g. soldiers compared to bees, birds and fire.</td></tr><tr><td><b>Catalogue of Ships</b></td><td>A long list of all the Greek forces in Book 2.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <p><b>Book 1: the quarrel</b></p>
+<div class="flow"><span class="box">Chryses prays to Apollo</span><span class="arr">→</span><span class="box">Plague arrows</span><span class="arr">→</span><span class="box">Chryseis returned</span><span class="arr">→</span><span class="box">Agamemnon takes Briseis</span><span class="arr">→</span><span class="box">Achilles <b>dishonoured</b>, withdraws with Myrmidons</span><span class="arr">→</span><span class="box">Thetis asks Zeus</span><span class="arr">→</span><span class="box">Zeus bows head (vow)</span></div>
+<p>Hera argues with Zeus; Hephaestus calms her.</p>
+<p><b>Book 2: hardship of war</b></p>
+<div class="flow"><span class="box">Deceptive dream (as Nestor)</span><span class="arr">→</span><span class="box">Agamemnon tests army: “sail home”</span><span class="arr">→</span><span class="box">Troops run to ships</span><span class="arr">→</span><span class="box">Hera → Athena → Odysseus restore order</span><span class="arr">→</span><span class="box">Thersites criticises</span><span class="arr">→</span><span class="box">Nestor's advice</span></div>
+<ul><li><b>Social hierarchy:</b> gods → kings → nobles → common warriors.</li>
+<li><b>Nestor's advice</b> (3 points): the oath was sworn; keep fighting; organise for battle.</li></ul>
+<table class="mini"><tr><th>Simile (“B-B-F”)</th><th>Shows</th></tr><tr><td>Bees</td><td>Numbers and organisation</td></tr><tr><td>Birds</td><td>Scale, noise, energy</td></tr><tr><td>Fire</td><td>Power, destruction, fear</td></tr></table>
+<p><b>Catalogue of Ships:</b> shows scale, national pride, historical significance; Agamemnon's force is the largest.</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Achilles withdraws because he is <b>dishonoured</b> (Briseis taken), not because of the plague or fear.</li><li>The dream only <b>looks like</b> Nestor: it is deceptive and sent by Zeus.</li><li>“Sail home” was a <b>test</b> of morale, not a real order; it backfired.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Why did Apollo send the plague?</summary><div class="qa">His priest Chryses prayed to him after the Greeks took his daughter Chryseis</div></details><details class="qc"><summary>Why does Achilles withdraw from the fighting?</summary><div class="qa">He is dishonoured when Agamemnon takes his prize, Briseis</div></details><details class="qc"><summary>What does Thetis ask Zeus, and how does he agree?</summary><div class="qa">To help the Trojans; he bows his head (unbreakable vow)</div></details><details class="qc"><summary>Who restores order when the troops run for the ships?</summary><div class="qa">Odysseus (Hera sends Athena to him)</div></details><details class="qc"><summary>What do the bees, birds and fire similes show?</summary><div class="qa">Bees: numbers/organisation. Birds: scale/noise/energy. Fire: power/destruction/fear</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+      <section class="fr-chapter" id="ch3">
+        <div class="section-heading">⚔️ Ch 3 · The Iliad Books 4–11: The War Resumes <span class="fr-time">⏱ 12 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Truce</b></td><td>Peace agreement between both sides after the duel of Paris and Menelaus.</td></tr><tr><td><b>Kleos</b></td><td>Greek word for glory.</td></tr><tr><td><b>Pandarus</b></td><td>Trojan archer tricked by Athena into shooting Menelaus, breaking the truce.</td></tr><tr><td><b>Diomedes</b></td><td>Greek hero of Book 5; given courage, strength and skill by Athena; wounds Aphrodite and Ares.</td></tr><tr><td><b>Aeneas</b></td><td>Aphrodite&#x27;s son; attacked by Diomedes, rescued by Apollo.</td></tr><tr><td><b>Hecuba</b></td><td>Hector&#x27;s mother; offers him wine, which he refuses.</td></tr><tr><td><b>Andromache</b></td><td>Hector&#x27;s wife; begs him not to return to battle.</td></tr><tr><td><b>Astyanax</b></td><td>Hector&#x27;s baby son, frightened by his father&#x27;s helmet.</td></tr><tr><td><b>Duel</b></td><td>One-to-one fight: Hector v Ajax in Book 7.</td></tr><tr><td><b>Defensive wall</b></td><td>Built by the Greeks around their ships for protection (Book 7).</td></tr><tr><td><b>Embassy</b></td><td>Odysseus, Ajax and Phoenix try to persuade Achilles to return (Book 9).</td></tr><tr><td><b>Dolon</b></td><td>Trojan spy captured, questioned and killed by Odysseus and Diomedes.</td></tr><tr><td><b>Rhesus</b></td><td>Leader of Trojan allies whose famous horses are stolen (Book 10).</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <table class="mini"><tr><th>Book</th><th>What happens</th></tr>
+<tr><td>4</td><td>Athena tricks Pandarus (promise of <b>kleos</b>) → he shoots Menelaus → truce broken</td></tr>
+<tr><td>5</td><td>Diomedes, inspired by Athena, wounds Aphrodite and Ares</td></tr>
+<tr><td>6</td><td>Hector: asks the women to pray to Athena, refuses wine, scolds Paris, kind to Helen, farewell to Andromache &amp; Astyanax (<b>duty v family</b>)</td></tr>
+<tr><td>7</td><td>Hector v Ajax: equal, ends at night, gifts exchanged; Greeks build a wall round the ships</td></tr>
+<tr><td>8</td><td>Zeus forbids the gods to fight → Greeks lose; Trojans camp outside</td></tr>
+<tr><td>9</td><td>Embassy (Odysseus, Ajax, Phoenix) offers wealth, honour, rewards → Achilles refuses</td></tr>
+<tr><td>10</td><td>Odysseus + Diomedes kill Dolon, steal Rhesus' horses</td></tr>
+<tr><td>11</td><td>Agamemnon attacks; Agamemnon, Diomedes, Odysseus wounded; Achilles sends Patroclus: the tide turns</td></tr></table>
+<div class="mnemonic"><b>🧩 Remember it:</b> envoys = <b>O-A-P</b> (Odysseus, Ajax, Phoenix): wealth, honour, rewards. Answer: no, “no gift can repair the insult”.</div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>The truce is broken by <b>one arrow</b> (Pandarus, tricked by Athena), not a battle.</li><li>Nobody wins the Book 7 duel: Hector and Ajax are equal and exchange gifts.</li><li>Achilles refuses because <b>no gift can repair the insult</b>, not because the gifts are small. Dolon is a <b>Trojan</b> spy.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>How is the truce broken in Book 4?</summary><div class="qa">Athena tricks Pandarus into shooting Menelaus with an arrow</div></details><details class="qc"><summary>What is kleos?</summary><div class="qa">Glory</div></details><details class="qc"><summary>Which two gods does Diomedes wound?</summary><div class="qa">Aphrodite and Ares (helped by Athena)</div></details><details class="qc"><summary>How does the duel of Hector and Ajax end?</summary><div class="qa">Equal; it ends at night and they exchange gifts</div></details><details class="qc"><summary>Why does Achilles refuse the embassy?</summary><div class="qa">No gift can repair the insult</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section id="final">
+        <div class="section-heading">🏁 Final mixed quiz <span class="fr-time">⏱ 6 min</span></div>
+        <p>12 questions across all three chapters. Anything you miss: jump back to that chapter's key-terms table.</p>
+        <div class="rv-quiz"><div class="rv-q" data-answer="b"><p>The Iliad covers…</p><ol><li>The whole Trojan War</li><li>The 10th and final year of the war</li><li>Odysseus&#x27; journey home</li><li>The first year of the war</li></ol><div class="explain">Only the 10th year, mainly the quarrel of Agamemnon and Achilles.</div></div><div class="rv-q" data-answer="c"><p>Which goddess threw the golden apple?</p><ol><li>Hera</li><li>Athena</li><li>Eris</li><li>Aphrodite</li></ol><div class="explain">Eris, goddess of discord, was not invited to the wedding.</div></div><div class="rv-q" data-answer="b"><p>“Brilliant Achilles” is an example of…</p><ol><li>An epic simile</li><li>An epithet</li><li>In medias res</li><li>A formal speech</li></ol><div class="explain">An epithet: a descriptive phrase, often a compound adjective, attached to a name.</div></div><div class="rv-q" data-answer="c"><p>Which god is neutral?</p><ol><li>Apollo</li><li>Athena</li><li>Zeus</li><li>Aphrodite</li></ol><div class="explain">Zeus is neutral in the notes (though he helps Thetis in Book 1).</div></div><div class="rv-q" data-answer="b"><p>Who is Briseis?</p><ol><li>Apollo&#x27;s priest&#x27;s daughter</li><li>Achilles&#x27; prize</li><li>Hector&#x27;s wife</li><li>Priam&#x27;s daughter</li></ol><div class="explain">Briseis = Achilles&#x27; prize. Chryseis is the priest&#x27;s daughter.</div></div><div class="rv-q" data-answer="c"><p>Why does Achilles withdraw from battle?</p><ol><li>He is afraid</li><li>He catches the plague</li><li>He is dishonoured by Agamemnon</li><li>Zeus orders him to</li></ol><div class="explain">Agamemnon takes Briseis, so Achilles feels dishonoured.</div></div><div class="rv-q" data-answer="b"><p>The deceptive dream appears to Agamemnon in the form of…</p><ol><li>Zeus</li><li>Nestor</li><li>Odysseus</li><li>Athena</li></ol><div class="explain">Zeus sends it, disguised as Nestor.</div></div><div class="rv-q" data-answer="c"><p>Who criticises Agamemnon&#x27;s greed and pride?</p><ol><li>Nestor</li><li>Odysseus</li><li>Thersites</li><li>Menelaus</li></ol><div class="explain">Thersites, a common soldier.</div></div><div class="rv-q" data-answer="c"><p>Who breaks the truce in Book 4?</p><ol><li>Paris</li><li>Hector</li><li>Pandarus</li><li>Diomedes</li></ol><div class="explain">Pandarus, tricked by Athena, shoots Menelaus.</div></div><div class="rv-q" data-answer="b"><p>Which Greek hero wounds Aphrodite and Ares?</p><ol><li>Achilles</li><li>Diomedes</li><li>Ajax</li><li>Odysseus</li></ol><div class="explain">Diomedes in Book 5, inspired by Athena.</div></div><div class="rv-q" data-answer="a"><p>Who goes on the embassy to Achilles?</p><ol><li>Odysseus, Ajax, Phoenix</li><li>Nestor, Menelaus, Diomedes</li><li>Agamemnon, Odysseus, Patroclus</li><li>Ajax, Diomedes, Nestor</li></ol><div class="explain">O-A-P: Odysseus, Ajax, Phoenix.</div></div><div class="rv-q" data-answer="b"><p>Dolon is…</p><ol><li>A Greek spy</li><li>A Trojan spy</li><li>Leader of the Trojan allies</li><li>Hector&#x27;s son</li></ol><div class="explain">A Trojan spy, killed by Odysseus and Diomedes.</div></div></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Classics Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll('.qc-all').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var cards = b.parentNode.previousElementSibling.querySelectorAll('details.qc'), open = b.textContent.indexOf('Show') === 0;
+          cards.forEach(function (d) { d.open = open; });
+          b.textContent = open ? 'Hide answers' : 'Show all 5 answers';
+        });
+      });
+      var secs = document.querySelectorAll('section[id]'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+      addEventListener('scroll', function () {
+        var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+        links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+      });
+    })();
+  </script>
+</body>
+</html>

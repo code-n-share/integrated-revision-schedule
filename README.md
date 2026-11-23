@@ -78,6 +78,7 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Classics Year 2 – Chapter 1 – The Iliad: Epic Form, Background, Characters & Gods
 - [x] Classics Year 2 – Chapter 2 – The Iliad Books 1–2: Plague, Quarrel & Hardship of War
 - [x] Classics Year 2 – Chapter 3 – The Iliad Books 4–11: The War Resumes
+- [x] Classics Year 2 – Fast Revision – 42-minute recap of Chapters 1, 2 & 3 (rules: CONTENT_RULES.md §8)
 - [x] Geography Year 2 – Chapter 1 – Slopes & Aerial Photographs
 - [x] Geography Year 2 – Chapter 2 – Secondary Economic Activities
 - [x] Geography Year 2 – Chapter 3 – Industry in Ireland: Case Studies & MNCs

@@ -115,7 +115,7 @@ Maths keeps sections 1–11 above, but the notes and question sets follow these 
 
 ## 8. Fast revision pages (one per subject/year)
 A fast revision page is a **last-minute recap of a whole year's chapters**, not a chapter. Sections 2–7 above do **not** apply;
-use these rules instead. Reference: `science/year-2/fast-revision.html`.
+use these rules instead. References: `science/year-2/fast-revision.html` (5 chapters, with formulae), `classics/year-2/fast-revision.html` (3 chapters, no calculations).
 
 **Goal:** a student can revise every chapter in the year in **40–45 minutes**.
 
@@ -130,13 +130,13 @@ When a chapter is added to the year, add a block for it here too and re-check th
 | # | Block | Rules |
 |---|-------|-------|
 | 1 | **Hero** | "All of Year N in X minutes", list of chapters covered, 3–4 tags |
-| 2 | **One block per chapter** (chapter order), ⏱ minutes badge | a) **Key terms**: table Term · Exam definition, 6–11 terms, only those most likely to be examined, exam wording, ≤ 20 words each. b) **Must remember**: the sequences, key numbers and formulae (flow boxes, mini tables, `.formula`), plus at most one worked example. c) **⚠️ Don't lose marks**: 2–3 bullets in `.exam-trap`. d) **Quick check**: exactly 5 question cards, all visible at once in a grid (`details.qc`: question shown, tap to reveal the answer in place), plus a "Show all 5 answers" button. No sliding flashcard deck: it's too slow here |
+| 2 | **One block per chapter** (chapter order), ⏱ minutes badge | a) **Key terms**: table Term · Exam definition, 6–11 terms (up to 13 when the year has only 2–3 chapters), only those most likely to be examined, exam wording, ≤ 20 words each. b) **Must remember**: the sequences, key numbers and formulae (flow boxes, mini tables, `.formula`), plus at most one worked example. Non-calculation subjects use who’s-who tables, event flows / book-by-book tables and the chapter’s `.mnemonic`s instead. c) **⚠️ Don't lose marks**: 2–3 bullets in `.exam-trap`. d) **Quick check**: exactly 5 question cards, all visible at once in a grid (`details.qc`: question shown, tap to reveal the answer in place), plus a "Show all 5 answers" button. No sliding flashcard deck: it's too slow here |
 | 3 | **Final mixed quiz** | 10–12 `.rv-quiz` MCQs spread across all chapters (≥ 2 per chapter where possible), with explanations |
 
 **Leave out:** brain dump, mind map, separate glossary, long topic notes, fill the gaps, practice questions, summary table,
 spaced-repetition tracker, time-plan table, progress / done buttons, hide-definitions toggle. Fast revision is reading plus quick recall, nothing else.
 
-**Time budget:** about 7 minutes per chapter (8 for heavy ones) plus 5–6 minutes for the quiz. Total 40–45 minutes (shown in the hero); if it goes over, cut terms,
+**Time budget:** about 7 minutes per chapter (8 for heavy ones) plus 5–6 minutes for the quiz. A year with fewer chapters gets more minutes per chapter (e.g. Classics: 3 × 12 min) and a fuller must-remember box, not extra sections. Total 40–45 minutes (shown in the hero); if it goes over, cut terms,
 not chapters.
 
 **Done checklist:** every chapter in the year has a block · minutes add up to 40–45 · every term traced to its chapter page ·
