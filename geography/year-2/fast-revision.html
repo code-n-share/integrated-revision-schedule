@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Revision – Year 2 Fast Revision</title>
+  <!-- Fast revision page: follows CONTENT_RULES.md §8 (not the 11-section chapter layout).
+       Content is condensed from ch1, ch2, ch3, ch4 in this folder; nothing new is added here.
+       Generated once from a script; this file is now the source of truth, so edit it directly. -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF; --accent-bright: #B79BF5;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .key-term { background: var(--accent-light); border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; margin: 14px 0; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; }
+    .example-body { padding: 14px 16px; }
+    .tip { margin-top: 8px; padding: 8px 12px; background: #FFFBE6; border-radius: 8px; font-size: 14px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #E8F5E9; border-left: 5px solid #2E7D32; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.blue { border-color: #1976D2; background: #E3F2FD; }
+    .flow .box.red { border-color: #C62828; background: #FDECEA; }
+    .fig { margin: 16px 0; }
+    .fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .dg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .dg text { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1A1A2E; }
+    .dg .s { font-size: 11px; font-weight: 500; fill: #4B5563; }
+    .dg .h { font: 800 14px 'Sora', sans-serif; }
+    .dg .w { fill: #fff; }
+    .dg .m { text-anchor: middle; }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    @media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  
+    .section-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .fr-time { margin-left: auto; font: 600 13px 'DM Sans', sans-serif; background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+    .fr-chapter h3 { font: 700 15px 'Sora', sans-serif; margin: 18px 0 4px; }
+    .fr-sub { font: 400 13px 'DM Sans', sans-serif; color: var(--muted); }
+    table.terms td:first-child { width: 32%; }
+    table.terms.hide td:last-child { color: transparent; background: var(--accent-light); }
+    table.mini { max-width: 560px; }
+    table.grid3 { width: auto; } table.grid3 td { width: 96px; text-align: center; font-size: 13px; font-weight: 600; }
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 12px 16px; margin: 12px 0; line-height: 1.9; }
+    .exam-trap ul { margin-bottom: 0; }
+    .qc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin: 8px 0; }
+    details.qc { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+    details.qc summary { list-style: none; font-weight: 600; font-size: 14px; }
+    details.qc summary::-webkit-details-marker { display: none; }
+    details.qc summary::after { content: ' 👆 tap'; font-weight: 400; font-size: 12px; color: var(--muted); }
+    details.qc[open] { border-color: var(--accent); background: var(--accent-light); }
+    details.qc[open] summary::after { content: ''; }
+    details.qc .qa { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--accent); font-size: 14px; }
+    details.qc .qa::before { content: '✓ '; color: var(--accent); font-weight: 700; }
+    .qc-bar { margin: 4px 0 0; }
+    .qc-bar button { font: 600 13px 'DM Sans', sans-serif; background: #fff; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Geography Revision</div><div class="book-title">Year 2 · Fast Revision</div></div>
+    <a href="index.html">&larr; Geography Year 2</a>
+    <a href="#ch1">⛰️ Ch 1 Slopes &amp; Aerial Photographs</a>
+    <a href="#ch2">🏭 Ch 2 Secondary Economic Activities</a>
+    <a href="#ch3">🌐 Ch 3 Industry in Ireland &amp; MNCs</a>
+    <a href="#ch4">🏞️ Ch 4 Rivers</a>
+    <a href="#final">🏁 Final quiz</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">⚡ Fast Revision · Year 2 Geography</div>
+      <h1>⚡ <span>All of Year 2 in 42 minutes</span></h1>
+      <p class="chapter-meta">Ch 1 Slopes &amp; Aerial Photos · Ch 2 Secondary Economic Activities · Ch 3 Industry in Ireland &amp; MNCs · Ch 4 Rivers</p>
+      <div><span class="goal-tag">✔ 40 key terms</span><span class="goal-tag">✔ 9 location factors + 2 case studies</span><span class="goal-tag">✔ Waterfall formation step by step</span><span class="goal-tag">✔ 20 quick-check questions + 12-question quiz</span></div>
+    </div>
+
+    <div class="content">
+
+      <section class="fr-chapter" id="ch1">
+        <div class="section-heading">⛰️ Ch 1 · Slopes &amp; Aerial Photographs <span class="fr-time">⏱ 8 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Contour line</b></td><td>A line on a map joining places of the same height.</td></tr>
+<tr><td><b>Even slope</b></td><td>Same steepness all the way up; contour lines evenly spaced out.</td></tr>
+<tr><td><b>Concave slope</b></td><td>Contours spaced out at the base, closer together near the peak: gentle, then steep.</td></tr>
+<tr><td><b>Convex slope</b></td><td>Contours close together at the base, spread out near the peak: steep, then gentle.</td></tr>
+<tr><td><b>Compound (stepped) slope</b></td><td>Contours sometimes spaced out, sometimes close together: steep in places, not in others.</td></tr>
+<tr><td><b>Vertical aerial photo</b></td><td>Taken from directly above, looking straight down. Location given with compass points.</td></tr>
+<tr><td><b>Oblique aerial photo</b></td><td>Taken from the air at an angle. Location: left/centre/right + foreground/middle ground/background.</td></tr>
+<tr><td><b>Foreground / background</b></td><td>Foreground = bottom of an oblique photo, nearest the camera. Background = top, furthest away.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <p><b>Close together = steep · spread out = gentle</b></p>
+        <table class="mini"><tr><th>Slope</th><th>Where contours are close</th><th>Shape</th></tr>
+<tr><td>Even</td><td>Evenly spaced</td><td>Same all the way</td></tr>
+<tr><td>Concave</td><td>Near the <b>peak</b></td><td>Gentle → steep</td></tr>
+<tr><td>Convex</td><td>At the <b>base</b></td><td>Steep → gentle</td></tr>
+<tr><td>Compound</td><td>Sometimes close, sometimes spaced</td><td>Steps</td></tr></table>
+        <div class="mnemonic"><b>🧩 Remember it:</b> CON-<b>CAVE</b> dips in like a cave/bowl (gentle, then steep at the top). CON-<b>VEX</b> bulges like a dome (steep, then rounds off gently). Compound comes in steps.</div>
+        <p><b>Location on a photo:</b> split it into a 3 × 3 grid and name the box.</p>
+        <div class="twocol">
+          <div><h4>Vertical photo</h4><table class="grid3"><tr><td>NW</td><td>North</td><td>NE</td></tr><tr><td>West</td><td>Centre</td><td>East</td></tr><tr><td>SW</td><td>South</td><td>SE</td></tr></table></div>
+          <div><h4>Oblique photo</h4><table class="grid3"><tr><td>Left background</td><td>Centre background</td><td>Right background</td></tr><tr><td>Left middle ground</td><td>Centre</td><td>Right middle ground</td></tr><tr><td>Left foreground</td><td>Centre foreground</td><td>Right foreground</td></tr></table></div>
+        </div>
+        <p>Example: church top-right of a vertical photo → <b>NE</b>. Lake bottom-left of an oblique photo → <b>left foreground</b>.</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Concave v convex: check <b>where</b> the lines are close. Near the peak = concave; at the base = convex.</li><li>Never use compass points on an oblique photo, or “foreground” on a vertical one.</li><li>Foreground is at the <b>bottom</b> of an oblique photo, background at the <b>top</b>.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>What do closely spaced contour lines show?</summary><div class="qa">A steep slope</div></details><details class="qc"><summary>Name the four types of slope</summary><div class="qa">Even, concave, convex, compound (stepped)</div></details><details class="qc"><summary>Describe the contour lines of a convex slope</summary><div class="qa">Close together at the base, more spread out near the peak: steep, then gentle</div></details><details class="qc"><summary>How is an oblique aerial photo taken?</summary><div class="qa">From the air, looking down at an angle</div></details><details class="qc"><summary>A farm is in the top-left of a vertical photo. Where is it?</summary><div class="qa">NW</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch2">
+        <div class="section-heading">🏭 Ch 2 · Secondary Economic Activities <span class="fr-time">⏱ 10 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Primary economic activities</b></td><td>The extraction of raw materials.</td></tr>
+<tr><td><b>Secondary economic activities</b></td><td>Activities that take raw materials and manufacture a product.</td></tr>
+<tr><td><b>Skilled labour</b></td><td>Work that requires third-level qualifications.</td></tr>
+<tr><td><b>Semi-skilled labour</b></td><td>Workers who are trained on the job.</td></tr>
+<tr><td><b>Linkages</b></td><td>A company relies on another company's products, so they locate near each other (bakery near flour mill).</td></tr>
+<tr><td><b>IDA</b></td><td>Industrial Development Authority: works to attract industry to Ireland.</td></tr>
+<tr><td><b>Heavy industry</b></td><td>Raw materials and products are bulky and heavy, e.g. iron and steel making.</td></tr>
+<tr><td><b>Light industry</b></td><td>Makes small, lightweight products, e.g. electronics and healthcare products.</td></tr>
+<tr><td><b>Footloose industry</b></td><td>Not tied to one place; usually light industries that locate close to cities.</td></tr>
+<tr><td><b>Industrial estate</b></td><td>A site at the edge of an urban area set aside for industries, e.g. Sandyford Business Park.</td></tr>
+<tr><td><b>Industrial inertia</b></td><td>An industry doesn't relocate even though it might make sense to, due to historical ties.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <p><b>Every factory: Inputs → Processes → Outputs</b> (crisp factory)</p>
+        <div class="flow"><span class="box">Inputs: potatoes, flavouring, <b>labour</b></span><span class="arr">→</span><span class="box">Processes: cutting, cooking</span><span class="arr">→</span><span class="box">Outputs: crisps, <b>waste</b></span></div>
+        <p><b>9 location factors</b> (name it, then say why)</p>
+        <table class="mini"><tr><th>Factor</th><th>Why it matters</th></tr>
+<tr><td>Raw materials</td><td>Bulky/heavy → locate near them to cut transport costs</td></tr>
+<tr><td>Transport</td><td>Air, sea, road, rail to receive materials and ship products</td></tr>
+<tr><td>Services</td><td>Water, electricity, WiFi, broadband</td></tr>
+<tr><td>Labour</td><td>Towns/cities give a workforce; universities give skilled workers</td></tr>
+<tr><td>Market</td><td>Locate near where the product is sold</td></tr>
+<tr><td>Linkages</td><td>Near firms you rely on (bakery + flour mill)</td></tr>
+<tr><td>Capital</td><td>Money for building, workers, transport: investors, banks, government</td></tr>
+<tr><td>Government policy</td><td>Loans and grants, the IDA, <b>12.5%</b> corporation tax</td></tr>
+<tr><td>Personal preference</td><td>e.g. starting a business in your home town</td></tr></table>
+        <div class="mnemonic"><b>🧩 Remember it:</b> “<b>R</b>eally <b>T</b>all <b>S</b>heep <b>L</b>ike <b>M</b>ixing <b>L</b>ovely <b>C</b>old <b>G</b>reen <b>P</b>eas” = Raw materials, Transport, Services, Labour, Market, Linkages, Capital, Government, Personal.</div>
+        <ul><li><b>Why locate on an industrial estate?</b> Cheaper land and room to expand · services (water, electricity, fast broadband) · motorway access · beside suppliers of semi-finished products.</li>
+<li><b>Footloose:</b> factories once had to be near coal for energy; now they are no longer tied down.</li>
+<li><b>Inertia example:</b> Sheffield steel: coal mines closed, but the steel factories stayed, used new energy sources and made new products (e.g. surgical instruments).</li></ul>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Naming a location factor isn't enough: <b>explain why</b> it matters.</li><li>Labour is an <b>input</b>; waste is an <b>output</b>.</li><li>Inertia means the industry <b>stays</b> where it is, not that it closes down. Industrial estates are at the <b>edge</b> of towns, not the centre.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Primary v secondary economic activities?</summary><div class="qa">Primary = extraction of raw materials. Secondary = take raw materials and manufacture a product</div></details><details class="qc"><summary>Why would a factory with bulky raw materials locate near them?</summary><div class="qa">To cut transportation costs</div></details><details class="qc"><summary>Give three ways the Irish government attracts industry</summary><div class="qa">Loans and grants from agencies; the IDA; 12.5% corporation tax</div></details><details class="qc"><summary>Heavy v light industry, with an example of each</summary><div class="qa">Heavy: bulky, heavy materials and products (iron and steel). Light: small, lightweight products (electronics, healthcare)</div></details><details class="qc"><summary>Define industrial inertia and give an example</summary><div class="qa">An industry doesn't relocate even though it might make sense, due to historical ties: Sheffield steel</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch3">
+        <div class="section-heading">🌐 Ch 3 · Industry in Ireland: Case Studies &amp; MNCs <span class="fr-time">⏱ 10 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Estuary</b></td><td>Where a river meets the sea, e.g. the Shannon estuary.</td></tr>
+<tr><td><b>Bauxite</b></td><td>Aughinish's raw material: a bulky, heavy metal ore shipped to its deep-water port.</td></tr>
+<tr><td><b>Alumina</b></td><td>A semi-finished white powder used to make aluminium; shipped to smelters in the UK.</td></tr>
+<tr><td><b>Multinational corporation (MNC)</b></td><td>A corporation making its products in many different countries.</td></tr>
+<tr><td><b>Headquarters</b></td><td>The MNC's main base in one country; it manages the branches.</td></tr>
+<tr><td><b>Branches</b></td><td>The MNC's factories/offices in other countries, managed from the headquarters.</td></tr>
+<tr><td><b>Globalisation</b></td><td>Makes it easier to buy and sell across the world.</td></tr>
+<tr><td><b>Foreign direct investment (FDI)</b></td><td>When MNCs locate a base in Ireland. Downside: job losses if the MNC leaves.</td></tr>
+<tr><td><b>Incinerator</b></td><td>A plant that burns waste, e.g. Poolbeg, Co. Dublin.</td></tr>
+<tr><td><b>Carcinogenic</b></td><td>Cancer-causing.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <table class="mini"><tr><th></th><th>Aughinish Alumina</th><th>Apple</th></tr>
+<tr><td>Type</td><td><b>Heavy</b> industry (owner RUSAL)</td><td><b>Light</b> industry</td></tr>
+<tr><td>Place</td><td>Aughinish Island, Shannon estuary</td><td>Holyhill, Cork</td></tr>
+<tr><td>Started</td><td>1983 · 1.9 million tonnes a year</td><td>1980s · HQ for Europe, Middle East &amp; Asia</td></tr>
+<tr><td>Workers</td><td><b>450</b> (Foynes, Askeaton)</td><td><b>6,000</b></td></tr>
+<tr><td>Inputs</td><td>Bauxite, caustic soda</td><td>Capital, labour</td></tr>
+<tr><td>Processes</td><td>Crushed, mixed, heated</td><td>Soldering, packaging</td></tr>
+<tr><td>Outputs</td><td>Alumina powder, waste</td><td>Computers, waste</td></tr>
+<tr><td>Why here?</td><td>Deep-water port for bulky bauxite; island stores it; N69 to Shannon Airport; EU market</td><td>12.5% tax; EU free movement of goods; Port of Cork + Cork Airport; graduates from UCC &amp; CIT</td></tr></table>
+        <p><b>Google in Ireland:</b> set up in <b>2003</b> with <b>100</b> jobs → now <b>2,500</b>. 1 in 5 people now work for an MNC.</p>
+        <div class="mnemonic"><b>🧩 Why MNCs pick Ireland, E-M-E-E-T:</b> <b>E</b>U country · <b>M</b>arkets &amp; labour force · <b>E</b>ducated workforce · <b>E</b>nglish, the language of business · low <b>T</b>ax (12.5%).</div>
+        <p><b>Conflict: Poolbeg incinerator</b> (factory owners v residents: emissions could harm health and the environment)</p>
+        <div class="twocol">
+          <div class="pos"><h4>✅ Positives</h4><ul><li>Saves space on landfills</li><li>Provides electricity</li><li>Jobs to build and maintain it</li></ul></div>
+          <div class="neg"><h4>❌ Negatives</h4><ul><li>Easy option, so recycling may not be tried</li><li>Fumes said to be carcinogenic</li><li>Smog, acid rain, greenhouse gases</li></ul></div>
+        </div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Aughinish makes <b>alumina</b>, not aluminium.</li><li>Don't mix up the numbers: Aughinish 450 · Apple 6,000 · Google 100 → 2,500.</li><li>“Discuss” questions need <b>both sides</b> and a named example (Poolbeg).</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Give Aughinish Alumina's inputs, processes and outputs</summary><div class="qa">Bauxite + caustic soda → crushed, mixed, heated → alumina powder + waste</div></details><details class="qc"><summary>Give three reasons Apple located in Cork</summary><div class="qa">12.5% corporation tax; EU free movement of goods; port and airport; skilled graduates (UCC, CIT)</div></details><details class="qc"><summary>What is an MNC?</summary><div class="qa">A corporation making products in many countries: HQ in one country manages branches in others</div></details><details class="qc"><summary>What is FDI, and its downside?</summary><div class="qa">MNCs locating a base in Ireland; if the MNC leaves, there are job losses</div></details><details class="qc"><summary>Two positives and two negatives of an incinerator</summary><div class="qa">+ Saves landfill space, provides electricity, jobs. − Recycling may not be tried, carcinogenic fumes, smog/acid rain</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch4">
+        <div class="section-heading">🏞️ Ch 4 · Rivers <span class="fr-time">⏱ 8 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Course of a river</b></td><td>The journey of a river from its source to its mouth.</td></tr>
+<tr><td><b>Youthful stage</b></td><td>The upper course.</td></tr>
+<tr><td><b>Mature stage</b></td><td>The middle course.</td></tr>
+<tr><td><b>Elderly stage</b></td><td>The lower course.</td></tr>
+<tr><td><b>Hydraulic action</b></td><td>The force of water hitting against the surface.</td></tr>
+<tr><td><b>Abrasion</b></td><td>Scraping or wearing away by the river load.</td></tr>
+<tr><td><b>Attrition</b></td><td>Rocks in the load hit each other and break each other down.</td></tr>
+<tr><td><b>Solution</b></td><td>Minerals are dissolved in the water and carried along.</td></tr>
+<tr><td><b>Waterfall</b></td><td>Where a river flows over a vertical slope; a feature of erosion (Powerscourt, Co. Wicklow).</td></tr>
+<tr><td><b>Plunge pool</b></td><td>Pool at a waterfall's base, formed by hydraulic action and the swirling load (abrasion).</td></tr>
+<tr><td><b>Undercut</b></td><td>Rock above the plunge pool is worn away underneath until it collapses.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <table class="mini"><tr><th>Stage</th><th>Course</th><th>Features</th></tr>
+<tr><td>Youthful</td><td>Upper</td><td>V-shaped valley · interlocking spurs · waterfalls</td></tr>
+<tr><td>Mature</td><td>Middle</td><td>Meanders · wide valleys · ox-bow lakes · flood plains</td></tr>
+<tr><td>Elderly</td><td>Lower</td><td>Ox-bow lakes · flood plains · deltas · levees</td></tr></table>
+        <div class="mnemonic"><b>🧩 Remember it:</b> <b>Y-M-E</b> = Youthful, Mature, Elderly = Upper, Middle, Lower. Erosion = <b>H-A-A-S</b>: Hydraulic action, Abrasion, Attrition, Solution. <b>A</b>brasion = load <b>A</b>ttacks the bed and banks; a<b>T</b>trition = load hi<b>T</b>s itself.</div>
+        <p><b>How a waterfall forms</b> (H-S-P-U-C)</p>
+        <div class="flow"><span class="box">Hard rock (granite) over soft rock (limestone)</span><span class="arr">→</span><span class="box">Soft rock erodes faster: vertical drop</span><span class="arr">→</span><span class="box">Plunge pool (hydraulic action + abrasion)</span><span class="arr">→</span><span class="box">Rock above is undercut</span><span class="arr">→</span><span class="box">Collapses into the pool</span><span class="arr">→</span><span class="box blue">Waterfall retreats upstream</span></div>
+        <p>Diagram labels: hard rock, soft rock, plunge pool, an arrow showing the retreat. Example: <b>Powerscourt, Co. Wicklow</b>.</p>
+        <p class="fr-sub">The notes name the other features (V-shaped valley, meanders, deltas…) but don't yet explain how they form: learn which stage each belongs to.</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Abrasion = load scrapes the <b>bed and banks</b>; attrition = rocks hit <b>each other</b>.</li><li>A waterfall moves <b>upstream</b> (backwards), and always starts with <b>hard rock over soft rock</b>.</li><li>Give both names for a stage: youthful = upper, mature = middle, elderly = lower.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>What is the course of a river?</summary><div class="qa">Its journey from source to mouth</div></details><details class="qc"><summary>Name the three stages, with their other names</summary><div class="qa">Youthful (upper), mature (middle), elderly (lower)</div></details><details class="qc"><summary>Name the four processes of river erosion</summary><div class="qa">Hydraulic action, abrasion, attrition, solution</div></details><details class="qc"><summary>What two processes form a plunge pool?</summary><div class="qa">Hydraulic action and abrasion by the swirling load</div></details><details class="qc"><summary>Which way does a waterfall move over time, and why?</summary><div class="qa">Upstream: the undercut rock collapses into the plunge pool</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section id="final">
+        <div class="section-heading">🏁 Final mixed quiz <span class="fr-time">⏱ 6 min</span></div>
+        <p>12 questions across all four chapters. Anything you miss: jump back to that chapter's key-terms table.</p>
+        <div class="rv-quiz">
+<div class="rv-q" data-answer="c"><p>Contour lines are spaced out at the base and close together near the peak. Which slope is this?</p><ol><li>Convex</li><li>Even</li><li>Concave</li><li>Compound</li></ol><div class="explain">Concave: gentle at first, then steep. Convex is the opposite (close at the base).</div></div>
+<div class="rv-q" data-answer="d"><p>A road is in the bottom-right of an oblique aerial photo. Where is it?</p><ol><li>SE</li><li>Right background</li><li>Right middle ground</li><li>Right foreground</li></ol><div class="explain">Oblique photos use left/centre/right + foreground/middle ground/background. Bottom = foreground. SE is for vertical photos.</div></div>
+<div class="rv-q" data-answer="b"><p>Which aerial photo is taken looking straight down from above?</p><ol><li>Oblique</li><li>Vertical</li><li>Horizontal</li><li>Compound</li></ol><div class="explain">Vertical = directly above. Oblique = at an angle.</div></div>
+<div class="rv-q" data-answer="d"><p>A bakery locating near a flour mill is an example of which factor?</p><ol><li>Market</li><li>Capital</li><li>Services</li><li>Linkages</li></ol><div class="explain">The bakery relies on another company's product: linkages.</div></div>
+<div class="rv-q" data-answer="a"><p>Sheffield's steel factories stayed after the coal mines closed. This is…</p><ol><li>Industrial inertia</li><li>Footloose industry</li><li>Linkages</li><li>Foreign direct investment</li></ol><div class="explain">Inertia: the industry doesn't relocate, due to historical ties.</div></div>
+<div class="rv-q" data-answer="b"><p>What is skilled labour?</p><ol><li>Workers trained on the job</li><li>Work that requires third-level qualifications</li><li>Workers near the market</li><li>Unpaid workers</li></ol><div class="explain">Trained on the job = semi-skilled. Skilled needs third-level qualifications.</div></div>
+<div class="rv-q" data-answer="c"><p>What does Aughinish Alumina produce?</p><ol><li>Aluminium</li><li>Bauxite</li><li>Alumina powder</li><li>Computers</li></ol><div class="explain">It turns bauxite into alumina, a semi-finished powder; smelters in the UK make the aluminium.</div></div>
+<div class="rv-q" data-answer="d"><p>Which is NOT a reason MNCs such as Google locate in Ireland?</p><ol><li>English is the language of business</li><li>A highly educated workforce</li><li>Low corporation tax (12.5%)</li><li>Bulky raw materials found locally</li></ol><div class="explain">E-M-E-E-T: EU, markets &amp; labour, educated workforce, English, low tax.</div></div>
+<div class="rv-q" data-answer="b"><p>Which is a negative of incinerators such as Poolbeg?</p><ol><li>They save space on landfills</li><li>Fumes may be carcinogenic</li><li>They provide electricity</li><li>They create jobs</li></ol><div class="explain">The other three are positives.</div></div>
+<div class="rv-q" data-answer="b"><p>Rocks in the river load hit each other and break down. This is…</p><ol><li>Abrasion</li><li>Attrition</li><li>Solution</li><li>Hydraulic action</li></ol><div class="explain">Attrition = rock against rock. Abrasion = load scraping the bed and banks.</div></div>
+<div class="rv-q" data-answer="a"><p>Which feature belongs to the youthful stage?</p><ol><li>Waterfall</li><li>Delta</li><li>Levee</li><li>Meander</li></ol><div class="explain">Youthful: V-shaped valley, interlocking spurs, waterfalls. Meanders = mature; deltas and levees = elderly.</div></div>
+<div class="rv-q" data-answer="c"><p>Over time, a waterfall…</p><ol><li>Moves downstream</li><li>Stays in the same place</li><li>Retreats upstream</li><li>Turns into a delta</li></ol><div class="explain">Undercut rock collapses into the plunge pool, so the waterfall erodes its way upstream.</div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Geography Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll('.qc-all').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var cards = b.parentNode.previousElementSibling.querySelectorAll('details.qc'), open = b.textContent.indexOf('Show') === 0;
+          cards.forEach(function (d) { d.open = open; });
+          b.textContent = open ? 'Hide answers' : 'Show all 5 answers';
+        });
+      });
+      var secs = document.querySelectorAll('section[id]'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+      addEventListener('scroll', function () {
+        var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+        links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+      });
+    })();
+  </script>
+</body>
+</html>
