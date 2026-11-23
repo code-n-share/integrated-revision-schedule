@@ -121,7 +121,7 @@ use these rules instead. Reference: `science/year-2/fast-revision.html`.
 
 **Where it goes**
 - File: `<subject>/year-<N>/fast-revision.html`. Its card comes **first** on `year-<N>/index.html` (number slot `⚡`, tag "Quick Revision").
-- Same look as chapters: shared assets, subject accent colours, 240px sidebar, hero, bottom nav bar. Sidebar = plan, one link per chapter, final quiz.
+- Same look as chapters: shared assets, subject accent colours, 240px sidebar, hero, bottom nav bar. Sidebar = back link, one link per chapter, final quiz.
 
 **Source:** condense only the year's existing chapter pages (their key-terms tables, summaries and exam traps). Add no new facts.
 When a chapter is added to the year, add a block for it here too and re-check the time budget.
