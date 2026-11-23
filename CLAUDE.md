@@ -8,6 +8,7 @@ index.html                         subject picker (cards link to <subject>/)
 <subject>/index.html              year picker (Year 1 / Year 2)
 <subject>/year-1/ index.html       chapter list for that subject/year
 <subject>/year-1/ ch<N>.html       one self-contained chapter page
+<subject>/year-N/ fast-revision.html 40–45 min whole-year recap (own rules: CONTENT_RULES.md §8)
 <subject>/year-2/                  empty, awaiting content
 assets/revision.css|js             shared interactive components (flashcards, quiz, mind map, cloze, tracker)
 templates/chapter-template.html    starting point for every new chapter

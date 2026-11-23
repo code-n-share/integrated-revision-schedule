@@ -91,4 +91,4 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Science Year 2 – Chapter 8 – The Respiratory System (Biological World)
 - [x] Science Year 2 – Chapter 27 – Motion (Physical World)
 - [x] Science Year 2 – Chapter 36 – The Earth-Sun-Moon System (Earth & Space)
-- [x] Science Year 2 – Fast Revision – key terms, formulae and numbers from Chapters 6, 7, 8, 27 & 36
+- [x] Science Year 2 – Fast Revision – 42-minute recap of Chapters 6, 7, 8, 27 & 36 (rules: CONTENT_RULES.md §8)

@@ -112,3 +112,33 @@ Maths keeps sections 1–11 above, but the notes and question sets follow these 
 - [ ] Chapter card added to the year's `index.html`; back-links resolve
 - [ ] README "Chapters" list updated if it lists the chapter
 - [ ] Maths only: question plan comment present; each question has a distinct sub-concept; every model answer matches the textbook key
+
+## 8. Fast revision pages (one per subject/year)
+A fast revision page is a **last-minute recap of a whole year's chapters**, not a chapter. Sections 2–7 above do **not** apply;
+use these rules instead. Reference: `science/year-2/fast-revision.html`.
+
+**Goal:** a student can revise every chapter in the year in **40–45 minutes**.
+
+**Where it goes**
+- File: `<subject>/year-<N>/fast-revision.html`. Its card comes **first** on `year-<N>/index.html` (number slot `⚡`, tag "Quick Revision").
+- Same look as chapters: shared assets, subject accent colours, 240px sidebar, hero, bottom nav bar. Sidebar = plan, one link per chapter, final quiz.
+
+**Source:** condense only the year's existing chapter pages (their key-terms tables, summaries and exam traps). Add no new facts.
+When a chapter is added to the year, add a block for it here too and re-check the time budget.
+
+**Structure, in order**
+| # | Block | Rules |
+|---|-------|-------|
+| 1 | **Hero** | "All of Year N in X minutes", list of chapters covered, 3–4 tags |
+| 2 | **Time plan** | Table: one row per chapter + final quiz, minutes each, ✓ done column, progress line; "Hide definitions" self-test toggle |
+| 3 | **One block per chapter** (chapter order), ⏱ minutes badge | a) **Key terms**: table Term · Exam definition, 6–11 terms, only those most likely to be examined, exam wording, ≤ 20 words each. b) **Must remember**: the sequences, key numbers and formulae (flow boxes, mini tables, `.formula`), plus at most one worked example. c) **⚠️ Don't lose marks**: 2–3 bullets in `.exam-trap`. d) **Quick check**: exactly 5 `.rv-flash` cards. e) "Mark done" button |
+| 4 | **Final mixed quiz** | 10–12 `.rv-quiz` MCQs spread across all chapters (≥ 2 per chapter where possible), with explanations |
+
+**Leave out:** brain dump, mind map, separate glossary, long topic notes, fill the gaps, practice questions, summary table,
+spaced-repetition tracker. Fast revision is reading plus quick recall, nothing else.
+
+**Time budget:** about 7 minutes per chapter (8 for heavy ones) plus 5–6 minutes for the quiz. Total 40–45 minutes; if it goes over, cut terms,
+not chapters. Done-state lives in `localStorage` under `rv:<page path>:done`.
+
+**Done checklist:** every chapter in the year has a block · minutes add up to 40–45 · every term traced to its chapter page ·
+flashcards flip, quiz scores, done buttons and hide toggle work (open the page and click through) · card on the year index · README line.

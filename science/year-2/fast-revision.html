@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Science Revision – Fast Revision – Key Terms</title>
+  <title>Science Revision – Year 2 Fast Revision</title>
+  <!-- Fast revision page: follows CONTENT_RULES.md §8 (not the 11-section chapter layout).
+       Content is condensed from ch6, ch7, ch8, ch27, ch36 in this folder; nothing new is added here.
+       Generated once from a script; this file is now the source of truth, so edit it directly. -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/revision.css">
   <style>
@@ -49,130 +52,173 @@
     .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
     .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
     @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+  
+    .section-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .fr-time { margin-left: auto; font: 600 13px 'DM Sans', sans-serif; background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+    .fr-chapter h3 { font: 700 15px 'Sora', sans-serif; margin: 18px 0 4px; }
+    .fr-sub { font: 400 13px 'DM Sans', sans-serif; color: var(--muted); }
+    table.terms td:first-child { width: 32%; }
+    table.terms.hide td:last-child { color: transparent; background: var(--accent-light); }
+    table.mini { max-width: 560px; }
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 12px 16px; margin: 12px 0; line-height: 1.9; }
+    .exam-trap ul { margin-bottom: 0; }
+    .fr-done, .fr-btn { font: 600 14px 'DM Sans', sans-serif; background: var(--accent); color: #fff; border: 0; border-radius: 10px; padding: 9px 16px; cursor: pointer; margin: 14px 8px 0 0; }
+    .fr-done.is-done { background: var(--accent-light); color: var(--accent); }
+    .fr-btn.ghost { background: #fff; color: var(--accent); border: 1.5px solid var(--accent); }
+    .fr-tick { text-align: center; width: 60px; }
+    .plan a { color: var(--text); text-decoration: none; font-weight: 600; }
+    .fr-progress { font-weight: 700; color: var(--accent); }
   </style>
 </head>
 <body>
   <nav class="sidebar">
-    <div class="sidebar-header"><div class="site-title">Science Revision</div><div class="book-title">Elements of Science · Fast Revision</div></div>
-    <a href="index.html">&larr; Science Home</a>
-    <a href="#brain-dump">Brain Dump</a>
-    <a href="#mindmap">Mind Map</a>
-    <a href="#keyterms">Key Terms</a>
-    <a href="#topic-1">Digestive (Ch 6)</a>
-    <a href="#topic-2">Circulatory (Ch 7)</a>
-    <a href="#topic-3">Respiratory (Ch 8)</a>
-    <a href="#topic-4">Motion (Ch 27)</a>
-    <a href="#topic-5">Earth-Sun-Moon (Ch 36)</a>
-    <a href="#flashcards">Flashcards</a>
-    <a href="#cloze">Fill the Gaps</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#practice">Practice Questions</a>
-    <a href="#summary">Exam Summary</a>
-    <a href="#tracker">Revision Tracker</a>
+    <div class="sidebar-header"><div class="site-title">Science Revision</div><div class="book-title">Year 2 · Fast Revision</div></div>
+    <a href="index.html">&larr; Science Year 2</a>
+    <a href="#plan">⏱ 42-minute plan</a>
+    <a href="#ch6">🍽️ Ch 6 Digestive System</a>
+    <a href="#ch7">❤️ Ch 7 Circulatory System</a>
+    <a href="#ch8">🫁 Ch 8 Respiratory System</a>
+    <a href="#ch27">🏃 Ch 27 Motion</a>
+    <a href="#ch36">🌍 Ch 36 Earth-Sun-Moon System</a>
+    <a href="#final">🏁 Final quiz</a>
   </nav>
 
   <main class="main">
     <div class="chapter-hero">
       <div class="chapter-badge">⚡ Fast Revision · Year 2 Science</div>
-      <h1>⚡ <span>Fast Revision – Key Terms</span></h1>
-      <p class="chapter-meta">Elements of Science, Ch 6, 7, 8, 27 & 36 · Junior Cycle Science Revision</p>
-      <div><span class="goal-tag">✔ Know every key term</span><span class="goal-tag">✔ Recall the formulae</span><span class="goal-tag">✔ Know the key numbers</span><span class="goal-tag">✔ Quick-fire quiz yourself</span></div>
+      <h1>⚡ <span>All of Year 2 in 42 minutes</span></h1>
+      <p class="chapter-meta">Elements of Science · Ch 6, 7, 8, 27 &amp; 36 · only the key terms, numbers and formulae that win marks</p>
+      <div><span class="goal-tag">✔ ~50 key terms</span><span class="goal-tag">✔ Every formula &amp; key number</span><span class="goal-tag">✔ Top exam traps</span><span class="goal-tag">✔ 25 flashcards + 12-question quiz</span></div>
     </div>
 
     <div class="content">
-      <div class="section-heading" id="brain-dump">🧠 Brain Dump (before you read)</div>
-      <details class="rv-dump">
-        <summary>Write down everything you already remember about the year 2 science topics, then read on and fill the gaps</summary>
-        <textarea placeholder="Type here – saved on this device only"></textarea>
-      </details>
+      <div class="section-heading" id="plan">⏱ Your 42-minute plan</div>
+      <p>For each chapter: <b>1</b> read the key terms (cover the definitions and say them), <b>2</b> learn the must-remember box, <b>3</b> do the 5 flashcards. Got a card wrong? Read that term again before moving on. Finish with the mixed quiz.</p>
+      <table class="plan"><tr><th>Block</th><th>Time</th><th>Done</th></tr><tr><td><a href="#ch6">🍽️ Ch 6 · The Digestive System</a></td><td>7 min</td><td class="fr-tick" data-ch="ch6">–</td></tr><tr><td><a href="#ch7">❤️ Ch 7 · The Circulatory System</a></td><td>8 min</td><td class="fr-tick" data-ch="ch7">–</td></tr><tr><td><a href="#ch8">🫁 Ch 8 · The Respiratory System</a></td><td>7 min</td><td class="fr-tick" data-ch="ch8">–</td></tr><tr><td><a href="#ch27">🏃 Ch 27 · Motion</a></td><td>7 min</td><td class="fr-tick" data-ch="ch27">–</td></tr><tr><td><a href="#ch36">🌍 Ch 36 · The Earth-Sun-Moon System</a></td><td>7 min</td><td class="fr-tick" data-ch="ch36">–</td></tr><tr><td><a href="#final">🏁 Final mixed quiz (12 Qs)</a></td><td>6 min</td><td class="fr-tick" data-ch="final">–</td></tr></table>
+      <p class="fr-progress" id="fr-progress"></p>
+      <button class="fr-btn" id="fr-hide">🙈 Hide definitions (self-test)</button><button class="fr-btn ghost" id="fr-reset">Reset progress</button>
 
-      <div class="section-heading" id="mindmap">🗺️ Big Picture</div>
-      <div class="rv-mindmap"><ul><li>Year 2 Science<ul>
-        <li>Digestive<ul><li>5 stages</li><li>Enzymes</li><li>Villi</li></ul></li>
-        <li>Circulatory<ul><li>Blood</li><li>Vessels</li><li>Heart</li></ul></li>
-        <li>Respiratory<ul><li>Airway</li><li>Alveoli</li><li>Diffusion</li></ul></li>
-        <li>Motion<ul><li>Speed</li><li>Acceleration</li><li>Graphs</li></ul></li>
-        <li>Earth-Sun-Moon<ul><li>Seasons</li><li>Phases</li><li>Eclipses</li></ul></li>
-      </ul></li></ul></div>
-
-      <div class="section-heading" id="keyterms">⭐ The Must-Know Shortlist</div>
-      <p>If you only have 5 minutes, know these (⭐ = most-asked terms appear in each table below).</p>
-      <table><tr><th>Chapter</th><th>The 5 you can't skip</th></tr>
-      <tr><td>Digestive</td><td><b>enzyme</b> · <b>absorption</b> v <b>assimilation</b> · <b>peristalsis</b> · <b>villi</b> · <b>bile</b></td></tr>
-      <tr><td>Circulatory</td><td><b>haemoglobin</b> · <b>artery</b> v <b>vein</b> v <b>capillary</b> · <b>atria/ventricles</b> · <b>aorta</b> · <b>pulmonary vessels</b></td></tr>
-      <tr><td>Respiratory</td><td><b>alveoli</b> · <b>diffusion</b> · <b>diaphragm</b> · <b>epiglottis</b> · <b>trachea</b></td></tr>
-      <tr><td>Motion</td><td><b>speed</b> · <b>velocity</b> · <b>acceleration</b> · <b>slope of each graph</b></td></tr>
-      <tr><td>Earth-Sun-Moon</td><td><b>axis tilt</b> · <b>season</b> · <b>phases</b> · <b>solar v lunar eclipse</b> · <b>umbra/penumbra</b></td></tr></table>
-
-      <div class="section-heading" id="topic-1">🍽️ Ch 6 · Digestive System</div>
-      <table><tr><th>Key term</th><th>Meaning</th></tr><tr><td>⭐ <b>Digestion</b></td><td>Breaking food into smaller pieces / simpler chemicals (physical + chemical)</td></tr><tr><td><b>Ingestion</b></td><td>Food taken into the mouth</td></tr><tr><td>⭐ <b>Absorption</b></td><td>Digested food passes into the blood</td></tr><tr><td>⭐ <b>Assimilation</b></td><td>Body uses digested food for energy and new cells</td></tr><tr><td><b>Egestion</b></td><td>Undigested food released as waste</td></tr><tr><td><b>Physical digestion</b></td><td>Teeth, tongue and stomach churning make pieces smaller</td></tr><tr><td><b>Chemical digestion</b></td><td>Enzymes and juices break food down further</td></tr><tr><td>⭐ <b>Enzyme</b></td><td>A protein that speeds up chemical reactions and is not used up</td></tr><tr><td>⭐ <b>Amylase</b></td><td>Enzyme in saliva: starch → maltose</td></tr><tr><td>⭐ <b>Maltase</b></td><td>Enzyme in small intestine: maltose → glucose</td></tr><tr><td>⭐ <b>Peristalsis</b></td><td>Wave-like muscle movement pushing food along the oesophagus</td></tr><tr><td>⭐ <b>Villi</b></td><td>Tiny projections in small intestine: large surface area for absorption</td></tr><tr><td>⭐ <b>Bile</b></td><td>Made by liver; helps digest fats</td></tr><tr><td><b>Pancreas</b></td><td>Makes digestive enzymes</td></tr><tr><td><b>Large intestine</b></td><td>Reabsorbs water; faeces stored in rectum, leave via anus</td></tr></table>
-      <div class="flow"><span class="box">Ingestion</span><span class="arr">→</span><span class="box">Digestion</span><span class="arr">→</span><span class="box">Absorption</span><span class="arr">→</span><span class="box">Assimilation</span><span class="arr">→</span><span class="box">Egestion</span></div>
-<div class="exam-trap"><b>⚠️ Common mistakes:</b> an enzyme is <i>not used up</i>. Absorption = into the blood; assimilation = cells use it. The large intestine does <i>not</i> digest food.</div>
-
-      <div class="section-heading" id="topic-2">❤️ Ch 7 · Circulatory System</div>
-      <table><tr><th>Key term</th><th>Meaning</th></tr><tr><td>⭐ <b>Plasma</b></td><td>Light yellow liquid (mostly water) carrying dissolved substances, waste and heat</td></tr><tr><td>⭐ <b>Red blood cells</b></td><td>Carry oxygen to cells for respiration</td></tr><tr><td>⭐ <b>Haemoglobin</b></td><td>Red, iron-containing pigment that picks up oxygen</td></tr><tr><td>⭐ <b>White blood cells</b></td><td>Fight micro-organisms or make antibodies</td></tr><tr><td>⭐ <b>Platelets</b></td><td>Fragments of larger cells that help blood clot</td></tr><tr><td>⭐ <b>Arteries</b></td><td>Carry blood away from heart; thick muscle walls</td></tr><tr><td>⭐ <b>Veins</b></td><td>Carry blood to heart; thinner walls and valves</td></tr><tr><td>⭐ <b>Capillaries</b></td><td>Link arteries and veins; walls one cell thick</td></tr><tr><td><b>Valves</b></td><td>Stop backflow of blood</td></tr><tr><td><b>Oxygenated blood</b></td><td>High oxygen, low carbon dioxide</td></tr><tr><td><b>Deoxygenated blood</b></td><td>Low oxygen, high carbon dioxide</td></tr><tr><td><b>Septum</b></td><td>Wall separating left and right sides of the heart</td></tr><tr><td>⭐ <b>Atria / Ventricles</b></td><td>Atria = upper chambers; ventricles = lower chambers</td></tr><tr><td><b>Vena cava</b></td><td>Largest vein; deoxygenated blood to right atrium</td></tr><tr><td>⭐ <b>Pulmonary artery</b></td><td>Deoxygenated blood from right ventricle to lungs</td></tr><tr><td>⭐ <b>Pulmonary vein</b></td><td>Oxygenated blood from lungs to left atrium</td></tr><tr><td>⭐ <b>Aorta</b></td><td>Major artery: oxygenated blood from left ventricle to body</td></tr><tr><td><b>Pulse</b></td><td>Wave of vibration through an artery as blood leaves the heart</td></tr></table>
-      <div class="flow"><span class="box blue">Vena cava</span><span class="arr">→</span><span class="box blue">Right atrium</span><span class="arr">→</span><span class="box blue">Right ventricle</span><span class="arr">→</span><span class="box blue">Pulmonary artery</span><span class="arr">→</span><span class="box">Lungs</span><span class="arr">→</span><span class="box red">Pulmonary vein</span><span class="arr">→</span><span class="box red">Left atrium</span><span class="arr">→</span><span class="box red">Left ventricle</span><span class="arr">→</span><span class="box red">Aorta</span><span class="arr">→</span><span class="box">Body</span></div>
-<p>Blue = deoxygenated, red = oxygenated. Resting pulse: 60–100 bpm.</p>
-<div class="exam-trap"><b>⚠️ Common mistake:</b> the pulmonary artery carries <i>deoxygenated</i> blood and the pulmonary vein <i>oxygenated</i> blood, the exception to the usual artery/vein rule.</div>
-
-      <div class="section-heading" id="topic-3">🫁 Ch 8 · Respiratory System</div>
-      <table><tr><th>Key term</th><th>Meaning</th></tr><tr><td>⭐ <b>Inhalation / Exhalation</b></td><td>Breathing in / breathing out</td></tr><tr><td>⭐ <b>Epiglottis</b></td><td>Flap that stops food entering the trachea</td></tr><tr><td>⭐ <b>Trachea</b></td><td>Windpipe; c-shaped cartilage rings keep it open</td></tr><tr><td><b>Bronchus (bronchi)</b></td><td>Two tubes the trachea splits into, one per lung</td></tr><tr><td><b>Bronchioles</b></td><td>Increasingly narrow tubes branching from each bronchus</td></tr><tr><td>⭐ <b>Alveolus (alveoli)</b></td><td>Tiny air sacs where gases are exchanged between air and blood</td></tr><tr><td>⭐ <b>Diffusion</b></td><td>Gas moves from high concentration to low concentration</td></tr><tr><td>⭐ <b>Diaphragm</b></td><td>Muscle below lungs: contracts and flattens to bring air in</td></tr><tr><td><b>Intercostal muscles</b></td><td>Muscles between ribs that move the ribs</td></tr><tr><td><b>Pharynx</b></td><td>Throat: opening for both digestive and respiratory systems</td></tr><tr><td><b>Mucus</b></td><td>Sticky substance in the nose that traps dust and micro-organisms</td></tr></table>
-      <div class="flow"><span class="box">Nose</span><span class="arr">→</span><span class="box">Pharynx</span><span class="arr">→</span><span class="box">Trachea</span><span class="arr">→</span><span class="box">2 Bronchi</span><span class="arr">→</span><span class="box">Bronchioles</span><span class="arr">→</span><span class="box">Alveoli</span></div>
-<table><tr><th>Gas</th><th>Inhaled</th><th>Exhaled</th></tr><tr><td>Oxygen</td><td>21%</td><td>16%</td></tr><tr><td>Carbon dioxide</td><td>0.04%</td><td>4%</td></tr><tr><td>Nitrogen</td><td>78%</td><td>78%</td></tr></table>
-<p>Exhaled air also has more water vapour. Inhaling: diaphragm <b>contracts and flattens</b>; exhaling: it relaxes to a dome. Respiration ≠ breathing.</p>
-
-      <div class="section-heading" id="topic-4">🏃 Ch 27 · Motion</div>
-      <table><tr><th>Key term</th><th>Meaning</th></tr><tr><td><b>Motion</b></td><td>An object is moving</td></tr><tr><td><b>Linear motion</b></td><td>Movement in a straight line</td></tr><tr><td>⭐ <b>Speed</b></td><td>How fast something travels: distance ÷ time (m/s)</td></tr><tr><td>⭐ <b>Velocity</b></td><td>Speed in a given direction (e.g. 20 m/s east)</td></tr><tr><td>⭐ <b>Acceleration</b></td><td>Rate of change of velocity: (final − initial velocity) ÷ time (m/s²)</td></tr><tr><td>⭐ <b>Distance-time graph</b></td><td>Distance on y-axis, time on x-axis; slope = speed</td></tr><tr><td>⭐ <b>Velocity-time graph</b></td><td>Velocity on y-axis, time on x-axis; slope = acceleration</td></tr></table>
-      <div class="key-term"><b>Formulae</b> (m/s, m/s², m, s):<br><span style="font-family:'JetBrains Mono',monospace">speed = distance ÷ time<br>distance = speed × time &nbsp;·&nbsp; time = distance ÷ speed<br>acceleration = (final velocity − initial velocity) ÷ time</span></div>
-<ul><li>Distance-time graph: slope = speed; steeper = faster; horizontal = stopped.</li><li>Velocity-time graph: slope = acceleration; horizontal = constant velocity; downward = slowing.</li></ul>
-<div class="exam-trap"><b>⚠️ Common mistakes:</b> convert km/minutes to m/s first; velocity needs a direction; slowing down gives negative acceleration.</div>
-
-      <div class="section-heading" id="topic-5">🌍 Ch 36 · Earth-Sun-Moon System</div>
-      <table><tr><th>Key term</th><th>Meaning</th></tr><tr><td><b>Shadow</b></td><td>Dark area formed when an opaque object blocks light</td></tr><tr><td><b>Opaque object</b></td><td>An object that blocks light</td></tr><tr><td>⭐ <b>Axis</b></td><td>Imaginary line through the poles; Earth spins on it; tilted at 23.5°</td></tr><tr><td>⭐ <b>Season</b></td><td>Period of the year with a change in weather and hours of daylight</td></tr><tr><td>⭐ <b>Lunar phases</b></td><td>Different shapes of the Moon seen from Earth as it orbits</td></tr><tr><td>⭐ <b>Waxing / Waning</b></td><td>Waxing = getting bigger; waning = getting smaller</td></tr><tr><td><b>Eclipse</b></td><td>The Sun&#x27;s light is blocked by the Moon or the Earth</td></tr><tr><td>⭐ <b>Solar eclipse</b></td><td>Moon between Sun and Earth (Sun – Moon – Earth)</td></tr><tr><td>⭐ <b>Lunar eclipse</b></td><td>Earth between Sun and Moon (Sun – Earth – Moon)</td></tr><tr><td>⭐ <b>Umbra</b></td><td>Darkest part of a shadow: light completely blocked</td></tr><tr><td>⭐ <b>Penumbra</b></td><td>Lighter part of a shadow: light partly blocked</td></tr></table>
-      <table><tr><th>Key number</th><th>Value</th></tr><tr><td>Earth spins once</td><td>24 hours</td></tr><tr><td>Earth orbits Sun</td><td>365.25 days</td></tr><tr><td>Moon orbits Earth</td><td>27 days</td></tr><tr><td>Lunar cycle</td><td>29.5 days</td></tr><tr><td>Earth's axis tilt</td><td>23.5°</td></tr></table>
+      <section class="fr-chapter" id="ch6">
+        <div class="section-heading">🍽️ Ch 6 · The Digestive System <span class="fr-time">⏱ 7 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Ingestion</b></td><td>Food is taken into the mouth.</td></tr><tr><td><b>Digestion</b></td><td>Breaking food down into smaller pieces / simpler chemicals (physical and chemical).</td></tr><tr><td><b>Absorption</b></td><td>Digested food is passed into the blood and carried to cells.</td></tr><tr><td><b>Assimilation</b></td><td>Digested food is used by the body for energy and to build new cells.</td></tr><tr><td><b>Egestion</b></td><td>Undigested food is released as waste.</td></tr><tr><td><b>Enzyme</b></td><td>A protein that speeds up the rate of chemical reactions and is not used up.</td></tr><tr><td><b>Amylase</b></td><td>Enzyme in saliva: starch → maltose.</td></tr><tr><td><b>Maltase</b></td><td>Enzyme in the small intestine: maltose → glucose.</td></tr><tr><td><b>Peristalsis</b></td><td>Wave-like movement of muscles that pushes food along the oesophagus.</td></tr><tr><td><b>Villi</b></td><td>Tiny projections in the small intestine that give a large surface area for absorption.</td></tr><tr><td><b>Bile</b></td><td>Made by the liver; helps digest fats.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="flow"><span class="box">Ingestion</span><span class="arr">→</span><span class="box">Digestion</span><span class="arr">→</span><span class="box">Absorption</span><span class="arr">→</span><span class="box">Assimilation</span><span class="arr">→</span><span class="box">Egestion</span></div>
+<ul><li><b>Physical</b> digestion: teeth, tongue, stomach churning. <b>Chemical</b>: enzymes and juices. The stomach does both.</li>
+<li><b>Stomach</b> acid (hydrochloric) digests food and kills bacteria.</li>
+<li><b>Pancreas</b> makes enzymes; <b>liver</b> makes bile, breaks down harmful substances, keeps 37 °C.</li>
+<li><b>Large intestine</b> reabsorbs water; faeces stored in the rectum, leave via the anus.</li></ul>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>An enzyme is <b>not used up</b>.</li><li>Absorption = into the blood; assimilation = cells <i>use</i> it.</li><li>Villi: say “<b>increased surface area</b>”. Food doesn't pass through the pancreas or liver.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">answer before you flip</span></h3>
+        <div class="rv-flash"><div class="rv-card"><div class="q">Absorption v assimilation?</div><div class="a">Absorption: into the blood. Assimilation: body uses it for energy / new cells.</div></div><div class="rv-card"><div class="q">Define an enzyme</div><div class="a">A protein that speeds up chemical reactions and is not used up</div></div><div class="rv-card"><div class="q">What does amylase do, and where?</div><div class="a">In saliva: breaks starch into maltose</div></div><div class="rv-card"><div class="q">How are villi suited to absorption?</div><div class="a">They give a large surface area</div></div><div class="rv-card"><div class="q">What is peristalsis?</div><div class="a">Wave-like muscle movement pushing food along the oesophagus</div></div></div>
+        <button class="fr-done" data-ch="ch6">Mark Ch 6 done</button>
+      </section>
+      <section class="fr-chapter" id="ch7">
+        <div class="section-heading">❤️ Ch 7 · The Circulatory System <span class="fr-time">⏱ 8 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Plasma</b></td><td>Light yellow liquid, mostly water, carrying dissolved substances, waste and heat.</td></tr><tr><td><b>Red blood cells</b></td><td>Transport oxygen to cells so respiration can take place.</td></tr><tr><td><b>Haemoglobin</b></td><td>Red pigment in red blood cells; contains iron and picks up oxygen.</td></tr><tr><td><b>White blood cells</b></td><td>Fight harmful micro-organisms or make antibodies.</td></tr><tr><td><b>Platelets</b></td><td>Fragments of larger cells that help blood clot.</td></tr><tr><td><b>Arteries</b></td><td>Carry blood away from the heart; thick muscle walls.</td></tr><tr><td><b>Veins</b></td><td>Carry blood to the heart; thinner walls and valves.</td></tr><tr><td><b>Capillaries</b></td><td>Link arteries and veins; walls one cell thick.</td></tr><tr><td><b>Atria / ventricles</b></td><td>Atria = upper chambers; ventricles = lower chambers.</td></tr><tr><td><b>Septum</b></td><td>Wall separating the left and right sides of the heart.</td></tr><tr><td><b>Pulse</b></td><td>A wave of vibration through an artery when blood is forced out of the heart.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="flow"><span class="box blue">Vena cava</span><span class="arr">→</span><span class="box blue">R atrium</span><span class="arr">→</span><span class="box blue">R ventricle</span><span class="arr">→</span><span class="box blue">Pulmonary artery</span><span class="arr">→</span><span class="box">Lungs</span><span class="arr">→</span><span class="box red">Pulmonary vein</span><span class="arr">→</span><span class="box red">L atrium</span><span class="arr">→</span><span class="box red">L ventricle</span><span class="arr">→</span><span class="box red">Aorta</span><span class="arr">→</span><span class="box">Body</span></div>
+<p>Blue = deoxygenated (low O₂, high CO₂) · red = oxygenated.</p>
+<ul><li>3 functions of blood: <b>transport, protect, regulate temperature</b>.</li>
+<li>Plasma = 55% of blood. Resting pulse 60–100 bpm (count 30 s, ×2).</li></ul>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Pulmonary <b>artery</b> carries <i>deoxygenated</i> blood; pulmonary <b>vein</b> <i>oxygenated</i>: the exceptions.</li><li>Platelets are <b>fragments</b>, not cells.</li><li>Arteries: thick walls because of high pressure; veins have valves because pressure is lower.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">answer before you flip</span></h3>
+        <div class="rv-flash"><div class="rv-card"><div class="q">Three functions of blood?</div><div class="a">Transport, protect, regulate temperature</div></div><div class="rv-card"><div class="q">What is haemoglobin?</div><div class="a">Iron-containing red pigment that picks up oxygen</div></div><div class="rv-card"><div class="q">Artery v vein: direction and wall?</div><div class="a">Artery: away from heart, thick walls. Vein: to heart, thinner walls + valves</div></div><div class="rv-card"><div class="q">Why are capillary walls one cell thick?</div><div class="a">So oxygen and carbon dioxide can be exchanged easily</div></div><div class="rv-card"><div class="q">Which vessel takes oxygenated blood to the body?</div><div class="a">The aorta (from the left ventricle)</div></div></div>
+        <button class="fr-done" data-ch="ch7">Mark Ch 7 done</button>
+      </section>
+      <section class="fr-chapter" id="ch8">
+        <div class="section-heading">🫁 Ch 8 · The Respiratory System <span class="fr-time">⏱ 7 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Inhalation / exhalation</b></td><td>Breathing in / breathing out.</td></tr><tr><td><b>Epiglottis</b></td><td>Flap of tissue that stops food going into the trachea.</td></tr><tr><td><b>Trachea</b></td><td>The windpipe; c-shaped rings of cartilage keep it open.</td></tr><tr><td><b>Bronchus (bronchi)</b></td><td>The two tubes the trachea divides into, one for each lung.</td></tr><tr><td><b>Bronchioles</b></td><td>Increasingly narrow tubes that each bronchus divides into.</td></tr><tr><td><b>Alveolus (alveoli)</b></td><td>Tiny air sac where gases are exchanged between air and blood.</td></tr><tr><td><b>Diffusion</b></td><td>Movement of a gas from high concentration to low concentration.</td></tr><tr><td><b>Diaphragm</b></td><td>Sheet of muscle below the lungs; contracts and flattens to bring air in.</td></tr><tr><td><b>Intercostal muscles</b></td><td>Muscles between the ribs that move the ribs.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="flow"><span class="box">Nose</span><span class="arr">→</span><span class="box">Pharynx</span><span class="arr">→</span><span class="box">Trachea</span><span class="arr">→</span><span class="box">2 Bronchi</span><span class="arr">→</span><span class="box">Bronchioles</span><span class="arr">→</span><span class="box">Alveoli</span></div>
+<table class="mini"><tr><th>Gas</th><th>Inhaled</th><th>Exhaled</th></tr><tr><td>Oxygen</td><td>21%</td><td>16%</td></tr><tr><td>Carbon dioxide</td><td>0.04%</td><td>4%</td></tr><tr><td>Nitrogen</td><td>78%</td><td>78%</td></tr><tr><td>Water vapour</td><td>less</td><td>more</td></tr></table>
+<ul><li>Nose <b>warms, moistens and cleans</b> air (hairs + mucus).</li>
+<li>Alveoli: ~300 million per lung, <b>thin walls</b> (one cell), <b>large surface area</b>, surrounded by capillaries.</li></ul>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Respiration ≠ breathing.</li><li>In: diaphragm <b>contracts and flattens</b>. Out: relaxes to a dome. Don't reverse them.</li><li>Diffusion answers: say <b>which gas</b>, from where to where.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">answer before you flip</span></h3>
+        <div class="rv-flash"><div class="rv-card"><div class="q">Job of the epiglottis?</div><div class="a">Stops food going down into the trachea</div></div><div class="rv-card"><div class="q">Define diffusion</div><div class="a">Movement of a gas from high to low concentration</div></div><div class="rv-card"><div class="q">Two ways alveoli suit gas exchange?</div><div class="a">Large surface area; thin walls (one cell), surrounded by capillaries</div></div><div class="rv-card"><div class="q">Diaphragm when you inhale?</div><div class="a">Contracts and flattens</div></div><div class="rv-card"><div class="q">% CO₂ inhaled v exhaled?</div><div class="a">0.04% in, 4% out</div></div></div>
+        <button class="fr-done" data-ch="ch8">Mark Ch 8 done</button>
+      </section>
+      <section class="fr-chapter" id="ch27">
+        <div class="section-heading">🏃 Ch 27 · Motion <span class="fr-time">⏱ 7 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Speed</b></td><td>How fast an object travels: distance ÷ time (m/s).</td></tr><tr><td><b>Velocity</b></td><td>The speed of an object and the direction it travels in.</td></tr><tr><td><b>Acceleration</b></td><td>The rate at which velocity changes: change in velocity ÷ time (m/s²).</td></tr><tr><td><b>Linear motion</b></td><td>Movement in a straight line.</td></tr><tr><td><b>Distance-time graph</b></td><td>Distance (y) against time (x); slope = speed.</td></tr><tr><td><b>Velocity-time graph</b></td><td>Velocity (y) against time (x); slope = acceleration.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="formula">speed = distance ÷ time &nbsp;&nbsp;(m/s)<br>distance = speed × time &nbsp;·&nbsp; time = distance ÷ speed<br>acceleration = (final velocity − initial velocity) ÷ time &nbsp;&nbsp;(m/s²)</div>
+<table class="mini"><tr><th>Line on graph</th><th>Distance-time</th><th>Velocity-time</th></tr>
+<tr><td>Straight, sloping up</td><td>Constant speed (steeper = faster)</td><td>Constant acceleration</td></tr>
+<tr><td>Horizontal</td><td>Stopped</td><td>Constant velocity</td></tr>
+<tr><td>Sloping down</td><td>–</td><td>Slowing down</td></tr></table>
+<div class="example-box"><div class="example-header">Worked example</div><div class="example-body">Car goes from 5 m/s to 25 m/s in 4 s → a = (25 − 5) ÷ 4 = <b>5 m/s²</b></div></div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Convert km → m and minutes/hours → s <b>first</b>.</li><li>Velocity always needs a <b>direction</b> (20 m/s east).</li><li>Slowing down = negative acceleration. Check the y-axis label before reading a graph.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">answer before you flip</span></h3>
+        <div class="rv-flash"><div class="rv-card"><div class="q">Speed v velocity?</div><div class="a">Velocity is speed with a direction</div></div><div class="rv-card"><div class="q">Formula for acceleration (with unit)</div><div class="a">(final − initial velocity) ÷ time, m/s²</div></div><div class="rv-card"><div class="q">Slope of a distance-time graph gives…</div><div class="a">Speed</div></div><div class="rv-card"><div class="q">Horizontal line on a velocity-time graph?</div><div class="a">Constant velocity</div></div><div class="rv-card"><div class="q">360 m in 30 s: speed?</div><div class="a">360 ÷ 30 = 12 m/s</div></div></div>
+        <button class="fr-done" data-ch="ch27">Mark Ch 27 done</button>
+      </section>
+      <section class="fr-chapter" id="ch36">
+        <div class="section-heading">🌍 Ch 36 · The Earth-Sun-Moon System <span class="fr-time">⏱ 7 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr><tr><td><b>Shadow</b></td><td>Dark area formed when an opaque object blocks rays of light.</td></tr><tr><td><b>Axis</b></td><td>Imaginary line through the North and South poles; Earth spins on it; tilted at 23.5°.</td></tr><tr><td><b>Season</b></td><td>A period of the year when the weather and hours of daylight change.</td></tr><tr><td><b>Lunar phases</b></td><td>The different shapes of the Moon we see from Earth as it orbits.</td></tr><tr><td><b>Waxing / waning</b></td><td>Getting bigger / getting smaller.</td></tr><tr><td><b>Solar eclipse</b></td><td>Moon moves between the Sun and Earth; Moon&#x27;s shadow falls on Earth.</td></tr><tr><td><b>Lunar eclipse</b></td><td>Earth moves between the Sun and Moon; Earth&#x27;s shadow falls on the Moon.</td></tr><tr><td><b>Umbra</b></td><td>Darkest part of a shadow: light completely blocked.</td></tr><tr><td><b>Penumbra</b></td><td>Lighter part of a shadow: light only partially blocked.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <table class="mini"><tr><th>Key number</th><th>Value</th></tr><tr><td>Earth spins once (day + night)</td><td>24 hours</td></tr><tr><td>Earth orbits the Sun</td><td>365.25 days</td></tr><tr><td>Moon orbits Earth (and rotates once)</td><td>27 days</td></tr><tr><td>Lunar cycle</td><td>29.5 days</td></tr><tr><td>Axis tilt</td><td>23.5°</td></tr></table>
 <div class="flow"><span class="box">New</span><span class="arr">→</span><span class="box">Waxing crescent</span><span class="arr">→</span><span class="box">First quarter</span><span class="arr">→</span><span class="box">Waxing gibbous</span><span class="arr">→</span><span class="box">Full</span><span class="arr">→</span><span class="box">Waning gibbous</span><span class="arr">→</span><span class="box">Third quarter</span><span class="arr">→</span><span class="box">Waning crescent</span></div>
-<div class="exam-trap"><b>⚠️ Common mistake:</b> seasons are caused by the tilt and orbit, <i>not</i> by Earth being closer to the Sun. The Moon <i>reflects</i> sunlight. Never look directly at the Sun.</div>
+<ul><li><b>Seasons</b> = 365.25-day orbit + tilt staying the same. Summer: tilted towards the Sun, higher angle, longer days, smaller area heated → warmer.</li>
+<li>Shadows: light travels in <b>straight lines</b> and can't pass through an <b>opaque</b> object.</li>
+<li>Moon <b>reflects</b> sunlight; same side always faces us (rotation = orbit time).</li></ul>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Seasons are <b>not</b> caused by being closer to the Sun.</li><li>Solar = Sun – Moon – Earth; lunar = Sun – Earth – Moon.</li><li>Never look directly at the Sun (UV burns the retina): eclipse glasses or pinhole camera.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">answer before you flip</span></h3>
+        <div class="rv-flash"><div class="rv-card"><div class="q">What causes the seasons?</div><div class="a">Earth&#x27;s tilted axis (23.5°) as it orbits the Sun</div></div><div class="rv-card"><div class="q">Order in a solar eclipse?</div><div class="a">Sun – Moon – Earth</div></div><div class="rv-card"><div class="q">Umbra v penumbra?</div><div class="a">Umbra: light fully blocked (darkest). Penumbra: partly blocked</div></div><div class="rv-card"><div class="q">Waxing means…</div><div class="a">Getting bigger</div></div><div class="rv-card"><div class="q">Why do we always see the same side of the Moon?</div><div class="a">It rotates once in the same time it orbits Earth (27 days)</div></div></div>
+        <button class="fr-done" data-ch="ch36">Mark Ch 36 done</button>
+      </section>
 
-      <div class="section-heading" id="flashcards">🃏 Flashcards (49)</div>
-      <div class="rv-flash"><div class="rv-card"><div class="q">Ch 6: what is/are Digestion?</div><div class="a">Breaking food into smaller pieces / simpler chemicals (physical + chemical)</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Absorption?</div><div class="a">Digested food passes into the blood</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Assimilation?</div><div class="a">Body uses digested food for energy and new cells</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Enzyme?</div><div class="a">A protein that speeds up chemical reactions and is not used up</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Amylase?</div><div class="a">Enzyme in saliva: starch → maltose</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Maltase?</div><div class="a">Enzyme in small intestine: maltose → glucose</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Peristalsis?</div><div class="a">Wave-like muscle movement pushing food along the oesophagus</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Villi?</div><div class="a">Tiny projections in small intestine: large surface area for absorption</div></div><div class="rv-card"><div class="q">Ch 6: what is/are Bile?</div><div class="a">Made by liver; helps digest fats</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Plasma?</div><div class="a">Light yellow liquid (mostly water) carrying dissolved substances, waste and heat</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Red blood cells?</div><div class="a">Carry oxygen to cells for respiration</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Haemoglobin?</div><div class="a">Red, iron-containing pigment that picks up oxygen</div></div><div class="rv-card"><div class="q">Ch 7: what is/are White blood cells?</div><div class="a">Fight micro-organisms or make antibodies</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Platelets?</div><div class="a">Fragments of larger cells that help blood clot</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Arteries?</div><div class="a">Carry blood away from heart; thick muscle walls</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Veins?</div><div class="a">Carry blood to heart; thinner walls and valves</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Capillaries?</div><div class="a">Link arteries and veins; walls one cell thick</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Atria / Ventricles?</div><div class="a">Atria = upper chambers; ventricles = lower chambers</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Pulmonary artery?</div><div class="a">Deoxygenated blood from right ventricle to lungs</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Pulmonary vein?</div><div class="a">Oxygenated blood from lungs to left atrium</div></div><div class="rv-card"><div class="q">Ch 7: what is/are Aorta?</div><div class="a">Major artery: oxygenated blood from left ventricle to body</div></div><div class="rv-card"><div class="q">Ch 8: what is/are Inhalation / Exhalation?</div><div class="a">Breathing in / breathing out</div></div><div class="rv-card"><div class="q">Ch 8: what is/are Epiglottis?</div><div class="a">Flap that stops food entering the trachea</div></div><div class="rv-card"><div class="q">Ch 8: what is/are Trachea?</div><div class="a">Windpipe; c-shaped cartilage rings keep it open</div></div><div class="rv-card"><div class="q">Ch 8: what is/are Alveolus (alveoli)?</div><div class="a">Tiny air sacs where gases are exchanged between air and blood</div></div><div class="rv-card"><div class="q">Ch 8: what is/are Diffusion?</div><div class="a">Gas moves from high concentration to low concentration</div></div><div class="rv-card"><div class="q">Ch 8: what is/are Diaphragm?</div><div class="a">Muscle below lungs: contracts and flattens to bring air in</div></div><div class="rv-card"><div class="q">Ch 27: what is/are Speed?</div><div class="a">How fast something travels: distance ÷ time (m/s)</div></div><div class="rv-card"><div class="q">Ch 27: what is/are Velocity?</div><div class="a">Speed in a given direction (e.g. 20 m/s east)</div></div><div class="rv-card"><div class="q">Ch 27: what is/are Acceleration?</div><div class="a">Rate of change of velocity: (final − initial velocity) ÷ time (m/s²)</div></div><div class="rv-card"><div class="q">Ch 27: what is/are Distance-time graph?</div><div class="a">Distance on y-axis, time on x-axis; slope = speed</div></div><div class="rv-card"><div class="q">Ch 27: what is/are Velocity-time graph?</div><div class="a">Velocity on y-axis, time on x-axis; slope = acceleration</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Axis?</div><div class="a">Imaginary line through the poles; Earth spins on it; tilted at 23.5°</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Season?</div><div class="a">Period of the year with a change in weather and hours of daylight</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Lunar phases?</div><div class="a">Different shapes of the Moon seen from Earth as it orbits</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Waxing / Waning?</div><div class="a">Waxing = getting bigger; waning = getting smaller</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Solar eclipse?</div><div class="a">Moon between Sun and Earth (Sun – Moon – Earth)</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Lunar eclipse?</div><div class="a">Earth between Sun and Moon (Sun – Earth – Moon)</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Umbra?</div><div class="a">Darkest part of a shadow: light completely blocked</div></div><div class="rv-card"><div class="q">Ch 36: what is/are Penumbra?</div><div class="a">Lighter part of a shadow: light partly blocked</div></div><div class="rv-card"><div class="q">Ch 6: name the five stages of nutrition</div><div class="a">Ingestion, digestion, absorption, assimilation, egestion</div></div><div class="rv-card"><div class="q">Ch 7: order of blood flow through the heart</div><div class="a">Vena cava → right atrium → right ventricle → pulmonary artery → lungs → pulmonary vein → left atrium → left ventricle → aorta</div></div><div class="rv-card"><div class="q">Ch 8: % oxygen inhaled v exhaled</div><div class="a">21% inhaled, 16% exhaled</div></div><div class="rv-card"><div class="q">Ch 8: % carbon dioxide inhaled v exhaled</div><div class="a">0.04% inhaled, 4% exhaled</div></div><div class="rv-card"><div class="q">Ch 27: speed formula</div><div class="a">speed = distance ÷ time (m/s)</div></div><div class="rv-card"><div class="q">Ch 27: acceleration formula</div><div class="a">(final velocity − initial velocity) ÷ time (m/s²)</div></div><div class="rv-card"><div class="q">Ch 27: what does a horizontal line on a distance-time graph mean?</div><div class="a">The object is stopped</div></div><div class="rv-card"><div class="q">Ch 36: what causes the seasons?</div><div class="a">Earth&#x27;s 23.5° tilted axis while it orbits the Sun (365.25 days)</div></div><div class="rv-card"><div class="q">Ch 36: days in one lunar cycle</div><div class="a">29.5 days</div></div></div>
-
-      <div class="section-heading" id="cloze">✍️ Fill the Gaps</div>
-      <div class="rv-cloze"><p>An enzyme is a {{protein}} that speeds up reactions and is not {{used up}}.</p><p>{{Amylase}} in saliva breaks starch into {{maltose}}; maltase then makes {{glucose}}.</p><p>{{Arteries}} carry blood away from the heart; {{veins}} carry it to the heart and have {{valves}}.</p><p>The {{aorta}} takes oxygenated blood from the left {{ventricle}} to the body.</p><p>Gases move from high to low concentration by {{diffusion}} across the walls of the {{alveoli}}.</p><p>Speed = {{distance}} ÷ {{time}}; velocity is speed with a {{direction}}.</p><p>On a distance-time graph the {{slope}} equals speed; on a velocity-time graph it equals {{acceleration}}.</p><p>A {{solar}} eclipse happens when the Moon is between the Sun and Earth; in a {{lunar}} eclipse Earth is in the middle.</p></div>
-
-      <div class="section-heading" id="quiz">❓ Rapid Quiz</div>
-      <div class="rv-quiz"><div class="rv-q" data-answer="b"><p>Digested food passing into the blood is called…</p><ol><li>Ingestion</li><li>Absorption</li><li>Assimilation</li><li>Egestion</li></ol><div class="explain">Absorption = into the blood. Assimilation is cells using it.</div></div><div class="rv-q" data-answer="c"><p>Which makes bile?</p><ol><li>Pancreas</li><li>Stomach</li><li>Liver</li><li>Large intestine</li></ol><div class="explain">The liver makes bile; the pancreas makes enzymes.</div></div><div class="rv-q" data-answer="c"><p>Why do villi help absorption?</p><ol><li>They churn food</li><li>They make enzymes</li><li>They give a large surface area</li><li>They store bile</li></ol><div class="explain">Villi greatly increase surface area.</div></div><div class="rv-q" data-answer="c"><p>Which vessel has walls one cell thick?</p><ol><li>Artery</li><li>Vein</li><li>Capillary</li><li>Aorta</li></ol><div class="explain">Capillaries are one cell thick so substances can exchange easily.</div></div><div class="rv-q" data-answer="c"><p>Which carries oxygenated blood to the left atrium?</p><ol><li>Vena cava</li><li>Pulmonary artery</li><li>Pulmonary vein</li><li>Aorta</li></ol><div class="explain">The pulmonary vein brings oxygenated blood from the lungs.</div></div><div class="rv-q" data-answer="c"><p>What do platelets do?</p><ol><li>Carry oxygen</li><li>Make antibodies</li><li>Help blood clot</li><li>Carry heat only</li></ol><div class="explain">Platelets are fragments that help blood to clot.</div></div><div class="rv-q" data-answer="b"><p>What stops food entering the trachea?</p><ol><li>Diaphragm</li><li>Epiglottis</li><li>Mucus</li><li>Bronchiole</li></ol><div class="explain">The epiglottis is the flap that covers the trachea.</div></div><div class="rv-q" data-answer="b"><p>When you inhale, the diaphragm…</p><ol><li>Relaxes and domes</li><li>Contracts and flattens</li><li>Stays still</li><li>Fills with air</li></ol><div class="explain">Contracts and flattens to bring air in.</div></div><div class="rv-q" data-answer="b"><p>A car travels 300 m in 20 s. Its speed is…</p><ol><li>6000 m/s</li><li>15 m/s</li><li>320 m/s</li><li>0.07 m/s</li></ol><div class="explain">300 ÷ 20 = 15 m/s.</div></div><div class="rv-q" data-answer="a"><p>A cyclist speeds from 2 m/s to 12 m/s in 5 s. Acceleration?</p><ol><li>2 m/s²</li><li>10 m/s²</li><li>50 m/s²</li><li>14 m/s²</li></ol><div class="explain">(12 − 2) ÷ 5 = 2 m/s².</div></div><div class="rv-q" data-answer="b"><p>A horizontal line on a velocity-time graph means…</p><ol><li>Stopped</li><li>Constant velocity</li><li>Accelerating</li><li>Slowing</li></ol><div class="explain">Horizontal on a v-t graph = constant velocity (stopped is for distance-time).</div></div><div class="rv-q" data-answer="b"><p>Seasons are caused by…</p><ol><li>Distance from the Sun</li><li>Earth&#x27;s tilted axis and orbit</li><li>The Moon&#x27;s orbit</li><li>Earth&#x27;s spin</li></ol><div class="explain">The 23.5° tilt plus the 365.25-day orbit.</div></div><div class="rv-q" data-answer="b"><p>In a lunar eclipse the order is…</p><ol><li>Sun-Moon-Earth</li><li>Sun-Earth-Moon</li><li>Earth-Sun-Moon</li><li>Moon-Sun-Earth</li></ol><div class="explain">Earth is between the Sun and the Moon.</div></div></div>
-
-      <div class="section-heading" id="practice">✏️ Practice Questions</div>
-      <details class="rv-qa"><summary>Distinguish between absorption and assimilation. (2 marks)</summary><div class="rv-model">Absorption: digested food passes into the blood. Assimilation: the body uses the digested food for energy and to build new cells.</div></details>
-      <details class="rv-qa"><summary>Name the vessel types and give one feature of each. (3 marks)</summary><div class="rv-model">Arteries: thick muscle walls, carry blood away from heart. Veins: valves/thinner walls, carry blood to heart. Capillaries: walls one cell thick, link arteries and veins.</div></details>
-      <details class="rv-qa"><summary>Explain how the alveoli are suited to gas exchange. (3 marks)</summary><div class="rv-model">Tiny air sacs with a large surface area; thin walls (one cell thick); surrounded by capillaries; gases move by diffusion from high to low concentration.</div></details>
-      <details class="rv-qa"><summary>A runner covers 400 m in 80 s then accelerates from 5 m/s to 9 m/s in 2 s. Find the speed and the acceleration.</summary><div class="rv-model">Speed = 400 ÷ 80 = 5 m/s. Acceleration = (9 − 5) ÷ 2 = 2 m/s².</div></details>
-      <details class="rv-qa"><summary>Explain why we have seasons. (4 marks)</summary><div class="rv-model">Earth&#x27;s axis is tilted at 23.5° and stays the same as Earth orbits the Sun in 365.25 days. Summer: tilted towards the Sun, higher angle of light, longer days, smaller area heated, warmer. Winter is the opposite.</div></details>
-      <details class="rv-qa"><summary>Describe a solar eclipse. (2 marks)</summary><div class="rv-model">The Moon moves between the Sun and the Earth (Sun – Moon – Earth), casting the Moon&#x27;s shadow on Earth; umbra is the darkest part, penumbra the lighter part.</div></details>
-
-      <div class="section-heading" id="summary">📋 Last-Minute Summary</div>
-      <table><tr><th>Topic</th><th>Say this</th><th>Exam tip</th></tr>
-      <tr><td>Enzyme</td><td>Protein that speeds up reactions, not used up</td><td>Never "used up"</td></tr>
-      <tr><td>Villi / alveoli</td><td>Large surface area (and thin walls)</td><td>"Increased surface area" earns the mark</td></tr>
-      <tr><td>Blood flow</td><td>Vena cava → RA → RV → pulm. artery → lungs → pulm. vein → LA → LV → aorta</td><td>Pulmonary vessels are the exception</td></tr>
-      <tr><td>Breathing</td><td>Diaphragm contracts + flattens = in</td><td>Respiration ≠ breathing</td></tr>
-      <tr><td>Motion</td><td>v = d ÷ t; a = (final − initial) ÷ t</td><td>Units m/s and m/s²; give direction for velocity</td></tr>
-      <tr><td>Seasons / eclipses</td><td>Tilt 23.5° + orbit; solar = Sun-Moon-Earth, lunar = Sun-Earth-Moon</td><td>Not "closer to the Sun"</td></tr></table>
-
-      <div class="section-heading" id="tracker">📅 Revision Tracker (spaced repetition)</div>
-      <div class="rv-tracker"></div>
+      <section id="final">
+        <div class="section-heading">🏁 Final mixed quiz <span class="fr-time">⏱ 6 min</span></div>
+        <p>12 questions across all five chapters. Anything you miss: jump back to that chapter's key-terms table.</p>
+        <div class="rv-quiz"><div class="rv-q" data-answer="b"><p>Digested food being used by cells for energy is…</p><ol><li>Absorption</li><li>Assimilation</li><li>Egestion</li><li>Ingestion</li></ol><div class="explain">Assimilation = cells use it; absorption = into the blood.</div></div><div class="rv-q" data-answer="b"><p>Amylase breaks starch down into…</p><ol><li>Glucose</li><li>Maltose</li><li>Fat</li><li>Bile</li></ol><div class="explain">Amylase: starch → maltose. Maltase then makes glucose.</div></div><div class="rv-q" data-answer="c"><p>Which organ makes bile?</p><ol><li>Pancreas</li><li>Stomach</li><li>Liver</li><li>Small intestine</li></ol><div class="explain">The liver makes bile; the pancreas makes enzymes.</div></div><div class="rv-q" data-answer="d"><p>Which blood component helps blood clot?</p><ol><li>Plasma</li><li>Red blood cells</li><li>White blood cells</li><li>Platelets</li></ol><div class="explain">Platelets are fragments that help clotting.</div></div><div class="rv-q" data-answer="c"><p>Which vessel carries deoxygenated blood to the lungs?</p><ol><li>Pulmonary vein</li><li>Aorta</li><li>Pulmonary artery</li><li>Vena cava</li></ol><div class="explain">The pulmonary artery is the artery that carries deoxygenated blood.</div></div><div class="rv-q" data-answer="b"><p>The upper chambers of the heart are the…</p><ol><li>Ventricles</li><li>Atria</li><li>Septum</li><li>Valves</li></ol><div class="explain">Atria = upper; ventricles = lower.</div></div><div class="rv-q" data-answer="c"><p>Gas exchange in the lungs happens at the…</p><ol><li>Trachea</li><li>Bronchi</li><li>Alveoli</li><li>Pharynx</li></ol><div class="explain">Alveoli: large surface area, thin walls, capillaries.</div></div><div class="rv-q" data-answer="b"><p>Exhaled air contains about…</p><ol><li>21% oxygen</li><li>4% carbon dioxide</li><li>0.04% carbon dioxide</li><li>90% nitrogen</li></ol><div class="explain">CO₂ rises from 0.04% to 4%; oxygen falls 21% → 16%.</div></div><div class="rv-q" data-answer="a"><p>A bus travels 1200 m in 60 s. Its speed is…</p><ol><li>20 m/s</li><li>72 000 m/s</li><li>1260 m/s</li><li>0.05 m/s</li></ol><div class="explain">1200 ÷ 60 = 20 m/s.</div></div><div class="rv-q" data-answer="c"><p>A horizontal line on a distance-time graph means…</p><ol><li>Constant speed</li><li>Accelerating</li><li>Stopped</li><li>Slowing down</li></ol><div class="explain">Distance isn&#x27;t changing, so the object is stopped.</div></div><div class="rv-q" data-answer="b"><p>Ireland has summer when…</p><ol><li>Earth is closest to the Sun</li><li>The northern hemisphere tilts towards the Sun</li><li>The Moon is full</li><li>Earth spins faster</li></ol><div class="explain">Tilt towards the Sun: higher angle, longer days, warmer.</div></div><div class="rv-q" data-answer="b"><p>In a lunar eclipse…</p><ol><li>The Moon is between Sun and Earth</li><li>Earth is between Sun and Moon</li><li>The Sun is between Earth and Moon</li><li>The Moon is new</li></ol><div class="explain">Sun – Earth – Moon: Earth&#x27;s shadow falls on the Moon.</div></div></div>
+        <button class="fr-done" data-ch="final">Mark quiz done</button>
+      </section>
     </div>
   </main>
 
-  <div class="chapter-nav-bar"><a href="index.html">&larr; Science Home</a></div>
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Science Year 2</a></div>
   <script src="../../assets/revision.js"></script>
   <script>
-    // Highlight active sidebar link while scrolling
-    var secs = document.querySelectorAll('.section-heading'), links = document.querySelectorAll('.sidebar a[href^="#"]');
-    addEventListener('scroll', function () {
-      var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
-      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
-    });
+    (function () {
+      var KEY = 'rv:' + location.pathname + ':done', ALL = 6;
+      var load = function () { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } };
+      var save = function (d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} };
+      function render() {
+        var d = load();
+        document.querySelectorAll('.fr-done').forEach(function (b) {
+          var on = d.indexOf(b.dataset.ch) >= 0; b.classList.toggle('is-done', on);
+          b.textContent = (on ? '✓ ' : '') + b.textContent.replace(/^✓ /, '');
+        });
+        document.querySelectorAll('.fr-tick').forEach(function (t) { t.textContent = d.indexOf(t.dataset.ch) >= 0 ? '✓' : '–'; });
+        document.getElementById('fr-progress').textContent = d.length + ' / ' + ALL + ' blocks done' + (d.length === ALL ? ' 🎉 All of Year 2 revised!' : '');
+      }
+      document.querySelectorAll('.fr-done').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var d = load(), i = d.indexOf(b.dataset.ch);
+          if (i >= 0) d.splice(i, 1); else d.push(b.dataset.ch);
+          save(d); render();
+        });
+      });
+      document.getElementById('fr-reset').addEventListener('click', function () { save([]); render(); });
+      var hide = document.getElementById('fr-hide');
+      hide.addEventListener('click', function () {
+        var on = !document.querySelector('table.terms').classList.contains('hide');
+        document.querySelectorAll('table.terms').forEach(function (t) { t.classList.toggle('hide', on); });
+        hide.textContent = on ? '👀 Show definitions' : '🙈 Hide definitions (self-test)';
+      });
+      render();
+      var secs = document.querySelectorAll('section[id], #plan'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+      addEventListener('scroll', function () {
+        var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+        links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+      });
+    })();
   </script>
 </body>
 </html>
