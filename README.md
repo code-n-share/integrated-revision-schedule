@@ -72,6 +72,7 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Business Year 2 – Chapter 16 – Types of Enterprise
 - [x] Business Year 2 – Chapter 21 – Market Research
 - [x] Business Year 2 – Chapter 22 – The Marketing Mix
+- [x] Business Year 2 – Fast Revision – 43-minute recap of Chapters 9, 12, 15, 16, 21 & 22 (rules: CONTENT_RULES.md §8)
 - [x] English Year 2 – Chapter 1 – The Personal Essay
 - [x] English Year 2 – Chapter 2 – The Outsiders: Plot & Key Quotes
 - [x] English Year 2 – Chapter 3 – The Outsiders: Characters & Key Scenes

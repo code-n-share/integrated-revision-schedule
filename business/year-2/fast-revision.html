@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Revision – Year 2 Fast Revision</title>
+  <!-- Fast revision page: follows CONTENT_RULES.md §8 (not the 11-section chapter layout).
+       Content is condensed from ch9, ch12, ch15, ch16, ch21, ch22 in this folder; nothing new is added here. -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #E8630A; --accent-light: #FFF0E6; --accent-dark: #A84000;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: var(--text); padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: var(--text); font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; }
+    .example-box { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); margin: 14px 0; overflow: hidden; }
+    .example-header { background: var(--accent-light); font-weight: 700; padding: 8px 16px; font-size: 14px; }
+    .example-body { padding: 14px 16px; font-size: 14px; }
+    .answer { display: inline-block; margin-top: 6px; padding: 4px 12px; background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 8px; font-weight: 700; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap ul { margin-bottom: 0; }
+    .formula { margin: 12px 0; padding: 12px 16px; background: #F1F8E9; border: 1.5px solid #8BC34A; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.9; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 12px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .box.peak { background: var(--accent-light); }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .twocol > div { border-radius: var(--radius); padding: 12px 16px; border: 1.5px solid var(--border); background: var(--card); }
+    .twocol .pos { border-color: #2E7D32; background: #F1F8F2; }
+    .twocol .neg { border-color: #C62828; background: #FDF1F0; }
+    .twocol h4 { font: 700 14px 'Sora', sans-serif; margin-bottom: 4px; }
+    .twocol ul { margin-bottom: 0; }
+    .fr-chapter h3 { font: 700 15px 'Sora', sans-serif; margin: 18px 0 4px; }
+    .fr-sub { font: 400 13px 'DM Sans', sans-serif; color: var(--muted); }
+    .fr-time { margin-left: auto; font: 600 13px 'DM Sans', sans-serif; background: var(--accent-light); color: var(--accent-dark); padding: 3px 10px; border-radius: 100px; }
+    table.terms td:first-child { width: 32%; }
+    table.mini { max-width: 620px; }
+    .qc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin: 8px 0; }
+    details.qc { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+    details.qc summary { list-style: none; font-weight: 600; font-size: 14px; }
+    details.qc summary::-webkit-details-marker { display: none; }
+    details.qc summary::after { content: ' 👆 tap'; font-weight: 400; font-size: 12px; color: var(--muted); }
+    details.qc[open] { border-color: var(--accent); background: var(--accent-light); }
+    details.qc[open] summary::after { content: ''; }
+    details.qc .qa { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--accent); font-size: 14px; }
+    details.qc .qa::before { content: '✓ '; color: var(--accent-dark); font-weight: 700; }
+    .qc-bar { margin: 4px 0 0; }
+    .qc-bar button { font: 600 13px 'DM Sans', sans-serif; background: #fff; color: var(--accent-dark); border: 1.5px solid var(--accent); border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content, .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } .twocol { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Business Revision</div><div class="book-title">Year 2 · Fast Revision</div></div>
+    <a href="index.html">&larr; Business Year 2</a>
+    <a href="#ch9">🛡️ Ch 9 Insurance</a>
+    <a href="#ch12">🛒 Ch 12 Protecting the Consumer</a>
+    <a href="#ch15">🧑‍💼 Ch 15 The Entrepreneur</a>
+    <a href="#ch16">🏢 Ch 16 Types of Enterprise</a>
+    <a href="#ch21">📊 Ch 21 Market Research</a>
+    <a href="#ch22">📢 Ch 22 The Marketing Mix</a>
+    <a href="#final">🏁 Final quiz</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">⚡ Fast Revision · Year 2 Business Studies</div>
+      <h1>⚡ <span>All of Year 2 in 43 minutes</span></h1>
+      <p class="chapter-meta">Ch 9 Insurance · Ch 12 Protecting the Consumer · Ch 15 The Entrepreneur · Ch 16 Types of Enterprise · Ch 21 Market Research · Ch 22 The Marketing Mix</p>
+      <div><span class="goal-tag">✔ 61 key terms</span><span class="goal-tag">✔ Every insurance formula + 6 pricing strategies</span><span class="goal-tag">✔ 3 consumer laws &amp; the agencies</span><span class="goal-tag">✔ 30 quick-check questions + 12-question quiz</span></div>
+    </div>
+
+    <div class="content">
+
+      <section class="fr-chapter" id="ch9">
+        <div class="section-heading">🛡️ Ch 9 · Insurance <span class="fr-time">⏱ 7 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Insurance</b></td><td>Financial protection against possible loss; tries to put the insured back in the same financial position.</td></tr>
+<tr><td><b>Insured / insurer</b></td><td>Insured = the person who takes out and pays for insurance. Insurer = the company that pays out.</td></tr>
+<tr><td><b>Premium</b></td><td>The amount the insured pays an insurer in return for cover for a particular risk.</td></tr>
+<tr><td><b>Insurable interest</b></td><td>You must benefit from the item's existence and suffer financially from its loss.</td></tr>
+<tr><td><b>Utmost good faith</b></td><td>Tell the truth and disclose all material facts; if you don't, no compensation is paid.</td></tr>
+<tr><td><b>Indemnity</b></td><td>You cannot profit from insurance: compensation only for the value of the loss.</td></tr>
+<tr><td><b>Subrogation</b></td><td>Once the insurer pays compensation, ownership of the item passes to the insurer.</td></tr>
+<tr><td><b>Contribution</b></td><td>Same risk insured with more than one insurer: they divide the cost of the claim.</td></tr>
+<tr><td><b>Loading</b></td><td>An extra charge added to the basic premium, e.g. novice driver charge, fully comprehensive cover.</td></tr>
+<tr><td><b>Policy excess</b></td><td>The amount the insured must pay towards any loss; the insurer pays the rest.</td></tr>
+<tr><td><b>Average clause</b></td><td>Applies to underinsurance and partial loss: compensation is reduced in proportion to the under-insurance.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="mnemonic"><b>🧩 5 principles:</b> “<b>I</b> <b>U</b>sually <b>I</b>nsure <b>S</b>ensible <b>C</b>ars” = Insurable interest, Utmost good faith, Indemnity, Subrogation, Contribution. Key phrases: indemnity = “cannot profit”, subrogation = “ownership passes”.</div>
+        <ul><li><b>Home:</b> two parts, buildings and contents. Discount for security features (e.g. burglar alarm).</li>
+<li><b>Motor:</b> required by law. Third party (and third party fire &amp; theft) or comprehensive. <b>No claims bonus</b> = discount next year if you had no accidents.</li></ul>
+        <div class="formula">Premium = (Value insured ÷ unit) × rate &nbsp;→ buildings + contents<br>Discounts: add the %s, then × (1 − total) &nbsp;(10% + 5% → × 0.85)<br>Car quote: basic + loadings = total, then less discount<br>Compensation = Loss − Excess<br>Average clause: Compensation = (Sum insured ÷ Market value) × Loss</div>
+        <div class="example-box"><div class="example-header">📘 Worked example: Healy family</div><div class="example-body">
+          Buildings €2.50 per €1,000 (house €320,000); contents €3 per €1,000 (€35,000). 10% security discount + 5% for applying online.<br>
+          Buildings 320 × €2.50 = €800 · Contents 35 × €3 = €105 · Total €905 · 15% off → €905 × 0.85<br>
+          <span class="answer">= €769.25</span></div></div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Insured = customer (pays the premium); insurer = company (pays the compensation). Don't swap them.</li><li>Divide by the unit (€1,000 / €5,000 / €10,000) first, and <b>add</b> the discounts before multiplying.</li><li>Average clause: <b>sum insured on top</b>, market value on the bottom, so the answer is never more than the loss.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Name the 5 principles of insurance</summary><div class="qa">Insurable interest, utmost good faith, indemnity, subrogation, contribution</div></details><details class="qc"><summary>The insurer pays out for a written-off car. Who owns the wreck, and which principle is this?</summary><div class="qa">The insurer: subrogation</div></details><details class="qc"><summary>Buildings €5 per €1,000, house insured for €200,000. Premium?</summary><div class="qa">200 × €5 = €1,000</div></details><details class="qc"><summary>Loss €6,000, policy excess €300. How much does the insurer pay?</summary><div class="qa">€6,000 − €300 = €5,700</div></details><details class="qc"><summary>House worth €300,000 insured for €150,000; €40,000 damage. Compensation?</summary><div class="qa">Average clause: (150,000 ÷ 300,000) × €40,000 = €20,000</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch12">
+        <div class="section-heading">🛒 Ch 12 · Protecting the Consumer <span class="fr-time">⏱ 7 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Consumer</b></td><td>A person who buys goods or services for their own use.</td></tr>
+<tr><td><b>Merchantable quality</b></td><td>Goods must be of a standard fit to be sold (not faulty or damaged).</td></tr>
+<tr><td><b>Redress</b></td><td>A solution to a consumer issue: repair, replacement or refund.</td></tr>
+<tr><td><b>Guarantee</b></td><td>Manufacturer's promise to sort out problems within a fixed period; usually free; doesn't take away legal rights.</td></tr>
+<tr><td><b>Extended warranty</b></td><td>Like an insurance policy: you pay a premium to extend the guarantee for longer.</td></tr>
+<tr><td><b>Misleading practice</b></td><td>False or untrue information used to deceive the consumer.</td></tr>
+<tr><td><b>Aggressive practice</b></td><td>Harassment, physical force or influence used to force someone into buying a product.</td></tr>
+<tr><td><b>Cooling-off period</b></td><td>14 days to return an item bought at a distance because you changed your mind.</td></tr>
+<tr><td><b>CCPC</b></td><td>Competition and Consumer Protection Commission: informs, educates, researches and enforces consumer protection law.</td></tr>
+<tr><td><b>Small claims procedure</b></td><td>Quick, cheap way to resolve a complaint without a solicitor: max claim €2,000, fee €25.</td></tr>
+<tr><td><b>Ombudsman</b></td><td>Independent, impartial and free; investigates complaints about public bodies (government departments, local authorities, HSE).</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <table class="mini"><tr><th>Law</th><th>What it says</th></tr>
+<tr><td><b>Sale of Goods and Supply of Services Act 1980</b></td><td>Goods: merchantable quality · fit for purpose · as described · match the sample.<br>Services: skills &amp; qualifications · care &amp; attention · merchantable materials.</td></tr>
+<tr><td><b>Consumer Protection Act 2007</b></td><td>Misleading claims illegal: goods (performance, ingredients, weight), services (time, place, effect), prices (RRP, previous, actual). Misleading, aggressive and <b>32</b> prohibited practices.</td></tr>
+<tr><td><b>Consumer Rights Act 2022</b></td><td>EU Consumer Rights Directive: buying online, by phone or mail order from EU businesses. <b>14-day</b> cooling-off, refund if not delivered, return faulty goods.</td></tr></table>
+        <div class="formula">Unit price = Price ÷ Quantity &nbsp;→ lowest wins<br>9 cans €5.00 → 56c each · 16 cans €8.00 → 50c each → the 16-pack is better value</div>
+        <div class="mnemonic"><b>🧩 Responsibilities, W-I-S-E-R:</b> behave <b>W</b>isely · avoid <b>I</b>mpulse buying &amp; false economies · <b>S</b>hop around · <b>E</b>thical &amp; environmental impact · know your <b>R</b>ights.<br><b>Letter of complaint:</b> Issue → Law broken → Redress wanted.</div>
+        <table class="mini"><tr><th>Problem</th><th>Go to</th></tr>
+<tr><td>Faulty good / poor service from a trader, up to €2,000</td><td>Small claims procedure</td></tr>
+<tr><td>Unfair treatment by a public body</td><td>Office of the Ombudsman</td></tr>
+<tr><td>Supplier in another EU member state</td><td>European Consumer Centre (Ireland)</td></tr>
+<tr><td>Information, research, enforcing consumer law</td><td>CCPC</td></tr></table>
+        <p><b>Online shopping:</b> ✅ convenient 24/7, greater variety, no sales pressure · ❌ fraud risk, can't try goods on, harder returns, environmental impact.</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Compare <b>unit prices</b>, not total prices.</li><li>A complaint about a <b>shop</b> doesn't go to the Ombudsman (public bodies only): use the small claims procedure.</li><li>A guarantee never removes your legal rights and is usually free; an extended warranty is paid for.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Four things goods must be under the 1980 Act</summary><div class="qa">Merchantable quality, fit for purpose, as described, match the sample</div></details><details class="qc"><summary>Name the three types of redress</summary><div class="qa">Repair, replacement, refund</div></details><details class="qc"><summary>A brochure says “5-minute walk to the slopes”; it's a 30-minute bus ride. Which Act is broken?</summary><div class="qa">Consumer Protection Act 2007: a misleading claim</div></details><details class="qc"><summary>You buy online from a French retailer and change your mind. How long to return it?</summary><div class="qa">14 days (cooling-off period, EU Consumer Rights Directive)</div></details><details class="qc"><summary>The 3 steps of a letter of complaint</summary><div class="qa">Describe the issue; show how it breaches consumer law; state the redress you want</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch15">
+        <div class="section-heading">🧑‍💼 Ch 15 · Skills, Characteristics &amp; Role of the Entrepreneur <span class="fr-time">⏱ 6 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Enterprise</b></td><td>Any attempt to start or do something new: turning ideas into actions.</td></tr>
+<tr><td><b>Entrepreneur</b></td><td>Takes the initiative and the personal and financial risk of setting up an organisation (Ben Dunne, Dunnes Stores).</td></tr>
+<tr><td><b>Intrapreneur</b></td><td>Someone enterprising within an existing business (McDonald's regional manager who created the Happy Meal).</td></tr>
+<tr><td><b>Brainstorming</b></td><td>People coming together and thinking of new ideas.</td></tr>
+<tr><td><b>Import substitution</b></td><td>Replacing imports with goods and services produced in Ireland.</td></tr>
+<tr><td><b>“Me too” product</b></td><td>A copy of a competitor's product; you can't copy ideas protected by copyright or patent.</td></tr>
+<tr><td><b>Feasibility study</b></td><td>Checking whether you will be able to afford the idea.</td></tr>
+<tr><td><b>Prototype</b></td><td>A sample of the idea.</td></tr>
+<tr><td><b>Test marketing</b></td><td>Testing the product in the market before full launch.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="twocol">
+          <div><h4>Characteristics (what they are like)</h4><p>Realistic risk-taker · innovative · proactive · flexible · self-confident · decisive · determined / resilient</p></div>
+          <div><h4>Skills (what they can do)</h4><p>Identify opportunities · planning &amp; goal setting · time management · manage money · human relations · assess &amp; manage risks</p></div>
+        </div>
+        <div class="twocol">
+          <div class="pos"><h4>✅ Rewards</h4><ul><li>Own boss, make all the decisions</li><li>Keep all the profit</li><li>Flexible hours</li><li>Satisfaction if it succeeds</li></ul></div>
+          <div class="neg"><h4>❌ Risks</h4><ul><li>May lose all the money invested</li><li>Long hours; hard to take time away</li><li>Income isn't guaranteed</li><li>Reputation and credit rating may suffer</li></ul></div>
+        </div>
+        <table class="mini"><tr><th>Role in…</th><th>The entrepreneur…</th></tr>
+<tr><td>Organisations</td><td>Generates ideas · takes risks · vision &amp; motivation · leadership · long-term plans · raises finance</td></tr>
+<tr><td>The economy</td><td>Uses resources · goods &amp; services · jobs &amp; wealth · training · living standards · <b>taxation</b> · <b>foreign trade</b></td></tr>
+<tr><td>Society</td><td>Services (clubs, charities) · infrastructure &amp; amenities · living standards · enterprise culture · <b>sponsorship</b></td></tr></table>
+        <table class="mini"><tr><th>Internal sources of ideas</th><th>External sources of ideas</th></tr>
+<tr><td>Brainstorming · sales personnel · intrapreneurship (bonus for ideas) · R&amp;D department</td><td>Competitors · import substitution · customer complaints/feedback · market research (gaps, trends)</td></tr></table>
+        <p><b>Product development process (7 steps)</b></p>
+        <div class="flow"><span class="box">1 Idea generation</span><span class="arr">→</span><span class="box">2 Product screening</span><span class="arr">→</span><span class="box">3 Concept development</span><span class="arr">→</span><span class="box">4 Feasibility study</span><span class="arr">→</span><span class="box">5 Prototype</span><span class="arr">→</span><span class="box">6 Test marketing</span><span class="arr">→</span><span class="box">7 Product launch</span></div>
+        <div class="mnemonic"><b>🧩 Remember it:</b> “<b>I</b> guess <b>p</b>eople should <b>c</b>ome down <b>f</b>or some <b>p</b>izza dinner, <b>t</b>omorrow morning please <b>l</b>eave” = Idea · Product screening · Concept · Feasibility · Prototype · Test marketing · Launch.</div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Characteristics are personality traits (innovative); skills are learned (time management). Don't mix the lists.</li><li><b>Sales personnel</b> are employees, so they're an <b>internal</b> source.</li><li>Flexible hours = reward; long hours = risk. Say which side you're on.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Entrepreneur v intrapreneur?</summary><div class="qa">Entrepreneur takes the initiative and risk of setting up an organisation; intrapreneur is enterprising within an existing business</div></details><details class="qc"><summary>Give 3 characteristics and 3 skills of an entrepreneur</summary><div class="qa">e.g. innovative, decisive, resilient · planning, time management, managing money</div></details><details class="qc"><summary>Two internal and two external sources of new product ideas</summary><div class="qa">Internal: brainstorming, R&amp;D. External: competitors, import substitution (also sales staff / market research)</div></details><details class="qc"><summary>The 7 steps of product development, in order</summary><div class="qa">Idea generation, screening, concept development, feasibility study, prototype, test marketing, launch</div></details><details class="qc"><summary>Two roles of the entrepreneur in the economy</summary><div class="qa">Any two: create jobs and wealth, taxation, foreign trade (exports), use resources, raise living standards</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch16">
+        <div class="section-heading">🏢 Ch 16 · Types of Enterprise <span class="fr-time">⏱ 5 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Financial enterprise</b></td><td>Set up to make a profit; provides goods and services (supermarkets, banks, hairdressers).</td></tr>
+<tr><td><b>Social enterprise</b></td><td>Puts people and community ahead of private and personal gain (charities, parks, playgrounds).</td></tr>
+<tr><td><b>Cultural enterprise</b></td><td>Provides access to visual arts, films, music, radio, literature (museums, galleries).</td></tr>
+<tr><td><b>Economic growth</b></td><td>An increase in the goods and services produced in an economy from one year to the next.</td></tr>
+<tr><td><b>LEO</b></td><td>31 Local Enterprise Offices supporting people setting up a business: advice, mentoring, training.</td></tr>
+<tr><td><b>Enterprise Ireland</b></td><td>Government agency that helps businesses who want to expand abroad.</td></tr>
+<tr><td><b>Social Entrepreneurs Ireland (SEI)</b></td><td>Not-for-profit giving financial and practical support to social entrepreneurs.</td></tr>
+<tr><td><b>Clann Credo</b></td><td>Social investment fund giving loans to community organisations, charities and social enterprises.</td></tr>
+<tr><td><b>Cultural Ireland</b></td><td>Division of the Dept. of Culture, Heritage and the Gaeltacht promoting Irish arts worldwide.</td></tr>
+<tr><td><b>Arts Council of Ireland</b></td><td>Government organisation responsible for developing the arts.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <table class="mini"><tr><th>Type</th><th>Role in society</th><th>Support</th></tr>
+<tr><td><b>Financial</b></td><td>Goods &amp; services · employment (direct and indirect) · taxes · finance (banks, credit unions, An Post) · economic growth</td><td>LEOs (set up) · Enterprise Ireland (expand abroad)</td></tr>
+<tr><td><b>Social</b></td><td>Tackle social problems (homelessness, unemployment) · services · local jobs · finance · enterprise culture</td><td>SEI · Clann Credo</td></tr>
+<tr><td><b>Cultural</b></td><td>Promote arts &amp; culture · employment · local economy (tourism, festivals) · entertainment</td><td>Cultural Ireland · Arts Council</td></tr></table>
+        <div class="mnemonic"><b>🧩 Remember it:</b> <b>F</b>inancial = <b>F</b>or profit · <b>S</b>ocial = <b>S</b>ociety first · <b>C</b>ultural = <b>C</b>reative arts.</div>
+        <p><b>Case study, FoodCloud:</b> a social enterprise connecting businesses with too much food to charities. About <b>30%</b> of food produced is wasted globally; works with <b>2,500</b> retail stores; food goes to people who can't afford it (e.g. meals on wheels).</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>LEO = help to <b>set up</b> locally; Enterprise Ireland = help to <b>expand abroad</b>.</li><li>Cultural Ireland <b>promotes</b> Irish arts worldwide; the Arts Council <b>develops</b> the arts.</li><li>Don't say a social enterprise makes no money: say people and community come first, and who benefits.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Name the 3 types of enterprise, with an example of each</summary><div class="qa">Financial (supermarket), social (charity), cultural (museum)</div></details><details class="qc"><summary>Define economic growth</summary><div class="qa">An increase in the amount of goods and services produced in an economy from one year to the next</div></details><details class="qc"><summary>LEO v Enterprise Ireland?</summary><div class="qa">31 LEOs help people set up a business; Enterprise Ireland helps businesses expand abroad</div></details><details class="qc"><summary>Give two roles of social enterprises</summary><div class="qa">Any two: tackle social problems, provide services, create local jobs, provide finance, enterprise culture</div></details><details class="qc"><summary>What is FoodCloud, and what type of enterprise is it?</summary><div class="qa">A social enterprise connecting businesses that have surplus food with charities</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch21">
+        <div class="section-heading">📊 Ch 21 · Market Research <span class="fr-time">⏱ 5 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Marketing</b></td><td>The process of identifying and satisfying customer wants and needs while making a profit.</td></tr>
+<tr><td><b>Market research</b></td><td>Gathering, recording and analysing information about consumer preferences to make informed decisions about a potential market.</td></tr>
+<tr><td><b>Field (primary) research</b></td><td>Going out to the marketplace to gather information first-hand for a specific purpose.</td></tr>
+<tr><td><b>Desk (secondary) research</b></td><td>Analysing information already gathered for another purpose or from another source; internal or external.</td></tr>
+<tr><td><b>Survey</b></td><td>Questions asked to customers; they should be clear and not leading.</td></tr>
+<tr><td><b>Closed question</b></td><td>A yes/no question.</td></tr>
+<tr><td><b>Multiple choice question</b></td><td>Gives a list of answers to choose from.</td></tr>
+<tr><td><b>Open-ended question</b></td><td>Lets the customer say what they like rather than being confined to a specific answer.</td></tr>
+<tr><td><b>Central Statistics Office (CSO)</b></td><td>Desk source: population of towns and cities, including age, gender, marital status.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <div class="flow"><span class="box">Market research</span><span class="arr">→</span><span class="box">Field = primary: surveys · focus groups · observation</span><span class="arr">|</span><span class="box">Desk = secondary: internal · external</span></div>
+        <div class="mnemonic"><b>🧩 Remember it:</b> <b>F</b>ield = <b>F</b>irst-hand (<b>P</b>rimary). <b>D</b>esk = <b>D</b>one before (<b>S</b>econdary).</div>
+        <p><b>Benefits of market research:</b> customer needs and wants · information on competitors · reactions to changes to products · the best prices to charge · reactions to promotions.</p>
+        <table class="mini"><tr><th>Desk source</th><th>Tells you</th></tr>
+<tr><td>Business sales reports (<b>internal</b>)</td><td>Most and least successful products</td></tr>
+<tr><td>Newspapers &amp; magazines</td><td>Competitors or consumers</td></tr>
+<tr><td>The internet</td><td>Competitor products and prices; market size and trends</td></tr>
+<tr><td>CSO</td><td>Population: age, gender, marital status</td></tr></table>
+        <div class="twocol">
+          <div class="pos"><h4>✅ Desk research: advantages</h4><ul><li>Easy to obtain (already available)</li><li>Quick to gather</li><li>Cheaper: no trained interviewers</li></ul></div>
+          <div class="neg"><h4>❌ Desk research: disadvantages</h4><ul><li>Not gathered for your needs, so may be less relevant</li><li>May be outdated</li><li>Lots to read through</li></ul></div>
+        </div>
+        <p class="fr-sub">The notes name focus groups and observation but don't define them, and don't give field research pros and cons: check your textbook.</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Market research needs all three verbs, <b>gathering, recording and analysing</b>, plus “to make informed decisions”.</li><li>A business's own sales reports are <b>internal</b> desk research.</li><li>Survey questions must be clear and <b>not leading</b>.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Define market research</summary><div class="qa">Gathering, recording and analysing information about consumer preferences to make informed decisions about a potential market</div></details><details class="qc"><summary>Field v desk research, with an example of each</summary><div class="qa">Field: first-hand, for a specific purpose (survey). Desk: already gathered for another purpose (CSO data)</div></details><details class="qc"><summary>Give three benefits of market research</summary><div class="qa">Any three: customer needs and wants, competitor info, reactions to changes, best prices, reactions to promotions</div></details><details class="qc"><summary>Two advantages and two disadvantages of desk research</summary><div class="qa">+ Easy, quick, cheaper. − May be irrelevant, may be outdated</div></details><details class="qc"><summary>Name the three types of survey question</summary><div class="qa">Closed (yes/no), multiple choice, open-ended</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch22">
+        <div class="section-heading">📢 Ch 22 · The Marketing Mix <span class="fr-time">⏱ 8 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+<tr><td><b>Market segmentation</b></td><td>Dividing the market into sections to promote slightly different products to different groups of consumers.</td></tr>
+<tr><td><b>Target market</b></td><td>The group of people a business aims to sell its products or services to.</td></tr>
+<tr><td><b>Niche market</b></td><td>A small, specialised segment of a larger market, e.g. folding bicycles.</td></tr>
+<tr><td><b>Marketing mix</b></td><td>Four elements (the 4 Ps) that help a business market to its target market and maximise profits.</td></tr>
+<tr><td><b>Channel of distribution</b></td><td>The way the product gets from the manufacturer to the customer.</td></tr>
+<tr><td><b>Product life cycle</b></td><td>The stages a product goes through from launch to being taken off the market.</td></tr>
+<tr><td><b>Brand</b></td><td>A name, symbol, design or feature making a product easy to recognise and distinct from competitors.</td></tr>
+<tr><td><b>USP</b></td><td>Unique selling point: something that makes a product different from its competitors.</td></tr>
+<tr><td><b>Promotion</b></td><td>Making customers aware of the product/brand to increase sales and create brand loyalty.</td></tr>
+<tr><td><b>Sales promotion</b></td><td>Incentives offered to customers to get them to buy; often short-term tactics.</td></tr>
+<tr><td><b>Public relations (PR)</b></td><td>Activities that help create a positive image of a business.</td></tr></table>
+        <h3>2 · Must remember</h3>
+        <p><b>4 Ps: Product · Price · Place · Promotion</b></p>
+        <p><b>Place, 4 channels:</b> manufacturer → wholesaler → retailer → consumer · manufacturer → retailer → consumer · manufacturer → wholesaler → consumer · manufacturer → consumer (direct).</p>
+        <table class="mini"><tr><th>Pricing strategy</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>Cost-plus</td><td>Production cost + % mark-up</td><td>€40 + 25% = €50</td></tr>
+<tr><td>Competitive</td><td>Similar to rivals' prices</td><td>Ryanair, Aer Lingus</td></tr>
+<tr><td>Premium</td><td><b>Permanently</b> high, conveys quality</td><td>Luxury cars, clothes</td></tr>
+<tr><td>Penetration</td><td>Low at launch, may rise later</td><td>New product</td></tr>
+<tr><td>Peak load</td><td>Higher when demand is high</td><td>Flights, holidays</td></tr>
+<tr><td>Psychological</td><td>Just below a round number</td><td>€99 v €100</td></tr></table>
+        <div class="mnemonic"><b>🧩 Pricing:</b> “<b>C</b>ats <b>C</b>hase <b>P</b>ink <b>P</b>igs <b>P</b>laying <b>P</b>ianos” = Cost-plus, Competitive, Premium, Penetration, Peak load, Psychological.<br><b>Life cycle:</b> “<b>I</b> <b>G</b>et <b>M</b> &amp; <b>S</b> <b>D</b>onuts”. <b>Packaging, PPPI:</b> Protect, Present, Provide information, brand Identity.</div>
+        <div class="flow"><span class="box">Introduction: slow sales</span><span class="arr">→</span><span class="box">Growth: rapid increase</span><span class="arr">→</span><span class="box">Maturity: slower, levels off</span><span class="arr">→</span><span class="box peak">Saturation: sales peak</span><span class="arr">→</span><span class="box">Decline: sales fall, withdrawn</span></div>
+        <p><b>Branding:</b> trust and recognition · brand loyalty · higher prices. Own-label = retailer's brand (Tesco Finest). <b>USP</b> e.g. Head &amp; Shoulders = dandruff protection.</p>
+        <p><b>Advertising:</b> AIDA = <b>A</b>ttention → <b>I</b>nterest → <b>D</b>esire → <b>A</b>ction. Five types: informative · persuasive · competitive (one brand v another) · reminder · generic (whole industry, no brand). <b>ASA</b>: legal, decent, honest and truthful.</p>
+        <table class="mini"><tr><th>Promotion mix</th><th>Example</th></tr>
+<tr><td>Sales promotion</td><td>Free samples, BOGOF, loyalty cards, vouchers</td></tr>
+<tr><td>Public relations</td><td>Charity events, press releases</td></tr>
+<tr><td>Sponsorship</td><td>Sports team, arena, stadium</td></tr>
+<tr><td>Personal selling</td><td>Cars, jewellery, cosmetics</td></tr>
+<tr><td>Social media</td><td>Cheap, quick, global audience</td></tr>
+<tr><td>Celebrity endorsement</td><td>Free products to influencers</td></tr>
+<tr><td>Product placement</td><td>Paid appearance in films and TV</td></tr></table>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Sales <b>level off</b> at maturity and <b>peak</b> at saturation.</li><li>Premium = permanently high · peak load = high only at busy times · penetration = low at first.</li><li>Competitive advertising names a brand; generic advertising promotes a type of product. PR builds image; sales promotion is a short-term incentive.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid"><details class="qc"><summary>Name the 4 Ps of the marketing mix</summary><div class="qa">Product, Price, Place, Promotion</div></details><details class="qc"><summary>Flights cost more in the school holidays. Which pricing strategy?</summary><div class="qa">Peak load pricing</div></details><details class="qc"><summary>Five stages of the product life cycle, and where sales peak</summary><div class="qa">Introduction, growth, maturity, saturation, decline: sales peak at saturation</div></details><details class="qc"><summary>What does AIDA stand for?</summary><div class="qa">Attention, Interest, Desire, Action</div></details><details class="qc"><summary>Four functions of packaging</summary><div class="qa">Protection, presentation, providing information, supporting brand identity</div></details></div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section id="final">
+        <div class="section-heading">🏁 Final mixed quiz <span class="fr-time">⏱ 5 min</span></div>
+        <p>12 questions across all six chapters. Anything you miss: jump back to that chapter's key-terms table.</p>
+        <div class="rv-quiz">
+<div class="rv-q" data-answer="a"><p>A customer hides a material fact on the proposal form. Which principle is broken, and what happens?</p><ol><li>Utmost good faith: no compensation is paid</li><li>Indemnity: compensation is doubled</li><li>Contribution: the claim is shared</li><li>Subrogation: the premium is returned</li></ol><div class="explain">Utmost good faith means disclosing all material facts. If you don't, no compensation is paid.</div></div>
+<div class="rv-q" data-answer="c"><p>A premium is €1,000. The customer gets 10% off for security plus a further 5% for applying online. Final premium?</p><ol><li>€950</li><li>€900</li><li>€850</li><li>€855</li></ol><div class="explain">Add the discounts: 15%, so €1,000 × 0.85 = €850.</div></div>
+<div class="rv-q" data-answer="b"><p>A faulty washing machine cost €1,200. Which route lets you claim without a solicitor for a €25 fee?</p><ol><li>Office of the Ombudsman</li><li>Small claims procedure</li><li>European Consumer Centre</li><li>Advertising Standards Authority</li></ol><div class="explain">Small claims: max €2,000, €25 fee, no solicitor. The Ombudsman only handles public bodies.</div></div>
+<div class="rv-q" data-answer="d"><p>A caller says you've won a prize but must pay a fee to claim it. This is…</p><ol><li>A guarantee</li><li>An extended warranty</li><li>Redress</li><li>A prohibited (banned) practice</li></ol><div class="explain">One of the 32 banned practices under the Consumer Protection Act 2007.</div></div>
+<div class="rv-q" data-answer="c"><p>Which is a SKILL (not a characteristic) of an entrepreneur?</p><ol><li>Innovative</li><li>Resilient</li><li>Time management</li><li>Proactive</li></ol><div class="explain">Time management is learned. The other three are personality characteristics.</div></div>
+<div class="rv-q" data-answer="b"><p>Which product development step checks whether the business can afford the idea?</p><ol><li>Product screening</li><li>Feasibility study</li><li>Prototype development</li><li>Test marketing</li></ol><div class="explain">Feasibility study: “Will you be able to afford the idea?” Screening only filters out bad ideas.</div></div>
+<div class="rv-q" data-answer="a"><p>An Irish business wants help to start selling abroad. Which agency?</p><ol><li>Enterprise Ireland</li><li>Local Enterprise Office</li><li>Clann Credo</li><li>Arts Council</li></ol><div class="explain">Enterprise Ireland helps businesses expand abroad. LEOs help people set up a business.</div></div>
+<div class="rv-q" data-answer="d"><p>Which organisation gives loans to community organisations, charities and social enterprises?</p><ol><li>Cultural Ireland</li><li>Enterprise Ireland</li><li>Social Entrepreneurs Ireland</li><li>Clann Credo</li></ol><div class="explain">Clann Credo is a social investment fund. SEI gives financial and practical support to social entrepreneurs.</div></div>
+<div class="rv-q" data-answer="c"><p>Using Central Statistics Office population data is…</p><ol><li>Field research</li><li>Primary research</li><li>Desk research</li><li>Observation</li></ol><div class="explain">The CSO already gathered it for another purpose, so it's desk (secondary) research.</div></div>
+<div class="rv-q" data-answer="b"><p>Which survey question has a yes/no answer?</p><ol><li>Open-ended</li><li>Closed</li><li>Leading</li><li>Multiple choice</li></ol><div class="explain">Closed = yes/no. Open-ended lets the customer say what they like.</div></div>
+<div class="rv-q" data-answer="b"><p>A jumper is priced at €49.99 instead of €50. This is…</p><ol><li>Penetration pricing</li><li>Psychological pricing</li><li>Premium pricing</li><li>Cost-plus pricing</li></ol><div class="explain">Just below a round number so it seems cheaper: psychological pricing.</div></div>
+<div class="rv-q" data-answer="a"><p>The dairy industry runs an advert to get people drinking more milk, with no brand named. This is…</p><ol><li>Generic advertising</li><li>Competitive advertising</li><li>Reminder advertising</li><li>Public relations</li></ol><div class="explain">Generic: firms in an industry together promote a type of product rather than a brand.</div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Business Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll('.qc-all').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var cards = b.parentNode.previousElementSibling.querySelectorAll('details.qc'), open = b.textContent.indexOf('Show') === 0;
+          cards.forEach(function (d) { d.open = open; });
+          b.textContent = open ? 'Hide answers' : 'Show all 5 answers';
+        });
+      });
+      var secs = document.querySelectorAll('section[id]'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+      addEventListener('scroll', function () {
+        var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+        links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+      });
+    })();
+  </script>
+</body>
+</html>
