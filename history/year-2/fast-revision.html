@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History Revision – Year 2 Fast Revision</title>
+  <!-- Fast revision page: follows CONTENT_RULES.md §8 (not the 11-section chapter layout).
+       Content is condensed from ch8, ch9, ch10 in this folder; nothing new is added here. Edit this file directly. -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #B91C1C; --accent-light: #FEE2E2; --accent-bright: #FCA5A5;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .mnemonic { margin: 14px 0; padding: 14px 18px; background: #F3EEFB; border-left: 5px solid #6C3FC5; border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; }
+    .exam-trap ul { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; background: var(--card); }
+    th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0; }
+    .flow .box { background: var(--card); border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+    .flow .arr { font-weight: 700; color: var(--muted); }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } }
+    .fr-time { margin-left: auto; font: 600 13px 'DM Sans', sans-serif; background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+    .fr-chapter h3 { font: 700 15px 'Sora', sans-serif; margin: 18px 0 4px; }
+    .fr-sub { font: 400 13px 'DM Sans', sans-serif; color: var(--muted); }
+    table.terms td:first-child { width: 32%; }
+    table.mini { max-width: 680px; }
+    .qc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin: 8px 0; }
+    details.qc { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+    details.qc summary { list-style: none; font-weight: 600; font-size: 14px; }
+    details.qc summary::-webkit-details-marker { display: none; }
+    details.qc summary::after { content: ' 👆 tap'; font-weight: 400; font-size: 12px; color: var(--muted); }
+    details.qc[open] { border-color: var(--accent); background: var(--accent-light); }
+    details.qc[open] summary::after { content: ''; }
+    details.qc .qa { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--accent); font-size: 14px; }
+    details.qc .qa::before { content: '✓ '; color: var(--accent); font-weight: 700; }
+    .qc-bar { margin: 4px 0 0; }
+    .qc-bar button { font: 600 13px 'DM Sans', sans-serif; background: #fff; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">History Revision</div><div class="book-title">Year 2 · Fast Revision</div></div>
+    <a href="index.html">&larr; History Year 2</a>
+    <a href="#ch8">✝️ Ch 8 The Reformation</a>
+    <a href="#ch9">🏰 Ch 9 The Plantations</a>
+    <a href="#ch10">🗽 Ch 10 The American Revolution</a>
+    <a href="#final">🏁 Final quiz</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">⚡ Fast Revision · Year 2 History</div>
+      <h1>⚡ <span>All of Year 2 in 42 minutes</span></h1>
+      <p class="chapter-meta">Ch 8 The Reformation · Ch 9 The Plantations · Ch 10 The American Revolution · only the terms, dates and people that win marks</p>
+      <div><span class="goal-tag">✔ ~37 key terms</span><span class="goal-tag">✔ Key dates &amp; who's who</span><span class="goal-tag">✔ Plantation comparison table</span><span class="goal-tag">✔ 15 quick-check questions + 12-question quiz</span></div>
+    </div>
+
+    <div class="content">
+
+      <section class="fr-chapter" id="ch8">
+        <div class="section-heading">✝️ Ch 8 · The Reformation <span class="fr-time">⏱ 12 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+          <tr><td><b>Reformation</b></td><td>Religious movement in the 1500s that split the Church and created Protestantism.</td></tr>
+          <tr><td><b>Indulgence</b></td><td>A prayer sold by the Church to reduce time in Purgatory.</td></tr>
+          <tr><td><b>Tithe</b></td><td>A 10% tax paid to the Church.</td></tr>
+          <tr><td><b>Simony</b></td><td>Buying and selling Church positions.</td></tr>
+          <tr><td><b>Nepotism</b></td><td>Giving Church positions to family and friends.</td></tr>
+          <tr><td><b>Pluralism</b></td><td>Holding more than one Church position.</td></tr>
+          <tr><td><b>Absenteeism</b></td><td>Being absent from Church duties.</td></tr>
+          <tr><td><b>Justification by faith alone</b></td><td>Luther: only faith in God (not the Pope or good works) gets you into heaven.</td></tr>
+          <tr><td><b>Ninety-five Theses</b></td><td>Luther's list of complaints (1517), in response to John Tetzel selling indulgences.</td></tr>
+          <tr><td><b>Edict of Worms</b></td><td>Charles V's order after the Diet of Worms making Luther an outlaw.</td></tr>
+          <tr><td><b>Consubstantiation</b></td><td>Luther: bread and wine exist side by side with Christ's body and blood.</td></tr>
+          <tr><td><b>Transubstantiation</b></td><td>Catholic: bread and wine become the body and blood of Christ.</td></tr>
+          <tr><td><b>Inquisition</b></td><td>Church courts that tried, arrested and punished anyone seen as a threat to Church teachings.</td></tr>
+        </table>
+        <h3>2 · Must remember</h3>
+        <div class="mnemonic"><b>🧩 Four abuses = S-N-P-A:</b> <b>S</b>imony (selling) · <b>N</b>epotism (family) · <b>P</b>luralism (plural jobs) · <b>A</b>bsenteeism (absent). Other causes: Renaissance + printing press; Church wealth (tithes, indulgences); priests with mistresses, undereducated.</div>
+        <p><b>Luther's road</b></p>
+        <div class="flow"><span class="box">1483 born, Saxony</span><span class="arr">→</span><span class="box">Augustinian monk, Professor of Theology, Wittenberg</span><span class="arr">→</span><span class="box">1517 Ninety-five Theses (v Tetzel)</span><span class="arr">→</span><span class="box">John Eck debate</span><span class="arr">→</span><span class="box">Burns papal bull → 1521 excommunicated</span><span class="arr">→</span><span class="box">Diet of Worms → outlaw</span><span class="arr">→</span><span class="box">Wartburg Castle: Bible into German</span><span class="arr">→</span><span class="box">1546 dies</span><span class="arr">→</span><span class="box">1555 Peace of Augsburg</span></div>
+        <p><b>Luther's beliefs:</b> faith alone · indulgences don't save · Mass and Bible in the <b>vernacular</b> · Bible the only guide · clergy may marry · <b>2 sacraments</b> (baptism, communion) · consubstantiation.</p>
+        <table class="mini"><tr><th>Spread</th><th>Counter-Reformation</th><th>Results (by 1650)</th></tr>
+          <tr><td><b>Zwingli</b>: Switzerland 1531<br><b>Calvin</b>: Geneva, Presbyterianism (predestination)<br><b>Henry VIII</b>: Church of England 1534<br><b>Knox</b>: Presbyterianism to Scotland 1572</td>
+          <td>Inquisition (auto-da-fé, yellow <b>sanbenito</b>)<br><b>Jesuits</b>: Ignatius Loyola 1534<br>Ursulines, Capuchins<br><b>Council of Trent</b>: banned abuses, seminaries<br><b>Catechism</b>: one rulebook</td>
+          <td>Protestant north, Catholic south<br>Thirty Years' War 1618–1648 → Peace of Westphalia<br>Pope's power reduced<br>Education grew<br><b>Baroque</b> art</td></tr></table>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>The <b>Pope</b> excommunicated Luther; <b>Charles V</b> made him an outlaw at the Diet of Worms.</li><li><b>Con</b>substantiation (“with”) = Luther; <b>trans</b>ubstantiation (“transforms”) = Catholic.</li><li>The Counter-Reformation <b>stopped further spread</b> of Protestantism but could not reverse it.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>Name the four abuses in the Church</summary><div class="qa">Simony, nepotism, pluralism, absenteeism</div></details>
+          <details class="qc"><summary>Why did Luther write the Ninety-five Theses, and when?</summary><div class="qa">1517, in response to John Tetzel selling indulgences in Wittenberg</div></details>
+          <details class="qc"><summary>What did the Edict of Worms do?</summary><div class="qa">Charles V made Luther an outlaw (1521)</div></details>
+          <details class="qc"><summary>What did the Peace of Augsburg (1555) decide?</summary><div class="qa">Each ruler could choose the religion of his own state</div></details>
+          <details class="qc"><summary>Who founded the Jesuits, and when?</summary><div class="qa">Ignatius Loyola, 1534</div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch9">
+        <div class="section-heading">🏰 Ch 9 · The Plantations <span class="fr-time">⏱ 12 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+          <tr><td><b>The Pale</b></td><td>Dublin and its surrounding areas: the only part of Ireland under English control in the 1500s.</td></tr>
+          <tr><td><b>Anglo-Irish</b></td><td>Descendants of the Anglo-Normans, independent of the Crown, who adopted Gaelic laws and traditions.</td></tr>
+          <tr><td><b>Gaelic Irish</b></td><td>Chieftains who followed Brehon Law.</td></tr>
+          <tr><td><b>Act of Supremacy</b></td><td>Henry VIII made himself head of the Church of England.</td></tr>
+          <tr><td><b>Surrender and regrant</b></td><td>Henry VIII's first, peaceful policy to control Ireland.</td></tr>
+          <tr><td><b>Plantation</b></td><td>Confiscating land and settling it with English (and later Scottish) planters.</td></tr>
+          <tr><td><b>Planters</b></td><td>Settlers brought in to farm confiscated land (undertakers, servitors and loyal Irish in Ulster).</td></tr>
+          <tr><td><b>Adventurers</b></td><td>Sent by Elizabeth I to claim land in Munster and spread English law, language and religion.</td></tr>
+          <tr><td><b>Protestant Ascendancy</b></td><td>The wealthy Protestant landlord class that owned 85% of land by 1700.</td></tr>
+          <tr><td><b>Penal Laws</b></td><td>Laws that discriminated against Catholics.</td></tr>
+          <tr><td><b>Londonderry</b></td><td>Name given to Derry by the London guilds who worked there.</td></tr>
+        </table>
+        <h3>2 · Must remember</h3>
+        <p><b>Ireland in the 1500s, three groups:</b> Pale (loyal) · Anglo-Irish (went Gaelic) · Gaelic Irish (Brehon Law).</p>
+        <p><b>Tudors:</b> Henry VII first Tudor → Henry VIII breaks from Rome to divorce Catherine of Aragon (no male heir), marries Anne Boleyn. Children: Mary (Catherine), Elizabeth (Anne Boleyn), Edward (Jane Seymour).</p>
+        <div class="mnemonic"><b>🧩 Reasons = L-L-R-P-A-M:</b> <b>L</b>and beyond the Pale · <b>L</b>aws, customs, culture · stop <b>R</b>ebellions · spread <b>P</b>rotestantism · stop <b>A</b>lliances with Catholic countries · save <b>M</b>oney.</div>
+        <table class="mini"><tr><th>Plantation</th><th>Gaelic family</th><th>Monarch</th><th>Result</th></tr>
+          <tr><td><b>Laois-Offaly</b></td><td>O'Moores &amp; O'Connors (raided the Pale)</td><td>Mary I</td><td><b>Failure</b>: too few planters, Gaelic planters given land, lands attacked → better planning</td></tr>
+          <tr><td><b>Munster</b></td><td>Fitzgeralds of Desmond</td><td>Elizabeth I</td><td><b>Partial success</b>: ~4,000 planters (wanted 20,000), still rented to Gaelic Irish; new towns, trades, farming</td></tr>
+          <tr><td><b>Ulster ★</b></td><td>O'Neills of Tyrone &amp; O'Donnells of Donegal</td><td>James I</td><td><b>Most successful</b>: smaller estates, stricter rules, Derry for craft guilds; many English &amp; Scottish settlers; rebellions persisted, tensions to this day</td></tr></table>
+        <p><b>Identity:</b> most people stayed Catholic, but by <b>1700 Protestants owned 85%</b> of land · Penal Laws · Gaelic laws, language, culture, farming declined · anger, distrust, violence.</p>
+        <p><b>Towns:</b> medieval Dublin (Norman centre, port, unsanitary) · plantation towns Killarney, Portlaoise (courthouse, gaol, Protestant church) · later market towns grew with canals and railways (Mullingar, Ballina).</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li><b>Henry VII</b> was the first Tudor; <b>Henry VIII</b> broke from the Church.</li><li>Match monarch → plantation: <b>M</b>ary → Laois-Offaly, <b>E</b>lizabeth → Munster, <b>J</b>ames I → Ulster.</li><li>Only Ulster was “most successful”: Laois-Offaly failed, Munster only partial. Quote 4,000 v 20,000.</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>What was the Pale?</summary><div class="qa">Dublin and its surrounding areas, the only part under English control</div></details>
+          <details class="qc"><summary>Give three Tudor reasons for the plantations</summary><div class="qa">Expand beyond the Pale; spread English laws/culture; spread Protestantism (also: stop alliances, stop rebellions, save money)</div></details>
+          <details class="qc"><summary>Why did the Laois-Offaly plantation fail?</summary><div class="qa">Not enough planters, lands still attacked by the Gaelic Irish, English laws didn't spread</div></details>
+          <details class="qc"><summary>Ulster: which monarch and which Gaelic families?</summary><div class="qa">James I; O'Neills of Tyrone and O'Donnells of Donegal</div></details>
+          <details class="qc"><summary>What was the Protestant Ascendancy?</summary><div class="qa">Wealthy Protestant landlord class; owned 85% of land by 1700</div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section class="fr-chapter" id="ch10">
+        <div class="section-heading">🗽 Ch 10 · The American Revolution <span class="fr-time">⏱ 12 min</span></div>
+        <h3>1 · Key terms <span class="fr-sub">read each out loud, then cover the right column</span></h3>
+        <table class="terms"><tr><th>Term</th><th>Exam definition</th></tr>
+          <tr><td><b>Colony</b></td><td>Territory ruled by another country; Britain had 13 in North America, each with a governor.</td></tr>
+          <tr><td><b>Enlightenment</b></td><td>Movement that valued reason/science over faith or traditional authority.</td></tr>
+          <tr><td><b>Navigation Acts</b></td><td>Forced the colonies to sell some products only to Britain, so Britain controlled the price.</td></tr>
+          <tr><td><b>Stamp Act</b></td><td>Required all legal documents to have a government stamp.</td></tr>
+          <tr><td><b>No Taxation Without Representation</b></td><td>Slogan: colonists had no representatives in the London parliament that taxed them.</td></tr>
+          <tr><td><b>Sons of Liberty</b></td><td>Group that advocated for Americans to govern themselves.</td></tr>
+          <tr><td><b>Boston Massacre</b></td><td>1770: British soldiers fired on a mob protesting the Townshend Acts, killing five.</td></tr>
+          <tr><td><b>Boston Tea Party</b></td><td>1773: Sons of Liberty, dressed as Native Americans, dumped 342 crates of tea into Boston Harbour.</td></tr>
+          <tr><td><b>Intolerable Acts</b></td><td>British punishment: Boston port closed and city put under military rule.</td></tr>
+          <tr><td><b>Declaration of Independence</b></td><td>Issued 4 July 1776 to separate the colonies from British rule.</td></tr>
+          <tr><td><b>Valley Forge</b></td><td>Winter 1777–78 camp where Washington's men regrouped in terrible conditions.</td></tr>
+          <tr><td><b>Treaty of Paris</b></td><td>1783 treaty between Britain and the former colonies, ending the war.</td></tr>
+          <tr><td><b>Federal republic</b></td><td>Form of government set up by the US constitution (Constitutional Convention, chaired by Washington).</td></tr>
+        </table>
+        <h3>2 · Must remember</h3>
+        <div class="mnemonic"><b>🧩 Causes = E-R-S-T-S:</b> <b>E</b>nlightenment · <b>R</b>aw materials (Navigation Acts) · <b>S</b>even Years' War costs · <b>T</b>axes (Stamp, Quartering) · <b>S</b>ons of Liberty.</div>
+        <p><b>Road to war</b></p>
+        <div class="flow"><span class="box">Townshend Acts</span><span class="arr">→</span><span class="box">1770 Boston Massacre (5 killed)</span><span class="arr">→</span><span class="box">1773 Tea Act → Tea Party</span><span class="arr">→</span><span class="box">Intolerable Acts</span><span class="arr">→</span><span class="box">1774 First Continental Congress</span><span class="arr">→</span><span class="box">1775 Lexington &amp; Concord</span><span class="arr">→</span><span class="box">Paine's pamphlet</span><span class="arr">→</span><span class="box">1776 Second Congress: Washington C-in-C; Declaration 4 July</span></div>
+        <p><b>The war:</b> Americans 20,000 part-time v British 80,000 professionals, but British thousands of miles from home; Americans on home turf.</p>
+        <div class="flow"><span class="box">Bunker Hill 1775 (lost)</span><span class="arr">→</span><span class="box">New York (lost)</span><span class="arr">→</span><span class="box">Trenton &amp; Princeton (won)</span><span class="arr">→</span><span class="box">1777 Howe takes Philadelphia</span><span class="arr">→</span><span class="box">Saratoga: Gates wins → France, Spain, Netherlands join</span><span class="arr">→</span><span class="box">Valley Forge 1777–78: 3000 die; Von Steuben drills</span><span class="arr">→</span><span class="box">1781 Yorktown: Cornwallis surrenders</span><span class="arr">→</span><span class="box">1783 Treaty of Paris</span></div>
+        <table class="mini"><tr><th>Person</th><th>Remember for</th></tr>
+          <tr><td>Paul Revere</td><td>Warned the rebels/militiamen (1775)</td></tr>
+          <tr><td>Thomas Paine</td><td>Pamphlet arguing for independence</td></tr>
+          <tr><td>Horatio Gates</td><td>Won Saratoga</td></tr>
+          <tr><td>Baron Von Steuben</td><td>Drilled the men at Valley Forge</td></tr>
+          <tr><td>Cornwallis</td><td>British general who surrendered at Yorktown</td></tr></table>
+        <p><b>Results:</b> independence · constitution → federal republic · inspired the <b>French Revolution</b> and Ireland's <b>1798 Rebellion</b> · “all men are created equal” limited to white men (women, slaves, indigenous Americans left out).</p>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul><li>Boston <b>Massacre 1770</b> (soldiers shot five) ≠ Boston <b>Tea Party 1773</b> (tea dumped).</li><li>Saratoga was won by <b>Gates</b>, not Washington; Philadelphia was lost to <b>Howe</b>.</li><li>The <b>Second</b> Continental Congress (1776) chose Washington and declared independence, not the First (1774).</li></ul></div>
+        <h3>3 · Quick check <span class="fr-sub">say the answer, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>What did “No Taxation Without Representation” mean?</summary><div class="qa">Colonists were taxed by a London parliament where they had no representatives</div></details>
+          <details class="qc"><summary>What was the Boston Tea Party?</summary><div class="qa">1773: Sons of Liberty, dressed as Native Americans, dumped 342 crates of tea into Boston Harbour</div></details>
+          <details class="qc"><summary>When was the Declaration of Independence issued?</summary><div class="qa">4 July 1776</div></details>
+          <details class="qc"><summary>Why was Saratoga a turning point?</summary><div class="qa">Gates' victory reassured Americans; France, Spain and the Netherlands joined the war</div></details>
+          <details class="qc"><summary>How did the war end?</summary><div class="qa">Cornwallis surrendered at Yorktown (1781); Treaty of Paris (1783)</div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <section id="final">
+        <div class="section-heading">🏁 Final mixed quiz <span class="fr-time">⏱ 6 min</span></div>
+        <p>12 questions across all three chapters. Anything you miss: jump back to that chapter's key-terms table.</p>
+        <div class="rv-quiz">
+          <div class="rv-q" data-answer="c"><p>Giving Church positions to family and friends is called…</p><ol><li>Simony</li><li>Pluralism</li><li>Nepotism</li><li>Absenteeism</li></ol><div class="explain">Nepotism = family. Simony = buying/selling; pluralism = more than one; absenteeism = absent.</div></div>
+          <div class="rv-q" data-answer="c"><p>Who issued the Edict of Worms, making Luther an outlaw?</p><ol><li>Pope Leo X</li><li>John Eck</li><li>Charles V</li><li>Prince Frederick of Saxony</li></ol><div class="explain">Charles V. The Pope excommunicated Luther; Frederick hid him in Wartburg Castle.</div></div>
+          <div class="rv-q" data-answer="b"><p>Which belief about bread and wine did Luther hold?</p><ol><li>Transubstantiation</li><li>Consubstantiation</li><li>Predestination</li><li>Simony</li></ol><div class="explain">Consubstantiation (side by side). Transubstantiation is the Catholic belief.</div></div>
+          <div class="rv-q" data-answer="a"><p>Which art movement grew from lavishly decorated Catholic churches?</p><ol><li>Baroque</li><li>Renaissance</li><li>Gothic</li><li>Norman</li></ol><div class="explain">Protestants kept churches plain; Catholic decoration led to Baroque.</div></div>
+          <div class="rv-q" data-answer="c"><p>Henry VIII's first policy to control Ireland was…</p><ol><li>Plantation</li><li>Penal Laws</li><li>Surrender and regrant</li><li>Act of Supremacy</li></ol><div class="explain">He first tried peaceful means: surrender and regrant.</div></div>
+          <div class="rv-q" data-answer="a"><p>Which plantation was a failure?</p><ol><li>Laois-Offaly</li><li>Munster</li><li>Ulster</li><li>Derry</li></ol><div class="explain">Laois-Offaly (Mary I): too few planters and lands still attacked.</div></div>
+          <div class="rv-q" data-answer="b"><p>Which monarch organised the Munster plantation?</p><ol><li>Mary I</li><li>Elizabeth I</li><li>James I</li><li>Henry VII</li></ol><div class="explain">Elizabeth I, against the Fitzgeralds of Desmond.</div></div>
+          <div class="rv-q" data-answer="b"><p>By 1700, Protestants owned what share of the land?</p><ol><li>20%</li><li>85%</li><li>50%</li><li>40%</li></ol><div class="explain">85%: this landlord class was the Protestant Ascendancy.</div></div>
+          <div class="rv-q" data-answer="a"><p>In what year did the Boston Massacre happen?</p><ol><li>1770</li><li>1773</li><li>1774</li><li>1776</li></ol><div class="explain">1770. Tea Party 1773, First Continental Congress 1774, Declaration 1776.</div></div>
+          <div class="rv-q" data-answer="b"><p>Who wrote a pamphlet arguing for American independence?</p><ol><li>Paul Revere</li><li>Thomas Paine</li><li>Horatio Gates</li><li>Baron Von Steuben</li></ol><div class="explain">Thomas Paine. Revere warned the rebels; Gates won Saratoga; Von Steuben drilled troops.</div></div>
+          <div class="rv-q" data-answer="b"><p>Which victory brought France, Spain and the Netherlands into the war?</p><ol><li>Valley Forge</li><li>Saratoga</li><li>Bunker Hill</li><li>Concord</li></ol><div class="explain">General Horatio Gates won at Saratoga; French help was key to victory.</div></div>
+          <div class="rv-q" data-answer="a"><p>Which Irish event was inspired by the American Revolution?</p><ol><li>The 1798 Rebellion</li><li>The Penal Laws</li><li>The Plantation of Ulster</li><li>The Peace of Augsburg</li></ol><div class="explain">Ireland's dream of independence led to the 1798 Rebellion.</div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; History Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll('.qc-all').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var cards = b.parentNode.previousElementSibling.querySelectorAll('details.qc'), open = b.textContent.indexOf('Show') === 0;
+          cards.forEach(function (d) { d.open = open; });
+          b.textContent = open ? 'Hide answers' : 'Show all 5 answers';
+        });
+      });
+      var secs = document.querySelectorAll('section[id]'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+      addEventListener('scroll', function () {
+        var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+        links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+      });
+    })();
+  </script>
+</body>
+</html>

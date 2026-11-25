@@ -84,6 +84,10 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Geography Year 2 – Chapter 3 – Industry in Ireland: Case Studies & MNCs
 - [x] Geography Year 2 – Chapter 4 – Rivers
 - [x] Geography Year 2 – Fast Revision – 42-minute recap of Chapters 1, 2, 3 & 4 (rules: CONTENT_RULES.md §8)
+- [x] History Year 2 – Chapter 8 – The Reformation
+- [x] History Year 2 – Chapter 9 – The Plantations
+- [x] History Year 2 – Chapter 10 – The American Revolution
+- [x] History Year 2 – Fast Revision – 42-minute recap of Chapters 8, 9 & 10 (rules: CONTENT_RULES.md §8)
 - [x] Maths Year 2 – Chapter 1 – Algebra 1
 - [x] Maths Year 2 – Chapter 2 – Factors
 - [x] Maths Year 2 – Chapter 3 – Sets
