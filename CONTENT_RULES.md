@@ -133,6 +133,13 @@ When a chapter is added to the year, add a block for it here too and re-check th
 | 2 | **One block per chapter** (chapter order), ⏱ minutes badge | a) **Key terms**: table Term · Exam definition, 6–11 terms (up to 13 when the year has only 2–3 chapters), only those most likely to be examined, exam wording, ≤ 20 words each. b) **Must remember**: the sequences, key numbers and formulae (flow boxes, mini tables, `.formula`), plus at most one worked example. Non-calculation subjects use who’s-who tables, event flows / book-by-book tables and the chapter’s `.mnemonic`s instead. c) **⚠️ Don't lose marks**: 2–3 bullets in `.exam-trap`. d) **Quick check**: exactly 5 question cards, all visible at once in a grid (`details.qc`: question shown, tap to reveal the answer in place), plus a "Show all 5 answers" button. No sliding flashcard deck: it's too slow here |
 | 3 | **Final mixed quiz** | 10–12 `.rv-quiz` MCQs spread across all chapters (≥ 2 per chapter where possible), with explanations |
 
+**Maths variant** (reference: `maths/year-2/fast-revision.html`): maths is skills, not definitions, so block 2 a) + b) become
+**Key concepts**: a grid of `.concept` cards, one per textbook section or skill (split a section if it has two methods, e.g.
+a = 1 and a > 1 quadratics). Each card has the section number, the rule or method in ≤ 2 lines (`.formula` where there is one) and
+**one worked example** taken from the chapter page, in `.work` style (≤ 4 lines, reason on the right, answer highlighted). Add a
+grid, number line or Venn diagram only when it is the method itself. The quick check uses 5 book practice questions (show the ref,
+answer = key step + final answer), and the final quiz reuses chapter-quiz questions (3 per chapter), with their mistake-based distractors.
+
 **Leave out:** brain dump, mind map, separate glossary, long topic notes, fill the gaps, practice questions, summary table,
 spaced-repetition tracker, time-plan table, progress / done buttons, hide-definitions toggle. Fast revision is reading plus quick recall, nothing else.
 

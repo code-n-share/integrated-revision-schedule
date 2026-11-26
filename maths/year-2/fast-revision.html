@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Revision – Year 2 Fast Revision</title>
+  <!-- Fast revision page: follows CONTENT_RULES.md §8 (maths variant: key-concept cards with one worked example each).
+       Content is condensed from ch1, ch2, ch3, ch9 in this folder (Text & Tests 2); nothing new is added here.
+       Worked examples = the chapters' own worked examples; quick checks = the chapters' practice questions (book refs shown);
+       final quiz = questions from the chapters' quizzes. Answers match the chapter pages (already checked against the book key). -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/revision.css">
+  <style>
+    :root {
+      --accent: #6C3FC5; --accent-light: #EDE7FF; --accent-bright: #B79CF0;
+      --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--text); color: #fff; overflow-y: auto; z-index: 100; }
+    .sidebar-header { background: var(--accent); color: #fff; padding: 20px 18px 16px; font-family: 'Sora', sans-serif; }
+    .sidebar-header .site-title { font-size: 13px; font-weight: 600; opacity: .8; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar-header .book-title { font-size: 17px; font-weight: 800; line-height: 1.2; margin-top: 4px; }
+    .sidebar a { display: block; padding: 9px 18px; color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--accent-bright); }
+    .main { margin-left: 240px; }
+    .chapter-hero { background: var(--text); color: #fff; padding: 44px 48px; }
+    .chapter-badge { display: inline-block; background: var(--accent); color: #fff; font: 700 12px 'Sora', sans-serif; padding: 4px 12px; border-radius: 100px; }
+    .chapter-hero h1 { font: 800 36px 'Sora', sans-serif; margin: 12px 0 6px; }
+    .chapter-hero h1 span { color: var(--accent-bright); }
+    .chapter-meta { opacity: .7; font-size: 14px; }
+    .goal-tag { display: inline-block; margin: 12px 8px 0 0; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,.12); font-size: 13px; }
+    .content { max-width: 900px; padding: 32px 48px 80px; }
+    .section-heading { font: 700 22px 'Sora', sans-serif; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); scroll-margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .mnemonic { margin: 10px 0 0; padding: 8px 12px; background: #F3EEFB; border-left: 4px solid #6C3FC5; border-radius: 0 10px 10px 0; font-size: 13.5px; }
+    .exam-trap { margin: 14px 0; padding: 14px 18px; background: #FDECEA; border-left: 5px solid #D32F2F; border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px; }
+    .exam-trap ul { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0; background: var(--card); }
+    th, td { padding: 6px 10px; border: 1px solid var(--border); text-align: left; font-size: 13.5px; vertical-align: top; }
+    th { background: var(--accent-light); }
+    ul, ol { margin: 10px 0 10px 22px; } li { font-size: 14px; margin-bottom: 4px; }
+    p { font-size: 14px; margin: 8px 0; }
+    .chapter-nav-bar { position: fixed; bottom: 0; left: 240px; right: 0; background: #fff; border-top: 1px solid var(--border); padding: 10px 48px; font-size: 14px; z-index: 50; }
+    .chapter-nav-bar a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+    /* ── Fast revision ── */
+    .fr-time { margin-left: auto; font: 600 13px 'DM Sans', sans-serif; background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+    .fr-chapter h3 { font: 700 15px 'Sora', sans-serif; margin: 18px 0 6px; }
+    .fr-sub { font: 400 13px 'DM Sans', sans-serif; color: var(--muted); }
+
+    /* Key-concept cards: rule + one worked example */
+    .concepts { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 12px; margin: 8px 0; }
+    .concept { background: var(--card); border: 1.5px solid var(--border); border-top: 4px solid var(--accent); border-radius: var(--radius); padding: 12px 14px; min-width: 0; }
+    .concept.wide { grid-column: 1 / -1; }
+    .concept h4 { font: 700 14.5px 'Sora', sans-serif; margin-bottom: 4px; }
+    .concept h4 .sec { display: inline-block; font: 700 11px 'JetBrains Mono', monospace; background: var(--accent); color: #fff; padding: 1px 7px; border-radius: 6px; margin-right: 6px; vertical-align: 2px; }
+    .rule { font-size: 14px; margin: 2px 0 8px; }
+    .rule b { color: var(--accent); }
+    .eg { font: 700 11.5px 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin-top: 8px; }
+    .formula { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 6px 12px; margin: 6px 0; text-align: center; }
+    .work { font-family: 'JetBrains Mono', monospace; font-size: 13.5px; margin: 4px 0; }
+    .work .ln { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 3px 0; border-bottom: 1px dashed var(--border); flex-wrap: wrap; }
+    .work .why { font: 500 12px 'DM Sans', sans-serif; color: #1565C0; text-align: right; margin-left: auto; }
+    .work .ans .eq { background: #E8F5E9; border: 1.5px solid #2E7D32; border-radius: 6px; padding: 0 8px; font-weight: 600; }
+    table.mgrid { width: auto; margin: 6px 0; }
+    table.mgrid td, table.mgrid th { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 3px 10px; }
+    table.mgrid td.hl { background: #E8F5E9; font-weight: 700; }
+    .side { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: flex-start; }
+    .side > * { flex: 1 1 150px; min-width: 0; }
+    .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 3px; line-height: 1.2; }
+    .frac > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 4px 1px; }
+    .frac > span:last-child { padding: 1px 4px 0; }
+    .nl-caption { text-align: center; font-size: 12.5px; color: var(--muted); margin: 0 0 4px; }
+    .concept .rv-venn svg { max-width: 260px; }
+
+    /* Quick check */
+    .qc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin: 8px 0; }
+    details.qc { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+    details.qc summary { list-style: none; font-weight: 600; font-size: 14px; }
+    details.qc summary::-webkit-details-marker { display: none; }
+    details.qc summary::after { content: ' 👆 tap'; font-weight: 400; font-size: 12px; color: var(--muted); }
+    details.qc[open] { border-color: var(--accent); background: var(--accent-light); }
+    details.qc[open] summary::after { content: ''; }
+    details.qc .ref { font: 500 11.5px 'DM Sans', sans-serif; color: var(--muted); }
+    details.qc .qa { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--accent); font-size: 14px; }
+    details.qc .qa::before { content: '✓ '; color: var(--accent); font-weight: 700; }
+    details.qc .qa .m { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+    .qc-bar { margin: 4px 0 0; }
+    .qc-bar button { font: 600 13px 'DM Sans', sans-serif; background: #fff; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+
+    @media (max-width: 800px) { .sidebar { display: none; } .main, .chapter-nav-bar { margin-left: 0; left: 0; } .chapter-hero, .content { padding-left: 20px; padding-right: 20px; } .chapter-nav-bar { padding-left: 20px; padding-right: 20px; } .concepts { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header"><div class="site-title">Maths Revision</div><div class="book-title">Year 2 · Fast Revision</div></div>
+    <a href="index.html">&larr; Maths Year 2</a>
+    <a href="#ch1">🔤 Ch 1 Algebra 1</a>
+    <a href="#ch2">🧩 Ch 2 Factors</a>
+    <a href="#ch3">⭕ Ch 3 Sets</a>
+    <a href="#ch9">🎲 Ch 9 Probability</a>
+    <a href="#final">🏁 Final quiz</a>
+  </nav>
+
+  <main class="main">
+    <div class="chapter-hero">
+      <div class="chapter-badge">⚡ Fast Revision · Year 2 Maths</div>
+      <h1>⚡ <span>All of Year 2 in 42 minutes</span></h1>
+      <p class="chapter-meta">Text &amp; Tests 2 · Ch 1, 2, 3 &amp; 9 · every key method, each with one worked example</p>
+      <div><span class="goal-tag">✔ 27 key concepts + worked examples</span><span class="goal-tag">✔ Every formula &amp; rule</span><span class="goal-tag">✔ Top exam traps</span><span class="goal-tag">✔ 20 quick-check questions + 12-question quiz</span></div>
+    </div>
+
+    <div class="content">
+      <p><b>How to use it:</b> for each card, read the rule, then cover the worked example and try it yourself before checking. Then do the 5 quick-check questions on paper.</p>
+
+      <!-- ═════════ CH 1 ═════════ -->
+      <section class="fr-chapter" id="ch1">
+        <div class="section-heading">🔤 Ch 1 · Algebra 1 <span class="fr-time">⏱ 10 min</span></div>
+        <h3>1 · Key concepts <span class="fr-sub">rule first, then the worked example</span></h3>
+        <div class="concepts">
+          <div class="concept">
+            <h4><span class="sec">1.1</span>Like terms</h4>
+            <p class="rule">Only <b>like terms</b> (same letters, same powers) can be added or subtracted. The sign in front belongs to the term.</p>
+            <div class="eg">Example</div>
+            <div class="work">
+              <div class="ln"><span class="eq">2x² − 3x − 7 − x² − 5x + 3</span></div>
+              <div class="ln"><span class="eq">2x² − x² − 3x − 5x − 7 + 3</span><span class="why">group like terms</span></div>
+              <div class="ln ans"><span class="eq">x² − 8x − 4</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.2</span>Removing brackets</h4>
+            <p class="rule">a(b + c) = ab + ac · a² × a³ = a⁵ (<b>add</b> indices) · a minus outside changes <b>every</b> sign. Two brackets: grid, every term × every term.</p>
+            <div class="eg">Example: (2x − 3)(3x + 4)</div>
+            <table class="mgrid"><tr><th></th><th>2x</th><th>−3</th></tr><tr><th>3x</th><td>6x²</td><td>−9x</td></tr><tr><th>+4</th><td>8x</td><td>−12</td></tr></table>
+            <div class="work">
+              <div class="ln ans"><span class="eq">6x² − x − 12</span><span class="why">−9x + 8x = −x</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.3</span>Evaluating</h4>
+            <p class="rule">Substitute <b>in brackets</b> → powers → × ÷ → + −. Triangle A = bh ÷ 2 · trapezium A = ½(a + b)h.</p>
+            <div class="eg">Example: x = 3, y = −2, find 3x² − 4xy − 2y²</div>
+            <div class="work">
+              <div class="ln"><span class="eq">3(3)² − 4(3)(−2) − 2(−2)²</span><span class="why">substitute</span></div>
+              <div class="ln"><span class="eq">27 + 24 − 8</span><span class="why">(−2)² = +4</span></div>
+              <div class="ln ans"><span class="eq">= 43</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.4</span>Linear equations</h4>
+            <p class="rule">Do the <b>same to both sides</b>: brackets → x-terms together → numbers across → divide → check.</p>
+            <div class="eg">Example: 3(2x − 6) = 2(2x + 1)</div>
+            <div class="work">
+              <div class="ln"><span class="eq">6x − 18 = 4x + 2</span><span class="why">remove brackets</span></div>
+              <div class="ln"><span class="eq">2x − 18 = 2</span><span class="why">− 4x each side</span></div>
+              <div class="ln"><span class="eq">2x = 20</span><span class="why">+ 18 each side</span></div>
+              <div class="ln ans"><span class="eq">x = 10</span><span class="why">÷ 2</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.5</span>Word problems</h4>
+            <p class="rule"><b>“Let x = …”</b> → equation → solve → answer in words with units. Consecutive: x, x + 1, x + 2 · ages: 6 years ago x − 6, in 12 years x + 12.</p>
+            <div class="eg">Example: rectangle sides x and (2x + 1), perimeter 44 cm</div>
+            <div class="work">
+              <div class="ln"><span class="eq">x + (2x + 1) + x + (2x + 1) = 44</span><span class="why">add all sides</span></div>
+              <div class="ln"><span class="eq">6x + 2 = 44 → 6x = 42</span><span class="why">− 2</span></div>
+              <div class="ln ans"><span class="eq">x = 7 cm</span><span class="why">÷ 6</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.6</span>Algebraic division</h4>
+            <p class="rule">Array method backwards: divisor down the side, answer builds along the top. Missing power → write <b>0x²</b>. Multiply back to check.</p>
+            <div class="eg">Example: (x² + x − 12) ÷ (x + 4)</div>
+            <div class="side">
+              <table class="mgrid"><tr><th></th><th>x</th><th>−3</th></tr><tr><th>x</th><td>x²</td><td>−3x</td></tr><tr><th>+4</th><td>4x</td><td>−12</td></tr></table>
+              <div class="work">
+                <div class="ln"><span class="eq">x² ÷ x = x</span><span class="why">top</span></div>
+                <div class="ln"><span class="eq">x − 4x = −3x → −3</span><span class="why">middle term</span></div>
+                <div class="ln ans"><span class="eq">x − 3</span><span class="why">(+4)(−3) = −12 ✓</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.7</span>Number line</h4>
+            <p class="rule">ℕ = 1, 2, 3 … · ℤ = … −1, 0, 1 … → <b>dots</b>. ℝ → <b>heavy line</b>. ● included (≥ ≤) · ○ not included (&gt; &lt;).</p>
+            <div class="eg">Examples</div>
+            <div class="rv-numline" data-min="-2" data-max="5" data-dots="-1,0,1,2,3,4,5" data-arrow="right" data-label="x > -2, x in Z"></div>
+            <p class="nl-caption">x &gt; −2, x ∈ ℤ → −1, 0, 1, 2 …</p>
+            <div class="rv-numline" data-min="-5" data-max="5" data-line="-3:2" data-ends="co" data-label="-3 ≤ x < 2, x in R"></div>
+            <p class="nl-caption">−3 ≤ x &lt; 2, x ∈ ℝ → ● at −3, ○ at 2, line between</p>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">1.8</span>Inequalities</h4>
+            <p class="rule">Solve like an equation, but × or ÷ by a <b>negative</b> → <b>reverse the sign</b>. Then graph in the set asked for.</p>
+            <div class="eg">Example: 4 − 3x &gt; −5, x ∈ ℤ</div>
+            <div class="work">
+              <div class="ln"><span class="eq">−3x &gt; −9</span><span class="why">− 4 each side</span></div>
+              <div class="ln"><span class="eq">x &lt; 3</span><span class="why">÷ (−3) → flip</span></div>
+              <div class="ln ans"><span class="eq">x = 2, 1, 0, −1 …</span><span class="why">integers</span></div>
+            </div>
+            <div class="mnemonic">🧩 Negative flips the sign: 6 &gt; 4 but −12 &lt; −8.</div>
+          </div>
+        </div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul>
+          <li>(−2)² = <b>+4</b>. Bracket every negative before squaring.</li>
+          <li>−4(5a − 2) = −20a <b>+ 8</b>: the minus changes <i>every</i> sign inside, not just the first.</li>
+          <li>Forgetting to flip when dividing by a negative; and ℕ starts at <b>1</b>, not 0.</li></ul></div>
+        <h3>2 · Quick check <span class="fr-sub">work it on paper, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>Simplify 5(3x − 2) − 2(x − 1) <span class="ref">Ex 1.2 Q4</span></summary><div class="qa"><span class="m">15x − 10 − 2x + 2 = 13x − 8</span></div></details>
+          <details class="qc"><summary>x = 2, y = −3, z = 1: evaluate x² − 3xy + 2z <span class="ref">Ex 1.3 Q9</span></summary><div class="qa"><span class="m">4 + 18 + 2 = 24</span></div></details>
+          <details class="qc"><summary>Solve 5(x − 2) − 3x = 3(x − 5) <span class="ref">Ex 1.4 Q24</span></summary><div class="qa"><span class="m">2x − 10 = 3x − 15 → x = 5</span></div></details>
+          <details class="qc"><summary>Divide x³ + 3x² + 5x + 3 by (x + 1) <span class="ref">Ex 1.6 Q13</span></summary><div class="qa"><span class="m">x² + 2x + 3</span></div></details>
+          <details class="qc"><summary>Solve 5 − 2x ≥ −7, x ∈ ℝ <span class="ref">Ex 1.8 Q15</span></summary><div class="qa"><span class="m">−2x ≥ −12 → x ≤ 6</span> (flip!) · ● at 6, line to the left</div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <!-- ═════════ CH 2 ═════════ -->
+      <section class="fr-chapter" id="ch2">
+        <div class="section-heading">🧩 Ch 2 · Factors <span class="fr-time">⏱ 9 min</span></div>
+        <h3>1 · Key concepts <span class="fr-sub">rule first, then the worked example</span></h3>
+        <div class="concepts">
+          <div class="concept">
+            <h4><span class="sec">2.1</span>Common factor (HCF)</h4>
+            <p class="rule">HCF = HCF of the numbers × the letters <b>all</b> terms share. Write it outside, divide each term, expand to check.</p>
+            <div class="eg">Example: 6a²b − 8ab² + 4ab</div>
+            <div class="work">
+              <div class="ln"><span class="eq">HCF = 2ab</span><span class="why">2 · a · b</span></div>
+              <div class="ln ans"><span class="eq">2ab(3a − 4b + 2)</span><span class="why">divide each term</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">2.2</span>Grouping</h4>
+            <p class="rule">Four terms: split into pairs, take the HCF out of each, then take out the <b>common bracket</b>.</p>
+            <div class="eg">Example: 3ax − bx − 3ay + by</div>
+            <div class="work">
+              <div class="ln"><span class="eq">x(3a − b) − y(3a − b)</span><span class="why">take out −y</span></div>
+              <div class="ln ans"><span class="eq">(3a − b)(x − y)</span><span class="why">common bracket</span></div>
+            </div>
+            <div class="mnemonic">🧩 “Pair, pull, bracket.”</div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">2.3</span>Difference of two squares</h4>
+            <div class="formula">x² − y² = (x + y)(x − y)</div>
+            <p class="rule">HCF first, then square-root each term. Needs a <b>minus</b>.</p>
+            <div class="eg">Example: 12x² − 75y²</div>
+            <div class="work">
+              <div class="ln"><span class="eq">3(4x² − 25y²)</span><span class="why">HCF 3 first</span></div>
+              <div class="ln ans"><span class="eq">3(2x + 5y)(2x − 5y)</span><span class="why">(2x)² − (5y)²</span></div>
+              <div class="ln"><span class="eq">51² − 49² = (2)(100) = 200</span><span class="why">shortcut</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">2.4</span>Quadratics x² + bx + c</h4>
+            <p class="rule">Find two numbers that <b>multiply to c</b> and <b>add to b</b>. c negative → different signs; the bigger one takes b’s sign.</p>
+            <div class="eg">Example: x² − 8x + 15</div>
+            <div class="work">
+              <div class="ln"><span class="eq">−3 × −5 = 15, −3 + −5 = −8</span><span class="why">find the pair</span></div>
+              <div class="ln ans"><span class="eq">(x − 3)(x − 5)</span></div>
+            </div>
+            <div class="mnemonic">🧩 Multiply to the end, add to the middle.</div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">2.4</span>Quadratics ax² + bx + c (a &gt; 1)</h4>
+            <p class="rule">Work out <b>a × c</b> → find the pair that multiplies to it and adds to b → split the middle term → group.</p>
+            <div class="eg">Example: 3x² + 10x + 8</div>
+            <div class="work">
+              <div class="ln"><span class="eq">3 × 8 = 24 → 4 × 6, 4 + 6 = 10</span><span class="why">a × c</span></div>
+              <div class="ln"><span class="eq">3x² + 4x + 6x + 8</span><span class="why">split 10x</span></div>
+              <div class="ln"><span class="eq">x(3x + 4) + 2(3x + 4)</span><span class="why">group</span></div>
+              <div class="ln ans"><span class="eq">(3x + 4)(x + 2)</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">2.5</span>Algebraic fractions</h4>
+            <p class="rule">Factorise top <b>and</b> bottom, then cancel matching <b>factors</b> (brackets). If everything on top cancels, 1 is left.</p>
+            <div class="eg">Example: <span class="frac"><span>3x² − 5x − 2</span><span>x − 2</span></span></div>
+            <div class="work">
+              <div class="ln"><span class="eq">(3x + 1)(x − 2) ÷ (x − 2)</span><span class="why">factorise top</span></div>
+              <div class="ln ans"><span class="eq">3x + 1</span><span class="why">cancel (x − 2)</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul>
+          <li>If a term <i>is</i> the HCF, <b>1</b> is left: 3ab + 3a = 3a(b + 1), not 3a(b).</li>
+          <li>x² + 9 is a <i>sum</i>: DOTS doesn't work. Always take out the HCF before DOTS.</li>
+          <li>Cancel factors, never terms: <span class="frac"><span>x + 6</span><span>6</span></span> ≠ x + 1. And <span class="frac"><span>5 − x</span><span>x − 5</span></span> = <b>−1</b>.</li></ul></div>
+        <h3>2 · Quick check <span class="fr-sub">work it on paper, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>Factorise fully 2a²b − 4ab² + 12abc <span class="ref">Ex 2.1 Q16</span></summary><div class="qa"><span class="m">2ab(a − 2b + 6c)</span></div></details>
+          <details class="qc"><summary>Factorise 8ax + 4ay − 6bx − 3by <span class="ref">Ex 2.2 Q15</span></summary><div class="qa"><span class="m">4a(2x + y) − 3b(2x + y) = (2x + y)(4a − 3b)</span></div></details>
+          <details class="qc"><summary>Factorise 36x² − 49y² <span class="ref">Ex 2.3 Q8</span></summary><div class="qa"><span class="m">(6x + 7y)(6x − 7y)</span></div></details>
+          <details class="qc"><summary>Factorise x² − 4x − 12 <span class="ref">Ex 2.4 Q25</span></summary><div class="qa"><span class="m">−6 × 2 = −12, −6 + 2 = −4 → (x − 6)(x + 2)</span></div></details>
+          <details class="qc"><summary>Simplify <span class="frac"><span>a² − 16</span><span>3a − 12</span></span> <span class="ref">Ex 2.5 Q13</span></summary><div class="qa"><span class="m">(a + 4)(a − 4) ÷ 3(a − 4) = <span class="frac"><span>a + 4</span><span>3</span></span></span></div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <!-- ═════════ CH 3 ═════════ -->
+      <section class="fr-chapter" id="ch3">
+        <div class="section-heading">⭕ Ch 3 · Sets <span class="fr-time">⏱ 8 min</span></div>
+        <h3>1 · Key concepts <span class="fr-sub">rule first, then the worked example</span></h3>
+        <div class="concepts">
+          <div class="concept">
+            <h4><span class="sec">3.1</span>Set symbols</h4>
+            <p class="rule">Example: A = {1, 2, 3, 4}, B = {3, 4, 5, 6}</p>
+            <table>
+              <tr><th>Symbol</th><th>Means</th><th>Example</th></tr>
+              <tr><td>A ∪ B</td><td>in A <b>or</b> B</td><td>{1, 2, 3, 4, 5, 6}</td></tr>
+              <tr><td>A ∩ B</td><td>in A <b>and</b> B</td><td>{3, 4}</td></tr>
+              <tr><td>A′</td><td>in U, not in A</td><td>U = {1 … 10}, A = {2, 3, 5, 7} → {1, 4, 6, 8, 9, 10}</td></tr>
+              <tr><td>B ⊂ A</td><td>every element of B is in A</td><td>{3, 5} ⊂ {1, 2, 3, 4, 5}</td></tr>
+              <tr><td>#A</td><td>how many in A</td><td>#A = 4, #(A ∪ B) = 6</td></tr>
+            </table>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">3.1</span>Counting with two sets</h4>
+            <div class="formula">#(A ∪ B) = #A + #B − #(A ∩ B)</div>
+            <div class="eg">Example: 30 pupils, 17 German, 16 Spanish, 5 both. How many do neither?</div>
+            <div class="side">
+              <div class="rv-venn" data-sets="2" data-names="German,Spanish" data-nums="a:12;ab:5;b:11;o:2" data-u="U = 30" data-label="Venn diagram: 12 German only, 5 both, 11 Spanish only, 2 neither"></div>
+              <div class="work">
+                <div class="ln"><span class="eq">both = 5</span><span class="why">overlap first</span></div>
+                <div class="ln"><span class="eq">17 − 5 = 12 · 16 − 5 = 11</span><span class="why">“only”</span></div>
+                <div class="ln ans"><span class="eq">30 − 28 = 2</span><span class="why">neither</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">3.1</span>Number sets &amp; rules</h4>
+            <p class="rule"><b>ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</b>: natural (1, 2, 3 …) · integers (… −1, 0, 1 …) · rational (a/b, b ≠ 0) · real (whole line). 0 ∈ ℤ but 0 ∉ ℕ. For a rule, put each allowed x into the formula.</p>
+            <div class="eg">Example: list C = {2x + 1 | −3 &lt; x &lt; 2, x ∈ ℤ}</div>
+            <div class="work">
+              <div class="ln"><span class="eq">x = −2, −1, 0, 1</span><span class="why">&lt; drops −3 and 2</span></div>
+              <div class="ln ans"><span class="eq">C = {−3, −1, 1, 3}</span><span class="why">2x + 1 each</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">3.2</span>Set difference</h4>
+            <p class="rule"><b>A \ B</b> (“A less B”) = in A but <b>not</b> in B. Keep the set <i>before</i> the \. U \ A = A′.</p>
+            <div class="eg">Example: A = {2, 3, 4, 5}, B = {4, 5, 6, 7}</div>
+            <div class="work">
+              <div class="ln"><span class="eq">A \ B = {2, 3}</span><span class="why">remove 4, 5</span></div>
+              <div class="ln ans"><span class="eq">B \ A = {6, 7}</span><span class="why">≠ A \ B</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">3.2–3.3</span>Commutative &amp; associative</h4>
+            <p class="rule"><b>Commutative</b>: order doesn't matter (a ∗ b = b ∗ a). <b>Associative</b>: grouping doesn't matter ((a ∗ b) ∗ c = a ∗ (b ∗ c)).</p>
+            <table>
+              <tr><th>Operation</th><th>Comm.?</th><th>Assoc.?</th></tr>
+              <tr><td>+ · × · ∪ · ∩</td><td>✓ yes</td><td>✓ yes</td></tr>
+              <tr><td>− · ÷ · \</td><td>✗ no</td><td>✗ no</td></tr>
+            </table>
+            <p class="rule">e.g. (12 ÷ 6) ÷ 2 = 1 but 12 ÷ (6 ÷ 2) = 4 → ÷ not associative. One counter-example is enough to disprove.</p>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">3.3–3.4</span>Three-set problems</h4>
+            <p class="rule">8 regions. <b>Centre first</b> (call it x if not given) → pairs = pair total − centre → “only” = set total − the rest → outside = U − inside. All regions add to #U.</p>
+            <div class="eg">Example: 86 students, all take ≥ 1 language. F 57, G 42, S 31; F&amp;G 25, F&amp;S 17, G&amp;S 5. All three?</div>
+            <div class="work">
+              <div class="ln"><span class="eq">pairs: 25 − x, 17 − x, 5 − x</span><span class="why">pair − x</span></div>
+              <div class="ln"><span class="eq">only: 15 + x, 12 + x, 9 + x</span><span class="why">total − rest</span></div>
+              <div class="ln"><span class="eq">83 + x = 86</span><span class="why">all regions = U</span></div>
+              <div class="ln ans"><span class="eq">x = 3 students</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul>
+          <li>In A ∪ B write each element <b>once</b>; 0 is <b>not</b> in ℕ.</li>
+          <li>A \ B ≠ B \ A: keep the set before the \.</li>
+          <li>Three sets: subtract the centre from each pair total, and don't forget the outside (“none”).</li></ul></div>
+        <h3>2 · Quick check <span class="fr-sub">work it on paper, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>List B = {2x | −3 &lt; x &lt; 4, x ∈ ℤ} <span class="ref">Ch 3 quiz</span></summary><div class="qa"><span class="m">x = −2 … 3 → {−4, −2, 0, 2, 4, 6}</span></div></details>
+          <details class="qc"><summary>#U = 50, #X = 28, #Y = 34, #(X ∪ Y) = 43. Find #(X ∩ Y) and #(X \ Y) <span class="ref">Test yourself 3 Q3</span></summary><div class="qa"><span class="m">28 + 34 − 43 = 19 · 28 − 19 = 9</span></div></details>
+          <details class="qc"><summary>X = {2, 4, 6, 8, 10, 12}, Y = {3, 6, 9, 12, 15}. Find X \ Y and Y \ X <span class="ref">Ex 3.2 Q4</span></summary><div class="qa"><span class="m">{2, 4, 8, 10} · {3, 9, 15}</span>: not equal → \ is not commutative</div></details>
+          <details class="qc"><summary>Describe ℤ \ ℕ in words <span class="ref">Ex 3.2 Q8</span></summary><div class="qa">The negative whole numbers and zero</div></details>
+          <details class="qc"><summary>Name the property: (3 × 4) × 5 = 3 × (4 × 5) <span class="ref">Ex 3.3 Q9</span></summary><div class="qa">Multiplication is associative (grouping doesn't matter)</div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <!-- ═════════ CH 9 ═════════ -->
+      <section class="fr-chapter" id="ch9">
+        <div class="section-heading">🎲 Ch 9 · Probability <span class="fr-time">⏱ 9 min</span></div>
+        <h3>1 · Key concepts <span class="fr-sub">rule first, then the worked example</span></h3>
+        <div class="concepts">
+          <div class="concept">
+            <h4><span class="sec">9.1</span>Counting principle</h4>
+            <p class="rule">m choices then n choices → <b>m × n</b> outcomes (multiply, never add). To list them, draw a tree or two-way table.</p>
+            <div class="eg">Example: 3 languages, 2 sciences, 2 business subjects, one of each</div>
+            <div class="work">
+              <div class="ln ans"><span class="eq">3 × 2 × 2 = 12 choices</span><span class="why">multiply</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">9.2</span>Probability scale</h4>
+            <p class="rule"><b>0</b> impossible · ½ even chance · <b>1</b> certain. Never below 0 or above 1. 75% = 3 times out of 4 = likely.</p>
+            <div class="mnemonic">🧩 <b>I U E L C</b>: Impossible, Unlikely, Even chance, Likely, Certain (0 → 1).</div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">9.3</span>P(E) for equally likely outcomes</h4>
+            <div class="formula">P(E) = favourable ÷ all possible</div>
+            <p class="rule">P(not E) = <b>1 − P(E)</b>. “A or B” → add the favourable outcomes.</p>
+            <div class="eg">Example: one of the 13 tiles P A R A L L E L O G R A M</div>
+            <div class="work">
+              <div class="ln"><span class="eq">P(A) = 3/13</span><span class="why">3 As</span></div>
+              <div class="ln ans"><span class="eq">P(A or L) = (3 + 3)/13 = 6/13</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">9.4</span>Two events: sample space</h4>
+            <p class="rule">Coin + die = 2 × 6 = <b>12</b> outcomes · two dice = <b>36</b>. Draw the grid, circle the matches, divide by the total.</p>
+            <div class="eg">Example: two dice, P(total = 7)</div>
+            <div class="side">
+              <table class="mgrid"><tr><th>+</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+                <tr><th>1</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td class="hl">7</td></tr>
+                <tr><th>2</th><td>3</td><td>4</td><td>5</td><td>6</td><td class="hl">7</td><td>8</td></tr>
+                <tr><th>3</th><td>4</td><td>5</td><td>6</td><td class="hl">7</td><td>8</td><td>9</td></tr>
+                <tr><th>4</th><td>5</td><td>6</td><td class="hl">7</td><td>8</td><td>9</td><td>10</td></tr>
+                <tr><th>5</th><td>6</td><td class="hl">7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+                <tr><th>6</th><td class="hl">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr></table>
+              <div class="work"><div class="ln ans"><span class="eq">6/36 = 1/6</span><span class="why">6 cells</span></div></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">9.5</span>Relative &amp; expected frequency</h4>
+            <div class="formula">relative freq. = successes ÷ trials<br>expected freq. = P × trials</div>
+            <p class="rule">More trials → better estimate. All probabilities add to 1.</p>
+            <div class="eg">Example: P(1) = 0.35, P(2) = 0.1, P(3) = 0.25, P(4) = 0.15. Find P(5); 3s in 200 spins?</div>
+            <div class="work">
+              <div class="ln"><span class="eq">P(5) = 1 − 0.85 = 0.15</span><span class="why">add to 1</span></div>
+              <div class="ln ans"><span class="eq">0.25 × 200 = 50 threes</span><span class="why">P × trials</span></div>
+            </div>
+          </div>
+          <div class="concept">
+            <h4><span class="sec">9.6</span>Probability from a Venn diagram</h4>
+            <p class="rule">P = region ÷ <b>total in U</b> (include the “neither” number). “Or” = everything in both circles, overlap counted once.</p>
+            <div class="eg">Example: club of 130 members (football / tennis)</div>
+            <div class="side">
+              <div class="rv-venn" data-sets="2" data-names="Football,Tennis" data-nums="a:40;ab:10;b:35;o:45" data-u="U = 130" data-label="Venn diagram: 40 football only, 10 both, 35 tennis only, 45 neither"></div>
+              <div class="work">
+                <div class="ln"><span class="eq">P(neither) = 45/130 = 9/26</span></div>
+                <div class="ln ans"><span class="eq">P(F or T) = 85/130 = 17/26</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="concept wide">
+            <h4><span class="sec">9.7</span>Probability trees</h4>
+            <p class="rule">Write the probability on every branch (branches from one point add to 1). <b>Multiply along</b> a path (“and”); <b>add between</b> paths (“or”).</p>
+            <div class="eg">Example: spinner A red 1/4, blue 3/4; spinner B red 3/5, blue 2/5. P(both the same colour)?</div>
+            <div class="work">
+              <div class="ln"><span class="eq">red, red = 1/4 × 3/5 = 3/20</span><span class="why">multiply along</span></div>
+              <div class="ln"><span class="eq">blue, blue = 3/4 × 2/5 = 6/20</span><span class="why">multiply along</span></div>
+              <div class="ln ans"><span class="eq">3/20 + 6/20 = 9/20</span><span class="why">add the two paths</span></div>
+            </div>
+            <div class="mnemonic">🧩 Along the branches ×, between the branches +.</div>
+          </div>
+        </div>
+        <div class="exam-trap"><b>⚠️ Don't lose marks</b><ul>
+          <li>3 starters and 4 mains = 3 × 4 = <b>12</b> meals, not 7.</li>
+          <li>The bottom of P(E) is <b>all</b> outcomes; for a Venn diagram it's the total in U. The 11 dice totals are <i>not</i> equally likely: use the 36 outcomes.</li>
+          <li>“Exactly one” / “one of each” on a tree has <b>two paths</b>: add them both.</li></ul></div>
+        <h3>2 · Quick check <span class="fr-sub">work it on paper, then tap the card to check</span></h3>
+        <div class="qc-grid">
+          <details class="qc"><summary>3 models × 3 colours × 3 styles of car: how many choices? <span class="ref">Ex 9.1 Q6</span></summary><div class="qa"><span class="m">3 × 3 × 3 = 27</span></div></details>
+          <details class="qc"><summary>12 green, 6 blue, 8 white marbles. P(not green)? <span class="ref">Ch 9 quiz</span></summary><div class="qa"><span class="m">14/26 = 7/13</span> (or 1 − 6/13)</div></details>
+          <details class="qc"><summary>Three fair coins: P(at least one head)? <span class="ref">Ex 9.4 Q6</span></summary><div class="qa"><span class="m">1 − P(no heads) = 1 − 1/8 = 7/8</span></div></details>
+          <details class="qc"><summary>P(biased die shows 3) = 0.4. Rolled 200 times: how many 3s expected? <span class="ref">Test yourself 9 Q14</span></summary><div class="qa"><span class="m">0.4 × 200 = 80</span></div></details>
+          <details class="qc"><summary>A die is thrown twice. P(exactly one six)? <span class="ref">Ex 9.7 Q7</span></summary><div class="qa"><span class="m">1/6 × 5/6 + 5/6 × 1/6 = 10/36 = 5/18</span></div></details>
+        </div>
+        <div class="qc-bar"><button type="button" class="qc-all">Show all 5 answers</button></div>
+      </section>
+
+      <!-- ═════════ FINAL QUIZ ═════════ -->
+      <section id="final">
+        <div class="section-heading">🏁 Final mixed quiz <span class="fr-time">⏱ 6 min</span></div>
+        <p>12 questions, 3 from each chapter. Work each one out before choosing. If you get one wrong, go back to that chapter's concept cards.</p>
+        <div class="rv-quiz">
+          <div class="rv-q" data-answer="b"><p>Ch 1 · −4(5a − 2) = ?</p><ol><li>−20a − 8</li><li>−20a + 8</li><li>20a + 8</li><li>−20a − 2</li></ol><div class="explain">−4 × 5a = −20a and −4 × (−2) = +8. The minus changes <em>both</em> signs.</div></div>
+          <div class="rv-q" data-answer="b"><p>Ch 1 · Solve 5x − 4 = 4x + 7.</p><ol><li>x = 3</li><li>x = 11</li><li>x = −11</li><li>x = 7</li></ol><div class="explain">Subtract 4x from both sides: x − 4 = 7. Add 4: x = 11. (3 comes from 7 − 4: not changing the sign when moving −4 across.)</div></div>
+          <div class="rv-q" data-answer="b"><p>Ch 1 · Which graph shows x &lt; −2, x ∈ ℝ?</p><ol><li>Closed circle at −2, heavy line to the right</li><li>Open circle at −2, heavy line to the left</li><li>Open circle at −2, dots at −3, −4, −5 …</li><li>Closed circle at −2, heavy line to the left</li></ol><div class="explain">&lt; = open circle (−2 not included); “less than” = to the left; ℝ = a heavy line, not dots.</div></div>
+          <div class="rv-q" data-answer="a"><p>Ch 2 · What is the HCF of 3xy and 12x²?</p><ol><li>3x</li><li>12x</li><li>3xy</li><li>36x²y</li></ol><div class="explain">Numbers: HCF of 3 and 12 is 3. Letters both terms share: x (only one has y). So 3x.</div></div>
+          <div class="rv-q" data-answer="c"><p>Ch 2 · To factorise 6x² + 7x − 5, which pair splits the middle term?</p><ol><li>−10 and 3</li><li>6 and −5</li><li>10 and −3</li><li>15 and −2</li></ol><div class="explain">a × c = −30; the pair must multiply to −30 and <em>add to +7</em>: 10 and −3. Then 6x² + 10x − 3x − 5 = (3x + 5)(2x − 1).</div></div>
+          <div class="rv-q" data-answer="b"><p>Ch 2 · Which simplification is correct?</p><ol><li>(x + 6) ÷ 6 = x + 1</li><li>(3x + 6) ÷ 3 = x + 2</li><li>(x² − 9) ÷ (x − 3) = x − 3</li><li>(5x + 10) ÷ 5 = x + 10</li></ol><div class="explain">3x + 6 = 3(x + 2), so ÷ 3 leaves x + 2. The first cancels a term, not a factor; the third should be x + 3; the fourth forgot to divide the 10.</div></div>
+          <div class="rv-q" data-answer="a"><p>Ch 3 · U = {1, 2, … 10}, A = {1, 3, 5, 7}, B = {5, 7, 8, 9}. Find (A ∪ B)′.</p><ol><li>{2, 4, 6, 10}</li><li>{1, 3, 5, 7, 8, 9}</li><li>{2, 4, 6}</li><li>{5, 7}</li></ol><div class="explain">A ∪ B = {1, 3, 5, 7, 8, 9}; the complement is the rest of U: {2, 4, 6, 10}. The second option forgets the complement; the third misses 10.</div></div>
+          <div class="rv-q" data-answer="c"><p>Ch 3 · 32 pupils all study French or German: 24 French, 18 German. #(F ∩ G) = x. Find x.</p><ol><li>8</li><li>42</li><li>10</li><li>14</li></ol><div class="explain">24 + 18 − x = 32 → x = 10. (8 = 32 − 24; 42 is just 24 + 18.)</div></div>
+          <div class="rv-q" data-answer="a"><p>Ch 3 · Which set describes “in A and B but not in C”?</p><ol><li>(A ∩ B) \ C</li><li>A ∩ B ∩ C</li><li>(A ∪ B) \ C</li><li>A \ (B ∪ C)</li></ol><div class="explain">A ∩ B = in both; \ C removes anything in C. A ∩ B ∩ C is the centre; A \ (B ∪ C) is A only.</div></div>
+          <div class="rv-q" data-answer="b"><p>Ch 9 · Two dice are thrown and the scores added. P(a total of 9)?</p><ol><li>1/36</li><li>1/9</li><li>1/4</li><li>1/11</li></ol><div class="explain">(3,6), (4,5), (5,4), (6,3): 4 of 36 = 1/9. 1/11 pretends the 11 totals are equally likely.</div></div>
+          <div class="rv-q" data-answer="a"><p>Ch 9 · 82 houses: 14 only a cat, 12 a cat and a dog, 26 only a dog, 30 neither. P(a cat or a dog)?</p><ol><li>26/41</li><li>32/41</li><li>20/41</li><li>15/41</li></ol><div class="explain">14 + 12 + 26 = 52 of 82 = 26/41. 32/41 counts the 12 twice; 15/41 is neither.</div></div>
+          <div class="rv-q" data-answer="d"><p>Ch 9 · Bag A: 2 red, 1 white. Bag B: 1 red, 2 white. One bead from each bag. P(both red)?</p><ol><li>1</li><li>1/3</li><li>4/9</li><li>2/9</li></ol><div class="explain">Multiply along the branch: 2/3 × 1/3 = 2/9. 1 comes from adding 2/3 + 1/3; 4/9 is P(both the same colour).</div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="chapter-nav-bar"><a href="index.html">&larr; Maths Year 2</a></div>
+  <script src="../../assets/revision.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll('.qc-all').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var cards = b.parentNode.previousElementSibling.querySelectorAll('details.qc'), open = b.textContent.indexOf('Show') === 0;
+          cards.forEach(function (d) { d.open = open; });
+          b.textContent = open ? 'Hide answers' : 'Show all 5 answers';
+        });
+      });
+      var secs = document.querySelectorAll('section[id]'), links = document.querySelectorAll('.sidebar a[href^="#"]');
+      addEventListener('scroll', function () {
+        var cur = ''; secs.forEach(function (s) { if (scrollY >= s.offsetTop - 80) cur = '#' + s.id; });
+        links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === cur); });
+      });
+    })();
+  </script>
+</body>
+</html>

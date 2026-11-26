@@ -93,6 +93,7 @@ practice questions, exam summary and a spaced-revision tracker.
 - [x] Maths Year 2 – Chapter 2 – Factors
 - [x] Maths Year 2 – Chapter 3 – Sets
 - [x] Maths Year 2 – Chapter 9 – Probability
+- [x] Maths Year 2 – Fast Revision – 42-minute recap of Chapters 1, 2, 3 & 9 (rules: CONTENT_RULES.md §8)
 - [x] Science Year 2 – Chapter 6 – The Digestive System (Biological World)
 - [x] Science Year 2 – Chapter 7 – The Circulatory System (Biological World)
 - [x] Science Year 2 – Chapter 8 – The Respiratory System (Biological World)
